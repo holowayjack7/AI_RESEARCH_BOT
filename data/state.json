@@ -33,7 +33,22 @@
     "https://huggingface.co/papers",
     "https://github.com/nousresearch/hermes-agent",
     "https://arxiv.org/html/2609.11042v1",
-    "https://github.com/alsk1992/CloddsBot"
+    "https://github.com/alsk1992/CloddsBot",
+    "https://github.com/rudra496/StealthHumanizer",
+    "https://github.com/nexu-io/open-design",
+    "https://arxiv.org/html/2609.12218v1",
+    "https://github.com/grapeot/opencode_ios_client",
+    "https://github.com/khuynh22/agent-dev-team",
+    "https://github.com/topics/cursor-ide",
+    "https://github.com/topics/agent-client-protocol",
+    "https://github.com/topics/ai-orchestrator",
+    "https://github.com/dimetron/pi-go",
+    "https://github.com/topics/superpowers",
+    "https://github.com/affaan-m/ecc",
+    "https://github.com/topics/rag",
+    "https://github.com/gavischneider/awesome-llm-wiki",
+    "https://github.com/yibie/awesome-autoresearch",
+    "https://arxiv.org/html/2609.03753v2"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -50,7 +65,15 @@
     "evt-google-a2a-protocol-update",
     "evt-awesome-free-llm-apis",
     "evt-t1-terminal-agent-rl",
-    "evt-ecdsa-fail-autoresearch-rsi"
+    "evt-ecdsa-fail-autoresearch-rsi",
+    "evt-agent-client-protocol-standard",
+    "evt-agent-dev-team-hierarchy",
+    "evt-awesome-llm-wiki-architecture",
+    "evt-simskill-tripartite-memory",
+    "evt-pi-go-agent-architecture",
+    "evt-ecc-agent-harness-system",
+    "evt-opendesign-local-first-design-agent",
+    "evt-opencode-ios-native-client"
   ],
   "events": [
     {
@@ -527,6 +550,251 @@
           "evidence": "Participants reduced S by 86.1%, with the best circuit at the data cutoff (26 July 2026) reaching Q = 1,151 and T = 1,299,453... The public record shows that AI agents complemented human judgment, providing evidence for open autoresearch"
         }
       ]
+    },
+    {
+      "event_id": "evt-agent-client-protocol-standard",
+      "title": "Agent Client Protocol (ACP): AI აგენტებისა და მომხმარებლის ინტერფეისების (IDEs/Clients) სტანდარტიზებული პროტოკოლი",
+      "category": "Agent Protocols & Interoperability",
+      "primary_url": "https://github.com/topics/agent-client-protocol",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 90,
+      "what_happened": "Agent Client Protocol (ACP) გახდა წამყვანი ღია სტანდარტი, რომელიც აკავშირებს სხვადასხვა AI კოდინგ აგენტს (Claude Code, Codex, Gemini CLI, OpenCode) სარედაქციო გარემოებთან (Neovim, Obsidian, Windows Terminal, Slack, native UIs).",
+      "what_changed": "მანამდე თითოეულ IDE-ს ან კლიენტს სჭირდებოდა ინდივიდუალური, Ad-hoc ინტეგრაცია თითოეული აგენტისთვის. ACP ქმნის ერთიან პროტოკოლს (MCP-ის ანალოგიურად, რომელიც ინსტრუმენტებს მართავს), სადაც ნებისმიერ ACP-კლიენტს შეუძლია მართოს ნებისმიერი ACP-აგენტი persistent სესიებითა და სტრიმინგით.",
+      "why_it_matters": "აგენტური არქიტექტურის დაპროექტებისას ACP იძლევა საშუალებას შეიქმნას უნივერსალური აგენტები, რომლებიც უპრობლემოდ იმუშავებენ ნებისმიერ ტერმინალში, IDE-ში თუ მობილურ აპლიკაციაში.",
+      "technical_details": [
+        "JSON-RPC 2.0 და HTTP პროტოკოლის ბაზაზე აგებული სტანდარტი",
+        "მხარდაჭერილი Python, Go, Rust, Swift SDK-ებით",
+        "Persistent სესიებისა და Multi-agent council-ების მხარდაჭერა",
+        "ინტეგრაცია Neovim, Obsidian, Windows Terminal, Slack და სხვა პლატფორმებთან"
+      ],
+      "action_type": "TRY",
+      "action": "გამოიყენეთ acp python-sdk ან go-sdk საკუთარი აგენტის ACP-სერვერად შესაფუთად, რათა მისი მართვა შესაძლებელი გახდეს Obsidian-იდან ან Neovim-იდან.",
+      "evidence": [
+        {
+          "url": "https://github.com/topics/agent-client-protocol",
+          "title": "agent-client-protocol · GitHub Topics",
+          "domain": "github.com",
+          "evidence": "Bring AI agents into Obsidian via Agent Client Protocol (ACP), such as Claude Code, Codex and Gemini CLI."
+        }
+      ]
+    },
+    {
+      "event_id": "evt-agent-dev-team-hierarchy",
+      "title": "agent-dev-team: AI აგენტების იერარქიული T0-T3 როლური მოდელი და Escalation Protocol",
+      "category": "Agent Architecture & Workflow Design",
+      "primary_url": "https://github.com/khuynh22/agent-dev-team",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 90,
+      "what_happened": "შეიქმნა agent-dev-team ჩარჩო, რომელიც აერთიანებს 21 სპეციალიზებულ როლურ აგენტს 4 უფლებრივ დონეზე (T0 Intern-იდან T3 Principal-მდე) და იყენებს მკაცრ Handoff Packet და Escalation პროტოკოლს.",
+      "what_changed": "ტრადიციულ მულტი-აგენტურ სისტემებში დაბალი დონის აგენტი ხშირად იღებდა გადაწყვეტილებებს არქიტექტურულ ცვლილებებზე, მონაცემთა ბაზის მიგრაციებზე ან ავტორიზაციის შეცვლაზე. agent-dev-team-ში T0 აგენტს აქვს მკაცრი ლიმიტი (მაქს. 2 ფაილი, არავითარი schema/auth ცვლილება) და ზღვრის გადაჭარბებისთანავე აგენერირებს დეტერმინისტულ HANDOFF პაკეტს.",
+      "why_it_matters": "უზრუნველყოფს აგენტების უსაფრთხოებასა და პროგნოზირებადობას. აგენტის თავდაჯერებულობა (confidence) ვერ ზრდის მის უფლებრივ დონეს (ceiling), რაც აცილებს კრიტიკული შეცდომების რისკს.",
+      "technical_details": [
+        "Agent Skills spec-თან თავსებადი .md სტრუქტურა",
+        "4-დონიანი T0-T3 იერარქია მკაცრი Ceiling შეზღუდვებით",
+        "დოკუმენტირებული HANDOFF და BRIEF ბლოკები დელეგირებისთვის",
+        "ავტომატური routing evaluation სკრიპტები 26 skill-ის განსასხვავებლად"
+      ],
+      "action_type": "APPLY",
+      "action": "დანერგეთ T0-T3 იერარქიული Escalation Protocol-ისა და Handoff Packet-ის სტრუქტურა თქვენს მულტი-აგენტურ პროექტებში, რათა შეზღუდოთ აგენტების მიერ არქიტექტურული ფაილების უნებართვო ჩასწორება.",
+      "evidence": [
+        {
+          "url": "https://github.com/khuynh22/agent-dev-team",
+          "title": "GitHub - khuynh22/agent-dev-team: A tiered team of engineering agents...",
+          "domain": "github.com",
+          "evidence": "21 role agents across four seniority tiers, 26 portable workflow skills, and an escalation protocol that keeps work at the right level instead of letting one undifferentiated assistant attempt everything."
+        }
+      ]
+    },
+    {
+      "event_id": "evt-awesome-llm-wiki-architecture",
+      "title": "Awesome LLM Wiki: LLM-ის, როგორც ცოდნის კომპილატორის არქიტექტურული შაბლონი RAG-ის სანაცვლოდ",
+      "category": "Agent Memory & Knowledge Architecture",
+      "primary_url": "https://github.com/gavischneider/awesome-llm-wiki",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 90,
+      "what_happened": "გამოქვეყნდა Awesome LLM Wiki — Andrej Karpathy-ს მიერ ინსპირირებული არქიტექტურული რესურსების კატალოგი, სადაც LLM განხილულია არა როგორც დროებითი ჩატ-ძრავა, არამედ როგორც stateful ცოდნის კომპილატორი.",
+      "what_changed": "ტრადიციული ვექტორული RAG ლინკავს დოკუმენტების ფრაგმენტებს დინამიურად runtime-ში, სადაც მოდელი რჩება 'ტურისტად'. LLM Wiki არქიტექტურაში ავტონომიური აგენტები კითხულობენ ნედლ ფაილებს და აგებენ ურთიერთდაკავშირებულ, მუდმივ Markdown Knowledge Topology-ს.",
+      "why_it_matters": "ფუნდამენტური ცვლილებაა RAG-ის არქიტექტურაში. ვექტორული ბაზების ხშირად არაზუსტი Chunk Search-ის ნაცვლად, აგენტი ქმნის და ინარჩუნებს ტიპიზირებულ Markdown ვიკის, რაც მკვეთრად ზრდის კონტექსტის სიზუსტეს.",
+      "technical_details": [
+        "3-layer architecture (immutable raw sources, LLM-generated markdown notes, system schema configuration)",
+        "Core operations: Ingest, Query, Lint",
+        "Markdown frontmatter indexing ტიპიზირებული ენტიტების სათვალთვალოდ"
+      ],
+      "action_type": "BUILD",
+      "action": "ააგეთ მცირე Claude Code skill ან Python სკრიპტი, რომელიც ნედლ ტექნიკურ დოკუმენტაციას გარდაქმნის ურთიერთდაკავშირებულ LLM Wiki Markdown ფაილების სტრუქტურად.",
+      "evidence": [
+        {
+          "url": "https://github.com/gavischneider/awesome-llm-wiki",
+          "title": "gavischneider/awesome-llm-wiki - GitHub",
+          "domain": "github.com",
+          "evidence": "Instead of parsing fragmented document partitions dynamically at runtime via traditional RAG loops, these systems leverage autonomous agents to read static source files and systematically construct an interlinked, persistent Markdown knowledge topology."
+        }
+      ]
+    },
+    {
+      "event_id": "evt-simskill-tripartite-memory",
+      "title": "SimSkill: Self-Evolving AI აგენტი სამნაწილიანი (Episodic, Procedural, Semantic) მეხსიერების არქიტექტურით",
+      "category": "AI Research & Agent Memory",
+      "primary_url": "https://arxiv.org/html/2609.03753v2",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 10,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 90,
+      "what_happened": "წარმოდგენილია SimSkill — self-evolving აგენტური ჩარჩო, რომელიც ავტონომიური კურიკულუმის გენერაციით, Action-Critic შემოწმებითა და სამნაწილიანი მეხსიერების (Episodic, Procedural, Semantic) კონსოლიდაციით აღწევს უნარების უწყვეტ დაგროვებას.",
+      "what_changed": "ჩვეულებრივი აგენტები ყოველ სესიას იწყებენ ცარიელი კონტექსტით ან უბრალოდ ინახავენ უსტრუქტურო საუბრის ისტორიას. SimSkill წარმატებულ გამოცდილებას გარდაქმნის ხელახლა გამოყენებად პროცედურულ Skill-ებად და სტრუქტურირებულ სემანტიკურ გვერდებად (Bounded retrieval/linting მექანიზმით).",
+      "why_it_matters": "უზრუნველყოფს მეთოდოლოგიას, თუ როგორ გადაიქცეს აგენტის მიერ შესრულებული დავალებები მუდმივ, სტრუქტურირებულ ცოდნად, რაც ზრდის წარმატების მაჩვენებელს 25 პროცენტული პუნქტით.",
+      "technical_details": [
+        "Tripartite memory architecture (Episodic, Procedural instructions, Semantic markdown pages)",
+        "Action-critic verification loop სიმულაციის შედეგების შესამოწმებლად",
+        "Bounded retrieval, merging და continuous linting მექანიზმი ცოდნის დრიფტის თავიდან ასაცილებლად"
+      ],
+      "action_type": "LEARN",
+      "action": "გაიანალიზეთ SimSkill-ის memory lifecycle (Retrieval, Ingestion, Merging, Linting) და გამოიყენეთ ეს პრინციპი საკუთარ აგენტურ პროექტებში უნარების ავტომატური დაგროვებისთვის.",
+      "evidence": [
+        {
+          "url": "https://arxiv.org/html/2609.03753v2",
+          "title": "SimSkill: A Self-Evolving LLM Agent for Skill and Knowledge Accumulation...",
+          "domain": "arxiv.org",
+          "evidence": "We develop a tripartite memory architecture (episodic, procedural, semantic) together with its complete lifecycle: bounded retrieval, ingestion, merging, and linting keep the stored artifacts reusable."
+        }
+      ]
+    },
+    {
+      "event_id": "evt-pi-go-agent-architecture",
+      "title": "pi-go: Terminal-ზე ბაზირებული Go კოდინგ აგენტი 4-შრიანი Memory Palace-ითა და პროცესუალური სუბ-აგენტებით",
+      "category": "Agent Architecture & Open Source Infrastructure",
+      "primary_url": "https://github.com/dimetron/pi-go",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 90,
+      "what_happened": "გამოქვეყნდა pi-go — Google ADK Go-ზე აგებული ტერმინალის AI კოდინგ აგენტი, რომელიც აღჭურვილია 4-შრიანი კონტექსტური მეხსიერებით (Memory Palace: SQLite, embeddings, temporal knowledge graph), OS-level სენდბოქსინგით (os.Root) და პროცესებზე დაფუძნებული სუბ-აგენტების აუზით.",
+      "what_changed": "სტანდარტული CLI აგენტები იყენებენ უბრალო flat conversation logs-ს და შეზღუდულ Prompt-ებს. pi-go აჩვენებს პროდაქშენ Go არქიტექტურას, სადაც ინსტრუმენტების შესრულება იზოლირებულია os.Root ფაილური სისტემის ბარიერით, ხოლო LSP სერვერები ავტომატურად იძლევიან დიაგნოსტიკას.",
+      "why_it_matters": "Go ენაზე აგენტების მშენებლობის შესანიშნავი ნიმუშია, რომელიც აერთიანებს დაბალ Latency-ს, OS-level უსაფრთხოებასა და დეტერმინისტულ ტემპორალურ Knowledge Graph-ს.",
+      "technical_details": [
+        "Google ADK Go და Bubble Tea v2 TUI ინტერფეისი",
+        "os.Root სენდბოქსინგი ფაილური სისტემის უსაფრთხოებისთვის",
+        "SQLite + all-MiniLM-L6-v2 ემბედინგები Memory Palace-ისთვის",
+        "JSON-RPC 2.0 Unix socket RPC სერვერი IDE ინტეგრაციისთვის"
+      ],
+      "action_type": "LEARN",
+      "action": "შეისწავლეთ pi-go-ს internal/palace და internal/tools პაკეტები, რათა გაიგოთ, თუ როგორ ხორციელდება Go-ში os.Root სენდბოქსინგი და SQLite-ზე დაფუძნებული ტემპორალური Knowledge Graph.",
+      "evidence": [
+        {
+          "url": "https://github.com/dimetron/pi-go",
+          "title": "dimetron/pi-go: Go implementation of AI coding agent",
+          "domain": "github.com",
+          "evidence": "Memory Palace — 4-layer contextual memory with SQLite storage, semantic embeddings (all-MiniLM-L6-v2), temporal knowledge graph, and project/conversation miners."
+        }
+      ]
+    },
+    {
+      "event_id": "evt-ecc-agent-harness-system",
+      "title": "ECC (Agent Harness Performance): 68 აგენტი, 292 Skill და AgentShield უსაფრთხოების სკანერი",
+      "category": "Developer Tools & Agent Safety",
+      "primary_url": "https://github.com/affaan-m/ecc",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 90,
+      "what_happened": "განახლდა ECC პროექტი (affaan-m/ECC v2.2), რომელიც უზრუნველყოფს მრავალ-ჰარნესიან ინჟინერიის სისტემას (68 აგენტი, 292 skill, runtime hooks, AgentShield უსაფრთხოების სკანერი) Claude Code, Codex, Cursor და Kimi გარემოებისთვის.",
+      "what_changed": "ცალკეული პრომპტები და Skill-ები გაფანტული იყო სხვადასხვა ინსტრუმენტში. ECC აერთიანებს მათ ერთიანი პაკეტის მენეჯერის (npx ecc-universal setup) ქვეშ, სადაც დეტერმინისტულად იმართება კონტექსტის ოპტიმიზაცია, სესიების მეხსიერება და უსაფრთხოება.",
+      "why_it_matters": "ზრდის AI კოდინგ აგენტების ეფექტიანობას და იცავს პროექტებს უსაფრთხოების რისკებისგან AgentShield სკანერის მეშვეობით (პრომპტების, ჰუკებისა და წვდომების შემოწმება).",
+      "technical_details": [
+        "Guided wizard setup (npx ecc-universal@2.2.1 setup)",
+        "Universal multi-harness sync (Claude Code, Codex, Kimi Code)",
+        "AgentShield static analysis პრომპტების, ჰუკებისა და MCP კონფიგურაციებისთვის"
+      ],
+      "action_type": "TRY",
+      "action": "გაშვით npx ecc-universal setup თქვენს სამუშაო გარემოში, რათა გამოსცადოთ მრავალ-ჰარნესიანი Skill-ებისა და AgentShield უსაფრთხოების სკანირება.",
+      "evidence": [
+        {
+          "url": "https://github.com/affaan-m/ecc",
+          "title": "GitHub - affaan-m/ECC: The agent harness performance ...",
+          "domain": "github.com",
+          "evidence": "Access to 68 agents, 292 skills, and 94 legacy command shims, plus hooks, rules, memory, continuous learning, and AgentShield security scanning."
+        }
+      ]
+    },
+    {
+      "event_id": "evt-opendesign-local-first-design-agent",
+      "title": "OpenDesign: Claude Design-ის ღია ალტერნატივა DeepSeek Harness-ისა და ლოკალური CLI აგენტების მხარდაჭერით",
+      "category": "AI Developer Tools & Agent Systems",
+      "primary_url": "https://github.com/nexu-io/open-design",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 90,
+      "what_happened": "გამოვიდა OpenDesign — ღია, local-first დესკტოპ აპლიკაცია (macOS/Windows), რომელიც წარმოადგენს Claude Design-ის ალტერნატივას პროტოტიპების, პრეზენტაციების, მობილური ინტერფეისებისა და მედიის განსაგენერირებლად.",
+      "what_changed": "დიზაინის გენერაცია ჩაკეტილი იყო დახურულ პლატფორმებში. OpenDesign იყენებს დიზაინ-სისტემის ბაზას (DESIGN.md), Composable Skills-ს და უშუალოდ უკავშირდება DeepSeek Harness (dsh), Claude Code, Codex და Cursor CLI ინსტრუმენტებს.",
+      "why_it_matters": "აჩვენებს, თუ როგორ შეიძლება აგენტურმა ციკლმა (brief -> lock direction -> stream artifact -> critique -> deliver) იმუშაოს ლოკალურ ფაილურ სისტემაზე რეალური CSS, React და HTML კომპონენტების შესაქმნელად.",
+      "technical_details": [
+        "DeepSeek Harness (dsh) native runtime integration",
+        "BYOK / OpenAI-compatible API support",
+        "Sandboxed iframe preview და HTML/PDF/PPTX/MP4 ექსპორტი",
+        "DESIGN.md დიზაინ-სისტემის ბრენდ-კონტრაქტი"
+      ],
+      "action_type": "TRY",
+      "action": "ჩამოტვირთეთ OpenDesign და გამოსცადეთ DESIGN.md დიზაინ-სისტემის ფაილის ინტეგრაცია ლოკალურ CLI აგენტთან ვებ-პროტოტიპების ავტომატური გენერაციისთვის.",
+      "evidence": [
+        {
+          "url": "https://github.com/nexu-io/open-design",
+          "title": "OpenDesign: The open-source Claude Design alternative - GitHub",
+          "domain": "github.com",
+          "evidence": "OpenDesign is what you get when the agent-native loop Anthropic shipped with Claude Design... stops being closed and becomes a filesystem of functional skills, rendering design templates, design systems, and plugins that the coding agents already on your laptop can read, write, and remix."
+        }
+      ]
+    },
+    {
+      "event_id": "evt-opencode-ios-native-client",
+      "title": "OpenCode iOS Client: OpenCode აგენტის მართვის Native აპლიკაცია iOS, iPadOS და visionOS-ისთვის",
+      "category": "Developer Tools & Agent Interfaces",
+      "primary_url": "https://github.com/grapeot/opencode_ios_client",
+      "supporting_urls": [],
+      "importance": 7,
+      "relevance": 8,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 85,
+      "what_happened": "შეიქმნა OpenCode iOS Client — ღია OpenCode სერვერის native iOS, iPadOS და visionOS კლიენტი, რომელიც დეველოპერებს აძლევს საშუალებას მობილურიდან მართონ AI კოდინგ აგენტი, აკონტროლონ Tool Call-ები და გადახედონ კოდის diff-ებს.",
+      "what_changed": "კოდინგ აგენტებთან ურთიერთობა ძირითადად შეზღუდული იყო დესკტოპ ტერმინალით. ეს პროექტი უზრუნველყოფს SSH Tunnel-ით ან HTTPS-ით უსაფრთხო კავშირს ლოკალურ/დიშტანციურ OpenCode სერვერთან real-time streaming-ით.",
+      "why_it_matters": "აჩვენებს, თუ როგორ შეიძლება აგენტური სესიების დისტანციური მონიტორინგი და მართვა SSH Gateway-ს გავლით, მობილური მოწყობილობებიდან.",
+      "technical_details": [
+        "Swift / SwiftUI (iOS 17+, visionOS 26+)",
+        "Citadel-powered SSH tunnel (127.0.0.1 port forwarding)",
+        "JSON-RPC / streaming API integration",
+        "Markdown rendering და diff-ების გადახედვა"
+      ],
+      "action_type": "BUILD",
+      "action": "გაანალიზეთ OpenCode iOS კლიენტის SSH Tunnel არქიტექტურა, რათა გაიგოთ, თუ როგორ უკავშირდება მობილური აპლიკაცია უსაფრთხოდ ლოკალურ აგენტურ სერვერს.",
+      "evidence": [
+        {
+          "url": "https://github.com/grapeot/opencode_ios_client",
+          "title": "GitHub - grapeot/opencode_ios_client: Native iOS client for OpenCode...",
+          "domain": "github.com",
+          "evidence": "Connect to your OpenCode server from your iPhone, iPad, or Apple Vision Pro to chat with AI agents, monitor tool calls in real time, and browse code changes on the go."
+        }
+      ]
     }
   ],
   "topics": {
@@ -544,7 +812,15 @@
     "Multi-Agent Systems / Protocols": 1,
     "Developer Tools / Free APIs & Ecosystem": 1,
     "Agent RL / Long-Horizon Execution": 1,
-    "AI Research / Recursive Self-Improvement & Autoresearch": 1
+    "AI Research / Recursive Self-Improvement & Autoresearch": 1,
+    "Agent Protocols & Interoperability": 1,
+    "Agent Architecture & Workflow Design": 1,
+    "Agent Memory & Knowledge Architecture": 1,
+    "AI Research & Agent Memory": 1,
+    "Agent Architecture & Open Source Infrastructure": 1,
+    "Developer Tools & Agent Safety": 1,
+    "AI Developer Tools & Agent Systems": 1,
+    "Developer Tools & Agent Interfaces": 1
   },
   "reports": [
     {
@@ -1046,12 +1322,269 @@
         "Supply Chain შეტევების გამოჩენა AI აგენტების Lifecycle Hooks-ზე და პლაგინების განახლების გზებზე, რაც მოითხოვს მკაცრ დეტერმინისტულ უსაფრთხოებას.",
         "Open Autoresearch და დეტერმინისტული Evaluator-ებით მართული ავტონომიური ციკლები (RSI), სადაც AI აგენტები 24/7 რეჟიმში აუმჯობესებენ კოდს ლიდერბორდის ქულების მიხედვით."
       ]
+    },
+    {
+      "date": "2026-09-14",
+      "summary": "დღევანდელი ანგარიში ფოკუსირებულია AI აგენტების არქიტექტურულ სტანდარტებზე, იერარქიულ როლურ დელეგირებაზე, მრავალშრიან მეხსიერების სისტემებსა და ლოკალურ ჰარნესებზე. Agent Client Protocol (ACP) მკვიდრდება როგორც რედაქტორებისა და AI აგენტების დამაკავშირებელი ღია სტანდარტი, ხოლო agent-dev-team წარმოადგენს T0-T3 იერარქიულ დელეგირებასა და მკაცრ Escalation პაკეტებს. pi-go და SimSkill გვთავაზობენ არქიტექტურულ ნიმუშებს მრავალშრიანი (Episodic, Procedural, Semantic) მეხსიერების დასანერგად. გარდა ამისა, Karpathy-ს LLM Wiki არქიტექტურა RAG-ის ალტერნატივად გვთავაზობს ცოდნის ფაილურ კომპილაციას, ხოლო OpenDesign და ECC აძლიერებენ დეველოპერული ინსტრუმენტების ეკოსისტემას.",
+      "events": [
+        {
+          "event_id": "evt-agent-client-protocol-standard",
+          "title": "Agent Client Protocol (ACP): AI აგენტებისა და მომხმარებლის ინტერფეისების (IDEs/Clients) სტანდარტიზებული პროტოკოლი",
+          "category": "Agent Protocols & Interoperability",
+          "primary_url": "https://github.com/topics/agent-client-protocol",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 90,
+          "what_happened": "Agent Client Protocol (ACP) გახდა წამყვანი ღია სტანდარტი, რომელიც აკავშირებს სხვადასხვა AI კოდინგ აგენტს (Claude Code, Codex, Gemini CLI, OpenCode) სარედაქციო გარემოებთან (Neovim, Obsidian, Windows Terminal, Slack, native UIs).",
+          "what_changed": "მანამდე თითოეულ IDE-ს ან კლიენტს სჭირდებოდა ინდივიდუალური, Ad-hoc ინტეგრაცია თითოეული აგენტისთვის. ACP ქმნის ერთიან პროტოკოლს (MCP-ის ანალოგიურად, რომელიც ინსტრუმენტებს მართავს), სადაც ნებისმიერ ACP-კლიენტს შეუძლია მართოს ნებისმიერი ACP-აგენტი persistent სესიებითა და სტრიმინგით.",
+          "why_it_matters": "აგენტური არქიტექტურის დაპროექტებისას ACP იძლევა საშუალებას შეიქმნას უნივერსალური აგენტები, რომლებიც უპრობლემოდ იმუშავებენ ნებისმიერ ტერმინალში, IDE-ში თუ მობილურ აპლიკაციაში.",
+          "technical_details": [
+            "JSON-RPC 2.0 და HTTP პროტოკოლის ბაზაზე აგებული სტანდარტი",
+            "მხარდაჭერილი Python, Go, Rust, Swift SDK-ებით",
+            "Persistent სესიებისა და Multi-agent council-ების მხარდაჭერა",
+            "ინტეგრაცია Neovim, Obsidian, Windows Terminal, Slack და სხვა პლატფორმებთან"
+          ],
+          "action_type": "TRY",
+          "action": "გამოიყენეთ acp python-sdk ან go-sdk საკუთარი აგენტის ACP-სერვერად შესაფუთად, რათა მისი მართვა შესაძლებელი გახდეს Obsidian-იდან ან Neovim-იდან.",
+          "evidence": [
+            {
+              "url": "https://github.com/topics/agent-client-protocol",
+              "title": "agent-client-protocol · GitHub Topics",
+              "domain": "github.com",
+              "evidence": "Bring AI agents into Obsidian via Agent Client Protocol (ACP), such as Claude Code, Codex and Gemini CLI."
+            }
+          ]
+        },
+        {
+          "event_id": "evt-agent-dev-team-hierarchy",
+          "title": "agent-dev-team: AI აგენტების იერარქიული T0-T3 როლური მოდელი და Escalation Protocol",
+          "category": "Agent Architecture & Workflow Design",
+          "primary_url": "https://github.com/khuynh22/agent-dev-team",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 90,
+          "what_happened": "შეიქმნა agent-dev-team ჩარჩო, რომელიც აერთიანებს 21 სპეციალიზებულ როლურ აგენტს 4 უფლებრივ დონეზე (T0 Intern-იდან T3 Principal-მდე) და იყენებს მკაცრ Handoff Packet და Escalation პროტოკოლს.",
+          "what_changed": "ტრადიციულ მულტი-აგენტურ სისტემებში დაბალი დონის აგენტი ხშირად იღებდა გადაწყვეტილებებს არქიტექტურულ ცვლილებებზე, მონაცემთა ბაზის მიგრაციებზე ან ავტორიზაციის შეცვლაზე. agent-dev-team-ში T0 აგენტს აქვს მკაცრი ლიმიტი (მაქს. 2 ფაილი, არავითარი schema/auth ცვლილება) და ზღვრის გადაჭარბებისთანავე აგენერირებს დეტერმინისტულ HANDOFF პაკეტს.",
+          "why_it_matters": "უზრუნველყოფს აგენტების უსაფრთხოებასა და პროგნოზირებადობას. აგენტის თავდაჯერებულობა (confidence) ვერ ზრდის მის უფლებრივ დონეს (ceiling), რაც აცილებს კრიტიკული შეცდომების რისკს.",
+          "technical_details": [
+            "Agent Skills spec-თან თავსებადი .md სტრუქტურა",
+            "4-დონიანი T0-T3 იერარქია მკაცრი Ceiling შეზღუდვებით",
+            "დოკუმენტირებული HANDOFF და BRIEF ბლოკები დელეგირებისთვის",
+            "ავტომატური routing evaluation სკრიპტები 26 skill-ის განსასხვავებლად"
+          ],
+          "action_type": "APPLY",
+          "action": "დანერგეთ T0-T3 იერარქიული Escalation Protocol-ისა და Handoff Packet-ის სტრუქტურა თქვენს მულტი-აგენტურ პროექტებში, რათა შეზღუდოთ აგენტების მიერ არქიტექტურული ფაილების უნებართვო ჩასწორება.",
+          "evidence": [
+            {
+              "url": "https://github.com/khuynh22/agent-dev-team",
+              "title": "GitHub - khuynh22/agent-dev-team: A tiered team of engineering agents...",
+              "domain": "github.com",
+              "evidence": "21 role agents across four seniority tiers, 26 portable workflow skills, and an escalation protocol that keeps work at the right level instead of letting one undifferentiated assistant attempt everything."
+            }
+          ]
+        },
+        {
+          "event_id": "evt-awesome-llm-wiki-architecture",
+          "title": "Awesome LLM Wiki: LLM-ის, როგორც ცოდნის კომპილატორის არქიტექტურული შაბლონი RAG-ის სანაცვლოდ",
+          "category": "Agent Memory & Knowledge Architecture",
+          "primary_url": "https://github.com/gavischneider/awesome-llm-wiki",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 90,
+          "what_happened": "გამოქვეყნდა Awesome LLM Wiki — Andrej Karpathy-ს მიერ ინსპირირებული არქიტექტურული რესურსების კატალოგი, სადაც LLM განხილულია არა როგორც დროებითი ჩატ-ძრავა, არამედ როგორც stateful ცოდნის კომპილატორი.",
+          "what_changed": "ტრადიციული ვექტორული RAG ლინკავს დოკუმენტების ფრაგმენტებს დინამიურად runtime-ში, სადაც მოდელი რჩება 'ტურისტად'. LLM Wiki არქიტექტურაში ავტონომიური აგენტები კითხულობენ ნედლ ფაილებს და აგებენ ურთიერთდაკავშირებულ, მუდმივ Markdown Knowledge Topology-ს.",
+          "why_it_matters": "ფუნდამენტური ცვლილებაა RAG-ის არქიტექტურაში. ვექტორული ბაზების ხშირად არაზუსტი Chunk Search-ის ნაცვლად, აგენტი ქმნის და ინარჩუნებს ტიპიზირებულ Markdown ვიკის, რაც მკვეთრად ზრდის კონტექსტის სიზუსტეს.",
+          "technical_details": [
+            "3-layer architecture (immutable raw sources, LLM-generated markdown notes, system schema configuration)",
+            "Core operations: Ingest, Query, Lint",
+            "Markdown frontmatter indexing ტიპიზირებული ენტიტების სათვალთვალოდ"
+          ],
+          "action_type": "BUILD",
+          "action": "ააგეთ მცირე Claude Code skill ან Python სკრიპტი, რომელიც ნედლ ტექნიკურ დოკუმენტაციას გარდაქმნის ურთიერთდაკავშირებულ LLM Wiki Markdown ფაილების სტრუქტურად.",
+          "evidence": [
+            {
+              "url": "https://github.com/gavischneider/awesome-llm-wiki",
+              "title": "gavischneider/awesome-llm-wiki - GitHub",
+              "domain": "github.com",
+              "evidence": "Instead of parsing fragmented document partitions dynamically at runtime via traditional RAG loops, these systems leverage autonomous agents to read static source files and systematically construct an interlinked, persistent Markdown knowledge topology."
+            }
+          ]
+        },
+        {
+          "event_id": "evt-simskill-tripartite-memory",
+          "title": "SimSkill: Self-Evolving AI აგენტი სამნაწილიანი (Episodic, Procedural, Semantic) მეხსიერების არქიტექტურით",
+          "category": "AI Research & Agent Memory",
+          "primary_url": "https://arxiv.org/html/2609.03753v2",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 10,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 90,
+          "what_happened": "წარმოდგენილია SimSkill — self-evolving აგენტური ჩარჩო, რომელიც ავტონომიური კურიკულუმის გენერაციით, Action-Critic შემოწმებითა და სამნაწილიანი მეხსიერების (Episodic, Procedural, Semantic) კონსოლიდაციით აღწევს უნარების უწყვეტ დაგროვებას.",
+          "what_changed": "ჩვეულებრივი აგენტები ყოველ სესიას იწყებენ ცარიელი კონტექსტით ან უბრალოდ ინახავენ უსტრუქტურო საუბრის ისტორიას. SimSkill წარმატებულ გამოცდილებას გარდაქმნის ხელახლა გამოყენებად პროცედურულ Skill-ებად და სტრუქტურირებულ სემანტიკურ გვერდებად (Bounded retrieval/linting მექანიზმით).",
+          "why_it_matters": "უზრუნველყოფს მეთოდოლოგიას, თუ როგორ გადაიქცეს აგენტის მიერ შესრულებული დავალებები მუდმივ, სტრუქტურირებულ ცოდნად, რაც ზრდის წარმატების მაჩვენებელს 25 პროცენტული პუნქტით.",
+          "technical_details": [
+            "Tripartite memory architecture (Episodic, Procedural instructions, Semantic markdown pages)",
+            "Action-critic verification loop სიმულაციის შედეგების შესამოწმებლად",
+            "Bounded retrieval, merging და continuous linting მექანიზმი ცოდნის დრიფტის თავიდან ასაცილებლად"
+          ],
+          "action_type": "LEARN",
+          "action": "გაიანალიზეთ SimSkill-ის memory lifecycle (Retrieval, Ingestion, Merging, Linting) და გამოიყენეთ ეს პრინციპი საკუთარ აგენტურ პროექტებში უნარების ავტომატური დაგროვებისთვის.",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2609.03753v2",
+              "title": "SimSkill: A Self-Evolving LLM Agent for Skill and Knowledge Accumulation...",
+              "domain": "arxiv.org",
+              "evidence": "We develop a tripartite memory architecture (episodic, procedural, semantic) together with its complete lifecycle: bounded retrieval, ingestion, merging, and linting keep the stored artifacts reusable."
+            }
+          ]
+        },
+        {
+          "event_id": "evt-pi-go-agent-architecture",
+          "title": "pi-go: Terminal-ზე ბაზირებული Go კოდინგ აგენტი 4-შრიანი Memory Palace-ითა და პროცესუალური სუბ-აგენტებით",
+          "category": "Agent Architecture & Open Source Infrastructure",
+          "primary_url": "https://github.com/dimetron/pi-go",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 90,
+          "what_happened": "გამოქვეყნდა pi-go — Google ADK Go-ზე აგებული ტერმინალის AI კოდინგ აგენტი, რომელიც აღჭურვილია 4-შრიანი კონტექსტური მეხსიერებით (Memory Palace: SQLite, embeddings, temporal knowledge graph), OS-level სენდბოქსინგით (os.Root) და პროცესებზე დაფუძნებული სუბ-აგენტების აუზით.",
+          "what_changed": "სტანდარტული CLI აგენტები იყენებენ უბრალო flat conversation logs-ს და შეზღუდულ Prompt-ებს. pi-go აჩვენებს პროდაქშენ Go არქიტექტურას, სადაც ინსტრუმენტების შესრულება იზოლირებულია os.Root ფაილური სისტემის ბარიერით, ხოლო LSP სერვერები ავტომატურად იძლევიან დიაგნოსტიკას.",
+          "why_it_matters": "Go ენაზე აგენტების მშენებლობის შესანიშნავი ნიმუშია, რომელიც აერთიანებს დაბალ Latency-ს, OS-level უსაფრთხოებასა და დეტერმინისტულ ტემპორალურ Knowledge Graph-ს.",
+          "technical_details": [
+            "Google ADK Go და Bubble Tea v2 TUI ინტერფეისი",
+            "os.Root სენდბოქსინგი ფაილური სისტემის უსაფრთხოებისთვის",
+            "SQLite + all-MiniLM-L6-v2 ემბედინგები Memory Palace-ისთვის",
+            "JSON-RPC 2.0 Unix socket RPC სერვერი IDE ინტეგრაციისთვის"
+          ],
+          "action_type": "LEARN",
+          "action": "შეისწავლეთ pi-go-ს internal/palace და internal/tools პაკეტები, რათა გაიგოთ, თუ როგორ ხორციელდება Go-ში os.Root სენდბოქსინგი და SQLite-ზე დაფუძნებული ტემპორალური Knowledge Graph.",
+          "evidence": [
+            {
+              "url": "https://github.com/dimetron/pi-go",
+              "title": "dimetron/pi-go: Go implementation of AI coding agent",
+              "domain": "github.com",
+              "evidence": "Memory Palace — 4-layer contextual memory with SQLite storage, semantic embeddings (all-MiniLM-L6-v2), temporal knowledge graph, and project/conversation miners."
+            }
+          ]
+        },
+        {
+          "event_id": "evt-ecc-agent-harness-system",
+          "title": "ECC (Agent Harness Performance): 68 აგენტი, 292 Skill და AgentShield უსაფრთხოების სკანერი",
+          "category": "Developer Tools & Agent Safety",
+          "primary_url": "https://github.com/affaan-m/ecc",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 90,
+          "what_happened": "განახლდა ECC პროექტი (affaan-m/ECC v2.2), რომელიც უზრუნველყოფს მრავალ-ჰარნესიან ინჟინერიის სისტემას (68 აგენტი, 292 skill, runtime hooks, AgentShield უსაფრთხოების სკანერი) Claude Code, Codex, Cursor და Kimi გარემოებისთვის.",
+          "what_changed": "ცალკეული პრომპტები და Skill-ები გაფანტული იყო სხვადასხვა ინსტრუმენტში. ECC აერთიანებს მათ ერთიანი პაკეტის მენეჯერის (npx ecc-universal setup) ქვეშ, სადაც დეტერმინისტულად იმართება კონტექსტის ოპტიმიზაცია, სესიების მეხსიერება და უსაფრთხოება.",
+          "why_it_matters": "ზრდის AI კოდინგ აგენტების ეფექტიანობას და იცავს პროექტებს უსაფრთხოების რისკებისგან AgentShield სკანერის მეშვეობით (პრომპტების, ჰუკებისა და წვდომების შემოწმება).",
+          "technical_details": [
+            "Guided wizard setup (npx ecc-universal@2.2.1 setup)",
+            "Universal multi-harness sync (Claude Code, Codex, Kimi Code)",
+            "AgentShield static analysis პრომპტების, ჰუკებისა და MCP კონფიგურაციებისთვის"
+          ],
+          "action_type": "TRY",
+          "action": "გაშვით npx ecc-universal setup თქვენს სამუშაო გარემოში, რათა გამოსცადოთ მრავალ-ჰარნესიანი Skill-ებისა და AgentShield უსაფრთხოების სკანირება.",
+          "evidence": [
+            {
+              "url": "https://github.com/affaan-m/ecc",
+              "title": "GitHub - affaan-m/ECC: The agent harness performance ...",
+              "domain": "github.com",
+              "evidence": "Access to 68 agents, 292 skills, and 94 legacy command shims, plus hooks, rules, memory, continuous learning, and AgentShield security scanning."
+            }
+          ]
+        },
+        {
+          "event_id": "evt-opendesign-local-first-design-agent",
+          "title": "OpenDesign: Claude Design-ის ღია ალტერნატივა DeepSeek Harness-ისა და ლოკალური CLI აგენტების მხარდაჭერით",
+          "category": "AI Developer Tools & Agent Systems",
+          "primary_url": "https://github.com/nexu-io/open-design",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 90,
+          "what_happened": "გამოვიდა OpenDesign — ღია, local-first დესკტოპ აპლიკაცია (macOS/Windows), რომელიც წარმოადგენს Claude Design-ის ალტერნატივას პროტოტიპების, პრეზენტაციების, მობილური ინტერფეისებისა და მედიის განსაგენერირებლად.",
+          "what_changed": "დიზაინის გენერაცია ჩაკეტილი იყო დახურულ პლატფორმებში. OpenDesign იყენებს დიზაინ-სისტემის ბაზას (DESIGN.md), Composable Skills-ს და უშუალოდ უკავშირდება DeepSeek Harness (dsh), Claude Code, Codex და Cursor CLI ინსტრუმენტებს.",
+          "why_it_matters": "აჩვენებს, თუ როგორ შეიძლება აგენტურმა ციკლმა (brief -> lock direction -> stream artifact -> critique -> deliver) იმუშაოს ლოკალურ ფაილურ სისტემაზე რეალური CSS, React და HTML კომპონენტების შესაქმნელად.",
+          "technical_details": [
+            "DeepSeek Harness (dsh) native runtime integration",
+            "BYOK / OpenAI-compatible API support",
+            "Sandboxed iframe preview და HTML/PDF/PPTX/MP4 ექსპორტი",
+            "DESIGN.md დიზაინ-სისტემის ბრენდ-კონტრაქტი"
+          ],
+          "action_type": "TRY",
+          "action": "ჩამოტვირთეთ OpenDesign და გამოსცადეთ DESIGN.md დიზაინ-სისტემის ფაილის ინტეგრაცია ლოკალურ CLI აგენტთან ვებ-პროტოტიპების ავტომატური გენერაციისთვის.",
+          "evidence": [
+            {
+              "url": "https://github.com/nexu-io/open-design",
+              "title": "OpenDesign: The open-source Claude Design alternative - GitHub",
+              "domain": "github.com",
+              "evidence": "OpenDesign is what you get when the agent-native loop Anthropic shipped with Claude Design... stops being closed and becomes a filesystem of functional skills, rendering design templates, design systems, and plugins that the coding agents already on your laptop can read, write, and remix."
+            }
+          ]
+        },
+        {
+          "event_id": "evt-opencode-ios-native-client",
+          "title": "OpenCode iOS Client: OpenCode აგენტის მართვის Native აპლიკაცია iOS, iPadOS და visionOS-ისთვის",
+          "category": "Developer Tools & Agent Interfaces",
+          "primary_url": "https://github.com/grapeot/opencode_ios_client",
+          "supporting_urls": [],
+          "importance": 7,
+          "relevance": 8,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 85,
+          "what_happened": "შეიქმნა OpenCode iOS Client — ღია OpenCode სერვერის native iOS, iPadOS და visionOS კლიენტი, რომელიც დეველოპერებს აძლევს საშუალებას მობილურიდან მართონ AI კოდინგ აგენტი, აკონტროლონ Tool Call-ები და გადახედონ კოდის diff-ებს.",
+          "what_changed": "კოდინგ აგენტებთან ურთიერთობა ძირითადად შეზღუდული იყო დესკტოპ ტერმინალით. ეს პროექტი უზრუნველყოფს SSH Tunnel-ით ან HTTPS-ით უსაფრთხო კავშირს ლოკალურ/დიშტანციურ OpenCode სერვერთან real-time streaming-ით.",
+          "why_it_matters": "აჩვენებს, თუ როგორ შეიძლება აგენტური სესიების დისტანციური მონიტორინგი და მართვა SSH Gateway-ს გავლით, მობილური მოწყობილობებიდან.",
+          "technical_details": [
+            "Swift / SwiftUI (iOS 17+, visionOS 26+)",
+            "Citadel-powered SSH tunnel (127.0.0.1 port forwarding)",
+            "JSON-RPC / streaming API integration",
+            "Markdown rendering და diff-ების გადახედვა"
+          ],
+          "action_type": "BUILD",
+          "action": "გაანალიზეთ OpenCode iOS კლიენტის SSH Tunnel არქიტექტურა, რათა გაიგოთ, თუ როგორ უკავშირდება მობილური აპლიკაცია უსაფრთხოდ ლოკალურ აგენტურ სერვერს.",
+          "evidence": [
+            {
+              "url": "https://github.com/grapeot/opencode_ios_client",
+              "title": "GitHub - grapeot/opencode_ios_client: Native iOS client for OpenCode...",
+              "domain": "github.com",
+              "evidence": "Connect to your OpenCode server from your iPhone, iPad, or Apple Vision Pro to chat with AI agents, monitor tool calls in real time, and browse code changes on the go."
+            }
+          ]
+        }
+      ],
+      "trends": [
+        "აგენტების არქიტექტურის სტანდარტიზაცია ACP (Agent Client Protocol) პროტოკოლის ირგვლივ, რაც მიზნად ისახავს IDE-ებისა და აგენტების უნივერსალურ დაკავშირებას.",
+        "მრავალშრიანი (Episodic, Procedural, Semantic) მეხსიერების დანერგვა, სადაც აგენტები ავტომატურად გარდაქმნიან შესრულებულ დავალებებს ხელახლა გამოყენებად Skill-ებად და Knowledge Graph-ებად (SimSkill, pi-go Memory Palace).",
+        "დინამიური RAG-ის ჩანაცვლება/შეპყრობა LLM Wiki არქიტექტურით — აგენტები, როგორც ცოდნის კომპილატორები, ინარჩუნებენ მუდმივ, ტიპიზირებულ Markdown ფაილების სტრუქტურას.",
+        "მულტი-აგენტურ სისტემებში მკაცრი როლური T0-T3 იერარქიის, Handoff Packet-ებისა და Escalation Protocol-ების დანერგვა აგენტების მიერ არქიტექტურული შეცდომების თავიდან ასაცილებლად."
+      ]
     }
   ],
   "learning_queue": [
-    "Claude Code-ის 5-საფეხურიანი კონტექსტის კომპაქტაციის პაიპლაინის (Snip, Microcompact, Collapse) რეალიზება Python/TypeScript-ში.",
-    "Google Agent2Agent (A2A) პროტოკოლის Agent Card-ის და JSON-RPC 2.0 Task-ების იმპლემენტაცია.",
-    "მკაცრი Assertion-based Verifier-ების და Cost-per-Outcome ბენჩმარკინგის harness-ის აგება აგენტების შეფასებისთვის."
+    "Agent Client Protocol (ACP) SDK-ების (python-sdk / acp-go-sdk) შესწავლა და სერვერ-კლიენტის არქიტექტურის აგება.",
+    "SimSkill-ის სამნაწილიანი მეხსიერების (Episodic, Procedural, Semantic) და Memory Linting & Merging ლოგიკის იმპლემენტაცია.",
+    "agent-dev-team-ის HANDOFF პაკეტისა და Escalation Protocol-ის დეტერმინისტული ვალიდაციის დაწერა."
   ],
-  "last_run": "2026-09-14T17:16:46.097490+00:00"
+  "last_run": "2026-09-14T17:28:32.138761+00:00"
 }
