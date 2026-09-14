@@ -10,7 +10,30 @@
     "https://github.com/volcengine/OpenViking",
     "https://arxiv.org/html/2609.04438v2",
     "https://arxiv.org/html/2609.09778v1",
-    "https://arxiv.org/html/2609.10144v1"
+    "https://arxiv.org/html/2609.10144v1",
+    "https://mistral.ai/news/mistral-makes-sovereign-open-weight-ai-to-frontier",
+    "https://openai.com/index/the-work-now-within-reach",
+    "https://aws.amazon.com/blogs/machine-learning/beyond-the-price-per-token-choosing-the-right-openai-model-on-amazon-bedrock-for-your-workload",
+    "https://openai.com/index/navier-stokes-solution",
+    "https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai",
+    "https://github.com/ai-boost/awesome-a2a",
+    "https://github.com/open-free-llm-api/awesome-freellm-apis",
+    "https://github.com/nejib1/Free-LLM",
+    "https://github.com/topics/ai-tools-list",
+    "https://github.com/orgs/community/discussions/187143",
+    "https://arxiv.org/pdf/2609.09849",
+    "https://github.com/topics/multi-model-ai",
+    "https://arxiv.org/html/2609.11873v1",
+    "https://github.com/VILA-Lab/Dive-into-Claude-Code",
+    "https://github.com/ClawLabsAI/free-ai-models",
+    "https://arxiv.org/html/2609.03884v2",
+    "https://arxiv.org/html/2609.09582",
+    "https://github.com/andyrewlee/awesome-agent-orchestrators",
+    "https://arxiv.org/html/2609.02149v3",
+    "https://huggingface.co/papers",
+    "https://github.com/nousresearch/hermes-agent",
+    "https://arxiv.org/html/2609.11042v1",
+    "https://github.com/alsk1992/CloddsBot"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -20,7 +43,14 @@
     "evt-kvmem-gpu-virtualization",
     "evt-agent-native-framework",
     "evt-awesome-agent-governance",
-    "evt-memory-benchmarks-pragma-icm"
+    "evt-memory-benchmarks-pragma-icm",
+    "evt-claude-code-architecture-analysis",
+    "evt-aws-bedrock-model-cost-benchmarking",
+    "evt-hookpry-agent-security",
+    "evt-google-a2a-protocol-update",
+    "evt-awesome-free-llm-apis",
+    "evt-t1-terminal-agent-rl",
+    "evt-ecdsa-fail-autoresearch-rsi"
   ],
   "events": [
     {
@@ -276,6 +306,227 @@
           "evidence": "PRAGMA, a benchmark for evaluating personalized guidance in long-term conversations... contains curated longitudinal conversation histories, evidence annotations, and guidance scenarios."
         }
       ]
+    },
+    {
+      "event_id": "evt-claude-code-architecture-analysis",
+      "title": "Claude Code-ის არქიტექტურული ანალიზი: 98.4% დეტერმინისტული ინფრასტრუქტურა და მხოლოდ 1.6% AI ლოგიკა",
+      "category": "Agent Architecture / Codebase Analysis",
+      "primary_url": "https://github.com/VILA-Lab/Dive-into-Claude-Code",
+      "supporting_urls": [],
+      "importance": 10,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 95,
+      "what_happened": "VILA-Lab-მა გამოაქვეყნა Claude Code-ის (v2.1.88, ~1,900 TypeScript ფაილი, ~512K სტრიქონი) წყაროს კოდის დონის (source-level) სრული არქიტექტურული ანალიზი.",
+      "what_changed": "მანამდე დეველოპერების უმეტესობა მიიჩნევდა, რომ AI კოდინგის აგენტის მთავარი ბირთვი რთული Prompt Engineering და LLM-ის მსჯელობა იყო. ანალიზმა აჩვენა, რომ კოდის ბაზის 98.4% არის დეტერმინისტული ინფრასტრუქტურა (Permission Gates, Context Management, Tool Routing, Session Persistence, Compacting Pipeline), ხოლო AI გადაწყვეტილების მიღების ლოგიკა მხოლოდ 1.6%-ს შეადგენს.",
+      "why_it_matters": "ეს ანალიზი ფუნდამენტურად ცვლის აგენტების დაპროექტების მიდგომას. სანდო AI აგენტის ასაშენებლად მთავარი ყურადღება უნდა დაეთმოს არა უბრალოდ While-loop prompt-ს, არამედ მის გარშემო არსებულ დეტერმინისტულ ჰარნესს (Harness) — 5-საფეხურიან კონტექსტის კომპაქტაციას, უსაფრთხოების ფენებს და შეცდომებიდან ავტომატურ აღდგენას (Graceful Recovery).",
+      "technical_details": [
+        "98.4% დეტერმინისტული კოდი (ნებართვები, კონტექსტი, ინსტრუმენტების როუტირება) და 1.6% AI მსჯელობის ლოგიკა",
+        "კონტექსტის მართვის 5-საფეხურიანი მოდელი: Budget Reduction -> Snip -> Microcompact -> Context Collapse -> Auto-Compact",
+        "უსაფრთხოების Deny-First პოლიტიკა: Strict Deny > Ask > Allow პრინციპი",
+        "ორმაგი შესრულების გზა: StreamingToolExecutor (დაბალი Latency-სთვის) და Fallback runTools"
+      ],
+      "action_type": "LEARN",
+      "action": "შეისწავლეთ VILA-Lab-ის მიერ გამოქვეყნებული Claude Code-ის 5-საფეხურიანი კონტექსტის კომპაქტაციის pipeline და დანერგეთ Microcompact/Snip ლოგიკა საკუთარ Python/TypeScript აგენტურ ციკლში.",
+      "evidence": [
+        {
+          "url": "https://github.com/VILA-Lab/Dive-into-Claude-Code",
+          "title": "GitHub - VILA-Lab/Dive-into-Claude-Code: A Systematic Analysis ...",
+          "domain": "github.com",
+          "evidence": "TL;DR -- Only 1.6% of Claude Code's codebase is AI decision logic. The other 98.4% is deterministic infrastructure -- permission gates, context management, tool routing, and recovery logic."
+        }
+      ]
+    },
+    {
+      "event_id": "evt-aws-bedrock-model-cost-benchmarking",
+      "title": "AWS-ის ბენჩმარკი: აგენტურ სამუშაოებში turn-ების რაოდენობა და კონტექსტის ზრდა განსაზღვრავს რეალურ ხარჯს",
+      "category": "LLM Benchmarking & Cost Optimization",
+      "primary_url": "https://aws.amazon.com/blogs/machine-learning/beyond-the-price-per-token-choosing-the-right-openai-model-on-amazon-bedrock-for-your-workload",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 10,
+      "confidence": 95,
+      "what_happened": "AWS-მა გამოაქვეყნა ღია კოდის ბენჩმარკინგის სისტემა (openai-on-aws/benchmarks-openai), სადაც შეაფასა GPT-5.6 Luna/Terra/Sol და GPT-5.4 mini/nano მოდელების რეალური ხარჯი AIME, GPQA და DeepSearchQA აგენტურ რიგებში.",
+      "what_changed": "ტრადიციული შედარება მხოლოდ $1M ტოკენის ფასით მცდარ დასკვნებამდე მიდის აგენტურ არქიტექტურებში. ვინაიდან ყოველ turn-ზე იგზავნება მთლიანი ისტორია, კონტექსტის ზრდა კვადრატულია. უფრო იაფფასიანმა მოდელმა (Mini) ბევრი turn-ის (7.6 turn/question) გამო უფრო მეტი დახარჯა, ვიდრე უფრო ძვირიანმა, მაგრამ ეფექტურმა მოდელმა (Terra).",
+      "why_it_matters": "აგენტების ინჟინრებმა მოდელი უნდა შეარჩიონ არა \"ფასი ტოკენზე\" კრიტერიუმით, არამედ \"ფასი წარმატებულ შედეგზე\" (Cost per passing outcome). უფრო ჭკვიანი მოდელი ნაკლები turn-ით ხშირად უფრო იაფი ჯდება პროდაქშენში.",
+      "technical_details": [
+        "GPT-5.4 Mini იღებდა საშუალოდ 7.6 turn-ს (re-search loops) და ჯდებოდა $0.40 თითო სწორ პასუხზე",
+        "GPT-5.6 Terra მაღალი ტოკენის ფასის მიუხედავად ნაკლები turn-ით $0.31 დაჯდა თითო სწორ პასუხზე (F1 0.50 vs 0.39)",
+        "GPT-5.6 Luna-მ Bedrock-ის ფასდაკლების შემდეგ აჩვენა ყველაზე დაბალი ხარჯი AIME-ზე: $0.0021 vs Mini-ს $0.0139 per correct answer",
+        "კლიენტის მიერ მართული ისტორია (store: false) იწვევს სესიის ტოკენების კვადრატულ ზრდას turn-ების მატებასთან ერთად"
+      ],
+      "action_type": "APPLY",
+      "action": "გამოიყენეთ AWS-ის ღია ბენჩმარკინგის harness-ის პრინციპი თქვენს აგენტში: გაზომეთ Cost per Resolved Task და შეზღუდეთ Re-search/Tool Execution loop-ების მაქსიმალური რაოდენობა.",
+      "evidence": [
+        {
+          "url": "https://aws.amazon.com/blogs/machine-learning/beyond-the-price-per-token-choosing-the-right-openai-model-on-amazon-bedrock-for-your-workload",
+          "title": "Beyond the price per token: Choosing the right OpenAI model ... - AWS",
+          "domain": "aws.amazon.com",
+          "evidence": "Cumulative billed input can therefore grow approximately quadratically with turn count... Mini took the most turns per question of any model (7.6, mostly re-search loops)... In this sample, terra's higher token price was offset by fewer turns and higher quality: it cost $0.31 per passing answer versus mini's $0.40"
+        }
+      ]
+    },
+    {
+      "event_id": "evt-hookpry-agent-security",
+      "title": "HookPry: AI აგენტების Lifecycle Hooks-ის მომწოდებელთა ჯაჭვის (Supply Chain) ახალი უსაფრთხოების საფრთხე",
+      "category": "Agent Security / Threat Intelligence",
+      "primary_url": "https://arxiv.org/html/2609.03884v2",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 90,
+      "what_happened": "მკვლევრებმა წარადგინეს HookPry — ავტომატიზებული შეტევის ჩარჩო, რომელიც იყენებს AI აგენტების ჰარნესების (Claude Code, OpenClaw, Codex CLI) Lifecycle Hooks-ის განახლების გზებს სისტემური ბრძანებების ფარულად შესასრულებლად.",
+      "what_changed": "მანამდე აგენტების უსაფრთხოება ძირითადად Prompt Injection-სა და Tool Output-ის გაფილტვრაზე იყო კონცენტრირებული. HookPry-მ აჩვენა, რომ პლაგინის/ინსტრუმენტის განახლებისას ჩუმად დამატებული Lifecycle Hook სრულდება უშუალოდ ოპერაციულ სისტემაში (Host privileges) LLM-ის მსჯელობის ციკლისა და Prompt Guard-ების გვერდის ავლით.",
+      "why_it_matters": "რამდენადაც აგენტური ეკოსისტემა გადადის MCP სერვერებსა და მესამე მხარის პლაგინებზე, Lifecycle Hooks ხდება კრიტიკული შეტევის ვექტორი. აგენტების დეველოპერებმა უნდა დანერგონ დეტერმინისტული ვალიდაცია და სენდბოქსინგი Hook-ის კონფიგურაციებზე.",
+      "technical_details": [
+        "HookPry-მ წარმატებით დააზიანა 7-ვე შეფასებული აგენტის ჰარნესი 92.5%-მდე წარმატების მაჩვენებლით",
+        "ტექნიკა იყენებს Temporal Decoupling-ს: საწყისი კეთილსაიმედო ინსპექტირების შემდეგ Hook-ის ფარული განახლება",
+        "ბრძანებების გაშვება ხდება Process Subprocess-ის სახით LLM-ის Decision Path-ის მიღმა",
+        "Microsoft Defender-მა აჩვენა 0% Recall ამ ტიპის Hook-based შეტევებზე"
+      ],
+      "action_type": "APPLY",
+      "action": "თქვენს აგენტურ პროექტებში ან MCP სერვერებში აკრძალეთ არასანდო პლაგინების მიერ Lifecycle Hook-ების (post-tool-call, session-start) ავტომატური რეგისტრაცია დეტერმინისტული Static Review-ს გარეშე.",
+      "evidence": [
+        {
+          "url": "https://arxiv.org/html/2609.03884v2",
+          "title": "A Blind Trust, the Bloody Thrust: When Attacker-Controlled Hook UpdatesSteer AI Agent Harnesses towards Malicious Behaviors",
+          "domain": "arxiv.org",
+          "evidence": "Modern AI agent harnesses expose lifecycle hooks that bind shell commands to runtime events... HookPry realizes ten attack objectives; across 25 combinations of harnesses and backends in 1,000 end-to-end runs, it compromises all seven evaluated harnesses"
+        }
+      ]
+    },
+    {
+      "event_id": "evt-google-a2a-protocol-update",
+      "title": "Agent2Agent (A2A) პროტოკოლი: Google-ისა და პარტნიორების სტანდარტი მრავალაგენტიანი ინტეროპერაბელურობისთვის",
+      "category": "Multi-Agent Systems / Protocols",
+      "primary_url": "https://github.com/ai-boost/awesome-a2a",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 90,
+      "what_happened": "Google-მა და პარტნიორებმა განახლეს Agent2Agent (A2A) პროტოკოლის ეკოსისტემა (v1.0.1 HTTP binding-ით, ADK for Java 1.0.0 და OID4VP JIT ავტორიზაციით).",
+      "what_changed": "მანამდე სხვადასხვა ფრეიმვორკის (LangGraph, Genkit, AutoGen) აგენტებს შორის თანამშრომლობა მოითხოვდა ინდივიდუალურ Ad-hoc API-ებს. A2A ქმნის ღია სტანდარტს HTTP, JSON-RPC 2.0 და SSE ბაზაზე, სადაც აგენტები აქვეყნებენ Agent Card-ს და ცვლიან Task/Artifact ობიექტებს.",
+      "why_it_matters": "MCP-ის პარალელურად (რომელიც აგენტი-ინსტრუმენტის ურთიერთობას მართავს), A2A ხდება მთავარი პროტოკოლი აგენტი-აგენტის (A2A) კომუნიკაციისთვის, რაც აუცილებელია რთული, მრავალპლატფორმული მულტი-აგენტური სისტემების ასაგებად.",
+      "technical_details": [
+        "Agent Card (JSON სქემა) აცხადებს აგენტის შესაძლებლობებს, ენდპოინტს და აუტენტიფიკაციის მოთხოვნებს",
+        "კომუნიკაცია ეფუძნება HTTP / JSON-RPC 2.0 და SSE (Server-Sent Events) რეალურ დროში სტრიმინგისთვის",
+        "Opaque Execution: აგენტები თანამშრომლობენ შიდა ინსტრუმენტებისა და ლოგიკის გამჟღავნების გარეშე",
+        "OID4VP ექსტენშენი უზრუნველყოფს Just-In-Time (JIT) ავტორიზაციას სესიის დროს"
+      ],
+      "action_type": "TRY",
+      "action": "გადახედეთ `awesome-a2a` რეპოზიტორიას და შექმენით მარტივი Python/TypeScript Agent Card, რომელიც A2A პროტოკოლით მიიღებს დავალებას სხვა ლოკალური აგენტისგან.",
+      "evidence": [
+        {
+          "url": "https://github.com/ai-boost/awesome-a2a",
+          "title": "Agent2Agent (A2A) – awesome A2A agents, tools, servers & clients ...",
+          "domain": "github.com",
+          "evidence": "A2A (Agent2Agent) is an open protocol from Google and partners enabling different AI agents (from various vendors/frameworks) to communicate securely and collaborate on tasks."
+        }
+      ]
+    },
+    {
+      "event_id": "evt-awesome-free-llm-apis",
+      "title": "Awesome Free LLM APIs: 485+ უფასო LLM API-ის მოდელების კატალოგი და One-Click კონფიგურაციები",
+      "category": "Developer Tools / Free APIs & Ecosystem",
+      "primary_url": "https://github.com/open-free-llm-api/awesome-freellm-apis",
+      "supporting_urls": [
+        "https://github.com/nejib1/Free-LLM",
+        "https://github.com/ClawLabsAI/free-ai-models"
+      ],
+      "importance": 8,
+      "relevance": 10,
+      "actionability": 10,
+      "source_quality": 8,
+      "confidence": 90,
+      "what_happened": "განახლდა Awesome Free LLM APIs და Free-LLM რეპოზიტორიები, რომლებიც აერთიანებენ 485+-მდე უფასო LLM API-ს (Groq, NVIDIA NIM, Cloudflare Workers AI, Google AI Studio, Hetzner Inference, Ollama Cloud) და ავტომატურ როუტინგს.",
+      "what_changed": "16+ წლის დეველოპერებისთვის საბანკო ბარათის არქონის პრობლემა სრულად წყდება: პროვაიდერების უმეტესობა იძლევა მუდმივ უფასო Tier-ს (მაგ. Groq 30 RPM / 14,400 RPD credit card-ის გარეშე) და OpenAI-compatible endpoints-ს.",
+      "why_it_matters": "იძლევა შესაძლებლობას Claude Code, Cursor, Codex CLI და საკუთარი აგენტური პროექტები ამუშაოთ სრულიად უფასოდ, მრავალი პროვაიდერის ფოლბექით (fallback).",
+      "technical_details": [
+        "Groq: 30 RPM, 14,400 RPD უფასოდ, საკრედიტო ბარათის გარეშე (Llama 3.3 70B, Qwen3.6 27B)",
+        "Google AI Studio: 5-30 RPM, 9,000 RPD (Gemini 3.1 Flash, Gemini 3.0 Flash)",
+        "OpenAI-compatible endpoints — მარტივი ინტეგრაცია `base_url` და `api_key` ჩანაცვლებით Python/TypeScript SDK-ებში",
+        "ZeroLimitAI და Auto-router endpoints ავტომატური ფოლბექისთვის rate limit-ის დროს"
+      ],
+      "action_type": "TRY",
+      "action": "აიღეთ უფასო API key Groq-დან ან Google AI Studio-დან და დააკონფიგურირეთ საკუთარი CLI აგენტი ან Cursor/Codex უფასო ენდპოინტზე.",
+      "evidence": [
+        {
+          "url": "https://github.com/open-free-llm-api/awesome-freellm-apis",
+          "title": "open-free-llm-api/awesome-freellm-apis: 134+ ...",
+          "domain": "github.com",
+          "evidence": "485+ free LLM APIs from 31 providers — find, compare & configure free models in seconds... Credit card transparency — clearly shows which providers require a card, phone verification, or nothing at all"
+        }
+      ]
+    },
+    {
+      "event_id": "evt-t1-terminal-agent-rl",
+      "title": "T1: Tencent-ის 122B MoE ტერმინალის აგენტი 300+ ნაბიჯიანი რიგების განმავლობაში RL-ით გაწვრთნილი",
+      "category": "Agent RL / Long-Horizon Execution",
+      "primary_url": "https://arxiv.org/html/2609.11042v1",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 90,
+      "what_happened": "Tencent-მა წარადგინა T1 — 122B MoE მოდელი, რომელიც გაწვრთნილია PPO განმტკიცებითი სწავლებით (RL) რეალურ Sandbox Shell-ში 300+-მდე tool-call turn-ის განმავლობაში, საკუთარი Verifier-ების შესრულების მკაცრი სიმრავლის მიხედვით.",
+      "what_changed": "ტრადიციული LLM აგენტები იყენებდნენ მარტივ Binary Pass/Fail სიგნალებს. T1 იყენებს TITO (exact token identifier reconstruction) და R3 (rollout routing replay) ტექნიკას ტოკენისა და MoE expert drift-ის აღმოსაფხვრელად, რამაც Terminal-Bench 2.1-ზე წარმატება 43.8%-დან 64.0%-მდე გაზარდა.",
+      "why_it_matters": "ეს კვლევა გვიჩვენებს, თუ როგორ ხდება ხანგრძლივი (long-horizon) ტერმინალის აგენტების სტაბილური წვრთნა რეალური კოდის/სისტემური verifier-ების შედეგებზე დაყრდნობით, რაც გადამწყვეტია ავტონომიური DevOps და Coding აგენტებისთვის.",
+      "technical_details": [
+        "122B MoE მოდელი (116B expert weights, 8/256 experts active per token)",
+        "Dense Process Reward: ტრაექტორიის შეფასებაPassing Verifiers-ის აბსოლუტური რაოდენობით",
+        "TITO და R3 ალგორითმებმა შეამცირეს training-to-inference log-probability Gap 0.021-დან 0.013-მდე",
+        "Terminal-Bench 2.1-ზე მიაღწია 64.0% resolved-ს (გადაასწრო GPT-5.4-ს 54.8% და DeepSeek-V4-Flash-ს 56.9%)"
+      ],
+      "action_type": "LEARN",
+      "action": "წაიკითხეთ T1 სტატიის TITO და R3 სექციები, რათა გაიგოთ, თუ როგორ მოქმედებს მრავალნაბიჯიანი Tool Execution კონტექსტი ტოკენების დრიფტზე და როგორ იწერება ეფექტური Verifier-ები.",
+      "evidence": [
+        {
+          "url": "https://arxiv.org/html/2609.11042v1",
+          "title": "T1: Terminal Agent Reinforcement Learning for Long-Horizon Tasks",
+          "domain": "arxiv.org",
+          "evidence": "We introduce T1, a Mixture-of-Experts model of 122B total trained with reinforcement learning, operating a real shell in a cloud sandbox for up to 300+ tool-call turns per task, rewarded by executing each task's own verifier."
+        }
+      ]
+    },
+    {
+      "event_id": "evt-ecdsa-fail-autoresearch-rsi",
+      "title": "ECDSA.Fail და RSI ჩარჩო: AI აგენტების ავტონომიური კვლევა და რეფორმირება (Recursive Self-Improvement)",
+      "category": "AI Research / Recursive Self-Improvement & Autoresearch",
+      "primary_url": "https://arxiv.org/html/2609.09582",
+      "supporting_urls": [
+        "https://arxiv.org/html/2609.11873v1"
+      ],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 90,
+      "what_happened": "გამოქვეყნდა ECDSA.Fail ღია ავტო-კვლევის (Open Autoresearch) შედეგები და RSI-ის 5-დონიანი ავტონომიის ჩარჩო (The Last AI Built by Humans). ECDSA.Fail-ში ადამიანებმა და AI აგენტებმა 86.1%-ით შეამცირეს Shor-ის ალგორითმის secp256k1 სქემის Spacetime ქულა (Q x T).",
+      "what_changed": "კვლევა გადადის ადამიანის მიერ ხელით კოდის წერიდან ავტომატიზებულ ლიდერბორდებზე, სადაც AI აგენტები მატემატიკურად და დეტერმინისტულად ამოწმებენ თავიანთ ჰიპოთეზებს. RSI ჩარჩო განსაზღვრავს 5 დონეს: L1 (execution), L2 (strategy selection), L3 (experience acquisition), L4 (environmental adaptation), L5 (recursive meta-improvement).",
+      "why_it_matters": "გვიჩვენებს მომავალს, სადაც ინჟინრის როლი იცვლება უშუალო კოდინგისგან მკაცრი Evaluator-ების, Benchmark-ების და ავტონომიური აგენტური ციკლების დაპროექტებისკენ.",
+      "technical_details": [
+        "ECDSA.Fail-ში Q x T ქულა შემცირდა 10.75B-დან 1.496B-მდე (86.1%-იანი გაუმჯობესება)",
+        "მანქანურად შემოწმებადი Evaluator-ები საშუალებას აძლევს AI აგენტებს იმუშაონ 24/7 ავტონომიურ ციკლში",
+        "RSI 5 დონე: L1 (Execution) -> L2 (Strategy) -> L3 (Experience) -> L4 (Adaptation) -> L5 (Recursive Meta-Improvement)"
+      ],
+      "action_type": "BUILD",
+      "action": "აშენეთ მცირე ავტონომიური Autoresearch loop თქვენი ერთ-ერთი პროექტისთვის: დაწერეთ დეტერმინისტული Evaluator script და აიძულეთ აგენტი ციკლურად გააუმჯობესოს კოდი ლიდერბორდის ქულის მიხედვით.",
+      "evidence": [
+        {
+          "url": "https://arxiv.org/html/2609.09582",
+          "title": "ECDSA.Fail: Open Autoresearch for Optimizing Elliptic-Curve Point Addition in Shor's Algorithm",
+          "domain": "arxiv.org",
+          "evidence": "Participants reduced S by 86.1%, with the best circuit at the data cutoff (26 July 2026) reaching Q = 1,151 and T = 1,299,453... The public record shows that AI agents complemented human judgment, providing evidence for open autoresearch"
+        }
+      ]
     }
   ],
   "topics": {
@@ -286,7 +537,14 @@
     "Agent Infrastructure / Memory Optimization": 1,
     "Developer Tools / Agent Frameworks": 1,
     "Open Source / Security & Governance": 1,
-    "AI Evaluation / Memory Benchmarks": 1
+    "AI Evaluation / Memory Benchmarks": 1,
+    "Agent Architecture / Codebase Analysis": 1,
+    "LLM Benchmarking & Cost Optimization": 1,
+    "Agent Security / Threat Intelligence": 1,
+    "Multi-Agent Systems / Protocols": 1,
+    "Developer Tools / Free APIs & Ecosystem": 1,
+    "Agent RL / Long-Horizon Execution": 1,
+    "AI Research / Recursive Self-Improvement & Autoresearch": 1
   },
   "reports": [
     {
@@ -554,12 +812,246 @@
         "მეხსიერების მართვის გადატანა ინდივიდუალური აგენტის პრომპტიდან სისტემურ ბირთვზე (Kernel-managed memory) და სემანტიკური მიმართებების დეტერმინირებულ კლასიფიკაციაზე (ROAM).",
         "UI და Agent Capabilities-ის გაერთიანება ერთიანი Action/Tool შრის გარშემო (Agent-Native)."
       ]
+    },
+    {
+      "date": "2026-09-14",
+      "summary": "დღევანდელი ანგარიში ფოკუსირებულია AI აგენტების არქიტექტურის შიდა მექანიზმებზე, უსაფრთხოებასა და ეკონომიკურ ეფექტიანობაზე. Claude Code-ის წყაროს კოდის სიღრმისეულმა ანალიზმა აჩვენა, რომ პროდაქშენ აგენტის 98.4% დეტერმინისტულ ინფრასტრუქტურას უკავია და მხოლოდ 1.6%-ია LLM-ის მსჯელობის ლოგიკა. უსაფრთხოების კუთხით, HookPry-მ გამოავლინა Lifecycle Hooks-ის კრიტიკული ხვრელები აგენტების ჰარნესებში. AWS-ის ბენჩმარკმა დაადასტურა, რომ აგენტურ რიგებში ტოკენების ერთეულის ფასზე მნიშვნელოვანი turn-ების რაოდენობა და საბოლოო შედეგის ხარჯია (Context Resending-ის კვადრატული ზრდის გამო). ასევე წარმოდგენილია Google-ის A2A პროტოკოლის ეკოსისტემის განახლება, Tencent-ის T1 RL ტერმინალის აგენტი 300+ ნაბიჯიანი ციკლებით, ECDSA.Fail ავტო-კვლევის პლატფორმა და 485+ უფასო LLM API-ის კატალოგი, რაც იდეალურ პირობებს ქმნის 16+ წლის დეველოპერებისთვის უფასო, მაღალეფექტური აგენტური სისტემების ასაგებად.",
+      "events": [
+        {
+          "event_id": "evt-claude-code-architecture-analysis",
+          "title": "Claude Code-ის არქიტექტურული ანალიზი: 98.4% დეტერმინისტული ინფრასტრუქტურა და მხოლოდ 1.6% AI ლოგიკა",
+          "category": "Agent Architecture / Codebase Analysis",
+          "primary_url": "https://github.com/VILA-Lab/Dive-into-Claude-Code",
+          "supporting_urls": [],
+          "importance": 10,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 95,
+          "what_happened": "VILA-Lab-მა გამოაქვეყნა Claude Code-ის (v2.1.88, ~1,900 TypeScript ფაილი, ~512K სტრიქონი) წყაროს კოდის დონის (source-level) სრული არქიტექტურული ანალიზი.",
+          "what_changed": "მანამდე დეველოპერების უმეტესობა მიიჩნევდა, რომ AI კოდინგის აგენტის მთავარი ბირთვი რთული Prompt Engineering და LLM-ის მსჯელობა იყო. ანალიზმა აჩვენა, რომ კოდის ბაზის 98.4% არის დეტერმინისტული ინფრასტრუქტურა (Permission Gates, Context Management, Tool Routing, Session Persistence, Compacting Pipeline), ხოლო AI გადაწყვეტილების მიღების ლოგიკა მხოლოდ 1.6%-ს შეადგენს.",
+          "why_it_matters": "ეს ანალიზი ფუნდამენტურად ცვლის აგენტების დაპროექტების მიდგომას. სანდო AI აგენტის ასაშენებლად მთავარი ყურადღება უნდა დაეთმოს არა უბრალოდ While-loop prompt-ს, არამედ მის გარშემო არსებულ დეტერმინისტულ ჰარნესს (Harness) — 5-საფეხურიან კონტექსტის კომპაქტაციას, უსაფრთხოების ფენებს და შეცდომებიდან ავტომატურ აღდგენას (Graceful Recovery).",
+          "technical_details": [
+            "98.4% დეტერმინისტული კოდი (ნებართვები, კონტექსტი, ინსტრუმენტების როუტირება) და 1.6% AI მსჯელობის ლოგიკა",
+            "კონტექსტის მართვის 5-საფეხურიანი მოდელი: Budget Reduction -> Snip -> Microcompact -> Context Collapse -> Auto-Compact",
+            "უსაფრთხოების Deny-First პოლიტიკა: Strict Deny > Ask > Allow პრინციპი",
+            "ორმაგი შესრულების გზა: StreamingToolExecutor (დაბალი Latency-სთვის) და Fallback runTools"
+          ],
+          "action_type": "LEARN",
+          "action": "შეისწავლეთ VILA-Lab-ის მიერ გამოქვეყნებული Claude Code-ის 5-საფეხურიანი კონტექსტის კომპაქტაციის pipeline და დანერგეთ Microcompact/Snip ლოგიკა საკუთარ Python/TypeScript აგენტურ ციკლში.",
+          "evidence": [
+            {
+              "url": "https://github.com/VILA-Lab/Dive-into-Claude-Code",
+              "title": "GitHub - VILA-Lab/Dive-into-Claude-Code: A Systematic Analysis ...",
+              "domain": "github.com",
+              "evidence": "TL;DR -- Only 1.6% of Claude Code's codebase is AI decision logic. The other 98.4% is deterministic infrastructure -- permission gates, context management, tool routing, and recovery logic."
+            }
+          ]
+        },
+        {
+          "event_id": "evt-aws-bedrock-model-cost-benchmarking",
+          "title": "AWS-ის ბენჩმარკი: აგენტურ სამუშაოებში turn-ების რაოდენობა და კონტექსტის ზრდა განსაზღვრავს რეალურ ხარჯს",
+          "category": "LLM Benchmarking & Cost Optimization",
+          "primary_url": "https://aws.amazon.com/blogs/machine-learning/beyond-the-price-per-token-choosing-the-right-openai-model-on-amazon-bedrock-for-your-workload",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 10,
+          "confidence": 95,
+          "what_happened": "AWS-მა გამოაქვეყნა ღია კოდის ბენჩმარკინგის სისტემა (openai-on-aws/benchmarks-openai), სადაც შეაფასა GPT-5.6 Luna/Terra/Sol და GPT-5.4 mini/nano მოდელების რეალური ხარჯი AIME, GPQA და DeepSearchQA აგენტურ რიგებში.",
+          "what_changed": "ტრადიციული შედარება მხოლოდ $1M ტოკენის ფასით მცდარ დასკვნებამდე მიდის აგენტურ არქიტექტურებში. ვინაიდან ყოველ turn-ზე იგზავნება მთლიანი ისტორია, კონტექსტის ზრდა კვადრატულია. უფრო იაფფასიანმა მოდელმა (Mini) ბევრი turn-ის (7.6 turn/question) გამო უფრო მეტი დახარჯა, ვიდრე უფრო ძვირიანმა, მაგრამ ეფექტურმა მოდელმა (Terra).",
+          "why_it_matters": "აგენტების ინჟინრებმა მოდელი უნდა შეარჩიონ არა \"ფასი ტოკენზე\" კრიტერიუმით, არამედ \"ფასი წარმატებულ შედეგზე\" (Cost per passing outcome). უფრო ჭკვიანი მოდელი ნაკლები turn-ით ხშირად უფრო იაფი ჯდება პროდაქშენში.",
+          "technical_details": [
+            "GPT-5.4 Mini იღებდა საშუალოდ 7.6 turn-ს (re-search loops) და ჯდებოდა $0.40 თითო სწორ პასუხზე",
+            "GPT-5.6 Terra მაღალი ტოკენის ფასის მიუხედავად ნაკლები turn-ით $0.31 დაჯდა თითო სწორ პასუხზე (F1 0.50 vs 0.39)",
+            "GPT-5.6 Luna-მ Bedrock-ის ფასდაკლების შემდეგ აჩვენა ყველაზე დაბალი ხარჯი AIME-ზე: $0.0021 vs Mini-ს $0.0139 per correct answer",
+            "კლიენტის მიერ მართული ისტორია (store: false) იწვევს სესიის ტოკენების კვადრატულ ზრდას turn-ების მატებასთან ერთად"
+          ],
+          "action_type": "APPLY",
+          "action": "გამოიყენეთ AWS-ის ღია ბენჩმარკინგის harness-ის პრინციპი თქვენს აგენტში: გაზომეთ Cost per Resolved Task და შეზღუდეთ Re-search/Tool Execution loop-ების მაქსიმალური რაოდენობა.",
+          "evidence": [
+            {
+              "url": "https://aws.amazon.com/blogs/machine-learning/beyond-the-price-per-token-choosing-the-right-openai-model-on-amazon-bedrock-for-your-workload",
+              "title": "Beyond the price per token: Choosing the right OpenAI model ... - AWS",
+              "domain": "aws.amazon.com",
+              "evidence": "Cumulative billed input can therefore grow approximately quadratically with turn count... Mini took the most turns per question of any model (7.6, mostly re-search loops)... In this sample, terra's higher token price was offset by fewer turns and higher quality: it cost $0.31 per passing answer versus mini's $0.40"
+            }
+          ]
+        },
+        {
+          "event_id": "evt-hookpry-agent-security",
+          "title": "HookPry: AI აგენტების Lifecycle Hooks-ის მომწოდებელთა ჯაჭვის (Supply Chain) ახალი უსაფრთხოების საფრთხე",
+          "category": "Agent Security / Threat Intelligence",
+          "primary_url": "https://arxiv.org/html/2609.03884v2",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 90,
+          "what_happened": "მკვლევრებმა წარადგინეს HookPry — ავტომატიზებული შეტევის ჩარჩო, რომელიც იყენებს AI აგენტების ჰარნესების (Claude Code, OpenClaw, Codex CLI) Lifecycle Hooks-ის განახლების გზებს სისტემური ბრძანებების ფარულად შესასრულებლად.",
+          "what_changed": "მანამდე აგენტების უსაფრთხოება ძირითადად Prompt Injection-სა და Tool Output-ის გაფილტვრაზე იყო კონცენტრირებული. HookPry-მ აჩვენა, რომ პლაგინის/ინსტრუმენტის განახლებისას ჩუმად დამატებული Lifecycle Hook სრულდება უშუალოდ ოპერაციულ სისტემაში (Host privileges) LLM-ის მსჯელობის ციკლისა და Prompt Guard-ების გვერდის ავლით.",
+          "why_it_matters": "რამდენადაც აგენტური ეკოსისტემა გადადის MCP სერვერებსა და მესამე მხარის პლაგინებზე, Lifecycle Hooks ხდება კრიტიკული შეტევის ვექტორი. აგენტების დეველოპერებმა უნდა დანერგონ დეტერმინისტული ვალიდაცია და სენდბოქსინგი Hook-ის კონფიგურაციებზე.",
+          "technical_details": [
+            "HookPry-მ წარმატებით დააზიანა 7-ვე შეფასებული აგენტის ჰარნესი 92.5%-მდე წარმატების მაჩვენებლით",
+            "ტექნიკა იყენებს Temporal Decoupling-ს: საწყისი კეთილსაიმედო ინსპექტირების შემდეგ Hook-ის ფარული განახლება",
+            "ბრძანებების გაშვება ხდება Process Subprocess-ის სახით LLM-ის Decision Path-ის მიღმა",
+            "Microsoft Defender-მა აჩვენა 0% Recall ამ ტიპის Hook-based შეტევებზე"
+          ],
+          "action_type": "APPLY",
+          "action": "თქვენს აგენტურ პროექტებში ან MCP სერვერებში აკრძალეთ არასანდო პლაგინების მიერ Lifecycle Hook-ების (post-tool-call, session-start) ავტომატური რეგისტრაცია დეტერმინისტული Static Review-ს გარეშე.",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2609.03884v2",
+              "title": "A Blind Trust, the Bloody Thrust: When Attacker-Controlled Hook UpdatesSteer AI Agent Harnesses towards Malicious Behaviors",
+              "domain": "arxiv.org",
+              "evidence": "Modern AI agent harnesses expose lifecycle hooks that bind shell commands to runtime events... HookPry realizes ten attack objectives; across 25 combinations of harnesses and backends in 1,000 end-to-end runs, it compromises all seven evaluated harnesses"
+            }
+          ]
+        },
+        {
+          "event_id": "evt-google-a2a-protocol-update",
+          "title": "Agent2Agent (A2A) პროტოკოლი: Google-ისა და პარტნიორების სტანდარტი მრავალაგენტიანი ინტეროპერაბელურობისთვის",
+          "category": "Multi-Agent Systems / Protocols",
+          "primary_url": "https://github.com/ai-boost/awesome-a2a",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 90,
+          "what_happened": "Google-მა და პარტნიორებმა განახლეს Agent2Agent (A2A) პროტოკოლის ეკოსისტემა (v1.0.1 HTTP binding-ით, ADK for Java 1.0.0 და OID4VP JIT ავტორიზაციით).",
+          "what_changed": "მანამდე სხვადასხვა ფრეიმვორკის (LangGraph, Genkit, AutoGen) აგენტებს შორის თანამშრომლობა მოითხოვდა ინდივიდუალურ Ad-hoc API-ებს. A2A ქმნის ღია სტანდარტს HTTP, JSON-RPC 2.0 და SSE ბაზაზე, სადაც აგენტები აქვეყნებენ Agent Card-ს და ცვლიან Task/Artifact ობიექტებს.",
+          "why_it_matters": "MCP-ის პარალელურად (რომელიც აგენტი-ინსტრუმენტის ურთიერთობას მართავს), A2A ხდება მთავარი პროტოკოლი აგენტი-აგენტის (A2A) კომუნიკაციისთვის, რაც აუცილებელია რთული, მრავალპლატფორმული მულტი-აგენტური სისტემების ასაგებად.",
+          "technical_details": [
+            "Agent Card (JSON სქემა) აცხადებს აგენტის შესაძლებლობებს, ენდპოინტს და აუტენტიფიკაციის მოთხოვნებს",
+            "კომუნიკაცია ეფუძნება HTTP / JSON-RPC 2.0 და SSE (Server-Sent Events) რეალურ დროში სტრიმინგისთვის",
+            "Opaque Execution: აგენტები თანამშრომლობენ შიდა ინსტრუმენტებისა და ლოგიკის გამჟღავნების გარეშე",
+            "OID4VP ექსტენშენი უზრუნველყოფს Just-In-Time (JIT) ავტორიზაციას სესიის დროს"
+          ],
+          "action_type": "TRY",
+          "action": "გადახედეთ `awesome-a2a` რეპოზიტორიას და შექმენით მარტივი Python/TypeScript Agent Card, რომელიც A2A პროტოკოლით მიიღებს დავალებას სხვა ლოკალური აგენტისგან.",
+          "evidence": [
+            {
+              "url": "https://github.com/ai-boost/awesome-a2a",
+              "title": "Agent2Agent (A2A) – awesome A2A agents, tools, servers & clients ...",
+              "domain": "github.com",
+              "evidence": "A2A (Agent2Agent) is an open protocol from Google and partners enabling different AI agents (from various vendors/frameworks) to communicate securely and collaborate on tasks."
+            }
+          ]
+        },
+        {
+          "event_id": "evt-awesome-free-llm-apis",
+          "title": "Awesome Free LLM APIs: 485+ უფასო LLM API-ის მოდელების კატალოგი და One-Click კონფიგურაციები",
+          "category": "Developer Tools / Free APIs & Ecosystem",
+          "primary_url": "https://github.com/open-free-llm-api/awesome-freellm-apis",
+          "supporting_urls": [
+            "https://github.com/nejib1/Free-LLM",
+            "https://github.com/ClawLabsAI/free-ai-models"
+          ],
+          "importance": 8,
+          "relevance": 10,
+          "actionability": 10,
+          "source_quality": 8,
+          "confidence": 90,
+          "what_happened": "განახლდა Awesome Free LLM APIs და Free-LLM რეპოზიტორიები, რომლებიც აერთიანებენ 485+-მდე უფასო LLM API-ს (Groq, NVIDIA NIM, Cloudflare Workers AI, Google AI Studio, Hetzner Inference, Ollama Cloud) და ავტომატურ როუტინგს.",
+          "what_changed": "16+ წლის დეველოპერებისთვის საბანკო ბარათის არქონის პრობლემა სრულად წყდება: პროვაიდერების უმეტესობა იძლევა მუდმივ უფასო Tier-ს (მაგ. Groq 30 RPM / 14,400 RPD credit card-ის გარეშე) და OpenAI-compatible endpoints-ს.",
+          "why_it_matters": "იძლევა შესაძლებლობას Claude Code, Cursor, Codex CLI და საკუთარი აგენტური პროექტები ამუშაოთ სრულიად უფასოდ, მრავალი პროვაიდერის ფოლბექით (fallback).",
+          "technical_details": [
+            "Groq: 30 RPM, 14,400 RPD უფასოდ, საკრედიტო ბარათის გარეშე (Llama 3.3 70B, Qwen3.6 27B)",
+            "Google AI Studio: 5-30 RPM, 9,000 RPD (Gemini 3.1 Flash, Gemini 3.0 Flash)",
+            "OpenAI-compatible endpoints — მარტივი ინტეგრაცია `base_url` და `api_key` ჩანაცვლებით Python/TypeScript SDK-ებში",
+            "ZeroLimitAI და Auto-router endpoints ავტომატური ფოლბექისთვის rate limit-ის დროს"
+          ],
+          "action_type": "TRY",
+          "action": "აიღეთ უფასო API key Groq-დან ან Google AI Studio-დან და დააკონფიგურირეთ საკუთარი CLI აგენტი ან Cursor/Codex უფასო ენდპოინტზე.",
+          "evidence": [
+            {
+              "url": "https://github.com/open-free-llm-api/awesome-freellm-apis",
+              "title": "open-free-llm-api/awesome-freellm-apis: 134+ ...",
+              "domain": "github.com",
+              "evidence": "485+ free LLM APIs from 31 providers — find, compare & configure free models in seconds... Credit card transparency — clearly shows which providers require a card, phone verification, or nothing at all"
+            }
+          ]
+        },
+        {
+          "event_id": "evt-t1-terminal-agent-rl",
+          "title": "T1: Tencent-ის 122B MoE ტერმინალის აგენტი 300+ ნაბიჯიანი რიგების განმავლობაში RL-ით გაწვრთნილი",
+          "category": "Agent RL / Long-Horizon Execution",
+          "primary_url": "https://arxiv.org/html/2609.11042v1",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 90,
+          "what_happened": "Tencent-მა წარადგინა T1 — 122B MoE მოდელი, რომელიც გაწვრთნილია PPO განმტკიცებითი სწავლებით (RL) რეალურ Sandbox Shell-ში 300+-მდე tool-call turn-ის განმავლობაში, საკუთარი Verifier-ების შესრულების მკაცრი სიმრავლის მიხედვით.",
+          "what_changed": "ტრადიციული LLM აგენტები იყენებდნენ მარტივ Binary Pass/Fail სიგნალებს. T1 იყენებს TITO (exact token identifier reconstruction) და R3 (rollout routing replay) ტექნიკას ტოკენისა და MoE expert drift-ის აღმოსაფხვრელად, რამაც Terminal-Bench 2.1-ზე წარმატება 43.8%-დან 64.0%-მდე გაზარდა.",
+          "why_it_matters": "ეს კვლევა გვიჩვენებს, თუ როგორ ხდება ხანგრძლივი (long-horizon) ტერმინალის აგენტების სტაბილური წვრთნა რეალური კოდის/სისტემური verifier-ების შედეგებზე დაყრდნობით, რაც გადამწყვეტია ავტონომიური DevOps და Coding აგენტებისთვის.",
+          "technical_details": [
+            "122B MoE მოდელი (116B expert weights, 8/256 experts active per token)",
+            "Dense Process Reward: ტრაექტორიის შეფასებაPassing Verifiers-ის აბსოლუტური რაოდენობით",
+            "TITO და R3 ალგორითმებმა შეამცირეს training-to-inference log-probability Gap 0.021-დან 0.013-მდე",
+            "Terminal-Bench 2.1-ზე მიაღწია 64.0% resolved-ს (გადაასწრო GPT-5.4-ს 54.8% და DeepSeek-V4-Flash-ს 56.9%)"
+          ],
+          "action_type": "LEARN",
+          "action": "წაიკითხეთ T1 სტატიის TITO და R3 სექციები, რათა გაიგოთ, თუ როგორ მოქმედებს მრავალნაბიჯიანი Tool Execution კონტექსტი ტოკენების დრიფტზე და როგორ იწერება ეფექტური Verifier-ები.",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2609.11042v1",
+              "title": "T1: Terminal Agent Reinforcement Learning for Long-Horizon Tasks",
+              "domain": "arxiv.org",
+              "evidence": "We introduce T1, a Mixture-of-Experts model of 122B total trained with reinforcement learning, operating a real shell in a cloud sandbox for up to 300+ tool-call turns per task, rewarded by executing each task's own verifier."
+            }
+          ]
+        },
+        {
+          "event_id": "evt-ecdsa-fail-autoresearch-rsi",
+          "title": "ECDSA.Fail და RSI ჩარჩო: AI აგენტების ავტონომიური კვლევა და რეფორმირება (Recursive Self-Improvement)",
+          "category": "AI Research / Recursive Self-Improvement & Autoresearch",
+          "primary_url": "https://arxiv.org/html/2609.09582",
+          "supporting_urls": [
+            "https://arxiv.org/html/2609.11873v1"
+          ],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 90,
+          "what_happened": "გამოქვეყნდა ECDSA.Fail ღია ავტო-კვლევის (Open Autoresearch) შედეგები და RSI-ის 5-დონიანი ავტონომიის ჩარჩო (The Last AI Built by Humans). ECDSA.Fail-ში ადამიანებმა და AI აგენტებმა 86.1%-ით შეამცირეს Shor-ის ალგორითმის secp256k1 სქემის Spacetime ქულა (Q x T).",
+          "what_changed": "კვლევა გადადის ადამიანის მიერ ხელით კოდის წერიდან ავტომატიზებულ ლიდერბორდებზე, სადაც AI აგენტები მატემატიკურად და დეტერმინისტულად ამოწმებენ თავიანთ ჰიპოთეზებს. RSI ჩარჩო განსაზღვრავს 5 დონეს: L1 (execution), L2 (strategy selection), L3 (experience acquisition), L4 (environmental adaptation), L5 (recursive meta-improvement).",
+          "why_it_matters": "გვიჩვენებს მომავალს, სადაც ინჟინრის როლი იცვლება უშუალო კოდინგისგან მკაცრი Evaluator-ების, Benchmark-ების და ავტონომიური აგენტური ციკლების დაპროექტებისკენ.",
+          "technical_details": [
+            "ECDSA.Fail-ში Q x T ქულა შემცირდა 10.75B-დან 1.496B-მდე (86.1%-იანი გაუმჯობესება)",
+            "მანქანურად შემოწმებადი Evaluator-ები საშუალებას აძლევს AI აგენტებს იმუშაონ 24/7 ავტონომიურ ციკლში",
+            "RSI 5 დონე: L1 (Execution) -> L2 (Strategy) -> L3 (Experience) -> L4 (Adaptation) -> L5 (Recursive Meta-Improvement)"
+          ],
+          "action_type": "BUILD",
+          "action": "აშენეთ მცირე ავტონომიური Autoresearch loop თქვენი ერთ-ერთი პროექტისთვის: დაწერეთ დეტერმინისტული Evaluator script და აიძულეთ აგენტი ციკლურად გააუმჯობესოს კოდი ლიდერბორდის ქულის მიხედვით.",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2609.09582",
+              "title": "ECDSA.Fail: Open Autoresearch for Optimizing Elliptic-Curve Point Addition in Shor's Algorithm",
+              "domain": "arxiv.org",
+              "evidence": "Participants reduced S by 86.1%, with the best circuit at the data cutoff (26 July 2026) reaching Q = 1,151 and T = 1,299,453... The public record shows that AI agents complemented human judgment, providing evidence for open autoresearch"
+            }
+          ]
+        }
+      ],
+      "trends": [
+        "აგენტების არქიტექტურის გადანაცვლება 98%+ დეტერმინისტულ ინფრასტრუქტურაზე (Permission Gates, Context Compacting Pipelines, Hardened Harnesses) LLM-ის მცირე ლოგიკურ ბირთვთან ერთად.",
+        "აგენტების ეკონომიკისა და მოდელების არჩევის შეფასება \"Cost per Passed Outcome\" მეტრიკით, სადაც turn-ების შემცირება და კონტექსტის კვადრატული ზრდის შეზღუდვა უფრო მნიშვნელოვანია, ვიდრე ტოკენის საწყისი ფასი.",
+        "სტანდარტიზებული ინტეროპერაბელურობის პროტოკოლების (A2A აგენტი-აგენტისთვის, MCP აგენტი-ინსტრუმენტისთვის) მკვეთრი ზრდა და ეკოსისტემური მიღება.",
+        "Supply Chain შეტევების გამოჩენა AI აგენტების Lifecycle Hooks-ზე და პლაგინების განახლების გზებზე, რაც მოითხოვს მკაცრ დეტერმინისტულ უსაფრთხოებას.",
+        "Open Autoresearch და დეტერმინისტული Evaluator-ებით მართული ავტონომიური ციკლები (RSI), სადაც AI აგენტები 24/7 რეჟიმში აუმჯობესებენ კოდს ლიდერბორდის ქულების მიხედვით."
+      ]
     }
   ],
   "learning_queue": [
-    "OpenTelemetry ტრასირების ინტეგრაცია AI აგენტებში და CloudWatch/AgentCore Evaluation API-ს გამოყენება.",
-    "ROAM მეხსიერების არქიტექტურის და 5 სემანტიკური მიმართების (ind, eqv, osn, nso, con) რეალიზაცია Python/TypeScript-ში.",
-    "MCP (Model Context Protocol) სერვერების OAuth M2M (Client Credentials) ავტორიზაციით დაცვა."
+    "Claude Code-ის 5-საფეხურიანი კონტექსტის კომპაქტაციის პაიპლაინის (Snip, Microcompact, Collapse) რეალიზება Python/TypeScript-ში.",
+    "Google Agent2Agent (A2A) პროტოკოლის Agent Card-ის და JSON-RPC 2.0 Task-ების იმპლემენტაცია.",
+    "მკაცრი Assertion-based Verifier-ების და Cost-per-Outcome ბენჩმარკინგის harness-ის აგება აგენტების შეფასებისთვის."
   ],
-  "last_run": "2026-09-14T17:02:23.347749+00:00"
+  "last_run": "2026-09-14T17:16:46.097490+00:00"
 }
