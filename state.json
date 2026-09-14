@@ -1,0 +1,44 @@
+{
+  "seen_urls": [
+    "https://github.com/nejib1/Free-LLM",
+    "https://arxiv.org/html/2609.03884v2",
+    "https://github.com/linny006/rag-radar",
+    "https://github.com/orgs/community/discussions/187143",
+    "https://github.com/Gentleman-Programming/gentle-ai",
+    "https://github.com/Gitlawb/openclaude",
+    "https://github.com/yenanjing/awesome-model-routing",
+    "https://github.com/volcengine/OpenViking",
+    "https://arxiv.org/html/2609.04075v1",
+    "https://github.com/systempromptio/awesome-ai-agent-governance",
+    "https://arxiv.org/html/2609.08040v1",
+    "https://developer.nvidia.com/blog/building-a-memory-driven-agent-with-nvidia-nemoclaw"
+  ],
+  "last_run": "2026-09-11T02:02:23.737140+00:00",
+  "events": [
+    {
+      "title": "OpenViking: Context Database AI აგენტებისთვის",
+      "url": "https://github.com/volcengine/OpenViking",
+      "category": "AI Agents & Infrastructure",
+      "importance": 7,
+      "relevance": 8,
+      "date": "2026-09-11T02:02:23.395323+00:00"
+    }
+  ],
+  "topics": {
+    "AI Agents & Infrastructure": 1
+  },
+  "reports": [
+    {
+      "date": "2026-09-11",
+      "events": [
+        {
+          "title": "OpenViking: Context Database AI აგენტებისთვის",
+          "category": "AI Agents & Infrastructure",
+          "importance": 7,
+          "relevance": 8
+        }
+      ],
+      "trend_summary": "დღევანდელი ტენდენცია მიანიშნებს AI აგენტების ინფრასტრუქტურის განვითარებაზე — კერძოდ, აგენტების კონტექსტის მართვის მონაცემთა ბაზებსა და კოდის წერის აგენტების სამუშაო პროცესების (workflows) სტანდარტიზაციაზე."
+    }
+  ]
+}
