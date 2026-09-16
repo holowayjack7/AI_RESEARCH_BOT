@@ -48,7 +48,18 @@
     "https://github.com/topics/rag",
     "https://github.com/gavischneider/awesome-llm-wiki",
     "https://github.com/yibie/awesome-autoresearch",
-    "https://arxiv.org/html/2609.03753v2"
+    "https://arxiv.org/html/2609.03753v2",
+    "https://aws.amazon.com/blogs/aws/aws-weekly-roundup-openai-gpt-6-astra-on-amazon-bedrock-amazon-quick-desktop-ga-kiro-for-students-and-more-september-14-2026",
+    "https://github.com/nexu-io",
+    "https://arxiv.org/html/2609.13731v1",
+    "https://github.com/Dicklesworthstone/Dicklesworthstone/blob/main/README.md",
+    "https://arxiv.org/html/2609.10105v1",
+    "https://arxiv.org/html/2609.11569v1",
+    "https://github.com/zapplyjobs/Internships-2027",
+    "https://github.com/resources/events",
+    "https://github.com/VoltAgent/awesome-openclaw-skills/blob/main/README.md",
+    "https://github.com/orgs/hackclub/repositories",
+    "https://github.com/The412Banner/Bannerlator/releases"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -73,7 +84,15 @@
     "evt-pi-go-agent-architecture",
     "evt-ecc-agent-harness-system",
     "evt-opendesign-local-first-design-agent",
-    "evt-opencode-ios-native-client"
+    "evt-opencode-ios-native-client",
+    "evt-agentic-coding-flywheel-rust",
+    "evt-trustworthy-agentic-ai-survey",
+    "evt-hackclub-nest-free-compute",
+    "evt-nexu-opendesign-looper-ecosystem",
+    "evt-aws-lambda-90min-opensearch-v0",
+    "evt-exygen-kg-shex-void-rag",
+    "evt-openclaw-skills-ecosystem-security",
+    "evt-inference-time-governance-taxonomy"
   ],
   "events": [
     {
@@ -795,6 +814,252 @@
           "evidence": "Connect to your OpenCode server from your iPhone, iPad, or Apple Vision Pro to chat with AI agents, monitor tool calls in real time, and browse code changes on the go."
         }
       ]
+    },
+    {
+      "event_id": "evt-agentic-coding-flywheel-rust",
+      "title": "Agentic Coding Flywheel და FrankenSuite: 14 Rust ინსტრუმენტი და დეტერმინისტული Asupersync Runtime მრავალ-აგენტიანი ორკესტრაციისთვის",
+      "category": "Agent Infrastructure & Multi-Agent Systems",
+      "primary_url": "https://github.com/Dicklesworthstone/Dicklesworthstone/blob/main/README.md",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 90,
+      "what_happened": "გამოქვეყნდა Agentic Coding Flywheel და FrankenSuite ინფრასტრუქტურა — 14 open-source Rust CLI ინსტრუმენტისგან და Asupersync დეტერმინისტული async runtime-სგან შემდგარი ეკოსისტემა, რომელიც უზრუნველყოფს ათეულობით AI აგენტის პარალელურ მართვას და კოდის უსაფრთხო გენერაციას.",
+      "what_changed": "მანამდე AI კოდინგ აგენტები მუშაობდნენ იზოლირებულად, უსაფრთხოების მკაცრი ბარიერების გარეშე და ხშირად აზიანებდნენ git ისტორიას ან იწვევდნენ ფაილების კონფლიქტებს. ახალ არქიტექტურაში Agent Mail უზრუნველყოფს აგენტების ფაილურ იჯარას (file leases) და შეტყობინებებს, DCG ბლოკავს საშიშ ბრძანებებს (rm -rf, git reset), ხოლო Asupersync უზრუნველყოფს დეტერმინისტულ გაუქმებას და გათვლადობას.",
+      "why_it_matters": "ეს ინფრასტრუქტურა აჩვენებს, თუ როგორ შეიძლება მულტი-აგენტური სისტემების (Multi-Agent Swarms) სტაბილური მართვა ლოკალურ გარემოში. Asupersync-ის Lean-checked მოდელი და CapBAC პრინციპები წარმოადგენს საუკეთესო არქიტექტურულ მაგალითს პროდაქშენ აგენტების ასაგებად.",
+      "technical_details": [
+        "Agent Mail: Gmail აგენტებისთვის, ფაილური იჯარები (file leases) და აუდიტის ჩანაწერები",
+        "DCG (SIMD Guard): ბლოკავს destructing ბრძანებებს (rm -rf, git reset --hard) მილიწამებში",
+        "CASS Memory: 3-შრიანი კოგნიტური მეხსიერება (episodic, working, procedural)",
+        "Asupersync Rust Runtime: Owned concurrency, Capability-scoped context (Cx), დეტერმინისტული სიმულაცია (Lab runtime)",
+        "FrankenSQLite & FrankenEngine: MVCC, RaptorQ გამძლეობა და WASM სენდბოქსინგი cryptographic execution receipts-ით"
+      ],
+      "action_type": "TRY",
+      "action": "ჩამოტვირთეთ და შეისწავლეთ DCG და CASS Memory ინსტრუმენტების არქიტექტურა, და დანერგეთ საშიში shell ბრძანებების ფილტრაციის ლოგიკა საკუთარ აგენტურ ციკლში.",
+      "evidence": [
+        {
+          "url": "https://github.com/Dicklesworthstone/Dicklesworthstone/blob/main/README.md",
+          "title": "Dicklesworthstone / Dicklesworthstone · GitHub",
+          "domain": "github.com",
+          "evidence": "Fourteen tools for multi-agent software development: messaging and file leases, issue graphs, session search, command safety, and tmux orchestration. Built on Asupersync, a spec-first, cancel-correct, capability-secure async runtime for Rust."
+        }
+      ]
+    },
+    {
+      "event_id": "evt-trustworthy-agentic-ai-survey",
+      "title": "Trustworthy Agentic AI: Zero-Trust არქიტექტურა, CapBAC და eBPF უსაფრთხოების მექანიზმები აგენტური სისტემებისთვის",
+      "category": "AI Research / Agent Security & Safety",
+      "primary_url": "https://arxiv.org/html/2609.13731v1",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 90,
+      "what_happened": "გამოქვეყნდა პირველი კომპლექსური სისტემურ-უსაფრთხოების კვლევა 'Trustworthy Agentic AI', სადაც ფორმალიზებულია აგენტების არქიტექტურა როგორც stateful 5-tuple და ჩამოყალიბებულია Zero-Trust Defense-in-Depth არქიტექტურა აგენტური საფრთხეებისგან დასაცავად.",
+      "what_changed": "მანამდე აგენტების უსაფრთხოება შემოიფარგლებოდა უბრალო Prompt Guard-ებით. ვინაიდან აგენტებში ბუნებრივი ენა ერთდროულად არის მონაცემი, კოდი და პროტოკოლი (Input Data = Control Logic = Communication Protocol), ნებისმიერი მიღებული ტექსტი არის სრულფასოვანი შესრულებადი კოდი. კვლევამ დაადგინა უსაფრთხოების ახალი სტანდარტები.",
+      "why_it_matters": "აგენტების ავტონომიური წვდომა ფაილურ სისტემასთან, API-ებთან და Shell-თან მოითხოვს მკაცრ Zero-Trust მიდგომას. Dual-LLM Inspector-Executor და eBPF ბირთვის პრობები აუცილებელია პროდაქშენში აგენტის მიერ RCE ან exfiltration შეტევების თავიდან ასაცილებლად.",
+      "technical_details": [
+        "ფორმალური აგენტური 5-tuple მოდელი და 6-განზომილებიანი სანდოობის ტაქსონომია",
+        "Dual-LLM Inspector-Executor იზოლაცია: ინსპექტორი ამოწმებს გეგმას, შემსრულებელი იძახებს ინსტრუმენტებს",
+        "Capability-Based Access Control (CapBAC) და ბირთვის დონის eBPF syscall პრობები",
+        "სენდბოქსინგი Micro-VM-ების საშუალებით, ხელმოწერილი ვექტორული ემბედინგები და Byzantine Fault Tolerance (BFT)"
+      ],
+      "action_type": "LEARN",
+      "action": "წაიკითხეთ კვლევაში აღწერილი Dual-LLM Inspector-Executor არქიტექტურა და დანერგეთ Inspector LLM-ის ვალიდაციის ნაბიჯი Tool Calling-ის შესრულებამდე.",
+      "evidence": [
+        {
+          "url": "https://arxiv.org/html/2609.13731v1",
+          "title": "Trustworthy Agentic AI: A Comprehensive Cybersecurity and Systems Survey - arXiv",
+          "domain": "arxiv.org",
+          "evidence": "In Agentic AI, natural language simultaneously serves as input data, internal control code, and communication protocols... We formulate a multi-layered Zero-Trust Defense-in-Depth Architecture integrating Dual-LLM Inspector-Executor isolation, CapBAC, eBPF syscall probes, and micro-VM sandboxing."
+        }
+      ]
+    },
+    {
+      "event_id": "evt-hackclub-nest-free-compute",
+      "title": "Hack Club Nest: უფასო და სიმძლავრით აღჭურვილი სერვერული ინფრასტრუქტურა 16+ ასაკის მოსწავლე დეველოპერებისთვის",
+      "category": "Young Developer Opportunities & Infrastructure",
+      "primary_url": "https://github.com/orgs/hackclub/repositories",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 10,
+      "actionability": 10,
+      "source_quality": 8,
+      "confidence": 90,
+      "what_happened": "Hack Club-მა განაახლა Nest პროექტი — სრულიად უფასო Linux სერვერული და გამოთვლითი ინფრასტრუქტურა, რომელიც სპეციალურად შექმნილია სკოლის მოსწავლე და მოზარდი დეველოპერებისთვის (16+) ლოკალური პროექტების, აგენტების და მონაცემთა ბაზების ასაშვებად.",
+      "what_changed": "ტრადიციული ღრუბლოვანი პროვაიდერები (AWS, GCP, DigitalOcean) მოითხოვენ საკრედიტო ბარათის ავტორიზაციას, რაც 16 წლის დეველოპერებისთვის მთავარ ბარიერს წარმოადგენს. Nest იძლევა სრულფასოვან Linux compute გარემოს ბარათის გარეშე.",
+      "why_it_matters": "იდეალური პლატფორმაა საკუთარი Python AI აგენტების, MCP სერვერების, SQLite ბაზებისა და Telegram/Discord ბოტების 24/7 რეჟიმში ჰოსტინგისთვის სრულიად უფასოდ.",
+      "technical_details": [
+        "უფასო Linux Compute გარემო SSH წვდომით",
+        "მხარდაჭერილია Node.js, Python, Go, Rust runtimes და SQLite/PostgreSQL ბაზები",
+        "ინტეგრირებულია Hack Club-ის YSWS (You Ship, We Ship) და HCB ფისკალურ ეკოსისტემასთან"
+      ],
+      "action_type": "APPLY",
+      "action": "დარეგისტრირდით Hack Club Nest-ზე, მიიღეთ უფასო Linux სერვერული გარემო და განათავსეთ თქვენი AI აგენტის MCP სერვერი ან Python backend 24/7 შესრულებისთვის.",
+      "evidence": [
+        {
+          "url": "https://github.com/orgs/hackclub/repositories",
+          "title": "hackclub repositories · GitHub",
+          "domain": "github.com",
+          "evidence": "nest: Free, powerful, and versatile compute infrastructure for all high school hackers!"
+        }
+      ]
+    },
+    {
+      "event_id": "evt-nexu-opendesign-looper-ecosystem",
+      "title": "OpenDesign და Nexu ეკოსისტემა: ლოკალური აგენტების ინტეგრაცია Slack/Discord/WeChat-ში და Looper ავტონომიური CI/CD Dev Loop",
+      "category": "AI Developer Tools & Agent Ecosystem",
+      "primary_url": "https://github.com/nexu-io",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 90,
+      "what_happened": "OpenDesign/Nexu გუნდმა წარმოადგინა Open-source ინსტრუმენტების ნაკრები: Nexu (ლოკალური დესკტოპ კლიენტი AI აგენტების Slack, Discord, Feishu, WeChat-თან დასაკავშირებლად) და Looper (Go-ზე დაწერილი ავტონომიური აგენტური ციკლი, რომელიც გეგმავს, ამოწმებს და ასწორებს PR-ებს GitHub რეპოზიტორიებში).",
+      "what_changed": "მანამდე AI კოდინგ აგენტები შეზღუდული იყვნენ მხოლოდ ტერმინალით ან IDE-თ. Nexu-ს მეშვეობით ლოკალური აგენტი (Claude Code, Codex) ხდება ხელმისაწვდომი მესენჯერებიდან 24/7, ხოლო Looper უზრუნველყოფს უწყვეტ ავტონომიურ დეველოპმენტს GitHub-ის რეპოზიტორიებზე.",
+      "why_it_matters": "ადგება ლოკალური, Local-first და BYOK (Bring Your Own Key) პრინციპებზე დაფუძნებული აგენტური ინფრასტრუქტურა. დეველოპერს შეუძლია საკუთარი ლეპტოპიდან მართოს აგენტი, რომელიც მუშაობს მესენჯერებში და ავტომატურად ხურავს GitHub Issue-ებს.",
+      "technical_details": [
+        "Nexu: Local-first დესკტოპ კლიენტი, BYOK/OAuth, შიდა მონაცემების ლოკალურად შენახვა",
+        "Looper: Go-ზე აგებული ავტონომიური აგენტური ციკლი GitHub რეპოზიტორიების მართვისთვის (Plan, Review, Fix, Ship)",
+        "html-anything & html-video: HTML/CSS-ის პროგრამული გარდაქმნა MP4 ვიდეოებად და ინტერფეისებად 75+ Skill-ის გამოყენებით",
+        "SKILL.md convention: უნარების ჩატვირთვა უბრალო ფოლდერის დამატებით"
+      ],
+      "action_type": "BUILD",
+      "action": "გამოიყენეთ Nexu ან დაწერეთ მარტივი Python/TypeScript Bot, რომელიც თქვენს ლოკალურ CLI აგენტს დააკავშირებს Discord Webhook-თან.",
+      "evidence": [
+        {
+          "url": "https://github.com/nexu-io",
+          "title": "OpenDesign - GitHub",
+          "domain": "github.com",
+          "evidence": "nexu: The open-source desktop client that connects your AI Agent to WeChat, Slack, Discord... looper: Run AI coding agents as an autonomous dev team across all your GitHub repos — plan, review, fix, and ship, on a loop."
+        }
+      ]
+    },
+    {
+      "event_id": "evt-aws-lambda-90min-opensearch-v0",
+      "title": "AWS Lambda-ს 90-წუთიანი Execution Timeout და OpenSearch Serverless ინტეგრაცია v0-ში ხანგრძლივი აგენტური დავალებებისთვის",
+      "category": "Cloud Infrastructure & Agent RAG",
+      "primary_url": "https://aws.amazon.com/blogs/aws/aws-weekly-roundup-openai-gpt-6-astra-on-amazon-bedrock-amazon-quick-desktop-ga-kiro-for-students-and-more-september-14-2026",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 10,
+      "confidence": 95,
+      "what_happened": "AWS-მა გამოაცხადა AWS Lambda Managed Instances-ის 90-წუთიანი function timeout (წინა 15-წუთიანი ლიმიტის 6x გაზრდა) და Amazon OpenSearch Serverless-ის პირდაპირი მხარდაჭერა v0 by Vercel-ში RAG აპლიკაციების სწრაფი გენერაციისთვის.",
+      "what_changed": "მანამდე ხანგრძლივი აგენტური რიგები (Agent Loops, multi-step code refactoring, batch inference) მოითხოვდნენ 15-წუთიან ინტერვალებში სამუშაოს დაშლას ან ECS/EC2 სერვერების მართვას. 90-წუთიანი ტაიმაუტი საშუალებას იძლევა სერვერლეს ფუნქციებში გაშვებულ იქნას ხანგრძლივი ავტონომიური აგენტები.",
+      "why_it_matters": "სერვერლეს არქიტექტურა ხდება სრულად თავსებადი Long-horizon AI აგენტებთან. პარალელურად, v0-ის მიერ OpenSearch Serverless vector search-ის ავტომატური პროვიჟონინგი ამარტივებს RAG აპლიკაციების პროტოტიპირებას.",
+      "technical_details": [
+        "AWS Lambda Managed Instances მხარს უჭერს 90-წუთიან ტაიმაუტს ასინქრონული და ESM ინვოკაციებისთვის",
+        "Durable Functions პროცესებს შეუძლიათ იფუნქციონირონ 1 წლამდე",
+        "v0 by Vercel ავტომატურად აკონფიგურირებს OpenSearch Serverless კოლექციებს და ენდპოინტებს Full-text და Vector Search-ისთვის",
+        "Kiro for Students: უფასო 1-წლიანი წვდომა Kiro AI coding assistant-ზე სტუდენტებისთვის"
+      ],
+      "action_type": "TRY",
+      "action": "დარეგისტრირდით Kiro for Students პროგრამაში (თუ გაქვთ სტუდენტური სტატუსი) ან გამოსცადეთ ხანგრძლივი აგენტური ციკლის გაშვება Lambda-ს ასინქრონულ ფუნქციაში.",
+      "evidence": [
+        {
+          "url": "https://aws.amazon.com/blogs/aws/aws-weekly-roundup-openai-gpt-6-astra-on-amazon-bedrock-amazon-quick-desktop-ga-kiro-for-students-and-more-september-14-2026",
+          "title": "AWS Weekly Roundup: OpenAI GPT-6 Astra on Amazon Bedrock...",
+          "domain": "aws.amazon.com",
+          "evidence": "You can now configure a function timeout of up to 90 minutes for asynchronous and event source mapping (ESM) invocations on Lambda Managed Instances... OpenSearch Serverless is now available on v0 by Vercel."
+        }
+      ]
+    },
+    {
+      "event_id": "evt-exygen-kg-shex-void-rag",
+      "title": "EXYGEN: Knowledge Graph RAG არქიტექტურა ShEx სქემებითა და VoID მეტამონაცემებით SFT-ის გარეშე",
+      "category": "AI Research / RAG & Knowledge Graphs",
+      "primary_url": "https://arxiv.org/html/2609.11569v1",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 90,
+      "what_happened": "წარმოდგენილია EXYGEN (EXplore Your Graphs ENgine) ფრეიმვორკი, რომელიც უზრუნველყოფს Text-to-SPARQL გენერაციას და Knowledge Graph-ების (KG) RAG ინტერფეისს LLM-ების fine-tuning-ის გარეშე, ავტომატურად derived ShEx სქემებისა და VoID აღწერების გამოყენებით.",
+      "what_changed": "მანამდე Knowledge Graph-ებთან მუშაობა მოითხოვდა ძვირადღირებულ მოდელის სპეციალიზებულ fine-tuning-ს (SFT), რომელიც ცუდად გენერალიზდებოდა ახალ სქემებზე. EXYGEN-მა დაამტკიცა, რომ ShEx სქემებისა და სამპლირებული ტრიპლეტების RAG კონტექსტში მიწოდებით off-the-shelf LLM-ები აღწევენ 0.419 Exact Match-ს SciQA ბენჩმარკზე.",
+      "why_it_matters": "RAG არქიტექტურისთვის ეს მნიშვნელოვანი წინგადადგმული ნაბიჯია. უბრალო ვექტორული Chunk-ების ნაცვლად, Knowledge Graph-ის სტრუქტურირებული ShEx სქემების პრომპტში ჩასმა ამცირებს ჰალუცინაციებს და იძლევა ზუსტ სემანტიკურ პასუხებს.",
+      "technical_details": [
+        "VoID (Vocabulary of Interlinked Datasets) და ShEx (Shape Expressions) სქემების ინტეგრაცია RAG პაიპლაინში",
+        "Predicate-coverage-aware პარალელური გრაფების სამპლინგი, რომელიც მეტამონაცემების გენერაციის დროს 80x-ით ამცირებს",
+        "SciQA ბენჩმარკზე Fine-tuning-ის გარეშე მიღწეულია 0.419 Exact Match",
+        "დადასტურდა, რომ F1 ლექსიკური მეტრიკა ცუდად ზომავს SPARQL მოთხოვნის რეალურ სიზუსტეს"
+      ],
+      "action_type": "BUILD",
+      "action": "შექმენით მცირე Python სკრიპტი, რომელიც თქვენი SQLite ან RDF ბაზიდან აგენერირებს მარტივ სქემას (ShEx ან JSON Schema) და ჩასვით ის LLM-ის Prompt-ში SQL/SPARQL მოთხოვნის გენერირებამდე.",
+      "evidence": [
+        {
+          "url": "https://arxiv.org/html/2609.11569v1",
+          "title": "Enabling Knowledge Graph Understanding at Scale with EXYGEN - arXiv",
+          "domain": "arxiv.org",
+          "evidence": "Our best configuration—combining ShEx schemas, retrieved triples, and example question-query pairs—reaches an exact match of 0.419 on execution results without any LLM fine-tuning... reduced metadata-generation runtime by over 80x."
+        }
+      ]
+    },
+    {
+      "event_id": "evt-openclaw-skills-ecosystem-security",
+      "title": "OpenClaw 5,300+ Skill-ების რეესტრი და Trentclaw: ლოკალური აგენტების უსაფრთხოების აუდიტი და უნარების მენეჯმენტი",
+      "category": "Agent Skills & Security Tools",
+      "primary_url": "https://github.com/VoltAgent/awesome-openclaw-skills/blob/main/README.md",
+      "supporting_urls": [],
+      "importance": 7,
+      "relevance": 9,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 85,
+      "what_happened": "გამოქვეყნდა OpenClaw-ის 5,300+ კურირებული Skill-ის რეესტრი და Trentclaw უსაფრთხოების აუდიტის ინსტრუმენტი ლოკალური AI ასისტენტებისთვის.",
+      "what_changed": "აგენტების უნარების (Skills) რაოდენობის მკვეთრ ზრდასთან ერთად გაიზარდა მავნე კოდის, Prompt Injection-ისა და გადაჭარბებული ნებართვების რისკი. Trentclaw უზრუნველყოფს კონფიგურაციის, დაინსტალირებული Skill-ების და მორგებული კოდის უწყვეტ აუდითს.",
+      "why_it_matters": "SKILL.md კონვენცია ხდება დეფაქტო სტანდარტი აგენტების უნარების გასაფართოებლად. უსაფრთხოების აუდიტის ჩართვა აუცილებელია მესამე მხარის Skill-ების უსაფრთხო გამოყენებისთვის.",
+      "technical_details": [
+        "ClawHub CLI: `npx clawhub install <skill-slug>` და `openclaw skills install`",
+        "Trentclaw: ავტომატური უსაფრთხოების აუდიტორი, რომელიც პოულობს კონფიგურაციის შეცდომებს და აბრუნებს გამოსწორებას diff-ის სახით",
+        "VirusTotal ინტეგრაცია ClawHub უნარების სკანირებისთვის"
+      ],
+      "action_type": "TRY",
+      "action": "შეისწავლეთ SKILL.md ფორმატი Awesome OpenClaw Skills რეპოზიტორიაში და შექმენით საკუთარი მცირე Skill ფოლდერი.",
+      "evidence": [
+        {
+          "url": "https://github.com/VoltAgent/awesome-openclaw-skills/blob/main/README.md",
+          "title": "awesome-openclaw-skills/README.md at main · GitHub",
+          "domain": "github.com",
+          "evidence": "Discover 5300+ community-built OpenClaw skills... trentclaw: audits your OpenClaw config, installed skills and custom code, then returns fixes as diffs."
+        }
+      ]
+    },
+    {
+      "event_id": "evt-inference-time-governance-taxonomy",
+      "title": "Inference-Time AI Governance: შესაძლებლობების მიგრაცია მოდელის წვრთნიდან Inference-Time Scaling-სა და Agentic Scaffolding-ზე",
+      "category": "AI Governance & Capability Scaling",
+      "primary_url": "https://arxiv.org/html/2609.10105v1",
+      "supporting_urls": [],
+      "importance": 7,
+      "relevance": 8,
+      "actionability": 7,
+      "source_quality": 8,
+      "confidence": 85,
+      "what_happened": "გამოქვეყნდა კვლევა 'Beyond Training: A Feasibility Taxonomy for Inference-Time AI Governance', სადაც დამტკიცებულია, რომ AI მოდელების შესაძლებლობები (Capabilities) გადადის Training-ის ფაზიდან Inference-Time Scaling-ზე, Agentic Scaffolding-სა და ლოკალურ კომპრესიაზე.",
+      "what_changed": "მანამდე რეგულაციები და შეფასებები მიბმული იყო ტრენინგის გამოთვლით სიმძლავრეზე (FLOPs). კვლევამ აჩვენა, რომ უბრალო საბაზო მოდელი ხდება მრავალჯერ უფრო ძლიერი, როდესაც მას ემატება აგენტური გარსი (Agentic Scaffolding), ინსტრუმენტების ციკლები და ხანგრძლივი მსჯელობა (Chain-of-Thought).",
+      "why_it_matters": "ინჟინრული თვალსაზრისით, ეს ადასტურებს, რომ სისტემის ძალაუფლება და ფუნქციონალი მოდის სწორად დაპროექტებული აგენტური არქიტექტურიდან (Scaffolding) და არა მხოლოდ უფრო დიდი მოდელის გამოყენებიდან.",
+      "technical_details": [
+        "20 Inference-Time მექანიზმის ტაქსონომია (monitoring, verification, enforcement)",
+        "3 Capability Migration მიმართულება: Inference-time compute scaling, Agentic Scaffolding, Consumer-hardware compression",
+        "15/20 მექანიზმს გააჩნია კომერციულად მზა ტექნიკური სუბსტრატი"
+      ],
+      "action_type": "LEARN",
+      "action": "შეისწავლეთ Agentic Scaffolding-ის პრინციპები და ფოკუსირდით მცირე მოდელების ეფექტიანობის გაზრდაზე მრავალნაბიჯიანი Prompt/Tool ციკლების მეშვეობით.",
+      "evidence": [
+        {
+          "url": "https://arxiv.org/html/2609.10105v1",
+          "title": "A Feasibility Taxonomy for Inference-Time AI Governance - arXiv",
+          "domain": "arxiv.org",
+          "evidence": "Capability now migrates to the deployment stage in three structural ways: inference scaling, agentic scaffolding, and compression onto consumer hardware... a base model with modest stand-alone capability becomes a powerful agent when embedded in tool-using loops."
+        }
+      ]
     }
   ],
   "topics": {
@@ -820,7 +1085,15 @@
     "Agent Architecture & Open Source Infrastructure": 1,
     "Developer Tools & Agent Safety": 1,
     "AI Developer Tools & Agent Systems": 1,
-    "Developer Tools & Agent Interfaces": 1
+    "Developer Tools & Agent Interfaces": 1,
+    "Agent Infrastructure & Multi-Agent Systems": 1,
+    "AI Research / Agent Security & Safety": 1,
+    "Young Developer Opportunities & Infrastructure": 1,
+    "AI Developer Tools & Agent Ecosystem": 1,
+    "Cloud Infrastructure & Agent RAG": 1,
+    "AI Research / RAG & Knowledge Graphs": 1,
+    "Agent Skills & Security Tools": 1,
+    "AI Governance & Capability Scaling": 1
   },
   "reports": [
     {
@@ -1579,12 +1852,271 @@
         "დინამიური RAG-ის ჩანაცვლება/შეპყრობა LLM Wiki არქიტექტურით — აგენტები, როგორც ცოდნის კომპილატორები, ინარჩუნებენ მუდმივ, ტიპიზირებულ Markdown ფაილების სტრუქტურას.",
         "მულტი-აგენტურ სისტემებში მკაცრი როლური T0-T3 იერარქიის, Handoff Packet-ებისა და Escalation Protocol-ების დანერგვა აგენტების მიერ არქიტექტურული შეცდომების თავიდან ასაცილებლად."
       ]
+    },
+    {
+      "date": "2026-09-16",
+      "summary": "დღევანდელი ანგარიში ფოკუსირებულია AI აგენტების ინფრასტრუქტურის, Zero-Trust უსაფრთხოების არქიტექტურის, Knowledge Graph RAG-ის და ხანგრძლივი შესრულების (Long-horizon execution) პლატფორმების ტექნიკურ განვითარებაზე. განსაკუთრებით აღსანიშნავია Agentic Coding Flywheel-ის 14 Rust ინსტრუმენტი და Asupersync დეტერმინისტული runtime, აგენტების უსაფრთხოების პირველი აკადემიური Zero-Trust ჩარჩო (CapBAC, eBPF probes), EXYGEN-ის RAG მიდგომა Knowledge Graph-ებისთვის SFT-ის გარეშე, AWS Lambda-ს 90-წუთიანი Execution Timeout ხანგრძლივი აგენტური რიგებისთვის და Hack Club Nest-ის უფასო სერვერული ინფრასტრუქტურა ახალგაზრდა დეველოპერებისთვის. ეს სიახლეები იძლევა პრაქტიკულ შესაძლებლობებს AI აგენტების არქიტექტურის, საიმედოობისა და უსაფრთხოების გაუმჯობესებისთვის.",
+      "events": [
+        {
+          "event_id": "evt-agentic-coding-flywheel-rust",
+          "title": "Agentic Coding Flywheel და FrankenSuite: 14 Rust ინსტრუმენტი და დეტერმინისტული Asupersync Runtime მრავალ-აგენტიანი ორკესტრაციისთვის",
+          "category": "Agent Infrastructure & Multi-Agent Systems",
+          "primary_url": "https://github.com/Dicklesworthstone/Dicklesworthstone/blob/main/README.md",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 90,
+          "what_happened": "გამოქვეყნდა Agentic Coding Flywheel და FrankenSuite ინფრასტრუქტურა — 14 open-source Rust CLI ინსტრუმენტისგან და Asupersync დეტერმინისტული async runtime-სგან შემდგარი ეკოსისტემა, რომელიც უზრუნველყოფს ათეულობით AI აგენტის პარალელურ მართვას და კოდის უსაფრთხო გენერაციას.",
+          "what_changed": "მანამდე AI კოდინგ აგენტები მუშაობდნენ იზოლირებულად, უსაფრთხოების მკაცრი ბარიერების გარეშე და ხშირად აზიანებდნენ git ისტორიას ან იწვევდნენ ფაილების კონფლიქტებს. ახალ არქიტექტურაში Agent Mail უზრუნველყოფს აგენტების ფაილურ იჯარას (file leases) და შეტყობინებებს, DCG ბლოკავს საშიშ ბრძანებებს (rm -rf, git reset), ხოლო Asupersync უზრუნველყოფს დეტერმინისტულ გაუქმებას და გათვლადობას.",
+          "why_it_matters": "ეს ინფრასტრუქტურა აჩვენებს, თუ როგორ შეიძლება მულტი-აგენტური სისტემების (Multi-Agent Swarms) სტაბილური მართვა ლოკალურ გარემოში. Asupersync-ის Lean-checked მოდელი და CapBAC პრინციპები წარმოადგენს საუკეთესო არქიტექტურულ მაგალითს პროდაქშენ აგენტების ასაგებად.",
+          "technical_details": [
+            "Agent Mail: Gmail აგენტებისთვის, ფაილური იჯარები (file leases) და აუდიტის ჩანაწერები",
+            "DCG (SIMD Guard): ბლოკავს destructing ბრძანებებს (rm -rf, git reset --hard) მილიწამებში",
+            "CASS Memory: 3-შრიანი კოგნიტური მეხსიერება (episodic, working, procedural)",
+            "Asupersync Rust Runtime: Owned concurrency, Capability-scoped context (Cx), დეტერმინისტული სიმულაცია (Lab runtime)",
+            "FrankenSQLite & FrankenEngine: MVCC, RaptorQ გამძლეობა და WASM სენდბოქსინგი cryptographic execution receipts-ით"
+          ],
+          "action_type": "TRY",
+          "action": "ჩამოტვირთეთ და შეისწავლეთ DCG და CASS Memory ინსტრუმენტების არქიტექტურა, და დანერგეთ საშიში shell ბრძანებების ფილტრაციის ლოგიკა საკუთარ აგენტურ ციკლში.",
+          "evidence": [
+            {
+              "url": "https://github.com/Dicklesworthstone/Dicklesworthstone/blob/main/README.md",
+              "title": "Dicklesworthstone / Dicklesworthstone · GitHub",
+              "domain": "github.com",
+              "evidence": "Fourteen tools for multi-agent software development: messaging and file leases, issue graphs, session search, command safety, and tmux orchestration. Built on Asupersync, a spec-first, cancel-correct, capability-secure async runtime for Rust."
+            }
+          ]
+        },
+        {
+          "event_id": "evt-trustworthy-agentic-ai-survey",
+          "title": "Trustworthy Agentic AI: Zero-Trust არქიტექტურა, CapBAC და eBPF უსაფრთხოების მექანიზმები აგენტური სისტემებისთვის",
+          "category": "AI Research / Agent Security & Safety",
+          "primary_url": "https://arxiv.org/html/2609.13731v1",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 90,
+          "what_happened": "გამოქვეყნდა პირველი კომპლექსური სისტემურ-უსაფრთხოების კვლევა 'Trustworthy Agentic AI', სადაც ფორმალიზებულია აგენტების არქიტექტურა როგორც stateful 5-tuple და ჩამოყალიბებულია Zero-Trust Defense-in-Depth არქიტექტურა აგენტური საფრთხეებისგან დასაცავად.",
+          "what_changed": "მანამდე აგენტების უსაფრთხოება შემოიფარგლებოდა უბრალო Prompt Guard-ებით. ვინაიდან აგენტებში ბუნებრივი ენა ერთდროულად არის მონაცემი, კოდი და პროტოკოლი (Input Data = Control Logic = Communication Protocol), ნებისმიერი მიღებული ტექსტი არის სრულფასოვანი შესრულებადი კოდი. კვლევამ დაადგინა უსაფრთხოების ახალი სტანდარტები.",
+          "why_it_matters": "აგენტების ავტონომიური წვდომა ფაილურ სისტემასთან, API-ებთან და Shell-თან მოითხოვს მკაცრ Zero-Trust მიდგომას. Dual-LLM Inspector-Executor და eBPF ბირთვის პრობები აუცილებელია პროდაქშენში აგენტის მიერ RCE ან exfiltration შეტევების თავიდან ასაცილებლად.",
+          "technical_details": [
+            "ფორმალური აგენტური 5-tuple მოდელი და 6-განზომილებიანი სანდოობის ტაქსონომია",
+            "Dual-LLM Inspector-Executor იზოლაცია: ინსპექტორი ამოწმებს გეგმას, შემსრულებელი იძახებს ინსტრუმენტებს",
+            "Capability-Based Access Control (CapBAC) და ბირთვის დონის eBPF syscall პრობები",
+            "სენდბოქსინგი Micro-VM-ების საშუალებით, ხელმოწერილი ვექტორული ემბედინგები და Byzantine Fault Tolerance (BFT)"
+          ],
+          "action_type": "LEARN",
+          "action": "წაიკითხეთ კვლევაში აღწერილი Dual-LLM Inspector-Executor არქიტექტურა და დანერგეთ Inspector LLM-ის ვალიდაციის ნაბიჯი Tool Calling-ის შესრულებამდე.",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2609.13731v1",
+              "title": "Trustworthy Agentic AI: A Comprehensive Cybersecurity and Systems Survey - arXiv",
+              "domain": "arxiv.org",
+              "evidence": "In Agentic AI, natural language simultaneously serves as input data, internal control code, and communication protocols... We formulate a multi-layered Zero-Trust Defense-in-Depth Architecture integrating Dual-LLM Inspector-Executor isolation, CapBAC, eBPF syscall probes, and micro-VM sandboxing."
+            }
+          ]
+        },
+        {
+          "event_id": "evt-hackclub-nest-free-compute",
+          "title": "Hack Club Nest: უფასო და სიმძლავრით აღჭურვილი სერვერული ინფრასტრუქტურა 16+ ასაკის მოსწავლე დეველოპერებისთვის",
+          "category": "Young Developer Opportunities & Infrastructure",
+          "primary_url": "https://github.com/orgs/hackclub/repositories",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 10,
+          "actionability": 10,
+          "source_quality": 8,
+          "confidence": 90,
+          "what_happened": "Hack Club-მა განაახლა Nest პროექტი — სრულიად უფასო Linux სერვერული და გამოთვლითი ინფრასტრუქტურა, რომელიც სპეციალურად შექმნილია სკოლის მოსწავლე და მოზარდი დეველოპერებისთვის (16+) ლოკალური პროექტების, აგენტების და მონაცემთა ბაზების ასაშვებად.",
+          "what_changed": "ტრადიციული ღრუბლოვანი პროვაიდერები (AWS, GCP, DigitalOcean) მოითხოვენ საკრედიტო ბარათის ავტორიზაციას, რაც 16 წლის დეველოპერებისთვის მთავარ ბარიერს წარმოადგენს. Nest იძლევა სრულფასოვან Linux compute გარემოს ბარათის გარეშე.",
+          "why_it_matters": "იდეალური პლატფორმაა საკუთარი Python AI აგენტების, MCP სერვერების, SQLite ბაზებისა და Telegram/Discord ბოტების 24/7 რეჟიმში ჰოსტინგისთვის სრულიად უფასოდ.",
+          "technical_details": [
+            "უფასო Linux Compute გარემო SSH წვდომით",
+            "მხარდაჭერილია Node.js, Python, Go, Rust runtimes და SQLite/PostgreSQL ბაზები",
+            "ინტეგრირებულია Hack Club-ის YSWS (You Ship, We Ship) და HCB ფისკალურ ეკოსისტემასთან"
+          ],
+          "action_type": "APPLY",
+          "action": "დარეგისტრირდით Hack Club Nest-ზე, მიიღეთ უფასო Linux სერვერული გარემო და განათავსეთ თქვენი AI აგენტის MCP სერვერი ან Python backend 24/7 შესრულებისთვის.",
+          "evidence": [
+            {
+              "url": "https://github.com/orgs/hackclub/repositories",
+              "title": "hackclub repositories · GitHub",
+              "domain": "github.com",
+              "evidence": "nest: Free, powerful, and versatile compute infrastructure for all high school hackers!"
+            }
+          ]
+        },
+        {
+          "event_id": "evt-nexu-opendesign-looper-ecosystem",
+          "title": "OpenDesign და Nexu ეკოსისტემა: ლოკალური აგენტების ინტეგრაცია Slack/Discord/WeChat-ში და Looper ავტონომიური CI/CD Dev Loop",
+          "category": "AI Developer Tools & Agent Ecosystem",
+          "primary_url": "https://github.com/nexu-io",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 90,
+          "what_happened": "OpenDesign/Nexu გუნდმა წარმოადგინა Open-source ინსტრუმენტების ნაკრები: Nexu (ლოკალური დესკტოპ კლიენტი AI აგენტების Slack, Discord, Feishu, WeChat-თან დასაკავშირებლად) და Looper (Go-ზე დაწერილი ავტონომიური აგენტური ციკლი, რომელიც გეგმავს, ამოწმებს და ასწორებს PR-ებს GitHub რეპოზიტორიებში).",
+          "what_changed": "მანამდე AI კოდინგ აგენტები შეზღუდული იყვნენ მხოლოდ ტერმინალით ან IDE-თ. Nexu-ს მეშვეობით ლოკალური აგენტი (Claude Code, Codex) ხდება ხელმისაწვდომი მესენჯერებიდან 24/7, ხოლო Looper უზრუნველყოფს უწყვეტ ავტონომიურ დეველოპმენტს GitHub-ის რეპოზიტორიებზე.",
+          "why_it_matters": "ადგება ლოკალური, Local-first და BYOK (Bring Your Own Key) პრინციპებზე დაფუძნებული აგენტური ინფრასტრუქტურა. დეველოპერს შეუძლია საკუთარი ლეპტოპიდან მართოს აგენტი, რომელიც მუშაობს მესენჯერებში და ავტომატურად ხურავს GitHub Issue-ებს.",
+          "technical_details": [
+            "Nexu: Local-first დესკტოპ კლიენტი, BYOK/OAuth, შიდა მონაცემების ლოკალურად შენახვა",
+            "Looper: Go-ზე აგებული ავტონომიური აგენტური ციკლი GitHub რეპოზიტორიების მართვისთვის (Plan, Review, Fix, Ship)",
+            "html-anything & html-video: HTML/CSS-ის პროგრამული გარდაქმნა MP4 ვიდეოებად და ინტერფეისებად 75+ Skill-ის გამოყენებით",
+            "SKILL.md convention: უნარების ჩატვირთვა უბრალო ფოლდერის დამატებით"
+          ],
+          "action_type": "BUILD",
+          "action": "გამოიყენეთ Nexu ან დაწერეთ მარტივი Python/TypeScript Bot, რომელიც თქვენს ლოკალურ CLI აგენტს დააკავშირებს Discord Webhook-თან.",
+          "evidence": [
+            {
+              "url": "https://github.com/nexu-io",
+              "title": "OpenDesign - GitHub",
+              "domain": "github.com",
+              "evidence": "nexu: The open-source desktop client that connects your AI Agent to WeChat, Slack, Discord... looper: Run AI coding agents as an autonomous dev team across all your GitHub repos — plan, review, fix, and ship, on a loop."
+            }
+          ]
+        },
+        {
+          "event_id": "evt-aws-lambda-90min-opensearch-v0",
+          "title": "AWS Lambda-ს 90-წუთიანი Execution Timeout და OpenSearch Serverless ინტეგრაცია v0-ში ხანგრძლივი აგენტური დავალებებისთვის",
+          "category": "Cloud Infrastructure & Agent RAG",
+          "primary_url": "https://aws.amazon.com/blogs/aws/aws-weekly-roundup-openai-gpt-6-astra-on-amazon-bedrock-amazon-quick-desktop-ga-kiro-for-students-and-more-september-14-2026",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 10,
+          "confidence": 95,
+          "what_happened": "AWS-მა გამოაცხადა AWS Lambda Managed Instances-ის 90-წუთიანი function timeout (წინა 15-წუთიანი ლიმიტის 6x გაზრდა) და Amazon OpenSearch Serverless-ის პირდაპირი მხარდაჭერა v0 by Vercel-ში RAG აპლიკაციების სწრაფი გენერაციისთვის.",
+          "what_changed": "მანამდე ხანგრძლივი აგენტური რიგები (Agent Loops, multi-step code refactoring, batch inference) მოითხოვდნენ 15-წუთიან ინტერვალებში სამუშაოს დაშლას ან ECS/EC2 სერვერების მართვას. 90-წუთიანი ტაიმაუტი საშუალებას იძლევა სერვერლეს ფუნქციებში გაშვებულ იქნას ხანგრძლივი ავტონომიური აგენტები.",
+          "why_it_matters": "სერვერლეს არქიტექტურა ხდება სრულად თავსებადი Long-horizon AI აგენტებთან. პარალელურად, v0-ის მიერ OpenSearch Serverless vector search-ის ავტომატური პროვიჟონინგი ამარტივებს RAG აპლიკაციების პროტოტიპირებას.",
+          "technical_details": [
+            "AWS Lambda Managed Instances მხარს უჭერს 90-წუთიან ტაიმაუტს ასინქრონული და ESM ინვოკაციებისთვის",
+            "Durable Functions პროცესებს შეუძლიათ იფუნქციონირონ 1 წლამდე",
+            "v0 by Vercel ავტომატურად აკონფიგურირებს OpenSearch Serverless კოლექციებს და ენდპოინტებს Full-text და Vector Search-ისთვის",
+            "Kiro for Students: უფასო 1-წლიანი წვდომა Kiro AI coding assistant-ზე სტუდენტებისთვის"
+          ],
+          "action_type": "TRY",
+          "action": "დარეგისტრირდით Kiro for Students პროგრამაში (თუ გაქვთ სტუდენტური სტატუსი) ან გამოსცადეთ ხანგრძლივი აგენტური ციკლის გაშვება Lambda-ს ასინქრონულ ფუნქციაში.",
+          "evidence": [
+            {
+              "url": "https://aws.amazon.com/blogs/aws/aws-weekly-roundup-openai-gpt-6-astra-on-amazon-bedrock-amazon-quick-desktop-ga-kiro-for-students-and-more-september-14-2026",
+              "title": "AWS Weekly Roundup: OpenAI GPT-6 Astra on Amazon Bedrock...",
+              "domain": "aws.amazon.com",
+              "evidence": "You can now configure a function timeout of up to 90 minutes for asynchronous and event source mapping (ESM) invocations on Lambda Managed Instances... OpenSearch Serverless is now available on v0 by Vercel."
+            }
+          ]
+        },
+        {
+          "event_id": "evt-exygen-kg-shex-void-rag",
+          "title": "EXYGEN: Knowledge Graph RAG არქიტექტურა ShEx სქემებითა და VoID მეტამონაცემებით SFT-ის გარეშე",
+          "category": "AI Research / RAG & Knowledge Graphs",
+          "primary_url": "https://arxiv.org/html/2609.11569v1",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 90,
+          "what_happened": "წარმოდგენილია EXYGEN (EXplore Your Graphs ENgine) ფრეიმვორკი, რომელიც უზრუნველყოფს Text-to-SPARQL გენერაციას და Knowledge Graph-ების (KG) RAG ინტერფეისს LLM-ების fine-tuning-ის გარეშე, ავტომატურად derived ShEx სქემებისა და VoID აღწერების გამოყენებით.",
+          "what_changed": "მანამდე Knowledge Graph-ებთან მუშაობა მოითხოვდა ძვირადღირებულ მოდელის სპეციალიზებულ fine-tuning-ს (SFT), რომელიც ცუდად გენერალიზდებოდა ახალ სქემებზე. EXYGEN-მა დაამტკიცა, რომ ShEx სქემებისა და სამპლირებული ტრიპლეტების RAG კონტექსტში მიწოდებით off-the-shelf LLM-ები აღწევენ 0.419 Exact Match-ს SciQA ბენჩმარკზე.",
+          "why_it_matters": "RAG არქიტექტურისთვის ეს მნიშვნელოვანი წინგადადგმული ნაბიჯია. უბრალო ვექტორული Chunk-ების ნაცვლად, Knowledge Graph-ის სტრუქტურირებული ShEx სქემების პრომპტში ჩასმა ამცირებს ჰალუცინაციებს და იძლევა ზუსტ სემანტიკურ პასუხებს.",
+          "technical_details": [
+            "VoID (Vocabulary of Interlinked Datasets) და ShEx (Shape Expressions) სქემების ინტეგრაცია RAG პაიპლაინში",
+            "Predicate-coverage-aware პარალელური გრაფების სამპლინგი, რომელიც მეტამონაცემების გენერაციის დროს 80x-ით ამცირებს",
+            "SciQA ბენჩმარკზე Fine-tuning-ის გარეშე მიღწეულია 0.419 Exact Match",
+            "დადასტურდა, რომ F1 ლექსიკური მეტრიკა ცუდად ზომავს SPARQL მოთხოვნის რეალურ სიზუსტეს"
+          ],
+          "action_type": "BUILD",
+          "action": "შექმენით მცირე Python სკრიპტი, რომელიც თქვენი SQLite ან RDF ბაზიდან აგენერირებს მარტივ სქემას (ShEx ან JSON Schema) და ჩასვით ის LLM-ის Prompt-ში SQL/SPARQL მოთხოვნის გენერირებამდე.",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2609.11569v1",
+              "title": "Enabling Knowledge Graph Understanding at Scale with EXYGEN - arXiv",
+              "domain": "arxiv.org",
+              "evidence": "Our best configuration—combining ShEx schemas, retrieved triples, and example question-query pairs—reaches an exact match of 0.419 on execution results without any LLM fine-tuning... reduced metadata-generation runtime by over 80x."
+            }
+          ]
+        },
+        {
+          "event_id": "evt-openclaw-skills-ecosystem-security",
+          "title": "OpenClaw 5,300+ Skill-ების რეესტრი და Trentclaw: ლოკალური აგენტების უსაფრთხოების აუდიტი და უნარების მენეჯმენტი",
+          "category": "Agent Skills & Security Tools",
+          "primary_url": "https://github.com/VoltAgent/awesome-openclaw-skills/blob/main/README.md",
+          "supporting_urls": [],
+          "importance": 7,
+          "relevance": 9,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 85,
+          "what_happened": "გამოქვეყნდა OpenClaw-ის 5,300+ კურირებული Skill-ის რეესტრი და Trentclaw უსაფრთხოების აუდიტის ინსტრუმენტი ლოკალური AI ასისტენტებისთვის.",
+          "what_changed": "აგენტების უნარების (Skills) რაოდენობის მკვეთრ ზრდასთან ერთად გაიზარდა მავნე კოდის, Prompt Injection-ისა და გადაჭარბებული ნებართვების რისკი. Trentclaw უზრუნველყოფს კონფიგურაციის, დაინსტალირებული Skill-ების და მორგებული კოდის უწყვეტ აუდითს.",
+          "why_it_matters": "SKILL.md კონვენცია ხდება დეფაქტო სტანდარტი აგენტების უნარების გასაფართოებლად. უსაფრთხოების აუდიტის ჩართვა აუცილებელია მესამე მხარის Skill-ების უსაფრთხო გამოყენებისთვის.",
+          "technical_details": [
+            "ClawHub CLI: `npx clawhub install <skill-slug>` და `openclaw skills install`",
+            "Trentclaw: ავტომატური უსაფრთხოების აუდიტორი, რომელიც პოულობს კონფიგურაციის შეცდომებს და აბრუნებს გამოსწორებას diff-ის სახით",
+            "VirusTotal ინტეგრაცია ClawHub უნარების სკანირებისთვის"
+          ],
+          "action_type": "TRY",
+          "action": "შეისწავლეთ SKILL.md ფორმატი Awesome OpenClaw Skills რეპოზიტორიაში და შექმენით საკუთარი მცირე Skill ფოლდერი.",
+          "evidence": [
+            {
+              "url": "https://github.com/VoltAgent/awesome-openclaw-skills/blob/main/README.md",
+              "title": "awesome-openclaw-skills/README.md at main · GitHub",
+              "domain": "github.com",
+              "evidence": "Discover 5300+ community-built OpenClaw skills... trentclaw: audits your OpenClaw config, installed skills and custom code, then returns fixes as diffs."
+            }
+          ]
+        },
+        {
+          "event_id": "evt-inference-time-governance-taxonomy",
+          "title": "Inference-Time AI Governance: შესაძლებლობების მიგრაცია მოდელის წვრთნიდან Inference-Time Scaling-სა და Agentic Scaffolding-ზე",
+          "category": "AI Governance & Capability Scaling",
+          "primary_url": "https://arxiv.org/html/2609.10105v1",
+          "supporting_urls": [],
+          "importance": 7,
+          "relevance": 8,
+          "actionability": 7,
+          "source_quality": 8,
+          "confidence": 85,
+          "what_happened": "გამოქვეყნდა კვლევა 'Beyond Training: A Feasibility Taxonomy for Inference-Time AI Governance', სადაც დამტკიცებულია, რომ AI მოდელების შესაძლებლობები (Capabilities) გადადის Training-ის ფაზიდან Inference-Time Scaling-ზე, Agentic Scaffolding-სა და ლოკალურ კომპრესიაზე.",
+          "what_changed": "მანამდე რეგულაციები და შეფასებები მიბმული იყო ტრენინგის გამოთვლით სიმძლავრეზე (FLOPs). კვლევამ აჩვენა, რომ უბრალო საბაზო მოდელი ხდება მრავალჯერ უფრო ძლიერი, როდესაც მას ემატება აგენტური გარსი (Agentic Scaffolding), ინსტრუმენტების ციკლები და ხანგრძლივი მსჯელობა (Chain-of-Thought).",
+          "why_it_matters": "ინჟინრული თვალსაზრისით, ეს ადასტურებს, რომ სისტემის ძალაუფლება და ფუნქციონალი მოდის სწორად დაპროექტებული აგენტური არქიტექტურიდან (Scaffolding) და არა მხოლოდ უფრო დიდი მოდელის გამოყენებიდან.",
+          "technical_details": [
+            "20 Inference-Time მექანიზმის ტაქსონომია (monitoring, verification, enforcement)",
+            "3 Capability Migration მიმართულება: Inference-time compute scaling, Agentic Scaffolding, Consumer-hardware compression",
+            "15/20 მექანიზმს გააჩნია კომერციულად მზა ტექნიკური სუბსტრატი"
+          ],
+          "action_type": "LEARN",
+          "action": "შეისწავლეთ Agentic Scaffolding-ის პრინციპები და ფოკუსირდით მცირე მოდელების ეფექტიანობის გაზრდაზე მრავალნაბიჯიანი Prompt/Tool ციკლების მეშვეობით.",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2609.10105v1",
+              "title": "A Feasibility Taxonomy for Inference-Time AI Governance - arXiv",
+              "domain": "arxiv.org",
+              "evidence": "Capability now migrates to the deployment stage in three structural ways: inference scaling, agentic scaffolding, and compression onto consumer hardware... a base model with modest stand-alone capability becomes a powerful agent when embedded in tool-using loops."
+            }
+          ]
+        }
+      ],
+      "trends": [
+        "ლოკალური, Local-First AI აგენტების არქიტექტურის გაძლიერება და BYOK (Bring Your Own Key) მოდელზე გადასვლა (Nexu, OpenDesign, Asupersync, OpenClaw).",
+        "Zero-Trust უსაფრთხოების ფენების (CapBAC, Dual-LLM Inspector-Executor, eBPF syscall probes) დანერგვა აგენტების მიერ Shell და API ბრძანებების უსაფრთხო შესრულებისთვის.",
+        "Knowledge Graph-ებისა და სტრუქტურირებული სქემების (ShEx, VoID, JSON Schema) RAG კონტექსტში ჩასმა უბრალო ვექტორული Chunk-ების ჩასანაცვლებლად.",
+        "ხანგრძლივი აგენტური ციკლების (Long-running Agent Workflows) მხარდაჭერა სერვერლეს ინფრასტრუქტურაში (AWS Lambda 90-min timeout)."
+      ]
     }
   ],
   "learning_queue": [
-    "Agent Client Protocol (ACP) SDK-ების (python-sdk / acp-go-sdk) შესწავლა და სერვერ-კლიენტის არქიტექტურის აგება.",
-    "SimSkill-ის სამნაწილიანი მეხსიერების (Episodic, Procedural, Semantic) და Memory Linting & Merging ლოგიკის იმპლემენტაცია.",
-    "agent-dev-team-ის HANDOFF პაკეტისა და Escalation Protocol-ის დეტერმინისტული ვალიდაციის დაწერა."
+    "Asupersync და Capability-Scoped Context (Cx) არქიტექტურის შესწავლა Rust/Python-ში.",
+    "Dual-LLM Inspector-Executor პატერნის იმპლემენტაცია Tool Calling-ის უსაფრთხოებისთვის.",
+    "ShEx და VoID სქემების RAG კონტექსტში ინტეგრაციის მეთოდოლოგიის ათვისება.",
+    "Hack Club Nest-ზე Linux სერვერის გამართვა და SSH/Systemd სერვისების მართვა."
   ],
-  "last_run": "2026-09-14T17:28:32.138761+00:00"
+  "last_run": "2026-09-16T14:34:01.976481+00:00"
 }
