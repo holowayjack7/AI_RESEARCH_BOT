@@ -35,3 +35,4 @@ data/*
 # Legacy root state files (superseded by data/state.json)
 /state.json
 /seen.json
+commit_msg.txt
