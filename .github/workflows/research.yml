@@ -3,14 +3,22 @@ name: AI Research Bot
 on:
   workflow_dispatch:
   schedule:
+    # 14:00 Georgia/Tbilisi time (UTC+4) = 10:00 UTC, every day
+    # NOTE: GitHub Actions cron is always UTC
     - cron: "0 10 * * *"
 
 permissions:
   contents: write
 
+concurrency:
+  group: ai-research-bot
+  # Queue overlapping triggers instead of killing a running pipeline
+  cancel-in-progress: false
+
 jobs:
   research:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     steps:
       - uses: actions/checkout@v4
@@ -18,15 +26,23 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+          cache: pip
 
-      - run: pip install -r requirements.txt
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
-      - run: python main.py
+      - name: Run test suite
+        run: python tests/test_review.py
+
+      - name: Run research pipeline
+        run: python main.py
         env:
           TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          # Optional: empty (secret not set) falls back to the default
+          # model in config.py — no secret setup required
           GEMINI_MODEL: ${{ secrets.GEMINI_MODEL }}
           STATE_FILE: data/state.json
 
