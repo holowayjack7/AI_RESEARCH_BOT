@@ -364,6 +364,7 @@ def _send_no_news_heartbeat(
         logger.error(f"No-news heartbeat failed: {e}")
         return False
 
+
 def run_pipeline(
     tavily_key: str,
     gemini_key: str,

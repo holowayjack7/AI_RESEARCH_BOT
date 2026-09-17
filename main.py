@@ -6,8 +6,9 @@ analyzes them with Gemini, publishes Markdown/JSON/newsletter/social
 exports, and delivers a digest to Telegram.
 
 Usage:
-    python main.py             # full run (requires API keys)
-    python main.py --simulate  # offline end-to-end simulation
+    python main.py                  # full run (requires API keys)
+    python main.py --simulate      # offline end-to-end simulation
+    python main.py --check-telegram # verify Telegram delivery setup
 """
 
 import argparse
@@ -120,8 +121,13 @@ def check_telegram() -> int:
         return 1
 
 
-def main():
-    """Run the AI Research Bot."""
+def main() -> int:
+    """Run the AI Research Bot.
+
+    Returns a process exit code: 0 = delivered (or export-only quiet
+    day), 1 = genuine failure. GitHub Actions relies on this to show
+    a red run when the report did not go out.
+    """
     logger = setup_logging(
         level=config.LOG_LEVEL,
         structured=config.STRUCTURED_LOGS,
@@ -151,7 +157,7 @@ def main():
         logger.info("Configuration loaded")
     except RuntimeError as e:
         logger.error(f"Configuration error: {e}")
-        return
+        return 1
 
     if telegram_configured:
         # Diagnose delivery problems (bad token, bot never started by
@@ -188,14 +194,23 @@ def main():
 
         if success:
             logger.info("Research pipeline finished successfully")
+        elif telegram_configured:
+            # With Telegram configured, False means the report did not
+            # go out (publish/send/heartbeat failure): surface it as a
+            # failed run, never a silent green check in Actions.
+            logger.error("Research pipeline finished WITHOUT delivery — failing run")
+            return 1
         else:
-            logger.info("Research pipeline finished (no delivery)")
+            # Export-only run without Telegram: nothing to deliver is normal
+            logger.info("Research pipeline finished (no delivery; export-only run)")
+            return 0
 
     except Exception as e:
         logger.error(f"Pipeline error: {e}")
-        return
+        return 1
 
     logger.info("AI Research Bot finished")
+    return 0
 
 
 def run_simulation() -> None:
@@ -244,7 +259,7 @@ if __name__ == "__main__":
         elif args.simulate:
             run_simulation()
         else:
-            main()
+            sys.exit(main())
     except KeyboardInterrupt:
         print("\nStopped by user.")
     except Exception as e:
