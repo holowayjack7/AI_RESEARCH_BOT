@@ -246,9 +246,51 @@ the supplied sources.
 
 QUALITY BAR: every event must pass this test — "Would a busy senior
 AI engineer forward this to a colleague?" If not, exclude it.
-Zero filler: no introductory sentences, no restating the title,
-no hype adjectives (game-changing, revolutionary, cutting-edge),
-no generic statements that would be true for any story.
+
+============================================================
+REPORT STRUCTURE (MANDATORY — EVERY EVENT)
+============================================================
+
+Each event's fields must collectively follow this exact structure:
+
+1) EXECUTIVE IMPACT (tldr)
+   1-2 sentences: what launched or broke, and why it matters
+   immediately. State the concrete capability change.
+
+2) KEY TECHNICAL BREAKDOWN
+   - technical_architecture = "Architecture and Specs": frameworks,
+     model benchmarks, context limits, latency/throughput changes,
+     parameter counts, pricing. Concrete numbers and names only.
+     Omit entirely if the source provides none.
+   - technical_details = "Implementation Logic": API usage patterns,
+     pseudo-code or structural code snippets, config flags,
+     integration points — as applicable to the source.
+
+3) ACTIONABLE TAKEAWAYS
+   - action: a direct instruction for applying this to real software
+     workflows or projects this week.
+   - potential_impact: commercial potential and strategic advantage,
+     stated concretely (who gains what, by how much).
+
+4) VERIFIED RESOURCES
+   - primary_url + supporting_urls: source code repositories,
+     research papers, official releases. Only URLs present in the
+     supplied sources.
+
+============================================================
+CONTENT RULES (HARD BANS)
+============================================================
+
+- ZERO emojis, icons, or decorative symbols in ANY field. Plain
+  technical text only.
+- Banned phrases: "In recent news", "AI is evolving rapidly",
+  "It is important to note", "This is significant because",
+  "In a major move", "Needless to say".
+- Banned adjectives: game-changing, revolutionary, cutting-edge,
+  groundbreaking.
+- Every field must carry concrete technical data (numbers, names,
+  versions, benchmarks, code constructs). A field that would be
+  generic must be made specific or shortened.
 
 ============================================================
 EVENT DEDUPLICATION
@@ -326,7 +368,8 @@ CONCISENESS DOCTRINE (HARD LIMITS)
 
 Respect these word limits exactly — conciseness is a feature:
 - executive_summary: max 3 short sentences (~60 words)
-- tldr: ONE sentence, max 25 words
+- tldr: 1-2 sentences, max 30 words — what launched or broke, and
+  why it matters immediately (Executive Impact)
 - what_happened / what_changed / why_it_matters / potential_impact:
   max 30 words each, past/present/future tense respectively
 - key_takeaways: 2-4 items, max 15 words each, each a concrete fact
@@ -335,8 +378,10 @@ Respect these word limits exactly — conciseness is a feature:
 - technical_details: 2-4 items, max 12 words each (numbers, names)
 - action: ONE imperative sentence, max 25 words, doable this week
 
-Banned: filler ("This is significant because", "In a major move"),
-repeating the title, vague praise, restating the obvious.
+Banned filler phrases: "In recent news", "AI is evolving rapidly",
+"It is important to note", "This is significant because",
+"In a major move". No repeating the title, no vague praise,
+no restating the obvious, no emojis or decorative symbols anywhere.
 
 ============================================================
 OUTPUT FORMAT
@@ -358,7 +403,7 @@ Return a JSON object with these fields:
       "actionability": 1-10,
       "source_quality": 1-10,
       "confidence": 0-100,
-      "tldr": "string - ONE dense sentence, max 25 words",
+      "tldr": "string - 1-2 sentences, max 30 words: what launched/broke and why it matters immediately",
       "what_happened": "string - max 30 words, concrete facts",
       "what_changed": "string - max 25 words, before -> after",
       "why_it_matters": "string - max 30 words, for THIS reader",
@@ -410,13 +455,29 @@ def extract_json(raw: str) -> str:
     raise ValueError("No valid JSON object found in LLM response")
 
 
+_EMOJI_RE = re.compile(
+    "[\U0001F000-\U0001FAFF\U00002600-\U000027BF\U0001F1E6-\U0001F1FF]"
+    "|[\u2190-\u21FF\u2B00-\u2BFF\u25A0-\u25FF\u2700-\u27BF]"
+)
+
+
+def _strip_emoji(text: str) -> str:
+    """Remove emojis/icons/decorative symbols from LLM output.
+
+    The report contract bans them outright; this guarantees the
+    delivered text complies even if the model slips one in.
+    """
+    cleaned = _EMOJI_RE.sub("", text or "")
+    return re.sub(r"  +", " ", cleaned).strip()
+
+
 def _as_str(value, default: str = "") -> str:
-    """Coerce any LLM output to a clean string (None-safe)."""
+    """Coerce any LLM output to a clean, emoji-free string (None-safe)."""
     if value is None:
         return default
     if isinstance(value, str):
-        return value.strip() or default
-    return str(value).strip() or default
+        return _strip_emoji(value) or default
+    return _strip_emoji(str(value)) or default
 
 
 def _as_int(value, default: int, lo: int, hi: int) -> int:
@@ -563,7 +624,7 @@ def enforce_conciseness(report: ResearchReport) -> ResearchReport:
     report.executive_summary = _clip_words(report.executive_summary, 60)
 
     for event in report.events:
-        event.tldr = _clip_words(event.tldr, 25)
+        event.tldr = _clip_words(event.tldr, 30)
         event.what_happened = _clip_words(event.what_happened, 30)
         event.what_changed = _clip_words(event.what_changed, 25)
         event.why_it_matters = _clip_words(event.why_it_matters, 30)

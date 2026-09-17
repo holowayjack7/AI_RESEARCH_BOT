@@ -4,6 +4,7 @@ Run: .venv/bin/python tests/test_review.py"""
 
 import json
 import os
+import re
 import sys
 import tempfile
 
@@ -72,18 +73,29 @@ msg = de.build_telegram_message(REPORT)
 
 
 def test_ui_structure():
-    assert "🛰 AI INTELLIGENCE REPORT" in msg
-    assert "📋 In this issue" in msg
+    # Mandatory 4-section structure per event
+    assert "<b>AI INTELLIGENCE REPORT</b>" in msg
+    assert "<b>In this issue</b>" in msg
     assert "<blockquote expandable>" in msg       # collapsed summaries
-    assert "⚡ <b>TL;DR</b>" in msg
-    assert "ACTION · LEARN" in msg
-    assert "ACTION · TRY" in msg
-    assert "█" in msg and "░" in msg  # score bars
-    assert "█████████░ 9/10" in msg     # importance 9 bar
-    assert "◆ impact" in msg            # weighted impact score
-    assert "🥇" in msg and "🥈" in msg  # medal ranks
-    assert "📈 TRENDS" in msg
-    assert "🎯 OPPORTUNITIES" in msg
+    for section in (
+        "<b>Executive Impact</b>",
+        "<b>Key Technical Breakdown</b>",
+        "<b>Architecture and Specs</b>",
+        "<b>Implementation Logic</b>",
+        "<b>Actionable Takeaways</b>",
+        "<b>Verified Resources</b>",
+    ):
+        assert section in msg, f"missing mandated section: {section}"
+    assert "Apply (LEARN)" in msg and "Commercial potential" in msg
+    assert '<a href="https://arxiv.org/abs/2609.12001">Research paper</a>' in msg
+    assert '<a href="https://github.com/example-labs/fixture-agent-sdk">Source code</a>' in msg
+    # ZERO emojis, icons, or badges anywhere in the output
+    emoji = re.compile(
+        "[\U0001F000-\U0001FAFF\U00002600-\U000027BF\U0001F1E6-\U0001F1FF]"
+        "|[\u2190-\u21FF\u2B00-\u2BFF\u25A0-\u25FF\u2700-\u27BF]"
+    )
+    hits = emoji.findall(msg)
+    assert not hits, f"emojis/icons banned but found: {hits[:5]}"
     # escaped HTML must not allow injection
     ev = ResearchEvent(title="<script>x</script>", category="c",
                        primary_url="https://arxiv.org/abs/1", action="a")
@@ -379,7 +391,7 @@ def test_real_pipeline_with_mocked_apis():
         )
         assert ok is True, "pipeline should succeed"
         assert sent, "Telegram must be called when configured"
-        assert "🛰 AI INTELLIGENCE REPORT" in sent[0]
+        assert "AI INTELLIGENCE REPORT" in sent[0]
         assert state.get("last_report_files")
     finally:
         pl.collect_all_sources = orig_collect
@@ -499,7 +511,7 @@ def test_enforce_conciseness():
     }]})
     r = enforce_conciseness(parse_report(raw))
     e = r.events[0]
-    assert len(e.tldr.split()) <= 26      # 25 words + ellipsis
+    assert len(e.tldr.split()) <= 31      # 30-word cap + ellipsis
     assert len(e.action.split()) <= 26
     assert len(e.key_takeaways) == 4      # capped count
     assert len(e.technical_details) == 4

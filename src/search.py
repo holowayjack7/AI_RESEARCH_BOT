@@ -145,6 +145,19 @@ OFFICIAL_RELEASE_HINTS = re.compile(
 
 MIN_WEB_SUMMARY_CHARS = 80
 
+# Results must carry concrete technical data or code: at least one
+# digit or one technical term. Papers, release notes, docs, and
+# changelogs always do; marketing fluff and vague summaries don't.
+TECH_SIGNAL_PATTERN = re.compile(
+    r"\d|"
+    r"\b(?:api|sdk|cli|benchmark|token|latency|throughput|context "
+    r"window|parameters?|fine-?tun|inference|open[- ]?source|repo|"
+    r"repositor|release|changelog|migrat|integrat|deploy|framework|"
+    r"model|agent|rag|llm|prompt|code|python|typescript|rust|golang|"
+    r"github|npm|pip|docker|kubernetes|gpu|weights|checkpoint)\b",
+    re.IGNORECASE,
+)
+
 
 def is_low_value_result(title: str, content: str) -> tuple[bool, str]:
     """Judge whether a web result is clickbait/fluff worth dropping.
@@ -176,6 +189,11 @@ def is_low_value_result(title: str, content: str) -> tuple[bool, str]:
     long_caps = [w for w in re.findall(r"[A-Z]{5,}", title)]
     if len(long_caps) >= 3:
         return True, "shouty ALL-CAPS title"
+
+    # No concrete technical data or code -> drop before it can pollute
+    # the analysis stage
+    if not TECH_SIGNAL_PATTERN.search(f"{title}. {content}"):
+        return True, "no concrete technical data or code"
 
     return False, ""
 

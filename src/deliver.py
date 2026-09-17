@@ -1,16 +1,15 @@
 """Telegram delivery module.
 
-Formats research reports as modern, readable Telegram HTML messages
+Formats research reports as strict-structure Telegram HTML messages
 and sends them to a configured chat.
 
-UI principles (Telegram 2024+ features):
-- Expandable blockquotes keep cards compact: long context is collapsed
-  behind a tap (executive summary, event background)
-- Scannable: medal ranks for the top events, category chip, source-type
-  chip, one-line TL;DR first
-- Quantified: a compact monospace score strip plus a weighted impact
-  score per event
-- Actionable: every event ends with a highlighted action callout
+Formatting contract:
+- Every event follows the mandatory 4-section structure:
+  Executive Impact / Key Technical Breakdown / Actionable Takeaways /
+  Verified Resources
+- Zero emojis, icons, or visual badges anywhere in the output
+- Mobile-first: compact cards, collapsed background context behind
+  expandable blockquotes, monospace-free clean sections
 - Robust: chunking splits at paragraph boundaries (never mid-tag), a
   bad-HTML chunk falls back to plain text, and one failing chunk never
   aborts the whole delivery. Transient Telegram rate limits (429 with
@@ -20,6 +19,7 @@ UI principles (Telegram 2024+ features):
 import logging
 import re
 import time
+from urllib.parse import urlparse
 
 from config import TELEGRAM_CHUNK_SIZE
 from src.net import http_post
@@ -34,23 +34,7 @@ MAX_SEND_ATTEMPTS = 5
 # Inter-chunk pause: Telegram allows ~1 msg/sec per chat
 CHUNK_PAUSE_SECONDS = 1.1
 
-ACTION_EMOJI = {
-    "BUILD": "🛠",
-    "TRY": "🧪",
-    "LEARN": "📚",
-    "TRACK": "👀",
-    "APPLY": "⚙️",
-    "IGNORE": "🚫",
-}
-
-SECTION_EMOJI = {
-    "trends": "📈",
-    "strategic_implications": "🧭",
-    "build_ideas": "🛠",
-    "learn_next": "📚",
-    "opportunities": "🎯",
-    "things_to_ignore": "🚫",
-}
+DIVIDER = "-------------------------"
 
 SECTION_TITLES = {
     "trends": "TRENDS",
@@ -60,9 +44,6 @@ SECTION_TITLES = {
     "opportunities": "OPPORTUNITIES",
     "things_to_ignore": "IGNORE / LOW VALUE",
 }
-
-MEDALS = {1: "🥇", 2: "🥈", 3: "🥉"}
-
 
 def escape_html(text) -> str:
     """Escape special HTML characters for Telegram."""
@@ -79,12 +60,6 @@ def expandable_blockquote(text: str) -> str:
     return f"<blockquote expandable>{text}</blockquote>"
 
 
-def _score_bar(value: int, max_value: int = 10) -> str:
-    """Render a value as a filled/empty bar, e.g. █████████░ 9/10."""
-    filled = max(0, min(max_value, int(value)))
-    return "█" * filled + "░" * (max_value - filled)
-
-
 def _impact_score(event) -> float:
     """Weighted composite score (0-10): importance dominates."""
     return (
@@ -95,14 +70,19 @@ def _impact_score(event) -> float:
     )
 
 
-def _source_chip(url: str) -> str:
-    """A small source-type emoji derived from the URL domain."""
-    url = (url or "").lower()
-    if "arxiv.org" in url or "huggingface.co/papers" in url:
-        return "📄 paper"
-    if "github.com" in url:
-        return "🛠 code"
-    return "📰 news"
+def _resource_label(url: str) -> str:
+    """Short descriptive label for a verified-resource link."""
+    low = (url or "").lower()
+    if "arxiv.org" in low or "huggingface.co/papers" in low:
+        return "Research paper"
+    if "github.com" in low:
+        return "Source code"
+    if "docs." in low or "/docs" in low:
+        return "Documentation"
+    if "releases" in low or "/blog" in low or "changelog" in low:
+        return "Release notes"
+    domain = urlparse(url).netloc.replace("www.", "")
+    return f"Official source ({domain})" if domain else "Official source"
 
 
 def _clip(text: str, limit: int) -> str:
@@ -117,88 +97,85 @@ def _today() -> str:
 
 
 # ============================================================
-# EVENT CARD
+# EVENT CARD (strict 4-section structure, zero emojis)
 # ============================================================
 
 def format_event(index: int, event) -> str:
-    """Format a single research event as a modern Telegram HTML card."""
+    """Format a single research event as a strict-structure HTML card.
+
+    Mandatory structure — no emojis, icons, or badges anywhere:
+    1. Executive Impact
+    2. Key Technical Breakdown (Architecture and Specs + Implementation Logic)
+    3. Actionable Takeaways (application + commercial potential)
+    4. Verified Resources (clean Markdown-style links)
+    """
     title = escape_html(event.title)
     category = escape_html(event.category or "Uncategorized")
-    rank = MEDALS.get(index, "")
-    rank_prefix = f"{rank} " if rank else ""
 
-    lines = []
+    blocks = []
 
-    # Header: rank + title + source-type chip
-    lines.append(
-        f"<b>{rank_prefix}{index}. {title}</b>\n"
-        f"┋ 🏷 <i>{category}</i> · {_source_chip(event.primary_url)} · "
-        f"✅ {event.confidence}%"
+    # Header: index + title + quantified context line
+    blocks.append(
+        f"<b>{index}. {title}</b>\n"
+        f"<i>{category} · Impact {_impact_score(event):.1f}/10 · "
+        f"Confidence {event.confidence}%</i>"
     )
 
-    # Compact score strip (monospace, aligned) + weighted impact score
-    lines.append(
-        "<code>"
-        f"I {_score_bar(event.importance)} {event.importance}/10\n"
-        f"R {_score_bar(event.relevance)} {event.relevance}/10\n"
-        f"A {_score_bar(event.actionability)} {event.actionability}/10\n"
-        f"S {_score_bar(event.source_quality)} {event.source_quality}/10"
-        "</code>\n"
-        f"<i><code>  I·importance R·relevance A·action S·source "
-        f"— ◆ impact {_impact_score(event):.1f}/10</code></i>"
-    )
-
-    # TL;DR first — one dense sentence
+    # --- 1. Executive Impact ---
+    executive = []
     if event.tldr:
-        lines.append(f"⚡ <b>TL;DR</b> — {escape_html(event.tldr)}")
-
-    # Background context (what happened / changed / why) — collapsed
-    # behind an expandable blockquote to keep the feed scannable
+        executive.append(escape_html(event.tldr))
     context = []
     if event.what_happened:
-        context.append(f"<b>What happened.</b> {escape_html(event.what_happened)}")
+        context.append(f"What happened: {escape_html(event.what_happened)}")
     if event.what_changed:
-        context.append(f"<b>What changed.</b> {escape_html(event.what_changed)}")
+        context.append(f"What changed: {escape_html(event.what_changed)}")
     if event.why_it_matters:
-        context.append(f"<b>Why it matters.</b> {escape_html(event.why_it_matters)}")
+        context.append(f"Why it matters: {escape_html(event.why_it_matters)}")
     if context:
-        lines.append(expandable_blockquote("\n".join(context)))
+        executive.append(expandable_blockquote("\n".join(context)))
+    if executive:
+        blocks.append("\n".join(["<b>Executive Impact</b>"] + executive))
 
-    if event.key_takeaways:
-        lines.append("<b>Key takeaways</b>")
-        for takeaway in event.key_takeaways:
-            lines.append(f"  ▸ {escape_html(takeaway)}")
-
+    # --- 2. Key Technical Breakdown ---
+    tech = []
     if event.technical_architecture:
-        lines.append("<b>Architecture</b>")
-        for item in event.technical_architecture:
-            lines.append(f"  ◆ {escape_html(item)}")
-
+        tech.append("<b>Architecture and Specs</b>")
+        tech.extend(f"- {escape_html(item)}" for item in event.technical_architecture)
     if event.technical_details:
-        lines.append("<b>Details</b>")
-        for detail in event.technical_details:
-            lines.append(f"  • {escape_html(detail)}")
+        if tech:
+            tech.append("")
+        tech.append("<b>Implementation Logic</b>")
+        tech.extend(f"- {escape_html(item)}" for item in event.technical_details)
+    if tech:
+        blocks.append("\n".join(["<b>Key Technical Breakdown</b>"] + tech))
 
-    if event.potential_impact:
-        lines.append(f"💫 <b>Impact.</b> {escape_html(event.potential_impact)}")
-
-    # Action callout
-    action_emoji = ACTION_EMOJI.get((event.action_type or "").upper(), "▶️")
+    # --- 3. Actionable Takeaways ---
+    takeaways = []
+    if event.key_takeaways:
+        takeaways.extend(f"- {escape_html(item)}" for item in event.key_takeaways)
+    action_type = (event.action_type or "TRACK").upper()
     if event.action:
-        lines.append(
-            f"{action_emoji} <b>ACTION · {escape_html((event.action_type or '').upper())}</b>\n"
-            f"└ {escape_html(event.action)}"
+        takeaways.append(
+            f"- <b>Apply ({action_type})</b>: {escape_html(event.action)}"
         )
+    if event.potential_impact:
+        takeaways.append(
+            f"- <b>Commercial potential</b>: {escape_html(event.potential_impact)}"
+        )
+    if takeaways:
+        blocks.append("\n".join(["<b>Actionable Takeaways</b>"] + takeaways))
 
-    # Sources
-    sources = [
-        f'🔗 <a href="{escape_html(event.primary_url)}">primary source</a>'
+    # --- 4. Verified Resources ---
+    resources = [
+        f'- <a href="{escape_html(event.primary_url)}">'
+        f"{_resource_label(event.primary_url)}</a>"
     ]
     for url in event.supporting_urls[:4]:
-        sources.append(f'<a href="{escape_html(url)}">supporting</a>')
-    lines.append(" · ".join(sources))
+        resources.append(f'- <a href="{escape_html(url)}">{_resource_label(url)}</a>')
+    blocks.append("\n".join(["<b>Verified Resources</b>"] + resources))
 
-    return "\n".join(lines)
+    return "\n\n".join(blocks)
 
 
 # ============================================================
@@ -211,16 +188,15 @@ def _list_section(report, key: str, numbered: bool = False) -> str | None:
     if not items:
         return None
 
-    emoji = SECTION_EMOJI.get(key, "•")
     title = SECTION_TITLES.get(key, key.replace("_", " ").upper())
 
-    lines = [f"<b>{emoji} {title}</b>"]
+    lines = [f"<b>{title}</b>"]
     if numbered:
         for i, item in enumerate(items, start=1):
             lines.append(f"{i}. {escape_html(item)}")
     else:
         for item in items:
-            lines.append(f"▸ {escape_html(item)}")
+            lines.append(f"- {escape_html(item)}")
 
     return "\n".join(lines)
 
@@ -234,10 +210,9 @@ def build_telegram_blocks(report) -> list[str]:
     blocks = []
 
     # --- Header card ---
-    divider = "┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈"
     header = [
-        "<b>🛰 AI INTELLIGENCE REPORT</b>",
-        f"📅 {_today()} · <b>{len(report.events)}</b> curated "
+        "<b>AI INTELLIGENCE REPORT</b>",
+        f"{_today()} · <b>{len(report.events)}</b> curated "
         f"event{'s' if len(report.events) != 1 else ''}",
     ]
 
@@ -246,12 +221,11 @@ def build_telegram_blocks(report) -> list[str]:
 
     # In-this-issue index: the whole report scannable in seconds
     if len(report.events) > 1:
-        header.append("<b>📋 In this issue</b>")
+        header.append("<b>In this issue</b>")
         for i, event in enumerate(report.events, start=1):
-            marker = MEDALS.get(i, f"{i}.")
-            header.append(f"  {marker} {_clip(event.title, 72)}")
+            header.append(f"  {i}. {_clip(event.title, 72)}")
 
-    header.extend(["", divider, ""])
+    header.extend(["", DIVIDER, ""])
     blocks.append("\n".join(header))
 
     # --- Event cards ---
@@ -269,11 +243,11 @@ def build_telegram_blocks(report) -> list[str]:
     ]
     rendered = [s for s in sections if s]
     if rendered:
-        blocks.append(divider)
+        blocks.append(DIVIDER)
         blocks.extend(rendered)
 
     blocks.append(
-        f"<i>🤖 AI Research Bot · {_today()} · "
+        f"<i>AI Research Bot · {_today()} · "
         f"{len(report.events)} events</i>"
     )
 
@@ -296,7 +270,6 @@ def build_no_news_message(state: dict | None = None, candidates_reviewed: int = 
     proves the bot is alive even when no event passes the filters.
     """
     state = state or {}
-    divider = "┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈"
 
     if candidates_reviewed > 0:
         reason = (
@@ -314,19 +287,19 @@ def build_no_news_message(state: dict | None = None, candidates_reviewed: int = 
     tracked_topics = len(state.get("topics", {}))
 
     lines = [
-        "<b>🛰 AI INTELLIGENCE REPORT</b>",
-        f"📭 <b>No new intelligence today</b>",
-        f"📅 {_today()}",
+        "<b>AI INTELLIGENCE REPORT</b>",
+        f"<b>No new intelligence today</b>",
+        f"{_today()}",
         "",
         expandable_blockquote(escape_html(reason)),
         "",
-        divider,
+        DIVIDER,
         "",
-        f"📡 Sources: arXiv · Hugging Face Papers · web search",
-        f"📈 Memory: {tracked_events} delivered events across "
+        "Sources: arXiv · Hugging Face Papers · web search",
+        f"Memory: {tracked_events} delivered events across "
         f"{tracked_topics} topic{'s' if tracked_topics != 1 else ''}",
         "",
-        "<i>🤖 AI Research Bot · daily monitor — next check tomorrow</i>",
+        "<i>AI Research Bot · daily monitor — next check tomorrow</i>",
     ]
     return "\n".join(lines)
 
@@ -338,17 +311,16 @@ def build_delayed_message(reason: str) -> str:
     analysis completes (e.g. the model provider is overloaded), send
     a short notice instead of silence.
     """
-    divider = "┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈"
     return "\n".join([
-        "<b>🛰 AI INTELLIGENCE REPORT</b>",
-        "⏳ <b>Today's report is delayed</b>",
-        f"📅 {_today()}",
+        "<b>AI INTELLIGENCE REPORT</b>",
+        "<b>Today's report is delayed</b>",
+        f"{_today()}",
         "",
         expandable_blockquote(_clip(reason, 300)),
         "",
-        divider,
+        DIVIDER,
         "",
-        "<i>🤖 The run will retry automatically tomorrow — or trigger "
+        "<i>The run will retry automatically tomorrow — or trigger "
         "it now from GitHub Actions.</i>",
     ])
 
