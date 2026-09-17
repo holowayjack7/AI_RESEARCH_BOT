@@ -5,6 +5,8 @@ Uses curated search queries targeting trusted sources.
 """
 
 import logging
+import re
+from urllib.parse import urlparse
 
 from src.net import http_post_json
 
@@ -108,6 +110,84 @@ EXCLUDED_DOMAINS = {
 }
 
 
+# ============================================================
+# LOW-VALUE FILTER — drop clickbait, fluff, and noise
+# ============================================================
+
+# Compiled once; matched case-insensitively against title + content
+LOW_VALUE_PATTERNS = [
+    re.compile(
+        r"you won'?t believe|shocking|insane|mind-?blowing|"
+        r"game-?changing|revolutionary|jaw-?dropping|unbelievable",
+        re.IGNORECASE,
+    ),
+    re.compile(r"\btop \d+\b|\bbest \d+\b|\d+ things|\d+ ways|\d+ reasons", re.IGNORECASE),
+    re.compile(
+        r"coupon|promo code|discount code|giveaway|free money|lottery",
+        re.IGNORECASE,
+    ),
+    # Financial noise the reader explicitly does not want
+    re.compile(
+        r"stock (?:soars|plunges|jumps|dumps|rallies|slides)|"
+        r"share price|earnings call|quarterly revenue|market cap",
+        re.IGNORECASE,
+    ),
+    # Unverified noise
+    re.compile(r"\brumou?r\b|\bleaked\b|speculation|allegedly", re.IGNORECASE),
+]
+
+# Path fragments that mark official/technical material worth boosting
+OFFICIAL_RELEASE_HINTS = re.compile(
+    r"releases?|release-?notes|changelog|changelogs|/docs|/blog|"
+    r"announc|launch|introduc|now-available|generally-available",
+    re.IGNORECASE,
+)
+
+MIN_WEB_SUMMARY_CHARS = 80
+
+
+def is_low_value_result(title: str, content: str) -> tuple[bool, str]:
+    """Judge whether a web result is clickbait/fluff worth dropping.
+
+    Returns (is_low_value, reason). Papers and official docs rarely
+    trip these patterns; noisy aggregator copy does.
+    """
+    title = (title or "").strip()
+    content = (content or "").strip()
+
+    if not title or len(title) < 15:
+        return True, "empty/thin title"
+
+    if len(content) < MIN_WEB_SUMMARY_CHARS:
+        return True, f"summary too short ({len(content)} chars)"
+
+    text = f"{title}. {content}"
+    for pattern in LOW_VALUE_PATTERNS:
+        match = pattern.search(text)
+        if match:
+            return True, f"low-value pattern: '{match.group(0)}'"
+
+    # Hype punctuation ("?!?", "!!!") or emoji-stuffed titles
+    if re.search(r"[?!]{2,}", title) or len(re.findall(r"[\U0001F300-\U0001FAFF]", title)) >= 2:
+        return True, "hype punctuation/emoji title"
+
+    # Shouty titles: 3+ long ALL-CAPS words (excludes normal acronyms
+    # like API/LLM which are <= 4 chars)
+    long_caps = [w for w in re.findall(r"[A-Z]{5,}", title)]
+    if len(long_caps) >= 3:
+        return True, "shouty ALL-CAPS title"
+
+    return False, ""
+
+
+def _boost_official_release(url: str, score: float) -> float:
+    """Small score bump for official release/docs/changelog URLs."""
+    path = urlparse(url).path.lower()
+    if OFFICIAL_RELEASE_HINTS.search(path):
+        return min(1.0, score + 0.05)
+    return score
+
+
 def domain_from_url(url: str) -> str:
     """Extract domain from URL."""
     from urllib.parse import urlparse
@@ -189,10 +269,13 @@ def collect_search_results(api_key: str) -> list[dict]:
     """Run all search queries and collect results.
 
     Returns a list of raw result dicts with title, url, content, score, domain.
+    Low-value/clickbait results are dropped before they can pollute
+    the analysis stage.
     """
     logger.info("Searching Tavily...")
 
     all_results = []
+    dropped = 0
 
     for index, query in enumerate(SEARCH_QUERIES, start=1):
         logger.info(f"Search {index}/{len(SEARCH_QUERIES)}: {query[:60]}...")
@@ -209,18 +292,30 @@ def collect_search_results(api_key: str) -> list[dict]:
             if not is_trusted_domain(url):
                 continue
 
+            title = result.get("title", "").strip()
+            content = result.get("content", "").strip()
+
+            low_value, reason = is_low_value_result(title, content)
+            if low_value:
+                dropped += 1
+                logger.debug(f"Dropped low-value result ({reason}): {title[:60]}")
+                continue
+
             domain = domain_from_url(url)
 
             all_results.append({
-                "title": result.get("title", "").strip(),
+                "title": title,
                 "url": url,
-                "content": result.get("content", "").strip(),
-                "score": result.get("score", 0),
+                "content": content,
+                "score": _boost_official_release(url, result.get("score", 0)),
                 "domain": domain,
                 "source": "web",
                 "published": "",
                 "dedup_key": "",
             })
+
+    if dropped:
+        logger.info(f"Dropped {dropped} low-value/clickbait results")
 
     logger.info(f"Total raw results: {len(all_results)}")
     return all_results

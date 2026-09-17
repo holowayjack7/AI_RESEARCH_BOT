@@ -244,6 +244,12 @@ DO NOT invent URLs.
 Every primary_url and supporting_url MUST exactly match a URL from
 the supplied sources.
 
+QUALITY BAR: every event must pass this test — "Would a busy senior
+AI engineer forward this to a colleague?" If not, exclude it.
+Zero filler: no introductory sentences, no restating the title,
+no hype adjectives (game-changing, revolutionary, cutting-edge),
+no generic statements that would be true for any story.
+
 ============================================================
 EVENT DEDUPLICATION
 ============================================================
@@ -273,15 +279,20 @@ AI developer tools, open source AI, AI infrastructure, important AI
 research, opportunities for young developers.
 
 ============================================================
-SELECT 8-15 GENUINELY USEFUL EVENTS
+SELECT 5-10 HIGH-SIGNAL EVENTS (DENSITY OVER VOLUME)
 ============================================================
 
-Do NOT artificially fill the report.
-If only 5 events are genuinely important, return 5.
-Include enough detail to make the report useful for actual study.
+Do NOT artificially fill the report. If only 3 events pass the
+quality bar, return 3. Skip: incremental minor releases, marketing
+renames, version bumps without capability changes, and anything
+already covered in RECENT MEMORY.
 
-For strong events include: technical details, what changed,
-implications, concrete action.
+Prefer: official releases and docs, papers with measurable results,
+tools with immediately actionable capabilities, architecture shifts.
+
+Every event must be information-dense: concrete numbers, named
+technologies, specific capabilities. If a field would be generic,
+make it specific or shorten it.
 
 ============================================================
 IMPORTANCE SCALE
@@ -310,13 +321,31 @@ Action must be concrete. Not "Learn more about this."
 Instead: "Build a small MCP server and connect one tool."
 
 ============================================================
+CONCISENESS DOCTRINE (HARD LIMITS)
+============================================================
+
+Respect these word limits exactly — conciseness is a feature:
+- executive_summary: max 3 short sentences (~60 words)
+- tldr: ONE sentence, max 25 words
+- what_happened / what_changed / why_it_matters / potential_impact:
+  max 30 words each, past/present/future tense respectively
+- key_takeaways: 2-4 items, max 15 words each, each a concrete fact
+- technical_architecture: 0-3 items, max 15 words each (omit if the
+  source gives no real architectural information)
+- technical_details: 2-4 items, max 12 words each (numbers, names)
+- action: ONE imperative sentence, max 25 words, doable this week
+
+Banned: filler ("This is significant because", "In a major move"),
+repeating the title, vague praise, restating the obvious.
+
+============================================================
 OUTPUT FORMAT
 ============================================================
 Return a JSON object with these fields:
 
 {{
   "report_title": "string",
-  "executive_summary": "string - 2-3 sentences",
+  "executive_summary": "string - max 3 short sentences, no preamble",
   "events": [
     {{
       "event_id": "string - short hash or slug",
@@ -329,16 +358,16 @@ Return a JSON object with these fields:
       "actionability": 1-10,
       "source_quality": 1-10,
       "confidence": 0-100,
-      "tldr": "string - one dense sentence",
-      "what_happened": "string",
-      "what_changed": "string",
-      "why_it_matters": "string",
-      "key_takeaways": ["string"],
-      "technical_architecture": ["string - how it works internally"],
-      "technical_details": ["string"],
-      "potential_impact": "string",
+      "tldr": "string - ONE dense sentence, max 25 words",
+      "what_happened": "string - max 30 words, concrete facts",
+      "what_changed": "string - max 25 words, before -> after",
+      "why_it_matters": "string - max 30 words, for THIS reader",
+      "key_takeaways": ["string - 2-4 items, max 15 words each"],
+      "technical_architecture": ["string - 0-3 items, max 15 words each"],
+      "technical_details": ["string - 2-4 items, max 12 words each"],
+      "potential_impact": "string - max 25 words",
       "action_type": "BUILD|TRY|LEARN|TRACK|APPLY",
-      "action": "string - concrete action"
+      "action": "string - ONE imperative sentence, max 25 words"
     }}
   ],
   "trends": ["string"],
@@ -471,7 +500,7 @@ def parse_report(raw_json: str) -> ResearchReport:
 
         events.append(event)
 
-    return ResearchReport(
+    return enforce_conciseness(ResearchReport(
         report_title=_as_str(data.get("report_title"), "AI Intelligence Report"),
         executive_summary=_as_str(data.get("executive_summary")),
         events=events,
@@ -481,7 +510,7 @@ def parse_report(raw_json: str) -> ResearchReport:
         learn_next=_as_str_list(data.get("learn_next")),
         opportunities=_as_str_list(data.get("opportunities")),
         things_to_ignore=_as_str_list(data.get("things_to_ignore")),
-    )
+    ))
 
 
 def _gemini_retry_wait(error_str: str, attempt: int) -> float:
@@ -501,6 +530,52 @@ def _gemini_retry_wait(error_str: str, attempt: int) -> float:
         return min(90.0, 30.0 * attempt)
     # Transient (503 UNAVAILABLE etc.): moderate backoff
     return min(60.0, 10.0 * attempt)
+
+
+# ============================================================
+# CONCISENESS ENFORCEMENT (defensive post-processing)
+# ============================================================
+
+def _clip_words(text: str, max_words: int) -> str:
+    """Clip text to max_words at a word boundary."""
+    text = (text or "").strip()
+    words = text.split()
+    if len(words) <= max_words:
+        return text
+    return " ".join(words[:max_words]) + "…"
+
+
+def _clip_items(items: list[str], max_count: int, max_words: int) -> list[str]:
+    """Cap list length and per-item words, dropping empties."""
+    return [
+        _clip_words(item, max_words)
+        for item in (items or [])[:max_count]
+        if item and item.strip()
+    ]
+
+
+def enforce_conciseness(report: ResearchReport) -> ResearchReport:
+    """Clip any fields that exceed the conciseness doctrine.
+
+    The prompt demands tight word limits; this guarantees the
+    delivered report stays compact even when the model ignores them.
+    """
+    report.executive_summary = _clip_words(report.executive_summary, 60)
+
+    for event in report.events:
+        event.tldr = _clip_words(event.tldr, 25)
+        event.what_happened = _clip_words(event.what_happened, 30)
+        event.what_changed = _clip_words(event.what_changed, 25)
+        event.why_it_matters = _clip_words(event.why_it_matters, 30)
+        event.potential_impact = _clip_words(event.potential_impact, 25)
+        event.action = _clip_words(event.action, 25)
+        event.key_takeaways = _clip_items(event.key_takeaways, 4, 15)
+        event.technical_architecture = _clip_items(
+            event.technical_architecture, 3, 15
+        )
+        event.technical_details = _clip_items(event.technical_details, 4, 12)
+
+    return report
 
 
 def analyze_with_gemini(

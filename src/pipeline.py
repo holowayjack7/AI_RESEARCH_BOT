@@ -528,22 +528,23 @@ SIMULATED_REPORT_JSON = """
       "actionability": 8,
       "source_quality": 8,
       "confidence": 90,
-      "tldr": "A new agent-memory architecture that learns relations between memories, cutting retrieval cost while lifting accuracy sharply.",
-      "what_happened": "ROAM++ was published with code and benchmarks.",
-      "what_changed": "Memory organization moved from fixed policies to learned semantic relations.",
-      "why_it_matters": "Directly applicable to the reader's agent memory roadmap.",
+      "tldr": "Agent memory that learns relations between memories: +34.2pp accuracy, 22% lower retrieval latency.",
+      "what_happened": "ROAM++ published with code, benchmarks, and evaluation harnesses.",
+      "what_changed": "Memory organization: fixed policies -> learned semantic relations.",
+      "why_it_matters": "Directly upgrades your agent-memory roadmap; reproducible today.",
       "key_takeaways": [
-        "Learned relations beat fixed heuristics for memory organization",
-        "34.2 point accuracy gain over compaction baselines"
+        "Learned relations beat fixed heuristics",
+        "+34.2pp over compaction baselines",
+        "Code and evals are public"
       ],
       "technical_architecture": [
-        "Atomic memories with learned relation graph",
-        "Deterministic reorganization executed after relation inference"
+        "Atomic memories + learned relation graph",
+        "Deterministic reorganization after inference"
       ],
-      "technical_details": ["LoCoMo +34.2pp", "22% lower retrieval latency"],
-      "potential_impact": "Changes how long-lived agent memory systems should be designed.",
+      "technical_details": ["LoCoMo +34.2pp", "-22% retrieval latency"],
+      "potential_impact": "Resets the design baseline for long-lived agent memory.",
       "action_type": "LEARN",
-      "action": "Read the paper and sketch a minimal relation-classifier over toy memories."
+      "action": "Read the paper; sketch a relation-classifier over toy memories."
     },
     {
       "event_id": "evt-sim-agent-sdk",
@@ -556,16 +557,21 @@ SIMULATED_REPORT_JSON = """
       "actionability": 9,
       "source_quality": 8,
       "confidence": 85,
-      "tldr": "An Apache-2.0 Python SDK bundling tool calling, MCP, sandboxing, and evals for coding agents.",
+      "tldr": "Apache-2.0 Python SDK bundling tool calling, MCP, sandboxing, and evals.",
       "what_happened": "Fixture Agent SDK 1.0 released on GitHub.",
-      "what_changed": "Previously these pieces had to be assembled by hand.",
-      "why_it_matters": "A practical starting point for the reader's own agent projects.",
-      "key_takeaways": ["Ships with an evaluation harness"],
-      "technical_architecture": ["Tool registry + MCP client + sandboxed runner"],
+      "what_changed": "Hand-assembled agent plumbing -> one installable SDK.",
+      "why_it_matters": "Fastest path to a working coding-agent prototype this week.",
+      "key_takeaways": [
+        "Ships with an evaluation harness",
+        "MCP client built in"
+      ],
+      "technical_architecture": [
+        "Tool registry + MCP client + sandboxed runner"
+      ],
       "technical_details": ["Python 3.11+", "Apache-2.0"],
-      "potential_impact": "Lowers the barrier to building production-grade agents.",
+      "potential_impact": "Cuts coding-agent bootstrap time from days to hours.",
       "action_type": "TRY",
-      "action": "Install the SDK and run its example agent locally."
+      "action": "Install the SDK; run its example agent locally."
     }
   ],
   "trends": ["Agent memory is converging on learned organization"],

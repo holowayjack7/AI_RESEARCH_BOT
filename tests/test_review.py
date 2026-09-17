@@ -25,7 +25,7 @@ import requests  # noqa: E402
 from src import net as net_mod  # noqa: E402
 from src import deliver as de  # noqa: E402
 from src import pipeline as pl  # noqa: E402
-from src.analyze import parse_report, ResearchEvent  # noqa: E402
+from src.analyze import enforce_conciseness, parse_report, ResearchEvent  # noqa: E402
 
 PASS = []
 FAIL = []
@@ -462,6 +462,51 @@ def test_malformed_events_skipped():
 check("coercion: string/float/null scores parsed without crashing", test_coercion)
 check("coercion: out-of-range scores clamped to valid ranges", test_out_of_range_scores_clamped)
 check("coercion: malformed events skipped, valid kept", test_malformed_events_skipped)
+
+
+# ==================================================================
+print("\n[8] Signal refinement (low-value filter + conciseness)")
+# ==================================================================
+
+def test_low_value_filter():
+    from src.search import is_low_value_result
+    # Clickbait / financial noise / rumors must be dropped
+    assert is_low_value_result(
+        "You Won't Believe This New Model",
+        "some content long enough to pass the summary length check here",
+    )[0]
+    assert is_low_value_result(
+        "OpenAI Stock Soars After Earnings Call",
+        "some content long enough to pass the summary length check here",
+    )[0]
+    assert is_low_value_result("Short", "x")[0]
+    # High-signal technical content must pass
+    ok, reason = is_low_value_result(
+        "Gemini 3.8 Flash API: structured outputs and batch mode",
+        "Official release notes describing new generateContent parameters, "
+        "batching support, and pricing changes for developers." * 2,
+    )
+    assert ok is False, reason
+
+
+def test_enforce_conciseness():
+    raw = json.dumps({"events": [{
+        "title": "T", "primary_url": "https://arxiv.org/abs/1",
+        "tldr": "word " * 100,
+        "action": "word " * 50,
+        "key_takeaways": ["x " * 40] * 7,
+        "technical_details": ["d"] * 9,
+    }]})
+    r = enforce_conciseness(parse_report(raw))
+    e = r.events[0]
+    assert len(e.tldr.split()) <= 26      # 25 words + ellipsis
+    assert len(e.action.split()) <= 26
+    assert len(e.key_takeaways) == 4      # capped count
+    assert len(e.technical_details) == 4
+
+
+check("search: clickbait dropped, high-signal kept", test_low_value_filter)
+check("analyze: conciseness enforcement clips rambling fields", test_enforce_conciseness)
 
 
 # ==================================================================
