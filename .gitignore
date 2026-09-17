@@ -26,8 +26,11 @@ ENV/
 .DS_Store
 Thumbs.db
 
-# Data files (will be created at runtime)
-data/
+# Data files created at runtime — but keep the tracked state file
+# addable (a bare `data/` rule would make `git add data/state.json`
+# fail in CI with "paths are ignored")
+data/*
+!data/state.json
 
 # Legacy root state files (superseded by data/state.json)
 /state.json
