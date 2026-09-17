@@ -87,6 +87,13 @@ GEMINI_PROMPT_CHAR_BUDGET = get_env_int("GEMINI_PROMPT_CHAR_BUDGET", 200000)
 # Analysis attempts (retries honor Gemini's "retry in Xs" hints)
 GEMINI_MAX_ATTEMPTS = get_env_int("GEMINI_MAX_ATTEMPTS", 4)
 
+# === Retry resilience (exponential backoff) ===
+# Attempts for generic outbound HTTP (Tavily search, arXiv, HF, fetcher)
+HTTP_MAX_ATTEMPTS = get_env_int("HTTP_MAX_ATTEMPTS", 4)
+# Base delay for Gemini retries between transient failures (seconds);
+# actual waits grow exponentially and honor the API's "retry in Xs" hints
+GEMINI_RETRY_BASE_SECONDS = get_env_int("GEMINI_RETRY_BASE_SECONDS", 5)
+
 # === Quality Thresholds ===
 MIN_SOURCE_QUALITY = get_env_int("MIN_SOURCE_QUALITY", 7)
 MIN_IMPORTANCE = get_env_int("MIN_IMPORTANCE", 6)
@@ -111,6 +118,9 @@ LOG_LEVEL = get_env("LOG_LEVEL", "INFO")
 STRUCTURED_LOGS = get_env_bool("STRUCTURED_LOGS", True)
 DATA_DIR = get_env("DATA_DIR", "data")
 REPORTS_SUBDIR = get_env("REPORTS_SUBDIR", "reports")
+
+# === State ===
+STATE_FILE = get_env("STATE_FILE", os.path.join("data", "state.json"))
 
 
 def validate_config(require_telegram: bool = True) -> None:

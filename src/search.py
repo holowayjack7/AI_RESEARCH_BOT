@@ -272,13 +272,16 @@ def search_tavily(query: str, api_key: str) -> list[dict]:
     }
 
     try:
-        data = http_post_json(url, payload, timeout=20)
+        from config import HTTP_MAX_ATTEMPTS
+
+        data = http_post_json(url, payload, timeout=20, max_attempts=HTTP_MAX_ATTEMPTS)
         results = data.get("results", [])
         logger.info(f"Tavily: {len(results)} results")
         return results
     except Exception as e:
-        # Retries/backoff happen inside src.net; a persistent failure
-        # only costs this one query, never the whole run.
+        # Retries with exponential backoff happen inside src.net (see
+        # HTTP_MAX_ATTEMPTS); a persistent failure only costs this one
+        # query, never the whole run.
         logger.warning(f"Tavily query failed: {e}")
         return []
 

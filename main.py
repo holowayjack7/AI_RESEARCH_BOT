@@ -28,10 +28,7 @@ from src.logger import setup_logging
 from src.pipeline import run_pipeline, run_simulated_pipeline
 
 
-STATE_FILE = os.getenv(
-    "STATE_FILE",
-    os.path.join(config.DATA_DIR, "state.json"),
-)
+STATE_FILE = config.STATE_FILE
 
 
 def load_state() -> dict:
@@ -71,6 +68,22 @@ def save_state(state: dict):
     with open(temp, "w", encoding="utf-8") as f:
         json.dump(state, f, ensure_ascii=False, indent=2)
     os.replace(temp, STATE_FILE)
+
+
+def record_run(state: dict) -> None:
+    """Stamp the execution timestamp and persist state.
+
+    Called on EVERY exit path — delivered, export-only quiet day, or
+    crash — so state.json always shows when the bot last executed.
+    Best-effort: a write failure must never mask the run's outcome.
+    """
+    try:
+        state["last_run"] = datetime.now(timezone.utc).isoformat()
+        save_state(state)
+    except Exception as e:
+        logging.getLogger("ai_research_bot").warning(
+            f"Could not record run timestamp: {e}"
+        )
 
 
 def check_telegram() -> int:
@@ -213,8 +226,7 @@ def main() -> int:
 
         # Record the run even when nothing was delivered
         # (no candidates / no important events), same as the monolith.
-        state["last_run"] = datetime.now(timezone.utc).isoformat()
-        save_state(state)
+        record_run(state)
 
         if success:
             logger.info("Research pipeline finished successfully")
@@ -234,6 +246,9 @@ def main() -> int:
 
     except Exception as e:
         logger.error(f"Pipeline error: {e}")
+        # Even a crashed run must update the execution timestamp so
+        # state.json always reflects the latest execution attempt.
+        record_run(state)
         _notify_run_failure(e)
         return 1
 
@@ -255,8 +270,7 @@ def run_simulation() -> None:
 
     try:
         success = run_simulated_pipeline(state)
-        state["last_run"] = datetime.now(timezone.utc).isoformat()
-        save_state(state)
+        record_run(state)
         logger.info(
             "Simulation finished successfully"
             if success

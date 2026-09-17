@@ -575,11 +575,12 @@ def parse_report(raw_json: str) -> ResearchReport:
 
 
 def _gemini_retry_wait(error_str: str, attempt: int) -> float:
-    """Decide how long to wait before the next Gemini attempt.
+    """Exponential backoff before the next Gemini attempt.
 
     Honors the API's own "Please retry in Xs" hints (quota errors).
-    Quota windows are per minute, so tiny waits rarely help — the
-    old 5s/10s backoff kept landing in the same exhausted window.
+    Quota windows are per minute, so a fixed tiny backoff kept landing
+    in the same exhausted window; waits now grow exponentially from
+    GEMINI_RETRY_BASE_SECONDS (capped) and respect server hints.
     """
     match = re.search(r"retry in ([0-9.]+)\s*s", error_str, flags=re.IGNORECASE)
     if match:
@@ -587,10 +588,15 @@ def _gemini_retry_wait(error_str: str, attempt: int) -> float:
             return min(120.0, float(match.group(1)) + 2.0)
         except ValueError:
             pass
+    from config import GEMINI_RETRY_BASE_SECONDS
+
+    base = max(1.0, float(GEMINI_RETRY_BASE_SECONDS))
     if "RESOURCE_EXHAUSTED" in error_str or "429" in error_str:
-        return min(90.0, 30.0 * attempt)
-    # Transient (503 UNAVAILABLE etc.): moderate backoff
-    return min(60.0, 10.0 * attempt)
+        # Quota: grow base -> 2x -> 4x ... so later attempts can land
+        # in a fresh per-minute window
+        return min(120.0, base * (2 ** max(0, attempt - 1)))
+    # Transient (503 UNAVAILABLE etc.): exponential as well
+    return min(60.0, base * attempt)
 
 
 # ============================================================

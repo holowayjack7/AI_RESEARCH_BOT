@@ -178,7 +178,8 @@ def http_post(url: str, payload: dict, *, timeout: int = 20,
     )
 
 
-def http_post_json(url: str, payload: dict, *, timeout: int = 20) -> dict:
+def http_post_json(url: str, payload: dict, *, timeout: int = 20,
+                   max_attempts: int = 3) -> dict:
     """Rate-limited POST returning parsed JSON, with retries."""
-    response = http_post(url, payload, timeout=timeout)
+    response = http_post(url, payload, timeout=timeout, max_attempts=max_attempts)
     return response.json()

@@ -26,7 +26,9 @@ import requests  # noqa: E402
 from src import net as net_mod  # noqa: E402
 from src import deliver as de  # noqa: E402
 from src import pipeline as pl  # noqa: E402
+from src import search as src_search_mod  # noqa: E402
 from src.analyze import enforce_conciseness, parse_report, ResearchEvent  # noqa: E402
+from datetime import datetime  # noqa: E402
 
 PASS = []
 FAIL = []
@@ -522,10 +524,95 @@ check("analyze: conciseness enforcement clips rambling fields", test_enforce_con
 
 
 # ==================================================================
+print("\n[9] Resilience (retries, backoff, run timestamps)")
+# ==================================================================
+
+def test_tavily_retry_backoff():
+    """Tavily query survives a transient network failure via net retries."""
+    calls = {"n": 0}
+
+    def flaky_request(method, url, **kw):
+        calls["n"] += 1
+        if calls["n"] == 1:
+            raise requests.ConnectionError("connection reset")
+        resp = FakeResp(200)
+        resp.json = lambda: {
+            "results": [{"title": "ok", "url": "https://arxiv.org/abs/1"}]
+        }
+        return resp
+
+    orig_request, orig_sleep = net_mod.requests.request, net_mod.time.sleep
+    net_mod.requests.request = flaky_request
+    net_mod.time.sleep = lambda s: None
+    net_mod._limiter = net_mod.RateLimiter(0)
+    try:
+        results = src_search_mod.search_tavily("test query", "key")
+        assert len(results) == 1, "transient failure must be retried"
+        assert calls["n"] == 2, f"expected 2 attempts, got {calls['n']}"
+    finally:
+        net_mod.requests.request, net_mod.time.sleep = orig_request, orig_sleep
+        net_mod._limiter = None
+
+
+def test_gemini_backoff_is_exponential():
+    """Gemini waits grow exponentially; server retry hints are honored."""
+    from src.analyze import _gemini_retry_wait
+
+    w1 = _gemini_retry_wait("429 RESOURCE_EXHAUSTED quota exceeded", 1)
+    w2 = _gemini_retry_wait("429 RESOURCE_EXHAUSTED quota exceeded", 2)
+    w3 = _gemini_retry_wait("429 RESOURCE_EXHAUSTED quota exceeded", 3)
+    assert w2 > w1 > 0, f"backoff must grow: {w1}, {w2}"
+    assert w3 > w2, f"backoff must keep growing: {w2}, {w3}"
+    assert w3 <= 120.0, "backoff must be capped"
+    # Server-provided hint always wins
+    assert _gemini_retry_wait("please retry in 37.5s", 1) >= 37.0
+    # Transient 503 also backs off
+    assert _gemini_retry_wait("503 UNAVAILABLE high demand", 2) > \
+        _gemini_retry_wait("503 UNAVAILABLE high demand", 1)
+
+
+def test_record_run_always_stamps_state():
+    """record_run stamps last_run on every path, including crashes."""
+    import importlib
+    main_mod = importlib.import_module("main")
+
+    saved = []
+    orig_save = main_mod.save_state
+    main_mod.save_state = lambda s: saved.append(dict(s))
+    try:
+        # Crash path: pipeline raised, but the run must still be stamped
+        main_mod.record_run({"seen_urls": []})
+        assert saved and saved[-1]["last_run"], "crash path must stamp last_run"
+        # The stamped value must parse as ISO-8601 UTC
+        datetime.fromisoformat(saved[-1]["last_run"])
+        # A failing save_state must never raise out of record_run
+        main_mod.save_state = lambda s: (_ for _ in ()).throw(OSError("disk full"))
+        main_mod.record_run({})  # must not raise
+    finally:
+        main_mod.save_state = orig_save
+
+
+check("search: Tavily retries transient failures with backoff", test_tavily_retry_backoff)
+check("analyze: Gemini backoff grows exponentially, honors retry hints", test_gemini_backoff_is_exponential)
+check("main: record_run stamps state on crash path, never raises", test_record_run_always_stamps_state)
+
+
+# ==================================================================
 print()
 print("=" * 50)
 print(f"RESULTS: {len(PASS)} passed, {len(FAIL)} failed")
 for name, err in FAIL:
     print(f"  FAIL: {name} — {err}")
 print("=" * 50)
-raise SystemExit(1 if FAIL else 0)
+
+
+# Dual-mode: runnable directly AND via pytest. The raise only fires
+# in direct mode (__main__); under pytest, failures were already
+# recorded per-check via the check() helper.
+if __name__ == "__main__":
+    raise SystemExit(1 if FAIL else 0)
+
+
+def test_review_suite():
+    """Pytest entry point: re-raise collected failures for pytest."""
+    assert not FAIL, "; ".join(f"{n}: {e}" for n, e in FAIL)
