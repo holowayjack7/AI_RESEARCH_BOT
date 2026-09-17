@@ -90,7 +90,12 @@
     "https://arxiv.org/abs/2609.19099",
     "https://arxiv.org/abs/2609.19104",
     "https://huggingface.co/papers/2609.17909",
-    "https://huggingface.co/papers/2609.18487"
+    "https://huggingface.co/papers/2609.18487",
+    "https://huggingface.co/papers/2609.19138",
+    "https://arxiv.org/abs/2609.19144",
+    "https://arxiv.org/abs/2609.19145",
+    "https://arxiv.org/abs/2609.19143",
+    "https://arxiv.org/abs/2609.19137"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -152,7 +157,12 @@
     "evt-andromeda2-evidence-agent",
     "evt-rmuscle-vla-dual-cache",
     "evt-zing05-playable-world-models",
-    "evt-actionpiece-physical-rank-consistency"
+    "evt-actionpiece-physical-rank-consistency",
+    "evt-gpt-policy-in-context-robot-learning",
+    "evt-compo-zeroth-order-alignment",
+    "evt-tokenizer-search-vs-objective",
+    "evt-panorama-panoptic-grounded-captioning",
+    "evt-audio-video-force-aware-manipulation"
   ],
   "events": [
     {
@@ -2119,6 +2129,181 @@
       "action_type": "LEARN",
       "action": "Study how Physical Rank Consistency loss functions differ from MSE in continuous-to-discrete tokenization.",
       "evidence": []
+    },
+    {
+      "event_id": "evt-gpt-policy-in-context-robot-learning",
+      "title": "GPT-Policy: In-Context Robot Learning via Frontier VLM Agents",
+      "category": "Embodied AI & Agent Architecture",
+      "primary_url": "https://huggingface.co/papers/2609.19138",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 92,
+      "tldr": "GPT-Policy enables robots to adapt to new tasks zero-shot using VLM in-context learning and verified control loops without gradient updates.",
+      "what_happened": "Researchers introduced GPT-Policy, a framework where VLM agents (such as GPT-6 Astra) interpret human video demonstrations and context to execute verifiable robotic manipulation actions in real time.",
+      "what_changed": "Before, robotic adaptation required task-specific fine-tuning or parameter updates; now, VLMs learn new contact-sensitive behaviors purely in-context through execution feedback.",
+      "why_it_matters": "Demonstrates that agentic scaffoldings combining context compilation and constrained verification controllers can achieve physical tool manipulation without retraining model weights.",
+      "key_takeaways": [
+        "In-context learning enables zero-shot robot adaptation without gradient updates",
+        "Context compiler preserves task-relevant visual transitions for VLM decision-making",
+        "Constrained controller verifies and executes actions before sending outcome feedback"
+      ],
+      "technical_architecture": [
+        "Context Compiler filtering visual transitions into structured history",
+        "VLM Agent proposing high-level robot-tool action primitives",
+        "Constrained Execution Controller verifying safety constraints and reporting outcomes"
+      ],
+      "technical_details": [
+        "Evaluated on GPT-6 Astra VLM agent architecture",
+        "Zero gradient updates required during deployment adaptation",
+        "Closed-loop feedback via interaction outcomes"
+      ],
+      "potential_impact": "Accelerates deployment of generalist robotic agents in dynamic environments using standard LLM/VLM tool-calling patterns.",
+      "action_type": "LEARN",
+      "action": "Study how the context compiler filters interaction history into structured observation-action-outcome tuples for zero-shot VLM agent controllers.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-compo-zeroth-order-alignment",
+      "title": "ComPO: Comparison-Based Zeroth-Order Preference Alignment for LLMs",
+      "category": "AI Research & Model Alignment",
+      "primary_url": "https://arxiv.org/abs/2609.19144",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 8,
+      "actionability": 7,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "ComPO introduces a zeroth-order comparison oracle alignment framework that outperforms direct preference optimization by mitigating likelihood displacement.",
+      "what_happened": "Researchers proposed Comparison-based Preference Optimization (ComPO), extracting directional gradient signals from preference pairs without directly optimizing a differentiable loss function.",
+      "what_changed": "Traditional DPO methods suffer from likelihood displacement on narrow margins; ComPO uses comparison mechanisms and unlabeled policy generations for reverse-KL control.",
+      "why_it_matters": "Provides a robust mathematical alternative to DPO for aligning open-weight models (Llama, Gemma, Qwen) with higher length-controlled win rates.",
+      "key_takeaways": [
+        "Zeroth-order comparison oracles prevent likelihood displacement on small likelihood margins",
+        "Online ComPO uses unlabeled policy generations to maintain reverse-KL control",
+        "Consistently improves length-controlled win rates across frontier open models"
+      ],
+      "technical_architecture": [
+        "Offline comparison oracle for non-differentiable preference extraction",
+        "Online reverse-KL regularization using unlabelled policy outputs",
+        "Constrained optimization scheme under local sample coverage"
+      ],
+      "technical_details": [
+        "Validated on Mistral, Llama, Gemma-2, Qwen3, Gemma-3",
+        "Proven theoretical convergence under gradient sparsity assumptions",
+        "39-page formal proof and pair-level diagnostic evaluation"
+      ],
+      "potential_impact": "Improves preference fine-tuning stability and performance for open-source foundation model custom alignments.",
+      "action_type": "TRACK",
+      "action": "Track ComPO implementation code releases to evaluate as an alternative alignment method for custom fine-tuned assistant models.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-tokenizer-search-vs-objective",
+      "title": "Tokenizer Mechanics: Search Procedure Dominates Objective Function",
+      "category": "AI Research & Model Architecture",
+      "primary_url": "https://arxiv.org/abs/2609.19145",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 7,
+      "actionability": 7,
+      "source_quality": 8,
+      "confidence": 95,
+      "tldr": "EMNLP 2026 study proves bottom-up search (BPE) drives lower bits-per-byte in language models, regardless of optimization objective.",
+      "what_happened": "Researchers introduced BottomUpLL and TopDownComp tokenizers to complete a 2x2 grid, isolating tokenizer search procedure from optimization objective.",
+      "what_changed": "Previously, BPE and UnigramLM differences were conflated; researchers now prove search strategy (bottom-up vs top-down) drives compression efficiency, not the objective.",
+      "why_it_matters": "Understanding tokenizer design aids in building custom domain-specific tokenizers for structured agent workflows, code generation, and multilingual data.",
+      "key_takeaways": [
+        "Search procedure is the primary determinant of language model bits-per-byte efficiency",
+        "Bottom-up tokenizers consistently outperform top-down pruning methods in compression",
+        "Downstream syntactic tasks (BLiMP) show no strict sensitivity to tokenizer design"
+      ],
+      "technical_architecture": [
+        "2x2 factorial evaluation matrix: Compression vs Likelihood / Bottom-Up vs Top-Down",
+        "BottomUpLL: Bottom-up likelihood-based greedy tokenization algorithm",
+        "TopDownComp: Top-down compression-based pruning tokenization algorithm"
+      ],
+      "technical_details": [
+        "Evaluated across English-only and multilingual datasets",
+        "Accepted at EMNLP 2026",
+        "Evaluated on bits-per-byte and BLiMP benchmarks"
+      ],
+      "potential_impact": "Guides more principled construction of custom tokenizers for specialized code and multilingual language models.",
+      "action_type": "LEARN",
+      "action": "Review the BottomUpLL implementation to understand how bottom-up vocabulary selection impacts LLM context window efficiency.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-panorama-panoptic-grounded-captioning",
+      "title": "PANORAMA: Panoptic Grounded Captioning via Proposal Selection",
+      "category": "AI Research & Multimodal Models",
+      "primary_url": "https://arxiv.org/abs/2609.19143",
+      "supporting_urls": [],
+      "importance": 7,
+      "relevance": 7,
+      "actionability": 7,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "PANORAMA links VLM textual phrase generation directly to pixel-level segment masks via phrase-conditioned proposal selection.",
+      "what_happened": "Researchers created PanoCaps and PANORAMA, a VLM framework conditioning pretrained segmenters on textual phrase representations to select precise entity-level masks.",
+      "what_changed": "Prior grounded VLMs produced either incomplete descriptions or inaccurate masks; PANORAMA unifies detailed text generation with precise multi-instance pixel segmentation.",
+      "why_it_matters": "Enables visual GUI and computer-use agents to ground text referring expressions directly to exact pixel boundaries and UI element masks.",
+      "key_takeaways": [
+        "Conditions segmenters directly on phrase representations for joint captioning and mask selection",
+        "Generalized Panoptic Quality (gPQ) metric evaluates textual and mask consistency jointly",
+        "Supports single-region and multi-instance referring phrase grounding"
+      ],
+      "technical_architecture": [
+        "Phrase-conditioned mask proposal pool generated from pretrained segmenter",
+        "VLM selection head mapping textual referring expressions to candidate masks",
+        "Joint loss optimization balancing caption fluency and segmentation accuracy"
+      ],
+      "technical_details": [
+        "PanoCaps benchmark with human-annotated entity-level alignment",
+        "Supports both foreground objects and background region segmentation",
+        "Code and dataset publicly released"
+      ],
+      "potential_impact": "Improves visual grounding accuracy for autonomous computer-use agents operating on complex graphical interfaces.",
+      "action_type": "TRY",
+      "action": "Test PANORAMA open-source code to evaluate phrase-to-mask mapping performance on web browser and UI element detection tasks.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-audio-video-force-aware-manipulation",
+      "title": "Audio-Visual Force Profiling for Closed-Loop Manipulation Agents",
+      "category": "Embodied AI & Robotics",
+      "primary_url": "https://arxiv.org/abs/2609.19137",
+      "supporting_urls": [],
+      "importance": 7,
+      "relevance": 7,
+      "actionability": 6,
+      "source_quality": 8,
+      "confidence": 88,
+      "tldr": "Researchers use generated contact sound loudness to derive time-varying force profiles for zero-shot robotic force regulation.",
+      "what_happened": "A novel pipeline combines video and audio generation models to extract kinematic trajectories and desired contact force profiles from natural language prompts.",
+      "what_changed": "Generative video baselines produce purely kinematic trajectories lacking force; this framework uses generated contact sound intensity to shape dynamic force profiles.",
+      "why_it_matters": "Shows how multimodal generative models can create rich physical world feedback representations for closed-loop execution controllers without physical force sensors.",
+      "key_takeaways": [
+        "Generated contact audio loudness maps directly to desired physical force profiles",
+        "Closed-loop force regulators track sound-shaped profiles during task execution",
+        "Serves as an automated synthetic data generation engine for physical policy training"
+      ],
+      "technical_architecture": [
+        "Text-to-Video and Text-to-Audio generative models driven by task prompts",
+        "Sound loudness envelope extractor converting decibels to target contact forces",
+        "Closed-loop force regulator on Franka Panda tracking trajectory and target force"
+      ],
+      "technical_details": [
+        "Tested zero-shot on physical Franka Panda robot arm",
+        "Outperforms kinematic-only video trajectory generation baselines",
+        "Synthetic data generation engine for contact-rich tasks"
+      ],
+      "potential_impact": "Enables low-cost multimodal simulation of tactile and force feedback for physical agent policy training.",
+      "action_type": "LEARN",
+      "action": "Examine how multimodal generation can synthesize non-visual feedback channels (e.g. audio loudness) into numeric control parameters.",
+      "evidence": []
     }
   ],
   "topics": {
@@ -2174,14 +2359,18 @@
     "AI Research / Structured Data & Causal ML": 1,
     "Developer Tools & Agent Frameworks": 1,
     "Model Inference & Local Hardware Optimization": 1,
-    "AI Research & Model Architecture": 1,
+    "AI Research & Model Architecture": 2,
     "Agent Security & Infrastructure": 1,
     "LLM Infrastructure & Agent Memory": 1,
     "Multi-Agent Systems & RL": 1,
     "Autonomous Agents & Domain Tooling": 1,
     "Embodied AI & Agent Acceleration": 1,
     "Multimodal Models & Generative Environments": 1,
-    "Vision-Language-Action & Tokenization": 1
+    "Vision-Language-Action & Tokenization": 1,
+    "Embodied AI & Agent Architecture": 1,
+    "AI Research & Model Alignment": 1,
+    "AI Research & Multimodal Models": 1,
+    "Embodied AI & Robotics": 1
   },
   "reports": [
     {
@@ -4234,14 +4423,200 @@
         "Standardization of agent harnesses and tool schemas using explicit markdown protocols (SKILL.md).",
         "Continuous co-evolution of routers and specialized sub-agent LoRAs rather than static pipeline definitions."
       ]
+    },
+    {
+      "date": "2026-09-17",
+      "summary": "Today's breakthroughs highlight in-context robotic learning using VLM agent frameworks without gradient updates, audio-derived force profiles for physical contact manipulation, and zeroth-order preference alignment that mitigates likelihood displacement. Additionally, tokenizer research reveals search procedure dominates loss objective in language model efficiency. These advances provide key insights for autonomous agent execution and context management.",
+      "events": [
+        {
+          "event_id": "evt-gpt-policy-in-context-robot-learning",
+          "title": "GPT-Policy: In-Context Robot Learning via Frontier VLM Agents",
+          "category": "Embodied AI & Agent Architecture",
+          "primary_url": "https://huggingface.co/papers/2609.19138",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 92,
+          "tldr": "GPT-Policy enables robots to adapt to new tasks zero-shot using VLM in-context learning and verified control loops without gradient updates.",
+          "what_happened": "Researchers introduced GPT-Policy, a framework where VLM agents (such as GPT-6 Astra) interpret human video demonstrations and context to execute verifiable robotic manipulation actions in real time.",
+          "what_changed": "Before, robotic adaptation required task-specific fine-tuning or parameter updates; now, VLMs learn new contact-sensitive behaviors purely in-context through execution feedback.",
+          "why_it_matters": "Demonstrates that agentic scaffoldings combining context compilation and constrained verification controllers can achieve physical tool manipulation without retraining model weights.",
+          "key_takeaways": [
+            "In-context learning enables zero-shot robot adaptation without gradient updates",
+            "Context compiler preserves task-relevant visual transitions for VLM decision-making",
+            "Constrained controller verifies and executes actions before sending outcome feedback"
+          ],
+          "technical_architecture": [
+            "Context Compiler filtering visual transitions into structured history",
+            "VLM Agent proposing high-level robot-tool action primitives",
+            "Constrained Execution Controller verifying safety constraints and reporting outcomes"
+          ],
+          "technical_details": [
+            "Evaluated on GPT-6 Astra VLM agent architecture",
+            "Zero gradient updates required during deployment adaptation",
+            "Closed-loop feedback via interaction outcomes"
+          ],
+          "potential_impact": "Accelerates deployment of generalist robotic agents in dynamic environments using standard LLM/VLM tool-calling patterns.",
+          "action_type": "LEARN",
+          "action": "Study how the context compiler filters interaction history into structured observation-action-outcome tuples for zero-shot VLM agent controllers.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-compo-zeroth-order-alignment",
+          "title": "ComPO: Comparison-Based Zeroth-Order Preference Alignment for LLMs",
+          "category": "AI Research & Model Alignment",
+          "primary_url": "https://arxiv.org/abs/2609.19144",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 8,
+          "actionability": 7,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "ComPO introduces a zeroth-order comparison oracle alignment framework that outperforms direct preference optimization by mitigating likelihood displacement.",
+          "what_happened": "Researchers proposed Comparison-based Preference Optimization (ComPO), extracting directional gradient signals from preference pairs without directly optimizing a differentiable loss function.",
+          "what_changed": "Traditional DPO methods suffer from likelihood displacement on narrow margins; ComPO uses comparison mechanisms and unlabeled policy generations for reverse-KL control.",
+          "why_it_matters": "Provides a robust mathematical alternative to DPO for aligning open-weight models (Llama, Gemma, Qwen) with higher length-controlled win rates.",
+          "key_takeaways": [
+            "Zeroth-order comparison oracles prevent likelihood displacement on small likelihood margins",
+            "Online ComPO uses unlabeled policy generations to maintain reverse-KL control",
+            "Consistently improves length-controlled win rates across frontier open models"
+          ],
+          "technical_architecture": [
+            "Offline comparison oracle for non-differentiable preference extraction",
+            "Online reverse-KL regularization using unlabelled policy outputs",
+            "Constrained optimization scheme under local sample coverage"
+          ],
+          "technical_details": [
+            "Validated on Mistral, Llama, Gemma-2, Qwen3, Gemma-3",
+            "Proven theoretical convergence under gradient sparsity assumptions",
+            "39-page formal proof and pair-level diagnostic evaluation"
+          ],
+          "potential_impact": "Improves preference fine-tuning stability and performance for open-source foundation model custom alignments.",
+          "action_type": "TRACK",
+          "action": "Track ComPO implementation code releases to evaluate as an alternative alignment method for custom fine-tuned assistant models.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-tokenizer-search-vs-objective",
+          "title": "Tokenizer Mechanics: Search Procedure Dominates Objective Function",
+          "category": "AI Research & Model Architecture",
+          "primary_url": "https://arxiv.org/abs/2609.19145",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 7,
+          "actionability": 7,
+          "source_quality": 8,
+          "confidence": 95,
+          "tldr": "EMNLP 2026 study proves bottom-up search (BPE) drives lower bits-per-byte in language models, regardless of optimization objective.",
+          "what_happened": "Researchers introduced BottomUpLL and TopDownComp tokenizers to complete a 2x2 grid, isolating tokenizer search procedure from optimization objective.",
+          "what_changed": "Previously, BPE and UnigramLM differences were conflated; researchers now prove search strategy (bottom-up vs top-down) drives compression efficiency, not the objective.",
+          "why_it_matters": "Understanding tokenizer design aids in building custom domain-specific tokenizers for structured agent workflows, code generation, and multilingual data.",
+          "key_takeaways": [
+            "Search procedure is the primary determinant of language model bits-per-byte efficiency",
+            "Bottom-up tokenizers consistently outperform top-down pruning methods in compression",
+            "Downstream syntactic tasks (BLiMP) show no strict sensitivity to tokenizer design"
+          ],
+          "technical_architecture": [
+            "2x2 factorial evaluation matrix: Compression vs Likelihood / Bottom-Up vs Top-Down",
+            "BottomUpLL: Bottom-up likelihood-based greedy tokenization algorithm",
+            "TopDownComp: Top-down compression-based pruning tokenization algorithm"
+          ],
+          "technical_details": [
+            "Evaluated across English-only and multilingual datasets",
+            "Accepted at EMNLP 2026",
+            "Evaluated on bits-per-byte and BLiMP benchmarks"
+          ],
+          "potential_impact": "Guides more principled construction of custom tokenizers for specialized code and multilingual language models.",
+          "action_type": "LEARN",
+          "action": "Review the BottomUpLL implementation to understand how bottom-up vocabulary selection impacts LLM context window efficiency.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-panorama-panoptic-grounded-captioning",
+          "title": "PANORAMA: Panoptic Grounded Captioning via Proposal Selection",
+          "category": "AI Research & Multimodal Models",
+          "primary_url": "https://arxiv.org/abs/2609.19143",
+          "supporting_urls": [],
+          "importance": 7,
+          "relevance": 7,
+          "actionability": 7,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "PANORAMA links VLM textual phrase generation directly to pixel-level segment masks via phrase-conditioned proposal selection.",
+          "what_happened": "Researchers created PanoCaps and PANORAMA, a VLM framework conditioning pretrained segmenters on textual phrase representations to select precise entity-level masks.",
+          "what_changed": "Prior grounded VLMs produced either incomplete descriptions or inaccurate masks; PANORAMA unifies detailed text generation with precise multi-instance pixel segmentation.",
+          "why_it_matters": "Enables visual GUI and computer-use agents to ground text referring expressions directly to exact pixel boundaries and UI element masks.",
+          "key_takeaways": [
+            "Conditions segmenters directly on phrase representations for joint captioning and mask selection",
+            "Generalized Panoptic Quality (gPQ) metric evaluates textual and mask consistency jointly",
+            "Supports single-region and multi-instance referring phrase grounding"
+          ],
+          "technical_architecture": [
+            "Phrase-conditioned mask proposal pool generated from pretrained segmenter",
+            "VLM selection head mapping textual referring expressions to candidate masks",
+            "Joint loss optimization balancing caption fluency and segmentation accuracy"
+          ],
+          "technical_details": [
+            "PanoCaps benchmark with human-annotated entity-level alignment",
+            "Supports both foreground objects and background region segmentation",
+            "Code and dataset publicly released"
+          ],
+          "potential_impact": "Improves visual grounding accuracy for autonomous computer-use agents operating on complex graphical interfaces.",
+          "action_type": "TRY",
+          "action": "Test PANORAMA open-source code to evaluate phrase-to-mask mapping performance on web browser and UI element detection tasks.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-audio-video-force-aware-manipulation",
+          "title": "Audio-Visual Force Profiling for Closed-Loop Manipulation Agents",
+          "category": "Embodied AI & Robotics",
+          "primary_url": "https://arxiv.org/abs/2609.19137",
+          "supporting_urls": [],
+          "importance": 7,
+          "relevance": 7,
+          "actionability": 6,
+          "source_quality": 8,
+          "confidence": 88,
+          "tldr": "Researchers use generated contact sound loudness to derive time-varying force profiles for zero-shot robotic force regulation.",
+          "what_happened": "A novel pipeline combines video and audio generation models to extract kinematic trajectories and desired contact force profiles from natural language prompts.",
+          "what_changed": "Generative video baselines produce purely kinematic trajectories lacking force; this framework uses generated contact sound intensity to shape dynamic force profiles.",
+          "why_it_matters": "Shows how multimodal generative models can create rich physical world feedback representations for closed-loop execution controllers without physical force sensors.",
+          "key_takeaways": [
+            "Generated contact audio loudness maps directly to desired physical force profiles",
+            "Closed-loop force regulators track sound-shaped profiles during task execution",
+            "Serves as an automated synthetic data generation engine for physical policy training"
+          ],
+          "technical_architecture": [
+            "Text-to-Video and Text-to-Audio generative models driven by task prompts",
+            "Sound loudness envelope extractor converting decibels to target contact forces",
+            "Closed-loop force regulator on Franka Panda tracking trajectory and target force"
+          ],
+          "technical_details": [
+            "Tested zero-shot on physical Franka Panda robot arm",
+            "Outperforms kinematic-only video trajectory generation baselines",
+            "Synthetic data generation engine for contact-rich tasks"
+          ],
+          "potential_impact": "Enables low-cost multimodal simulation of tactile and force feedback for physical agent policy training.",
+          "action_type": "LEARN",
+          "action": "Examine how multimodal generation can synthesize non-visual feedback channels (e.g. audio loudness) into numeric control parameters.",
+          "evidence": []
+        }
+      ],
+      "trends": [
+        "In-context agent deployment over weight fine-tuning for complex real-world control loops",
+        "Zeroth-order alignment techniques gaining traction to solve DPO likelihood displacement issues",
+        "Multimodal state grounding combining text, pixel masks, and synthetic audio for environment interaction"
+      ]
     }
   ],
   "learning_queue": [
-    "Edge0 pre-routing head training mechanics and memory buffer management.",
-    "SKILL.md format specification and agent harness isolation patterns.",
-    "Channel-major bitplane quantization and water-filling memory budgeting algorithms."
+    "GPT-Policy context compilation and interaction feedback loop mechanics",
+    "Zeroth-order optimization principles vs gradient-based direct preference optimization",
+    "Phrase-conditioned mask proposal selection algorithms in vision-language models"
   ],
-  "last_run": "2026-09-17T13:31:15.576351+00:00",
+  "last_run": "2026-09-17T13:56:37.029074+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -4261,7 +4636,12 @@
     "arxiv:2609.19099",
     "arxiv:2609.19104",
     "arxiv:2609.17909",
-    "arxiv:2609.18487"
+    "arxiv:2609.18487",
+    "arxiv:2609.19138",
+    "arxiv:2609.19144",
+    "arxiv:2609.19145",
+    "arxiv:2609.19143",
+    "arxiv:2609.19137"
   ],
   "last_report_files": {
     "markdown": "data/reports/2026-09-17/report.md",
