@@ -59,7 +59,18 @@
     "https://github.com/resources/events",
     "https://github.com/VoltAgent/awesome-openclaw-skills/blob/main/README.md",
     "https://github.com/orgs/hackclub/repositories",
-    "https://github.com/The412Banner/Bannerlator/releases"
+    "https://github.com/The412Banner/Bannerlator/releases",
+    "https://openai.com/index/introducing-gpt-live-1-in-the-api",
+    "https://cloud.google.com/blog/topics/developers-practitioners/introducing-the-google-cloud-developer-plugin-for-ai-coding-agents",
+    "https://ai.google.dev/api/interactions-api",
+    "https://huggingface.co/papers/2609.17708",
+    "https://arxiv.org/abs/2609.19128",
+    "https://arxiv.org/abs/2609.19125",
+    "https://arxiv.org/abs/2609.19124",
+    "https://openai.com/careers/research-engineer-ai-for-chip-design-san-francisco",
+    "https://openai.com/careers/ai-infrastructure-engineer-pagi-san-francisco",
+    "https://huggingface.co/papers/2609.19134",
+    "https://huggingface.co/papers/2609.18708"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -92,7 +103,17 @@
     "evt-aws-lambda-90min-opensearch-v0",
     "evt-exygen-kg-shex-void-rag",
     "evt-openclaw-skills-ecosystem-security",
-    "evt-inference-time-governance-taxonomy"
+    "evt-inference-time-governance-taxonomy",
+    "evt-gpt-live-1-api",
+    "evt-gcp-developer-agent-plugin",
+    "evt-gemini-interactions-api",
+    "evt-xconf-experiential-confidence",
+    "evt-dual-process-agent-amm-srm",
+    "evt-affora-agent-ui-design-system",
+    "evt-flag-game-swarm-interpretability",
+    "evt-openai-rl-chip-design-pagi",
+    "evt-scienceide-agent-environments",
+    "evt-sp3o-ppo-critic-learning"
   ],
   "events": [
     {
@@ -1060,6 +1081,349 @@
           "evidence": "Capability now migrates to the deployment stage in three structural ways: inference scaling, agentic scaffolding, and compression onto consumer hardware... a base model with modest stand-alone capability becomes a powerful agent when embedded in tool-using loops."
         }
       ]
+    },
+    {
+      "event_id": "evt-gpt-live-1-api",
+      "title": "OpenAI-მ GPT-Live-1 ხმოვანი მოდელი API-ში ჩააშენა — Full-Duplex არქიტექტურა და Tool Calling დელეგირება",
+      "category": "LLM API / Voice Agents",
+      "primary_url": "https://openai.com/index/introducing-gpt-live-1-in-the-api",
+      "supporting_urls": [],
+      "importance": 10,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "OpenAI-მ API-ზე ხელმისაწვდომი გახადა GPT-Live-1, რომელიც აერთიანებს მოსმენასა და ლაპარაკს ერთ მოდელში და იძლევა სიღრმისეული მსჯელობისა და Tool Calling-ის დელეგირებას backend მოდელებზე.",
+      "what_happened": "OpenAI-მ წარადგინა GPT-Live-1 API-ში, რომელიც დეველოპერებს აძლევს საშუალებას ააგონ ბუნებრივი, full-duplex ხმოვანი აგენტები. მოდელი ერთდროულად უსმენს და ლაპარაკობს, ახდენს შეწყვეტების (interruptions) გლუვ დამუშავებას და შეუძლია რთული მსჯელობა თუ ინსტრუმენტების გამოძახება (tool calling) გადააბაროს backend მოდელებს, როგორიცაა GPT-6 Astra ან Terra.",
+      "what_changed": "მანამდე ხმოვანი აგენტები იწყობოდა 3 ცალკეული შრისგან: Speech-to-Text (STT) -> LLM -> Text-to-Speech (TTS). ეს Cascaded არქიტექტურა ქმნიდა მაღალ Latency-ს, კარგავდა საუბრის ინტონაციას და რთულად ამუშავებდა შეწყვეტებს. GPT-Live-1 ამცირებს კოდის ბაზას 80%-ით და უზრუნველყოფს უშუალო აუდიო-აუდიო მსჯელობას.",
+      "why_it_matters": "ხმოვანი აგენტების დაპროექტების მიდგომა ფუნდამენტურად იცვლება. აგენტი აღარ არის უბრალოდ ტექსტური LLM-ის გარშემო აწყობილი აუდიო გარსი: GPT-Live-1 მუშაობს როგორც სწრაფი ხმოვანი ფრონტენდი, ხოლო backend-ში იძახებს რთულ ინსტრუმენტებსა და ტექსტურ მოდელებს, სანამ მომხმარებელთან საუბარი შეუფერხებლად მიმდინარეობს.",
+      "key_takeaways": [
+        "Full-Duplex არქიტექტურა: ერთდროული მოსმენა/ლაპარაკი და შეწყვეტის (interruption) 80%-იანი შემცირება.",
+        "Tool Calling Delegation: ხმოვან აგენტს შეუძლია backend ტექსტურ მოდელებს დაავალოს ინსტრუმენტების გამოძახება და მსჯელობა.",
+        "Tau3 და Full Duplex Bench ლიდერი: პირველი ადგილი სატელეფონო და სერვისულ აგენტურ დავალებებში."
+      ],
+      "technical_architecture": [
+        "Single Multi-modal Network: აუდიო შემოსვლა და გამოსვლა მუშავდება ერთიანი მოდელის მიერ, Chained STT-LLM-TTS-ის გარეშე.",
+        "Asynchronous Backend Delegation: GPT-Live-1 ინარჩუნებს საუბრის რიტმს, სანამ ფონურ რეჟიმში Astra/Terra ასრულებს Tool Calling-ს.",
+        "Native ASR Transcripts & Turn Detection: ჩაშენებული ტრანსკრიფცია, ტონალობის მართვა System Prompt-ით და ხმაურის ფილტრაცია."
+      ],
+      "technical_details": [
+        "30 პროცენტული პუნქტით გაუმჯობესებული შედეგი Full Duplex Bench-ზე GPT-Realtime-2.1-თან შედარებით.",
+        "Tau3 ბენჩმარკზე #1 ადგილი GPT-6 Astra (medium reasoning) backend-თან წყვილში.",
+        "მხარდაჭერილია Telephony integration (SIP/PSTN), Alphanumeric understanding და Keyword biasing."
+      ],
+      "potential_impact": "გახსნის ახალ შესაძლებლობებს ავტონომიური სატელეფონო აგენტების, ენის შესასწავლი რეალურ დროში ტუტორებისა და ხმოვანი კლიენტების ასაშენებლად.",
+      "action_type": "TRY",
+      "action": "გამოსცადეთ GPT-Live-1-ის API დემო და შექმენით მცირე Python სკრიპტი, რომელიც ხმოვანი შეყვანისას ასინქრონულად იძახებს SQLite/API tool-ს.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-gcp-developer-agent-plugin",
+      "title": "Google Cloud Developer Plugin და Agent Plugins ღია სტანდარტი AI კოდინგ აგენტებისთვის",
+      "category": "Developer Tools / Agent Plugins & MCP",
+      "primary_url": "https://cloud.google.com/blog/topics/developers-practitioners/introducing-the-google-cloud-developer-plugin-for-ai-coding-agents",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 9,
+      "confidence": 95,
+      "tldr": "Google-მა გამოაქვეყნა Agent Plugins ღია, ვენდორ-ნეიტრალური სტანდარტი და google-cloud-developer პლაგინი, რომელიც აერთიანებს Agent Skills-სა და MCP სერვერებს ერთიან პაკეტში.",
+      "what_happened": "Google Cloud-მა წარადგინა `google-cloud-developer` პლაგინი AI კოდინგ აგენტებისთვის (Claude Code, Antigravity CLI, Codex CLI). პლაგინი აგებულია Agent Plugins ღია, ვენდორ-ნეიტრალურ სტანდარტზე, რომელიც ერთ პაკეტში აერთიანებს Agent Skills-ს, დოკუმენტაციის grounding-ს (Developer Knowledge MCP Server) და gcloud CLI-ის უსაფრთხო მართვის წესებს.",
+      "what_changed": "მანამდე დეველოპერებს უწევდათ ათეულობით ცალკეული Skill-ისა და ინდივიდუალური MCP სერვერის ხელით მართვა და დაკონფიგურირება თითოეული AI ასისტენტისთვის (Claude, Codex, Antigravity). Agent Plugins სტანდარტი ჭრის ამ Tool Coupling პრობლემას ერთიანი დირექტორიისა და Manifest ფაილის მეშვეობით.",
+      "why_it_matters": "აგენტური ინსტრუმენტები გადადიან მოწესრიგებულ პაკეტების მენეჯერებზე (Plugin Marketplaces). ეს აადვილებს რთული ღრუბლოვანი და დეველოპერული ინსტრუმენტების უსაფრთხო ინტეგრაციას აგენტებში კონტექსტური ფანჯრის ზედმეტი გადატვირთვის გარეშე.",
+      "key_takeaways": [
+        "Agent Plugins Standard: ღია, ვენდორ-ნეიტრალური ფორმატი Agent Skills-ისა და MCP სერვერების შესაფუთად.",
+        "Google Cloud Developer Plugin: უზრუნველყოფს ავტორიზაციას, პროექტების ბუტსტრაპინგს და gcloud CLI guardrails-ს.",
+        "Developer Knowledge MCP Server: ოფიციალური დოკუმენტაციის მიწოდება რეალურ დროში."
+      ],
+      "technical_architecture": [
+        "Unified Manifest Structure: აერთიანებს skill დირექტორიებს, MCP სერვერის კონფიგურაციებსა და გარემოს შემოწმების წესებს.",
+        "Silent Environment Awareness: აგენტი ფონურ რეჟიმში ამოწმებს CLI ინსტრუმენტებსა და IAM პოლიტიკებს.",
+        "Cross-Harness Interoperability: თავსებადია Antigravity CLI (`agy plugin`), Claude Code (`claude plugin`) და Codex CLI-სთან."
+      ],
+      "technical_details": [
+        "ინსტალაციის ბრძანება Claude Code-ისთვის: `claude plugin marketplace add google/skills && claude plugin install google-cloud-developer@google-plugins`.",
+        "გამოყენებულია Agent Skills დირექტორიის იერარქიული სტრუქტურა და JSON schema მანიფესტი."
+      ],
+      "potential_impact": "სტანდარტიზაციას გაუწევს აგენტების ინსტრუმენტების (Skills + MCP) გავრცელებას და გაამარტივებს რთული Cloud ინფრასტრუქტურის მართვას AI აგენტებით.",
+      "action_type": "TRY",
+      "action": "დააინსტალირეთ google-cloud-developer პლაგინი თქვენს CLI აგენტში ან შეისწავლეთ Agent Plugins-ის მანიფესტის სტრუქტურა საკუთარი პლაგინის შესაქმნელად.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-gemini-interactions-api",
+      "title": "Google Gemini Interactions API (v1beta): Managed Agents და Gemini 3.8 Flash მოდელები",
+      "category": "LLM API / Developer Platform",
+      "primary_url": "https://ai.google.dev/api/interactions-api",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "Google-ის Gemini Interactions API ამატებს Managed Agent ენდპოინტებს (Deep Research, Antigravity) და Gemini 3.8 Flash/3.1 Pro მოდელებს ჩაშენებული Thinking Budget-ით.",
+      "what_happened": "Google-მა გამოაქვეყნა Gemini Interactions API-ს განახლება (`/v1beta/interactions`), სადაც ტრადიციულ Model ენდპოინტებთან ერთად დაემატა პირდაპირი Agent ენდპოინტები (`deep-research-pro-preview`, `antigravity-preview`). API ასევე მოიცავს ახალ მოდელებს: `gemini-3.8-flash` (ავტონომიური პროგრამული ინჟინერიისთვის) და `gemini-3.1-pro-preview`.",
+      "what_changed": "მანამდე დეველოპერს თავად უნდა აეგო ავტონომიური კვლევისა და ფაილური ოპერაციების აგენტური ციკლები (agent loops). ახლა Interactions API საშუალებას იძლევა მოთხოვნა გაიგზავნოს უშუალოდ მართვად აგენტზე (`agent: antigravity-preview`), რომელიც თავად ასრულებს მრავალნაბიჯიან მსჯელობას, ფაილურ ოპერაციებსა და ინსტრუმენტების გამოძახებას.",
+      "why_it_matters": "API პროვაიდერები იწყებენ არა მხოლოდ ნედლი მოდელების (Models), არამედ სრულად მართვადი აგენტების (Managed Agents) მიწოდებას, სადაც აგენტური ციკლი და ინსტრუმენტების მართვა Google-ის ინფრასტრუქტურაში ხდება.",
+      "key_takeaways": [
+        "Managed Agent Options: `deep-research-pro-preview` და `antigravity-preview` პირდაპირი API გამოძახებისთვის.",
+        "Gemini 3.8 Flash: სპეციალიზებული მოდელი Long-horizon software engineering და ავტონომიური აგენტებისთვის.",
+        "Thinking Levels & Summaries: `minimal`, `low`, `medium`, `high` აზროვნების ბიუჯეტის მართვისთვის."
+      ],
+      "technical_architecture": [
+        "Unified Endpoint: `/v1beta/interactions` იღებს ან `model` ან `agent` პარამეტრს.",
+        "Background Execution & Storage: `background: true` ასინქრონული ხანგრძლივი დავალებებისთვის და `store: true` სესიების შესანახად.",
+        "Transcription & Speech Config: ჩაშენებული ASR და Multi-speaker კონფიგურაციები ხმოვანი ურთიერთქმედებისთვის."
+      ],
+      "technical_details": [
+        "gemini-3.8-flash: ინჟინერიული და რთული საწარმოო სამუშაო პროცესებისთვის.",
+        "gemini-2.5-flash: 1M ტოკენიანი კონტექსტური ფანჯარა thinking budget-ის მხარდაჭერით.",
+        "JSON Schema Response Format: `response_format` პარამეტრი გარანტირებული სტრუქტურირებული JSON-ისთვის."
+      ],
+      "potential_impact": "ამცირებს სკაფოლდინგის (scaffolding) კოდის რაოდენობას რთული კვლევითი და კოდინგ აგენტების შექმნისას.",
+      "action_type": "TRY",
+      "action": "გამოიყენეთ Google AI Studio API key და გაგზავნეთ სატესტო Interactions API მოთხოვნა Python-ში Gemini 3.8 Flash მოდელზე.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-xconf-experiential-confidence",
+      "title": "XConf: აგენტების თავდაჯერებულობის შეფასება დაგროვილი გამოცდილებით (Experiential Confidence)",
+      "category": "AI Research / Agent Evaluation & Reliability",
+      "primary_url": "https://huggingface.co/papers/2609.17708",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 10,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "XConf კვლევა გვთავაზობს აგენტის თავდაჯერებულობის (confidence) შეფასებას წარსული შეცდომებისა და გაკვეთილების ისტორიაზე დაყრდნობით, single-pass დანახარჯით.",
+      "what_happened": "კემბრიჯის უნივერსიტეტის მკვლევრებმა წარადგინეს XConf (eXperiential Confidence) — ტრენინგისგან თავისუფალი (training-free), შავი ყუთის (black-box) მეთოდი LLM აგენტების თავდაჯერებულობის დასათვლელად. XConf ინახავს აგენტის წარსული ეპიზოდების ისტორიას (დავალება, რეფლექსია, შედეგი, გაკვეთილი) და ახალ დავალებაზე ამოიღებს მსგავს წარსულ შემთხვევებს, რათა აგენტმა საკუთარ ტრეკ-რეკორდზე დაყრდნობით შეაფასოს წარმატების ალბათობა.",
+      "what_changed": "არსებული მეთოდები (Self-Consistency, Token Probabilities) აფასებენ თავდაჯერებულობას მხოლოდ მიმდინარე ინფერენსზე (10+ სემპლის დაგენერირებით), რაც ძვირია და ვერ ამჩნევს სისტემატურ შეცდომებს. XConf იყენებს აგენტის ისტორიულ გამოცდილებას და 1/10 დანახარჯით აღწევს უკეთეს კალიბრაციას.",
+      "why_it_matters": "პროდაქშენ აგენტებისთვის კრიტიკულია იცოდნენ, როდის თქვან უარი (abstain) ან გადააბარონ დავალება ადამიანს. XConf-ის მიერ ყველაზე დაბალი თავდაჯერებულობის 10% ეპიზოდებზე უარის თქმა (selective prediction) ზრდის აგენტის წარმატებას 8.7 პროცენტული პუნქტით.",
+      "key_takeaways": [
+        "Recall & Reflect Pipeline: მსგავსი წარსული ეპიზოდების ამოღება და აგენტისთვის საკუთარი შეცდომების ჩვენება.",
+        "Low ECE & High AUROC: 23/24 შედარებაში აჯობა 10-sample Self-Consistency-ს 10-ჯერ ნაკლები ხარჯით.",
+        "Selective Prediction: აგენტს შეუძლია ავტომატურად გაჩერდეს ან მოითხოვოს დახმარება დაბალი თავდაჯერებულობისას."
+      ],
+      "technical_architecture": [
+        "Episodic Memory Bank: ინახავს `<Task, Reflection, Stated Confidence, Outcome, Lesson>` ჩანაწერებს.",
+        "Recall Stage: ამოიღებს ანალოგიურ დავალებებს, სადაც აგენტს ჰქონდა მსგავსი თავდაჯერებულობა და კითხულობს ისტორიულ Success Rate-ს.",
+        "Reflect Stage: პრომპტში უჩვენებს აგენტს ამ ჩანაწერს და სთხოვს დაასახელოს განმეორებადი Failure Mode."
+      ],
+      "technical_details": [
+        "არ მოითხოვს ტოკენების ლოგიტებზე (logits) წვდომას ან წონების განახლებას.",
+        "ტესტირებულია 9 ბენჩმარკზე (coding, reasoning, interactive agents) და 4 მოდელის ოჯახზე.",
+        "აგენტურ დავალებებზე მიღწეულია 8.7 პუნქტიანი ზრდა წარმატების მაჩვენებელში."
+      ],
+      "potential_impact": "აგენტური სისტემების სანდოობის ზრდა პროდაქშენში, განსაკუთრებით მაღალი პასუხისმგებლობის დავალებების შესრულებისას.",
+      "action_type": "LEARN",
+      "action": "წაიკითხეთ XConf-ის Recall & Reflect ლოგიკა და დანერგეთ მარტივი SQLite ეპიზოდური მეხსიერების ბანკი თქვენი აგენტის შეცდომების სათვალთვალოდ.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-dual-process-agent-amm-srm",
+      "title": "ორ-პროცესიანი აგენტების კოგნიტური გაფართოება: AMM მეხსიერება და SRM თვით-რეფლექსია",
+      "category": "AI Research / Agent Architecture & Memory",
+      "primary_url": "https://arxiv.org/abs/2609.19128",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 10,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "SwiftSage ორ-პროცესიანი აგენტის გაფართოებამ (AMM + SRM) დაამტკიცა, რომ Runtime Execution Control (SRM) არის მთავარი ბოთლისყელი ინტერაქტიულ გარემოში.",
+      "what_happened": "მკვლევრებმა წარადგინეს SwiftSage ორ-პროცესიანი (სწრაფი Action Proposer + ნელი Planner) აგენტის ორი კოგნიტური გაფართოება: Adaptive Memory Module (AMM) ეპიზოდური მეხსიერებისთვის და Self-Reflection Module (SRM) შესრულების დროს შეცდომების ვალიდაციისა და კორექტირებისთვის.",
+      "what_changed": "ტრადიციულად მიიჩნეოდა, რომ აგენტების მთავარი პრობლემა მეხსიერების ნაკლებობა იყო. ScienceWorld-ის ექსპერიმენტებმა აჩვენა, რომ SRM (Runtime Execution Validation) არის ყველაზე ძლიერი ცალკეული კომპონენტი, ხოლო ეპიზოდური მეხსიერება (AMM) ეფექტური ხდება მხოლოდ მას შემდეგ, რაც Runtime Loop სტაბილიზებულია.",
+      "why_it_matters": "აგენტური არქიტექტურის დაპროექტებისას პრიორიტეტი უნდა მიენიჭოს Real-time Step Validation-ს (ნაბიჯის ვალიდაციას შესრულებისას) და მხოლოდ ამის შემდეგ რთული ეპიზოდური მეხსიერების დამატებას.",
+      "key_takeaways": [
+        "Full System Score: სრულმა სისტემამ მიაღწია 64.62 საშუალო ქულას და 43.17% წარმატებას ScienceWorld-ზე.",
+        "Dominant Bottleneck: შესრულების დროის კონტროლი (Execution-time control) უფრო კრიტიკულია, ვიდრე მეხსიერების ამოღება.",
+        "Step Efficiency: წარმატებული ნაბიჯების ეფექტურობა შემცირდა 19.33 ნაბიჯამდე."
+      ],
+      "technical_architecture": [
+        "Adaptive Memory Module (AMM): Salience-gated ეპიზოდური შენახვა და ტრიგერზე დაფუძნებული ამოღება.",
+        "Self-Reflection Module (SRM): შეზღუდული დროის ვალიდაცია, რომელიც ამოწმებს მოქმედების ვალიდურობას და ახდენს კორექტირებას.",
+        "Dual-Process Substrate: სწრაფი (System 1) და ნელი (System 2) პროცესების კოორდინაცია."
+      ],
+      "technical_details": [
+        "ტესტირება ჩატარდა ScienceWorld ინტერაქტიულ გარემოში 4 კონფიგურაციაზე (Baseline, +AMM, +SRM, Full).",
+        "SRM უზრუნველყოფს შეცდომების აღმოჩენას უშუალოდ გარემოსთან ინტერაქციის ციკლში."
+      ],
+      "potential_impact": "ცვლის აგენტური ციკლების (Agent Loops) დაპროექტების პრიორიტეტებს — ვალიდაცია პირველ ადგილზე დგება.",
+      "action_type": "APPLY",
+      "action": "დაამატეთ თქვენი აგენტის Action Loop-ს SRM-ის ანალოგიური Step Validator, რომელიც ყოველი ინსტრუმენტის გამოძახების შემდეგ ამოწმებს შედეგის სისწორეს.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-affora-agent-ui-design-system",
+      "title": "Affora: ინტერფეისის დიზაინ-სისტემა Computer-Use AI აგენტებისთვის",
+      "category": "Human-Computer Interaction / Agent UI",
+      "primary_url": "https://arxiv.org/abs/2609.19125",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "Affora წარმოადგენს UI დიზაინ-სისტემას, რომელიც ვებ-ინტერფეისებს თანაბრად გასაგებს ხდის როგორც ადამიანებისთვის, ისე Computer-Use AI აგენტებისთვის.",
+      "what_happened": "წარმოდგენილია Affora — დიზაინ-სისტემა, რომელიც აუმჯობესებს ვებ-ინტერფეისების აღქმადობას Computer-Use აგენტებისთვის (Computer-use agents), ისე რომ ინარჩუნებს ვიზუალურ თავისუფლებასა და ადამიანისთვის ჩვეულ დიზაინს. Affora უზრუნველყოფს კომპონენტების რეალიზაციასა და ავტომატურ შემოწმებებს (executable checks).",
+      "what_changed": "დღევანდელი ვებ-საიტები შექმნილია მხოლოდ ადამიანის თვალისთვის, სადაც დომენური მდგომარეობა (state) და შესაძლო მოქმედებები (affordances) ხშირად გაფანტულია სკრიპტებში ან გაუგებარია DOM ხეში. Affora ქმნის ერთიან ინტერფეისის შრეს ცალკეული, მხოლოდ აგენტისთვის განკუთვნილი API-ების გარეშე.",
+      "why_it_matters": "თუ აშენებთ ვებ-აპლიკაციებს, რომლებსაც მომავალში AI აგენტებიც გამოიყენებენ, Affora-ს პრინციპების დაცვა მკვეთრად შეამცირებს აგენტის მიერ დაშვებულ შეცდომებსა და ინტერაქციის ხარჯს.",
+      "key_takeaways": [
+        "Shared Surface: ერთიანი ინტერფეისი ადამიანისთვის (UX) და აგენტისთვის (AX).",
+        "Visual Freedom: ინარჩუნებს დიზაინის თავისუფლებას სემანტიკური აფორდანსების დაცვით.",
+        "Executable Checks: ავტომატური ვალიდატორები, რომლებიც ამოწმებენ ინტერფეისის მზაობას აგენტისთვის."
+      ],
+      "technical_architecture": [
+        "Semantic Action Representation: DOM ელემენტებში მოქმედების მნიშვნელობისა და მდგომარეობის მკაფიო კოდირება.",
+        "Component Implementations: ხელახლა გამოყენებადი UI კომპონენტები ჩაშენებული აგენტური მეტამონაცემებით.",
+        "Interaction Cost Reduction: ამცირებს აგენტის მიერ საჭირო ნაბიჯებისა და DOM პარსინგის დანახარჯს."
+      ],
+      "technical_details": [
+        "20 გვერდიანი კვლევა 3 კონტროლირებადი ექსპერიმენტით.",
+        "მნიშვნელოვანი გაუმჯობესება აჩვენა იმ საიტებზე, სადაც მანამდე აგენტური წვდომის დეფიციტი არსებობდა."
+      ],
+      "potential_impact": "საფუძველს ჩაუყრის Agent-Friendly Web Standards-ს, სადაც საიტები ოპტიმიზებული იქნება AI აგენტების ნავიგაციისთვის.",
+      "action_type": "LEARN",
+      "action": "გადახედეთ Affora-ს დიზაინ პრინციპებს და დაამატეთ მკაფიო semantic ARIA/data-attributes თქვენს Frontend პროექტებში აგენტური ნავიგაციის გამასტიმულირებლად.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-flag-game-swarm-interpretability",
+      "title": "Flag Game: მექანისტიკური ინტერპრეტაბელურობის მოდელი მრავალ-აგენტიანი ჯგუფებისთვის (Swarm AI)",
+      "category": "AI Research / Multi-Agent Swarms",
+      "primary_url": "https://arxiv.org/abs/2609.19124",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 7,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "Flag Game კვლევა წარადგენს Social Circuit Attribution ტექნიკას, რომელიც ხსნის მრავალ-აგენტიან სისტემებში რწმენის კოლაფსისა და პოლარიზაციის შიდა მექანიზმებს.",
+      "what_happened": "მკვლევრებმა შექმნეს Flag Game — მოდელი მრავალ-აგენტიანი ჯგუფების (swarms) კოლექტიური რწმენის ფორმირების შესასწავლად. კვლევამ გამოავლინა, რომ პოპულაციის ზრდასთან ერთად მცირე ჯგუფების 'კოლექტიური რწმენის კოლაფსი' (belief collapse) დიდ ჯგუფებში გადადის 'კოლექტიურ პოლარიზაციაში' (polarization), რაც ამცირებს საერთო წარმადობას.",
+      "what_changed": "მულტი-აგენტური სისტემების (Multi-Agent Swarms) ანალიზი აქამდე ხდებოდა შავი ყუთის სახით. ამ შრომით პირველად დაინერგა Social Circuit Attribution და სტატისტიკური მექანიკის თეორია, რომელიც საშუალებას იძლევა განისაზღვროს, თუ რომელმა კონკრეტულმა აგენტმა ან ხედვამ მოახდინა გავლენა ჯგუფის გადაწყვეტილებაზე.",
+      "why_it_matters": "როდესაც აშენებთ მრავალ-აგენტიან სისტემებს (მაგ. Agent Councils ან Multi-Agent Code Reviewers), აგენტების რაოდენობის უბრალო ზრდა ხშირად აუარესებს შედეგს პოლარიზაციის გამო. კვლევა იძლევა არქიტექტურულ მოდელს ამის თავიდან ასაცილებლად.",
+      "key_takeaways": [
+        "Non-monotonic Scaling: პოპულაციის გაზრდა ყოველთვის არ ზრდის სიზუსტეს — დიდი ჯგუფები განიცდიან პოლარიზაციას.",
+        "Social Circuit Attribution: ტექნიკა იმის დასადგენად, თუ რომელი აგენტი განსაზღვრავს ჯგუფის დინამიკას.",
+        "Organizational Structure Effect: ორგანიზაციული სტრუქტურა და გუნდის მრავალფეროვნება ამცირებს პოლარიზაციის რისკს."
+      ],
+      "technical_architecture": [
+        "Private Crop & Social Evidence: თითოეული აგენტი ხედავს სამყაროს ნაწილს და ცვლის მოსაზრებებს მეზობლებთან.",
+        "Causal Interventions (Agent Patching): აგენტების მდგომარეობის შეცვლა კოლექტიური შედეგის დასაკვირვებლად.",
+        "Statistical Mechanical Phase Diagram: დიდი პოპულაციების ფაზური გადასვლის თეორიული მოდელირება."
+      ],
+      "technical_details": [
+        "21 გვერდიანი სტატია 10 ფიგურითა და ემპირიული ფაზური დიაგრამით.",
+        "დადასტურდა social-awareness prompting-ის ეფექტურობა პოლარიზაციის შესამცირებლად."
+      ],
+      "potential_impact": "დაახმარება ინჟინრებს სწორად დააპროექტონ მულტი-აგენტური იერარქიები და თავიდან აიცილონ ჰალუცინაციური კონსენსუსი.",
+      "action_type": "LEARN",
+      "action": "წაიკითხეთ Flag Game-ის სექცია Organizational Structure-ის შესახებ და გამოიყენეთ იერარქიული როლები მულტი-აგენტურ დებატებში.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-openai-rl-chip-design-pagi",
+      "title": "OpenAI აფართოებს RL აგენტებს ჩიპების დაპროექტებისთვის და pAGI ევალუაციის პლატფორმებს",
+      "category": "AI Infrastructure / Hardware & RL Agents",
+      "primary_url": "https://openai.com/careers/research-engineer-ai-for-chip-design-san-francisco",
+      "supporting_urls": [
+        "https://openai.com/careers/ai-infrastructure-engineer-pagi-san-francisco"
+      ],
+      "importance": 8,
+      "relevance": 8,
+      "actionability": 7,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "OpenAI აქტიურად აშენებს RL გარემოებებს ჩიპების ავტომატური დაპროექტებისთვის (RTL, EDA) და pAGI ავტომატიზებულ შეფასების ინფრასტრუქტურას.",
+      "what_happened": "OpenAI-ს ახალი ვაკანსიები და ტექნიკური მიმართულებები (AI for Chip Design & pAGI Infra) აჩვენებს, რომ კომპანია ქმნის Reinforcement Learning (RL) გარემოებებს ნახევარგამტარების ინჟინერიისთვის (RTL გენერაცია, დიზაინის ვერიფიკაცია, EDA ინსტრუმენტების მართვა) და ცენტრალიზებულ Grading/Evaluation სერვისებს pAGI მოდელების ტესტირებისთვის.",
+      "what_changed": "AI აგენტების გამოყენება გადადის უბრალო ვებ/კოდინგ ამოცანებიდან აპარატურულ დონეზე (Hardware-in-the-loop) და ნახევარგამტარების ფიზიკურ დაპროექტებაზე, სადაც სწორობა (correctness) და ფიზიკური შეზღუდვები (Power, Performance, Area) ავტომატურად მოწმდება RL გარემოში.",
+      "why_it_matters": "ეს მიუთითებს ტრენდზე: ფრონტიერ AI კომპანიები იყენებენ საკუთარ LLM/RL აგენტებს მომავალი თაობის AI ჩიპების დასაპროექტებლად, რაც ქმნის თვით-გაუმჯობესებად ციკლს (Self-improving Hardware Loop).",
+      "key_takeaways": [
+        "RL Environments for Hardware: RTL გენერაციის, Verilog-ისა და formal verification-ის ავტომატიზაცია RL აგენტებით.",
+        "Shared Grading Platforms: pAGI ინფრასტრუქტურა აგებს ავტომატიზებულ შეფასების პლატფორმებს GPU კლასტერებზე.",
+        "Tool-Using Agents in Chip Design: აგენტები მართავენ EDA ინსტრუმენტებს Power/Area ოპტიმიზაციისთვის."
+      ],
+      "technical_architecture": [
+        "RL Environments & Proxy Rewards: RTL შეცდომების აღმოჩენა და formal verification ავტომატური ჯილდოებით.",
+        "Distributed Grading Service: ავტომატიზებული Capacity Management და ჰელთ-მონიტორინგი ევალუაციისთვის."
+      ],
+      "technical_details": [
+        "მოითხოვს RTL, Verilog/SystemVerilog, EDA tools და formal verification ინტეგრაციას RL ციკლში.",
+        "pAGI Infra მოიცავს distributed training, inference grading platforms და compute scheduling-ს."
+      ],
+      "potential_impact": "დააჩქარებს AI-native ჩიპების შექმნის ციკლს და გაზრდის RL აგენტების როლს ტექნიკურ ინჟინერიაში.",
+      "action_type": "LEARN",
+      "action": "გაიანალიზეთ, თუ როგორ გამოიყენება RL Environment + Verification Tool პატერნი რთულ დომენებში და სცადეთ მსგავსი სტრუქტურის აგება Python-ში.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-scienceide-agent-environments",
+      "title": "ScienceIDE: სამეცნიერო კოდის ბაზის გარდაქმნა აგენტების შესასწავლ გარემოებად",
+      "category": "AI Research / Agent Environments & Training",
+      "primary_url": "https://huggingface.co/papers/2609.19134",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 8,
+      "actionability": 7,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "PhAI Labs-მა გამოაშვება ScienceIDE, რომელიც ღია სამეცნიერო კოდის რეპოზიტორიებს გარდაქმნის შესრულებად RL გარემოებად AI აგენტების გასაწვრთნელად.",
+      "what_happened": "PhAI Labs-ის მკვლევრებმა წარადგინეს ScienceIDE — ინფრასტრუქტურა, რომელიც სამეცნიერო პროგრამულ კოდს გარდაქმნის პროგრამირებად, შესრულებად გარემოებად AI აგენტებისთვის. ამ გარემოებების ტრაექტორიებზე დაყრდნობით გაიწვრთნა PhAI-IDE მოდელების ოჯახი (72B, 9B, 4B), რომლებმაც აჩვენეს მაღალი შედეგები კოდის შეკეთებასა და ზოგად მსჯელობაში.",
+      "what_changed": "მანამდე აგენტების წვრთნისთვის გამოიყენებოდა ძირითადად მარტივი სკრიპტები ან სინთეზური ამოცანები. ScienceIDE იყენებს რეალურ, ათწლეულების განმავლობაში შექმნილ სამეცნიერო კოდის ბაზებს, სადაც მიღებული გამოცდილება დადებითად გადადის (positive transfer) ზოგად კოდინგსა და მსჯელობაზე.",
+      "why_it_matters": "აჩვენებს, თუ როგორ შეიძლება რეალური კოდის რეპოზიტორიებისა და Verifier-ების გამოყენება ავტონომიური აგენტების Synthetic Data / RL წვრთნისთვის.",
+      "key_takeaways": [
+        "Executable Environments: რეალური კოდის ბაზები ხდება RL და SFT წვრთნის გარემო.",
+        "PhAI-IDE Models: 4B, 9B და 72B ღია მოდელები, გაწვრთნილი ვერიფიცირებულ ტრაექტორიებზე.",
+        "Positive Transfer: სამეცნიერო კოდზე სწავლა ზრდის აგენტის ზოგად კოდინგსა და მსჯელობის უნარს."
+      ],
+      "technical_architecture": [
+        "Acceptance Criteria Integration: ექსპერტულად განსაზღვრული კრიტერიუმები აგენტის ნაბიჯების შესამოწმებლად.",
+        "Task Generation & Execution: ავტომატური დავალებების გენერაცია და მათი შესრულება სენდბოქსში.",
+        "Trajectory Verification: მხოლოდ წარმატებული, ვერიფიცირებული ტრაექტორიების გამოყენება SFT/RL-ისთვის."
+      ],
+      "technical_details": [
+        "კოდი ხელმისაწვდომია: `github.com/aitofound/ScienceIDE`.",
+        "მოდელები გამოქვეყნებულია HuggingFace-ზე: `AItonomy/scienceide-model-series`."
+      ],
+      "potential_impact": "გახსნის გზას სამეცნიერო სფეროში ავტონომიური კვლევითი აგენტების დასანერგად.",
+      "action_type": "TRACK",
+      "action": "ადევნეთ თვალი ScienceIDE GitHub რეპოზიტორიას და შეამოწმეთ, თუ როგორ იყენებენ ისინი Docker/Sandbox გარემოებს კოდის ვერიფიკაციისთვის.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-sp3o-ppo-critic-learning",
+      "title": "SP3O: PPO Value Flattening პრობლემის გადაჭრა სფარსული სუპერვიზიით LLM RL წვრთნაში",
+      "category": "AI Research / Reinforcement Learning",
+      "primary_url": "https://huggingface.co/papers/2609.18708",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 8,
+      "actionability": 7,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "SP3O აჩვენებს, რომ PPO-ში Critic-ის Value Loss-ის მხოლოდ რამდენიმე დაშორებულ მდგომარეობაზე გამოყენება ხსნის Value Flattening შეცდომას და ზრდის RL-ის ეფექტურობას.",
+      "what_happened": "Shanghai AI Laboratory-ს მკვლევრებმა აღმოაჩინეს კრიტიკული შეცდომის რეჟიმი PPO-ს კრიტიკოსში (Critic Network), რომელსაც უწოდეს 'Value Flattening': რეალური მდგომარეობის მნიშვნელობები მკვეთრად იცვლება, ხოლო Critic-ის პროგნოზები ბრტყელი რჩება. მათ წარადგინეს Sparse PPO (SP3O), სადაც Value Loss გამოიყენება მხოლოდ 3 კარგად დაშორებულ მდგომარეობაზე თითოეულ პასუხში.",
+      "what_changed": "ტრადიციულ PPO-ში Critic Loss ითვლება პასუხის ყოველ ტოკენზე/მდგომარეობაზე, რაც ქმნის დროითად კორელირებულ რredundant განახლებებს და აფუჭებს Value ფუნქციას. SP3O-ს სფარსული supervision ამცირებს ამ ხმაურს და ზრდის პოლიტიკის ხარისხს.",
+      "why_it_matters": "მნიშვნელოვანია LLM Fine-tuning-ისა და RLHF/RLAIF ინჟინრებისთვის. აჩვენებს, რომ ნაკლები, पण უფრო ხარისხიანი სუპერვიზია კრიტიკოსის წვრთნისას უკეთეს შედეგს იძლევა.",
+      "key_takeaways": [
+        "Value Flattening Failure: PPO Critic-ის მიერ რეალური ფასეულობების ცვლილების ვერ-ასახვა.",
+        "Sparse Supervision: მხოლოდ 3 მდგომარეობის სუპერვიზია თითო პასუხზე სრულად ხსნის პრობლემას.",
+        "Qwen3 Performance: სტაბილური გაუმჯობესება Qwen3-Base მოდელებზე ყველა მასშტაბში."
+      ],
+      "technical_architecture": [
+        "Sparse Value Loss: Value loss-ის შეზღუდვა temporally correlated states-ის გამოტოვებით.",
+        "Implicit Variance Penalty Mitigation: Critic loss-ის ვარიაციული პენალტის შემცირება."
+      ],
+      "technical_details": [
+        "კოდი ხელმისაწვდომია: `github.com/Dodojordi/SP3O`.",
+        "პროექტი: `dodojordi.github.io/SP3O/`."
+      ],
+      "potential_impact": "გაამარტივებს და გახდის უფრო ეფექტურს LLM-ების PPO განმტკიცებით სწავლებას.",
+      "action_type": "LEARN",
+      "action": "გადახედეთ SP3O-ს GitHub რეპოზიტორიას და გაეცანით, თუ როგორ ხდება PPO Critic Loss-ის ოპტიმიზაცია ლოკალურ RL პაიპლაინებში.",
+      "evidence": []
     }
   ],
   "topics": {
@@ -1093,7 +1457,17 @@
     "Cloud Infrastructure & Agent RAG": 1,
     "AI Research / RAG & Knowledge Graphs": 1,
     "Agent Skills & Security Tools": 1,
-    "AI Governance & Capability Scaling": 1
+    "AI Governance & Capability Scaling": 1,
+    "LLM API / Voice Agents": 1,
+    "Developer Tools / Agent Plugins & MCP": 1,
+    "LLM API / Developer Platform": 1,
+    "AI Research / Agent Evaluation & Reliability": 1,
+    "AI Research / Agent Architecture & Memory": 1,
+    "Human-Computer Interaction / Agent UI": 1,
+    "AI Research / Multi-Agent Swarms": 1,
+    "AI Infrastructure / Hardware & RL Agents": 1,
+    "AI Research / Agent Environments & Training": 1,
+    "AI Research / Reinforcement Learning": 1
   },
   "reports": [
     {
@@ -2110,13 +2484,383 @@
         "Knowledge Graph-ებისა და სტრუქტურირებული სქემების (ShEx, VoID, JSON Schema) RAG კონტექსტში ჩასმა უბრალო ვექტორული Chunk-ების ჩასანაცვლებლად.",
         "ხანგრძლივი აგენტური ციკლების (Long-running Agent Workflows) მხარდაჭერა სერვერლეს ინფრასტრუქტურაში (AWS Lambda 90-min timeout)."
       ]
+    },
+    {
+      "date": "2026-09-17",
+      "summary": "დღევანდელი ანგარიში ფოკუსირებულია AI აგენტების არქიტექტურის, ხმოვანი აგენტების ინტეგრაციისა და აგენტური ინსტრუმენტების სტანდარტიზაციის ახალ ეტაპზე. OpenAI-მ API-ში ჩააშენა GPT-Live-1 full-duplex ხმოვანი მოდელი, რომელიც ინტერაქციის დროს პირდაპირ უკავშირდება backend ტექსტურ მოდელებსა და ინსტრუმენტებს (tools). Google-მა გამოაქვეყნა Agent Plugins ღია სტანდარტი და Google Cloud Developer პლაგინი AI კოდინგ აგენტებისთვის. აკადემიური კვლევები გვთავაზობენ XConf-ს (გამოცდილებაზე დაფუძნებული თავდაჯერებულობის შეფასება), SwiftSage-ის კოგნიტურ გაფართოებებს (SRM/AMM) და Affora-ს (ინტერფეისის დიზაინ-სისტემა Computer-Use აგენტებისთვის).",
+      "events": [
+        {
+          "event_id": "evt-gpt-live-1-api",
+          "title": "OpenAI-მ GPT-Live-1 ხმოვანი მოდელი API-ში ჩააშენა — Full-Duplex არქიტექტურა და Tool Calling დელეგირება",
+          "category": "LLM API / Voice Agents",
+          "primary_url": "https://openai.com/index/introducing-gpt-live-1-in-the-api",
+          "supporting_urls": [],
+          "importance": 10,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "OpenAI-მ API-ზე ხელმისაწვდომი გახადა GPT-Live-1, რომელიც აერთიანებს მოსმენასა და ლაპარაკს ერთ მოდელში და იძლევა სიღრმისეული მსჯელობისა და Tool Calling-ის დელეგირებას backend მოდელებზე.",
+          "what_happened": "OpenAI-მ წარადგინა GPT-Live-1 API-ში, რომელიც დეველოპერებს აძლევს საშუალებას ააგონ ბუნებრივი, full-duplex ხმოვანი აგენტები. მოდელი ერთდროულად უსმენს და ლაპარაკობს, ახდენს შეწყვეტების (interruptions) გლუვ დამუშავებას და შეუძლია რთული მსჯელობა თუ ინსტრუმენტების გამოძახება (tool calling) გადააბაროს backend მოდელებს, როგორიცაა GPT-6 Astra ან Terra.",
+          "what_changed": "მანამდე ხმოვანი აგენტები იწყობოდა 3 ცალკეული შრისგან: Speech-to-Text (STT) -> LLM -> Text-to-Speech (TTS). ეს Cascaded არქიტექტურა ქმნიდა მაღალ Latency-ს, კარგავდა საუბრის ინტონაციას და რთულად ამუშავებდა შეწყვეტებს. GPT-Live-1 ამცირებს კოდის ბაზას 80%-ით და უზრუნველყოფს უშუალო აუდიო-აუდიო მსჯელობას.",
+          "why_it_matters": "ხმოვანი აგენტების დაპროექტების მიდგომა ფუნდამენტურად იცვლება. აგენტი აღარ არის უბრალოდ ტექსტური LLM-ის გარშემო აწყობილი აუდიო გარსი: GPT-Live-1 მუშაობს როგორც სწრაფი ხმოვანი ფრონტენდი, ხოლო backend-ში იძახებს რთულ ინსტრუმენტებსა და ტექსტურ მოდელებს, სანამ მომხმარებელთან საუბარი შეუფერხებლად მიმდინარეობს.",
+          "key_takeaways": [
+            "Full-Duplex არქიტექტურა: ერთდროული მოსმენა/ლაპარაკი და შეწყვეტის (interruption) 80%-იანი შემცირება.",
+            "Tool Calling Delegation: ხმოვან აგენტს შეუძლია backend ტექსტურ მოდელებს დაავალოს ინსტრუმენტების გამოძახება და მსჯელობა.",
+            "Tau3 და Full Duplex Bench ლიდერი: პირველი ადგილი სატელეფონო და სერვისულ აგენტურ დავალებებში."
+          ],
+          "technical_architecture": [
+            "Single Multi-modal Network: აუდიო შემოსვლა და გამოსვლა მუშავდება ერთიანი მოდელის მიერ, Chained STT-LLM-TTS-ის გარეშე.",
+            "Asynchronous Backend Delegation: GPT-Live-1 ინარჩუნებს საუბრის რიტმს, სანამ ფონურ რეჟიმში Astra/Terra ასრულებს Tool Calling-ს.",
+            "Native ASR Transcripts & Turn Detection: ჩაშენებული ტრანსკრიფცია, ტონალობის მართვა System Prompt-ით და ხმაურის ფილტრაცია."
+          ],
+          "technical_details": [
+            "30 პროცენტული პუნქტით გაუმჯობესებული შედეგი Full Duplex Bench-ზე GPT-Realtime-2.1-თან შედარებით.",
+            "Tau3 ბენჩმარკზე #1 ადგილი GPT-6 Astra (medium reasoning) backend-თან წყვილში.",
+            "მხარდაჭერილია Telephony integration (SIP/PSTN), Alphanumeric understanding და Keyword biasing."
+          ],
+          "potential_impact": "გახსნის ახალ შესაძლებლობებს ავტონომიური სატელეფონო აგენტების, ენის შესასწავლი რეალურ დროში ტუტორებისა და ხმოვანი კლიენტების ასაშენებლად.",
+          "action_type": "TRY",
+          "action": "გამოსცადეთ GPT-Live-1-ის API დემო და შექმენით მცირე Python სკრიპტი, რომელიც ხმოვანი შეყვანისას ასინქრონულად იძახებს SQLite/API tool-ს.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-gcp-developer-agent-plugin",
+          "title": "Google Cloud Developer Plugin და Agent Plugins ღია სტანდარტი AI კოდინგ აგენტებისთვის",
+          "category": "Developer Tools / Agent Plugins & MCP",
+          "primary_url": "https://cloud.google.com/blog/topics/developers-practitioners/introducing-the-google-cloud-developer-plugin-for-ai-coding-agents",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 9,
+          "confidence": 95,
+          "tldr": "Google-მა გამოაქვეყნა Agent Plugins ღია, ვენდორ-ნეიტრალური სტანდარტი და google-cloud-developer პლაგინი, რომელიც აერთიანებს Agent Skills-სა და MCP სერვერებს ერთიან პაკეტში.",
+          "what_happened": "Google Cloud-მა წარადგინა `google-cloud-developer` პლაგინი AI კოდინგ აგენტებისთვის (Claude Code, Antigravity CLI, Codex CLI). პლაგინი აგებულია Agent Plugins ღია, ვენდორ-ნეიტრალურ სტანდარტზე, რომელიც ერთ პაკეტში აერთიანებს Agent Skills-ს, დოკუმენტაციის grounding-ს (Developer Knowledge MCP Server) და gcloud CLI-ის უსაფრთხო მართვის წესებს.",
+          "what_changed": "მანამდე დეველოპერებს უწევდათ ათეულობით ცალკეული Skill-ისა და ინდივიდუალური MCP სერვერის ხელით მართვა და დაკონფიგურირება თითოეული AI ასისტენტისთვის (Claude, Codex, Antigravity). Agent Plugins სტანდარტი ჭრის ამ Tool Coupling პრობლემას ერთიანი დირექტორიისა და Manifest ფაილის მეშვეობით.",
+          "why_it_matters": "აგენტური ინსტრუმენტები გადადიან მოწესრიგებულ პაკეტების მენეჯერებზე (Plugin Marketplaces). ეს აადვილებს რთული ღრუბლოვანი და დეველოპერული ინსტრუმენტების უსაფრთხო ინტეგრაციას აგენტებში კონტექსტური ფანჯრის ზედმეტი გადატვირთვის გარეშე.",
+          "key_takeaways": [
+            "Agent Plugins Standard: ღია, ვენდორ-ნეიტრალური ფორმატი Agent Skills-ისა და MCP სერვერების შესაფუთად.",
+            "Google Cloud Developer Plugin: უზრუნველყოფს ავტორიზაციას, პროექტების ბუტსტრაპინგს და gcloud CLI guardrails-ს.",
+            "Developer Knowledge MCP Server: ოფიციალური დოკუმენტაციის მიწოდება რეალურ დროში."
+          ],
+          "technical_architecture": [
+            "Unified Manifest Structure: აერთიანებს skill დირექტორიებს, MCP სერვერის კონფიგურაციებსა და გარემოს შემოწმების წესებს.",
+            "Silent Environment Awareness: აგენტი ფონურ რეჟიმში ამოწმებს CLI ინსტრუმენტებსა და IAM პოლიტიკებს.",
+            "Cross-Harness Interoperability: თავსებადია Antigravity CLI (`agy plugin`), Claude Code (`claude plugin`) და Codex CLI-სთან."
+          ],
+          "technical_details": [
+            "ინსტალაციის ბრძანება Claude Code-ისთვის: `claude plugin marketplace add google/skills && claude plugin install google-cloud-developer@google-plugins`.",
+            "გამოყენებულია Agent Skills დირექტორიის იერარქიული სტრუქტურა და JSON schema მანიფესტი."
+          ],
+          "potential_impact": "სტანდარტიზაციას გაუწევს აგენტების ინსტრუმენტების (Skills + MCP) გავრცელებას და გაამარტივებს რთული Cloud ინფრასტრუქტურის მართვას AI აგენტებით.",
+          "action_type": "TRY",
+          "action": "დააინსტალირეთ google-cloud-developer პლაგინი თქვენს CLI აგენტში ან შეისწავლეთ Agent Plugins-ის მანიფესტის სტრუქტურა საკუთარი პლაგინის შესაქმნელად.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-gemini-interactions-api",
+          "title": "Google Gemini Interactions API (v1beta): Managed Agents და Gemini 3.8 Flash მოდელები",
+          "category": "LLM API / Developer Platform",
+          "primary_url": "https://ai.google.dev/api/interactions-api",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "Google-ის Gemini Interactions API ამატებს Managed Agent ენდპოინტებს (Deep Research, Antigravity) და Gemini 3.8 Flash/3.1 Pro მოდელებს ჩაშენებული Thinking Budget-ით.",
+          "what_happened": "Google-მა გამოაქვეყნა Gemini Interactions API-ს განახლება (`/v1beta/interactions`), სადაც ტრადიციულ Model ენდპოინტებთან ერთად დაემატა პირდაპირი Agent ენდპოინტები (`deep-research-pro-preview`, `antigravity-preview`). API ასევე მოიცავს ახალ მოდელებს: `gemini-3.8-flash` (ავტონომიური პროგრამული ინჟინერიისთვის) და `gemini-3.1-pro-preview`.",
+          "what_changed": "მანამდე დეველოპერს თავად უნდა აეგო ავტონომიური კვლევისა და ფაილური ოპერაციების აგენტური ციკლები (agent loops). ახლა Interactions API საშუალებას იძლევა მოთხოვნა გაიგზავნოს უშუალოდ მართვად აგენტზე (`agent: antigravity-preview`), რომელიც თავად ასრულებს მრავალნაბიჯიან მსჯელობას, ფაილურ ოპერაციებსა და ინსტრუმენტების გამოძახებას.",
+          "why_it_matters": "API პროვაიდერები იწყებენ არა მხოლოდ ნედლი მოდელების (Models), არამედ სრულად მართვადი აგენტების (Managed Agents) მიწოდებას, სადაც აგენტური ციკლი და ინსტრუმენტების მართვა Google-ის ინფრასტრუქტურაში ხდება.",
+          "key_takeaways": [
+            "Managed Agent Options: `deep-research-pro-preview` და `antigravity-preview` პირდაპირი API გამოძახებისთვის.",
+            "Gemini 3.8 Flash: სპეციალიზებული მოდელი Long-horizon software engineering და ავტონომიური აგენტებისთვის.",
+            "Thinking Levels & Summaries: `minimal`, `low`, `medium`, `high` აზროვნების ბიუჯეტის მართვისთვის."
+          ],
+          "technical_architecture": [
+            "Unified Endpoint: `/v1beta/interactions` იღებს ან `model` ან `agent` პარამეტრს.",
+            "Background Execution & Storage: `background: true` ასინქრონული ხანგრძლივი დავალებებისთვის და `store: true` სესიების შესანახად.",
+            "Transcription & Speech Config: ჩაშენებული ASR და Multi-speaker კონფიგურაციები ხმოვანი ურთიერთქმედებისთვის."
+          ],
+          "technical_details": [
+            "gemini-3.8-flash: ინჟინერიული და რთული საწარმოო სამუშაო პროცესებისთვის.",
+            "gemini-2.5-flash: 1M ტოკენიანი კონტექსტური ფანჯარა thinking budget-ის მხარდაჭერით.",
+            "JSON Schema Response Format: `response_format` პარამეტრი გარანტირებული სტრუქტურირებული JSON-ისთვის."
+          ],
+          "potential_impact": "ამცირებს სკაფოლდინგის (scaffolding) კოდის რაოდენობას რთული კვლევითი და კოდინგ აგენტების შექმნისას.",
+          "action_type": "TRY",
+          "action": "გამოიყენეთ Google AI Studio API key და გაგზავნეთ სატესტო Interactions API მოთხოვნა Python-ში Gemini 3.8 Flash მოდელზე.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-xconf-experiential-confidence",
+          "title": "XConf: აგენტების თავდაჯერებულობის შეფასება დაგროვილი გამოცდილებით (Experiential Confidence)",
+          "category": "AI Research / Agent Evaluation & Reliability",
+          "primary_url": "https://huggingface.co/papers/2609.17708",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 10,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "XConf კვლევა გვთავაზობს აგენტის თავდაჯერებულობის (confidence) შეფასებას წარსული შეცდომებისა და გაკვეთილების ისტორიაზე დაყრდნობით, single-pass დანახარჯით.",
+          "what_happened": "კემბრიჯის უნივერსიტეტის მკვლევრებმა წარადგინეს XConf (eXperiential Confidence) — ტრენინგისგან თავისუფალი (training-free), შავი ყუთის (black-box) მეთოდი LLM აგენტების თავდაჯერებულობის დასათვლელად. XConf ინახავს აგენტის წარსული ეპიზოდების ისტორიას (დავალება, რეფლექსია, შედეგი, გაკვეთილი) და ახალ დავალებაზე ამოიღებს მსგავს წარსულ შემთხვევებს, რათა აგენტმა საკუთარ ტრეკ-რეკორდზე დაყრდნობით შეაფასოს წარმატების ალბათობა.",
+          "what_changed": "არსებული მეთოდები (Self-Consistency, Token Probabilities) აფასებენ თავდაჯერებულობას მხოლოდ მიმდინარე ინფერენსზე (10+ სემპლის დაგენერირებით), რაც ძვირია და ვერ ამჩნევს სისტემატურ შეცდომებს. XConf იყენებს აგენტის ისტორიულ გამოცდილებას და 1/10 დანახარჯით აღწევს უკეთეს კალიბრაციას.",
+          "why_it_matters": "პროდაქშენ აგენტებისთვის კრიტიკულია იცოდნენ, როდის თქვან უარი (abstain) ან გადააბარონ დავალება ადამიანს. XConf-ის მიერ ყველაზე დაბალი თავდაჯერებულობის 10% ეპიზოდებზე უარის თქმა (selective prediction) ზრდის აგენტის წარმატებას 8.7 პროცენტული პუნქტით.",
+          "key_takeaways": [
+            "Recall & Reflect Pipeline: მსგავსი წარსული ეპიზოდების ამოღება და აგენტისთვის საკუთარი შეცდომების ჩვენება.",
+            "Low ECE & High AUROC: 23/24 შედარებაში აჯობა 10-sample Self-Consistency-ს 10-ჯერ ნაკლები ხარჯით.",
+            "Selective Prediction: აგენტს შეუძლია ავტომატურად გაჩერდეს ან მოითხოვოს დახმარება დაბალი თავდაჯერებულობისას."
+          ],
+          "technical_architecture": [
+            "Episodic Memory Bank: ინახავს `<Task, Reflection, Stated Confidence, Outcome, Lesson>` ჩანაწერებს.",
+            "Recall Stage: ამოიღებს ანალოგიურ დავალებებს, სადაც აგენტს ჰქონდა მსგავსი თავდაჯერებულობა და კითხულობს ისტორიულ Success Rate-ს.",
+            "Reflect Stage: პრომპტში უჩვენებს აგენტს ამ ჩანაწერს და სთხოვს დაასახელოს განმეორებადი Failure Mode."
+          ],
+          "technical_details": [
+            "არ მოითხოვს ტოკენების ლოგიტებზე (logits) წვდომას ან წონების განახლებას.",
+            "ტესტირებულია 9 ბენჩმარკზე (coding, reasoning, interactive agents) და 4 მოდელის ოჯახზე.",
+            "აგენტურ დავალებებზე მიღწეულია 8.7 პუნქტიანი ზრდა წარმატების მაჩვენებელში."
+          ],
+          "potential_impact": "აგენტური სისტემების სანდოობის ზრდა პროდაქშენში, განსაკუთრებით მაღალი პასუხისმგებლობის დავალებების შესრულებისას.",
+          "action_type": "LEARN",
+          "action": "წაიკითხეთ XConf-ის Recall & Reflect ლოგიკა და დანერგეთ მარტივი SQLite ეპიზოდური მეხსიერების ბანკი თქვენი აგენტის შეცდომების სათვალთვალოდ.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-dual-process-agent-amm-srm",
+          "title": "ორ-პროცესიანი აგენტების კოგნიტური გაფართოება: AMM მეხსიერება და SRM თვით-რეფლექსია",
+          "category": "AI Research / Agent Architecture & Memory",
+          "primary_url": "https://arxiv.org/abs/2609.19128",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 10,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "SwiftSage ორ-პროცესიანი აგენტის გაფართოებამ (AMM + SRM) დაამტკიცა, რომ Runtime Execution Control (SRM) არის მთავარი ბოთლისყელი ინტერაქტიულ გარემოში.",
+          "what_happened": "მკვლევრებმა წარადგინეს SwiftSage ორ-პროცესიანი (სწრაფი Action Proposer + ნელი Planner) აგენტის ორი კოგნიტური გაფართოება: Adaptive Memory Module (AMM) ეპიზოდური მეხსიერებისთვის და Self-Reflection Module (SRM) შესრულების დროს შეცდომების ვალიდაციისა და კორექტირებისთვის.",
+          "what_changed": "ტრადიციულად მიიჩნეოდა, რომ აგენტების მთავარი პრობლემა მეხსიერების ნაკლებობა იყო. ScienceWorld-ის ექსპერიმენტებმა აჩვენა, რომ SRM (Runtime Execution Validation) არის ყველაზე ძლიერი ცალკეული კომპონენტი, ხოლო ეპიზოდური მეხსიერება (AMM) ეფექტური ხდება მხოლოდ მას შემდეგ, რაც Runtime Loop სტაბილიზებულია.",
+          "why_it_matters": "აგენტური არქიტექტურის დაპროექტებისას პრიორიტეტი უნდა მიენიჭოს Real-time Step Validation-ს (ნაბიჯის ვალიდაციას შესრულებისას) და მხოლოდ ამის შემდეგ რთული ეპიზოდური მეხსიერების დამატებას.",
+          "key_takeaways": [
+            "Full System Score: სრულმა სისტემამ მიაღწია 64.62 საშუალო ქულას და 43.17% წარმატებას ScienceWorld-ზე.",
+            "Dominant Bottleneck: შესრულების დროის კონტროლი (Execution-time control) უფრო კრიტიკულია, ვიდრე მეხსიერების ამოღება.",
+            "Step Efficiency: წარმატებული ნაბიჯების ეფექტურობა შემცირდა 19.33 ნაბიჯამდე."
+          ],
+          "technical_architecture": [
+            "Adaptive Memory Module (AMM): Salience-gated ეპიზოდური შენახვა და ტრიგერზე დაფუძნებული ამოღება.",
+            "Self-Reflection Module (SRM): შეზღუდული დროის ვალიდაცია, რომელიც ამოწმებს მოქმედების ვალიდურობას და ახდენს კორექტირებას.",
+            "Dual-Process Substrate: სწრაფი (System 1) და ნელი (System 2) პროცესების კოორდინაცია."
+          ],
+          "technical_details": [
+            "ტესტირება ჩატარდა ScienceWorld ინტერაქტიულ გარემოში 4 კონფიგურაციაზე (Baseline, +AMM, +SRM, Full).",
+            "SRM უზრუნველყოფს შეცდომების აღმოჩენას უშუალოდ გარემოსთან ინტერაქციის ციკლში."
+          ],
+          "potential_impact": "ცვლის აგენტური ციკლების (Agent Loops) დაპროექტების პრიორიტეტებს — ვალიდაცია პირველ ადგილზე დგება.",
+          "action_type": "APPLY",
+          "action": "დაამატეთ თქვენი აგენტის Action Loop-ს SRM-ის ანალოგიური Step Validator, რომელიც ყოველი ინსტრუმენტის გამოძახების შემდეგ ამოწმებს შედეგის სისწორეს.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-affora-agent-ui-design-system",
+          "title": "Affora: ინტერფეისის დიზაინ-სისტემა Computer-Use AI აგენტებისთვის",
+          "category": "Human-Computer Interaction / Agent UI",
+          "primary_url": "https://arxiv.org/abs/2609.19125",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "Affora წარმოადგენს UI დიზაინ-სისტემას, რომელიც ვებ-ინტერფეისებს თანაბრად გასაგებს ხდის როგორც ადამიანებისთვის, ისე Computer-Use AI აგენტებისთვის.",
+          "what_happened": "წარმოდგენილია Affora — დიზაინ-სისტემა, რომელიც აუმჯობესებს ვებ-ინტერფეისების აღქმადობას Computer-Use აგენტებისთვის (Computer-use agents), ისე რომ ინარჩუნებს ვიზუალურ თავისუფლებასა და ადამიანისთვის ჩვეულ დიზაინს. Affora უზრუნველყოფს კომპონენტების რეალიზაციასა და ავტომატურ შემოწმებებს (executable checks).",
+          "what_changed": "დღევანდელი ვებ-საიტები შექმნილია მხოლოდ ადამიანის თვალისთვის, სადაც დომენური მდგომარეობა (state) და შესაძლო მოქმედებები (affordances) ხშირად გაფანტულია სკრიპტებში ან გაუგებარია DOM ხეში. Affora ქმნის ერთიან ინტერფეისის შრეს ცალკეული, მხოლოდ აგენტისთვის განკუთვნილი API-ების გარეშე.",
+          "why_it_matters": "თუ აშენებთ ვებ-აპლიკაციებს, რომლებსაც მომავალში AI აგენტებიც გამოიყენებენ, Affora-ს პრინციპების დაცვა მკვეთრად შეამცირებს აგენტის მიერ დაშვებულ შეცდომებსა და ინტერაქციის ხარჯს.",
+          "key_takeaways": [
+            "Shared Surface: ერთიანი ინტერფეისი ადამიანისთვის (UX) და აგენტისთვის (AX).",
+            "Visual Freedom: ინარჩუნებს დიზაინის თავისუფლებას სემანტიკური აფორდანსების დაცვით.",
+            "Executable Checks: ავტომატური ვალიდატორები, რომლებიც ამოწმებენ ინტერფეისის მზაობას აგენტისთვის."
+          ],
+          "technical_architecture": [
+            "Semantic Action Representation: DOM ელემენტებში მოქმედების მნიშვნელობისა და მდგომარეობის მკაფიო კოდირება.",
+            "Component Implementations: ხელახლა გამოყენებადი UI კომპონენტები ჩაშენებული აგენტური მეტამონაცემებით.",
+            "Interaction Cost Reduction: ამცირებს აგენტის მიერ საჭირო ნაბიჯებისა და DOM პარსინგის დანახარჯს."
+          ],
+          "technical_details": [
+            "20 გვერდიანი კვლევა 3 კონტროლირებადი ექსპერიმენტით.",
+            "მნიშვნელოვანი გაუმჯობესება აჩვენა იმ საიტებზე, სადაც მანამდე აგენტური წვდომის დეფიციტი არსებობდა."
+          ],
+          "potential_impact": "საფუძველს ჩაუყრის Agent-Friendly Web Standards-ს, სადაც საიტები ოპტიმიზებული იქნება AI აგენტების ნავიგაციისთვის.",
+          "action_type": "LEARN",
+          "action": "გადახედეთ Affora-ს დიზაინ პრინციპებს და დაამატეთ მკაფიო semantic ARIA/data-attributes თქვენს Frontend პროექტებში აგენტური ნავიგაციის გამასტიმულირებლად.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-flag-game-swarm-interpretability",
+          "title": "Flag Game: მექანისტიკური ინტერპრეტაბელურობის მოდელი მრავალ-აგენტიანი ჯგუფებისთვის (Swarm AI)",
+          "category": "AI Research / Multi-Agent Swarms",
+          "primary_url": "https://arxiv.org/abs/2609.19124",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 7,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "Flag Game კვლევა წარადგენს Social Circuit Attribution ტექნიკას, რომელიც ხსნის მრავალ-აგენტიან სისტემებში რწმენის კოლაფსისა და პოლარიზაციის შიდა მექანიზმებს.",
+          "what_happened": "მკვლევრებმა შექმნეს Flag Game — მოდელი მრავალ-აგენტიანი ჯგუფების (swarms) კოლექტიური რწმენის ფორმირების შესასწავლად. კვლევამ გამოავლინა, რომ პოპულაციის ზრდასთან ერთად მცირე ჯგუფების 'კოლექტიური რწმენის კოლაფსი' (belief collapse) დიდ ჯგუფებში გადადის 'კოლექტიურ პოლარიზაციაში' (polarization), რაც ამცირებს საერთო წარმადობას.",
+          "what_changed": "მულტი-აგენტური სისტემების (Multi-Agent Swarms) ანალიზი აქამდე ხდებოდა შავი ყუთის სახით. ამ შრომით პირველად დაინერგა Social Circuit Attribution და სტატისტიკური მექანიკის თეორია, რომელიც საშუალებას იძლევა განისაზღვროს, თუ რომელმა კონკრეტულმა აგენტმა ან ხედვამ მოახდინა გავლენა ჯგუფის გადაწყვეტილებაზე.",
+          "why_it_matters": "როდესაც აშენებთ მრავალ-აგენტიან სისტემებს (მაგ. Agent Councils ან Multi-Agent Code Reviewers), აგენტების რაოდენობის უბრალო ზრდა ხშირად აუარესებს შედეგს პოლარიზაციის გამო. კვლევა იძლევა არქიტექტურულ მოდელს ამის თავიდან ასაცილებლად.",
+          "key_takeaways": [
+            "Non-monotonic Scaling: პოპულაციის გაზრდა ყოველთვის არ ზრდის სიზუსტეს — დიდი ჯგუფები განიცდიან პოლარიზაციას.",
+            "Social Circuit Attribution: ტექნიკა იმის დასადგენად, თუ რომელი აგენტი განსაზღვრავს ჯგუფის დინამიკას.",
+            "Organizational Structure Effect: ორგანიზაციული სტრუქტურა და გუნდის მრავალფეროვნება ამცირებს პოლარიზაციის რისკს."
+          ],
+          "technical_architecture": [
+            "Private Crop & Social Evidence: თითოეული აგენტი ხედავს სამყაროს ნაწილს და ცვლის მოსაზრებებს მეზობლებთან.",
+            "Causal Interventions (Agent Patching): აგენტების მდგომარეობის შეცვლა კოლექტიური შედეგის დასაკვირვებლად.",
+            "Statistical Mechanical Phase Diagram: დიდი პოპულაციების ფაზური გადასვლის თეორიული მოდელირება."
+          ],
+          "technical_details": [
+            "21 გვერდიანი სტატია 10 ფიგურითა და ემპირიული ფაზური დიაგრამით.",
+            "დადასტურდა social-awareness prompting-ის ეფექტურობა პოლარიზაციის შესამცირებლად."
+          ],
+          "potential_impact": "დაახმარება ინჟინრებს სწორად დააპროექტონ მულტი-აგენტური იერარქიები და თავიდან აიცილონ ჰალუცინაციური კონსენსუსი.",
+          "action_type": "LEARN",
+          "action": "წაიკითხეთ Flag Game-ის სექცია Organizational Structure-ის შესახებ და გამოიყენეთ იერარქიული როლები მულტი-აგენტურ დებატებში.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-openai-rl-chip-design-pagi",
+          "title": "OpenAI აფართოებს RL აგენტებს ჩიპების დაპროექტებისთვის და pAGI ევალუაციის პლატფორმებს",
+          "category": "AI Infrastructure / Hardware & RL Agents",
+          "primary_url": "https://openai.com/careers/research-engineer-ai-for-chip-design-san-francisco",
+          "supporting_urls": [
+            "https://openai.com/careers/ai-infrastructure-engineer-pagi-san-francisco"
+          ],
+          "importance": 8,
+          "relevance": 8,
+          "actionability": 7,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "OpenAI აქტიურად აშენებს RL გარემოებებს ჩიპების ავტომატური დაპროექტებისთვის (RTL, EDA) და pAGI ავტომატიზებულ შეფასების ინფრასტრუქტურას.",
+          "what_happened": "OpenAI-ს ახალი ვაკანსიები და ტექნიკური მიმართულებები (AI for Chip Design & pAGI Infra) აჩვენებს, რომ კომპანია ქმნის Reinforcement Learning (RL) გარემოებებს ნახევარგამტარების ინჟინერიისთვის (RTL გენერაცია, დიზაინის ვერიფიკაცია, EDA ინსტრუმენტების მართვა) და ცენტრალიზებულ Grading/Evaluation სერვისებს pAGI მოდელების ტესტირებისთვის.",
+          "what_changed": "AI აგენტების გამოყენება გადადის უბრალო ვებ/კოდინგ ამოცანებიდან აპარატურულ დონეზე (Hardware-in-the-loop) და ნახევარგამტარების ფიზიკურ დაპროექტებაზე, სადაც სწორობა (correctness) და ფიზიკური შეზღუდვები (Power, Performance, Area) ავტომატურად მოწმდება RL გარემოში.",
+          "why_it_matters": "ეს მიუთითებს ტრენდზე: ფრონტიერ AI კომპანიები იყენებენ საკუთარ LLM/RL აგენტებს მომავალი თაობის AI ჩიპების დასაპროექტებლად, რაც ქმნის თვით-გაუმჯობესებად ციკლს (Self-improving Hardware Loop).",
+          "key_takeaways": [
+            "RL Environments for Hardware: RTL გენერაციის, Verilog-ისა და formal verification-ის ავტომატიზაცია RL აგენტებით.",
+            "Shared Grading Platforms: pAGI ინფრასტრუქტურა აგებს ავტომატიზებულ შეფასების პლატფორმებს GPU კლასტერებზე.",
+            "Tool-Using Agents in Chip Design: აგენტები მართავენ EDA ინსტრუმენტებს Power/Area ოპტიმიზაციისთვის."
+          ],
+          "technical_architecture": [
+            "RL Environments & Proxy Rewards: RTL შეცდომების აღმოჩენა და formal verification ავტომატური ჯილდოებით.",
+            "Distributed Grading Service: ავტომატიზებული Capacity Management და ჰელთ-მონიტორინგი ევალუაციისთვის."
+          ],
+          "technical_details": [
+            "მოითხოვს RTL, Verilog/SystemVerilog, EDA tools და formal verification ინტეგრაციას RL ციკლში.",
+            "pAGI Infra მოიცავს distributed training, inference grading platforms და compute scheduling-ს."
+          ],
+          "potential_impact": "დააჩქარებს AI-native ჩიპების შექმნის ციკლს და გაზრდის RL აგენტების როლს ტექნიკურ ინჟინერიაში.",
+          "action_type": "LEARN",
+          "action": "გაიანალიზეთ, თუ როგორ გამოიყენება RL Environment + Verification Tool პატერნი რთულ დომენებში და სცადეთ მსგავსი სტრუქტურის აგება Python-ში.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-scienceide-agent-environments",
+          "title": "ScienceIDE: სამეცნიერო კოდის ბაზის გარდაქმნა აგენტების შესასწავლ გარემოებად",
+          "category": "AI Research / Agent Environments & Training",
+          "primary_url": "https://huggingface.co/papers/2609.19134",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 8,
+          "actionability": 7,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "PhAI Labs-მა გამოაშვება ScienceIDE, რომელიც ღია სამეცნიერო კოდის რეპოზიტორიებს გარდაქმნის შესრულებად RL გარემოებად AI აგენტების გასაწვრთნელად.",
+          "what_happened": "PhAI Labs-ის მკვლევრებმა წარადგინეს ScienceIDE — ინფრასტრუქტურა, რომელიც სამეცნიერო პროგრამულ კოდს გარდაქმნის პროგრამირებად, შესრულებად გარემოებად AI აგენტებისთვის. ამ გარემოებების ტრაექტორიებზე დაყრდნობით გაიწვრთნა PhAI-IDE მოდელების ოჯახი (72B, 9B, 4B), რომლებმაც აჩვენეს მაღალი შედეგები კოდის შეკეთებასა და ზოგად მსჯელობაში.",
+          "what_changed": "მანამდე აგენტების წვრთნისთვის გამოიყენებოდა ძირითადად მარტივი სკრიპტები ან სინთეზური ამოცანები. ScienceIDE იყენებს რეალურ, ათწლეულების განმავლობაში შექმნილ სამეცნიერო კოდის ბაზებს, სადაც მიღებული გამოცდილება დადებითად გადადის (positive transfer) ზოგად კოდინგსა და მსჯელობაზე.",
+          "why_it_matters": "აჩვენებს, თუ როგორ შეიძლება რეალური კოდის რეპოზიტორიებისა და Verifier-ების გამოყენება ავტონომიური აგენტების Synthetic Data / RL წვრთნისთვის.",
+          "key_takeaways": [
+            "Executable Environments: რეალური კოდის ბაზები ხდება RL და SFT წვრთნის გარემო.",
+            "PhAI-IDE Models: 4B, 9B და 72B ღია მოდელები, გაწვრთნილი ვერიფიცირებულ ტრაექტორიებზე.",
+            "Positive Transfer: სამეცნიერო კოდზე სწავლა ზრდის აგენტის ზოგად კოდინგსა და მსჯელობის უნარს."
+          ],
+          "technical_architecture": [
+            "Acceptance Criteria Integration: ექსპერტულად განსაზღვრული კრიტერიუმები აგენტის ნაბიჯების შესამოწმებლად.",
+            "Task Generation & Execution: ავტომატური დავალებების გენერაცია და მათი შესრულება სენდბოქსში.",
+            "Trajectory Verification: მხოლოდ წარმატებული, ვერიფიცირებული ტრაექტორიების გამოყენება SFT/RL-ისთვის."
+          ],
+          "technical_details": [
+            "კოდი ხელმისაწვდომია: `github.com/aitofound/ScienceIDE`.",
+            "მოდელები გამოქვეყნებულია HuggingFace-ზე: `AItonomy/scienceide-model-series`."
+          ],
+          "potential_impact": "გახსნის გზას სამეცნიერო სფეროში ავტონომიური კვლევითი აგენტების დასანერგად.",
+          "action_type": "TRACK",
+          "action": "ადევნეთ თვალი ScienceIDE GitHub რეპოზიტორიას და შეამოწმეთ, თუ როგორ იყენებენ ისინი Docker/Sandbox გარემოებს კოდის ვერიფიკაციისთვის.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-sp3o-ppo-critic-learning",
+          "title": "SP3O: PPO Value Flattening პრობლემის გადაჭრა სფარსული სუპერვიზიით LLM RL წვრთნაში",
+          "category": "AI Research / Reinforcement Learning",
+          "primary_url": "https://huggingface.co/papers/2609.18708",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 8,
+          "actionability": 7,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "SP3O აჩვენებს, რომ PPO-ში Critic-ის Value Loss-ის მხოლოდ რამდენიმე დაშორებულ მდგომარეობაზე გამოყენება ხსნის Value Flattening შეცდომას და ზრდის RL-ის ეფექტურობას.",
+          "what_happened": "Shanghai AI Laboratory-ს მკვლევრებმა აღმოაჩინეს კრიტიკული შეცდომის რეჟიმი PPO-ს კრიტიკოსში (Critic Network), რომელსაც უწოდეს 'Value Flattening': რეალური მდგომარეობის მნიშვნელობები მკვეთრად იცვლება, ხოლო Critic-ის პროგნოზები ბრტყელი რჩება. მათ წარადგინეს Sparse PPO (SP3O), სადაც Value Loss გამოიყენება მხოლოდ 3 კარგად დაშორებულ მდგომარეობაზე თითოეულ პასუხში.",
+          "what_changed": "ტრადიციულ PPO-ში Critic Loss ითვლება პასუხის ყოველ ტოკენზე/მდგომარეობაზე, რაც ქმნის დროითად კორელირებულ რredundant განახლებებს და აფუჭებს Value ფუნქციას. SP3O-ს სფარსული supervision ამცირებს ამ ხმაურს და ზრდის პოლიტიკის ხარისხს.",
+          "why_it_matters": "მნიშვნელოვანია LLM Fine-tuning-ისა და RLHF/RLAIF ინჟინრებისთვის. აჩვენებს, რომ ნაკლები, पण უფრო ხარისხიანი სუპერვიზია კრიტიკოსის წვრთნისას უკეთეს შედეგს იძლევა.",
+          "key_takeaways": [
+            "Value Flattening Failure: PPO Critic-ის მიერ რეალური ფასეულობების ცვლილების ვერ-ასახვა.",
+            "Sparse Supervision: მხოლოდ 3 მდგომარეობის სუპერვიზია თითო პასუხზე სრულად ხსნის პრობლემას.",
+            "Qwen3 Performance: სტაბილური გაუმჯობესება Qwen3-Base მოდელებზე ყველა მასშტაბში."
+          ],
+          "technical_architecture": [
+            "Sparse Value Loss: Value loss-ის შეზღუდვა temporally correlated states-ის გამოტოვებით.",
+            "Implicit Variance Penalty Mitigation: Critic loss-ის ვარიაციული პენალტის შემცირება."
+          ],
+          "technical_details": [
+            "კოდი ხელმისაწვდომია: `github.com/Dodojordi/SP3O`.",
+            "პროექტი: `dodojordi.github.io/SP3O/`."
+          ],
+          "potential_impact": "გაამარტივებს და გახდის უფრო ეფექტურს LLM-ების PPO განმტკიცებით სწავლებას.",
+          "action_type": "LEARN",
+          "action": "გადახედეთ SP3O-ს GitHub რეპოზიტორიას და გაეცანით, თუ როგორ ხდება PPO Critic Loss-ის ოპტიმიზაცია ლოკალურ RL პაიპლაინებში.",
+          "evidence": []
+        }
+      ],
+      "trends": [
+        "ხმოვანი აგენტების გადასვლა Cascaded (STT-LLM-TTS) არქიტექტურიდან Native Full-Duplex მოდელებზე (GPT-Live-1), სადაც მოსმენა, ლაპარაკი და Tool Calling დელეგირება ხდება რეალურ დროში.",
+        "აგენტური ინსტრუმენტების (Skills + MCP) სტანდარტიზაცია Agent Plugins-ის ღია მანიფესტების ირგვლივ (Google Cloud Developer Plugin).",
+        "API პროვაიდერების მიერ უშუალოდ მართვადი აგენტების (Managed Agents - Antigravity, Deep Research) შეთავაზება ნედლი მოდელების პარალელურად.",
+        "აგენტების სანდოობისა და თავდაჯერებულობის (Confidence) შეფასება არა ინფერენსის ტოკენებით, არამედ წარსული ეპიზოდების ისტორიითა და გაკვეთილებით (XConf).",
+        "აგენტურ ციკლებში (Agent Loops) Real-time Execution Validation-ის (SRM) პრიორიტეტიზაცია ეპიზოდურ მეხსიერებასთან შედარებით."
+      ]
     }
   ],
   "learning_queue": [
-    "Asupersync და Capability-Scoped Context (Cx) არქიტექტურის შესწავლა Rust/Python-ში.",
-    "Dual-LLM Inspector-Executor პატერნის იმპლემენტაცია Tool Calling-ის უსაფრთხოებისთვის.",
-    "ShEx და VoID სქემების RAG კონტექსტში ინტეგრაციის მეთოდოლოგიის ათვისება.",
-    "Hack Club Nest-ზე Linux სერვერის გამართვა და SSH/Systemd სერვისების მართვა."
+    "GPT-Live-1 API-ის WebSocket/Full-duplex სესიების მართვა და Python SDK ინტეგრაცია.",
+    "Agent Plugins Standard-ის მანიფესტის (manifest.json) სტრუქტურა და საკუთარი MCP სერვერების შეფუთვა.",
+    "XConf-ის Recall & Reflect არქიტექტურა ეპიზოდური მეხსიერების მართვისთვის.",
+    "Affora დიზაინ-სისტემის პრინციპები Computer-Use აგენტებისთვის."
   ],
-  "last_run": "2026-09-16T14:34:01.976481+00:00"
+  "last_run": "2026-09-17T12:35:46.790316+00:00",
+  "seen_dedup_keys": [
+    "arxiv:2609.17708",
+    "arxiv:2609.19128",
+    "arxiv:2609.19125",
+    "arxiv:2609.19124",
+    "arxiv:2609.19134",
+    "arxiv:2609.18708"
+  ],
+  "last_report_files": {
+    "markdown": "data/reports/2026-09-17/report.md",
+    "json": "data/reports/2026-09-17/report.json",
+    "newsletter": "data/reports/2026-09-17/newsletter.md",
+    "social": "data/reports/2026-09-17/social_posts.txt"
+  }
 }
