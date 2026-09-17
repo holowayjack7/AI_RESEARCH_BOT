@@ -95,7 +95,13 @@
     "https://arxiv.org/abs/2609.19144",
     "https://arxiv.org/abs/2609.19145",
     "https://arxiv.org/abs/2609.19143",
-    "https://arxiv.org/abs/2609.19137"
+    "https://arxiv.org/abs/2609.19137",
+    "https://aws.amazon.com/blogs/machine-learning/manage-end-user-oauth-consent-for-ai-agents-with-amazon-bedrock-agentcore",
+    "https://www.latent.space/p/ainews-jev-a-system-one-model-that",
+    "https://www.microsoft.com/en-us/thesource-developer/Event/583/building-mcp-servers-with-entra-id-and-pre-authorized-clients-microsoft-community-hub",
+    "https://aws.amazon.com/marketplace/pp/prodview-huiw6we65bt7c",
+    "https://arxiv.org/abs/2609.19135",
+    "https://developers.google.com/google-ads/api/docs/developer-toolkit/ai-assistant"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -162,7 +168,13 @@
     "evt-compo-zeroth-order-alignment",
     "evt-tokenizer-search-vs-objective",
     "evt-panorama-panoptic-grounded-captioning",
-    "evt-audio-video-force-aware-manipulation"
+    "evt-audio-video-force-aware-manipulation",
+    "evt-aws-bedrock-agentcore-oauth-consent",
+    "evt-typesafe-jev-system-one-model",
+    "evt-fastmcp-entra-id-auth",
+    "evt-openhands-isolated-sandbox-ami",
+    "evt-ope-exponential-hardness-history-logging",
+    "evt-google-ads-api-developer-assistant-plugin"
   ],
   "events": [
     {
@@ -2304,6 +2316,216 @@
       "action_type": "LEARN",
       "action": "Examine how multimodal generation can synthesize non-visual feedback channels (e.g. audio loudness) into numeric control parameters.",
       "evidence": []
+    },
+    {
+      "event_id": "evt-aws-bedrock-agentcore-oauth-consent",
+      "title": "Amazon Bedrock AgentCore Consent Portal: Per-User OAuth Session Binding for MCP Clients",
+      "category": "MCP / Agent Security & Authentication",
+      "primary_url": "https://aws.amazon.com/blogs/machine-learning/manage-end-user-oauth-consent-for-ai-agents-with-amazon-bedrock-agentcore",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "AWS released a managed Consent portal in Bedrock AgentCore to securely manage and bind per-user OAuth tokens for MCP tool calls.",
+      "what_happened": "AWS introduced a managed Consent portal for AgentCore Gateway, resolving user identity binding and token storage when AI agents invoke external services.",
+      "what_changed": "Before, developers had to build custom callback servers for OAuth session binding. Now, AgentCore handles browser redirects and stores tokens in a vault.",
+      "why_it_matters": "Enables multi-user MCP clients like Claude Code, Cursor, and VS Code to safely execute user-authenticated API tools without token leakage.",
+      "key_takeaways": [
+        "Binds identity provider OAuth grants directly to individual agent execution sessions",
+        "Tokens are securely persisted in AgentCore Identity vault for repeated tool calls",
+        "Compatible with MCP clients including Claude Code, Cursor, and Visual Studio Code"
+      ],
+      "technical_architecture": [
+        "AgentCore Gateway session binding endpoint with corporate IdP integration",
+        "Encrypted AgentCore Identity token vault for storing per-user OAuth tokens",
+        "AWS CloudTrail audit logging for every authenticated agent tool invocation"
+      ],
+      "technical_details": [
+        "OAuth 2.0 authorization code grant flow with session binding",
+        "CompleteResourceTokenAuth API integration for token exchange",
+        "Pre-invocation consent verification in MCP tool execution loops"
+      ],
+      "potential_impact": "Eliminates custom authentication harnesses for enterprise MCP servers, reducing identity security risks in production multi-tenant agent deployments.",
+      "action_type": "APPLY",
+      "action": "Implement AgentCore Identity Consent portal flows when building multi-user MCP servers requiring user-scoped API permissions.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-typesafe-jev-system-one-model",
+      "title": "TypeSafe Jev: RLCD-Trained Non-Autoregressive System One Model for Sub-Millisecond Agent Routing",
+      "category": "AI Research / Agent Loop Optimization",
+      "primary_url": "https://www.latent.space/p/ainews-jev-a-system-one-model-that",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 9,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "TypeSafe released Jev, a non-autoregressive decision model trained via RLCD that routes agent tool calls over 100x faster than small LLMs.",
+      "what_happened": "TypeSafe launched Jev, a specialized non-generative model designed strictly for classification, scoring, and tool routing without autoregressive string generation.",
+      "what_changed": "Before, agent loops relied on expensive, slow LLMs for routing. Now, Jev executes deterministic routing decisions with parallel sampling and zero hallucination.",
+      "why_it_matters": "Drastically slashes agent loop latency and token costs by offloading control flow, gating, and tool selection away from slow reasoning models.",
+      "key_takeaways": [
+        "Delivers 20x to 200x faster execution than small frontier LLMs",
+        "Operates 40x to 400x cheaper than standard autoregressive models",
+        "Trained via Reinforcement Learning from Calibrated Decisions (RLCD)"
+      ],
+      "technical_architecture": [
+        "Non-autoregressive classifier architecture for parallel logit decision sampling",
+        "Calibrated logit scoring system eliminating generative hallucination risk",
+        "System One complementary layer positioned in front of System Two LLMs"
+      ],
+      "technical_details": [
+        "RLCD optimization for calibrated confidence scores across discrete actions",
+        "Sub-millisecond inference execution for agent loop conditional branching",
+        "Structured input parsing for direct routing array outputs"
+      ],
+      "potential_impact": "Redefines agent orchestration pipelines by splitting fast control flow decisions from compute-heavy reasoning tasks.",
+      "action_type": "TRY",
+      "action": "Replace LLM-based classification prompts in your agent loops with specialized fast routing endpoints to lower latency.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-fastmcp-entra-id-auth",
+      "title": "Building Identity-Aware FastMCP Servers with Microsoft Entra ID Integration",
+      "category": "MCP / Developer Frameworks",
+      "primary_url": "https://www.microsoft.com/en-us/thesource-developer/Event/583/building-mcp-servers-with-entra-id-and-pre-authorized-clients-microsoft-community-hub",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 9,
+      "source_quality": 10,
+      "confidence": 92,
+      "tldr": "Microsoft published implementation patterns for securing Python FastMCP servers with Entra ID authentication for IDE clients like VS Code.",
+      "what_happened": "Microsoft demonstrated how to build identity-aware MCP servers using the Python FastMCP library integrated with Entra ID pre-authorized clients.",
+      "what_changed": "Before, MCP servers often ran unauthenticated locally. Now, tool servers can authenticate client tokens to restrict tool access by user identity.",
+      "why_it_matters": "Enables safe enterprise deployment of custom local and remote MCP tools that access sensitive database or system APIs.",
+      "key_takeaways": [
+        "Integrates Python FastMCP directly with Microsoft Entra ID authentication",
+        "Supports pre-authorized client validation from VS Code and editor hosts",
+        "Enforces user-level security context inside individual MCP tool functions"
+      ],
+      "technical_architecture": [
+        "FastMCP Python framework with OAuth 2.0 bearer token validation middleware",
+        "Entra ID pre-authorized client application verification workflow",
+        "VS Code MCP client connection context propagation"
+      ],
+      "technical_details": [
+        "FastMCP decorator-based tool definitions with identity claims inspection",
+        "Bearer token parsing from incoming MCP JSON-RPC headers",
+        "Scope validation against Entra ID client permissions"
+      ],
+      "potential_impact": "Standardizes secure authentication implementation patterns for custom Python MCP tool servers in developer environments.",
+      "action_type": "BUILD",
+      "action": "Build a test Python FastMCP server using OAuth header validation to restrict tool invocation based on user tokens.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-openhands-isolated-sandbox-ami",
+      "title": "OpenHands Autonomous Coding Agent: Isolated Container Sandboxing and Multi-LLM Architecture",
+      "category": "AI Coding Tools / Agent Architecture",
+      "primary_url": "https://aws.amazon.com/marketplace/pp/prodview-huiw6we65bt7c",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 10,
+      "confidence": 90,
+      "tldr": "OpenHands detailed its self-hosted agent deployment architecture featuring sidecar Docker sandboxes and automatic state preservation.",
+      "what_happened": "OpenHands released its self-hosted deployment architecture on AWS, featuring isolated per-conversation Docker sidecars with headless shell and browser access.",
+      "what_changed": "Before, open-source coding agents often executed code directly on host environments. OpenHands enforces per-task sandbox container isolation.",
+      "why_it_matters": "Provides a production-grade blueprint for running autonomous software engineering agents safely without risking host environment corruption.",
+      "key_takeaways": [
+        "Runs each agent session in an isolated sidecar container with shell and browser",
+        "Prevents concurrent developer task collisions through sandbox containerization",
+        "Supports decoupled connections to OpenAI, Anthropic, or open-weights LLMs"
+      ],
+      "technical_architecture": [
+        "Docker Compose sidecar sandbox architecture per agent conversation",
+        "Nginx reverse proxy for WebSocket event streaming and dashboard access",
+        "S3 backup integration for persistent agent state and history retention"
+      ],
+      "technical_details": [
+        "Ubuntu 26.04 pre-hardened base AMI with Docker engine",
+        "Isolated VS Code server and browser execution sidecars",
+        "Asynchronous event stream serialization over HTTP/HTTPS"
+      ],
+      "potential_impact": "Offers developers an open, controllable alternative to proprietary coding agents with enterprise-grade execution isolation.",
+      "action_type": "APPLY",
+      "action": "Adopt sidecar Docker container isolation in your local coding agent projects to isolate bash tool execution.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-ope-exponential-hardness-history-logging",
+      "title": "Theoretical Intractability of Off-Policy Evaluation Under History-Dependent Logging",
+      "category": "AI Research / Agent Evaluation & Reliability",
+      "primary_url": "https://arxiv.org/abs/2609.19135",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 7,
+      "actionability": 6,
+      "source_quality": 8,
+      "confidence": 88,
+      "tldr": "New research proves off-policy evaluation of agents under history-dependent logging requires exponential sample complexity over horizon H.",
+      "what_happened": "Researcher Pranaya Jajoo proved that evaluating a deterministic agent policy from logged history requires exponential sample complexity when the logging policy has memory.",
+      "what_changed": "Rebuts assumptions that offline trajectory datasets with good action coverage are sufficient for reliable offline evaluation of memoryful agents.",
+      "why_it_matters": "Proves that off-policy evaluation (OPE) for complex multi-step agents cannot rely purely on historical log data without explicit model resets.",
+      "key_takeaways": [
+        "Requires exponential trajectory samples relative to task horizon length H",
+        "Applies even when latent states, action coverage, and model dynamics are known",
+        "Demonstrates how memory resets in loggers erase critical diagnostic state signals"
+      ],
+      "technical_architecture": [
+        "POMDP formulation with two latent states and history-dependent loggers",
+        "Statistical lower bound derivation establishing exponential sample lower bound",
+        "Directed two-lane gridworld simulation environment for trajectory verification"
+      ],
+      "technical_details": [
+        "Sample complexity lower bound of order (3/2)^H log(1/delta)",
+        "Behavior-marginal outcome-revealing condition analysis in Stage POMDPs",
+        "History-dependent memory state transitions in target policy loggers"
+      ],
+      "potential_impact": "Forces agent evaluation benchmarks to adopt active, online, or state-reset evaluation paradigms rather than static offline trajectory logs.",
+      "action_type": "LEARN",
+      "action": "Design agent evaluation frameworks around live interaction environments rather than relying exclusively on static historical trajectory logs.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-google-ads-api-developer-assistant-plugin",
+      "title": "Google Ads API Developer Assistant v4.0.0: Context Contracts and Sidecar Validation Pipelines",
+      "category": "Developer Tools & Agent Frameworks",
+      "primary_url": "https://developers.google.com/google-ads/api/docs/developer-toolkit/ai-assistant",
+      "supporting_urls": [],
+      "importance": 7,
+      "relevance": 8,
+      "actionability": 8,
+      "source_quality": 9,
+      "confidence": 90,
+      "tldr": "Google open-sourced its Ads API Developer Assistant v4.0.0 plugin using AGENTS.md/CLAUDE.md context contracts and local sidecars.",
+      "what_happened": "Google released version 4.0.0 of its Ads API Developer Assistant plugin for Google Antigravity and Claude Code agent frameworks.",
+      "what_changed": "Shifted from monolithic project scripts to a global plugin architecture utilizing explicit AGENTS.md context contracts and Python validation sidecars.",
+      "why_it_matters": "Demonstrates how major vendors structure domain-specific agent plugins using standardized repository context files and local verification scripts.",
+      "key_takeaways": [
+        "Uses AGENTS.md and CLAUDE.md files for maintaining persistent repo context",
+        "Integrates local Python validation sidecars for automated payload checks",
+        "Supports modular slash commands inside Antigravity and Claude Code CLI"
+      ],
+      "technical_architecture": [
+        "Global plugin architecture for Google Antigravity and Claude Code v4.0.0",
+        "Local Python 3.10+ validation sidecar executing read-only API calls",
+        "Declarative context contract files (AGENTS.md / CLAUDE.md)"
+      ],
+      "technical_details": [
+        "Slash command registration interface for CLI agent hosts",
+        "OAuth 2.0 configuration file parsing from system home directory",
+        "Ad-hoc streaming reporting pipelines via client sidecars"
+      ],
+      "potential_impact": "Provides a clean template for building complex SDK or API assistant plugins for modern AI coding agent environments.",
+      "action_type": "LEARN",
+      "action": "Study the AGENTS.md context contracts and sidecar validation structure in Google's repository to structure your own developer tool plugins.",
+      "evidence": []
     }
   ],
   "topics": {
@@ -2341,7 +2563,7 @@
     "LLM API / Voice Agents": 1,
     "Developer Tools / Agent Plugins & MCP": 1,
     "LLM API / Developer Platform": 1,
-    "AI Research / Agent Evaluation & Reliability": 1,
+    "AI Research / Agent Evaluation & Reliability": 2,
     "AI Research / Agent Architecture & Memory": 1,
     "Human-Computer Interaction / Agent UI": 1,
     "AI Research / Multi-Agent Swarms": 1,
@@ -2357,7 +2579,7 @@
     "Agent Security & Governance": 1,
     "AI Research / Agent Communication & Evaluation": 1,
     "AI Research / Structured Data & Causal ML": 1,
-    "Developer Tools & Agent Frameworks": 1,
+    "Developer Tools & Agent Frameworks": 2,
     "Model Inference & Local Hardware Optimization": 1,
     "AI Research & Model Architecture": 2,
     "Agent Security & Infrastructure": 1,
@@ -2370,7 +2592,11 @@
     "Embodied AI & Agent Architecture": 1,
     "AI Research & Model Alignment": 1,
     "AI Research & Multimodal Models": 1,
-    "Embodied AI & Robotics": 1
+    "Embodied AI & Robotics": 1,
+    "MCP / Agent Security & Authentication": 1,
+    "AI Research / Agent Loop Optimization": 1,
+    "MCP / Developer Frameworks": 1,
+    "AI Coding Tools / Agent Architecture": 1
   },
   "reports": [
     {
@@ -4609,14 +4835,237 @@
         "Zeroth-order alignment techniques gaining traction to solve DPO likelihood displacement issues",
         "Multimodal state grounding combining text, pixel masks, and synthetic audio for environment interaction"
       ]
+    },
+    {
+      "date": "2026-09-17",
+      "summary": "Today's releases highlight critical advancements in securing AI agent tool calls and optimizing multi-step workflows. AWS and Microsoft established production patterns for identity-aware MCP servers and OAuth session binding across agent hosts. Additionally, TypeSafe launched Jev for sub-millisecond agent routing, while Google open-sourced specialized AGENTS.md context sidecars for Claude Code.",
+      "events": [
+        {
+          "event_id": "evt-aws-bedrock-agentcore-oauth-consent",
+          "title": "Amazon Bedrock AgentCore Consent Portal: Per-User OAuth Session Binding for MCP Clients",
+          "category": "MCP / Agent Security & Authentication",
+          "primary_url": "https://aws.amazon.com/blogs/machine-learning/manage-end-user-oauth-consent-for-ai-agents-with-amazon-bedrock-agentcore",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "AWS released a managed Consent portal in Bedrock AgentCore to securely manage and bind per-user OAuth tokens for MCP tool calls.",
+          "what_happened": "AWS introduced a managed Consent portal for AgentCore Gateway, resolving user identity binding and token storage when AI agents invoke external services.",
+          "what_changed": "Before, developers had to build custom callback servers for OAuth session binding. Now, AgentCore handles browser redirects and stores tokens in a vault.",
+          "why_it_matters": "Enables multi-user MCP clients like Claude Code, Cursor, and VS Code to safely execute user-authenticated API tools without token leakage.",
+          "key_takeaways": [
+            "Binds identity provider OAuth grants directly to individual agent execution sessions",
+            "Tokens are securely persisted in AgentCore Identity vault for repeated tool calls",
+            "Compatible with MCP clients including Claude Code, Cursor, and Visual Studio Code"
+          ],
+          "technical_architecture": [
+            "AgentCore Gateway session binding endpoint with corporate IdP integration",
+            "Encrypted AgentCore Identity token vault for storing per-user OAuth tokens",
+            "AWS CloudTrail audit logging for every authenticated agent tool invocation"
+          ],
+          "technical_details": [
+            "OAuth 2.0 authorization code grant flow with session binding",
+            "CompleteResourceTokenAuth API integration for token exchange",
+            "Pre-invocation consent verification in MCP tool execution loops"
+          ],
+          "potential_impact": "Eliminates custom authentication harnesses for enterprise MCP servers, reducing identity security risks in production multi-tenant agent deployments.",
+          "action_type": "APPLY",
+          "action": "Implement AgentCore Identity Consent portal flows when building multi-user MCP servers requiring user-scoped API permissions.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-typesafe-jev-system-one-model",
+          "title": "TypeSafe Jev: RLCD-Trained Non-Autoregressive System One Model for Sub-Millisecond Agent Routing",
+          "category": "AI Research / Agent Loop Optimization",
+          "primary_url": "https://www.latent.space/p/ainews-jev-a-system-one-model-that",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 9,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "TypeSafe released Jev, a non-autoregressive decision model trained via RLCD that routes agent tool calls over 100x faster than small LLMs.",
+          "what_happened": "TypeSafe launched Jev, a specialized non-generative model designed strictly for classification, scoring, and tool routing without autoregressive string generation.",
+          "what_changed": "Before, agent loops relied on expensive, slow LLMs for routing. Now, Jev executes deterministic routing decisions with parallel sampling and zero hallucination.",
+          "why_it_matters": "Drastically slashes agent loop latency and token costs by offloading control flow, gating, and tool selection away from slow reasoning models.",
+          "key_takeaways": [
+            "Delivers 20x to 200x faster execution than small frontier LLMs",
+            "Operates 40x to 400x cheaper than standard autoregressive models",
+            "Trained via Reinforcement Learning from Calibrated Decisions (RLCD)"
+          ],
+          "technical_architecture": [
+            "Non-autoregressive classifier architecture for parallel logit decision sampling",
+            "Calibrated logit scoring system eliminating generative hallucination risk",
+            "System One complementary layer positioned in front of System Two LLMs"
+          ],
+          "technical_details": [
+            "RLCD optimization for calibrated confidence scores across discrete actions",
+            "Sub-millisecond inference execution for agent loop conditional branching",
+            "Structured input parsing for direct routing array outputs"
+          ],
+          "potential_impact": "Redefines agent orchestration pipelines by splitting fast control flow decisions from compute-heavy reasoning tasks.",
+          "action_type": "TRY",
+          "action": "Replace LLM-based classification prompts in your agent loops with specialized fast routing endpoints to lower latency.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-fastmcp-entra-id-auth",
+          "title": "Building Identity-Aware FastMCP Servers with Microsoft Entra ID Integration",
+          "category": "MCP / Developer Frameworks",
+          "primary_url": "https://www.microsoft.com/en-us/thesource-developer/Event/583/building-mcp-servers-with-entra-id-and-pre-authorized-clients-microsoft-community-hub",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 9,
+          "source_quality": 10,
+          "confidence": 92,
+          "tldr": "Microsoft published implementation patterns for securing Python FastMCP servers with Entra ID authentication for IDE clients like VS Code.",
+          "what_happened": "Microsoft demonstrated how to build identity-aware MCP servers using the Python FastMCP library integrated with Entra ID pre-authorized clients.",
+          "what_changed": "Before, MCP servers often ran unauthenticated locally. Now, tool servers can authenticate client tokens to restrict tool access by user identity.",
+          "why_it_matters": "Enables safe enterprise deployment of custom local and remote MCP tools that access sensitive database or system APIs.",
+          "key_takeaways": [
+            "Integrates Python FastMCP directly with Microsoft Entra ID authentication",
+            "Supports pre-authorized client validation from VS Code and editor hosts",
+            "Enforces user-level security context inside individual MCP tool functions"
+          ],
+          "technical_architecture": [
+            "FastMCP Python framework with OAuth 2.0 bearer token validation middleware",
+            "Entra ID pre-authorized client application verification workflow",
+            "VS Code MCP client connection context propagation"
+          ],
+          "technical_details": [
+            "FastMCP decorator-based tool definitions with identity claims inspection",
+            "Bearer token parsing from incoming MCP JSON-RPC headers",
+            "Scope validation against Entra ID client permissions"
+          ],
+          "potential_impact": "Standardizes secure authentication implementation patterns for custom Python MCP tool servers in developer environments.",
+          "action_type": "BUILD",
+          "action": "Build a test Python FastMCP server using OAuth header validation to restrict tool invocation based on user tokens.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-openhands-isolated-sandbox-ami",
+          "title": "OpenHands Autonomous Coding Agent: Isolated Container Sandboxing and Multi-LLM Architecture",
+          "category": "AI Coding Tools / Agent Architecture",
+          "primary_url": "https://aws.amazon.com/marketplace/pp/prodview-huiw6we65bt7c",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 10,
+          "confidence": 90,
+          "tldr": "OpenHands detailed its self-hosted agent deployment architecture featuring sidecar Docker sandboxes and automatic state preservation.",
+          "what_happened": "OpenHands released its self-hosted deployment architecture on AWS, featuring isolated per-conversation Docker sidecars with headless shell and browser access.",
+          "what_changed": "Before, open-source coding agents often executed code directly on host environments. OpenHands enforces per-task sandbox container isolation.",
+          "why_it_matters": "Provides a production-grade blueprint for running autonomous software engineering agents safely without risking host environment corruption.",
+          "key_takeaways": [
+            "Runs each agent session in an isolated sidecar container with shell and browser",
+            "Prevents concurrent developer task collisions through sandbox containerization",
+            "Supports decoupled connections to OpenAI, Anthropic, or open-weights LLMs"
+          ],
+          "technical_architecture": [
+            "Docker Compose sidecar sandbox architecture per agent conversation",
+            "Nginx reverse proxy for WebSocket event streaming and dashboard access",
+            "S3 backup integration for persistent agent state and history retention"
+          ],
+          "technical_details": [
+            "Ubuntu 26.04 pre-hardened base AMI with Docker engine",
+            "Isolated VS Code server and browser execution sidecars",
+            "Asynchronous event stream serialization over HTTP/HTTPS"
+          ],
+          "potential_impact": "Offers developers an open, controllable alternative to proprietary coding agents with enterprise-grade execution isolation.",
+          "action_type": "APPLY",
+          "action": "Adopt sidecar Docker container isolation in your local coding agent projects to isolate bash tool execution.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-ope-exponential-hardness-history-logging",
+          "title": "Theoretical Intractability of Off-Policy Evaluation Under History-Dependent Logging",
+          "category": "AI Research / Agent Evaluation & Reliability",
+          "primary_url": "https://arxiv.org/abs/2609.19135",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 7,
+          "actionability": 6,
+          "source_quality": 8,
+          "confidence": 88,
+          "tldr": "New research proves off-policy evaluation of agents under history-dependent logging requires exponential sample complexity over horizon H.",
+          "what_happened": "Researcher Pranaya Jajoo proved that evaluating a deterministic agent policy from logged history requires exponential sample complexity when the logging policy has memory.",
+          "what_changed": "Rebuts assumptions that offline trajectory datasets with good action coverage are sufficient for reliable offline evaluation of memoryful agents.",
+          "why_it_matters": "Proves that off-policy evaluation (OPE) for complex multi-step agents cannot rely purely on historical log data without explicit model resets.",
+          "key_takeaways": [
+            "Requires exponential trajectory samples relative to task horizon length H",
+            "Applies even when latent states, action coverage, and model dynamics are known",
+            "Demonstrates how memory resets in loggers erase critical diagnostic state signals"
+          ],
+          "technical_architecture": [
+            "POMDP formulation with two latent states and history-dependent loggers",
+            "Statistical lower bound derivation establishing exponential sample lower bound",
+            "Directed two-lane gridworld simulation environment for trajectory verification"
+          ],
+          "technical_details": [
+            "Sample complexity lower bound of order (3/2)^H log(1/delta)",
+            "Behavior-marginal outcome-revealing condition analysis in Stage POMDPs",
+            "History-dependent memory state transitions in target policy loggers"
+          ],
+          "potential_impact": "Forces agent evaluation benchmarks to adopt active, online, or state-reset evaluation paradigms rather than static offline trajectory logs.",
+          "action_type": "LEARN",
+          "action": "Design agent evaluation frameworks around live interaction environments rather than relying exclusively on static historical trajectory logs.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-google-ads-api-developer-assistant-plugin",
+          "title": "Google Ads API Developer Assistant v4.0.0: Context Contracts and Sidecar Validation Pipelines",
+          "category": "Developer Tools & Agent Frameworks",
+          "primary_url": "https://developers.google.com/google-ads/api/docs/developer-toolkit/ai-assistant",
+          "supporting_urls": [],
+          "importance": 7,
+          "relevance": 8,
+          "actionability": 8,
+          "source_quality": 9,
+          "confidence": 90,
+          "tldr": "Google open-sourced its Ads API Developer Assistant v4.0.0 plugin using AGENTS.md/CLAUDE.md context contracts and local sidecars.",
+          "what_happened": "Google released version 4.0.0 of its Ads API Developer Assistant plugin for Google Antigravity and Claude Code agent frameworks.",
+          "what_changed": "Shifted from monolithic project scripts to a global plugin architecture utilizing explicit AGENTS.md context contracts and Python validation sidecars.",
+          "why_it_matters": "Demonstrates how major vendors structure domain-specific agent plugins using standardized repository context files and local verification scripts.",
+          "key_takeaways": [
+            "Uses AGENTS.md and CLAUDE.md files for maintaining persistent repo context",
+            "Integrates local Python validation sidecars for automated payload checks",
+            "Supports modular slash commands inside Antigravity and Claude Code CLI"
+          ],
+          "technical_architecture": [
+            "Global plugin architecture for Google Antigravity and Claude Code v4.0.0",
+            "Local Python 3.10+ validation sidecar executing read-only API calls",
+            "Declarative context contract files (AGENTS.md / CLAUDE.md)"
+          ],
+          "technical_details": [
+            "Slash command registration interface for CLI agent hosts",
+            "OAuth 2.0 configuration file parsing from system home directory",
+            "Ad-hoc streaming reporting pipelines via client sidecars"
+          ],
+          "potential_impact": "Provides a clean template for building complex SDK or API assistant plugins for modern AI coding agent environments.",
+          "action_type": "LEARN",
+          "action": "Study the AGENTS.md context contracts and sidecar validation structure in Google's repository to structure your own developer tool plugins.",
+          "evidence": []
+        }
+      ],
+      "trends": [
+        "Migration from unauthenticated local tools to identity-bound MCP authorization infrastructure",
+        "Separation of AI control flows into fast System-One decision routers and slow System-Two reasoning engines",
+        "Standardization of agent host contexts via AGENTS.md and CLAUDE.md operational contracts",
+        "Adoption of sidecar container isolation for executing autonomous AI coding agent actions"
+      ]
     }
   ],
   "learning_queue": [
-    "GPT-Policy context compilation and interaction feedback loop mechanics",
-    "Zeroth-order optimization principles vs gradient-based direct preference optimization",
-    "Phrase-conditioned mask proposal selection algorithms in vision-language models"
+    "OAuth 2.0 authorization code grant flow and session binding in AgentCore",
+    "FastMCP Python SDK middleware and request header validation",
+    "Non-autoregressive logit sampling mechanics for agent routing models",
+    "Container sidecar networking and Docker API automation for agent sandboxes"
   ],
-  "last_run": "2026-09-17T13:56:37.029074+00:00",
+  "last_run": "2026-09-17T18:21:20.489915+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -4641,7 +5090,8 @@
     "arxiv:2609.19144",
     "arxiv:2609.19145",
     "arxiv:2609.19143",
-    "arxiv:2609.19137"
+    "arxiv:2609.19137",
+    "arxiv:2609.19135"
   ],
   "last_report_files": {
     "markdown": "data/reports/2026-09-17/report.md",
