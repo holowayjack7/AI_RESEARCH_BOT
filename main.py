@@ -19,7 +19,11 @@ import sys
 from datetime import datetime, timezone
 
 import config
-from src.deliver import get_telegram_me, send_telegram
+from src.deliver import (
+    build_delayed_message,
+    get_telegram_me,
+    send_telegram,
+)
 from src.logger import setup_logging
 from src.pipeline import run_pipeline, run_simulated_pipeline
 
@@ -121,6 +125,26 @@ def check_telegram() -> int:
         return 1
 
 
+def _notify_run_failure(error: Exception) -> None:
+    """Best-effort Telegram notice when a run fails or crashes.
+
+    The user expects a daily message: if the pipeline dies (e.g. the
+    analysis provider is overloaded), send a short delay notice
+    instead of silence. Never raises.
+    """
+    log = logging.getLogger("ai_research_bot")
+    if not (config.TELEGRAM_BOT_TOKEN and config.TELEGRAM_CHAT_ID):
+        return
+    try:
+        message = build_delayed_message(f"Reason: {error}")
+        if send_telegram(
+            message, config.TELEGRAM_BOT_TOKEN, config.TELEGRAM_CHAT_ID
+        ):
+            log.info("Delay notice delivered to Telegram")
+    except Exception as notify_error:
+        log.warning(f"Could not deliver delay notice: {notify_error}")
+
+
 def main() -> int:
     """Run the AI Research Bot.
 
@@ -199,6 +223,9 @@ def main() -> int:
             # go out (publish/send/heartbeat failure): surface it as a
             # failed run, never a silent green check in Actions.
             logger.error("Research pipeline finished WITHOUT delivery — failing run")
+            _notify_run_failure(
+                RuntimeError("delivery did not complete (see run logs)")
+            )
             return 1
         else:
             # Export-only run without Telegram: nothing to deliver is normal
@@ -207,6 +234,7 @@ def main() -> int:
 
     except Exception as e:
         logger.error(f"Pipeline error: {e}")
+        _notify_run_failure(e)
         return 1
 
     logger.info("AI Research Bot finished")

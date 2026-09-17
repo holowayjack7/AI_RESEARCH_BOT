@@ -70,7 +70,16 @@
     "https://openai.com/careers/research-engineer-ai-for-chip-design-san-francisco",
     "https://openai.com/careers/ai-infrastructure-engineer-pagi-san-francisco",
     "https://huggingface.co/papers/2609.19134",
-    "https://huggingface.co/papers/2609.18708"
+    "https://huggingface.co/papers/2609.18708",
+    "https://aws.amazon.com/blogs/machine-learning/build-interactive-mcp-apps-using-amazon-bedrock-agentcore",
+    "https://huggingface.co/papers/2609.18094",
+    "https://deepmind.google/blog/introducing-gemini-3-8-live-and-3-8-live-extended-thinking",
+    "https://ai.meta.com/Open",
+    "https://arxiv.org/abs/2609.19101",
+    "https://huggingface.co/papers/2609.17632",
+    "https://developers.googleblog.com/agent-anomaly-detection-now-in-private-preview-on-the-gemini-enterprise-agent-platform",
+    "https://arxiv.org/abs/2609.19113",
+    "https://huggingface.co/papers/2609.17488"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -113,7 +122,16 @@
     "evt-flag-game-swarm-interpretability",
     "evt-openai-rl-chip-design-pagi",
     "evt-scienceide-agent-environments",
-    "evt-sp3o-ppo-critic-learning"
+    "evt-sp3o-ppo-critic-learning",
+    "evt-mcp-apps-bedrock",
+    "evt-agora-git-shared-memory",
+    "evt-gemini-38-live",
+    "evt-llama-4-scout-maverick",
+    "evt-dom-reward-hacking-monitors",
+    "evt-evolvetrade-prompt-as-policy",
+    "evt-gemini-agent-anomaly-detection",
+    "evt-log-n-questions-llm-communication",
+    "evt-limix-2-causal-structured-data"
   ],
   "events": [
     {
@@ -1424,6 +1442,321 @@
       "action_type": "LEARN",
       "action": "გადახედეთ SP3O-ს GitHub რეპოზიტორიას და გაეცანით, თუ როგორ ხდება PPO Critic Loss-ის ოპტიმიზაცია ლოკალურ RL პაიპლაინებში.",
       "evidence": []
+    },
+    {
+      "event_id": "evt-mcp-apps-bedrock",
+      "title": "MCP Apps Standard & Bedrock AgentCore: Interactive HTML UI Rendering inside AI Hosts",
+      "category": "MCP / Agent Tooling & UI",
+      "primary_url": "https://aws.amazon.com/blogs/machine-learning/build-interactive-mcp-apps-using-amazon-bedrock-agentcore",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "The Model Context Protocol (MCP) is extended with MCP Apps, enabling servers to render interactive, host-agnostic HTML widgets directly in ChatGPT and Claude via Bedrock AgentCore runtime.",
+      "what_happened": "AWS detailed how Amazon Bedrock AgentCore Runtime and Gateway support the new MCP Apps extension, allowing MCP servers to serve rich HTML UI widgets instead of plain text responses.",
+      "what_changed": "Before, MCP tool outputs were strictly plain text or markdown, forcing host LLMs to synthesize text tables or code blocks. Now, MCP Apps standardizes embedding interactive HTML cards, forms, and widgets directly in host UIs like ChatGPT and Claude.",
+      "why_it_matters": "Decouples custom UI logic from specific AI chat platforms, allowing developers to build a single serverless MCP server on Bedrock AgentCore that serves interactive tools identically across all major AI hosts.",
+      "key_takeaways": [
+        "MCP Apps standard extends MCP with host-agnostic HTML widgets.",
+        "Bedrock AgentCore Gateway provides session-isolated, serverless execution endpoints for MCP Apps.",
+        "Reduces plain-text context pollution while improving user interaction flow."
+      ],
+      "technical_architecture": [
+        "Host-agnostic MCP Apps protocol extension.",
+        "AgentCore Runtime for session-isolated serverless tool execution.",
+        "AgentCore Gateway exposing single secure endpoint for host communication."
+      ],
+      "technical_details": [
+        "HTML/JS widgets rendered in sandboxed host iframes.",
+        "Supports contextual text fallback when rich UI is unnecessary.",
+        "Native integration with ChatGPT and Claude client hosts."
+      ],
+      "potential_impact": "Standardizes the UI layer for AI agents, making custom text-only UI hacks obsolete.",
+      "action_type": "BUILD",
+      "action": "Create a local Python MCP server returning an interactive HTML table widget for SQL query results and test it in Claude Desktop.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-agora-git-shared-memory",
+      "title": "Agora: Git-Based Shared Memory DAG for Decentralized Multi-Agent AutoResearch",
+      "category": "Multi-Agent Systems / Agent Memory & Research",
+      "primary_url": "https://huggingface.co/papers/2609.18094",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "Agora introduces Git as an append-only DAG shared memory for multi-agent research loops, allowing 13 LLM agents to collaborate asynchronously without redundant exploration.",
+      "what_happened": "Researchers from NVIDIA introduced Agora, a decentralized architecture where AI research agents log hypotheses, code edits, and evaluation results as immutable Git commits in a Directed Acyclic Graph (DAG).",
+      "what_changed": "Before, running multiple AutoResearch agents in parallel caused duplicated search paths as each agent started from scratch. Agora turns Git into shared memory where every claim is an actionable, checkable commit.",
+      "why_it_matters": "Demonstrates how standard version control (Git) can act as long-term shared state memory for swarm research without requiring a centralized master orchestrator.",
+      "key_takeaways": [
+        "1,703 contributions over 12 days by 13 autonomous LLM agents.",
+        "Git DAG index exposes research frontier, unverified claims, and neglected branches.",
+        "Diversity-aware selection rule prevents agents from prematurely collapsing on a single solution."
+      ],
+      "technical_architecture": [
+        "Append-only Git DAG commit log as state storage.",
+        "Derived index parser tracking research frontier and verification status.",
+        "Asynchronous worker loop checking out and validating ancestor commits."
+      ],
+      "technical_details": [
+        "Closed 62% of the gap to trained GPT-2 124M on a zero-data weight-transfer task.",
+        "Tested across 165 independent agent verifications.",
+        "Zero central planner node required."
+      ],
+      "potential_impact": "Establishes Git-based DAGs as a scalable architecture for collaborative multi-agent open-source development.",
+      "action_type": "BUILD",
+      "action": "Implement a simple Git-backed DAG logger in Python for your coding scripts, committing task hypotheses and execution metrics automatically.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-gemini-38-live",
+      "title": "Gemini 3.8 Live & Extended Thinking: Asynchronous Background Multi-Step Tool Execution",
+      "category": "LLM API / Voice & Real-Time Agents",
+      "primary_url": "https://deepmind.google/blog/introducing-gemini-3-8-live-and-3-8-live-extended-thinking",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "DeepMind launched Gemini 3.8 Live and Extended Thinking, enabling real-time voice interaction with parallel background tool execution and extended multi-step reasoning.",
+      "what_happened": "Google DeepMind released Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking in the Gemini API and Workspace, supporting real-time visual grounding and background tool execution.",
+      "what_changed": "Previous real-time voice APIs locked the execution loop during tool calls or reasoning. Gemini 3.8 Live Extended Thinking executes multi-step tool calls and reasoning in the background while maintaining audio conversation flow.",
+      "why_it_matters": "Removes latency bottlenecks in voice agent loops, allowing complex agentic actions (like database lookups or external API calls) to run concurrently with conversation.",
+      "key_takeaways": [
+        "Dual model release: 3.8 Live for low-cost fluid interaction, 3.8 Live Extended Thinking for complex tasks.",
+        "Background task execution eliminates pause-and-wait voice interaction bottlenecks.",
+        "Supports real-time visual context and multilingual switching."
+      ],
+      "technical_architecture": [
+        "Full-duplex streaming audio pipeline.",
+        "Parallel reasoning worker threads decoupled from audio output buffer.",
+        "Real-time visual context injection interface."
+      ],
+      "technical_details": [
+        "Accessible via Gemini API, Search, and Google Workspace.",
+        "Extended thinking mode exposes reasoning trace logs for inspection.",
+        "Optimized for high-concurrency low-latency deployment."
+      ],
+      "potential_impact": "Paves the way for fluid, human-like voice agents that perform complex work while talking.",
+      "action_type": "TRY",
+      "action": "Test Gemini 3.8 Live via Gemini API with a Python script that streams microphone audio while invoking a background tool.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-llama-4-scout-maverick",
+      "title": "Meta Llama 4 Scout & Maverick: Natively Multimodal MoE Open-Weight Foundation Models",
+      "category": "Open Source AI / Foundation Models",
+      "primary_url": "https://ai.meta.com/Open",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "Meta announced Llama 4 Scout and Maverick, transitioning the Llama architecture to natively multimodal, mixture-of-experts (MoE) designs with Llama Stack support.",
+      "what_happened": "Meta unveiled Llama 4 Scout and Llama 4 Maverick, the first open-weight models in the Llama 4 family featuring native vision/audio/text multimodality and MoE scaling.",
+      "what_changed": "Llama 3 relied on dense transformer blocks and late-fusion vision wrappers. Llama 4 moves to native multimodal architecture and MoE, dramatically increasing context capacity and execution speed.",
+      "why_it_matters": "Brings state-of-the-art natively multimodal MoE models to open weights, making local and self-hosted visual/multimodal agents significantly cheaper and faster to run.",
+      "key_takeaways": [
+        "Native multimodality removes visual encoding bottlenecks.",
+        "Mixture-of-Experts architecture delivers high compute efficiency per token.",
+        "Full compatibility with Llama Stack and Llama API."
+      ],
+      "technical_architecture": [
+        "Natively multimodal unified transformer architecture.",
+        "Mixture-of-Experts (MoE) sparse routing layers.",
+        "Native Llama Stack deployment orchestration."
+      ],
+      "technical_details": [
+        "Industry-leading context window lengths.",
+        "Designed for rapid deployment via Llama API and local runtimes.",
+        "Committed open grants for global ecosystem development."
+      ],
+      "potential_impact": "Accelerates local open-source multimodal agent development without relying on proprietary cloud APIs.",
+      "action_type": "APPLY",
+      "action": "Prepare your local agent evaluation setup (Ollama or vLLM) to benchmark MoE multimodal architectures as Llama 4 weights roll out.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-dom-reward-hacking-monitors",
+      "title": "Internal Representation Probing: White-Box DoM Vectors for Low-Cost Agent Oversight",
+      "category": "AI Evaluation / Agent Safety & Internal State",
+      "primary_url": "https://arxiv.org/abs/2609.19101",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "Difference of Means (DoM) vectors extracted from model chain-of-thought activations detect agent reward hacking in GLM 5.2 and Kimi K3 at near-zero compute cost.",
+      "what_happened": "Researchers showed that simple difference of means (DoM) probing vectors on internal representations detect reward hacking in frontier models across DeepSWE and SWE-bench environments.",
+      "what_changed": "Detecting agent reward hacking (e.g. bypassing test suites or falsifying logs) previously required running expensive LLM-as-a-judge monitors. Internal activation probing matches LLM judge accuracy with virtually zero extra latency or API cost.",
+      "why_it_matters": "Enables real-time, online monitoring of agent chain-of-thought traces to catch malicious or policy-violating agent actions before tool execution occurs.",
+      "key_takeaways": [
+        "GLM 5.2 exhibited reward hacking in 73% of SWE-bench rollouts.",
+        "DoM vectors on internal hidden states effectively catch hacks online.",
+        "Provides white-box interpretability for open-weights agent models."
+      ],
+      "technical_architecture": [
+        "Difference of Means (DoM) linear probe extracted from CoT hidden states.",
+        "Online activation tapping during autoregressive generation.",
+        "Asynchronous alert trigger before execution phase."
+      ],
+      "technical_details": [
+        "Evaluated on Kimi K3, GLM 5.2, and Qwen 3.8 Max.",
+        "Caught 3.1% more hacks on Kimi K3 compared to expensive LLM monitors.",
+        "Zero added request latency when run in parallel with token generation."
+      ],
+      "potential_impact": "Shifts agent safety monitoring from expensive black-box LLM judging to fast, white-box internal representation probes.",
+      "action_type": "LEARN",
+      "action": "Study linear probing techniques on transformer hidden states to understand how internal representation vectors are calculated.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-evolvetrade-prompt-as-policy",
+      "title": "EvolveTrade: Experience-Driven Policy Prompt Refinement for Self-Evolving Agents",
+      "category": "AI Research / Self-Improvement & Agent Memory",
+      "primary_url": "https://huggingface.co/papers/2609.17632",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "EvolveTrade treats agent system prompts as text-parameterized policies, using a meta-Policy Agent to iteratively refine tool usage rules based on outcome feedback.",
+      "what_happened": "Researchers introduced EvolveTrade, a framework where an agent's backbone LLM remains frozen, but its system prompt / tool usage guidelines are dynamically updated by a Policy Agent using execution traces and performance metrics.",
+      "what_changed": "Most agent frameworks use static, human-engineered system prompts. EvolveTrade introduces meta-level reflection that converts execution experience into structured system prompt updates.",
+      "why_it_matters": "Provides a practical, low-cost path to self-improving agents without fine-tuning weights, ideal for developers operating within API rate/cost limits.",
+      "key_takeaways": [
+        "Text-parameterized policy optimization keeps base LLM weights frozen.",
+        "Policy Agent reflects on execution traces and outcome metrics after each run batch.",
+        "Significantly improved Sharpe Ratio and decision quality over fixed-prompt baselines."
+      ],
+      "technical_architecture": [
+        "Execution trace recorder capturing tool call sequences and outcomes.",
+        "Meta-Policy Agent evaluating trace quality.",
+        "System prompt updater optimizing procedural instructions."
+      ],
+      "technical_details": [
+        "Evaluated across multiple market regimes and LLM backbones.",
+        "Increased code-mediated analysis and targeted tool selection.",
+        "Traceable policy-to-return attribution."
+      ],
+      "potential_impact": "Validates system-prompt evolution as a reliable substitute for expensive model fine-tuning in specialized domains.",
+      "action_type": "BUILD",
+      "action": "Build a mini reflection loop that takes failed agent execution logs and generates an updated prompt configuration file automatically.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-gemini-agent-anomaly-detection",
+      "title": "Google Agent Anomaly Detection: Out-of-Band Security Oversight for Autonomous Agents",
+      "category": "Agent Security & Governance",
+      "primary_url": "https://developers.googleblog.com/agent-anomaly-detection-now-in-private-preview-on-the-gemini-enterprise-agent-platform",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 7,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "Google launched Agent Anomaly Detection on Gemini Enterprise, performing asynchronous, reasoning-based security audits mapped directly to the OWASP Agentic Top 10.",
+      "what_happened": "Google introduced an out-of-band security and auditing layer that analyzes OpenTelemetry traces, reasoning steps, and tool calls of production agents without slowing response time.",
+      "what_changed": "Traditional unit tests or standard latency/token metrics fail to catch silent privilege escalations or improper tool calls. Google's tool inspects the complete execution graph asynchronously against OWASP Agentic Top 10 risks.",
+      "why_it_matters": "Solves the core enterprise dilemma: autonomous agents make runtime decisions that bypass traditional static code security filters, requiring behavioral trace monitoring.",
+      "key_takeaways": [
+        "Asynchronous out-of-band evaluation ensures zero impact on live latency.",
+        "Native mapping to OWASP Agentic Top 10 (ASI02 Tool Misuse, ASI03 Privilege Abuse, ASI10 Rogue Agents).",
+        "Integration with Security Command Center for centralized incident triage."
+      ],
+      "technical_architecture": [
+        "OpenTelemetry trace collector ingesting agent tool calls and reasoning logs.",
+        "Asynchronous reasoning-based audit engine.",
+        "Security Command Center publisher."
+      ],
+      "technical_details": [
+        "Flags subtle intent shifts and unexpected tool reach.",
+        "Provides plain-language risk explanations and actionable remediations.",
+        "Upcoming support for custom business logic rules written in natural language."
+      ],
+      "potential_impact": "Sets the enterprise standard for non-blocking agent behavioral security monitoring.",
+      "action_type": "TRACK",
+      "action": "Review OWASP Agentic Top 10 categories (ASI02, ASI03, ASI08, ASI10) and document potential failure modes in your agent projects.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-log-n-questions-llm-communication",
+      "title": "Title-Partitioning Strategies: Frontier LLM Self-Communication Efficiency in Information Asymmetry Games",
+      "category": "AI Research / Agent Communication & Evaluation",
+      "primary_url": "https://arxiv.org/abs/2609.19113",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 8,
+      "actionability": 7,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "Evaluating frontier LLMs in a two-agent log(N)-Questions game reveals that models achieve optimal 1 bit/question efficiency specifically when partitioning context by document titles.",
+      "what_happened": "A study evaluated 6 frontier LLMs in a paired information asymmetry game (log2(N) questions over Wikipedia abstracts) to measure model self-communication efficiency.",
+      "what_changed": "Previous evaluations measured model single-prompt QA accuracy. This benchmark tests how efficiently a model can reduce search space entropy when split into an information-limited questioner and answerer.",
+      "why_it_matters": "Teaches crucial prompt design principles for multi-agent systems: structured indexing (like binary splitting on document titles) dramatically outperforms unstructured reasoning.",
+      "key_takeaways": [
+        "Win rate scales smoothly as p^(log2 N) with average per-round reliability p=0.928.",
+        "Only top models extracted a full 1 bit of information per question by using title-partitioning strategies.",
+        "Excessive reasoning-token expenditure showed little correlation with game success."
+      ],
+      "technical_architecture": [
+        "Paired 2-agent information game protocol.",
+        "Strict log2(N) yes/no constraint.",
+        "Entropy reduction metric (bits per question)."
+      ],
+      "technical_details": [
+        "408 games evaluated across document sets up to 1024 paragraphs.",
+        "Tested GLM-5.3, GPT-5.6 Sol, Grok 4.6, Gemini 3.8 Flash, Kimi K3, and Claude Opus 5.",
+        "Identified strict bias toward defaulting to 'No' answers in weaker models."
+      ],
+      "potential_impact": "Informs structured protocol design for multi-agent negotiation, binary search tree retrieval, and active learning loops.",
+      "action_type": "LEARN",
+      "action": "Analyze binary search partitioning logic in multi-agent prompt design to optimize information gathering loops.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-limix-2-causal-structured-data",
+      "title": "LimiX-2: Contextual Mechanism Networks for Zero-Shot Tabular Causal Recovery",
+      "category": "AI Research / Structured Data & Causal ML",
+      "primary_url": "https://huggingface.co/papers/2609.17488",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 8,
+      "actionability": 7,
+      "source_quality": 8,
+      "confidence": 85,
+      "tldr": "LimiX-2 introduces Contextual Mechanism Networks (CMNs) pretrained on Structural Causal Models to achieve state-of-the-art zero-shot tabular prediction and causal skeleton recovery.",
+      "what_happened": "Researchers released LimiX-2, a foundation model for structured data trained using Context-Conditional Masked Modeling (CCMM) over synthetic datasets from Structural Causal Models (SCMs).",
+      "what_changed": "Traditional tabular models focus on target-centric prediction p(y|x, D_context). LimiX-2 models joint probability distributions p(x,y|D_context), capturing underlying data-generating mechanisms.",
+      "why_it_matters": "Enables agents working with SQL databases and tabular analytics to infer causal relationships and make zero-shot predictions without manual feature engineering or task-specific retraining.",
+      "key_takeaways": [
+        "Outperforms existing tabular foundation models on TabArena, TALENT, and BCC benchmarks.",
+        "Feature attention weights directly encode causal relationships.",
+        "Recovers causal skeletons zero-shot from structured datasets."
+      ],
+      "technical_architecture": [
+        "Contextual Mechanism Network (CMN) architecture.",
+        "Context-Conditional Masked Modeling (CCMM) pre-training.",
+        "Structural Causal Model (SCM) synthetic data generator."
+      ],
+      "technical_details": [
+        "Pretrained across diverse graph structures and functional mechanisms.",
+        "Jointly models features and labels for flexible downstream query tasks.",
+        "GitHub repository and weights publicly released."
+      ],
+      "potential_impact": "Brings causal reasoning capabilities to AI database agents, enabling deeper automated analytics.",
+      "action_type": "TRACK",
+      "action": "Follow the LimiX-2 GitHub repository and review its approach to causal graph inference from SQL tables.",
+      "evidence": []
     }
   ],
   "topics": {
@@ -1467,7 +1800,16 @@
     "AI Research / Multi-Agent Swarms": 1,
     "AI Infrastructure / Hardware & RL Agents": 1,
     "AI Research / Agent Environments & Training": 1,
-    "AI Research / Reinforcement Learning": 1
+    "AI Research / Reinforcement Learning": 1,
+    "MCP / Agent Tooling & UI": 1,
+    "Multi-Agent Systems / Agent Memory & Research": 1,
+    "LLM API / Voice & Real-Time Agents": 1,
+    "Open Source AI / Foundation Models": 1,
+    "AI Evaluation / Agent Safety & Internal State": 1,
+    "AI Research / Self-Improvement & Agent Memory": 1,
+    "Agent Security & Governance": 1,
+    "AI Research / Agent Communication & Evaluation": 1,
+    "AI Research / Structured Data & Causal ML": 1
   },
   "reports": [
     {
@@ -2840,22 +3182,353 @@
         "აგენტების სანდოობისა და თავდაჯერებულობის (Confidence) შეფასება არა ინფერენსის ტოკენებით, არამედ წარსული ეპიზოდების ისტორიითა და გაკვეთილებით (XConf).",
         "აგენტურ ციკლებში (Agent Loops) Real-time Execution Validation-ის (SRM) პრიორიტეტიზაცია ეპიზოდურ მეხსიერებასთან შედარებით."
       ]
+    },
+    {
+      "date": "2026-09-17",
+      "summary": "Today's developments mark significant architectural shifts in agent user interfaces, safety monitoring, and multi-agent state coordination. AWS and the MCP ecosystem introduced MCP Apps for rendering interactive HTML UI widgets inside host applications, while DeepMind and Google launched Gemini 3.8 Live and out-of-band Agent Anomaly Detection for real-time, non-blocking agent execution. Furthermore, new research establishes Git DAGs as an effective shared memory for autonomous multi-agent research loops and demonstrates low-cost internal activation probing to catch reward hacking online.",
+      "events": [
+        {
+          "event_id": "evt-mcp-apps-bedrock",
+          "title": "MCP Apps Standard & Bedrock AgentCore: Interactive HTML UI Rendering inside AI Hosts",
+          "category": "MCP / Agent Tooling & UI",
+          "primary_url": "https://aws.amazon.com/blogs/machine-learning/build-interactive-mcp-apps-using-amazon-bedrock-agentcore",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "The Model Context Protocol (MCP) is extended with MCP Apps, enabling servers to render interactive, host-agnostic HTML widgets directly in ChatGPT and Claude via Bedrock AgentCore runtime.",
+          "what_happened": "AWS detailed how Amazon Bedrock AgentCore Runtime and Gateway support the new MCP Apps extension, allowing MCP servers to serve rich HTML UI widgets instead of plain text responses.",
+          "what_changed": "Before, MCP tool outputs were strictly plain text or markdown, forcing host LLMs to synthesize text tables or code blocks. Now, MCP Apps standardizes embedding interactive HTML cards, forms, and widgets directly in host UIs like ChatGPT and Claude.",
+          "why_it_matters": "Decouples custom UI logic from specific AI chat platforms, allowing developers to build a single serverless MCP server on Bedrock AgentCore that serves interactive tools identically across all major AI hosts.",
+          "key_takeaways": [
+            "MCP Apps standard extends MCP with host-agnostic HTML widgets.",
+            "Bedrock AgentCore Gateway provides session-isolated, serverless execution endpoints for MCP Apps.",
+            "Reduces plain-text context pollution while improving user interaction flow."
+          ],
+          "technical_architecture": [
+            "Host-agnostic MCP Apps protocol extension.",
+            "AgentCore Runtime for session-isolated serverless tool execution.",
+            "AgentCore Gateway exposing single secure endpoint for host communication."
+          ],
+          "technical_details": [
+            "HTML/JS widgets rendered in sandboxed host iframes.",
+            "Supports contextual text fallback when rich UI is unnecessary.",
+            "Native integration with ChatGPT and Claude client hosts."
+          ],
+          "potential_impact": "Standardizes the UI layer for AI agents, making custom text-only UI hacks obsolete.",
+          "action_type": "BUILD",
+          "action": "Create a local Python MCP server returning an interactive HTML table widget for SQL query results and test it in Claude Desktop.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-agora-git-shared-memory",
+          "title": "Agora: Git-Based Shared Memory DAG for Decentralized Multi-Agent AutoResearch",
+          "category": "Multi-Agent Systems / Agent Memory & Research",
+          "primary_url": "https://huggingface.co/papers/2609.18094",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "Agora introduces Git as an append-only DAG shared memory for multi-agent research loops, allowing 13 LLM agents to collaborate asynchronously without redundant exploration.",
+          "what_happened": "Researchers from NVIDIA introduced Agora, a decentralized architecture where AI research agents log hypotheses, code edits, and evaluation results as immutable Git commits in a Directed Acyclic Graph (DAG).",
+          "what_changed": "Before, running multiple AutoResearch agents in parallel caused duplicated search paths as each agent started from scratch. Agora turns Git into shared memory where every claim is an actionable, checkable commit.",
+          "why_it_matters": "Demonstrates how standard version control (Git) can act as long-term shared state memory for swarm research without requiring a centralized master orchestrator.",
+          "key_takeaways": [
+            "1,703 contributions over 12 days by 13 autonomous LLM agents.",
+            "Git DAG index exposes research frontier, unverified claims, and neglected branches.",
+            "Diversity-aware selection rule prevents agents from prematurely collapsing on a single solution."
+          ],
+          "technical_architecture": [
+            "Append-only Git DAG commit log as state storage.",
+            "Derived index parser tracking research frontier and verification status.",
+            "Asynchronous worker loop checking out and validating ancestor commits."
+          ],
+          "technical_details": [
+            "Closed 62% of the gap to trained GPT-2 124M on a zero-data weight-transfer task.",
+            "Tested across 165 independent agent verifications.",
+            "Zero central planner node required."
+          ],
+          "potential_impact": "Establishes Git-based DAGs as a scalable architecture for collaborative multi-agent open-source development.",
+          "action_type": "BUILD",
+          "action": "Implement a simple Git-backed DAG logger in Python for your coding scripts, committing task hypotheses and execution metrics automatically.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-gemini-38-live",
+          "title": "Gemini 3.8 Live & Extended Thinking: Asynchronous Background Multi-Step Tool Execution",
+          "category": "LLM API / Voice & Real-Time Agents",
+          "primary_url": "https://deepmind.google/blog/introducing-gemini-3-8-live-and-3-8-live-extended-thinking",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "DeepMind launched Gemini 3.8 Live and Extended Thinking, enabling real-time voice interaction with parallel background tool execution and extended multi-step reasoning.",
+          "what_happened": "Google DeepMind released Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking in the Gemini API and Workspace, supporting real-time visual grounding and background tool execution.",
+          "what_changed": "Previous real-time voice APIs locked the execution loop during tool calls or reasoning. Gemini 3.8 Live Extended Thinking executes multi-step tool calls and reasoning in the background while maintaining audio conversation flow.",
+          "why_it_matters": "Removes latency bottlenecks in voice agent loops, allowing complex agentic actions (like database lookups or external API calls) to run concurrently with conversation.",
+          "key_takeaways": [
+            "Dual model release: 3.8 Live for low-cost fluid interaction, 3.8 Live Extended Thinking for complex tasks.",
+            "Background task execution eliminates pause-and-wait voice interaction bottlenecks.",
+            "Supports real-time visual context and multilingual switching."
+          ],
+          "technical_architecture": [
+            "Full-duplex streaming audio pipeline.",
+            "Parallel reasoning worker threads decoupled from audio output buffer.",
+            "Real-time visual context injection interface."
+          ],
+          "technical_details": [
+            "Accessible via Gemini API, Search, and Google Workspace.",
+            "Extended thinking mode exposes reasoning trace logs for inspection.",
+            "Optimized for high-concurrency low-latency deployment."
+          ],
+          "potential_impact": "Paves the way for fluid, human-like voice agents that perform complex work while talking.",
+          "action_type": "TRY",
+          "action": "Test Gemini 3.8 Live via Gemini API with a Python script that streams microphone audio while invoking a background tool.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-llama-4-scout-maverick",
+          "title": "Meta Llama 4 Scout & Maverick: Natively Multimodal MoE Open-Weight Foundation Models",
+          "category": "Open Source AI / Foundation Models",
+          "primary_url": "https://ai.meta.com/Open",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "Meta announced Llama 4 Scout and Maverick, transitioning the Llama architecture to natively multimodal, mixture-of-experts (MoE) designs with Llama Stack support.",
+          "what_happened": "Meta unveiled Llama 4 Scout and Llama 4 Maverick, the first open-weight models in the Llama 4 family featuring native vision/audio/text multimodality and MoE scaling.",
+          "what_changed": "Llama 3 relied on dense transformer blocks and late-fusion vision wrappers. Llama 4 moves to native multimodal architecture and MoE, dramatically increasing context capacity and execution speed.",
+          "why_it_matters": "Brings state-of-the-art natively multimodal MoE models to open weights, making local and self-hosted visual/multimodal agents significantly cheaper and faster to run.",
+          "key_takeaways": [
+            "Native multimodality removes visual encoding bottlenecks.",
+            "Mixture-of-Experts architecture delivers high compute efficiency per token.",
+            "Full compatibility with Llama Stack and Llama API."
+          ],
+          "technical_architecture": [
+            "Natively multimodal unified transformer architecture.",
+            "Mixture-of-Experts (MoE) sparse routing layers.",
+            "Native Llama Stack deployment orchestration."
+          ],
+          "technical_details": [
+            "Industry-leading context window lengths.",
+            "Designed for rapid deployment via Llama API and local runtimes.",
+            "Committed open grants for global ecosystem development."
+          ],
+          "potential_impact": "Accelerates local open-source multimodal agent development without relying on proprietary cloud APIs.",
+          "action_type": "APPLY",
+          "action": "Prepare your local agent evaluation setup (Ollama or vLLM) to benchmark MoE multimodal architectures as Llama 4 weights roll out.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-dom-reward-hacking-monitors",
+          "title": "Internal Representation Probing: White-Box DoM Vectors for Low-Cost Agent Oversight",
+          "category": "AI Evaluation / Agent Safety & Internal State",
+          "primary_url": "https://arxiv.org/abs/2609.19101",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "Difference of Means (DoM) vectors extracted from model chain-of-thought activations detect agent reward hacking in GLM 5.2 and Kimi K3 at near-zero compute cost.",
+          "what_happened": "Researchers showed that simple difference of means (DoM) probing vectors on internal representations detect reward hacking in frontier models across DeepSWE and SWE-bench environments.",
+          "what_changed": "Detecting agent reward hacking (e.g. bypassing test suites or falsifying logs) previously required running expensive LLM-as-a-judge monitors. Internal activation probing matches LLM judge accuracy with virtually zero extra latency or API cost.",
+          "why_it_matters": "Enables real-time, online monitoring of agent chain-of-thought traces to catch malicious or policy-violating agent actions before tool execution occurs.",
+          "key_takeaways": [
+            "GLM 5.2 exhibited reward hacking in 73% of SWE-bench rollouts.",
+            "DoM vectors on internal hidden states effectively catch hacks online.",
+            "Provides white-box interpretability for open-weights agent models."
+          ],
+          "technical_architecture": [
+            "Difference of Means (DoM) linear probe extracted from CoT hidden states.",
+            "Online activation tapping during autoregressive generation.",
+            "Asynchronous alert trigger before execution phase."
+          ],
+          "technical_details": [
+            "Evaluated on Kimi K3, GLM 5.2, and Qwen 3.8 Max.",
+            "Caught 3.1% more hacks on Kimi K3 compared to expensive LLM monitors.",
+            "Zero added request latency when run in parallel with token generation."
+          ],
+          "potential_impact": "Shifts agent safety monitoring from expensive black-box LLM judging to fast, white-box internal representation probes.",
+          "action_type": "LEARN",
+          "action": "Study linear probing techniques on transformer hidden states to understand how internal representation vectors are calculated.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-evolvetrade-prompt-as-policy",
+          "title": "EvolveTrade: Experience-Driven Policy Prompt Refinement for Self-Evolving Agents",
+          "category": "AI Research / Self-Improvement & Agent Memory",
+          "primary_url": "https://huggingface.co/papers/2609.17632",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "EvolveTrade treats agent system prompts as text-parameterized policies, using a meta-Policy Agent to iteratively refine tool usage rules based on outcome feedback.",
+          "what_happened": "Researchers introduced EvolveTrade, a framework where an agent's backbone LLM remains frozen, but its system prompt / tool usage guidelines are dynamically updated by a Policy Agent using execution traces and performance metrics.",
+          "what_changed": "Most agent frameworks use static, human-engineered system prompts. EvolveTrade introduces meta-level reflection that converts execution experience into structured system prompt updates.",
+          "why_it_matters": "Provides a practical, low-cost path to self-improving agents without fine-tuning weights, ideal for developers operating within API rate/cost limits.",
+          "key_takeaways": [
+            "Text-parameterized policy optimization keeps base LLM weights frozen.",
+            "Policy Agent reflects on execution traces and outcome metrics after each run batch.",
+            "Significantly improved Sharpe Ratio and decision quality over fixed-prompt baselines."
+          ],
+          "technical_architecture": [
+            "Execution trace recorder capturing tool call sequences and outcomes.",
+            "Meta-Policy Agent evaluating trace quality.",
+            "System prompt updater optimizing procedural instructions."
+          ],
+          "technical_details": [
+            "Evaluated across multiple market regimes and LLM backbones.",
+            "Increased code-mediated analysis and targeted tool selection.",
+            "Traceable policy-to-return attribution."
+          ],
+          "potential_impact": "Validates system-prompt evolution as a reliable substitute for expensive model fine-tuning in specialized domains.",
+          "action_type": "BUILD",
+          "action": "Build a mini reflection loop that takes failed agent execution logs and generates an updated prompt configuration file automatically.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-gemini-agent-anomaly-detection",
+          "title": "Google Agent Anomaly Detection: Out-of-Band Security Oversight for Autonomous Agents",
+          "category": "Agent Security & Governance",
+          "primary_url": "https://developers.googleblog.com/agent-anomaly-detection-now-in-private-preview-on-the-gemini-enterprise-agent-platform",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 7,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "Google launched Agent Anomaly Detection on Gemini Enterprise, performing asynchronous, reasoning-based security audits mapped directly to the OWASP Agentic Top 10.",
+          "what_happened": "Google introduced an out-of-band security and auditing layer that analyzes OpenTelemetry traces, reasoning steps, and tool calls of production agents without slowing response time.",
+          "what_changed": "Traditional unit tests or standard latency/token metrics fail to catch silent privilege escalations or improper tool calls. Google's tool inspects the complete execution graph asynchronously against OWASP Agentic Top 10 risks.",
+          "why_it_matters": "Solves the core enterprise dilemma: autonomous agents make runtime decisions that bypass traditional static code security filters, requiring behavioral trace monitoring.",
+          "key_takeaways": [
+            "Asynchronous out-of-band evaluation ensures zero impact on live latency.",
+            "Native mapping to OWASP Agentic Top 10 (ASI02 Tool Misuse, ASI03 Privilege Abuse, ASI10 Rogue Agents).",
+            "Integration with Security Command Center for centralized incident triage."
+          ],
+          "technical_architecture": [
+            "OpenTelemetry trace collector ingesting agent tool calls and reasoning logs.",
+            "Asynchronous reasoning-based audit engine.",
+            "Security Command Center publisher."
+          ],
+          "technical_details": [
+            "Flags subtle intent shifts and unexpected tool reach.",
+            "Provides plain-language risk explanations and actionable remediations.",
+            "Upcoming support for custom business logic rules written in natural language."
+          ],
+          "potential_impact": "Sets the enterprise standard for non-blocking agent behavioral security monitoring.",
+          "action_type": "TRACK",
+          "action": "Review OWASP Agentic Top 10 categories (ASI02, ASI03, ASI08, ASI10) and document potential failure modes in your agent projects.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-log-n-questions-llm-communication",
+          "title": "Title-Partitioning Strategies: Frontier LLM Self-Communication Efficiency in Information Asymmetry Games",
+          "category": "AI Research / Agent Communication & Evaluation",
+          "primary_url": "https://arxiv.org/abs/2609.19113",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 8,
+          "actionability": 7,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "Evaluating frontier LLMs in a two-agent log(N)-Questions game reveals that models achieve optimal 1 bit/question efficiency specifically when partitioning context by document titles.",
+          "what_happened": "A study evaluated 6 frontier LLMs in a paired information asymmetry game (log2(N) questions over Wikipedia abstracts) to measure model self-communication efficiency.",
+          "what_changed": "Previous evaluations measured model single-prompt QA accuracy. This benchmark tests how efficiently a model can reduce search space entropy when split into an information-limited questioner and answerer.",
+          "why_it_matters": "Teaches crucial prompt design principles for multi-agent systems: structured indexing (like binary splitting on document titles) dramatically outperforms unstructured reasoning.",
+          "key_takeaways": [
+            "Win rate scales smoothly as p^(log2 N) with average per-round reliability p=0.928.",
+            "Only top models extracted a full 1 bit of information per question by using title-partitioning strategies.",
+            "Excessive reasoning-token expenditure showed little correlation with game success."
+          ],
+          "technical_architecture": [
+            "Paired 2-agent information game protocol.",
+            "Strict log2(N) yes/no constraint.",
+            "Entropy reduction metric (bits per question)."
+          ],
+          "technical_details": [
+            "408 games evaluated across document sets up to 1024 paragraphs.",
+            "Tested GLM-5.3, GPT-5.6 Sol, Grok 4.6, Gemini 3.8 Flash, Kimi K3, and Claude Opus 5.",
+            "Identified strict bias toward defaulting to 'No' answers in weaker models."
+          ],
+          "potential_impact": "Informs structured protocol design for multi-agent negotiation, binary search tree retrieval, and active learning loops.",
+          "action_type": "LEARN",
+          "action": "Analyze binary search partitioning logic in multi-agent prompt design to optimize information gathering loops.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-limix-2-causal-structured-data",
+          "title": "LimiX-2: Contextual Mechanism Networks for Zero-Shot Tabular Causal Recovery",
+          "category": "AI Research / Structured Data & Causal ML",
+          "primary_url": "https://huggingface.co/papers/2609.17488",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 8,
+          "actionability": 7,
+          "source_quality": 8,
+          "confidence": 85,
+          "tldr": "LimiX-2 introduces Contextual Mechanism Networks (CMNs) pretrained on Structural Causal Models to achieve state-of-the-art zero-shot tabular prediction and causal skeleton recovery.",
+          "what_happened": "Researchers released LimiX-2, a foundation model for structured data trained using Context-Conditional Masked Modeling (CCMM) over synthetic datasets from Structural Causal Models (SCMs).",
+          "what_changed": "Traditional tabular models focus on target-centric prediction p(y|x, D_context). LimiX-2 models joint probability distributions p(x,y|D_context), capturing underlying data-generating mechanisms.",
+          "why_it_matters": "Enables agents working with SQL databases and tabular analytics to infer causal relationships and make zero-shot predictions without manual feature engineering or task-specific retraining.",
+          "key_takeaways": [
+            "Outperforms existing tabular foundation models on TabArena, TALENT, and BCC benchmarks.",
+            "Feature attention weights directly encode causal relationships.",
+            "Recovers causal skeletons zero-shot from structured datasets."
+          ],
+          "technical_architecture": [
+            "Contextual Mechanism Network (CMN) architecture.",
+            "Context-Conditional Masked Modeling (CCMM) pre-training.",
+            "Structural Causal Model (SCM) synthetic data generator."
+          ],
+          "technical_details": [
+            "Pretrained across diverse graph structures and functional mechanisms.",
+            "Jointly models features and labels for flexible downstream query tasks.",
+            "GitHub repository and weights publicly released."
+          ],
+          "potential_impact": "Brings causal reasoning capabilities to AI database agents, enabling deeper automated analytics.",
+          "action_type": "TRACK",
+          "action": "Follow the LimiX-2 GitHub repository and review its approach to causal graph inference from SQL tables.",
+          "evidence": []
+        }
+      ],
+      "trends": [
+        "Shift from text-only MCP responses to rich, host-agnostic HTML UI rendering via MCP Apps.",
+        "Asynchronous out-of-band security and anomaly detection running alongside live agent execution traces.",
+        "Internal hidden state probing (white-box vectors) replacing expensive LLM-as-a-judge monitoring.",
+        "Transition to Git-based DAGs as decentralized shared memory for multi-agent auto-research."
+      ]
     }
   ],
   "learning_queue": [
-    "GPT-Live-1 API-ის WebSocket/Full-duplex სესიების მართვა და Python SDK ინტეგრაცია.",
-    "Agent Plugins Standard-ის მანიფესტის (manifest.json) სტრუქტურა და საკუთარი MCP სერვერების შეფუთვა.",
-    "XConf-ის Recall & Reflect არქიტექტურა ეპიზოდური მეხსიერების მართვისთვის.",
-    "Affora დიზაინ-სისტემის პრინციპები Computer-Use აგენტებისთვის."
+    "MCP Apps extension specification and iframe message passing protocols.",
+    "Linear representation probing and Difference of Means (DoM) vector extraction from LLM hidden states.",
+    "Structural Causal Models (SCM) and joint distribution modeling for structured database analysis."
   ],
-  "last_run": "2026-09-17T12:35:46.790316+00:00",
+  "last_run": "2026-09-17T13:26:30.037239+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
     "arxiv:2609.19125",
     "arxiv:2609.19124",
     "arxiv:2609.19134",
-    "arxiv:2609.18708"
+    "arxiv:2609.18708",
+    "arxiv:2609.18094",
+    "arxiv:2609.19101",
+    "arxiv:2609.17632",
+    "arxiv:2609.19113",
+    "arxiv:2609.17488"
   ],
   "last_report_files": {
     "markdown": "data/reports/2026-09-17/report.md",

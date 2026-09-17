@@ -54,6 +54,13 @@ TELEGRAM_CHAT_ID = get_env("TELEGRAM_CHAT_ID")
 
 # === Model Config ===
 GEMINI_MODEL = get_env("GEMINI_MODEL", "gemini-3.6-flash")
+# Comma-separated fallback models tried in order when the primary
+# model keeps failing (e.g. 503 "high demand" capacity spikes)
+GEMINI_MODEL_FALLBACKS = [
+    m.strip() for m in get_env(
+        "GEMINI_MODEL_FALLBACKS", "gemini-2.5-flash"
+    ).split(",") if m.strip()
+]
 
 # === Feature flags: sources ===
 ENABLE_ARXIV = get_env_bool("ENABLE_ARXIV", True)
@@ -68,6 +75,17 @@ PAPER_MAX_AGE_DAYS = get_env_int("PAPER_MAX_AGE_DAYS", 3)
 MAX_RESULTS_PER_QUERY = 8
 MAX_CANDIDATES_FOR_RESEARCH = 24
 MAX_ARTICLE_CHARS = 7000
+
+# === Gemini analysis budget ===
+# Per-candidate content cap sent to Gemini (the fetcher keeps more for
+# context, but the prompt must fit the free-tier per-minute quota)
+GEMINI_CONTENT_CHARS = get_env_int("GEMINI_CONTENT_CHARS", 3000)
+# Total character budget for source content in the prompt
+# (~4 chars/token -> ~50K tokens, far under the 250K-token free-tier
+# per-minute input quota for gemini-3.6-flash)
+GEMINI_PROMPT_CHAR_BUDGET = get_env_int("GEMINI_PROMPT_CHAR_BUDGET", 200000)
+# Analysis attempts (retries honor Gemini's "retry in Xs" hints)
+GEMINI_MAX_ATTEMPTS = get_env_int("GEMINI_MAX_ATTEMPTS", 4)
 
 # === Quality Thresholds ===
 MIN_SOURCE_QUALITY = get_env_int("MIN_SOURCE_QUALITY", 7)

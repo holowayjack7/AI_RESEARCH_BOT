@@ -10,7 +10,12 @@ import re
 import time
 from dataclasses import dataclass, field
 
-from config import MAX_ARTICLE_CHARS
+from config import (
+    GEMINI_CONTENT_CHARS,
+    GEMINI_MAX_ATTEMPTS,
+    GEMINI_MODEL_FALLBACKS,
+    GEMINI_PROMPT_CHAR_BUDGET,
+)
 from google import genai
 from google.genai import types
 
@@ -113,28 +118,83 @@ class ResearchReport:
 # GEMINI ANALYSIS
 # ============================================================
 
+def _slim_memory_items(items: list) -> list[dict]:
+    """Slim stored events for the prompt (drop heavy prose fields).
+
+    Full event dicts (takeaways, architecture, Georgian text, etc.)
+    can burn hundreds of thousands of tokens against Gemini's
+    per-minute quota; titles + ids + urls are enough for dedup.
+    """
+    slim = []
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        slim.append({
+            "event_id": item.get("event_id", ""),
+            "title": item.get("title", ""),
+            "category": item.get("category", ""),
+            "primary_url": item.get("primary_url", ""),
+        })
+    return slim
+
+
+def _slim_memory_reports(reports: list) -> list[dict]:
+    """Slim stored reports for the prompt (summary + titles only)."""
+    slim = []
+    for report in reports:
+        if not isinstance(report, dict):
+            continue
+        slim.append({
+            "date": report.get("date", ""),
+            "summary": report.get("summary", ""),
+            "event_titles": [
+                e.get("title", "")
+                for e in report.get("events", [])
+                if isinstance(e, dict)
+            ],
+        })
+    return slim
+
+
 def build_research_input(candidates: list[dict], state: dict | None = None) -> dict:
     """Prepare research data for Gemini analysis.
 
     Includes recent memory from persistent state so Gemini can
     avoid re-reporting known events and track long-term trends.
+
+    Total prompt size is bounded by GEMINI_PROMPT_CHAR_BUDGET so a
+    daily run can never blow through the API's per-minute token
+    quota (the failure mode seen in CI: 429 RESOURCE_EXHAUSTED on
+    all attempts).
     """
     state = state or {}
 
     sources = []
+    memory_budget = 8000   # cap for slimmed historical memory
+    content_budget = max(1000, GEMINI_PROMPT_CHAR_BUDGET - memory_budget)
 
     for candidate in candidates:
+        used = sum(len(s["content"]) for s in sources)
+        remaining = content_budget - used
+        if remaining <= 200:
+            logger.info(
+                f"Prompt content budget reached — sending first "
+                f"{len(sources)} of {len(candidates)} candidates"
+            )
+            break
         sources.append({
             "title": candidate["title"],
             "url": candidate["url"],
             "domain": candidate["domain"],
             "source_quality": candidate.get("source_quality", 5),
             "search_score": candidate.get("score", 0),
-            "content": (candidate.get("content") or "")[:MAX_ARTICLE_CHARS],
+            "content": (candidate.get("content") or "")[
+                : min(GEMINI_CONTENT_CHARS, remaining)
+            ],
         })
 
-    historical_events = state.get("events", [])[-40:]
-    historical_reports = state.get("reports", [])[-7:]
+    historical_events = _slim_memory_items(state.get("events", [])[-40:])
+    historical_reports = _slim_memory_reports(state.get("reports", [])[-7:])
     learning_queue = state.get("learning_queue", [])[-20:]
 
     return {
@@ -424,6 +484,25 @@ def parse_report(raw_json: str) -> ResearchReport:
     )
 
 
+def _gemini_retry_wait(error_str: str, attempt: int) -> float:
+    """Decide how long to wait before the next Gemini attempt.
+
+    Honors the API's own "Please retry in Xs" hints (quota errors).
+    Quota windows are per minute, so tiny waits rarely help — the
+    old 5s/10s backoff kept landing in the same exhausted window.
+    """
+    match = re.search(r"retry in ([0-9.]+)\s*s", error_str, flags=re.IGNORECASE)
+    if match:
+        try:
+            return min(120.0, float(match.group(1)) + 2.0)
+        except ValueError:
+            pass
+    if "RESOURCE_EXHAUSTED" in error_str or "429" in error_str:
+        return min(90.0, 30.0 * attempt)
+    # Transient (503 UNAVAILABLE etc.): moderate backoff
+    return min(60.0, 10.0 * attempt)
+
+
 def analyze_with_gemini(
     candidates: list[dict],
     api_key: str,
@@ -438,29 +517,56 @@ def analyze_with_gemini(
 
     research_data = build_research_input(candidates, state)
     prompt = build_gemini_prompt(research_data)
+    logger.info(
+        f"Gemini prompt size: ~{len(prompt) // 1000}K chars "
+        f"(budget {GEMINI_PROMPT_CHAR_BUDGET // 1000}K)"
+    )
 
-    for attempt in range(3):
-        try:
-            logger.info(f"Gemini analysis attempt {attempt + 1}/3...")
+    models = [model] + [m for m in GEMINI_MODEL_FALLBACKS if m != model]
+    last_error: Exception | None = None
 
-            response = client.models.generate_content(
-                model=model,
-                contents=prompt,
-                config=types.GenerateContentConfig(
-                    temperature=0.2,
-                    response_mime_type="application/json",
-                ),
-            )
+    for current_model in models:
+        for attempt in range(1, GEMINI_MAX_ATTEMPTS + 1):
+            try:
+                logger.info(
+                    f"Gemini analysis attempt {attempt}/{GEMINI_MAX_ATTEMPTS} "
+                    f"(model: {current_model})..."
+                )
 
-            report = parse_report(response.text)
+                response = client.models.generate_content(
+                    model=current_model,
+                    contents=prompt,
+                    config=types.GenerateContentConfig(
+                        temperature=0.2,
+                        response_mime_type="application/json",
+                    ),
+                )
 
-            logger.info(f"Gemini selected {len(report.events)} events")
+                report = parse_report(response.text)
 
-            return report
+                logger.info(
+                    f"Gemini selected {len(report.events)} events "
+                    f"(model: {current_model})"
+                )
 
-        except Exception as e:
-            logger.warning(f"Gemini error (attempt {attempt + 1}/3): {e}")
-            if attempt < 2:
-                time.sleep(5 * (attempt + 1))
+                return report
 
-    raise RuntimeError("Gemini analysis failed after 3 attempts")
+            except Exception as e:
+                last_error = e
+                wait = _gemini_retry_wait(str(e), attempt)
+                logger.warning(
+                    f"Gemini error (attempt {attempt}/{GEMINI_MAX_ATTEMPTS}, "
+                    f"model: {current_model}): {e} — waiting {wait:.0f}s"
+                )
+                if attempt < GEMINI_MAX_ATTEMPTS:
+                    time.sleep(wait)
+
+        logger.error(
+            f"Model {current_model} failed after {GEMINI_MAX_ATTEMPTS} "
+            f"attempts — trying next model"
+        )
+
+    raise RuntimeError(
+        f"Gemini analysis failed on all models ({', '.join(models)}): "
+        f"{last_error}"
+    )

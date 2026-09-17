@@ -331,6 +331,28 @@ def build_no_news_message(state: dict | None = None, candidates_reviewed: int = 
     return "\n".join(lines)
 
 
+def build_delayed_message(reason: str) -> str:
+    """Build the 'report delayed' notice for crashed runs.
+
+    The user expects a daily message: if the pipeline dies before
+    analysis completes (e.g. the model provider is overloaded), send
+    a short notice instead of silence.
+    """
+    divider = "┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈"
+    return "\n".join([
+        "<b>🛰 AI INTELLIGENCE REPORT</b>",
+        "⏳ <b>Today's report is delayed</b>",
+        f"📅 {_today()}",
+        "",
+        expandable_blockquote(_clip(reason, 300)),
+        "",
+        divider,
+        "",
+        "<i>🤖 The run will retry automatically tomorrow — or trigger "
+        "it now from GitHub Actions.</i>",
+    ])
+
+
 # ============================================================
 # CHUNKING
 # ============================================================
