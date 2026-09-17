@@ -50,6 +50,23 @@ SEARCH_QUERIES = [
         "important AI research papers agents reasoning inference "
         "training evaluation multimodal models latest"
     ),
+    # --- Broad AI coverage (agents, engineering, general AI news) ---
+    (
+        "artificial intelligence news major AI announcements "
+        "frontier models releases this week"
+    ),
+    (
+        "AI industry news OpenAI Google Anthropic Meta DeepMind "
+        "announcements launches updates"
+    ),
+    (
+        "AI agents news autonomous agents multi-agent systems "
+        "computer use agents launches capabilities"
+    ),
+    (
+        "AI engineering news developer platforms APIs infrastructure "
+        "updates best practices"
+    ),
 ]
 
 
@@ -94,6 +111,18 @@ TRUSTED_DOMAINS = {
     "agentprotocol.ai",
     "openagents.com",
     "aits.docs.buildwithfern.com",
+    # --- Broad, reputable AI news coverage ---
+    "techcrunch.com",
+    "theverge.com",
+    "venturebeat.com",
+    "arstechnica.com",
+    "wired.com",
+    "engadget.com",
+    "reuters.com",
+    # --- High-signal AI engineering voices/blogs ---
+    "simonwillison.net",
+    "interconnects.ai",
+    "latent.space",
 }
 
 

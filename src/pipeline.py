@@ -52,6 +52,12 @@ SOURCE_QUALITY_MAP = {
     "developers.google.com": 9, "cloud.google.com": 9,
     "together.ai": 8, "cohere.com": 8, "replicate.com": 8,
     "ollama.com": 8, "langchain.com": 8, "llamaindex.ai": 8,
+    # Broad AI news outlets (reputable, still signal-filtered downstream)
+    "techcrunch.com": 7, "theverge.com": 7, "venturebeat.com": 7,
+    "arstechnica.com": 8, "wired.com": 7, "engadget.com": 7,
+    "reuters.com": 8,
+    # High-signal AI engineering voices/blogs
+    "simonwillison.net": 9, "interconnects.ai": 8, "latent.space": 8,
 }
 
 

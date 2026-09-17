@@ -35,6 +35,10 @@ Python → APIs / HTTP / JSON → SQL / Databases → LLM APIs →
 Tool Calling / MCP → Agent Loops → State → Graphs → RAG →
 Evaluation → Production → Self-improvement → Real Business Agents
 
+The reader wants BROAD AI coverage: AI agents, AI engineering,
+model releases, research papers, developer tools, and major
+industry news — but NEVER hype, rumors, or financial noise.
+
 Strong interests:
 - AI agents, agent architecture, agent loops
 - state and memory, MCP, tool calling
@@ -44,7 +48,8 @@ Strong interests:
 - AI business opportunities, free/low-cost tools
 - opportunities accessible to teenagers 16+
 
-The reader does NOT want generic AI news.
+The reader does NOT want hype, rumors, or empty speculation —
+but genuine AI industry news with technical substance is welcome.
 
 Prioritize information that can:
 1. improve engineering ability,
