@@ -79,7 +79,18 @@
     "https://huggingface.co/papers/2609.17632",
     "https://developers.googleblog.com/agent-anomaly-detection-now-in-private-preview-on-the-gemini-enterprise-agent-platform",
     "https://arxiv.org/abs/2609.19113",
-    "https://huggingface.co/papers/2609.17488"
+    "https://huggingface.co/papers/2609.17488",
+    "https://github.com/FlorianBruniaux/claude-code-ultimate-guide",
+    "https://github.com/topics/anthropic-skills",
+    "https://huggingface.co/papers/2609.18063",
+    "https://arxiv.org/abs/2609.19107",
+    "https://aws.amazon.com/blogs/migration-and-modernization/security-at-machine-speed-why-continuous-defense-is-the-new-competitive-advantage",
+    "https://huggingface.co/papers/2609.17652",
+    "https://huggingface.co/papers/2609.18779",
+    "https://arxiv.org/abs/2609.19099",
+    "https://arxiv.org/abs/2609.19104",
+    "https://huggingface.co/papers/2609.17909",
+    "https://huggingface.co/papers/2609.18487"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -131,7 +142,17 @@
     "evt-evolvetrade-prompt-as-policy",
     "evt-gemini-agent-anomaly-detection",
     "evt-log-n-questions-llm-communication",
-    "evt-limix-2-causal-structured-data"
+    "evt-limix-2-causal-structured-data",
+    "evt-claude-code-guide-anthropic-skills",
+    "evt-edge0-ssd-moe-prerouter",
+    "evt-looped-transformer-scaling-laws",
+    "evt-aws-machine-speed-security",
+    "evt-fathom-kv-cache-read-depth",
+    "evt-cera-moa-coevolving-agents",
+    "evt-andromeda2-evidence-agent",
+    "evt-rmuscle-vla-dual-cache",
+    "evt-zing05-playable-world-models",
+    "evt-actionpiece-physical-rank-consistency"
   ],
   "events": [
     {
@@ -1757,6 +1778,347 @@
       "action_type": "TRACK",
       "action": "Follow the LimiX-2 GitHub repository and review its approach to causal graph inference from SQL tables.",
       "evidence": []
+    },
+    {
+      "event_id": "evt-claude-code-guide-anthropic-skills",
+      "title": "Claude Code Ultimate Guide & Anthropic-Skills Ecosystem: Standardizing Harnesses and SKILL.md",
+      "category": "Developer Tools & Agent Frameworks",
+      "primary_url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide",
+      "supporting_urls": [
+        "https://github.com/topics/anthropic-skills"
+      ],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 10,
+      "source_quality": 8,
+      "confidence": 98,
+      "tldr": "A comprehensive community repository and open skill index showcase production engineering standards, SKILL.md formats, context boundary engineering, and harness designs for Claude Code.",
+      "what_happened": "The community expanded the Claude Code Ultimate Guide repo alongside 125+ open SKILL.md packages under the `anthropic-skills` ecosystem, standardizing agent capabilities across IDEs.",
+      "what_changed": "Agent development is shifting from ad-hoc prompting to strict harness engineering, context boundary isolation, and modular SKILL.md tool definitions.",
+      "why_it_matters": "Provides a clean blueprint for building deterministic agent loops, managing context windows, and organizing tool libraries for coding and task agents.",
+      "key_takeaways": [
+        "Harness engineering isolates deterministic workflow logic from stochastic LLM calls.",
+        "SKILL.md standard defines tool schemas, system context requirements, and execution constraints.",
+        "Modular skill repositories enable cross-editor agent compatibility (Claude Code, Cursor, OpenCode)."
+      ],
+      "technical_architecture": [
+        "Agent harnesses enforce strict input/output boundaries around CLI tools and MCP servers.",
+        "SKILL.md metadata files declare dependencies, permissions, and step execution protocols."
+      ],
+      "technical_details": [
+        "Guide repository contains 1,000+ commits spanning memory architectures, security sandboxing, and evaluation.",
+        "Topic index includes production tools for OOXML handling, code execution sandboxes, and legal/academic skills."
+      ],
+      "potential_impact": "Accelerates the adoption of modular, interoperable agent skills across open-source and commercial agent frameworks.",
+      "action_type": "BUILD",
+      "action": "Create a custom SKILL.md file for a local Python agent tool and integrate it into an agent harness loop.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-edge0-ssd-moe-prerouter",
+      "title": "Edge0: Serving 35B MoEs from SSD at 20 tok/s via Trained Pre-Router Prediction",
+      "category": "Model Inference & Local Hardware Optimization",
+      "primary_url": "https://huggingface.co/papers/2609.18063",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 95,
+      "tldr": "Edge0 uses a one-step-ahead pre-router head and unmerged recovery LoRA to stream 35B MoE expert weights from SSD to GPU, keeping peak VRAM under 3 GB at 20 tokens/sec.",
+      "what_happened": "Researchers introduced Edge0, an open-source streaming MoE inference engine that enables running a 35B Mixture-of-Experts model inside 3 GiB of active VRAM on a single 24GB GPU at 20 tokens per second.",
+      "what_changed": "Previously, offloading MoE expert weights to SSD failed because layer N+1's routing could not be determined until layer N completed, forcing compute pipelines to stall while waiting for disk I/O.",
+      "why_it_matters": "Edge0 solves this latency penalty with a per-layer pre-router head that predicts layer N+1's expert selection one token in advance. This allows weight prefetches to run concurrently with layer N compute while recovery LoRAs compensate for INT4 quantization and prediction noise.",
+      "key_takeaways": [
+        "Pre-routing one token ahead completely hides SSD read latencies behind layer execution compute.",
+        "Recovery LoRA trained on the student path recovers quality lost to INT4 quantization and pre-routing replacements.",
+        "Allows developers to run 35B parameter MoEs on budget consumer GPUs without needing expensive multi-GPU setups."
+      ],
+      "technical_architecture": [
+        "A per-layer pre-router head predicts routing indices for layer N+1 using layer N input states.",
+        "4-bit quantized expert weights are prefetched from NVMe SSD into a 3 GiB GPU sliding window buffer.",
+        "An unmerged recovery LoRA is executed during forward pass to restore FP16 teacher quality."
+      ],
+      "technical_details": [
+        "Sustains 20 tok/s on a single 24GB consumer machine.",
+        "Maintains model output quality within a few benchmark points of FP16 non-quantized baselines.",
+        "Tested across 8B and 35B parameter MoE models with full open-source serving code in SGLang."
+      ],
+      "potential_impact": "Dramatically lowers the hardware barrier for self-hosting high-parameter agent LLMs on affordable consumer gear.",
+      "action_type": "TRY",
+      "action": "Clone Edge0 from GitHub and benchmark a local 35B MoE model stream on a single GPU setup using 3 GB active VRAM.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-looped-transformer-scaling-laws",
+      "title": "Architectural Model Growth & Looping Alter Transformer Scaling Laws (20x Compute Efficiency)",
+      "category": "AI Research & Model Architecture",
+      "primary_url": "https://arxiv.org/abs/2609.19107",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 92,
+      "tldr": "Recursive depth and model growth in looped transformers modify pre-training scaling exponents, allowing a 7.4B model to match GPT-3 13B performance with 20x less compute.",
+      "what_happened": "A research team demonstrated that architectural interventions like recursive looping and boundary operators fundamentally alter compute scaling exponents in LLM pre-training.",
+      "what_changed": "Standard scaling laws assumed fixed compute-to-parameter ratios; this study proves that dynamic computational depth via layer looping dramatically increases compute efficiency at scale.",
+      "why_it_matters": "For developers and model creators constrained by training budgets, increasing usable transformer depth dynamically yields exponential gains over traditional scaling.",
+      "key_takeaways": [
+        "Looping (recursive depth) provides a dynamic growth mechanism by increasing loop passes during training.",
+        "A 7.4B looped model matches a standard GPT-3 13B model on CORE tasks using 20x less compute.",
+        "Boundary operators (normalizing and re-injecting earlier block outputs) enhance depth efficiency in vanilla transformers."
+      ],
+      "technical_architecture": [
+        "Shared weight transformer blocks are looped dynamically based on compute budget.",
+        "Boundary operators normalize representations from early layers and re-inject them into deeper execution paths.",
+        "During data-constrained multi-epoch training, increasing loop count acts as an optimal regularizer."
+      ],
+      "technical_details": [
+        "Evaluated across various model sizes and dataset compute budgets.",
+        "Demonstrated scaling exponent shifts that widen compute efficiency gaps as training scale increases."
+      ],
+      "potential_impact": "Rethinks foundation model pre-training, making small, deeply recurrent models capable of competing with models twice their parameter size.",
+      "action_type": "LEARN",
+      "action": "Read the paper's section on computational depth and test recursive layer looping in a small PyTorch transformer implementation.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-aws-machine-speed-security",
+      "title": "Machine-Speed Security Architecture: Defense Strategies Against Autonomous AI Exploitation",
+      "category": "Agent Security & Infrastructure",
+      "primary_url": "https://aws.amazon.com/blogs/migration-and-modernization/security-at-machine-speed-why-continuous-defense-is-the-new-competitive-advantage",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "AWS outlines continuous security defense architectures designed to withstand autonomous vulnerability scanners (e.g. Claude Mythos) and agent tool-chain exfiltration risks.",
+      "what_happened": "AWS published an architectural guidance report on continuous automated defense, citing the impact of AI vulnerability discovery models (Claude Mythos Preview) and LLM-specific exfiltration threats.",
+      "what_changed": "Security cycles are transitioning from weekly/quarterly manual red-teaming to real-time machine-speed detection, requiring zero-trust identity for autonomous agents.",
+      "why_it_matters": "As agents gain execution permissions and tool access, prompt injection, tool misuse, and agent-chain exfiltration become primary attack vectors that require automated continuous safeguards.",
+      "key_takeaways": [
+        "Autonomous AI tools can discover software vulnerabilities and generate working PoCs in hours.",
+        "Proper granular access control (CapBAC) prevented 97% of unauthorized AI access incidents.",
+        "Extensive AI security automation reduces incident lifecycles by 80 days and mitigates tool-hijacking risks."
+      ],
+      "technical_architecture": [
+        "Continuous vulnerability scanning pipelines hooked directly into CI/CD build steps.",
+        "Out-of-band monitoring and access boundary enforcement for agent tool calling chains.",
+        "Zero-trust credential scoping per agent execution turn."
+      ],
+      "technical_details": [
+        "Addresses OWASP Top 10 for LLMs including prompt injection and tool misuse.",
+        "Demonstrates automated patch deployment architectures to counter machine-speed exploits."
+      ],
+      "potential_impact": "Forces agent engineers to implement automated access guards and runtime sandboxing as mandatory architecture components.",
+      "action_type": "APPLY",
+      "action": "Implement strict input validation and access token scoping on all tool execution endpoints in your agent projects.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-fathom-kv-cache-read-depth",
+      "title": "Fathom: Adaptive Per-Query Read Depth for Offloaded Long-Context KV Caches",
+      "category": "LLM Infrastructure & Agent Memory",
+      "primary_url": "https://huggingface.co/papers/2609.17652",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "Fathom stores 4-bit KV caches channel-major as bitplanes, allowing each query to dynamically adjust bit-read depth across offloaded host RAM to speed up million-token decode steps by 1.67x.",
+      "what_happened": "Fathom introduced a per-query adaptive bit-depth scanning method for sparse decoding over host-RAM offloaded KV caches during ultra-long agent sessions.",
+      "what_changed": "In 1M+ token agent sessions, host-RAM index scans bound decode speed. Existing methods (Double Sparsity, SparQ) read fixed 136-bit indices per token; Fathom dynamically allocates bit reads based on query variance.",
+      "why_it_matters": "Long-horizon agent execution quickly exhausts GPU VRAM, forcing KV caches into host RAM. Fathom reduces PCIe/host-RAM bandwidth transfer by 18% while outperforming fixed-bit scans in accuracy.",
+      "key_takeaways": [
+        "Channel-major bitplane storage turns prefix reads into native multi-bit quantizers.",
+        "Queries use reverse water-filling over channel variance to spend bit budgets optimally.",
+        "Achieves 1.67x faster GPU decode time on Qwen3-8B at 1,000,000 context tokens."
+      ],
+      "technical_architecture": [
+        "The 4-bit K cache is stored channel-major as raw bitplanes in host RAM.",
+        "Reverse water-filling determines exact bit-plane read count per channel based on query importance.",
+        "Sparse top-k decoding fetches only selected winner rows into GPU SRAM."
+      ],
+      "technical_details": [
+        "Matches exact top-k decoding accuracy on RULER benchmarks.",
+        "Reaches 136-bit scan step agreement on real coding-agent traces using only 92 bits."
+      ],
+      "potential_impact": "Enables ultra-long agent sessions (1M+ tokens) to run at interactive speeds on offloaded host RAM architectures.",
+      "action_type": "TRACK",
+      "action": "Monitor Fathom's open-source implementation for integration into vLLM and SGLang long-context serving backends.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-cera-moa-coevolving-agents",
+      "title": "CERA-MoA: Co-Evolving Router and LoRA Agents via Hidden-State Familiarity Estimation",
+      "category": "Multi-Agent Systems & RL",
+      "primary_url": "https://huggingface.co/papers/2609.18779",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 89,
+      "tldr": "CERA-MoA continuously co-evolves a dynamic router and independent LoRA agents using mid-layer hidden state familiarity estimators to route queries with minimal compute.",
+      "what_happened": "Tsinghua University researchers released CERA-MoA, an iterative reinforcement learning framework where a routing mechanism and specialized sub-agents co-evolve simultaneously.",
+      "what_changed": "Existing Mixture-of-Agents (MoA) architectures froze either the router or the sub-agents; CERA-MoA allows both to evolve dynamically using fast mid-layer hidden-state probes.",
+      "why_it_matters": "Evaluates agent competence without running expensive full LLM rollouts, selecting only the smallest necessary subset of agents to solve a task efficiently.",
+      "key_takeaways": [
+        "Predictive familiarity estimator uses mid-layer hidden states to assess agent competence instantly.",
+        "Cumulative-threshold routing dynamically activates minimal agent subsets per query.",
+        "Co-evolution with RL encourages strong specialization across individual LoRA sub-agents."
+      ],
+      "technical_architecture": [
+        "Sub-agents are parameterized as lightweight domain LoRA adapters.",
+        "A router probes layer N hidden states of sub-agents to compute semantic familiarity scores.",
+        "Adaptive thresholding selects top-k sub-agents for downstream response generation."
+      ],
+      "technical_details": [
+        "Outperforms static routing and fixed workflow fine-tuning baselines.",
+        "Open-source implementation available on GitHub."
+      ],
+      "potential_impact": "Reduces multi-agent token overhead while improving specialized capabilities across complex multi-domain workflows.",
+      "action_type": "LEARN",
+      "action": "Examine CERA-MoA's repository to understand how mid-layer representation probing can replace full agent dry-runs.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-andromeda2-evidence-agent",
+      "title": "Andromeda 2: Autonomous Lab Optimization via Structured Evidence Grounding",
+      "category": "Autonomous Agents & Domain Tooling",
+      "primary_url": "https://arxiv.org/abs/2609.19099",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 8,
+      "actionability": 7,
+      "source_quality": 8,
+      "confidence": 92,
+      "tldr": "Andromeda 2 combines structured internal evidence with autonomous tool invocation to design physical experiments, outperforming traditional Bayesian optimization by 3x.",
+      "what_happened": "Researchers introduced Andromeda 2, an autonomous agent system that designs, invokes, and executes physical lab experiment batches by reasoning over structured historical data.",
+      "what_changed": "Traditional Design-of-Experiments (DoE) and Bayesian optimization rely purely on statistical boundaries; Andromeda 2 grounds LLM tool calls in historical experimental evidence databases.",
+      "why_it_matters": "Proves that combining RAG over structured experimental evidence with multi-step tool-calling loops dramatically outperforms classical mathematical optimization in complex physical search spaces.",
+      "key_takeaways": [
+        "Achieved a 50% high-performance hit rate compared to 17% for probabilistic models and 2% for standard DoE.",
+        "Ablation studies confirmed that structured evidence grounding increased performance metrics by 34%.",
+        "Demonstrates real-world economic value for fully autonomous agent-driven experiment cycles."
+      ],
+      "technical_architecture": [
+        "LLM planner queries a structured PostgreSQL/graph database of historical experimental trials.",
+        "Decision engine generates parameter payloads for automated laboratory hardware.",
+        "Feedback loop ingests new sensor readings to update the knowledge store continuously."
+      ],
+      "technical_details": [
+        "Designed and evaluated on complex pharmaceutical SEDDS formulation tasks.",
+        "Identified 12 target-compliant formulations compared to 6 by previous state-of-the-art models."
+      ],
+      "potential_impact": "Provides an architectural template for enterprise autonomous decision systems operating in lab, industrial, or complex business environments.",
+      "action_type": "BUILD",
+      "action": "Build a mini feedback-loop agent that queries historical SQLite test runs before generating new test configuration parameters.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-rmuscle-vla-dual-cache",
+      "title": "rMuscle: Dual-Phase Muscle Memory Caching Accelerates VLA Model Inference by 1.4x",
+      "category": "Embodied AI & Agent Acceleration",
+      "primary_url": "https://arxiv.org/abs/2609.19104",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 8,
+      "actionability": 7,
+      "source_quality": 8,
+      "confidence": 91,
+      "tldr": "rMuscle exploits repetitive action patterns in VLA agents using visual Context Caches and activation Action Caches, speeding up execution by up to 1.42x on RTX 4090 and Jetson Thor.",
+      "what_happened": "Researchers created rMuscle, a real-time Vision-Language-Action (VLA) inference framework inspired by human muscle memory that caches repetitive internal states.",
+      "what_changed": "Standard VLA inference recomputes full visual and action tokens on every timestep regardless of task repetition or static environment context.",
+      "why_it_matters": "In repetitive robotic or agent loops, internal neural activations remain highly similar across steps; caching these patterns drastically reduces latency without sacrificing action accuracy.",
+      "key_takeaways": [
+        "Context Cache reuses visual token representations across similar task trajectories.",
+        "Action Cache reuses neuron activation patterns across consecutive denoising steps.",
+        "Delivers 1.29x-1.42x speedup on consumer GPUs (RTX 4090) and edge devices (Jetson Thor)."
+      ],
+      "technical_architecture": [
+        "Dual-phase cache architecture operating across context processing and action generation.",
+        "Online sliding-window retrieval matches incoming states with cached token features.",
+        "Mask sharing across consecutive denoising steps minimizes weight memory accesses."
+      ],
+      "technical_details": [
+        "Evaluated on LIBERO, RoboTwin, and physical robotic control benchmarks.",
+        "Zero drop in task success rate while achieving real-time latency gains."
+      ],
+      "potential_impact": "Significantly improves the control loop frequency and responsiveness of VLA models deployed on edge hardware.",
+      "action_type": "LEARN",
+      "action": "Study how activation caching patterns can be applied to textual agent loops with repetitive environment states.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-zing05-playable-world-models",
+      "title": "Zing-0.5: Open-Source 5B Autoregressive World Model with Real-Time Joint Control",
+      "category": "Multimodal Models & Generative Environments",
+      "primary_url": "https://huggingface.co/papers/2609.17909",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 7,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 93,
+      "tldr": "Zing-0.5 is an open-source 5B parameter autoregressive world model driving 24 FPS real-time interactive generation via unified action and text conditioning.",
+      "what_happened": "Researchers introduced Zing-0.5, a 5B world model capable of generating real-time interactive 480p visual environments controlled simultaneously by keyboard input and streaming text instructions.",
+      "what_changed": "Previous video generation models were static offline generators; Zing-0.5 enables continuous 24 FPS interactive streaming at under $0.01 per minute.",
+      "why_it_matters": "Opens possibilities for building simulated training environments, game worlds, and visual feedback benchmarks for vision-based agents.",
+      "key_takeaways": [
+        "Unifies magnitude-aware keyboard controls with temporally aligned text commands.",
+        "4-step distillation enables 24 FPS streaming at 832x480 resolution.",
+        "Weights, inference code, and SGLang serving backend fully open-sourced."
+      ],
+      "technical_architecture": [
+        "Block-level causal student model distilled from segment-level teacher using distribution matching.",
+        "Context-preserving streaming context cache maintains long-horizon spatial consistency."
+      ],
+      "technical_details": [
+        "Achieves 81.0 overall score on WBench Navigation benchmark.",
+        "Runs on consumer-grade server hosting at ~$0.009 per stream-minute."
+      ],
+      "potential_impact": "Provides an accessible foundation for building interactive simulated environments for agent RL and visual world modeling.",
+      "action_type": "TRY",
+      "action": "Download the Zing-0.5 weights and run the interactive demo stream to test real-time action-conditioned generation.",
+      "evidence": []
+    },
+    {
+      "event_id": "evt-actionpiece-physical-rank-consistency",
+      "title": "ActionPiece: Physical Rank Consistency Tokenization for Autoregressive VLA Models",
+      "category": "Vision-Language-Action & Tokenization",
+      "primary_url": "https://huggingface.co/papers/2609.18487",
+      "supporting_urls": [],
+      "importance": 7,
+      "relevance": 8,
+      "actionability": 7,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "ActionPiece introduces Physical Rank Consistency (PRC) tokenization for VLA models, ensuring discrete action tokens preserve local physical distance rankings.",
+      "what_happened": "ActionPiece was introduced as a new action tokenizer for autoregressive Vision-Language-Action (VLA) models, replacing standard MSE-based pointwise reconstruction.",
+      "what_changed": "Traditional action tokenizers evaluated quality via point error (MSE), causing similar spatial actions to collapse into single representation clusters and distorting fine control movements.",
+      "why_it_matters": "High-fidelity spatial control requires action tokenizers to maintain relative physical ordering so subtle policy adjustments result in proportional hardware movements.",
+      "key_takeaways": [
+        "Physical Rank Consistency (PRC) measures whether physical distance rankings are preserved after token quantization.",
+        "Joint supervision combines representation learning with physical distance order constraints.",
+        "Demonstrates significant performance gains on Qwen3-VL-4B policy setups."
+      ],
+      "technical_architecture": [
+        "Encoder maps continuous action trajectories into discrete codeword distributions.",
+        "Physical rank preservation loss enforces near-far ordering in feature space.",
+        "A frozen decoder converts discrete tokens back into executable continuous commands."
+      ],
+      "technical_details": [
+        "Tested on standard VLA control tasks with Qwen3-VL-4B policy backends.",
+        "Significantly outperforms standard VQ-VAE and BPE action tokenizers on precision tasks."
+      ],
+      "potential_impact": "Sets a new standard for tokenizing continuous physical motor control variables in autoregressive multimodal architectures.",
+      "action_type": "LEARN",
+      "action": "Study how Physical Rank Consistency loss functions differ from MSE in continuous-to-discrete tokenization.",
+      "evidence": []
     }
   ],
   "topics": {
@@ -1809,7 +2171,17 @@
     "AI Research / Self-Improvement & Agent Memory": 1,
     "Agent Security & Governance": 1,
     "AI Research / Agent Communication & Evaluation": 1,
-    "AI Research / Structured Data & Causal ML": 1
+    "AI Research / Structured Data & Causal ML": 1,
+    "Developer Tools & Agent Frameworks": 1,
+    "Model Inference & Local Hardware Optimization": 1,
+    "AI Research & Model Architecture": 1,
+    "Agent Security & Infrastructure": 1,
+    "LLM Infrastructure & Agent Memory": 1,
+    "Multi-Agent Systems & RL": 1,
+    "Autonomous Agents & Domain Tooling": 1,
+    "Embodied AI & Agent Acceleration": 1,
+    "Multimodal Models & Generative Environments": 1,
+    "Vision-Language-Action & Tokenization": 1
   },
   "reports": [
     {
@@ -3509,14 +3881,367 @@
         "Internal hidden state probing (white-box vectors) replacing expensive LLM-as-a-judge monitoring.",
         "Transition to Git-based DAGs as decentralized shared memory for multi-agent auto-research."
       ]
+    },
+    {
+      "date": "2026-09-17",
+      "summary": "Today's breakthroughs significantly solve the memory and compute bottlenecks of large-scale agent execution. Key highlights include Edge0's pre-router strategy for running 35B MoE models directly from SSDs on consumer GPUs, research proving looped transformers alter scaling exponents to achieve GPT-3 performance with 20x less compute, and Fathom's channel-major bitplane approach to host-RAM KV cache decoding. Concurrently, new frameworks like CERA-MoA and Anthropic SKILL.md standards provide practical architectures for multi-agent co-evolution and robust agent harness design.",
+      "events": [
+        {
+          "event_id": "evt-claude-code-guide-anthropic-skills",
+          "title": "Claude Code Ultimate Guide & Anthropic-Skills Ecosystem: Standardizing Harnesses and SKILL.md",
+          "category": "Developer Tools & Agent Frameworks",
+          "primary_url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide",
+          "supporting_urls": [
+            "https://github.com/topics/anthropic-skills"
+          ],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 10,
+          "source_quality": 8,
+          "confidence": 98,
+          "tldr": "A comprehensive community repository and open skill index showcase production engineering standards, SKILL.md formats, context boundary engineering, and harness designs for Claude Code.",
+          "what_happened": "The community expanded the Claude Code Ultimate Guide repo alongside 125+ open SKILL.md packages under the `anthropic-skills` ecosystem, standardizing agent capabilities across IDEs.",
+          "what_changed": "Agent development is shifting from ad-hoc prompting to strict harness engineering, context boundary isolation, and modular SKILL.md tool definitions.",
+          "why_it_matters": "Provides a clean blueprint for building deterministic agent loops, managing context windows, and organizing tool libraries for coding and task agents.",
+          "key_takeaways": [
+            "Harness engineering isolates deterministic workflow logic from stochastic LLM calls.",
+            "SKILL.md standard defines tool schemas, system context requirements, and execution constraints.",
+            "Modular skill repositories enable cross-editor agent compatibility (Claude Code, Cursor, OpenCode)."
+          ],
+          "technical_architecture": [
+            "Agent harnesses enforce strict input/output boundaries around CLI tools and MCP servers.",
+            "SKILL.md metadata files declare dependencies, permissions, and step execution protocols."
+          ],
+          "technical_details": [
+            "Guide repository contains 1,000+ commits spanning memory architectures, security sandboxing, and evaluation.",
+            "Topic index includes production tools for OOXML handling, code execution sandboxes, and legal/academic skills."
+          ],
+          "potential_impact": "Accelerates the adoption of modular, interoperable agent skills across open-source and commercial agent frameworks.",
+          "action_type": "BUILD",
+          "action": "Create a custom SKILL.md file for a local Python agent tool and integrate it into an agent harness loop.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-edge0-ssd-moe-prerouter",
+          "title": "Edge0: Serving 35B MoEs from SSD at 20 tok/s via Trained Pre-Router Prediction",
+          "category": "Model Inference & Local Hardware Optimization",
+          "primary_url": "https://huggingface.co/papers/2609.18063",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 95,
+          "tldr": "Edge0 uses a one-step-ahead pre-router head and unmerged recovery LoRA to stream 35B MoE expert weights from SSD to GPU, keeping peak VRAM under 3 GB at 20 tokens/sec.",
+          "what_happened": "Researchers introduced Edge0, an open-source streaming MoE inference engine that enables running a 35B Mixture-of-Experts model inside 3 GiB of active VRAM on a single 24GB GPU at 20 tokens per second.",
+          "what_changed": "Previously, offloading MoE expert weights to SSD failed because layer N+1's routing could not be determined until layer N completed, forcing compute pipelines to stall while waiting for disk I/O.",
+          "why_it_matters": "Edge0 solves this latency penalty with a per-layer pre-router head that predicts layer N+1's expert selection one token in advance. This allows weight prefetches to run concurrently with layer N compute while recovery LoRAs compensate for INT4 quantization and prediction noise.",
+          "key_takeaways": [
+            "Pre-routing one token ahead completely hides SSD read latencies behind layer execution compute.",
+            "Recovery LoRA trained on the student path recovers quality lost to INT4 quantization and pre-routing replacements.",
+            "Allows developers to run 35B parameter MoEs on budget consumer GPUs without needing expensive multi-GPU setups."
+          ],
+          "technical_architecture": [
+            "A per-layer pre-router head predicts routing indices for layer N+1 using layer N input states.",
+            "4-bit quantized expert weights are prefetched from NVMe SSD into a 3 GiB GPU sliding window buffer.",
+            "An unmerged recovery LoRA is executed during forward pass to restore FP16 teacher quality."
+          ],
+          "technical_details": [
+            "Sustains 20 tok/s on a single 24GB consumer machine.",
+            "Maintains model output quality within a few benchmark points of FP16 non-quantized baselines.",
+            "Tested across 8B and 35B parameter MoE models with full open-source serving code in SGLang."
+          ],
+          "potential_impact": "Dramatically lowers the hardware barrier for self-hosting high-parameter agent LLMs on affordable consumer gear.",
+          "action_type": "TRY",
+          "action": "Clone Edge0 from GitHub and benchmark a local 35B MoE model stream on a single GPU setup using 3 GB active VRAM.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-looped-transformer-scaling-laws",
+          "title": "Architectural Model Growth & Looping Alter Transformer Scaling Laws (20x Compute Efficiency)",
+          "category": "AI Research & Model Architecture",
+          "primary_url": "https://arxiv.org/abs/2609.19107",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 92,
+          "tldr": "Recursive depth and model growth in looped transformers modify pre-training scaling exponents, allowing a 7.4B model to match GPT-3 13B performance with 20x less compute.",
+          "what_happened": "A research team demonstrated that architectural interventions like recursive looping and boundary operators fundamentally alter compute scaling exponents in LLM pre-training.",
+          "what_changed": "Standard scaling laws assumed fixed compute-to-parameter ratios; this study proves that dynamic computational depth via layer looping dramatically increases compute efficiency at scale.",
+          "why_it_matters": "For developers and model creators constrained by training budgets, increasing usable transformer depth dynamically yields exponential gains over traditional scaling.",
+          "key_takeaways": [
+            "Looping (recursive depth) provides a dynamic growth mechanism by increasing loop passes during training.",
+            "A 7.4B looped model matches a standard GPT-3 13B model on CORE tasks using 20x less compute.",
+            "Boundary operators (normalizing and re-injecting earlier block outputs) enhance depth efficiency in vanilla transformers."
+          ],
+          "technical_architecture": [
+            "Shared weight transformer blocks are looped dynamically based on compute budget.",
+            "Boundary operators normalize representations from early layers and re-inject them into deeper execution paths.",
+            "During data-constrained multi-epoch training, increasing loop count acts as an optimal regularizer."
+          ],
+          "technical_details": [
+            "Evaluated across various model sizes and dataset compute budgets.",
+            "Demonstrated scaling exponent shifts that widen compute efficiency gaps as training scale increases."
+          ],
+          "potential_impact": "Rethinks foundation model pre-training, making small, deeply recurrent models capable of competing with models twice their parameter size.",
+          "action_type": "LEARN",
+          "action": "Read the paper's section on computational depth and test recursive layer looping in a small PyTorch transformer implementation.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-aws-machine-speed-security",
+          "title": "Machine-Speed Security Architecture: Defense Strategies Against Autonomous AI Exploitation",
+          "category": "Agent Security & Infrastructure",
+          "primary_url": "https://aws.amazon.com/blogs/migration-and-modernization/security-at-machine-speed-why-continuous-defense-is-the-new-competitive-advantage",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "AWS outlines continuous security defense architectures designed to withstand autonomous vulnerability scanners (e.g. Claude Mythos) and agent tool-chain exfiltration risks.",
+          "what_happened": "AWS published an architectural guidance report on continuous automated defense, citing the impact of AI vulnerability discovery models (Claude Mythos Preview) and LLM-specific exfiltration threats.",
+          "what_changed": "Security cycles are transitioning from weekly/quarterly manual red-teaming to real-time machine-speed detection, requiring zero-trust identity for autonomous agents.",
+          "why_it_matters": "As agents gain execution permissions and tool access, prompt injection, tool misuse, and agent-chain exfiltration become primary attack vectors that require automated continuous safeguards.",
+          "key_takeaways": [
+            "Autonomous AI tools can discover software vulnerabilities and generate working PoCs in hours.",
+            "Proper granular access control (CapBAC) prevented 97% of unauthorized AI access incidents.",
+            "Extensive AI security automation reduces incident lifecycles by 80 days and mitigates tool-hijacking risks."
+          ],
+          "technical_architecture": [
+            "Continuous vulnerability scanning pipelines hooked directly into CI/CD build steps.",
+            "Out-of-band monitoring and access boundary enforcement for agent tool calling chains.",
+            "Zero-trust credential scoping per agent execution turn."
+          ],
+          "technical_details": [
+            "Addresses OWASP Top 10 for LLMs including prompt injection and tool misuse.",
+            "Demonstrates automated patch deployment architectures to counter machine-speed exploits."
+          ],
+          "potential_impact": "Forces agent engineers to implement automated access guards and runtime sandboxing as mandatory architecture components.",
+          "action_type": "APPLY",
+          "action": "Implement strict input validation and access token scoping on all tool execution endpoints in your agent projects.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-fathom-kv-cache-read-depth",
+          "title": "Fathom: Adaptive Per-Query Read Depth for Offloaded Long-Context KV Caches",
+          "category": "LLM Infrastructure & Agent Memory",
+          "primary_url": "https://huggingface.co/papers/2609.17652",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "Fathom stores 4-bit KV caches channel-major as bitplanes, allowing each query to dynamically adjust bit-read depth across offloaded host RAM to speed up million-token decode steps by 1.67x.",
+          "what_happened": "Fathom introduced a per-query adaptive bit-depth scanning method for sparse decoding over host-RAM offloaded KV caches during ultra-long agent sessions.",
+          "what_changed": "In 1M+ token agent sessions, host-RAM index scans bound decode speed. Existing methods (Double Sparsity, SparQ) read fixed 136-bit indices per token; Fathom dynamically allocates bit reads based on query variance.",
+          "why_it_matters": "Long-horizon agent execution quickly exhausts GPU VRAM, forcing KV caches into host RAM. Fathom reduces PCIe/host-RAM bandwidth transfer by 18% while outperforming fixed-bit scans in accuracy.",
+          "key_takeaways": [
+            "Channel-major bitplane storage turns prefix reads into native multi-bit quantizers.",
+            "Queries use reverse water-filling over channel variance to spend bit budgets optimally.",
+            "Achieves 1.67x faster GPU decode time on Qwen3-8B at 1,000,000 context tokens."
+          ],
+          "technical_architecture": [
+            "The 4-bit K cache is stored channel-major as raw bitplanes in host RAM.",
+            "Reverse water-filling determines exact bit-plane read count per channel based on query importance.",
+            "Sparse top-k decoding fetches only selected winner rows into GPU SRAM."
+          ],
+          "technical_details": [
+            "Matches exact top-k decoding accuracy on RULER benchmarks.",
+            "Reaches 136-bit scan step agreement on real coding-agent traces using only 92 bits."
+          ],
+          "potential_impact": "Enables ultra-long agent sessions (1M+ tokens) to run at interactive speeds on offloaded host RAM architectures.",
+          "action_type": "TRACK",
+          "action": "Monitor Fathom's open-source implementation for integration into vLLM and SGLang long-context serving backends.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-cera-moa-coevolving-agents",
+          "title": "CERA-MoA: Co-Evolving Router and LoRA Agents via Hidden-State Familiarity Estimation",
+          "category": "Multi-Agent Systems & RL",
+          "primary_url": "https://huggingface.co/papers/2609.18779",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 89,
+          "tldr": "CERA-MoA continuously co-evolves a dynamic router and independent LoRA agents using mid-layer hidden state familiarity estimators to route queries with minimal compute.",
+          "what_happened": "Tsinghua University researchers released CERA-MoA, an iterative reinforcement learning framework where a routing mechanism and specialized sub-agents co-evolve simultaneously.",
+          "what_changed": "Existing Mixture-of-Agents (MoA) architectures froze either the router or the sub-agents; CERA-MoA allows both to evolve dynamically using fast mid-layer hidden-state probes.",
+          "why_it_matters": "Evaluates agent competence without running expensive full LLM rollouts, selecting only the smallest necessary subset of agents to solve a task efficiently.",
+          "key_takeaways": [
+            "Predictive familiarity estimator uses mid-layer hidden states to assess agent competence instantly.",
+            "Cumulative-threshold routing dynamically activates minimal agent subsets per query.",
+            "Co-evolution with RL encourages strong specialization across individual LoRA sub-agents."
+          ],
+          "technical_architecture": [
+            "Sub-agents are parameterized as lightweight domain LoRA adapters.",
+            "A router probes layer N hidden states of sub-agents to compute semantic familiarity scores.",
+            "Adaptive thresholding selects top-k sub-agents for downstream response generation."
+          ],
+          "technical_details": [
+            "Outperforms static routing and fixed workflow fine-tuning baselines.",
+            "Open-source implementation available on GitHub."
+          ],
+          "potential_impact": "Reduces multi-agent token overhead while improving specialized capabilities across complex multi-domain workflows.",
+          "action_type": "LEARN",
+          "action": "Examine CERA-MoA's repository to understand how mid-layer representation probing can replace full agent dry-runs.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-andromeda2-evidence-agent",
+          "title": "Andromeda 2: Autonomous Lab Optimization via Structured Evidence Grounding",
+          "category": "Autonomous Agents & Domain Tooling",
+          "primary_url": "https://arxiv.org/abs/2609.19099",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 8,
+          "actionability": 7,
+          "source_quality": 8,
+          "confidence": 92,
+          "tldr": "Andromeda 2 combines structured internal evidence with autonomous tool invocation to design physical experiments, outperforming traditional Bayesian optimization by 3x.",
+          "what_happened": "Researchers introduced Andromeda 2, an autonomous agent system that designs, invokes, and executes physical lab experiment batches by reasoning over structured historical data.",
+          "what_changed": "Traditional Design-of-Experiments (DoE) and Bayesian optimization rely purely on statistical boundaries; Andromeda 2 grounds LLM tool calls in historical experimental evidence databases.",
+          "why_it_matters": "Proves that combining RAG over structured experimental evidence with multi-step tool-calling loops dramatically outperforms classical mathematical optimization in complex physical search spaces.",
+          "key_takeaways": [
+            "Achieved a 50% high-performance hit rate compared to 17% for probabilistic models and 2% for standard DoE.",
+            "Ablation studies confirmed that structured evidence grounding increased performance metrics by 34%.",
+            "Demonstrates real-world economic value for fully autonomous agent-driven experiment cycles."
+          ],
+          "technical_architecture": [
+            "LLM planner queries a structured PostgreSQL/graph database of historical experimental trials.",
+            "Decision engine generates parameter payloads for automated laboratory hardware.",
+            "Feedback loop ingests new sensor readings to update the knowledge store continuously."
+          ],
+          "technical_details": [
+            "Designed and evaluated on complex pharmaceutical SEDDS formulation tasks.",
+            "Identified 12 target-compliant formulations compared to 6 by previous state-of-the-art models."
+          ],
+          "potential_impact": "Provides an architectural template for enterprise autonomous decision systems operating in lab, industrial, or complex business environments.",
+          "action_type": "BUILD",
+          "action": "Build a mini feedback-loop agent that queries historical SQLite test runs before generating new test configuration parameters.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-rmuscle-vla-dual-cache",
+          "title": "rMuscle: Dual-Phase Muscle Memory Caching Accelerates VLA Model Inference by 1.4x",
+          "category": "Embodied AI & Agent Acceleration",
+          "primary_url": "https://arxiv.org/abs/2609.19104",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 8,
+          "actionability": 7,
+          "source_quality": 8,
+          "confidence": 91,
+          "tldr": "rMuscle exploits repetitive action patterns in VLA agents using visual Context Caches and activation Action Caches, speeding up execution by up to 1.42x on RTX 4090 and Jetson Thor.",
+          "what_happened": "Researchers created rMuscle, a real-time Vision-Language-Action (VLA) inference framework inspired by human muscle memory that caches repetitive internal states.",
+          "what_changed": "Standard VLA inference recomputes full visual and action tokens on every timestep regardless of task repetition or static environment context.",
+          "why_it_matters": "In repetitive robotic or agent loops, internal neural activations remain highly similar across steps; caching these patterns drastically reduces latency without sacrificing action accuracy.",
+          "key_takeaways": [
+            "Context Cache reuses visual token representations across similar task trajectories.",
+            "Action Cache reuses neuron activation patterns across consecutive denoising steps.",
+            "Delivers 1.29x-1.42x speedup on consumer GPUs (RTX 4090) and edge devices (Jetson Thor)."
+          ],
+          "technical_architecture": [
+            "Dual-phase cache architecture operating across context processing and action generation.",
+            "Online sliding-window retrieval matches incoming states with cached token features.",
+            "Mask sharing across consecutive denoising steps minimizes weight memory accesses."
+          ],
+          "technical_details": [
+            "Evaluated on LIBERO, RoboTwin, and physical robotic control benchmarks.",
+            "Zero drop in task success rate while achieving real-time latency gains."
+          ],
+          "potential_impact": "Significantly improves the control loop frequency and responsiveness of VLA models deployed on edge hardware.",
+          "action_type": "LEARN",
+          "action": "Study how activation caching patterns can be applied to textual agent loops with repetitive environment states.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-zing05-playable-world-models",
+          "title": "Zing-0.5: Open-Source 5B Autoregressive World Model with Real-Time Joint Control",
+          "category": "Multimodal Models & Generative Environments",
+          "primary_url": "https://huggingface.co/papers/2609.17909",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 7,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 93,
+          "tldr": "Zing-0.5 is an open-source 5B parameter autoregressive world model driving 24 FPS real-time interactive generation via unified action and text conditioning.",
+          "what_happened": "Researchers introduced Zing-0.5, a 5B world model capable of generating real-time interactive 480p visual environments controlled simultaneously by keyboard input and streaming text instructions.",
+          "what_changed": "Previous video generation models were static offline generators; Zing-0.5 enables continuous 24 FPS interactive streaming at under $0.01 per minute.",
+          "why_it_matters": "Opens possibilities for building simulated training environments, game worlds, and visual feedback benchmarks for vision-based agents.",
+          "key_takeaways": [
+            "Unifies magnitude-aware keyboard controls with temporally aligned text commands.",
+            "4-step distillation enables 24 FPS streaming at 832x480 resolution.",
+            "Weights, inference code, and SGLang serving backend fully open-sourced."
+          ],
+          "technical_architecture": [
+            "Block-level causal student model distilled from segment-level teacher using distribution matching.",
+            "Context-preserving streaming context cache maintains long-horizon spatial consistency."
+          ],
+          "technical_details": [
+            "Achieves 81.0 overall score on WBench Navigation benchmark.",
+            "Runs on consumer-grade server hosting at ~$0.009 per stream-minute."
+          ],
+          "potential_impact": "Provides an accessible foundation for building interactive simulated environments for agent RL and visual world modeling.",
+          "action_type": "TRY",
+          "action": "Download the Zing-0.5 weights and run the interactive demo stream to test real-time action-conditioned generation.",
+          "evidence": []
+        },
+        {
+          "event_id": "evt-actionpiece-physical-rank-consistency",
+          "title": "ActionPiece: Physical Rank Consistency Tokenization for Autoregressive VLA Models",
+          "category": "Vision-Language-Action & Tokenization",
+          "primary_url": "https://huggingface.co/papers/2609.18487",
+          "supporting_urls": [],
+          "importance": 7,
+          "relevance": 8,
+          "actionability": 7,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "ActionPiece introduces Physical Rank Consistency (PRC) tokenization for VLA models, ensuring discrete action tokens preserve local physical distance rankings.",
+          "what_happened": "ActionPiece was introduced as a new action tokenizer for autoregressive Vision-Language-Action (VLA) models, replacing standard MSE-based pointwise reconstruction.",
+          "what_changed": "Traditional action tokenizers evaluated quality via point error (MSE), causing similar spatial actions to collapse into single representation clusters and distorting fine control movements.",
+          "why_it_matters": "High-fidelity spatial control requires action tokenizers to maintain relative physical ordering so subtle policy adjustments result in proportional hardware movements.",
+          "key_takeaways": [
+            "Physical Rank Consistency (PRC) measures whether physical distance rankings are preserved after token quantization.",
+            "Joint supervision combines representation learning with physical distance order constraints.",
+            "Demonstrates significant performance gains on Qwen3-VL-4B policy setups."
+          ],
+          "technical_architecture": [
+            "Encoder maps continuous action trajectories into discrete codeword distributions.",
+            "Physical rank preservation loss enforces near-far ordering in feature space.",
+            "A frozen decoder converts discrete tokens back into executable continuous commands."
+          ],
+          "technical_details": [
+            "Tested on standard VLA control tasks with Qwen3-VL-4B policy backends.",
+            "Significantly outperforms standard VQ-VAE and BPE action tokenizers on precision tasks."
+          ],
+          "potential_impact": "Sets a new standard for tokenizing continuous physical motor control variables in autoregressive multimodal architectures.",
+          "action_type": "LEARN",
+          "action": "Study how Physical Rank Consistency loss functions differ from MSE in continuous-to-discrete tokenization.",
+          "evidence": []
+        }
+      ],
+      "trends": [
+        "Shift toward sub-token and bitplane KV cache management to bypass PCIe host-RAM transfer bottlenecks.",
+        "Rise of pre-routing and trained forward-looking heads to enable SSD-streaming of large MoE models on consumer hardware.",
+        "Standardization of agent harnesses and tool schemas using explicit markdown protocols (SKILL.md).",
+        "Continuous co-evolution of routers and specialized sub-agent LoRAs rather than static pipeline definitions."
+      ]
     }
   ],
   "learning_queue": [
-    "MCP Apps extension specification and iframe message passing protocols.",
-    "Linear representation probing and Difference of Means (DoM) vector extraction from LLM hidden states.",
-    "Structural Causal Models (SCM) and joint distribution modeling for structured database analysis."
+    "Edge0 pre-routing head training mechanics and memory buffer management.",
+    "SKILL.md format specification and agent harness isolation patterns.",
+    "Channel-major bitplane quantization and water-filling memory budgeting algorithms."
   ],
-  "last_run": "2026-09-17T13:26:30.037239+00:00",
+  "last_run": "2026-09-17T13:31:15.576351+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -3528,7 +4253,15 @@
     "arxiv:2609.19101",
     "arxiv:2609.17632",
     "arxiv:2609.19113",
-    "arxiv:2609.17488"
+    "arxiv:2609.17488",
+    "arxiv:2609.18063",
+    "arxiv:2609.19107",
+    "arxiv:2609.17652",
+    "arxiv:2609.18779",
+    "arxiv:2609.19099",
+    "arxiv:2609.19104",
+    "arxiv:2609.17909",
+    "arxiv:2609.18487"
   ],
   "last_report_files": {
     "markdown": "data/reports/2026-09-17/report.md",
