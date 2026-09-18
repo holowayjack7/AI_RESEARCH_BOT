@@ -634,9 +634,19 @@ def test_permanent_error_classification():
         "Please pass a valid API key.'}}"
     )
     assert perm("403 PERMISSION_DENIED The caller does not have permission")
+    # Daily quota exhaustion (free tier: 20 req/day/model) cannot be
+    # retried away — the chain must fall to the next model instantly
+    assert perm(
+        "429 RESOURCE_EXHAUSTED quotaId: "
+        "'GenerateRequestsPerDayPerProjectPerModel-FreeTier' limit: 20"
+    )
     # Transient errors must stay retryable
     assert not perm("503 UNAVAILABLE high demand, try again later")
     assert not perm("429 RESOURCE_EXHAUSTED quota exceeded, retry in 30s")
+    assert not perm(
+        "429 RESOURCE_EXHAUSTED generate_content_free_tier_requests, "
+        "limit: 250000 (per-minute input quota)"
+    )
     assert not perm("500 INTERNAL server error")
     assert not perm("")
 

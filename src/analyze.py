@@ -774,9 +774,12 @@ def _is_permanent_model_error(error_str: str) -> bool:
 
     Retired/deprecated models return 404 NOT_FOUND forever (e.g.
     "no longer available to new users"), blocked models return
-    permission errors, and an invalid API key returns 400
-    API_KEY_INVALID — burning retry attempts on them only delays
-    the fall to the next model in the chain.
+    permission errors, an invalid API key returns 400
+    API_KEY_INVALID, and a DAILY quota exhaustion (quotaId
+    *PerDay*) stays exhausted until Google's daily reset — waiting
+    seconds cannot help. In all these cases the correct move is to
+    fall to the next model in the chain immediately: fallback models
+    carry their own separate daily quota buckets.
     """
     s = error_str.lower()
     return (
@@ -790,6 +793,8 @@ def _is_permanent_model_error(error_str: str) -> bool:
         or "api key not valid" in s
         or "api_key_invalid" in s
         or "unauthenticated" in s
+        or "perday" in s
+        or "per_day" in s
     )
 
 
