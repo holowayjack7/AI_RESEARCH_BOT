@@ -48,9 +48,14 @@ def load_state() -> dict:
 
     try:
         with open(STATE_FILE, "r", encoding="utf-8") as f:
-            return json.load(f)
+            data = json.load(f)
     except Exception:
-        return {
+        data = None
+
+    if not isinstance(data, dict):
+        # Corrupt or wrong-shaped state must never crash the run:
+        # restart with fresh (empty) state.
+        data = {
             "seen_urls": [],
             "seen_event_ids": [],
             "events": [],
@@ -59,6 +64,7 @@ def load_state() -> dict:
             "learning_queue": [],
             "last_run": None,
         }
+    return data
 
 
 def save_state(state: dict):

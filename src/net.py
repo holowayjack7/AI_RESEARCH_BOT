@@ -154,6 +154,12 @@ def _request_with_retries(method: str, url: str, max_attempts: int = 3, **kwargs
         return response
 
     logger.error(f"HTTP {method} {url} failed after {max_attempts} attempts: {last_exc}")
+    if last_exc is None:
+        # Defensive: the loop can only exhaust via retry paths that set
+        # last_exc, but a clear error beats leaking a bare None.
+        last_exc = requests.HTTPError(
+            f"{method} {url} failed after {max_attempts} attempts"
+        )
     raise last_exc
 
 

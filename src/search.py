@@ -236,12 +236,14 @@ def _boost_official_release(url: str, score: float) -> float:
 
 
 def domain_from_url(url: str) -> str:
-    """Extract domain from URL."""
-    from urllib.parse import urlparse
-
+    """Extract domain from URL (leading "www." stripped only as prefix)."""
     try:
         domain = urlparse(url).netloc.lower()
-        domain = domain.replace("www.", "")
+        # Only strip a *leading* "www." — a blanket replace() would
+        # mangle hosts containing "www." mid-string
+        # (e.g. "aww.foo.example.com" untouched, "www.x.com" -> "x.com")
+        if domain.startswith("www."):
+            domain = domain[4:]
         return domain
     except Exception:
         return ""

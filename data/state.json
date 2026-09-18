@@ -118,7 +118,13 @@
     "https://huggingface.co/papers/2609.20715",
     "https://arstechnica.com/ai/2026/09/exclusive-open-chinese-models-close-gap-with-silicon-valleys-frontier-ai-models",
     "https://arxiv.org/abs/2609.20784",
-    "https://huggingface.co/papers/2609.20511"
+    "https://huggingface.co/papers/2609.20511",
+    "https://cloud.google.com/blog/products/containers-kubernetes/agent-substrate-available-on-gke",
+    "https://huggingface.co/papers/2609.19656",
+    "https://aws.amazon.com/blogs/machine-learning/abnormal-ai-amazon-bedrock-agentcore-for-agentic-email-security-at-scale",
+    "https://cloud.google.com/blog/topics/systems/using-ai-agents-to-secure-google-infrastructure",
+    "https://huggingface.co/papers/2609.19671",
+    "https://arxiv.org/abs/2609.20807"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -205,7 +211,13 @@
     "evt-agent-code-quality-wild-study",
     "evt-actobs-rl-observation-supervision",
     "evt-mozilla-open-source-ai-cost-parity",
-    "evt-retireopd-eos-alignment-agent-rl"
+    "evt-retireopd-eos-alignment-agent-rl",
+    "evt-google-agent-substrate-gke",
+    "evt-self-evolving-search-index",
+    "evt-bedrock-agentcore-scratchpad",
+    "evt-google-mantis-agentic-security",
+    "evt-when2think-adaptive-reasoning",
+    "evt-score-centering-rl-tim"
   ],
   "events": [
     {
@@ -3239,6 +3251,294 @@
       "interpretation": "Adaptive retirement and semantic termination alignment prevent RL agents from over-generating tokens during multi-turn task runs.",
       "uncertainty": "Optimal student-teacher retirement thresholds vary depending on task trajectory depth.",
       "counter_argument": "Fixed length-penalty reward functions can sometimes curb inflation without joint teacher training overhead."
+    },
+    {
+      "event_id": "evt-google-agent-substrate-gke",
+      "title": "Google Agent Substrate: ღია კოდის მაღალი სიმკვრივის გაშვების გარემო AI აგენტებისთვის GKE-ზე",
+      "category": "აგენტების ინფრასტრუქტურა და Runtime",
+      "primary_url": "https://cloud.google.com/blog/products/containers-kubernetes/agent-substrate-available-on-gke",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 9,
+      "confidence": 95,
+      "tldr": "Google-მა გამოუშვა Agent Substrate GKE-ზე, რაც აგენტებს აძლევს 10x უფრო მკვრივ, sub-500ms suspend/resume უსაფრთხო იზოლირებულ runtime-ს.",
+      "what_happened": "Google Cloud-მა წარადგინა ღია Agent Substrate, სპეციალურად შექმნილი მილიონობით ავტონომიური აგენტის ქოდ-ექსექუშენისა და CLI ხელსაწყოების უსაფრთხო იზოლაციისთვის Kubernetes-ში.",
+      "what_changed": "მძიმე კონტეინერული VM-ების ნაცვლად მივიღეთ ნულოვანი ნდობის kernel იზოლაცია და მყისიერი suspend/resume უმოქმედო აგენტებისთვის.",
+      "why_it_matters": "შენს coding agent პროექტებში საშუალებას მოგცემს უსაფრთხოდ გაუშვა LLM-ის გენერირებული bash ბრძანებები და კოდი მინიმალური latency-ით.",
+      "key_takeaways": [
+        "10x მაღალი density კონტეინერებთან შედარებით",
+        "Sub-500ms resume latency 500 ops/sec ტემპით",
+        "Zero-trust kernel და ქსელური იზოლაცია"
+      ],
+      "technical_architecture": [
+        "Cloud-native Kubernetes execution layer",
+        "Decoupled machine management agent execution-ისგან",
+        "Native zero-trust network controls"
+      ],
+      "technical_details": [
+        "GKE runtime integration",
+        "500 suspend/resume per second",
+        "Hermes Agent backend support"
+      ],
+      "potential_impact": "აგენტების ჰოსტინგის ხარჯები მკვეთრად შემცირდება, ხოლო untrusted კოდის გაშვება გახდება უსაფრთხო ნებისმიერი developer-ისთვის.",
+      "action_type": "TRY",
+      "action": "შეისწავლე Agent Substrate-ის არქიტექტურა და სცადე მსგავსი suspend/resume ლოგიკის მოდელირება Docker sandboxing-ში.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "Agent Substrate უზრუნველყოფს 10x მაღალ density-ს სტანდარტულ კონტეინერებთან შედარებით",
+        "სისტემა ახორციელებს sub-500ms resume ოპერაციებს 500-ზე მეტი suspend/resume აქტივაციით წამში",
+        "Nous Research-ის Hermes Agent უკვე აგებულია Agent Substrate-ის ბაზაზე GKE-ზე"
+      ],
+      "interpretation": "ავტონომიური აგენტების ინფრასტრუქტურა შორდება მძიმე VM-ებს და გადადის მიკრო-სენდბოქსებზე, სადაც უმოქმედო აგენტის state მომენტალურად იყინება resouces-ის დასაზოგად.",
+      "uncertainty": "უცნობია Agent Substrate-ის self-hosted დაყენების სირთულე vanilla Kubernetes კლასტერებზე GKE-ს ფარგლებს გარეთ.",
+      "counter_argument": "მცირე პროექტებისთვის სტანდარტული Docker კონტეინერები საკმარისია და Kubernetes-ზე დამატებითი runtime-ის მართვა ზედმეტ სირთულეს ქმნის."
+    },
+    {
+      "event_id": "evt-self-evolving-search-index",
+      "title": "SELF-INDEX: ავტონომიური თვითგანახლებადი საძიებო ინდექსი LLM აგენტებისთვის",
+      "category": "RAG, Retrieval და აგენტის მეხსიერება",
+      "primary_url": "https://huggingface.co/papers/2609.19656",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 88,
+      "tldr": "SELF-INDEX ქმნის თვითგანახლებად საძიებო ინდექსს, რომელიც ავტონომიურად ასწორებს შეცდომებს და აგენერირებს ახალ სინთეტიკურ საძიებო გასაღებებს.",
+      "what_happened": "მკვლევრებმა შექმნეს ჩარჩო, სადაც Optimizer დიაგნოსტიკას უკეთებს ჩავარდნილ retrieval-ს, ხოლო Query Simulator პროაქტიულად აფართოებს საძიებო გასაღებებს.",
+      "what_changed": "RAG ინდექსების ხელით ოპტიმიზაციისა და ჩაშენებული prompt-ების მორგების ნაცვლად, სისტემა თავად აახლებს დოკუმენტის მეტამონაცემებსა და გასაღებებს.",
+      "why_it_matters": "პირდაპირ ეხება შენს RAG და agent memory მოდულებს: აგენტის მეხსიერება უფრო ზუსტი ხდება ყოველი წარუმატებელი ძიების შემდეგ.",
+      "key_takeaways": [
+        "ავტონომიური დიაგნოსტიკა ჩავარდნილ ძიებებზე",
+        "Query Simulator ახალი მოთხოვნების საპროგნოზოდ",
+        "ვალიდაცია ინდექსის გასაღებების განახლებამდე"
+      ],
+      "technical_architecture": [
+        "Autonomous Optimizer feedback loop",
+        "Synthetic Query Simulator module",
+        "Validation-gated index key updater"
+      ],
+      "technical_details": [
+        "Targeted index key revision",
+        "Pre-update validation check",
+        "Agent memory retrieval booster"
+      ],
+      "potential_impact": "შექმნის საძიებო და ცოდნის ბაზებს, რომლებიც კომპანიის შიდა დოკუმენტებზე მუშაობისას დროთა განმავლობაში თავისით ხდებიან უფრო ზუსტები.",
+      "action_type": "BUILD",
+      "action": "ააგე მარტივი SQLite/Chroma RAG პაიპლაინი, სადაც ჩავარდნილი ძიებისას LLM დოკუმენტს უმატებს ახალ ალტერნატიულ საკვანძო კითხვებს.",
+      "evidence": [],
+      "factuality_level": "single_source",
+      "classification": [
+        "Real Technical Skill",
+        "Real Business Opportunity"
+      ],
+      "verified_facts": [
+        "SELF-INDEX ავტონომიურად სვამს დიაგნოზს retrieval shortfall-ზე და არედაქტირებს ინდექსის გასაღებებს ადამიანის გარეშე",
+        "Query Simulator მოდული პროაქტიულად გენერირებს ჰიპოთეტურ მოთხოვნებს ინდექსის გასაუმჯობესებლად",
+        "აუმჯობესებს search agent-ების ეფექტურობას და agent memory სისტემებში წარსული გამოცდილების ამოღებას"
+      ],
+      "interpretation": "სტატიკური ვექტორული ბაზები ვეღარ აკმაყოფილებენ მრავალეტაპიან აგენტებს; ინდექსი თავად უნდა სწავლობდეს წარუმატებელი მოთხოვნების ანალიზით.",
+      "uncertainty": "არ არის შეფასებული ინდექსის ზომის ზრდა და compute ხარჯები უწყვეტი query simulation-ის დროს დიდი კორპუსებისთვის.",
+      "counter_argument": "ხშირმა ავტომატურმა გადაწერამ შესაძლოა გამოიწვიოს ინდექსის დეგრადაცია და ადრე მოქმედი შეკითხვების პასუხების გაუარესება."
+    },
+    {
+      "event_id": "evt-bedrock-agentcore-scratchpad",
+      "title": "Amazon Bedrock AgentCore Code Interpreter: მიკრო-VM სენდბოქსები აგენტების გამოთვლითი Scratch Pad-ისთვის",
+      "category": "Tool Calling და აგენტების არქიტექტურა",
+      "primary_url": "https://aws.amazon.com/blogs/machine-learning/abnormal-ai-amazon-bedrock-agentcore-for-agentic-email-security-at-scale",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 10,
+      "confidence": 92,
+      "tldr": "Abnormal AI-მ აჩვენა, თუ როგორ იყენებს AgentCore Code Interpreter-ის ეფემერულ MicroVM-ებს როგორც dynamic scratch pad-ს მასშტაბური ანალიზისთვის.",
+      "what_happened": "AWS-მა დეტალურად აღწერა Abnormal AI-ს საწარმოო არქიტექტურა, სადაც უსაფრთხოების აგენტები რთული მონაცემების ასაგრეგირებლად იყენებენ სერვერლეს Python/Node.js გარემოებს.",
+      "what_changed": "აგენტი აღარ ცდილობს რთული გამოთვლების ჩატარებას context window-ში, არამედ აგენერირებს კოდს და შედეგს იღებს იზოლირებული MicroVM-იდან.",
+      "why_it_matters": "გასწავლის სწორ არქიტექტურულ პატერნს: როგორ დააკავშირო აგენტის tool calling რეალურ runtime სენდბოქსთან მონაცემთა დასამუშავებლად.",
+      "key_takeaways": [
+        "Ephemeral MicroVM სესიები 15m-8h TTL-ით",
+        "Host OS დონის სრული იზოლაცია",
+        "Python და Node.js წინასწარ ჩატვირთული ბიბლიოთეკები"
+      ],
+      "technical_architecture": [
+        "Serverless MicroVM sandbox runtime",
+        "Configurable VPC mode ან public access",
+        "Direct API file transfer 100MB-მდე"
+      ],
+      "technical_details": [
+        "Code Interpreter REST API",
+        "CloudWatch და CloudTrail logs",
+        "Python/Node.js execution environment"
+      ],
+      "potential_impact": "საშუალებას გაძლევს ააგო რეალური business automation აგენტები, რომლებიც უსაფრთხოდ ამუშავებენ მომხმარებლის ექსელის და CSV ფაილებს.",
+      "action_type": "BUILD",
+      "action": "დაწერე Python სკრიპტი, სადაც LLM აგენერირებს pandas კოდს და უსაფრთხო იზოლირებულ subprocess-ში ამუშავებს მონაცემთა ცხრილს.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Real Business Opportunity"
+      ],
+      "verified_facts": [
+        "Abnormal AI იყენებს Bedrock AgentCore Code Interpreter-ს მილიარდობით inline შეტყობინების რეალურ დროში გასაანალიზებლად",
+        "სესიები იყენებენ ეფემერულ MicroVM-ებს 15 წუთიდან 8 საათამდე TTL კონფიგურაციით",
+        "API უზრუნველყოფს 100 მბ ფაილების პირდაპირ დამუშავებას ან S3 ინტეგრაციას"
+      ],
+      "interpretation": "LLM-ის სემანტიკური მსჯელობა არასაკმარისია მონაცემთა აგრეგაციისთვის; აგენტებს ესაჭიროებათ იზოლირებული dynamic code execution გარემო როგორც გამოთვლითი scratch pad.",
+      "uncertainty": "AWS Bedrock API-ს დამოკიდებულება ზრდის cloud vendor lock-in-ის რისკს self-hosted ალტერნატივებთან შედარებით.",
+      "counter_argument": "API-ზე დაფუძნებული Code Interpreter-ის გამოძახება ზრდის latency-ს მარტივ ფუნქციურ tool calling-თან შედარებით."
+    },
+    {
+      "event_id": "evt-google-mantis-agentic-security",
+      "title": "Google Mantis: Pre-Submit მრავალ-აგენტიანი უსაფრთხოების ჰარნესი კოდის ლოკალური მუქარის მოდელებით",
+      "category": "AI Coding Tools და უსაფრთხოება",
+      "primary_url": "https://cloud.google.com/blog/topics/systems/using-ai-agents-to-secure-google-infrastructure",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 9,
+      "confidence": 90,
+      "tldr": "Google-მა წარადგინა Mantis, მრავალ-აგენტიანი ჰარნესი, რომელიც dependency call graph-ებით pre-submit ეტაპზე ამოწმებს კოდის უსაფრთხოებას 3%-იანი ცდომილებით.",
+      "what_happened": "Google-ის ინფრასტრუქტურულმა გუნდმა გააზიარა არქიტექტურა, რომელიც AI აგენტებს იყენებს ყოველი commit-ის უსაფრთხოების შესამოწმებლად რეალურ დროში.",
+      "what_changed": "იშვიათი და ნელი დიდი სკანირებების ნაცვლად, კონტექსტური აგენტები ამოწმებენ ცალკეულ diff-ებს პირდაპირ დეველოპერის workflow-ში.",
+      "why_it_matters": "გაჩვენებს, თუ როგორ შეიძლება ააგო CI/CD bot ან GitHub Action აგენტი, რომელიც მხოლოდ ზედაპირულ linting-ს კი არა, ღრმა არქიტექტურულ უსაფრთხოებას ამოწმებს.",
+      "key_takeaways": [
+        "Pre-submit სკანირება commit-ის ეტაპზე",
+        "False-positive მაჩვენებლის ვარდნა 3%-მდე",
+        "Dependency call graph-ების ინტეგრაცია კონტექსტისთვის"
+      ],
+      "technical_architecture": [
+        "Mantis multi-agent review harness",
+        "Live codebase metadata threat modeling",
+        "Cross-package dependency call graph traversal"
+      ],
+      "technical_details": [
+        "Real-time pre-submit evaluation",
+        "Specialized triage agents for low latency",
+        "AST and dependency graph context feeding"
+      ],
+      "potential_impact": "კოდინგ აგენტების მიერ დაწერილი კოდის ავტომატური დაცვა გახდება სტანდარტული ნაბიჯი ნებისმიერ თანამედროვე CI/CD პაიპლაინში.",
+      "action_type": "APPLY",
+      "action": "დაამატე GitHub Actions პაიპლაინში მარტივი Python სკრიპტი, რომელიც git diff-ს გადასცემს LLM API-ს და ამოწმებს security flaw-ებს commit-ისას.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "Google-ის Mantis სისტემა ახორციელებს უწყვეტ pre-submit სკანირებას ასობით მილიონ კოდის ხაზზე",
+        "ლოკალიზებული threat model-ებისა და call graph-ების გამოყენებით false-positive მაჩვენებელი 3%-მდე შემცირდა",
+        "სისტემა ყოველთვიურად ასობით დაუცველობის შეღწევას აჩერებს production ინფრასტრუქტურაში"
+      ],
+      "interpretation": "კოდის გენერაციის ზრდასთან ერთად, უსაფრთხოების შემოწმება გადადის static analysis-იდან მრავალ-აგენტიან contextual review-ზე უშუალოდ git pre-submit ეტაპზე.",
+      "uncertainty": "Mantis-ის სრული ინტეგრაცია მოითხოვს მთლიანი კოდის ბაზის dependency call graph-ის რეალურ დროში განახლებას.",
+      "counter_argument": "Pre-commit ან pre-submit ეტაპზე LLM აგენტების გაშვებამ შესაძლოა გაზარდოს PR შემოწმების დრო და შეაფერხოს დეველოპერთა მუშაობა."
+    },
+    {
+      "event_id": "evt-when2think-adaptive-reasoning",
+      "title": "When2Think: სირთულეზე მორგებული გამოთვლის განაწილება ჰიბრიდული მსჯელობის მოდელებისთვის",
+      "category": "LLM კვლევა და Inference-ის ოპტიმიზაცია",
+      "primary_url": "https://huggingface.co/papers/2609.19671",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 7,
+      "source_quality": 8,
+      "confidence": 89,
+      "tldr": "When2Think პოსტ-ტრენინგით ასწავლის მოდელს, როდის უპასუხოს მომენტალურად (System 1) და როდის დახარჯოს reasoning ტოკენები (System 2).",
+      "what_happened": "Microsoft-ის მკვლევრებმა წარადგინეს ჩარჩო, რომელიც არეგულირებს მსჯელობის სიგრძეს ამოცანის სირთულის მიხედვით, learned reward model-ების გარეშე.",
+      "what_changed": "ფიქსირებული length penalty-ს ნაცვლად, მოდელი მარტივ ამოცანებს ხსნის პირდაპირ, ხოლო რთულ პრობლემებზე რთავს გაფართოებულ CoT ჯაჭვს.",
+      "why_it_matters": "დაგეხმარება გაიგო reasoning მოდელების token ეკონომიკა და შეიმუშაო prompt routing სტრატეგიები აგენტების გამოძახებების გასაიაფებლად.",
+      "key_takeaways": [
+        "IDAC ჯილდოს ფორმირება რეფერენს სტატისტიკით",
+        "27.9%-იანი ტოკენების ეკონომია AIME 24-ზე",
+        "Critic-free ოპტიმიზაცია ონლაინ რეფერენს მოდელის გარეშე"
+      ],
+      "technical_architecture": [
+        "Instance-adaptive compute allocation",
+        "Verifier-based reward shaping",
+        "Batch-wise standardized advantages"
+      ],
+      "technical_details": [
+        "IDAC reward formulation",
+        "System 1 vs System 2 dynamic shift",
+        "Pass@3 metrics on AIME 24/25"
+      ],
+      "potential_impact": "შემცირდება საწარმოო API ხარჯები frontier reasoning მოდელების გამოყენებისას batch ამოცანების შესრულების დროს.",
+      "action_type": "LEARN",
+      "action": "გააანალიზე შენი აგენტის პრომპტები და შექმენი lightweight კლასიფიკატორი, რომელიც მარტივ მოთხოვნებს უგზავნის Flash მოდელს, ხოლო რთულს Reasoning მოდელს.",
+      "evidence": [],
+      "factuality_level": "single_source",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "When2Think იყენებს IDAC (Instance-level Difficulty-Aware Control) მექანიზმს reasoning სიღრმის სამართავად",
+        "AIME 24-ზე Pass@3 გაიზარდა 10.0%-ით, ხოლო token usage შემცირდა 27.9%-ით საბაზისო მოდელთან შედარებით",
+        "AIME 25-ზე მოდელმა მიაღწია 40.0% Pass@3 შედეგს და გადააჭარბა მარტივ routing ბაზისებს"
+      ],
+      "interpretation": "Reasoning მოდელები (o1/o3 სტილის) ხშირად ზედმეტად ფიქრობენ მარტივ ამოცანებზე; IDAC აბალანსებს System 1 (სწრაფი) და System 2 (ღრმა) რეჟიმებს token-ების დაზოგვით.",
+      "uncertainty": "უცნობია რამდენად კარგად გადადის ეს მიდგომა მათემატიკური ამოცანებიდან პროგრამულ ინჟინერიასა და ზოგად agentic workflow-ებზე.",
+      "counter_argument": "სირთულის არასწორმა შეფასებამ შესაძლოა გამოიწვიოს რთული ამოცანების ნაადრევი direct answering და შეცდომების ზრდა."
+    },
+    {
+      "event_id": "evt-score-centering-rl-tim",
+      "title": "Score Centering: Off-Policy RL-ის სტაბილიზაცია Training-Inference შეუსაბამობისას LLM-ებში",
+      "category": "AI Research და RL წვრთნა",
+      "primary_url": "https://arxiv.org/abs/2609.20807",
+      "supporting_urls": [],
+      "importance": 7,
+      "relevance": 8,
+      "actionability": 6,
+      "source_quality": 8,
+      "confidence": 85,
+      "tldr": "Score Centering ამატებს მარტივ კორექციულ წევრს, რომელიც აბათილებს drift-ს და ასტაბილურებს LLM-ების RL წვრთნას სწრაფი rollout ძრავების გამოყენებისას.",
+      "what_happened": "მკვლევრებმა აღმოაჩინეს, რომ off-policy reinforcement learning-ის დესტაბილიზაციას იწვევს მუდმივი bias წვრთნისა და rollout ძრავებს შორის, და შექმნეს ადიტიური კორექცია.",
+      "what_changed": "ძვირადღირებული importance sampling-ის ან ინფერენსის სიჩქარის გაწირვის ნაცვლად, score centering ანულირებს დრიფტს მინიმალური გამოთვლითი დანახარჯით.",
+      "why_it_matters": "კრიტიკულია, თუ მომავალში დააპირებ საკუთარი მცირე მოდელების post-training-ს ან local GRPO/PPO ექსპერიმენტებს სამუშაო სადგურზე.",
+      "key_takeaways": [
+        "TIM არასტაბილურობის მთავარი მიზეზია სისტემური drift",
+        "Score centering მუშაობს 0.6B-30B მოდელებზე",
+        "თავსებადია importance sampling ალგორითმებთან"
+      ],
+      "technical_architecture": [
+        "Additive drift-canceling correction term",
+        "Engine mismatch compensation pipeline",
+        "Quantized inference rollout stabilization"
+      ],
+      "technical_details": [
+        "0.6B to 30B parameter evaluation",
+        "TIM bias cancellation formula",
+        "Staleness experiment compatibility"
+      ],
+      "potential_impact": "საშუალებას აძლევს ინჟინრებს გამოიყენონ 4-bit ან 8-bit კვანტიზებული ინფერენს ძრავები მონაცემთა გენერაციისთვის RL წვრთნისას სტაბილურობის დაკარგვის გარეშე.",
+      "action_type": "LEARN",
+      "action": "შეისწავლე training-inference mismatch-ის კონცეფცია LLM-ების reinforcement learning-ში და გაეცანი PPO/GRPO განახლების ფორმულებს.",
+      "evidence": [],
+      "factuality_level": "single_source",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "კვლევამ აჩვენა, რომ TIM-ის (Training-Inference Mismatch) ქვეშ არასტაბილურობას იწვევს ძრავებს შორის დაგროვებადი დრიფტი",
+        "შემოთავაზებული დანამატი score centering წევრი აბათილებს დრიფტს და ასტაბილურებს RL-ს",
+        "მეთოდი გამოცდილია 0.6B-დან 30B პარამეტრიან მოდელებზე კვანტიზაციისა და staleness-ის პირობებში"
+      ],
+      "interpretation": "RL fine-tuning-ის დროს rollout ინფერენსისთვის ხშირად იყენებენ vLLM/TensorRT-ს კვანტიზაციით, რაც ქმნის სისტემურ ცდომილებას წვრთნის დროს; score centering ამ პრობლემას მარტივად აგვარებს.",
+      "uncertainty": "არ არის ნაჩვენები მეთოდის ეფექტი 70B+ პარამეტრის მქონე frontier მოდელების სრულმასშტაბიან PPO/GRPO გაშვებებზე.",
+      "counter_argument": "ინფერენსისა და წვრთნის ძრავების იდენტურ FP16/BF16 სიზუსტეზე შენარჩუნება სრულად გამორიცხავს TIM-ს, თუ compute ბიუჯეტი იძლევა ამის საშუალებას."
     }
   ],
   "topics": {
@@ -3317,7 +3617,13 @@
     "AI Research / RAG & Embeddings": 1,
     "AI Evaluation / Agent Reliability": 1,
     "AI Coding Tools / Agent Evaluation": 1,
-    "Open Source AI / Ecosystem Trends": 1
+    "Open Source AI / Ecosystem Trends": 1,
+    "აგენტების ინფრასტრუქტურა და Runtime": 1,
+    "RAG, Retrieval და აგენტის მეხსიერება": 1,
+    "Tool Calling და აგენტების არქიტექტურა": 1,
+    "AI Coding Tools და უსაფრთხოება": 1,
+    "LLM კვლევა და Inference-ის ოპტიმიზაცია": 1,
+    "AI Research და RL წვრთნა": 1
   },
   "reports": [
     {
@@ -6483,14 +6789,313 @@
         "Adoption of hybrid model routing strategies pairing low-cost open weights with top-tier closed models",
         "Incorporation of environment observation supervision into pre-RL SFT trajectories to preserve policy entropy"
       ]
+    },
+    {
+      "date": "2026-09-18",
+      "summary": "Google-მა გამოუშვა Agent Substrate მაღალი სიმკვრივის აგენტური სენდბოქსებისთვის GKE-ზე. AWS-მა და Abnormal AI-მ წარმოადგინეს AgentCore Code Interpreter-ის არქიტექტურა მასშტაბური უსაფრთხოების აგენტებისთვის. ახალი კვლევები ნერგავენ SELF-INDEX-ს მეხსიერების თვითგანახლებისთვის და When2Think-ს ადაპტური reasoning-ისთვის.",
+      "events": [
+        {
+          "event_id": "evt-google-agent-substrate-gke",
+          "title": "Google Agent Substrate: ღია კოდის მაღალი სიმკვრივის გაშვების გარემო AI აგენტებისთვის GKE-ზე",
+          "category": "აგენტების ინფრასტრუქტურა და Runtime",
+          "primary_url": "https://cloud.google.com/blog/products/containers-kubernetes/agent-substrate-available-on-gke",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 9,
+          "confidence": 95,
+          "tldr": "Google-მა გამოუშვა Agent Substrate GKE-ზე, რაც აგენტებს აძლევს 10x უფრო მკვრივ, sub-500ms suspend/resume უსაფრთხო იზოლირებულ runtime-ს.",
+          "what_happened": "Google Cloud-მა წარადგინა ღია Agent Substrate, სპეციალურად შექმნილი მილიონობით ავტონომიური აგენტის ქოდ-ექსექუშენისა და CLI ხელსაწყოების უსაფრთხო იზოლაციისთვის Kubernetes-ში.",
+          "what_changed": "მძიმე კონტეინერული VM-ების ნაცვლად მივიღეთ ნულოვანი ნდობის kernel იზოლაცია და მყისიერი suspend/resume უმოქმედო აგენტებისთვის.",
+          "why_it_matters": "შენს coding agent პროექტებში საშუალებას მოგცემს უსაფრთხოდ გაუშვა LLM-ის გენერირებული bash ბრძანებები და კოდი მინიმალური latency-ით.",
+          "key_takeaways": [
+            "10x მაღალი density კონტეინერებთან შედარებით",
+            "Sub-500ms resume latency 500 ops/sec ტემპით",
+            "Zero-trust kernel და ქსელური იზოლაცია"
+          ],
+          "technical_architecture": [
+            "Cloud-native Kubernetes execution layer",
+            "Decoupled machine management agent execution-ისგან",
+            "Native zero-trust network controls"
+          ],
+          "technical_details": [
+            "GKE runtime integration",
+            "500 suspend/resume per second",
+            "Hermes Agent backend support"
+          ],
+          "potential_impact": "აგენტების ჰოსტინგის ხარჯები მკვეთრად შემცირდება, ხოლო untrusted კოდის გაშვება გახდება უსაფრთხო ნებისმიერი developer-ისთვის.",
+          "action_type": "TRY",
+          "action": "შეისწავლე Agent Substrate-ის არქიტექტურა და სცადე მსგავსი suspend/resume ლოგიკის მოდელირება Docker sandboxing-ში.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "Agent Substrate უზრუნველყოფს 10x მაღალ density-ს სტანდარტულ კონტეინერებთან შედარებით",
+            "სისტემა ახორციელებს sub-500ms resume ოპერაციებს 500-ზე მეტი suspend/resume აქტივაციით წამში",
+            "Nous Research-ის Hermes Agent უკვე აგებულია Agent Substrate-ის ბაზაზე GKE-ზე"
+          ],
+          "interpretation": "ავტონომიური აგენტების ინფრასტრუქტურა შორდება მძიმე VM-ებს და გადადის მიკრო-სენდბოქსებზე, სადაც უმოქმედო აგენტის state მომენტალურად იყინება resouces-ის დასაზოგად.",
+          "uncertainty": "უცნობია Agent Substrate-ის self-hosted დაყენების სირთულე vanilla Kubernetes კლასტერებზე GKE-ს ფარგლებს გარეთ.",
+          "counter_argument": "მცირე პროექტებისთვის სტანდარტული Docker კონტეინერები საკმარისია და Kubernetes-ზე დამატებითი runtime-ის მართვა ზედმეტ სირთულეს ქმნის."
+        },
+        {
+          "event_id": "evt-self-evolving-search-index",
+          "title": "SELF-INDEX: ავტონომიური თვითგანახლებადი საძიებო ინდექსი LLM აგენტებისთვის",
+          "category": "RAG, Retrieval და აგენტის მეხსიერება",
+          "primary_url": "https://huggingface.co/papers/2609.19656",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 88,
+          "tldr": "SELF-INDEX ქმნის თვითგანახლებად საძიებო ინდექსს, რომელიც ავტონომიურად ასწორებს შეცდომებს და აგენერირებს ახალ სინთეტიკურ საძიებო გასაღებებს.",
+          "what_happened": "მკვლევრებმა შექმნეს ჩარჩო, სადაც Optimizer დიაგნოსტიკას უკეთებს ჩავარდნილ retrieval-ს, ხოლო Query Simulator პროაქტიულად აფართოებს საძიებო გასაღებებს.",
+          "what_changed": "RAG ინდექსების ხელით ოპტიმიზაციისა და ჩაშენებული prompt-ების მორგების ნაცვლად, სისტემა თავად აახლებს დოკუმენტის მეტამონაცემებსა და გასაღებებს.",
+          "why_it_matters": "პირდაპირ ეხება შენს RAG და agent memory მოდულებს: აგენტის მეხსიერება უფრო ზუსტი ხდება ყოველი წარუმატებელი ძიების შემდეგ.",
+          "key_takeaways": [
+            "ავტონომიური დიაგნოსტიკა ჩავარდნილ ძიებებზე",
+            "Query Simulator ახალი მოთხოვნების საპროგნოზოდ",
+            "ვალიდაცია ინდექსის გასაღებების განახლებამდე"
+          ],
+          "technical_architecture": [
+            "Autonomous Optimizer feedback loop",
+            "Synthetic Query Simulator module",
+            "Validation-gated index key updater"
+          ],
+          "technical_details": [
+            "Targeted index key revision",
+            "Pre-update validation check",
+            "Agent memory retrieval booster"
+          ],
+          "potential_impact": "შექმნის საძიებო და ცოდნის ბაზებს, რომლებიც კომპანიის შიდა დოკუმენტებზე მუშაობისას დროთა განმავლობაში თავისით ხდებიან უფრო ზუსტები.",
+          "action_type": "BUILD",
+          "action": "ააგე მარტივი SQLite/Chroma RAG პაიპლაინი, სადაც ჩავარდნილი ძიებისას LLM დოკუმენტს უმატებს ახალ ალტერნატიულ საკვანძო კითხვებს.",
+          "evidence": [],
+          "factuality_level": "single_source",
+          "classification": [
+            "Real Technical Skill",
+            "Real Business Opportunity"
+          ],
+          "verified_facts": [
+            "SELF-INDEX ავტონომიურად სვამს დიაგნოზს retrieval shortfall-ზე და არედაქტირებს ინდექსის გასაღებებს ადამიანის გარეშე",
+            "Query Simulator მოდული პროაქტიულად გენერირებს ჰიპოთეტურ მოთხოვნებს ინდექსის გასაუმჯობესებლად",
+            "აუმჯობესებს search agent-ების ეფექტურობას და agent memory სისტემებში წარსული გამოცდილების ამოღებას"
+          ],
+          "interpretation": "სტატიკური ვექტორული ბაზები ვეღარ აკმაყოფილებენ მრავალეტაპიან აგენტებს; ინდექსი თავად უნდა სწავლობდეს წარუმატებელი მოთხოვნების ანალიზით.",
+          "uncertainty": "არ არის შეფასებული ინდექსის ზომის ზრდა და compute ხარჯები უწყვეტი query simulation-ის დროს დიდი კორპუსებისთვის.",
+          "counter_argument": "ხშირმა ავტომატურმა გადაწერამ შესაძლოა გამოიწვიოს ინდექსის დეგრადაცია და ადრე მოქმედი შეკითხვების პასუხების გაუარესება."
+        },
+        {
+          "event_id": "evt-bedrock-agentcore-scratchpad",
+          "title": "Amazon Bedrock AgentCore Code Interpreter: მიკრო-VM სენდბოქსები აგენტების გამოთვლითი Scratch Pad-ისთვის",
+          "category": "Tool Calling და აგენტების არქიტექტურა",
+          "primary_url": "https://aws.amazon.com/blogs/machine-learning/abnormal-ai-amazon-bedrock-agentcore-for-agentic-email-security-at-scale",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 10,
+          "confidence": 92,
+          "tldr": "Abnormal AI-მ აჩვენა, თუ როგორ იყენებს AgentCore Code Interpreter-ის ეფემერულ MicroVM-ებს როგორც dynamic scratch pad-ს მასშტაბური ანალიზისთვის.",
+          "what_happened": "AWS-მა დეტალურად აღწერა Abnormal AI-ს საწარმოო არქიტექტურა, სადაც უსაფრთხოების აგენტები რთული მონაცემების ასაგრეგირებლად იყენებენ სერვერლეს Python/Node.js გარემოებს.",
+          "what_changed": "აგენტი აღარ ცდილობს რთული გამოთვლების ჩატარებას context window-ში, არამედ აგენერირებს კოდს და შედეგს იღებს იზოლირებული MicroVM-იდან.",
+          "why_it_matters": "გასწავლის სწორ არქიტექტურულ პატერნს: როგორ დააკავშირო აგენტის tool calling რეალურ runtime სენდბოქსთან მონაცემთა დასამუშავებლად.",
+          "key_takeaways": [
+            "Ephemeral MicroVM სესიები 15m-8h TTL-ით",
+            "Host OS დონის სრული იზოლაცია",
+            "Python და Node.js წინასწარ ჩატვირთული ბიბლიოთეკები"
+          ],
+          "technical_architecture": [
+            "Serverless MicroVM sandbox runtime",
+            "Configurable VPC mode ან public access",
+            "Direct API file transfer 100MB-მდე"
+          ],
+          "technical_details": [
+            "Code Interpreter REST API",
+            "CloudWatch და CloudTrail logs",
+            "Python/Node.js execution environment"
+          ],
+          "potential_impact": "საშუალებას გაძლევს ააგო რეალური business automation აგენტები, რომლებიც უსაფრთხოდ ამუშავებენ მომხმარებლის ექსელის და CSV ფაილებს.",
+          "action_type": "BUILD",
+          "action": "დაწერე Python სკრიპტი, სადაც LLM აგენერირებს pandas კოდს და უსაფრთხო იზოლირებულ subprocess-ში ამუშავებს მონაცემთა ცხრილს.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Real Business Opportunity"
+          ],
+          "verified_facts": [
+            "Abnormal AI იყენებს Bedrock AgentCore Code Interpreter-ს მილიარდობით inline შეტყობინების რეალურ დროში გასაანალიზებლად",
+            "სესიები იყენებენ ეფემერულ MicroVM-ებს 15 წუთიდან 8 საათამდე TTL კონფიგურაციით",
+            "API უზრუნველყოფს 100 მბ ფაილების პირდაპირ დამუშავებას ან S3 ინტეგრაციას"
+          ],
+          "interpretation": "LLM-ის სემანტიკური მსჯელობა არასაკმარისია მონაცემთა აგრეგაციისთვის; აგენტებს ესაჭიროებათ იზოლირებული dynamic code execution გარემო როგორც გამოთვლითი scratch pad.",
+          "uncertainty": "AWS Bedrock API-ს დამოკიდებულება ზრდის cloud vendor lock-in-ის რისკს self-hosted ალტერნატივებთან შედარებით.",
+          "counter_argument": "API-ზე დაფუძნებული Code Interpreter-ის გამოძახება ზრდის latency-ს მარტივ ფუნქციურ tool calling-თან შედარებით."
+        },
+        {
+          "event_id": "evt-google-mantis-agentic-security",
+          "title": "Google Mantis: Pre-Submit მრავალ-აგენტიანი უსაფრთხოების ჰარნესი კოდის ლოკალური მუქარის მოდელებით",
+          "category": "AI Coding Tools და უსაფრთხოება",
+          "primary_url": "https://cloud.google.com/blog/topics/systems/using-ai-agents-to-secure-google-infrastructure",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 9,
+          "confidence": 90,
+          "tldr": "Google-მა წარადგინა Mantis, მრავალ-აგენტიანი ჰარნესი, რომელიც dependency call graph-ებით pre-submit ეტაპზე ამოწმებს კოდის უსაფრთხოებას 3%-იანი ცდომილებით.",
+          "what_happened": "Google-ის ინფრასტრუქტურულმა გუნდმა გააზიარა არქიტექტურა, რომელიც AI აგენტებს იყენებს ყოველი commit-ის უსაფრთხოების შესამოწმებლად რეალურ დროში.",
+          "what_changed": "იშვიათი და ნელი დიდი სკანირებების ნაცვლად, კონტექსტური აგენტები ამოწმებენ ცალკეულ diff-ებს პირდაპირ დეველოპერის workflow-ში.",
+          "why_it_matters": "გაჩვენებს, თუ როგორ შეიძლება ააგო CI/CD bot ან GitHub Action აგენტი, რომელიც მხოლოდ ზედაპირულ linting-ს კი არა, ღრმა არქიტექტურულ უსაფრთხოებას ამოწმებს.",
+          "key_takeaways": [
+            "Pre-submit სკანირება commit-ის ეტაპზე",
+            "False-positive მაჩვენებლის ვარდნა 3%-მდე",
+            "Dependency call graph-ების ინტეგრაცია კონტექსტისთვის"
+          ],
+          "technical_architecture": [
+            "Mantis multi-agent review harness",
+            "Live codebase metadata threat modeling",
+            "Cross-package dependency call graph traversal"
+          ],
+          "technical_details": [
+            "Real-time pre-submit evaluation",
+            "Specialized triage agents for low latency",
+            "AST and dependency graph context feeding"
+          ],
+          "potential_impact": "კოდინგ აგენტების მიერ დაწერილი კოდის ავტომატური დაცვა გახდება სტანდარტული ნაბიჯი ნებისმიერ თანამედროვე CI/CD პაიპლაინში.",
+          "action_type": "APPLY",
+          "action": "დაამატე GitHub Actions პაიპლაინში მარტივი Python სკრიპტი, რომელიც git diff-ს გადასცემს LLM API-ს და ამოწმებს security flaw-ებს commit-ისას.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "Google-ის Mantis სისტემა ახორციელებს უწყვეტ pre-submit სკანირებას ასობით მილიონ კოდის ხაზზე",
+            "ლოკალიზებული threat model-ებისა და call graph-ების გამოყენებით false-positive მაჩვენებელი 3%-მდე შემცირდა",
+            "სისტემა ყოველთვიურად ასობით დაუცველობის შეღწევას აჩერებს production ინფრასტრუქტურაში"
+          ],
+          "interpretation": "კოდის გენერაციის ზრდასთან ერთად, უსაფრთხოების შემოწმება გადადის static analysis-იდან მრავალ-აგენტიან contextual review-ზე უშუალოდ git pre-submit ეტაპზე.",
+          "uncertainty": "Mantis-ის სრული ინტეგრაცია მოითხოვს მთლიანი კოდის ბაზის dependency call graph-ის რეალურ დროში განახლებას.",
+          "counter_argument": "Pre-commit ან pre-submit ეტაპზე LLM აგენტების გაშვებამ შესაძლოა გაზარდოს PR შემოწმების დრო და შეაფერხოს დეველოპერთა მუშაობა."
+        },
+        {
+          "event_id": "evt-when2think-adaptive-reasoning",
+          "title": "When2Think: სირთულეზე მორგებული გამოთვლის განაწილება ჰიბრიდული მსჯელობის მოდელებისთვის",
+          "category": "LLM კვლევა და Inference-ის ოპტიმიზაცია",
+          "primary_url": "https://huggingface.co/papers/2609.19671",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 7,
+          "source_quality": 8,
+          "confidence": 89,
+          "tldr": "When2Think პოსტ-ტრენინგით ასწავლის მოდელს, როდის უპასუხოს მომენტალურად (System 1) და როდის დახარჯოს reasoning ტოკენები (System 2).",
+          "what_happened": "Microsoft-ის მკვლევრებმა წარადგინეს ჩარჩო, რომელიც არეგულირებს მსჯელობის სიგრძეს ამოცანის სირთულის მიხედვით, learned reward model-ების გარეშე.",
+          "what_changed": "ფიქსირებული length penalty-ს ნაცვლად, მოდელი მარტივ ამოცანებს ხსნის პირდაპირ, ხოლო რთულ პრობლემებზე რთავს გაფართოებულ CoT ჯაჭვს.",
+          "why_it_matters": "დაგეხმარება გაიგო reasoning მოდელების token ეკონომიკა და შეიმუშაო prompt routing სტრატეგიები აგენტების გამოძახებების გასაიაფებლად.",
+          "key_takeaways": [
+            "IDAC ჯილდოს ფორმირება რეფერენს სტატისტიკით",
+            "27.9%-იანი ტოკენების ეკონომია AIME 24-ზე",
+            "Critic-free ოპტიმიზაცია ონლაინ რეფერენს მოდელის გარეშე"
+          ],
+          "technical_architecture": [
+            "Instance-adaptive compute allocation",
+            "Verifier-based reward shaping",
+            "Batch-wise standardized advantages"
+          ],
+          "technical_details": [
+            "IDAC reward formulation",
+            "System 1 vs System 2 dynamic shift",
+            "Pass@3 metrics on AIME 24/25"
+          ],
+          "potential_impact": "შემცირდება საწარმოო API ხარჯები frontier reasoning მოდელების გამოყენებისას batch ამოცანების შესრულების დროს.",
+          "action_type": "LEARN",
+          "action": "გააანალიზე შენი აგენტის პრომპტები და შექმენი lightweight კლასიფიკატორი, რომელიც მარტივ მოთხოვნებს უგზავნის Flash მოდელს, ხოლო რთულს Reasoning მოდელს.",
+          "evidence": [],
+          "factuality_level": "single_source",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "When2Think იყენებს IDAC (Instance-level Difficulty-Aware Control) მექანიზმს reasoning სიღრმის სამართავად",
+            "AIME 24-ზე Pass@3 გაიზარდა 10.0%-ით, ხოლო token usage შემცირდა 27.9%-ით საბაზისო მოდელთან შედარებით",
+            "AIME 25-ზე მოდელმა მიაღწია 40.0% Pass@3 შედეგს და გადააჭარბა მარტივ routing ბაზისებს"
+          ],
+          "interpretation": "Reasoning მოდელები (o1/o3 სტილის) ხშირად ზედმეტად ფიქრობენ მარტივ ამოცანებზე; IDAC აბალანსებს System 1 (სწრაფი) და System 2 (ღრმა) რეჟიმებს token-ების დაზოგვით.",
+          "uncertainty": "უცნობია რამდენად კარგად გადადის ეს მიდგომა მათემატიკური ამოცანებიდან პროგრამულ ინჟინერიასა და ზოგად agentic workflow-ებზე.",
+          "counter_argument": "სირთულის არასწორმა შეფასებამ შესაძლოა გამოიწვიოს რთული ამოცანების ნაადრევი direct answering და შეცდომების ზრდა."
+        },
+        {
+          "event_id": "evt-score-centering-rl-tim",
+          "title": "Score Centering: Off-Policy RL-ის სტაბილიზაცია Training-Inference შეუსაბამობისას LLM-ებში",
+          "category": "AI Research და RL წვრთნა",
+          "primary_url": "https://arxiv.org/abs/2609.20807",
+          "supporting_urls": [],
+          "importance": 7,
+          "relevance": 8,
+          "actionability": 6,
+          "source_quality": 8,
+          "confidence": 85,
+          "tldr": "Score Centering ამატებს მარტივ კორექციულ წევრს, რომელიც აბათილებს drift-ს და ასტაბილურებს LLM-ების RL წვრთნას სწრაფი rollout ძრავების გამოყენებისას.",
+          "what_happened": "მკვლევრებმა აღმოაჩინეს, რომ off-policy reinforcement learning-ის დესტაბილიზაციას იწვევს მუდმივი bias წვრთნისა და rollout ძრავებს შორის, და შექმნეს ადიტიური კორექცია.",
+          "what_changed": "ძვირადღირებული importance sampling-ის ან ინფერენსის სიჩქარის გაწირვის ნაცვლად, score centering ანულირებს დრიფტს მინიმალური გამოთვლითი დანახარჯით.",
+          "why_it_matters": "კრიტიკულია, თუ მომავალში დააპირებ საკუთარი მცირე მოდელების post-training-ს ან local GRPO/PPO ექსპერიმენტებს სამუშაო სადგურზე.",
+          "key_takeaways": [
+            "TIM არასტაბილურობის მთავარი მიზეზია სისტემური drift",
+            "Score centering მუშაობს 0.6B-30B მოდელებზე",
+            "თავსებადია importance sampling ალგორითმებთან"
+          ],
+          "technical_architecture": [
+            "Additive drift-canceling correction term",
+            "Engine mismatch compensation pipeline",
+            "Quantized inference rollout stabilization"
+          ],
+          "technical_details": [
+            "0.6B to 30B parameter evaluation",
+            "TIM bias cancellation formula",
+            "Staleness experiment compatibility"
+          ],
+          "potential_impact": "საშუალებას აძლევს ინჟინრებს გამოიყენონ 4-bit ან 8-bit კვანტიზებული ინფერენს ძრავები მონაცემთა გენერაციისთვის RL წვრთნისას სტაბილურობის დაკარგვის გარეშე.",
+          "action_type": "LEARN",
+          "action": "შეისწავლე training-inference mismatch-ის კონცეფცია LLM-ების reinforcement learning-ში და გაეცანი PPO/GRPO განახლების ფორმულებს.",
+          "evidence": [],
+          "factuality_level": "single_source",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "კვლევამ აჩვენა, რომ TIM-ის (Training-Inference Mismatch) ქვეშ არასტაბილურობას იწვევს ძრავებს შორის დაგროვებადი დრიფტი",
+            "შემოთავაზებული დანამატი score centering წევრი აბათილებს დრიფტს და ასტაბილურებს RL-ს",
+            "მეთოდი გამოცდილია 0.6B-დან 30B პარამეტრიან მოდელებზე კვანტიზაციისა და staleness-ის პირობებში"
+          ],
+          "interpretation": "RL fine-tuning-ის დროს rollout ინფერენსისთვის ხშირად იყენებენ vLLM/TensorRT-ს კვანტიზაციით, რაც ქმნის სისტემურ ცდომილებას წვრთნის დროს; score centering ამ პრობლემას მარტივად აგვარებს.",
+          "uncertainty": "არ არის ნაჩვენები მეთოდის ეფექტი 70B+ პარამეტრის მქონე frontier მოდელების სრულმასშტაბიან PPO/GRPO გაშვებებზე.",
+          "counter_argument": "ინფერენსისა და წვრთნის ძრავების იდენტურ FP16/BF16 სიზუსტეზე შენარჩუნება სრულად გამორიცხავს TIM-ს, თუ compute ბიუჯეტი იძლევა ამის საშუალებას."
+        }
+      ],
+      "trends": [
+        "აგენტების ჰოსტინგის გადასვლა სტანდარტული VM-ებიდან მაღალი სიმკვრივის მიკრო-სენდბოქსებსა და sub-second suspend/resume runtime-ებზე (Agent Substrate, Bedrock AgentCore)",
+        "RAG სისტემების ევოლუცია სტატიკური ვექტორული ბაზებიდან თვითგანახლებად, შეცდომებზე ორიენტირებულ საძიებო ინდექსებზე (SELF-INDEX)",
+        "Reasoning მოდელების გამოთვლითი ხარჯების ოპტიმიზაცია დინამიკური სირთულის შეფასებით (System 1 vs System 2 დაყოფა When2Think-ის მიხედვით)"
+      ]
     }
   ],
   "learning_queue": [
-    "Google Gemini Interactions API and remote Linux sandbox lifecycle management",
-    "Causal Encoder-Decoder architecture mechanics and FP4 KV cache quantization",
-    "Egress proxy token injection patterns for zero-trust agent security"
+    "Docker და Podman სენდბოქსების lifecycle management და resource limitation Python-იდან",
+    "Dependency Call Graphs გენერაცია Python-ში (ast მოდულის გამოყენებით) კონტექსტური კოდის ანალიზისთვის",
+    "In-context RAG reranking და synthetic query generation ტექნიკები"
   ],
-  "last_run": "2026-09-18T20:10:37.555591+00:00",
+  "last_run": "2026-09-18T21:42:51.456602+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -6526,12 +7131,15 @@
     "arxiv:2609.20812",
     "arxiv:2609.17598",
     "arxiv:2609.20715",
-    "arxiv:2609.20784"
+    "arxiv:2609.20784",
+    "arxiv:2609.19656",
+    "arxiv:2609.19671",
+    "arxiv:2609.20807"
   ],
   "last_report_files": {
-    "markdown": "data/reports/2026-09-18/report.md",
-    "json": "data/reports/2026-09-18/report.json",
-    "newsletter": "data/reports/2026-09-18/newsletter.md",
-    "social": "data/reports/2026-09-18/social_posts.txt"
+    "markdown": "data/reports/2026-09-19/report.md",
+    "json": "data/reports/2026-09-19/report.json",
+    "newsletter": "data/reports/2026-09-19/newsletter.md",
+    "social": "data/reports/2026-09-19/social_posts.txt"
   }
 }

@@ -226,7 +226,7 @@ def build_research_input(candidates: list[dict], state: dict | None = None) -> d
         sources.append({
             "title": candidate["title"],
             "url": candidate["url"],
-            "domain": candidate["domain"],
+            "domain": candidate.get("domain", ""),
             "source_quality": candidate.get("source_quality", 5),
             "search_score": candidate.get("score", 0),
             "content": (candidate.get("content") or "")[
@@ -963,7 +963,17 @@ def analyze_with_gemini(
                         ),
                     )
 
-                    report = parse_report(response.text)
+                    raw_text = getattr(response, "text", None)
+                    if not raw_text or not raw_text.strip():
+                        # Safety-blocked / truncated responses surface as
+                        # a retryable failure instead of an AttributeError
+                        # deep inside JSON parsing
+                        raise ValueError(
+                            "Gemini returned an empty response "
+                            "(possibly safety-blocked)"
+                        )
+
+                    report = parse_report(raw_text)
 
                     logger.info(
                         f"Gemini selected {len(report.events)} events "
@@ -1007,12 +1017,6 @@ def analyze_with_gemini(
             time.sleep(GEMINI_INTER_PASS_SECONDS)
         else:
             break
-            logger.warning(
-                f"All {len(models)} model(s) failed on pass {pass_num}/"
-                f"{GEMINI_CHAIN_PASSES} — pausing "
-                f"{GEMINI_INTER_PASS_SECONDS}s before retrying the chain"
-            )
-            time.sleep(GEMINI_INTER_PASS_SECONDS)
 
     raise RuntimeError(
         f"Gemini analysis failed on all models ({', '.join(models)}): "

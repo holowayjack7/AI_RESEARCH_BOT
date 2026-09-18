@@ -46,12 +46,18 @@ SECTION_TITLES = {
 }
 
 def escape_html(text) -> str:
-    """Escape special HTML characters for Telegram."""
+    """Escape special HTML characters for Telegram.
+
+    Quotes are escaped too: escaped values are used inside
+    href="..." attributes, and a raw quote would terminate the
+    attribute early (parse error or attribute injection).
+    """
     return (
         str(text)
         .replace("&", "&amp;")
         .replace("<", "&lt;")
         .replace(">", "&gt;")
+        .replace('"', "&#34;")
     )
 
 
@@ -89,10 +95,15 @@ def _resource_label(url: str) -> str:
 
 
 def _clip(text: str, limit: int) -> str:
-    text = escape_html(text)
-    if len(text) <= limit:
-        return text
-    return text[: limit - 1].rstrip() + "…"
+    """Clip raw text to limit, then escape for Telegram HTML.
+
+    Order matters: slicing AFTER escaping can split an entity
+    ("&amp;" -> "&am") and produce HTML Telegram cannot parse.
+    """
+    text = str(text)
+    if len(text) > limit:
+        text = text[: limit - 1].rstrip()
+    return escape_html(text)
 
 
 def _today() -> str:
