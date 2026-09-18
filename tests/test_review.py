@@ -571,6 +571,55 @@ def test_gemini_backoff_is_exponential():
         _gemini_retry_wait("503 UNAVAILABLE high demand", 1)
 
 
+def test_gemini_404_falls_over_without_retrying():
+    """A retired model (404) must fall to the next model immediately.
+
+    Retried attempts can never succeed on a 404 — burning sleep time
+    on them wasted ~3.5 min of CI before every real failure.
+    """
+    import src.analyze as analyze_mod
+
+    attempted_models = []
+    sleeps = []
+
+    class _FakeModels:
+        def generate_content(self, **kw):
+            attempted_models.append(kw.get("model"))
+            raise RuntimeError(
+                "404 NOT_FOUND. {'error': {'code': 404, 'message': "
+                "'This model models/gemini-2.5-flash is no longer "
+                "available to new users.', 'status': 'NOT_FOUND'}}"
+            )
+
+    class _FakeClient:
+        def __init__(self, api_key=None):
+            self.models = _FakeModels()
+
+    orig_client = analyze_mod.genai.Client
+    orig_sleep = analyze_mod.time.sleep
+    analyze_mod.genai.Client = _FakeClient
+    analyze_mod.time.sleep = lambda s: sleeps.append(s)
+    try:
+        analyze_mod.analyze_with_gemini([], api_key="fake")
+        raised = None
+    except RuntimeError as exc:
+        raised = exc
+    finally:
+        analyze_mod.genai.Client = orig_client
+        analyze_mod.time.sleep = orig_sleep
+
+    assert raised is not None, "all-models failure must raise RuntimeError"
+    assert "failed on all models" in str(raised)
+
+    # Every model in the chain was attempted exactly once (no retries)
+    from config import GEMINI_MODEL
+    expected = [GEMINI_MODEL] + list(analyze_mod.GEMINI_MODEL_FALLBACKS)
+    assert attempted_models == expected, (
+        f"each model must be tried once: {attempted_models}"
+    )
+    assert sleeps == [], f"404 must never sleep: {sleeps}"
+
+
 def test_record_run_always_stamps_state():
     """record_run stamps last_run on every path, including crashes."""
     import importlib
@@ -594,6 +643,7 @@ def test_record_run_always_stamps_state():
 
 check("search: Tavily retries transient failures with backoff", test_tavily_retry_backoff)
 check("analyze: Gemini backoff grows exponentially, honors retry hints", test_gemini_backoff_is_exponential)
+check("analyze: Gemini 404 falls to next model without retry sleeps", test_gemini_404_falls_over_without_retrying)
 check("main: record_run stamps state on crash path, never raises", test_record_run_always_stamps_state)
 
 

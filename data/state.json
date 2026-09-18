@@ -101,7 +101,15 @@
     "https://www.microsoft.com/en-us/thesource-developer/Event/583/building-mcp-servers-with-entra-id-and-pre-authorized-clients-microsoft-community-hub",
     "https://aws.amazon.com/marketplace/pp/prodview-huiw6we65bt7c",
     "https://arxiv.org/abs/2609.19135",
-    "https://developers.google.com/google-ads/api/docs/developer-toolkit/ai-assistant"
+    "https://developers.google.com/google-ads/api/docs/developer-toolkit/ai-assistant",
+    "https://ai.google.dev/gemini-api/docs/antigravity-agent",
+    "https://ai.google.dev/gemini-api/docs/agent-credentials",
+    "https://ai.google.dev/gemini-api/docs/latest-model",
+    "https://huggingface.co/papers/2609.19969",
+    "https://cloud.google.com/security/resources/ai-risk-and-resilience-2026",
+    "https://arxiv.org/abs/2609.20822",
+    "https://arxiv.org/abs/2609.20820",
+    "https://arxiv.org/abs/2609.20821"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -174,7 +182,13 @@
     "evt-fastmcp-entra-id-auth",
     "evt-openhands-isolated-sandbox-ami",
     "evt-ope-exponential-hardness-history-logging",
-    "evt-google-ads-api-developer-assistant-plugin"
+    "evt-google-ads-api-developer-assistant-plugin",
+    "evt-gemini-antigravity-agent-credentials",
+    "evt-deepseek-v41-flash-kv-compression",
+    "evt-mandiant-ai-risk-report-2026",
+    "evt-safeharness-obstacle-aware-agent-planning",
+    "evt-workspace-tokens-lightweight-robotic-memory",
+    "evt-embedding-models-physical-measurement-failure"
   ],
   "events": [
     {
@@ -2526,6 +2540,297 @@
       "action_type": "LEARN",
       "action": "Study the AGENTS.md context contracts and sidecar validation structure in Google's repository to structure your own developer tool plugins.",
       "evidence": []
+    },
+    {
+      "event_id": "evt-gemini-antigravity-agent-credentials",
+      "title": "Google Gemini Antigravity Agent and Egress Secret Credential Proxy",
+      "category": "LLM API / Agent Frameworks",
+      "primary_url": "https://ai.google.dev/gemini-api/docs/antigravity-agent",
+      "supporting_urls": [
+        "https://ai.google.dev/gemini-api/docs/agent-credentials",
+        "https://ai.google.dev/gemini-api/docs/latest-model"
+      ],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "Google introduced the Antigravity agent on Gemini 3.8 Flash, featuring hosted remote Linux sandboxes and server-managed credential injection.",
+      "what_happened": "Google launched Antigravity managed agents via the Interactions API alongside write-only secret proxying and Gemini 3.8 Flash availability.",
+      "what_changed": "Local or manual agent sandboxing to Managed Linux execution environment with server-side credential proxying that hides tokens from agent code.",
+      "why_it_matters": "Enables secure execution of untrusted generated code and multi-step agent tool loops without exposing sensitive API keys.",
+      "key_takeaways": [
+        "Single API call provisions isolated Linux sandbox running Python and Node.js",
+        "Credential API stores secrets write-only and injects them at network egress",
+        "Gemini 3.8 Flash introduces tunable thinking levels for software tasks"
+      ],
+      "technical_architecture": [
+        "Gemini 3.8 Flash powering remote Linux execution environment",
+        "Network allowlist egress proxy injecting domain-bound authorization bearer tokens",
+        "Google AI Studio and Interactions API integration"
+      ],
+      "technical_details": [
+        "Context window: 1M tokens",
+        "Max output: 64k tokens",
+        "Default model ID: gemini-3.8-flash",
+        "Introductory pricing: 0.75 USD per 1M input"
+      ],
+      "potential_impact": "Simplifies secure deployment of code-executing autonomous agents without risking API credential leaks.",
+      "action_type": "TRY",
+      "action": "Test Google Interactions API with Antigravity preview to run sandboxed Python scripts using egress network credential injection.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Real Business Opportunity"
+      ],
+      "verified_facts": [
+        "Antigravity agent runs Gemini 3.8 Flash inside Google-hosted Linux sandboxes via Interactions API",
+        "Egress proxy injects server-managed write-only secrets without exposing tokens to agent runtime",
+        "Gemini 3.8 Flash supports 1M context and tunable low, medium, high thinking levels"
+      ],
+      "interpretation": "Google provides a complete managed agent infrastructure combining remote code execution, sandboxing, and zero-trust credential handling.",
+      "uncertainty": "Sandbox cold starts and remote network isolation constraints may introduce latency for interactive agent interactions.",
+      "counter_argument": "Managed sandbox lock-in restricts developer control over custom container runtimes and local environment dependencies."
+    },
+    {
+      "event_id": "evt-deepseek-v41-flash-kv-compression",
+      "title": "DeepSeek-V4.1-Flash: Causal Encoder-Decoder MoE with FP4 KV Cache Compression",
+      "category": "AI Research / LLM Infrastructure",
+      "primary_url": "https://huggingface.co/papers/2609.19969",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 95,
+      "tldr": "DeepSeek released DeepSeek-V4.1-Flash, utilizing Causal Encoder-Decoder architecture and FP4 KV caching to reduce memory footprint to 890 bytes per token.",
+      "what_happened": "DeepSeek published DeepSeek-V4.1-Flash, a 552B parameter MoE model engineered for input-heavy long-context agentic workloads with compressed KV memory.",
+      "what_changed": "Standard MoE prefill memory bottlenecks to Causal Encoder-Decoder reducing prefill parameters to 8B and KV cache footprint by 75 percent.",
+      "why_it_matters": "Reduces hosting and inference costs for long-horizon agent loops maintaining context histories up to 1M tokens.",
+      "key_takeaways": [
+        "Activates 8B parameters in prefill and 16B parameters during generation decode",
+        "CSA2 and FP4 caching yield an 890 bytes per token global KV footprint",
+        "SWAB Bounded Replay compresses persistent SSD KV cache by eightfold"
+      ],
+      "technical_architecture": [
+        "552B parameter MoE with 1M context window capability",
+        "Causal Encoder-Decoder split activating fewer parameters during prefill than decode",
+        "Compressed Sparse Attention 2 with cross-layer KV cache reuse"
+      ],
+      "technical_details": [
+        "Global KV cache footprint: 890 bytes per token",
+        "Prefill parameter activation: 8B tokens",
+        "Decode parameter activation: 16B tokens",
+        "Quantization format: FP4 KV cache"
+      ],
+      "potential_impact": "Lowers infrastructure costs for hosting enterprise agent loops with long context histories.",
+      "action_type": "LEARN",
+      "action": "Study the Causal Encoder-Decoder design and FP4 KV quantization mechanics to optimize long-context LLM inference efficiency.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "552B parameter MoE model supporting 1M context window",
+        "Activates 16B parameters per token during decode and 8B during prefill",
+        "Reduces global KV cache footprint to 890 bytes per token using FP4 and CSA2"
+      ],
+      "interpretation": "Causal Encoder-Decoder combined with FP4 KV quantization drastically reduces memory bandwidth requirements for long-horizon agent loops.",
+      "uncertainty": "Real-world latency gains depend on hardware support for FP4 tensor core operations.",
+      "counter_argument": "Aggressive KV cache compression might cause subtle accuracy degradation on extreme multi-step context tasks."
+    },
+    {
+      "event_id": "evt-mandiant-ai-risk-report-2026",
+      "title": "Mandiant 2026 Report: Agentic Attack Orchestration and Proxy Exploitation",
+      "category": "Agent Security & Governance",
+      "primary_url": "https://cloud.google.com/security/resources/ai-risk-and-resilience-2026",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 9,
+      "confidence": 90,
+      "tldr": "Mandiant reported threat actors adopting autonomous agent frameworks for machine-speed attacks and using proxy relays to bypass API guardrails.",
+      "what_happened": "Mandiant released its 2026 AI Risk and Resilience report detailing agentic attack tools and infrastructure proxy manipulation.",
+      "what_changed": "Manual chat jailbreaks to Autonomous agentic attack orchestration and proxy relay networks sharing enterprise API access.",
+      "why_it_matters": "Building safe autonomous agents requires real-time behavior telemetry, out-of-band monitoring, and strict network egress isolation.",
+      "key_takeaways": [
+        "Adversaries use frameworks like Hexstrike and Strix for automated exploitation",
+        "API proxy aggregators hide threat actor traffic behind compatible API layers",
+        "Data poisoning in extensions enables sandbox breakouts and lateral movement"
+      ],
+      "technical_architecture": [
+        "Adaptive identity controls for autonomous agent API calls",
+        "Real-time behavioral telemetry monitoring in SOC pipelines",
+        "Signal logic detecting unauthorized API proxy relay networks"
+      ],
+      "technical_details": [
+        "Attack tools: Hexstrike, Strix",
+        "Vector focus: Indirect prompt injection",
+        "Target surface: Hybrid cloud telemetry agents"
+      ],
+      "potential_impact": "Increases urgency for agent developers to implement behavioral monitoring and proxy detection.",
+      "action_type": "LEARN",
+      "action": "Implement network egress limits and telemetry logging when building custom agent tool execution pipelines.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "Threat actors deployed autonomous agentic attack tools like Hexstrike and Strix for reconnaissance and credential…",
+        "Attackers established middleware and proxy relays for API account pooling and billing guardrail bypass",
+        "Indirect prompt injection and poisoned data sources compromised autonomous cloud telemetry agents"
+      ],
+      "interpretation": "Enterprise security focus has shifted from chat safety filters to monitoring autonomous agent tool execution and proxy traffic.",
+      "uncertainty": "Detection heuristics for API proxy pooling may produce false positives on legitimate multi-tenant enterprise proxy hubs.",
+      "counter_argument": "Basic rate limits and IP reputation filters may mitigate proxy misuse without complex telemetry pipelines."
+    },
+    {
+      "event_id": "evt-safeharness-obstacle-aware-agent-planning",
+      "title": "SafeHarness: Obstacle-Aware Route Planning for Constrained Agent Execution",
+      "category": "AI Research / Agent Architecture",
+      "primary_url": "https://arxiv.org/abs/2609.20822",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "SafeHarness introduces a two-stage obstacle-aware planning harness that drastically improves agent safety constraint compliance during execution.",
+      "what_happened": "Researchers created SafeHarness, an agent architecture that splits task execution into waypoint route planning, pre-execution verification, and contact execution.",
+      "what_changed": "Direct prompt instructions for safety to Architectural harness enforcing candidate route pre-verification and dynamic replanning.",
+      "why_it_matters": "Proves that prompt instructions alone cannot guarantee constraint compliance; explicit state verification harnesses are necessary.",
+      "key_takeaways": [
+        "Unassisted agents prioritize task completion over safety constraints",
+        "Route planning grounds targets into bounding boxes and waypoints",
+        "Reached 71.9 percent task success and 87.5 percent collision avoidance"
+      ],
+      "technical_architecture": [
+        "Two-stage harness: Obstacle-aware route planning and obstacle-aware contact execution",
+        "Candidate waypoint generation with explicit verification loop prior to execution",
+        "Dynamic replanning trigger when route feasibility checks fail"
+      ],
+      "technical_details": [
+        "Task success: 71.9 percent",
+        "Collision avoidance: 87.5 percent",
+        "Baseline improvement: 2.3x task success, 1.5x safety"
+      ],
+      "potential_impact": "Provides a generalizable harness pattern for enforcing strict safety constraints in agent tool-execution loops.",
+      "action_type": "BUILD",
+      "action": "Build a two-stage pre-verification harness in Python for agent tool calls that validates constraints before executing actions.",
+      "evidence": [],
+      "factuality_level": "single_source",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "Evaluates coding agents under explicit goal and collision safety constraints",
+        "SafeHarness decomposes execution into route planning and contact execution phases",
+        "Attains 71.9 percent task success and 87.5 percent collision avoidance"
+      ],
+      "interpretation": "Unconstrained agent prompts fail at constraint adherence; explicit verification and replanning harnesses are required for safety.",
+      "uncertainty": "Performance gains in physical simulation may vary when transferred to pure digital software tool workflows.",
+      "counter_argument": "Multi-phase harness verification adds execution latency and API call overhead compared to end-to-end model generation."
+    },
+    {
+      "event_id": "evt-workspace-tokens-lightweight-robotic-memory",
+      "title": "Workspace Tokens: Distilling Long History into Deployment Latent Memory",
+      "category": "AI Research / Agent Memory",
+      "primary_url": "https://arxiv.org/abs/2609.20820",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 88,
+      "tldr": "Researchers developed Workspace Tokens, distilling historical state into a compact latent token during training to bypass online VLM queries.",
+      "what_happened": "CoRL 2026 paper presented workspace tokens, replacing full historical context with a distilled latent representation for real-time decision loops.",
+      "what_changed": "Querying heavy vision-language models every step to Offline saliency distillation into a compact deployment workspace token.",
+      "why_it_matters": "Reduces runtime latency and token overhead for agents requiring persistent awareness of long historical interaction traces.",
+      "key_takeaways": [
+        "Uses VLM during training to identify task-salient historical state",
+        "Distills salient information into workspace token via set-reconstruction loss",
+        "Serves as drop-in observation replacement during deployment"
+      ],
+      "technical_architecture": [
+        "Offline VLM saliency extraction pipeline",
+        "Set-reconstruction decoder loss for token distillation",
+        "Direct latent token conditioning during runtime deployment"
+      ],
+      "technical_details": [
+        "Target runtime: Real-time execution without VLM in loop",
+        "Training method: Distillation with set-reconstruction",
+        "Application: Long-term trajectory memory"
+      ],
+      "potential_impact": "Enables fast, lightweight agent execution while retaining key historical context without context window bloat.",
+      "action_type": "LEARN",
+      "action": "Review latent token memory compression techniques to design efficient state representations for agent memory loops.",
+      "evidence": [],
+      "factuality_level": "single_source",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "Workspace token uses VLM supervision at training time to extract task-salient historical information",
+        "Distill memory into a latent token via set-reconstruction decoder loss",
+        "Eliminates the need for expensive VLM queries during online deployment"
+      ],
+      "interpretation": "Offline VLM distillation into fixed latent tokens provides a blueprint for low-latency agent state and long-term memory compression.",
+      "uncertainty": "Training the set-reconstruction loss requires substantial supervised offline trajectories.",
+      "counter_argument": "Textual key-value summarization in RAG memory pipelines may offer higher interpretability than latent token vectors."
+    },
+    {
+      "event_id": "evt-embedding-models-physical-measurement-failure",
+      "title": "Embedding Models Fail to Model Physical Measurement Relationships",
+      "category": "AI Research / RAG & Embeddings",
+      "primary_url": "https://arxiv.org/abs/2609.20821",
+      "supporting_urls": [],
+      "importance": 7,
+      "relevance": 8,
+      "actionability": 7,
+      "source_quality": 8,
+      "confidence": 85,
+      "tldr": "Research shows vector embeddings fail to capture physical measurements and numerical scale, relying primarily on superficial text string matching.",
+      "what_happened": "A new paper demonstrated that dense embedding models fail to accurately represent objective physical units and scaling relationships.",
+      "what_changed": "Assuming vector embeddings represent semantic scale to Recognizing embeddings rely on surface string tokens for numeric values.",
+      "why_it_matters": "Engineers building RAG pipelines for numerical or technical data must combine vector search with structured SQL or metadata filtering.",
+      "key_takeaways": [
+        "Vector similarity metrics perform poorly on quantitative unit scaling",
+        "Recalibration of embedding spaces does not fix physical value alignment",
+        "Surface string overlap heavily biases vector proximity scores"
+      ],
+      "technical_architecture": [
+        "Semantic similarity probing on physical magnitude vectors",
+        "String surface similarity vs physical metric comparison",
+        "Distance alignment recalibration benchmarks"
+      ],
+      "technical_details": [
+        "Evaluated dimensions: Mass, distance, time, volume",
+        "Failure mode: Lexical string bias"
+      ],
+      "potential_impact": "Prevents architectural mistakes in technical RAG implementations by highlighting limitations of pure vector search.",
+      "action_type": "APPLY",
+      "action": "Use SQL or metadata range filters instead of pure vector embeddings when querying numerical or unit-based data in RAG pipelines.",
+      "evidence": [],
+      "factuality_level": "single_source",
+      "classification": [
+        "Real Technical Skill"
+      ],
+      "verified_facts": [
+        "Evaluated vector embedding models on physical measurements of mass, distance, time, and volume",
+        "Found physical measurements are only weakly modeled in vector embedding spaces",
+        "Distance representations rely heavily on superficial string similarity rather than numerical scale"
+      ],
+      "interpretation": "RAG systems relying on vector similarity struggle with numerical and physical reasoning; hybrid keyword/structured search is essential.",
+      "uncertainty": "Specialized domain-tuned embeddings might mitigate part of the string similarity bias.",
+      "counter_argument": "LLM rerankers or structured SQL filters can easily replace vector search for scalar numerical queries."
     }
   ],
   "topics": {
@@ -2576,7 +2881,7 @@
     "Open Source AI / Foundation Models": 1,
     "AI Evaluation / Agent Safety & Internal State": 1,
     "AI Research / Self-Improvement & Agent Memory": 1,
-    "Agent Security & Governance": 1,
+    "Agent Security & Governance": 2,
     "AI Research / Agent Communication & Evaluation": 1,
     "AI Research / Structured Data & Causal ML": 1,
     "Developer Tools & Agent Frameworks": 2,
@@ -2596,7 +2901,12 @@
     "MCP / Agent Security & Authentication": 1,
     "AI Research / Agent Loop Optimization": 1,
     "MCP / Developer Frameworks": 1,
-    "AI Coding Tools / Agent Architecture": 1
+    "AI Coding Tools / Agent Architecture": 1,
+    "LLM API / Agent Frameworks": 1,
+    "AI Research / LLM Infrastructure": 1,
+    "AI Research / Agent Architecture": 1,
+    "AI Research / Agent Memory": 1,
+    "AI Research / RAG & Embeddings": 1
   },
   "reports": [
     {
@@ -5057,15 +5367,316 @@
         "Standardization of agent host contexts via AGENTS.md and CLAUDE.md operational contracts",
         "Adoption of sidecar container isolation for executing autonomous AI coding agent actions"
       ]
+    },
+    {
+      "date": "2026-09-18",
+      "summary": "DeepSeek introduced DeepSeek-V4.1-Flash featuring Causal Encoder-Decoder architecture and FP4 KV cache compression. Google released Antigravity managed agents on Gemini 3.8 Flash with egress credential isolation. Security research highlights threat actors adopting autonomous agent attack pipelines and API proxy relays.",
+      "events": [
+        {
+          "event_id": "evt-gemini-antigravity-agent-credentials",
+          "title": "Google Gemini Antigravity Agent and Egress Secret Credential Proxy",
+          "category": "LLM API / Agent Frameworks",
+          "primary_url": "https://ai.google.dev/gemini-api/docs/antigravity-agent",
+          "supporting_urls": [
+            "https://ai.google.dev/gemini-api/docs/agent-credentials",
+            "https://ai.google.dev/gemini-api/docs/latest-model"
+          ],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "Google introduced the Antigravity agent on Gemini 3.8 Flash, featuring hosted remote Linux sandboxes and server-managed credential injection.",
+          "what_happened": "Google launched Antigravity managed agents via the Interactions API alongside write-only secret proxying and Gemini 3.8 Flash availability.",
+          "what_changed": "Local or manual agent sandboxing to Managed Linux execution environment with server-side credential proxying that hides tokens from agent code.",
+          "why_it_matters": "Enables secure execution of untrusted generated code and multi-step agent tool loops without exposing sensitive API keys.",
+          "key_takeaways": [
+            "Single API call provisions isolated Linux sandbox running Python and Node.js",
+            "Credential API stores secrets write-only and injects them at network egress",
+            "Gemini 3.8 Flash introduces tunable thinking levels for software tasks"
+          ],
+          "technical_architecture": [
+            "Gemini 3.8 Flash powering remote Linux execution environment",
+            "Network allowlist egress proxy injecting domain-bound authorization bearer tokens",
+            "Google AI Studio and Interactions API integration"
+          ],
+          "technical_details": [
+            "Context window: 1M tokens",
+            "Max output: 64k tokens",
+            "Default model ID: gemini-3.8-flash",
+            "Introductory pricing: 0.75 USD per 1M input"
+          ],
+          "potential_impact": "Simplifies secure deployment of code-executing autonomous agents without risking API credential leaks.",
+          "action_type": "TRY",
+          "action": "Test Google Interactions API with Antigravity preview to run sandboxed Python scripts using egress network credential injection.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Real Business Opportunity"
+          ],
+          "verified_facts": [
+            "Antigravity agent runs Gemini 3.8 Flash inside Google-hosted Linux sandboxes via Interactions API",
+            "Egress proxy injects server-managed write-only secrets without exposing tokens to agent runtime",
+            "Gemini 3.8 Flash supports 1M context and tunable low, medium, high thinking levels"
+          ],
+          "interpretation": "Google provides a complete managed agent infrastructure combining remote code execution, sandboxing, and zero-trust credential handling.",
+          "uncertainty": "Sandbox cold starts and remote network isolation constraints may introduce latency for interactive agent interactions.",
+          "counter_argument": "Managed sandbox lock-in restricts developer control over custom container runtimes and local environment dependencies."
+        },
+        {
+          "event_id": "evt-deepseek-v41-flash-kv-compression",
+          "title": "DeepSeek-V4.1-Flash: Causal Encoder-Decoder MoE with FP4 KV Cache Compression",
+          "category": "AI Research / LLM Infrastructure",
+          "primary_url": "https://huggingface.co/papers/2609.19969",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 95,
+          "tldr": "DeepSeek released DeepSeek-V4.1-Flash, utilizing Causal Encoder-Decoder architecture and FP4 KV caching to reduce memory footprint to 890 bytes per token.",
+          "what_happened": "DeepSeek published DeepSeek-V4.1-Flash, a 552B parameter MoE model engineered for input-heavy long-context agentic workloads with compressed KV memory.",
+          "what_changed": "Standard MoE prefill memory bottlenecks to Causal Encoder-Decoder reducing prefill parameters to 8B and KV cache footprint by 75 percent.",
+          "why_it_matters": "Reduces hosting and inference costs for long-horizon agent loops maintaining context histories up to 1M tokens.",
+          "key_takeaways": [
+            "Activates 8B parameters in prefill and 16B parameters during generation decode",
+            "CSA2 and FP4 caching yield an 890 bytes per token global KV footprint",
+            "SWAB Bounded Replay compresses persistent SSD KV cache by eightfold"
+          ],
+          "technical_architecture": [
+            "552B parameter MoE with 1M context window capability",
+            "Causal Encoder-Decoder split activating fewer parameters during prefill than decode",
+            "Compressed Sparse Attention 2 with cross-layer KV cache reuse"
+          ],
+          "technical_details": [
+            "Global KV cache footprint: 890 bytes per token",
+            "Prefill parameter activation: 8B tokens",
+            "Decode parameter activation: 16B tokens",
+            "Quantization format: FP4 KV cache"
+          ],
+          "potential_impact": "Lowers infrastructure costs for hosting enterprise agent loops with long context histories.",
+          "action_type": "LEARN",
+          "action": "Study the Causal Encoder-Decoder design and FP4 KV quantization mechanics to optimize long-context LLM inference efficiency.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "552B parameter MoE model supporting 1M context window",
+            "Activates 16B parameters per token during decode and 8B during prefill",
+            "Reduces global KV cache footprint to 890 bytes per token using FP4 and CSA2"
+          ],
+          "interpretation": "Causal Encoder-Decoder combined with FP4 KV quantization drastically reduces memory bandwidth requirements for long-horizon agent loops.",
+          "uncertainty": "Real-world latency gains depend on hardware support for FP4 tensor core operations.",
+          "counter_argument": "Aggressive KV cache compression might cause subtle accuracy degradation on extreme multi-step context tasks."
+        },
+        {
+          "event_id": "evt-mandiant-ai-risk-report-2026",
+          "title": "Mandiant 2026 Report: Agentic Attack Orchestration and Proxy Exploitation",
+          "category": "Agent Security & Governance",
+          "primary_url": "https://cloud.google.com/security/resources/ai-risk-and-resilience-2026",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 9,
+          "confidence": 90,
+          "tldr": "Mandiant reported threat actors adopting autonomous agent frameworks for machine-speed attacks and using proxy relays to bypass API guardrails.",
+          "what_happened": "Mandiant released its 2026 AI Risk and Resilience report detailing agentic attack tools and infrastructure proxy manipulation.",
+          "what_changed": "Manual chat jailbreaks to Autonomous agentic attack orchestration and proxy relay networks sharing enterprise API access.",
+          "why_it_matters": "Building safe autonomous agents requires real-time behavior telemetry, out-of-band monitoring, and strict network egress isolation.",
+          "key_takeaways": [
+            "Adversaries use frameworks like Hexstrike and Strix for automated exploitation",
+            "API proxy aggregators hide threat actor traffic behind compatible API layers",
+            "Data poisoning in extensions enables sandbox breakouts and lateral movement"
+          ],
+          "technical_architecture": [
+            "Adaptive identity controls for autonomous agent API calls",
+            "Real-time behavioral telemetry monitoring in SOC pipelines",
+            "Signal logic detecting unauthorized API proxy relay networks"
+          ],
+          "technical_details": [
+            "Attack tools: Hexstrike, Strix",
+            "Vector focus: Indirect prompt injection",
+            "Target surface: Hybrid cloud telemetry agents"
+          ],
+          "potential_impact": "Increases urgency for agent developers to implement behavioral monitoring and proxy detection.",
+          "action_type": "LEARN",
+          "action": "Implement network egress limits and telemetry logging when building custom agent tool execution pipelines.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "Threat actors deployed autonomous agentic attack tools like Hexstrike and Strix for reconnaissance and credential…",
+            "Attackers established middleware and proxy relays for API account pooling and billing guardrail bypass",
+            "Indirect prompt injection and poisoned data sources compromised autonomous cloud telemetry agents"
+          ],
+          "interpretation": "Enterprise security focus has shifted from chat safety filters to monitoring autonomous agent tool execution and proxy traffic.",
+          "uncertainty": "Detection heuristics for API proxy pooling may produce false positives on legitimate multi-tenant enterprise proxy hubs.",
+          "counter_argument": "Basic rate limits and IP reputation filters may mitigate proxy misuse without complex telemetry pipelines."
+        },
+        {
+          "event_id": "evt-safeharness-obstacle-aware-agent-planning",
+          "title": "SafeHarness: Obstacle-Aware Route Planning for Constrained Agent Execution",
+          "category": "AI Research / Agent Architecture",
+          "primary_url": "https://arxiv.org/abs/2609.20822",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "SafeHarness introduces a two-stage obstacle-aware planning harness that drastically improves agent safety constraint compliance during execution.",
+          "what_happened": "Researchers created SafeHarness, an agent architecture that splits task execution into waypoint route planning, pre-execution verification, and contact execution.",
+          "what_changed": "Direct prompt instructions for safety to Architectural harness enforcing candidate route pre-verification and dynamic replanning.",
+          "why_it_matters": "Proves that prompt instructions alone cannot guarantee constraint compliance; explicit state verification harnesses are necessary.",
+          "key_takeaways": [
+            "Unassisted agents prioritize task completion over safety constraints",
+            "Route planning grounds targets into bounding boxes and waypoints",
+            "Reached 71.9 percent task success and 87.5 percent collision avoidance"
+          ],
+          "technical_architecture": [
+            "Two-stage harness: Obstacle-aware route planning and obstacle-aware contact execution",
+            "Candidate waypoint generation with explicit verification loop prior to execution",
+            "Dynamic replanning trigger when route feasibility checks fail"
+          ],
+          "technical_details": [
+            "Task success: 71.9 percent",
+            "Collision avoidance: 87.5 percent",
+            "Baseline improvement: 2.3x task success, 1.5x safety"
+          ],
+          "potential_impact": "Provides a generalizable harness pattern for enforcing strict safety constraints in agent tool-execution loops.",
+          "action_type": "BUILD",
+          "action": "Build a two-stage pre-verification harness in Python for agent tool calls that validates constraints before executing actions.",
+          "evidence": [],
+          "factuality_level": "single_source",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "Evaluates coding agents under explicit goal and collision safety constraints",
+            "SafeHarness decomposes execution into route planning and contact execution phases",
+            "Attains 71.9 percent task success and 87.5 percent collision avoidance"
+          ],
+          "interpretation": "Unconstrained agent prompts fail at constraint adherence; explicit verification and replanning harnesses are required for safety.",
+          "uncertainty": "Performance gains in physical simulation may vary when transferred to pure digital software tool workflows.",
+          "counter_argument": "Multi-phase harness verification adds execution latency and API call overhead compared to end-to-end model generation."
+        },
+        {
+          "event_id": "evt-workspace-tokens-lightweight-robotic-memory",
+          "title": "Workspace Tokens: Distilling Long History into Deployment Latent Memory",
+          "category": "AI Research / Agent Memory",
+          "primary_url": "https://arxiv.org/abs/2609.20820",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 88,
+          "tldr": "Researchers developed Workspace Tokens, distilling historical state into a compact latent token during training to bypass online VLM queries.",
+          "what_happened": "CoRL 2026 paper presented workspace tokens, replacing full historical context with a distilled latent representation for real-time decision loops.",
+          "what_changed": "Querying heavy vision-language models every step to Offline saliency distillation into a compact deployment workspace token.",
+          "why_it_matters": "Reduces runtime latency and token overhead for agents requiring persistent awareness of long historical interaction traces.",
+          "key_takeaways": [
+            "Uses VLM during training to identify task-salient historical state",
+            "Distills salient information into workspace token via set-reconstruction loss",
+            "Serves as drop-in observation replacement during deployment"
+          ],
+          "technical_architecture": [
+            "Offline VLM saliency extraction pipeline",
+            "Set-reconstruction decoder loss for token distillation",
+            "Direct latent token conditioning during runtime deployment"
+          ],
+          "technical_details": [
+            "Target runtime: Real-time execution without VLM in loop",
+            "Training method: Distillation with set-reconstruction",
+            "Application: Long-term trajectory memory"
+          ],
+          "potential_impact": "Enables fast, lightweight agent execution while retaining key historical context without context window bloat.",
+          "action_type": "LEARN",
+          "action": "Review latent token memory compression techniques to design efficient state representations for agent memory loops.",
+          "evidence": [],
+          "factuality_level": "single_source",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "Workspace token uses VLM supervision at training time to extract task-salient historical information",
+            "Distill memory into a latent token via set-reconstruction decoder loss",
+            "Eliminates the need for expensive VLM queries during online deployment"
+          ],
+          "interpretation": "Offline VLM distillation into fixed latent tokens provides a blueprint for low-latency agent state and long-term memory compression.",
+          "uncertainty": "Training the set-reconstruction loss requires substantial supervised offline trajectories.",
+          "counter_argument": "Textual key-value summarization in RAG memory pipelines may offer higher interpretability than latent token vectors."
+        },
+        {
+          "event_id": "evt-embedding-models-physical-measurement-failure",
+          "title": "Embedding Models Fail to Model Physical Measurement Relationships",
+          "category": "AI Research / RAG & Embeddings",
+          "primary_url": "https://arxiv.org/abs/2609.20821",
+          "supporting_urls": [],
+          "importance": 7,
+          "relevance": 8,
+          "actionability": 7,
+          "source_quality": 8,
+          "confidence": 85,
+          "tldr": "Research shows vector embeddings fail to capture physical measurements and numerical scale, relying primarily on superficial text string matching.",
+          "what_happened": "A new paper demonstrated that dense embedding models fail to accurately represent objective physical units and scaling relationships.",
+          "what_changed": "Assuming vector embeddings represent semantic scale to Recognizing embeddings rely on surface string tokens for numeric values.",
+          "why_it_matters": "Engineers building RAG pipelines for numerical or technical data must combine vector search with structured SQL or metadata filtering.",
+          "key_takeaways": [
+            "Vector similarity metrics perform poorly on quantitative unit scaling",
+            "Recalibration of embedding spaces does not fix physical value alignment",
+            "Surface string overlap heavily biases vector proximity scores"
+          ],
+          "technical_architecture": [
+            "Semantic similarity probing on physical magnitude vectors",
+            "String surface similarity vs physical metric comparison",
+            "Distance alignment recalibration benchmarks"
+          ],
+          "technical_details": [
+            "Evaluated dimensions: Mass, distance, time, volume",
+            "Failure mode: Lexical string bias"
+          ],
+          "potential_impact": "Prevents architectural mistakes in technical RAG implementations by highlighting limitations of pure vector search.",
+          "action_type": "APPLY",
+          "action": "Use SQL or metadata range filters instead of pure vector embeddings when querying numerical or unit-based data in RAG pipelines.",
+          "evidence": [],
+          "factuality_level": "single_source",
+          "classification": [
+            "Real Technical Skill"
+          ],
+          "verified_facts": [
+            "Evaluated vector embedding models on physical measurements of mass, distance, time, and volume",
+            "Found physical measurements are only weakly modeled in vector embedding spaces",
+            "Distance representations rely heavily on superficial string similarity rather than numerical scale"
+          ],
+          "interpretation": "RAG systems relying on vector similarity struggle with numerical and physical reasoning; hybrid keyword/structured search is essential.",
+          "uncertainty": "Specialized domain-tuned embeddings might mitigate part of the string similarity bias.",
+          "counter_argument": "LLM rerankers or structured SQL filters can easily replace vector search for scalar numerical queries."
+        }
+      ],
+      "trends": [
+        "Causal Encoder-Decoder MoE architectures optimizing prefill vs decode compute split",
+        "Egress proxy network isolation for hiding API credentials from managed agent sandboxes",
+        "Pre-execution verification harnesses replacing prompt instructions for agent constraint safety"
+      ]
     }
   ],
   "learning_queue": [
-    "OAuth 2.0 authorization code grant flow and session binding in AgentCore",
-    "FastMCP Python SDK middleware and request header validation",
-    "Non-autoregressive logit sampling mechanics for agent routing models",
-    "Container sidecar networking and Docker API automation for agent sandboxes"
+    "Google Gemini Interactions API and remote Linux sandbox lifecycle management",
+    "Causal Encoder-Decoder architecture mechanics and FP4 KV cache quantization",
+    "Egress proxy token injection patterns for zero-trust agent security"
   ],
-  "last_run": "2026-09-17T18:21:20.489915+00:00",
+  "last_run": "2026-09-18T19:11:57.038519+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -5091,12 +5702,16 @@
     "arxiv:2609.19145",
     "arxiv:2609.19143",
     "arxiv:2609.19137",
-    "arxiv:2609.19135"
+    "arxiv:2609.19135",
+    "arxiv:2609.19969",
+    "arxiv:2609.20822",
+    "arxiv:2609.20820",
+    "arxiv:2609.20821"
   ],
   "last_report_files": {
-    "markdown": "data/reports/2026-09-17/report.md",
-    "json": "data/reports/2026-09-17/report.json",
-    "newsletter": "data/reports/2026-09-17/newsletter.md",
-    "social": "data/reports/2026-09-17/social_posts.txt"
+    "markdown": "data/reports/2026-09-18/report.md",
+    "json": "data/reports/2026-09-18/report.json",
+    "newsletter": "data/reports/2026-09-18/newsletter.md",
+    "social": "data/reports/2026-09-18/social_posts.txt"
   }
 }

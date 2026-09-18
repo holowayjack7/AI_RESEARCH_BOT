@@ -58,7 +58,10 @@ GEMINI_MODEL = get_env("GEMINI_MODEL", "gemini-3.6-flash")
 # model keeps failing (e.g. 503 "high demand" capacity spikes)
 GEMINI_MODEL_FALLBACKS = [
     m.strip() for m in get_env(
-        "GEMINI_MODEL_FALLBACKS", "gemini-2.5-flash"
+        # gemini-2.5-flash retired (404 for new users) — verified live
+        # 2026-09-18; current flash generations + the stable alias below
+        "GEMINI_MODEL_FALLBACKS",
+        "gemini-3.7-flash,gemini-flash-latest",
     ).split(",") if m.strip()
 ]
 
@@ -85,7 +88,8 @@ GEMINI_CONTENT_CHARS = get_env_int("GEMINI_CONTENT_CHARS", 3000)
 # per-minute input quota for gemini-3.6-flash)
 GEMINI_PROMPT_CHAR_BUDGET = get_env_int("GEMINI_PROMPT_CHAR_BUDGET", 200000)
 # Analysis attempts (retries honor Gemini's "retry in Xs" hints)
-GEMINI_MAX_ATTEMPTS = get_env_int("GEMINI_MAX_ATTEMPTS", 4)
+# Attempts per model before falling back to the next model in the chain
+GEMINI_MAX_ATTEMPTS = get_env_int("GEMINI_MAX_ATTEMPTS", 5)
 
 # === Retry resilience (exponential backoff) ===
 # Attempts for generic outbound HTTP (Tavily search, arXiv, HF, fetcher)

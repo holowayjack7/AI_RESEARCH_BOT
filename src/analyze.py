@@ -13,6 +13,7 @@ from dataclasses import dataclass, field
 from config import (
     GEMINI_CONTENT_CHARS,
     GEMINI_MAX_ATTEMPTS,
+    GEMINI_MODEL,
     GEMINI_MODEL_FALLBACKS,
     GEMINI_PROMPT_CHAR_BUDGET,
 )
@@ -766,6 +767,25 @@ def parse_report(raw_json: str) -> ResearchReport:
     ))
 
 
+def _is_permanent_model_error(error_str: str) -> bool:
+    """True for errors that retrying the same model can never fix.
+
+    Retired/deprecated models return 404 NOT_FOUND forever (e.g.
+    "no longer available to new users") and blocked models return
+    permission errors — burning retry attempts on them only delays
+    the fall to the next model in the chain.
+    """
+    s = error_str.lower()
+    return (
+        "not_found" in s
+        or "404" in s
+        or "no longer available" in s
+        or "does not exist" in s
+        or "is not supported" in s
+        or "permission denied" in s
+    )
+
+
 def _gemini_retry_wait(error_str: str, attempt: int) -> float:
     """Exponential backoff before the next Gemini attempt.
 
@@ -856,7 +876,7 @@ def analyze_with_gemini(
     candidates: list[dict],
     api_key: str,
     state: dict | None = None,
-    model: str = "gemini-3.6-flash",
+    model: str = GEMINI_MODEL,
 ) -> ResearchReport:
     """Send research candidates to Gemini for analysis.
 
@@ -902,6 +922,12 @@ def analyze_with_gemini(
 
             except Exception as e:
                 last_error = e
+                if _is_permanent_model_error(str(e)):
+                    logger.warning(
+                        f"Model {current_model} permanently unavailable "
+                        f"(404/deprecated) — falling to next model immediately"
+                    )
+                    break
                 wait = _gemini_retry_wait(str(e), attempt)
                 logger.warning(
                     f"Gemini error (attempt {attempt}/{GEMINI_MAX_ATTEMPTS}, "
@@ -911,8 +937,7 @@ def analyze_with_gemini(
                     time.sleep(wait)
 
         logger.error(
-            f"Model {current_model} failed after {GEMINI_MAX_ATTEMPTS} "
-            f"attempts — trying next model"
+            f"Model {current_model} failed — trying next model"
         )
 
     raise RuntimeError(
