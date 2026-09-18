@@ -443,6 +443,9 @@ def send_telegram(message: str, bot_token: str, chat_id: str) -> bool:
     - A chunk that permanently fails (e.g. HTML parse error) is retried
       once as plain text.
     - If that also fails, the chunk is skipped and delivery continues.
+    - Permanent account-level errors (401/403: bot blocked or removed,
+      chat not found) abort delivery immediately — retrying other
+      chunks to the same chat can never succeed.
     - Returns True if at least one chunk was delivered.
     """
     url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
@@ -469,6 +472,15 @@ def send_telegram(message: str, bot_token: str, chat_id: str) -> bool:
             success = True
 
         except Exception as e:
+            # Account-level permanent failure: abort the whole send —
+            # remaining chunks to the same chat will fail identically
+            if _is_permanent_send_error(str(e)):
+                logger.error(
+                    f"Telegram delivery aborted: permanent error ({e}) — "
+                    f"check that the bot is not blocked and the chat id "
+                    f"is correct"
+                )
+                return False
             # Retry once without HTML parsing — the most common
             # permanent failure is a Telegram parse error
             logger.warning(
@@ -486,6 +498,13 @@ def send_telegram(message: str, bot_token: str, chat_id: str) -> bool:
                 )
                 success = True
             except Exception as e2:
+                if _is_permanent_send_error(str(e2)):
+                    logger.error(
+                        f"Telegram delivery aborted: permanent error "
+                        f"({e2}) — check that the bot is not blocked and "
+                        f"the chat id is correct"
+                    )
+                    return False
                 logger.error(
                     f"Telegram chunk {index}/{len(chunks)} permanently "
                     f"failed: {e2} — continuing with remaining chunks"
@@ -496,6 +515,29 @@ def send_telegram(message: str, bot_token: str, chat_id: str) -> bool:
             time.sleep(CHUNK_PAUSE_SECONDS)
 
     return success
+
+
+_PERMANENT_SEND_MARKERS = (
+    "401",
+    "403",
+    "unauthorized",
+    "forbidden",
+    "blocked by the user",
+    "bot was blocked",
+    "chat not found",
+    "bot was kicked",
+)
+
+
+def _is_permanent_send_error(error_str: str) -> bool:
+    """True for Telegram errors where retrying other chunks is futile.
+
+    A blocked bot, revoked token, or wrong chat id fails for every
+    chunk identically — fail fast with a clear log instead of grinding
+    through the whole report.
+    """
+    s = (error_str or "").lower()
+    return any(marker in s for marker in _PERMANENT_SEND_MARKERS)
 
 
 def _strip_tags(text: str) -> str:
