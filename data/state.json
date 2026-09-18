@@ -5676,7 +5676,7 @@
     "Causal Encoder-Decoder architecture mechanics and FP4 KV cache quantization",
     "Egress proxy token injection patterns for zero-trust agent security"
   ],
-  "last_run": "2026-09-18T19:11:57.038519+00:00",
+  "last_run": "2026-09-18T19:46:43.873363+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
