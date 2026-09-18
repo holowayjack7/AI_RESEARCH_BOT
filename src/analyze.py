@@ -82,6 +82,30 @@ class Evidence:
 
 
 @dataclass
+class CandidateAnalysis:
+    """Per-article critical analysis from the pre-selection pass.
+
+    One entry per supplied source; the decision layer in pipeline.py
+    uses is_relevant / should_send to gate events built from that
+    article, so a story is judged on its own evidence before it can
+    become an event.
+    """
+    title: str = ""
+    url: str = ""
+    is_relevant: bool = True
+    source_quality: int = 5
+    factuality_level: str = "single_source"
+    importance_score: int = 5
+    classification: list[str] = field(default_factory=list)
+    verified_facts: list[str] = field(default_factory=list)
+    interpretation: str = ""
+    uncertainty: str = ""
+    counter_argument: str = ""
+    actionable_takeaway: str = ""
+    should_send: bool = True
+
+
+@dataclass
 class ResearchEvent:
     event_id: str = ""
     title: str = ""
@@ -104,6 +128,13 @@ class ResearchEvent:
     action_type: str = "TRACK"
     action: str = ""
     evidence: list[Evidence] = field(default_factory=list)
+    # Critical-analysis fields (additive; defaults keep old state data valid)
+    factuality_level: str = "single_source"
+    classification: list[str] = field(default_factory=list)
+    verified_facts: list[str] = field(default_factory=list)
+    interpretation: str = ""
+    uncertainty: str = ""
+    counter_argument: str = ""
 
 
 @dataclass
@@ -117,6 +148,8 @@ class ResearchReport:
     learn_next: list[str] = field(default_factory=list)
     opportunities: list[str] = field(default_factory=list)
     things_to_ignore: list[str] = field(default_factory=list)
+    # Per-article critical analyses (one per supplied source)
+    candidate_analyses: list[CandidateAnalysis] = field(default_factory=list)
 
 
 # ============================================================
@@ -251,6 +284,74 @@ the supplied sources.
 
 QUALITY BAR: every event must pass this test — "Would a busy senior
 AI engineer forward this to a colleague?" If not, exclude it.
+
+============================================================
+CRITICAL THINKING FRAMEWORK (EVERY ARTICLE, BEFORE ANY DECISION)
+============================================================
+
+Analyze every supplied article along these dimensions:
+
+- FACTS: what is objectively verified by the source text? Concrete
+  numbers, names, versions, benchmarks, code. Keep strictly separate
+  from interpretation.
+- INTERPRETATION: what could this information potentially mean?
+- UNCERTAINTY: what is unknown, speculative, or unsupported?
+- COUNTERARGUMENT: the strongest argument against the initial
+  interpretation. If you cannot produce one, think harder.
+- INCENTIVES: could the source have marketing, financial, or
+  engagement motives? Vendor announcements deserve extra scrutiny.
+- LONGEVITY: temporary hype, durable technical development, or a
+  potentially lasting trend?
+- TRANSFERABILITY: does the knowledge apply beyond this specific
+  product or announcement?
+- EVIDENCE: how strong and independently verifiable is the evidence?
+
+============================================================
+CLASSIFICATION (EVERY EVENT, ONE OR MORE)
+============================================================
+
+Classify each selected event into one or more of:
+- "Temporary Trend"
+- "Real Technical Skill"
+- "Real Business Opportunity"
+- "Long-Term Career Value"
+- "General News"
+
+Prioritize durable knowledge and practical consequences over hype.
+
+============================================================
+FACTUALITY LEVELS (EVERY EVENT AND ARTICLE)
+============================================================
+
+factuality_level must be exactly one of:
+- "verified": confirmed by multiple independent strong sources
+- "corroborated": primary source plus supporting evidence
+- "single_source": one credible source, unconfirmed elsewhere
+- "speculative": claim or forecast without solid evidence
+
+Label speculation honestly. Speculation is acceptable ONLY when
+clearly labeled and it provides meaningful strategic insight.
+
+============================================================
+DECISION RULES (REJECT OR DEPRIORITIZE)
+============================================================
+
+Reject or deprioritize information if:
+- it duplicates another article or something in RECENT MEMORY;
+- it has low relevance to AI engineering, agents, automation, or
+  AI careers;
+- it is mostly speculation without evidence (labeled speculation
+  with real strategic insight is still acceptable);
+- it is a minor product update with no meaningful consequences;
+- it repeats information already sent recently;
+- it has no practical, technical, business, or career value.
+
+The importance score alone NEVER decides: weigh evidence quality,
+long-term relevance, practical value, uniqueness, and user relevance.
+
+WORKFLOW: first produce one candidate_analyses entry per supplied
+source (applying these rules through is_relevant and should_send),
+then select events ONLY from sources whose should_send is true.
 
 ============================================================
 REPORT STRUCTURE (MANDATORY — EVERY EVENT)
@@ -408,6 +509,12 @@ Return a JSON object with these fields:
       "actionability": 1-10,
       "source_quality": 1-10,
       "confidence": 0-100,
+      "factuality_level": "verified|corroborated|single_source|speculative",
+      "classification": ["one or more of: Temporary Trend, Real Technical Skill, Real Business Opportunity, Long-Term Career Value, General News"],
+      "verified_facts": ["2-5 items, max 15 words each: only objectively verified claims"],
+      "interpretation": "string - max 30 words, clearly separated from facts",
+      "uncertainty": "string - max 25 words: what is unknown, speculative, or unsupported",
+      "counter_argument": "string - max 25 words: strongest argument against your interpretation",
       "tldr": "string - 1-2 sentences, max 30 words: what launched/broke and why it matters immediately",
       "what_happened": "string - max 30 words, concrete facts",
       "what_changed": "string - max 25 words, before -> after",
@@ -425,7 +532,24 @@ Return a JSON object with these fields:
   "build_ideas": ["string"],
   "learn_next": ["string"],
   "opportunities": ["string"],
-  "things_to_ignore": ["string"]
+  "things_to_ignore": ["string"],
+  "candidate_analyses": [
+    {{
+      "title": "string - copied from the source",
+      "url": "string - EXACTLY matches a supplied source URL",
+      "is_relevant": true,
+      "source_quality": 1-10,
+      "factuality_level": "verified|corroborated|single_source|speculative",
+      "importance_score": 1-10,
+      "classification": ["one or more categories from the taxonomy"],
+      "verified_facts": ["only objectively verified claims"],
+      "interpretation": "max 25 words",
+      "uncertainty": "max 25 words",
+      "counter_argument": "max 25 words",
+      "actionable_takeaway": "max 25 words",
+      "should_send": true
+    }}
+  ]
 }}
 """
 
@@ -509,6 +633,38 @@ def _as_str_list(value) -> list[str]:
     return [_as_str(item) for item in value if item is not None]
 
 
+def _as_bool(value, default: bool) -> bool:
+    """Coerce LLM booleans ("true", True, 1, None-safe)."""
+    if value is None:
+        return default
+    if isinstance(value, bool):
+        return value
+    return str(value).strip().lower() in {"1", "true", "yes", "on"}
+
+
+FACTUALITY_LEVELS = {"verified", "corroborated", "single_source", "speculative"}
+
+
+def _as_factuality(value, default: str = "single_source") -> str:
+    """Coerce factuality_level to one of the canonical levels.
+
+    Free-text variants ("Verified", "highly speculative") are mapped
+    to the closest canonical level instead of crashing the gate.
+    """
+    raw = _as_str(value, default).lower().strip()
+    if raw in FACTUALITY_LEVELS:
+        return raw
+    if "verif" in raw:
+        return "verified"
+    if "corrob" in raw:
+        return "corroborated"
+    if "single" in raw:
+        return "single_source"
+    if "specul" in raw:
+        return "speculative"
+    return default if default in FACTUALITY_LEVELS else "single_source"
+
+
 def parse_report(raw_json: str) -> ResearchReport:
     """Parse Gemini's JSON response into a ResearchReport.
 
@@ -558,6 +714,12 @@ def parse_report(raw_json: str) -> ResearchReport:
             action_type=_as_str(e.get("action_type"), "TRACK").upper(),
             action=_as_str(e.get("action")),
             evidence=evidence,
+            factuality_level=_as_factuality(e.get("factuality_level")),
+            classification=_as_str_list(e.get("classification")),
+            verified_facts=_as_str_list(e.get("verified_facts")),
+            interpretation=_as_str(e.get("interpretation")),
+            uncertainty=_as_str(e.get("uncertainty")),
+            counter_argument=_as_str(e.get("counter_argument")),
         )
 
         if not event.title or not event.primary_url:
@@ -565,6 +727,30 @@ def parse_report(raw_json: str) -> ResearchReport:
             continue
 
         events.append(event)
+
+    candidate_analyses = []
+    for a in data.get("candidate_analyses", []) or []:
+        if not isinstance(a, dict):
+            continue
+        analysis = CandidateAnalysis(
+            title=_as_str(a.get("title")),
+            url=_as_str(a.get("url")),
+            is_relevant=_as_bool(a.get("is_relevant"), True),
+            source_quality=_as_int(a.get("source_quality"), 5, 1, 10),
+            factuality_level=_as_factuality(a.get("factuality_level")),
+            importance_score=_as_int(a.get("importance_score"), 5, 1, 10),
+            classification=_as_str_list(a.get("classification")),
+            verified_facts=_as_str_list(a.get("verified_facts")),
+            interpretation=_as_str(a.get("interpretation")),
+            uncertainty=_as_str(a.get("uncertainty")),
+            counter_argument=_as_str(a.get("counter_argument")),
+            actionable_takeaway=_as_str(a.get("actionable_takeaway")),
+            should_send=_as_bool(a.get("should_send"), True),
+        )
+        if not analysis.url:
+            logger.warning("Skipping malformed candidate analysis (missing url)")
+            continue
+        candidate_analyses.append(analysis)
 
     return enforce_conciseness(ResearchReport(
         report_title=_as_str(data.get("report_title"), "AI Intelligence Report"),
@@ -576,6 +762,7 @@ def parse_report(raw_json: str) -> ResearchReport:
         learn_next=_as_str_list(data.get("learn_next")),
         opportunities=_as_str_list(data.get("opportunities")),
         things_to_ignore=_as_str_list(data.get("things_to_ignore")),
+        candidate_analyses=candidate_analyses,
     ))
 
 
@@ -646,6 +833,21 @@ def enforce_conciseness(report: ResearchReport) -> ResearchReport:
             event.technical_architecture, 3, 15
         )
         event.technical_details = _clip_items(event.technical_details, 4, 12)
+        event.verified_facts = _clip_items(event.verified_facts, 5, 15)
+        event.classification = _clip_items(event.classification, 3, 10)
+        event.interpretation = _clip_words(event.interpretation, 30)
+        event.uncertainty = _clip_words(event.uncertainty, 25)
+        event.counter_argument = _clip_words(event.counter_argument, 25)
+
+    for analysis in report.candidate_analyses:
+        analysis.verified_facts = _clip_items(analysis.verified_facts, 5, 15)
+        analysis.classification = _clip_items(analysis.classification, 3, 10)
+        analysis.interpretation = _clip_words(analysis.interpretation, 25)
+        analysis.uncertainty = _clip_words(analysis.uncertainty, 25)
+        analysis.counter_argument = _clip_words(analysis.counter_argument, 25)
+        analysis.actionable_takeaway = _clip_words(
+            analysis.actionable_takeaway, 25
+        )
 
     return report
 

@@ -598,6 +598,125 @@ check("main: record_run stamps state on crash path, never raises", test_record_r
 
 
 # ==================================================================
+print("\n[10] Critical-analysis decision rules (pipeline gate)")
+# ==================================================================
+
+def _gate_event(**overrides):
+    """An event that passes all base thresholds, for gate testing."""
+    defaults = dict(
+        title="Gate test event",
+        primary_url="https://arxiv.org/abs/2609.12001",
+        importance=8, relevance=8, actionability=7,
+        source_quality=8, confidence=85,
+        factuality_level="verified",
+        classification=["Real Technical Skill"],
+    )
+    defaults.update(overrides)
+    return ResearchEvent(**defaults)
+
+
+def test_factuality_gate():
+    from src.pipeline import passes_decision_rules
+    # Verified/corroborated/single_source pass
+    assert passes_decision_rules(_gate_event())
+    assert passes_decision_rules(_gate_event(factuality_level="corroborated"))
+    assert passes_decision_rules(_gate_event(factuality_level="single_source"))
+    # Unlabeled speculation is rejected...
+    assert not passes_decision_rules(_gate_event(factuality_level="speculative"))
+    # ...but clearly-classified strategic speculation survives
+    assert passes_decision_rules(_gate_event(
+        factuality_level="speculative",
+        classification=["Real Business Opportunity", "Long-Term Career Value"],
+    ))
+
+
+def test_per_article_gate():
+    from src.pipeline import passes_decision_rules
+    ev = _gate_event()
+    ok = {ev.primary_url: {"is_relevant": True, "should_send": True}}
+    irrelevant = {ev.primary_url: {"is_relevant": False, "should_send": True}}
+    suppressed = {ev.primary_url: {"is_relevant": True, "should_send": False}}
+    assert passes_decision_rules(ev, ok)
+    assert not passes_decision_rules(ev, irrelevant)
+    assert not passes_decision_rules(ev, suppressed)
+    # No analyses at all: gate stays open (backwards compatible)
+    assert passes_decision_rules(ev, {})
+
+
+def test_composite_score_gate():
+    from src.pipeline import (
+        composite_score, MIN_COMPOSITE_SCORE, passes_decision_rules,
+    )
+    # Great importance but weak everything else must NOT pass alone
+    weak = _gate_event(importance=10, relevance=4, actionability=2,
+                       confidence=40, source_quality=5)
+    assert composite_score(weak) < MIN_COMPOSITE_SCORE
+    assert not passes_decision_rules(weak)
+    # Balanced strong event passes
+    strong = _gate_event()
+    assert composite_score(strong) >= MIN_COMPOSITE_SCORE
+
+
+def test_hype_deprioritization_and_ordering():
+    from src.pipeline import validate_report
+    durable = _gate_event(
+        importance=8, title="Durable event",
+        classification=["Real Technical Skill"],
+    )
+    hype = _gate_event(
+        importance=8, title="Hype event",
+        classification=["General News"],
+    )
+    weak_hype = _gate_event(
+        importance=7, title="Weak hype",
+        classification=["Temporary Trend"],
+    )
+    raw = f"""
+    {{"events": [{{"title": "h", "primary_url": "x"}}]}}
+    """  # placeholder, we patch report.events directly
+    report = parse_report(raw)
+    report.events = [hype, durable, weak_hype]
+    candidates = [{"url": durable.primary_url}]
+    out = validate_report(report, candidates, state={})
+    titles = [e.title for e in out.events]
+    assert "Durable event" in titles and "Hype event" in titles
+    assert "Weak hype" not in titles, "hype below importance 8 must be rejected"
+    assert titles.index("Durable event") < titles.index("Hype event"), \
+        "durable knowledge must sort ahead of hype"
+
+
+def test_new_fields_coerced():
+    raw = json.dumps({"events": [{
+        "title": "T", "primary_url": "https://arxiv.org/abs/1",
+        "factuality_level": "Verified",   # free text -> canonical
+        "classification": "Real Technical Skill",  # non-list -> []
+        "verified_facts": ["fact one", None, ""],
+        "interpretation": None,
+    }], "candidate_analyses": [
+        {"url": "https://arxiv.org/abs/1", "is_relevant": "true",
+         "should_send": False, "importance_score": "7"},
+        {"title": "no url"},   # malformed: dropped
+    ]})
+    report = parse_report(raw)
+    e = report.events[0]
+    assert e.factuality_level == "verified"
+    assert e.classification == []
+    assert e.verified_facts == ["fact one"]
+    assert e.interpretation == ""
+    assert len(report.candidate_analyses) == 1
+    a = report.candidate_analyses[0]
+    assert a.is_relevant is True and a.should_send is False
+    assert a.importance_score == 7
+
+
+check("gate: factuality levels — labeled speculation rule", test_factuality_gate)
+check("gate: per-article is_relevant/should_send enforced", test_per_article_gate)
+check("gate: composite score — importance alone cannot pass", test_composite_score_gate)
+check("gate: hype deprioritized in ordering and rejected below 8", test_hype_deprioritization_and_ordering)
+check("coercion: new critical-analysis fields parsed safely", test_new_fields_coerced)
+
+
+# ==================================================================
 print()
 print("=" * 50)
 print(f"RESULTS: {len(PASS)} passed, {len(FAIL)} failed")

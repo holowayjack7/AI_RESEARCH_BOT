@@ -111,13 +111,15 @@ def format_event(index: int, event) -> str:
     """
     title = escape_html(event.title)
     category = escape_html(event.category or "Uncategorized")
+    classes = " / ".join(event.classification) if getattr(event, "classification", None) else ""
+    classification = f" · {escape_html(classes)}" if classes else ""
 
     blocks = []
 
     # Header: index + title + quantified context line
     blocks.append(
         f"<b>{index}. {title}</b>\n"
-        f"<i>{category} · Impact {_impact_score(event):.1f}/10 · "
+        f"<i>{category}{classification} · Impact {_impact_score(event):.1f}/10 · "
         f"Confidence {event.confidence}%</i>"
     )
 
@@ -132,6 +134,16 @@ def format_event(index: int, event) -> str:
         context.append(f"What changed: {escape_html(event.what_changed)}")
     if event.why_it_matters:
         context.append(f"Why it matters: {escape_html(event.why_it_matters)}")
+    # Fact vs interpretation and what-could-be-wrong keep the critical
+    # analysis visible while staying collapsed on mobile.
+    if getattr(event, "interpretation", None):
+        context.append(
+            f"Fact vs interpretation: {escape_html(event.interpretation)}"
+        )
+    if getattr(event, "counter_argument", None):
+        context.append(
+            f"What could be wrong: {escape_html(event.counter_argument)}"
+        )
     if context:
         executive.append(expandable_blockquote("\n".join(context)))
     if executive:

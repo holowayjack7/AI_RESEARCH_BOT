@@ -177,6 +177,121 @@ def prepare_candidates(results: list[dict], state: dict) -> list[dict]:
 
 
 # ============================================================
+# DECISION RULES (code-level intelligence gate)
+# ============================================================
+
+# Classifications considered "hype-adjacent": they must clear a
+# higher bar, because they describe attention, not durable knowledge.
+HYPE_CLASSIFICATIONS = {"temporary trend", "general news"}
+# Classifications that can rescue clearly-labeled speculation: labeled
+# foresight with real strategic value survives the factuality gate.
+STRATEGIC_CLASSIFICATIONS = {"real business opportunity", "long-term career value"}
+
+# Composite quality bar (importance alone never decides). Weights:
+# evidence/confidence and relevance dominate; actionability and source
+# quality support. Sum of weights = 1.0 -> composite is 0-10.
+COMPOSITE_WEIGHTS = {
+    "importance": 0.25,
+    "relevance": 0.25,
+    "actionability": 0.15,
+    "confidence": 0.25,   # (confidence / 10) -> 0-10 scale
+    "source_quality": 0.10,
+}
+MIN_COMPOSITE_SCORE = 6.0
+
+# Minimum importance for hype-adjacent classifications
+MIN_HYPE_IMPORTANCE = 8
+
+
+def composite_score(event) -> float:
+    """Weighted multi-factor quality score (0-10) for an event.
+
+    The final send decision must consider evidence quality, relevance,
+    practical value, and source quality — never the importance score
+    alone.
+    """
+    return (
+        COMPOSITE_WEIGHTS["importance"] * event.importance
+        + COMPOSITE_WEIGHTS["relevance"] * event.relevance
+        + COMPOSITE_WEIGHTS["actionability"] * event.actionability
+        + COMPOSITE_WEIGHTS["confidence"] * (event.confidence / 10.0)
+        + COMPOSITE_WEIGHTS["source_quality"] * event.source_quality
+    )
+
+
+def _norm_classifications(event) -> set[str]:
+    """Lower-cased set of the event's classification labels."""
+    return {c.strip().lower() for c in (event.classification or []) if c.strip()}
+
+
+def passes_decision_rules(
+    event,
+    analysis_by_url: dict | None = None,
+) -> bool:
+    """Apply the critical-thinking decision rules to one event.
+
+    Returns True if the event should be reported. Enforces, in order:
+    1. per-article gate — the underlying article must be relevant and
+       marked should_send by the pre-selection analysis;
+    2. factuality gate — speculative content is rejected UNLESS it is
+       clearly classified as a strategic category (labeled speculation
+       with meaningful insight survives);
+    3. composite multi-factor gate — importance, relevance,
+       actionability, confidence, and source quality together must
+       clear MIN_COMPOSITE_SCORE (the importance score alone never
+       decides);
+    4. hype deprioritization — Temporary Trend / General News need a
+       higher importance to justify the reader's attention.
+    """
+    # --- 1. Per-article gate ---
+    if analysis_by_url is not None:
+        analysis = analysis_by_url.get(event.primary_url)
+        if analysis is not None:
+            if not analysis.get("is_relevant", True):
+                logger.info(
+                    f"Rejected (underlying article not relevant): "
+                    f"{event.primary_url}"
+                )
+                return False
+            if not analysis.get("should_send", True):
+                logger.info(
+                    f"Rejected (analysis marked should_send=false): "
+                    f"{event.primary_url}"
+                )
+                return False
+
+    # --- 2. Factuality gate ---
+    classifications = _norm_classifications(event)
+    if event.factuality_level == "speculative" and not (
+        classifications & STRATEGIC_CLASSIFICATIONS
+    ):
+        logger.info(
+            f"Rejected (unlabeled speculation without strategic value): "
+            f"{event.title[:60]}"
+        )
+        return False
+
+    # --- 3. Composite multi-factor gate ---
+    score = composite_score(event)
+    if score < MIN_COMPOSITE_SCORE:
+        logger.info(
+            f"Rejected (composite {score:.2f} < {MIN_COMPOSITE_SCORE}): "
+            f"{event.title[:60]}"
+        )
+        return False
+
+    # --- 4. Hype deprioritization ---
+    if classifications & HYPE_CLASSIFICATIONS and event.importance < MIN_HYPE_IMPORTANCE:
+        logger.info(
+            f"Rejected (hype-classified but importance {event.importance} "
+            f"< {MIN_HYPE_IMPORTANCE}): {event.title[:60]}"
+        )
+        return False
+
+    return True
+
+
+# ============================================================
 # REPORT VALIDATION
 # ============================================================
 
@@ -212,7 +327,18 @@ def validate_report(
     seen_event_ids = set(state.get("seen_event_ids", []))
     seen_keys = set(state.get("seen_dedup_keys", []))
 
+    # Per-article critical analyses: index the pre-selection verdicts
+    # by URL so each event inherits its article's decision.
+    analysis_by_url: dict = {}
+    for analysis in getattr(report, "candidate_analyses", []) or []:
+        if getattr(analysis, "url", ""):
+            analysis_by_url[analysis.url] = {
+                "is_relevant": analysis.is_relevant,
+                "should_send": analysis.should_send,
+            }
+
     valid_events = []
+    deprioritized = []
 
     for event in report.events:
         # Must have a valid primary URL
@@ -260,13 +386,24 @@ def validate_report(
         if event.source_quality < MIN_SOURCE_QUALITY:
             continue
 
-        valid_events.append(event)
+        # Critical-thinking decision rules (per-article gate,
+        # factuality gate, composite score, hype deprioritization)
+        if not passes_decision_rules(event, analysis_by_url):
+            continue
 
-    # Sort by importance, relevance, actionability, confidence
-    valid_events.sort(
-        key=lambda e: (e.importance, e.relevance, e.actionability, e.confidence),
-        reverse=True,
-    )
+        # Durable knowledge first: hype-adjacent classifications sort
+        # behind strategic/technical ones at equal importance.
+        if _norm_classifications(event) & HYPE_CLASSIFICATIONS:
+            deprioritized.append(event)
+        else:
+            valid_events.append(event)
+
+    # Sort by importance, relevance, actionability, confidence;
+    # hype-adjacent events follow the durable ones.
+    rank_key = lambda e: (e.importance, e.relevance, e.actionability, e.confidence)
+    valid_events.sort(key=rank_key, reverse=True)
+    deprioritized.sort(key=rank_key, reverse=True)
+    valid_events.extend(deprioritized)
 
     report.events = valid_events[:15]
     return report
@@ -550,7 +687,17 @@ SIMULATED_REPORT_JSON = """
       "technical_details": ["LoCoMo +34.2pp", "-22% retrieval latency"],
       "potential_impact": "Resets the design baseline for long-lived agent memory.",
       "action_type": "LEARN",
-      "action": "Read the paper; sketch a relation-classifier over toy memories."
+      "action": "Read the paper; sketch a relation-classifier over toy memories.",
+      "factuality_level": "verified",
+      "classification": ["Real Technical Skill", "Long-Term Career Value"],
+      "verified_facts": [
+        "+34.2pp on LoCoMo over compaction baselines",
+        "Retrieval latency down 22%",
+        "Code and evals public"
+      ],
+      "interpretation": "Memory organization is shifting from hand-tuned policies to learned ones.",
+      "uncertainty": "Benchmarks may favor the proposed method's own design choices.",
+      "counter_argument": "Gains may shrink on non-academic workloads without curation."
     },
     {
       "event_id": "evt-sim-agent-sdk",
@@ -577,7 +724,16 @@ SIMULATED_REPORT_JSON = """
       "technical_details": ["Python 3.11+", "Apache-2.0"],
       "potential_impact": "Cuts coding-agent bootstrap time from days to hours.",
       "action_type": "TRY",
-      "action": "Install the SDK; run its example agent locally."
+      "action": "Install the SDK; run its example agent locally.",
+      "factuality_level": "corroborated",
+      "classification": ["Real Technical Skill", "Real Business Opportunity"],
+      "verified_facts": [
+        "Apache-2.0 Python SDK",
+        "Tool calling, MCP client, sandboxed execution included"
+      ],
+      "interpretation": "Agent plumbing is consolidating into installable SDKs.",
+      "uncertainty": "Maintenance and long-term support are unknown.",
+      "counter_argument": "Lock-in risk if the SDK's abstractions drift from MCP."
     }
   ],
   "trends": ["Agent memory is converging on learned organization"],
@@ -585,7 +741,43 @@ SIMULATED_REPORT_JSON = """
   "build_ideas": ["Relation-classifier over toy memories"],
   "learn_next": ["ROAM++ relation taxonomy"],
   "opportunities": ["Reproduce ROAM++ baselines for a blog post"],
-  "things_to_ignore": ["Weekend hype threads"]
+  "things_to_ignore": ["Weekend hype threads"],
+  "candidate_analyses": [
+    {
+      "title": "ROAM++: Self-Organizing Agent Memory via Learned Relations",
+      "url": "https://arxiv.org/abs/2609.12001",
+      "is_relevant": true,
+      "source_quality": 8,
+      "factuality_level": "verified",
+      "importance_score": 9,
+      "classification": ["Real Technical Skill", "Long-Term Career Value"],
+      "verified_facts": [
+        "+34.2pp on LoCoMo",
+        "-22% retrieval latency",
+        "Code released"
+      ],
+      "interpretation": "Learned memory organization will become the default.",
+      "uncertainty": "Single-team benchmark design.",
+      "counter_argument": "Academic workloads may not transfer to production agents.",
+      "actionable_takeaway": "Study the relation taxonomy before your next memory design.",
+      "should_send": true
+    },
+    {
+      "title": "Fixture: open-source coding-agent SDK released",
+      "url": "https://github.com/example-labs/fixture-agent-sdk",
+      "is_relevant": true,
+      "source_quality": 8,
+      "factuality_level": "corroborated",
+      "importance_score": 8,
+      "classification": ["Real Technical Skill", "Real Business Opportunity"],
+      "verified_facts": ["Apache-2.0", "MCP client included"],
+      "interpretation": "SDK consolidation lowers agent development barriers.",
+      "uncertainty": "Project maturity unknown.",
+      "counter_argument": "Early SDKs often abandon abstractions quickly.",
+      "actionable_takeaway": "Prototype one tool-serving agent with it this week.",
+      "should_send": true
+    }
+  ]
 }
 """
 
