@@ -620,6 +620,27 @@ def test_gemini_404_falls_over_without_retrying():
     assert sleeps == [], f"404 must never sleep: {sleeps}"
 
 
+def test_permanent_error_classification():
+    """Auth/404 errors are permanent; transient 429/503/500 are not.
+
+    An invalid API key in CI must fail fast with a clear message
+    instead of burning ~6 minutes of retries on a hopeless call.
+    """
+    from src.analyze import _is_permanent_model_error as perm
+
+    assert perm("404 NOT_FOUND model is no longer available to new users")
+    assert perm(
+        "400 API_KEY_INVALID. {'error': {'message': 'API key not valid. "
+        "Please pass a valid API key.'}}"
+    )
+    assert perm("403 PERMISSION_DENIED The caller does not have permission")
+    # Transient errors must stay retryable
+    assert not perm("503 UNAVAILABLE high demand, try again later")
+    assert not perm("429 RESOURCE_EXHAUSTED quota exceeded, retry in 30s")
+    assert not perm("500 INTERNAL server error")
+    assert not perm("")
+
+
 def test_record_run_always_stamps_state():
     """record_run stamps last_run on every path, including crashes."""
     import importlib
@@ -644,6 +665,7 @@ def test_record_run_always_stamps_state():
 check("search: Tavily retries transient failures with backoff", test_tavily_retry_backoff)
 check("analyze: Gemini backoff grows exponentially, honors retry hints", test_gemini_backoff_is_exponential)
 check("analyze: Gemini 404 falls to next model without retry sleeps", test_gemini_404_falls_over_without_retrying)
+check("analyze: permanent (auth/404) vs transient (429/503) error classification", test_permanent_error_classification)
 check("main: record_run stamps state on crash path, never raises", test_record_run_always_stamps_state)
 
 

@@ -11,7 +11,9 @@ import time
 from dataclasses import dataclass, field
 
 from config import (
+    GEMINI_CHAIN_PASSES,
     GEMINI_CONTENT_CHARS,
+    GEMINI_INTER_PASS_SECONDS,
     GEMINI_MAX_ATTEMPTS,
     GEMINI_MODEL,
     GEMINI_MODEL_FALLBACKS,
@@ -771,8 +773,9 @@ def _is_permanent_model_error(error_str: str) -> bool:
     """True for errors that retrying the same model can never fix.
 
     Retired/deprecated models return 404 NOT_FOUND forever (e.g.
-    "no longer available to new users") and blocked models return
-    permission errors — burning retry attempts on them only delays
+    "no longer available to new users"), blocked models return
+    permission errors, and an invalid API key returns 400
+    API_KEY_INVALID — burning retry attempts on them only delays
     the fall to the next model in the chain.
     """
     s = error_str.lower()
@@ -783,6 +786,10 @@ def _is_permanent_model_error(error_str: str) -> bool:
         or "does not exist" in s
         or "is not supported" in s
         or "permission denied" in s
+        or "permission_denied" in s
+        or "api key not valid" in s
+        or "api_key_invalid" in s
+        or "unauthenticated" in s
     )
 
 
@@ -893,52 +900,77 @@ def analyze_with_gemini(
 
     models = [model] + [m for m in GEMINI_MODEL_FALLBACKS if m != model]
     last_error: Exception | None = None
+    saw_transient_error = False
 
-    for current_model in models:
-        for attempt in range(1, GEMINI_MAX_ATTEMPTS + 1):
-            try:
-                logger.info(
-                    f"Gemini analysis attempt {attempt}/{GEMINI_MAX_ATTEMPTS} "
-                    f"(model: {current_model})..."
-                )
-
-                response = client.models.generate_content(
-                    model=current_model,
-                    contents=prompt,
-                    config=types.GenerateContentConfig(
-                        temperature=0.2,
-                        response_mime_type="application/json",
-                    ),
-                )
-
-                report = parse_report(response.text)
-
-                logger.info(
-                    f"Gemini selected {len(report.events)} events "
-                    f"(model: {current_model})"
-                )
-
-                return report
-
-            except Exception as e:
-                last_error = e
-                if _is_permanent_model_error(str(e)):
-                    logger.warning(
-                        f"Model {current_model} permanently unavailable "
-                        f"(404/deprecated) — falling to next model immediately"
+    for pass_num in range(1, GEMINI_CHAIN_PASSES + 1):
+        for current_model in models:
+            for attempt in range(1, GEMINI_MAX_ATTEMPTS + 1):
+                try:
+                    logger.info(
+                        f"Gemini analysis attempt {attempt}/{GEMINI_MAX_ATTEMPTS} "
+                        f"(model: {current_model}, pass {pass_num}/"
+                        f"{GEMINI_CHAIN_PASSES})..."
                     )
-                    break
-                wait = _gemini_retry_wait(str(e), attempt)
-                logger.warning(
-                    f"Gemini error (attempt {attempt}/{GEMINI_MAX_ATTEMPTS}, "
-                    f"model: {current_model}): {e} — waiting {wait:.0f}s"
-                )
-                if attempt < GEMINI_MAX_ATTEMPTS:
-                    time.sleep(wait)
 
-        logger.error(
-            f"Model {current_model} failed — trying next model"
-        )
+                    response = client.models.generate_content(
+                        model=current_model,
+                        contents=prompt,
+                        config=types.GenerateContentConfig(
+                            temperature=0.2,
+                            response_mime_type="application/json",
+                        ),
+                    )
+
+                    report = parse_report(response.text)
+
+                    logger.info(
+                        f"Gemini selected {len(report.events)} events "
+                        f"(model: {current_model})"
+                    )
+
+                    return report
+
+                except Exception as e:
+                    last_error = e
+                    if _is_permanent_model_error(str(e)):
+                        logger.warning(
+                            f"Model {current_model} permanently unavailable "
+                            f"(404/invalid key/permission) — falling to "
+                            f"next model immediately"
+                        )
+                        break
+                    saw_transient_error = True
+                    wait = _gemini_retry_wait(str(e), attempt)
+                    logger.warning(
+                        f"Gemini error (attempt {attempt}/{GEMINI_MAX_ATTEMPTS}, "
+                        f"model: {current_model}): {e} — waiting {wait:.0f}s"
+                    )
+                    if attempt < GEMINI_MAX_ATTEMPTS:
+                        time.sleep(wait)
+
+            logger.error(
+                f"Model {current_model} failed — trying next model"
+            )
+
+        # More passes remain AND at least one failure was transient
+        # (retrying a chain whose every model failed permanently can
+        # never succeed): pause so quota windows reset and 503 capacity
+        # storms can clear, then try the whole chain again.
+        if pass_num < GEMINI_CHAIN_PASSES and saw_transient_error:
+            logger.warning(
+                f"All {len(models)} model(s) failed on pass {pass_num}/"
+                f"{GEMINI_CHAIN_PASSES} — pausing "
+                f"{GEMINI_INTER_PASS_SECONDS}s before retrying the chain"
+            )
+            time.sleep(GEMINI_INTER_PASS_SECONDS)
+        else:
+            break
+            logger.warning(
+                f"All {len(models)} model(s) failed on pass {pass_num}/"
+                f"{GEMINI_CHAIN_PASSES} — pausing "
+                f"{GEMINI_INTER_PASS_SECONDS}s before retrying the chain"
+            )
+            time.sleep(GEMINI_INTER_PASS_SECONDS)
 
     raise RuntimeError(
         f"Gemini analysis failed on all models ({', '.join(models)}): "

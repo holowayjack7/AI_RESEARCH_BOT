@@ -87,7 +87,6 @@ GEMINI_CONTENT_CHARS = get_env_int("GEMINI_CONTENT_CHARS", 3000)
 # (~4 chars/token -> ~50K tokens, far under the 250K-token free-tier
 # per-minute input quota for gemini-3.6-flash)
 GEMINI_PROMPT_CHAR_BUDGET = get_env_int("GEMINI_PROMPT_CHAR_BUDGET", 200000)
-# Analysis attempts (retries honor Gemini's "retry in Xs" hints)
 # Attempts per model before falling back to the next model in the chain
 GEMINI_MAX_ATTEMPTS = get_env_int("GEMINI_MAX_ATTEMPTS", 5)
 
@@ -96,7 +95,14 @@ GEMINI_MAX_ATTEMPTS = get_env_int("GEMINI_MAX_ATTEMPTS", 5)
 HTTP_MAX_ATTEMPTS = get_env_int("HTTP_MAX_ATTEMPTS", 4)
 # Base delay for Gemini retries between transient failures (seconds);
 # actual waits grow exponentially and honor the API's "retry in Xs" hints
-GEMINI_RETRY_BASE_SECONDS = get_env_int("GEMINI_RETRY_BASE_SECONDS", 5)
+GEMINI_RETRY_BASE_SECONDS = get_env_int("GEMINI_RETRY_BASE_SECONDS", 10)
+
+# Full passes over the model fallback chain. A Google-side capacity
+# storm (503 UNAVAILABLE "high demand") can outlast a single pass —
+# a pause and a second pass lets the same chain succeed later.
+GEMINI_CHAIN_PASSES = get_env_int("GEMINI_CHAIN_PASSES", 2)
+# Pause (seconds) between chain passes
+GEMINI_INTER_PASS_SECONDS = get_env_int("GEMINI_INTER_PASS_SECONDS", 180)
 
 # === Quality Thresholds ===
 MIN_SOURCE_QUALITY = get_env_int("MIN_SOURCE_QUALITY", 7)

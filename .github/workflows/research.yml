@@ -18,7 +18,9 @@ concurrency:
 jobs:
   research:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    # Retry ladder must always fit: ~24 min worst case
+    # (2 passes x 3 models x backoff) + search/fetch/delivery
+    timeout-minutes: 40
 
     steps:
       - uses: actions/checkout@v4
