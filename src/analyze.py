@@ -402,6 +402,43 @@ CONTENT RULES (HARD BANS)
   generic must be made specific or shortened.
 
 ============================================================
+OUTPUT LANGUAGE (MANDATORY — HYBRID GEORGIAN/ENGLISH)
+============================================================
+
+The reader is Georgian. ALL human-readable text must be written in
+a hybrid language: ~70% proper, well-structured Georgian and ~30%
+clear English. Maintain a professional intelligence-analyst tone
+in natural, correct Georgian.
+
+In GEORGIAN (~70% of words):
+- all analysis and explanation prose: tldr, what_happened,
+  what_changed, why_it_matters, potential_impact, action,
+  interpretation, uncertainty, counter_argument, verified_facts,
+  candidate_analyses prose fields (interpretation, uncertainty,
+  counter_argument, actionable_takeaway, verified_facts)
+- every list item: key_takeaways, trends, strategic_implications,
+  build_ideas, learn_next, opportunities, things_to_ignore
+- report_title and executive_summary
+- category (short Georgian label)
+
+In ENGLISH, kept verbatim — never transliterate, never translate
+(~30% of words, the technical layer):
+- engineering terminology: model, API, SDK, agent, MCP, RAG, tool
+  calling, token, context window, latency, throughput, benchmark,
+  fine-tuning, inference, framework, retrieval, memory
+- product/model/library names, version numbers, benchmarks,
+  code identifiers and snippets (inside technical_details and
+  technical_architecture, English dominates naturally)
+- machine-read fields EXACTLY as specified: classification values
+  ("Real Technical Skill" etc.), factuality_level ("verified" etc.),
+  action_type (BUILD/TRY/LEARN/TRACK/APPLY/IGNORE), event_id
+- URLs, domain names
+
+Do not mix scripts inside a single technical term. Georgian text
+must not be a word-for-word translation — write it as a Georgian
+engineer would naturally explain it to a colleague.
+
+============================================================
 EVENT DEDUPLICATION
 ============================================================
 

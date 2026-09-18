@@ -75,22 +75,22 @@ msg = de.build_telegram_message(REPORT)
 
 
 def test_ui_structure():
-    # Mandatory 4-section structure per event
-    assert "<b>AI INTELLIGENCE REPORT</b>" in msg
-    assert "<b>In this issue</b>" in msg
+    # Mandatory 4-section structure per event (Georgian UI labels)
+    assert "<b>AI დაზვერვის რეპორტი</b>" in msg
+    assert "<b>ამ ნომერში</b>" in msg
     assert "<blockquote expandable>" in msg       # collapsed summaries
     for section in (
-        "<b>Executive Impact</b>",
-        "<b>Key Technical Breakdown</b>",
-        "<b>Architecture and Specs</b>",
-        "<b>Implementation Logic</b>",
-        "<b>Actionable Takeaways</b>",
-        "<b>Verified Resources</b>",
+        "<b>აღმასრულებელი შეჯამება</b>",
+        "<b>ტექნიკური ანალიზი</b>",
+        "<b>არქიტექტურა და სპეციფიკაციები</b>",
+        "<b>იმპლემენტაციის ლოგიკა</b>",
+        "<b>პრაქტიკული დასკვნები</b>",
+        "<b>გადამოწმებული რესურსები</b>",
     ):
         assert section in msg, f"missing mandated section: {section}"
-    assert "Apply (LEARN)" in msg and "Commercial potential" in msg
-    assert '<a href="https://arxiv.org/abs/2609.12001">Research paper</a>' in msg
-    assert '<a href="https://github.com/example-labs/fixture-agent-sdk">Source code</a>' in msg
+    assert "გამოყენება (LEARN)" in msg and "კომერციული პოტენციალი" in msg
+    assert '<a href="https://arxiv.org/abs/2609.12001">სამეცნიერო ნაშრომი</a>' in msg
+    assert '<a href="https://github.com/example-labs/fixture-agent-sdk">კოდი</a>' in msg
     # ZERO emojis, icons, or badges anywhere in the output
     emoji = re.compile(
         "[\U0001F000-\U0001FAFF\U00002600-\U000027BF\U0001F1E6-\U0001F1FF]"
@@ -108,6 +108,33 @@ def test_ui_structure():
 
 
 check("UI structure, score bars, HTML escaping", test_ui_structure)
+
+
+def test_hybrid_georgian_english():
+    """Hybrid language contract: ~70% Georgian prose, ~30% English tech.
+
+    Human-readable fields are Georgian with embedded English technical
+    terms; machine-read fields (classification, action_type) stay
+    exactly English because the decision gates match those strings.
+    """
+    # Georgian prose present in human fields
+    assert "მეხსიერებებს შორის" in msg          # tldr prose
+    assert "დააინსტალირე" in msg                # action imperative
+    assert "ტრენდები" in msg                    # report-level section
+    assert "შერჩეული ივენთი" in msg             # header meta line
+    # English technical layer intact
+    assert "+34.2pp" in msg
+    assert "MCP" in msg and "Apache-2.0" in msg
+    # Machine-read fields remain exactly English (gate matching)
+    assert "Real Technical Skill" in msg
+    assert "(LEARN)" in msg and "(TRY)" in msg
+    assert "verified" in REPORT.events[0].factuality_level
+    # Rendered HTML still parses as balanced tags (no script breakage
+    # from mixed-script content)
+    assert msg.count("<b>") == msg.count("</b>")
+
+
+check("hybrid Georgian/English output contract", test_hybrid_georgian_english)
 
 
 # ==================================================================
@@ -393,7 +420,7 @@ def test_real_pipeline_with_mocked_apis():
         )
         assert ok is True, "pipeline should succeed"
         assert sent, "Telegram must be called when configured"
-        assert "AI INTELLIGENCE REPORT" in sent[0]
+        assert "AI დაზვერვის რეპორტი" in sent[0]
         assert state.get("last_report_files")
     finally:
         pl.collect_all_sources = orig_collect

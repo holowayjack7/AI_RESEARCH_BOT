@@ -657,13 +657,13 @@ SIMULATED_SOURCES = [
 
 SIMULATED_REPORT_JSON = """
 {
-  "report_title": "SIMULATION — AI Intelligence Report",
-  "executive_summary": "Simulated run validating the full offline pipeline: curation, validation, export, and state tracking.",
+  "report_title": "სიმულაცია — AI დაზვერვის რეპორტი",
+  "executive_summary": "სიმულაციური რანი ამოწმებს offline pipeline-ს: curation, validation, export და state tracking.",
   "events": [
     {
       "event_id": "evt-sim-roam-plus",
       "title": "ROAM++: Self-Organizing Agent Memory via Learned Relations",
-      "category": "AI Research / Agent Memory",
+      "category": "AI კვლევა / Agent Memory",
       "primary_url": "https://arxiv.org/abs/2609.12001",
       "supporting_urls": ["https://huggingface.co/papers/2609.12001"],
       "importance": 9,
@@ -671,33 +671,33 @@ SIMULATED_REPORT_JSON = """
       "actionability": 8,
       "source_quality": 8,
       "confidence": 90,
-      "tldr": "Agent memory that learns relations between memories: +34.2pp accuracy, 22% lower retrieval latency.",
-      "what_happened": "ROAM++ published with code, benchmarks, and evaluation harnesses.",
-      "what_changed": "Memory organization: fixed policies -> learned semantic relations.",
-      "why_it_matters": "Directly upgrades your agent-memory roadmap; reproducible today.",
+      "tldr": "Agent memory, რომელიც სწავლობს მეხსიერებებს შორის კავშირებს: +34.2pp სიზუსტე, retrieval latency 22%-ით დაბალი.",
+      "what_happened": "გამოქვეყნდა ROAM++ — კოდით, benchmark-ებით და evaluation harness-ებით.",
+      "what_changed": "Memory ორგანიზაცია: ფიქსირებული წესები -> ნასწავლი semantic relations.",
+      "why_it_matters": "პირდაპირ ავითარებს agent-memory roadmap-ს; დღესვე გამეორებადია.",
       "key_takeaways": [
-        "Learned relations beat fixed heuristics",
-        "+34.2pp over compaction baselines",
-        "Code and evals are public"
+        "ნასწავლი relations ამარცხებს fixed heuristics-ს",
+        "+34.2pp compaction baselines-თან შედარებით",
+        "კოდი და eval-ები საჯაროა"
       ],
       "technical_architecture": [
         "Atomic memories + learned relation graph",
         "Deterministic reorganization after inference"
       ],
       "technical_details": ["LoCoMo +34.2pp", "-22% retrieval latency"],
-      "potential_impact": "Resets the design baseline for long-lived agent memory.",
+      "potential_impact": "ცვლის design baseline-ს გრძელვადიანი agent memory-სთვის.",
       "action_type": "LEARN",
-      "action": "Read the paper; sketch a relation-classifier over toy memories.",
+      "action": "წაიკითხე paper; დახატე relation-classifier-ის სქემა toy memories-ზე.",
       "factuality_level": "verified",
       "classification": ["Real Technical Skill", "Long-Term Career Value"],
       "verified_facts": [
-        "+34.2pp on LoCoMo over compaction baselines",
-        "Retrieval latency down 22%",
-        "Code and evals public"
+        "+34.2pp LoCoMo-ზე compaction baselines-თან შედარებით",
+        "retrieval latency 22%-ით ნაკლები",
+        "კოდი და eval-ები საჯაროა"
       ],
-      "interpretation": "Memory organization is shifting from hand-tuned policies to learned ones.",
-      "uncertainty": "Benchmarks may favor the proposed method's own design choices.",
-      "counter_argument": "Gains may shrink on non-academic workloads without curation."
+      "interpretation": "Memory ორგანიზაცია გადადის hand-tuned policies-დან ნასწავლებზე.",
+      "uncertainty": "Benchmark-ები შეიძლება ამჯობინებდეს ავტორთა საკუთარ design choices-ს.",
+      "counter_argument": "მოგება შეიძლება შემცირდეს აკადემიურ გარემოში, curation-ის გარეშე."
     },
     {
       "event_id": "evt-sim-agent-sdk",
@@ -710,38 +710,38 @@ SIMULATED_REPORT_JSON = """
       "actionability": 9,
       "source_quality": 8,
       "confidence": 85,
-      "tldr": "Apache-2.0 Python SDK bundling tool calling, MCP, sandboxing, and evals.",
-      "what_happened": "Fixture Agent SDK 1.0 released on GitHub.",
-      "what_changed": "Hand-assembled agent plumbing -> one installable SDK.",
-      "why_it_matters": "Fastest path to a working coding-agent prototype this week.",
+      "tldr": "Apache-2.0 Python SDK, რომელიც აერთიანებს tool calling-ს, MCP-ს, sandbox-ს და eval-ებს.",
+      "what_happened": "Fixture Agent SDK 1.0 გამოქვეყნდა GitHub-ზე.",
+      "what_changed": "ხელით აწყობილი agent plumbing -> ერთი installable SDK.",
+      "why_it_matters": "ყველაზე სწრაფი გზა coding-agent prototype-ამდე ამ კვირაში.",
       "key_takeaways": [
-        "Ships with an evaluation harness",
-        "MCP client built in"
+        "მოყვება evaluation harness",
+        "MCP client ჩაშენებულია"
       ],
       "technical_architecture": [
         "Tool registry + MCP client + sandboxed runner"
       ],
       "technical_details": ["Python 3.11+", "Apache-2.0"],
-      "potential_impact": "Cuts coding-agent bootstrap time from days to hours.",
+      "potential_impact": "coding-agent bootstrap დროს აკლებს დღეებიდან საათებამდე.",
       "action_type": "TRY",
-      "action": "Install the SDK; run its example agent locally.",
+      "action": "დააინსტალირე SDK; გაუშვი მისი example agent ლოკალურად.",
       "factuality_level": "corroborated",
       "classification": ["Real Technical Skill", "Real Business Opportunity"],
       "verified_facts": [
         "Apache-2.0 Python SDK",
-        "Tool calling, MCP client, sandboxed execution included"
+        "Tool calling, MCP client, sandboxed execution შედის"
       ],
-      "interpretation": "Agent plumbing is consolidating into installable SDKs.",
-      "uncertainty": "Maintenance and long-term support are unknown.",
-      "counter_argument": "Lock-in risk if the SDK's abstractions drift from MCP."
+      "interpretation": "Agent plumbing კონსოლიდირდება installable SDK-ებში.",
+      "uncertainty": "მოვლა და გრძელვადიანი მხარდაჭერა უცნობია.",
+      "counter_argument": "Lock-in risk: SDK-ის abstractions-მა შეიძლება MCP-დან ჩამოცილდეს."
     }
   ],
-  "trends": ["Agent memory is converging on learned organization"],
-  "strategic_implications": ["Memory design is becoming a core skill"],
-  "build_ideas": ["Relation-classifier over toy memories"],
+  "trends": ["Agent memory იწყებს კონვერგენციას learned organization-ზე"],
+  "strategic_implications": ["Memory design ხდება ძირითადი skill"],
+  "build_ideas": ["Relation-classifier toy memories-ზე"],
   "learn_next": ["ROAM++ relation taxonomy"],
-  "opportunities": ["Reproduce ROAM++ baselines for a blog post"],
-  "things_to_ignore": ["Weekend hype threads"],
+  "opportunities": ["ROAM++ baselines-ის გამეორება blog post-თვის"],
+  "things_to_ignore": ["უქვეითენდო hype thread-ები"],
   "candidate_analyses": [
     {
       "title": "ROAM++: Self-Organizing Agent Memory via Learned Relations",
@@ -752,14 +752,14 @@ SIMULATED_REPORT_JSON = """
       "importance_score": 9,
       "classification": ["Real Technical Skill", "Long-Term Career Value"],
       "verified_facts": [
-        "+34.2pp on LoCoMo",
+        "+34.2pp LoCoMo-ზე",
         "-22% retrieval latency",
-        "Code released"
+        "კოდი გამოქვეყნებულია"
       ],
-      "interpretation": "Learned memory organization will become the default.",
-      "uncertainty": "Single-team benchmark design.",
-      "counter_argument": "Academic workloads may not transfer to production agents.",
-      "actionable_takeaway": "Study the relation taxonomy before your next memory design.",
+      "interpretation": "ნასწავლი memory ორგანიზაცია default გახდება.",
+      "uncertainty": "ერთი გუნდის benchmark design.",
+      "counter_argument": "აკადემიური workloads შეიძლება production agents-ზე არ გადავიდეს.",
+      "actionable_takeaway": "შეისწავლე relation taxonomy შემდეგ memory design-მდე.",
       "should_send": true
     },
     {
@@ -770,11 +770,11 @@ SIMULATED_REPORT_JSON = """
       "factuality_level": "corroborated",
       "importance_score": 8,
       "classification": ["Real Technical Skill", "Real Business Opportunity"],
-      "verified_facts": ["Apache-2.0", "MCP client included"],
-      "interpretation": "SDK consolidation lowers agent development barriers.",
-      "uncertainty": "Project maturity unknown.",
-      "counter_argument": "Early SDKs often abandon abstractions quickly.",
-      "actionable_takeaway": "Prototype one tool-serving agent with it this week.",
+      "verified_facts": ["Apache-2.0", "MCP client შედის"],
+      "interpretation": "SDK კონსოლიდაცია ამცირებს agent development-ის ბარიერს.",
+      "uncertainty": "პროექტის maturity უცნობია.",
+      "counter_argument": "ადრეული SDK-ები ხშირად სწრაფად ტოვებენ abstractions-ს.",
+      "actionable_takeaway": "ამ კვირაში ააწყვე ერთი tool-serving agent prototype.",
       "should_send": true
     }
   ]

@@ -37,12 +37,12 @@ CHUNK_PAUSE_SECONDS = 1.1
 DIVIDER = "-------------------------"
 
 SECTION_TITLES = {
-    "trends": "TRENDS",
-    "strategic_implications": "STRATEGIC IMPLICATIONS",
-    "build_ideas": "BUILD IDEAS",
-    "learn_next": "LEARN NEXT",
-    "opportunities": "OPPORTUNITIES",
-    "things_to_ignore": "IGNORE / LOW VALUE",
+    "trends": "ტრენდები",
+    "strategic_implications": "სტრატეგიული დასკვნები",
+    "build_ideas": "საკონსტრუქციო იდეები",
+    "learn_next": "რა ვისწავლოთ შემდეგ",
+    "opportunities": "შესაძლებლობები",
+    "things_to_ignore": "იგნორი / დაბალი ღირებულება",
 }
 
 def escape_html(text) -> str:
@@ -71,18 +71,21 @@ def _impact_score(event) -> float:
 
 
 def _resource_label(url: str) -> str:
-    """Short descriptive label for a verified-resource link."""
+    """Short descriptive label for a verified-resource link.
+
+    Georgian UI label; the URL itself stays a technical resource.
+    """
     low = (url or "").lower()
     if "arxiv.org" in low or "huggingface.co/papers" in low:
-        return "Research paper"
+        return "სამეცნიერო ნაშრომი"
     if "github.com" in low:
-        return "Source code"
+        return "კოდი"
     if "docs." in low or "/docs" in low:
-        return "Documentation"
+        return "დოკუმენტაცია"
     if "releases" in low or "/blog" in low or "changelog" in low:
-        return "Release notes"
+        return "რელიზის შენიშვნები"
     domain = urlparse(url).netloc.replace("www.", "")
-    return f"Official source ({domain})" if domain else "Official source"
+    return f"ოფიციალური წყარო ({domain})" if domain else "ოფიციალური წყარო"
 
 
 def _clip(text: str, limit: int) -> str:
@@ -129,38 +132,38 @@ def format_event(index: int, event) -> str:
         executive.append(escape_html(event.tldr))
     context = []
     if event.what_happened:
-        context.append(f"What happened: {escape_html(event.what_happened)}")
+        context.append(f"რა მოხდა: {escape_html(event.what_happened)}")
     if event.what_changed:
-        context.append(f"What changed: {escape_html(event.what_changed)}")
+        context.append(f"რა შეიცვალა: {escape_html(event.what_changed)}")
     if event.why_it_matters:
-        context.append(f"Why it matters: {escape_html(event.why_it_matters)}")
+        context.append(f"რატომ არის მნიშვნელოვანი: {escape_html(event.why_it_matters)}")
     # Fact vs interpretation and what-could-be-wrong keep the critical
     # analysis visible while staying collapsed on mobile.
     if getattr(event, "interpretation", None):
         context.append(
-            f"Fact vs interpretation: {escape_html(event.interpretation)}"
+            f"ფაქტი vs ინტერპრეტაცია: {escape_html(event.interpretation)}"
         )
     if getattr(event, "counter_argument", None):
         context.append(
-            f"What could be wrong: {escape_html(event.counter_argument)}"
+            f"რა შეიძლება იყოს არასწორი: {escape_html(event.counter_argument)}"
         )
     if context:
         executive.append(expandable_blockquote("\n".join(context)))
     if executive:
-        blocks.append("\n".join(["<b>Executive Impact</b>"] + executive))
+        blocks.append("\n".join(["<b>აღმასრულებელი შეჯამება</b>"] + executive))
 
     # --- 2. Key Technical Breakdown ---
     tech = []
     if event.technical_architecture:
-        tech.append("<b>Architecture and Specs</b>")
+        tech.append("<b>არქიტექტურა და სპეციფიკაციები</b>")
         tech.extend(f"- {escape_html(item)}" for item in event.technical_architecture)
     if event.technical_details:
         if tech:
             tech.append("")
-        tech.append("<b>Implementation Logic</b>")
+        tech.append("<b>იმპლემენტაციის ლოგიკა</b>")
         tech.extend(f"- {escape_html(item)}" for item in event.technical_details)
     if tech:
-        blocks.append("\n".join(["<b>Key Technical Breakdown</b>"] + tech))
+        blocks.append("\n".join(["<b>ტექნიკური ანალიზი</b>"] + tech))
 
     # --- 3. Actionable Takeaways ---
     takeaways = []
@@ -169,14 +172,14 @@ def format_event(index: int, event) -> str:
     action_type = (event.action_type or "TRACK").upper()
     if event.action:
         takeaways.append(
-            f"- <b>Apply ({action_type})</b>: {escape_html(event.action)}"
+            f"- <b>გამოყენება ({action_type})</b>: {escape_html(event.action)}"
         )
     if event.potential_impact:
         takeaways.append(
-            f"- <b>Commercial potential</b>: {escape_html(event.potential_impact)}"
+            f"- <b>კომერციული პოტენციალი</b>: {escape_html(event.potential_impact)}"
         )
     if takeaways:
-        blocks.append("\n".join(["<b>Actionable Takeaways</b>"] + takeaways))
+        blocks.append("\n".join(["<b>პრაქტიკული დასკვნები</b>"] + takeaways))
 
     # --- 4. Verified Resources ---
     resources = [
@@ -185,7 +188,7 @@ def format_event(index: int, event) -> str:
     ]
     for url in event.supporting_urls[:4]:
         resources.append(f'- <a href="{escape_html(url)}">{_resource_label(url)}</a>')
-    blocks.append("\n".join(["<b>Verified Resources</b>"] + resources))
+    blocks.append("\n".join(["<b>გადამოწმებული რესურსები</b>"] + resources))
 
     return "\n\n".join(blocks)
 
@@ -223,9 +226,8 @@ def build_telegram_blocks(report) -> list[str]:
 
     # --- Header card ---
     header = [
-        "<b>AI INTELLIGENCE REPORT</b>",
-        f"{_today()} · <b>{len(report.events)}</b> curated "
-        f"event{'s' if len(report.events) != 1 else ''}",
+        "<b>AI დაზვერვის რეპორტი</b>",
+        f"{_today()} · <b>{len(report.events)}</b> შერჩეული ივენთი",
     ]
 
     if report.executive_summary:
@@ -233,7 +235,7 @@ def build_telegram_blocks(report) -> list[str]:
 
     # In-this-issue index: the whole report scannable in seconds
     if len(report.events) > 1:
-        header.append("<b>In this issue</b>")
+        header.append("<b>ამ ნომერში</b>")
         for i, event in enumerate(report.events, start=1):
             header.append(f"  {i}. {_clip(event.title, 72)}")
 
@@ -260,7 +262,7 @@ def build_telegram_blocks(report) -> list[str]:
 
     blocks.append(
         f"<i>AI Research Bot · {_today()} · "
-        f"{len(report.events)} events</i>"
+        f"{len(report.events)} ივენთი</i>"
     )
 
     return blocks
@@ -285,33 +287,35 @@ def build_no_news_message(state: dict | None = None, candidates_reviewed: int = 
 
     if candidates_reviewed > 0:
         reason = (
-            f"{candidates_reviewed} candidate{'s were' if candidates_reviewed != 1 else ' was'} "
-            "reviewed today — none met the quality thresholds "
-            "(importance / relevance / confidence)."
+            f"დღეს განხილული იყო {candidates_reviewed} კანდიდატი — "
+            "არცერთმა ვერ გაიარა ხარისხის ზღვარი "
+            "(მნიშვნელობა / რელევანტურობა / სანდოობა)."
         )
     else:
         reason = (
-            "All monitored sources were scanned — nothing new surfaced "
-            "(everything already seen or below the quality bar)."
+            "ყველა მონიტორირებადი წყარო შემოწმდა — ახალი არაფერი "
+            "გამოჩნდა (ყველაფერი უკვე ნანახია ან ხარისხის ზღვარს "
+            "ქვემოთაა)."
         )
 
     tracked_events = len(state.get("events", []))
     tracked_topics = len(state.get("topics", {}))
 
     lines = [
-        "<b>AI INTELLIGENCE REPORT</b>",
-        f"<b>No new intelligence today</b>",
+        "<b>AI დაზვერვის რეპორტი</b>",
+        "<b>დღეს ახალი ინტელექტი არ არის</b>",
         f"{_today()}",
         "",
         expandable_blockquote(escape_html(reason)),
         "",
         DIVIDER,
         "",
-        "Sources: arXiv · Hugging Face Papers · web search",
-        f"Memory: {tracked_events} delivered events across "
-        f"{tracked_topics} topic{'s' if tracked_topics != 1 else ''}",
+        "წყაროები: arXiv · Hugging Face Papers · web search",
+        f"მეხსიერება: {tracked_events} მიწოდებული ივენთი, "
+        f"{tracked_topics} თემა",
         "",
-        "<i>AI Research Bot · daily monitor — next check tomorrow</i>",
+        "<i>AI Research Bot · ყოველდღიური მონიტორინგი — შემდეგი "
+        "შემოწმება ხვალ</i>",
     ]
     return "\n".join(lines)
 
@@ -324,16 +328,16 @@ def build_delayed_message(reason: str) -> str:
     a short notice instead of silence.
     """
     return "\n".join([
-        "<b>AI INTELLIGENCE REPORT</b>",
-        "<b>Today's report is delayed</b>",
+        "<b>AI დაზვერვის რეპორტი</b>",
+        "<b>დღევანდელი რეპორტი დაგვიანებულია</b>",
         f"{_today()}",
         "",
         expandable_blockquote(_clip(reason, 300)),
         "",
         DIVIDER,
         "",
-        "<i>The run will retry automatically tomorrow — or trigger "
-        "it now from GitHub Actions.</i>",
+        "<i>რანი ხვალ ავტომატურად განმეორდება — ან გაუშვი ახლა "
+        "GitHub Actions-იდან.</i>",
     ])
 
 
