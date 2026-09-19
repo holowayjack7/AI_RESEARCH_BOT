@@ -124,7 +124,14 @@
     "https://aws.amazon.com/blogs/machine-learning/abnormal-ai-amazon-bedrock-agentcore-for-agentic-email-security-at-scale",
     "https://cloud.google.com/blog/topics/systems/using-ai-agents-to-secure-google-infrastructure",
     "https://huggingface.co/papers/2609.19671",
-    "https://arxiv.org/abs/2609.20807"
+    "https://arxiv.org/abs/2609.20807",
+    "https://arxiv.org/html/2601.07136v1",
+    "https://www.reuters.com/business/anthropic-says-claude-now-leads-quarter-work-building-its-next-ai-models-2026-09-17",
+    "https://www.reuters.com/business/retail-consumer/hallucinating-ai-chatbots-wiping-out-humanity-how-did-we-get-here-2026-09-15",
+    "https://aws.amazon.com/blogs/machine-learning/how-mrh-trowe-enabled-secure-self-service-ai-agents-in-financial-services",
+    "https://huggingface.co/papers/2609.20423",
+    "https://huggingface.co/papers/2609.20612",
+    "https://huggingface.co/papers/2609.19745"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -217,7 +224,13 @@
     "evt-bedrock-agentcore-scratchpad",
     "evt-google-mantis-agentic-security",
     "evt-when2think-adaptive-reasoning",
-    "evt-score-centering-rl-tim"
+    "evt-score-centering-rl-tim",
+    "evt-multi-agent-empirical-study-issues",
+    "evt-anthropic-internal-claude-engineering-scale",
+    "evt-aws-bedrock-agentcore-mrh-trowe",
+    "evt-wevisdoc-robust-document-parsing",
+    "evt-opsd-privileged-reasoning-distillation",
+    "evt-vision-rl2-mllm-region-perception"
   ],
   "events": [
     {
@@ -3539,6 +3552,301 @@
       "interpretation": "RL fine-tuning-ის დროს rollout ინფერენსისთვის ხშირად იყენებენ vLLM/TensorRT-ს კვანტიზაციით, რაც ქმნის სისტემურ ცდომილებას წვრთნის დროს; score centering ამ პრობლემას მარტივად აგვარებს.",
       "uncertainty": "არ არის ნაჩვენები მეთოდის ეფექტი 70B+ პარამეტრის მქონე frontier მოდელების სრულმასშტაბიან PPO/GRPO გაშვებებზე.",
       "counter_argument": "ინფერენსისა და წვრთნის ძრავების იდენტურ FP16/BF16 სიზუსტეზე შენარჩუნება სრულად გამორიცხავს TIM-ს, თუ compute ბიუჯეტი იძლევა ამის საშუალებას."
+    },
+    {
+      "event_id": "evt-multi-agent-empirical-study-issues",
+      "title": "Multi-Agent Frameworks-ის პირველი მასშტაბური ემპირიული კვლევა: არქიტექტურული ხარვეზები და Maintenance",
+      "category": "აგენტების არქიტექტურა და საიმედოობა",
+      "primary_url": "https://arxiv.org/html/2601.07136v1",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 92,
+      "tldr": "მასშტაბურმა კვლევამ გამოავლინა, რომ LangChain-ის, CrewAI-სა და AutoGen-ის მთავარი სისუსტე agent coordination და infrastructure issues-ია, რაც აფერხებს production საიმედოობას.",
+      "what_happened": "LSU-სა და University of Kentucky-ის მკვლევრებმა გამოაქვეყნეს 8 წამყვანი multi-agent framework-ის ანალიზი 42K commit-ზე დაყრდნობით.",
+      "what_changed": "ზედაპირული ვარაუდების ნაცვლად მივიღეთ ზუსტი მეტრიკები: აგენტური სისტემების ხარვეზების 10% უშუალოდ კოორდინაციაზე მოდის.",
+      "why_it_matters": "საკუთარი agent loops აწყობისას თავიდან აიცილებთ მესამე მხარის მყიფე აბსტრაქციებს და აქცენტს გააკეთებთ საიმედო orchestration-ზე.",
+      "key_takeaways": [
+        "ფრეიმვორკების განვითარება ორიენტირებულია ახალ ფუნქციებზე და არა შეცდომების გასწორებაზე.",
+        "Agent coordination შეადგენს დაფიქსირებული ხარვეზების მეათედს.",
+        "Infrastructure და environment isolation წარმოადგენს მეორე უდიდეს ტექნიკურ ბარიერს."
+      ],
+      "technical_architecture": [
+        "Orchestration Layer: AutoGen, CrewAI და LangChain core abstractions.",
+        "State and Execution: async dispatch, retry queues და isolated sandboxes."
+      ],
+      "technical_details": [
+        "Bugs: 22% total issues",
+        "Infrastructure: 14% issues",
+        "Coordination: 10% issues",
+        "Resolution time: 1-14 days"
+      ],
+      "potential_impact": "ინჟინრები გადავლენ მინიმალისტურ, მკაცრად ტიპიზირებულ deterministic graph loops-ზე bloated frameworks-ის ნაცვლად.",
+      "action_type": "LEARN",
+      "action": "გააანალიზეთ თქვენი agent loops კოდი და შეამცირეთ დამოკიდებულება მესამე მხარის multi-agent wrapper ბიბლიოთეკებზე.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "გაანალიზდა 42,000 commit და 4,700 გადაჭრილი issue რვა წამყვან MAS ფრეიმვორკში (LangChain, CrewAI, AutoGen).",
+        "ცვლილებების 40.8% არის perfective commits (ახალი ფუნქციონალი), ხოლო corrective maintenance შეადგენს მხოლოდ 27.4%-ს.",
+        "ყველაზე ხშირი პრობლემებია bugs (22%), infrastructure (14%) და agent coordination challenges (10%)."
+      ],
+      "interpretation": "Multi-Agent ეკოსისტემა განიცდის ტექნიკურ ვალს: დეველოპერები ჩქარობენ ახალი ფუნქციების დამატებას, რის გამოც runtime ინფრასტრუქტურა და კოორდინაციის მექანიზმები რჩება მყიფე.",
+      "uncertainty": "კვლევა ეყრდნობა ღია კოდის რეპოზიტორიებს და შესაძლოა სრულად არ ასახავდეს დახურულ enterprise სისტემებს.",
+      "counter_argument": "სწრაფი ევოლუცია აუცილებელია ახალი LLM API-ების მხარდასაჭერად, ხოლო სტაბილიზაცია ხშირად მეორეხარისხოვანია ადრეულ ეტაპზე."
+    },
+    {
+      "event_id": "evt-anthropic-internal-claude-engineering-scale",
+      "title": "Anthropic-ის შიდა ავტომატიზაცია: 30,000 პარალელური აგენტი და 8x კოდის გენერაცია",
+      "category": "AI საინჟინრო ინსტრუმენტები და აგენტები",
+      "primary_url": "https://www.reuters.com/business/anthropic-says-claude-now-leads-quarter-work-building-its-next-ai-models-2026-09-17",
+      "supporting_urls": [
+        "https://www.reuters.com/business/retail-consumer/hallucinating-ai-chatbots-wiping-out-humanity-how-did-we-get-here-2026-09-15"
+      ],
+      "importance": 9,
+      "relevance": 9,
+      "actionability": 7,
+      "source_quality": 8,
+      "confidence": 95,
+      "tldr": "Anthropic-ში 30,000 Claude აგენტი აწარმოებს შიდა კოდის უმრავლესობას 8x სიჩქარით, ხოლო გაფილტვრის მაჩვენებელი 1/47,000 მოქმედებაა.",
+      "what_happened": "Anthropic-მა ოფიციალურად გაასაჯაროვა შიდა R&D მეტრიკები, სადაც Claude Code და აგენტური ინფრასტრუქტურა მოდელების შექმნის ძირითადი მამოძრავებელი გახდა.",
+      "what_changed": "AI გადავიდა მარტივი code completion რეჟიმიდან კომპლექსურ task orchestration-ზე, რომელიც დღეების და კვირების სამუშაოს ავტონომიურად ასრულებს.",
+      "why_it_matters": "დეველოპერებისთვის უმთავრესი უნარი ხდება არა ხელით სინტაქსის წერა, არამედ აგენტების harness-ის, ტესტების და evaluation pipelines-ის აწყობა.",
+      "key_takeaways": [
+        "AI აგენტები მართავენ კომპანიის R&D ამოცანების მეოთხედს.",
+        "ინჟინრების კოდის გამტარუნარიანობა გაიზარდა 8-ჯერ.",
+        "Execution guardrails ბლოკავს საშუალოდ 1 მოქმედებას 47,000 გადაწყვეტილებიდან."
+      ],
+      "technical_architecture": [
+        "Harness: Claude Code CLI და automated task verification suites.",
+        "Runtime Filtering: automated pre-execution screening for safe tool calling."
+      ],
+      "technical_details": [
+        "30,000 parallel agents",
+        "1 in 47,000 actions blocked",
+        "8x code volume shipped",
+        "Reliability doubling: 4 months"
+      ],
+      "potential_impact": "პროგრამული ინჟინერიის გუნდები გარდაიქმნებიან აგენტების ზედამხედველ და verification სპეციალისტებად.",
+      "action_type": "APPLY",
+      "action": "დააინსტალირეთ CLI coding agent და დანერგეთ მკაცრი automated test suite მისი pull request-ების შესამოწმებლად.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Business Opportunity",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "Claude ხელმძღვანელობს Anthropic-ის R&D სამუშაოების 26%-ს, რაც მარტის 1%-დან გაიზარდა.",
+        "30,000 AI აგენტი ერთდროულად ასრულებს კვლევით და საინჟინრო ამოცანებს შიდა პლატფორმაზე.",
+        "ერთი მილიარდი გადაწყვეტილებიდან სისტემამ დაბლოკა დაახლოებით ყოველი 1/47,000 ქმედება.",
+        "Claude Code-ის დახმარებით ინჟინრები აგზავნიან 8-ჯერ მეტ კოდს კვარტალურად, ვიდრე 2021-2025 წლებში."
+      ],
+      "interpretation": "მოდელების მწარმოებლები გადავიდნენ მასშტაბურ self-improvement ციკლებზე, სადაც პროგრამული უზრუნველყოფის და კვლევის დიდი ნაწილი აგენტურ harness-ში სრულდება.",
+      "uncertainty": "უცნობია აგენტების მიერ დაწერილი კოდის გრძელვადიანი არქიტექტურული ხარისხი და ტექნიკური ვალის ზრდის ტემპი.",
+      "counter_argument": "კოდის რაოდენობის 8x ზრდა არ ნიშნავს სისტემური ინოვაციის ან ალგორითმული ეფექტურობის პროპორციულ ზრდას."
+    },
+    {
+      "event_id": "evt-aws-bedrock-agentcore-mrh-trowe",
+      "title": "MRH Trowe & AWS Bedrock AgentCore: Enterprise Self-Service აგენტების არქიტექტურა $14/Seat ფასად",
+      "category": "აგენტების ინფრასტრუქტურა და Runtime",
+      "primary_url": "https://aws.amazon.com/blogs/machine-learning/how-mrh-trowe-enabled-secure-self-service-ai-agents-in-financial-services",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 9,
+      "source_quality": 10,
+      "confidence": 96,
+      "tldr": "MRH Trowe-მ ააწყო enterprise აგენტური სისტემა 400 მომხმარებლისთვის Bedrock AgentCore-ით, Strands-ითა და LibreChat-ით სულ რაღაც $14/seat თვიური ხარჯით.",
+      "what_happened": "AWS-მა გამოაქვეყნა ქეისი ფინანსურ სექტორში self-service AI აგენტების უსაფრთხო, ცენტრალიზებული დანერგვის შესახებ.",
+      "what_changed": "ფრაგმენტული ჩატბოტების ნაცვლად შეიქმნა ცენტრალიზებული platform engineering შაბლონი multi-step workflows და internal data integration-ისთვის.",
+      "why_it_matters": "ახალგაზრდა დეველოპერისთვის ეს არის ზუსტი არქიტექტურული blueprint, თუ როგორ უნდა აიგოს და გაიყიდოს B2B AI აგენტების სერვისი.",
+      "key_takeaways": [
+        "Bedrock AgentCore და Strands უზრუნველყოფს institutional data integration-ს.",
+        "LibreChat გამოიყენება როგორც მზა, configurable enterprise ინტერფეისი.",
+        "საწარმოო ხარჯი ოპტიმიზაციამდე შეადგენს $14-ს მომხმარებელზე თვეში."
+      ],
+      "technical_architecture": [
+        "Frontend: LibreChat open-source UI with RBAC.",
+        "Orchestration: Amazon Bedrock AgentCore and Strands Agents engine.",
+        "Data Layer: internal document repositories and governed API connectors."
+      ],
+      "technical_details": [
+        "Cost: $14/seat/month",
+        "Scale: 400 production users",
+        "Target saving: 40% scaling",
+        "Compliance: German FinSec"
+      ],
+      "potential_impact": "B2B აგენტების ბაზარზე სტანდარტი ხდება მზა open-source UI-სა და cloud agent framework-ების ინტეგრაცია.",
+      "action_type": "BUILD",
+      "action": "გაუშვით ლოკალურად LibreChat Docker-ით და დაუკავშირეთ Bedrock API ან ლოკალური LiteLLM proxy სერვერი.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Real Business Opportunity"
+      ],
+      "verified_facts": [
+        "გერმანულმა სადაზღვევო ბროკერმა MRH Trowe-მ დანერგა self-service აგენტები 400 თანამშრომლისთვის პირველივე თვეში.",
+        "გამოყენებული არქიტექტურა აერთიანებს Strands Agents-ს, Amazon Bedrock AgentCore-სა და LibreChat-ს.",
+        "პირველი თვის production საოპერაციო ხარჯი იყო დაახლოებით $14 თითო სამუშაო ადგილზე (seat).",
+        "დაგეგმილია ინფრასტრუქტურის ხარჯების 40%-ით შემცირება scheduled scaling-ის საშუალებით."
+      ],
+      "interpretation": "LibreChat UI-ს, Bedrock AgentCore orchestration-ისა და 오픈-source runtime-ის კომბინაცია ქმნის ეკონომიურ, რეგულირებად შაბლონს B2B აგენტებისთვის.",
+      "uncertainty": "კონკრეტული დოკუმენტების დამუშავების latency და vector database სინქრონიზაციის დეტალები სრულად არ არის გაწერილი.",
+      "counter_argument": "ფინანსურ სექტორში მონაცემთა მკაცრი რეგულაციები ხშირად მოითხოვს სრულ on-premise იზოლაციას და არა hybrid cloud ინფრასტრუქტურას."
+    },
+    {
+      "event_id": "evt-wevisdoc-robust-document-parsing",
+      "title": "WeVisDoc: ორეტაპიანი End-to-End მოდელი დოკუმენტების სტრუქტურირებული პარსინგისთვის RAG-ში",
+      "category": "RAG, Retrieval და აგენტის მეხსიერება",
+      "primary_url": "https://huggingface.co/papers/2609.20423",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "Tencent-მა წარადგინა WeVisDoc (2B/4B), რომელიც OmniDocBench-ზე 95.38 ქულას აღწევს და წყვეტს დეგრადირებული დოკუმენტების პარსინგის პრობლემას RAG-ისთვის.",
+      "what_happened": "გამოქვეყნდა WeVisDoc არქიტექტურა და კოდი, რომელიც რთულ განლაგებებსა და ხარვეზიან დოკუმენტებს პირდაპირ სტრუქტურირებულ ტექსტად აქცევს.",
+      "what_changed": "ტრადიციული OCR და heuristics-ზე დაფუძნებული პარსერები იცვლება მცირე ზომის vision-language parser მოდელებით.",
+      "why_it_matters": "საკუთარ RAG პროექტებში სუფთა Markdown/JSON მონაცემების მიღება PDF და სკანირებული ფაილებიდან მკვეთრად ზრდის retrieval სიზუსტეს.",
+      "key_takeaways": [
+        "WeVisDoc-4B პირველ ადგილს იკავებს OmniDocBench v1.6 რეიტინგში.",
+        "ორეტაპიანი ტრენინგი აქტიურად ასწორებს შეცდომებს რეალურ, უხარისხო სკანირებებზე.",
+        "2B და 4B ზომები საშუალებას იძლევა მოდელი გაეშვას ლოკალურ ინფრასტრუქტურაზე."
+      ],
+      "technical_architecture": [
+        "Stage I: Broad semantic and appearance coverage with degradation synthesis.",
+        "Stage II: Residual error probe on fixed visual-structural clusters.",
+        "Model Backbone: End-to-end compact VLM (2B and 4B parameters)."
+      ],
+      "technical_details": [
+        "OmniDocBench v1.6: 95.38",
+        "PureDocBench mean: 75.54",
+        "Degraded gain: +4.03 pts",
+        "Sizes: 2B and 4B"
+      ],
+      "potential_impact": "RAG სისტემების chunking ხარისხი საგრძნობლად გაიზრდება, რადგან დოკუმენტის ვიზუალური იერარქია უცვლელად შენარჩუნდება.",
+      "action_type": "TRY",
+      "action": "გადმოწერეთ WeVisDoc HuggingFace-იდან და დატესტეთ რთული ცხრილების შემცველ ქართულ/ინგლისურ PDF ფაილებზე.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill"
+      ],
+      "verified_facts": [
+        "WeVisDoc-4B აღწევს 95.38 ქულას OmniDocBench v1.6-ზე და 75.54 საშუალო ქულას PureDocBench-ის სამ ტრეკზე.",
+        "მოდელი იყენებს ორეტაპიან მონაცემთა ჩარჩოს: ჰეტეროგენული სინთეზი და residual error probe დიაგნოსტიკა.",
+        "Stage II აუმჯობესებს 4B მოდელის შედეგს 4.03 ქულით რეალურ დეგრადირებულ დოკუმენტებზე (Real Degraded track).",
+        "ხელმისაწვდომია 2B და 4B პარამეტრიანი ეფექტური მოდელების სახით."
+      ],
+      "interpretation": "RAG pipelines-ის მთავარი bottleneck დოკუმენტების ცუდი OCR/პარსინგია; WeVisDoc-ის 2B/4B კომპაქტური მოდელები იძლევა ლოკალური parsing სერვისის აწყობის საშუალებას.",
+      "uncertainty": "უცნობია ინფერენსის ზუსტი throughput (გვერდი/წამში) სამომხმარებლო GPU-ებზე (მაგ. RTX 4090).",
+      "counter_argument": "Frontier vision-language მოდელებს (მაგ. Gemini Flash) უკვე აქვთ დოკუმენტების მაღალი დონის აღქმა დამოუკიდებელი პარსერების გარეშეც."
+    },
+    {
+      "event_id": "evt-opsd-privileged-reasoning-distillation",
+      "title": "On-Policy Self-Distillation: პრივილეგირებული ინფორმაციის რეალური როლი მცირე მოდელების მსჯელობაში",
+      "category": "LLM კვლევა და Inference-ის ოპტიმიზაცია",
+      "primary_url": "https://huggingface.co/papers/2609.20612",
+      "supporting_urls": [],
+      "importance": 7,
+      "relevance": 8,
+      "actionability": 7,
+      "source_quality": 8,
+      "confidence": 88,
+      "tldr": "ახალმა კვლევამ აჩვენა, რომ Qwen 3-1.7B-სა და SmolLM 3-3B-ში reasoning-ის დისტილაციისთვის გარე გადაწყვეტებზე მეტად თავისუფალი თვითგენერაციაა ეფექტური.",
+      "what_happened": "NUS-ის მკვლევრებმა შეისწავლეს On-Policy Self-Distillation (OPSD) მექანიზმები და გამოაქვეყნეს AMPLE-Math 5.3K ამოცანით.",
+      "what_changed": "დაიმსხვრა მითი, რომ მცირე მოდელებს ყოველთვის სჭირდებათ გიგანტური მოდელების მიერ გენერირებული მზა გადაწყვეტების (privileged references) კოპირება.",
+      "why_it_matters": "1B-3B ლოკალური მოდელების fine-tuning-ისას შეგიძლიათ მკვეთრად შეამციროთ synthetic data generation-ის ხარჯები reference-free OPSD-ის გამოყენებით.",
+      "key_takeaways": [
+        "Reference-free distillation მცირე მოდელებში აღწევს თითქმის იგივე შედეგს, რასაც სრული privileged solutions.",
+        "გრძელი CoT rollouts წვრთნის დროს ზოგჯერ ამცირებს მოდელის სტაბილურობას.",
+        "დისტილაცია აუმჯობესებს წვდომას მოდელში უკვე არსებულ latent ცოდნაზე."
+      ],
+      "technical_architecture": [
+        "Teacher-Student Setup: Frozen thinking teacher supervising direct response student.",
+        "Benchmark: AMPLE-Math with 5,319 shared-answer paired reasoning traces."
+      ],
+      "technical_details": [
+        "Tested on: Qwen 3-1.7B",
+        "Tested on: SmolLM 3-3B",
+        "Trace gain: +2% at step 50",
+        "Evaluation: thinking-enabled"
+      ],
+      "potential_impact": "მცირე აგენტური მოდელების ლოკალური post-training გახდება გაცილებით იაფი და ხელმისაწვდომი consumer აპარატურაზე.",
+      "action_type": "LEARN",
+      "action": "გაეცანით OPSD მეთოდოლოგიას და გამოსცადეთ reference-free rollouts პატარა Qwen მოდელის fine-tuning-ისას.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill"
+      ],
+      "verified_facts": [
+        "შეიქმნა AMPLE-Math ბენჩმარკი 5,319 მათემატიკური ამოცანით და 6 მსჯელობის ხედვით (reasoning views).",
+        "Qwen 3-1.7B-ში reference-free დისტილაცია პასუხისმგებელია გაუმჯობესების უდიდეს ნაწილზე thinking-enabled შეფასებისას.",
+        "SmolLM 3-3B-ში სრული reasoning traces-ის დამატებამ გააუმჯობესა სიზუსტე მხოლოდ 2 პროცენტული პუნქტით 50-ე ბიჯზე.",
+        "მოკლე direct-response rollouts-ის ჩანაცვლება გრძელი thinking rollouts-ით წვრთნისას ხშირად აუარესებს შედეგებს ორივე ოჯახში."
+      ],
+      "interpretation": "მცირე მოდელებს უკვე აქვთ ლატენტური მსჯელობის უნარი; OPSD-ის მთავარი ეფექტი ამ პარამეტრებზე წვდომის გააქტიურებაა და არა ახალი ლოგიკის ჩაწერა.",
+      "uncertainty": "კვლევა შემოიფარგლება მათემატიკური ამოცანებით და შესაძლოა განსხვავებული დინამიკა გამოავლინოს coding tasks-ზე.",
+      "counter_argument": "უფრო რთულ multi-step დავალებებში პრივილეგირებული CoT (Chain-of-Thought) ტრეკი შესაძლოა შეუცვლელი იყოს."
+    },
+    {
+      "event_id": "evt-vision-rl2-mllm-region-perception",
+      "title": "Vision-RL2: Region-Level Policy Optimization მულტიმოდალური მოდელების ტოკენების ოპტიმიზაციისთვის",
+      "category": "AI Research და RL წვრთნა",
+      "primary_url": "https://huggingface.co/papers/2609.19745",
+      "supporting_urls": [],
+      "importance": 7,
+      "relevance": 8,
+      "actionability": 7,
+      "source_quality": 8,
+      "confidence": 87,
+      "tldr": "Vision-RL2 იყენებს RL-ს ვიზუალური რეგიონების შესარჩევად, რაც MLLM-ებს საშუალებას აძლევს შეამცირონ ტოკენების ხარჯი ისე, რომ არ დაკარგონ წვრილმანი დეტალები.",
+      "what_happened": "მკვლევრებმა შეიმუშავეს Vision-RL2, რომელიც გამოსახულებას ყოფს coarse localization-ად და fine-grained recognition-ად reinforcement learning-ის დახმარებით.",
+      "what_changed": "მთლიანი სურათის უაზროდ მაღალ რეზოლუციაში გაგზავნის ნაცვლად, მოდელი სწავლობს მხოლოდ საჭირო რეგიონების დინამიურ გადიდებას.",
+      "why_it_matters": "GUI და Desktop Automation აგენტების აწყობისას ეს პრინციპი 3-4-ჯერ ამცირებს inference latency-სა და API ტოკენების ფასს.",
+      "key_takeaways": [
+        "ობიექტის პოვნა (localization) 3-4-ჯერ უფრო ტოლერანტულია შეკუმშვის მიმართ, ვიდრე ამოცნობა.",
+        "RL ჯილდო გამოითვლება გაყინული MLLM-ის პასუხის ალბათობის ცვლილებით.",
+        "მეთოდი არ საჭიროებს ძვირადღირებულ ხელით bounding box ანოტაციებს."
+      ],
+      "technical_architecture": [
+        "Architecture: Lightweight proposal network paired with frozen reader MLLM.",
+        "Policy: Subtractive and additive likelihood optimization objectives.",
+        "Encoding: Sparse token allocation filtering redundant background patches."
+      ],
+      "technical_details": [
+        "Compression: 3-4x on RoI",
+        "Supervision: Annotation-free RL",
+        "Reward: Target likelihood delta",
+        "Benchmarked on: 6 vision tasks"
+      ],
+      "potential_impact": "Computer-use აგენტები შეძლებენ მაღალი სიხშირით ეკრანის ანალიზს მინიმალური ტოკენური დანახარჯით.",
+      "action_type": "TRACK",
+      "action": "დააკვირდით open-source vision agent harnesses-ში sparse visual encoding-ის და selective cropping-ის დანერგვას.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill"
+      ],
+      "verified_facts": [
+        "ვიზუალურ ლოკალიზაციას სჭირდება 3-დან 4-ჯერ ნაკლები ტოკენი (stronger token compression), ვიდრე ამოცნობას (recognition).",
+        "Vision-RL2 ოპტიმიზაციას უკეთებს proposal network-ს region-level reinforcement learning-ით რეგიონალური ანოტაციების გარეშე.",
+        "გაყინული MLLM აფასებს რეგიონებს იმის მიხედვით, თუ როგორ ცვლის კონკრეტული არეს წაშლა სწორი პასუხის likelihood-ს.",
+        "სისტემა იყენებს sparse encoding-ს, რაც გამორიცხავს ფონურ ტოკენებს და ზრდის ფოკუსს სამიზნე ობიექტზე."
+      ],
+      "interpretation": "Computer use და vision agents ხშირად იჭედება context window-ს გადავსებით მაღალი რეზოლუციის სქრინშოტების გამო; Vision-RL2 ჭრის ამ ხარჯს ლოკალიზაციის გაფილტვრით.",
+      "uncertainty": "უცნობია, რამდენად მარტივია ამ პოლიტიკის ინტეგრაცია უკვე არსებულ commercial vision APIs-ში (მაგ. OpenAI or Anthropic tool calls).",
+      "counter_argument": "აპარატურული აჩქარების (FP4, FlashAttention) პირობებში ტოკენების რაოდენობა მალე შესაძლოა აღარ იყოს კრიტიკული შეზღუდვა."
     }
   ],
   "topics": {
@@ -3618,12 +3926,14 @@
     "AI Evaluation / Agent Reliability": 1,
     "AI Coding Tools / Agent Evaluation": 1,
     "Open Source AI / Ecosystem Trends": 1,
-    "აგენტების ინფრასტრუქტურა და Runtime": 1,
-    "RAG, Retrieval და აგენტის მეხსიერება": 1,
+    "აგენტების ინფრასტრუქტურა და Runtime": 2,
+    "RAG, Retrieval და აგენტის მეხსიერება": 2,
     "Tool Calling და აგენტების არქიტექტურა": 1,
     "AI Coding Tools და უსაფრთხოება": 1,
-    "LLM კვლევა და Inference-ის ოპტიმიზაცია": 1,
-    "AI Research და RL წვრთნა": 1
+    "LLM კვლევა და Inference-ის ოპტიმიზაცია": 2,
+    "AI Research და RL წვრთნა": 2,
+    "აგენტების არქიტექტურა და საიმედოობა": 1,
+    "AI საინჟინრო ინსტრუმენტები და აგენტები": 1
   },
   "reports": [
     {
@@ -7088,14 +7398,320 @@
         "RAG სისტემების ევოლუცია სტატიკური ვექტორული ბაზებიდან თვითგანახლებად, შეცდომებზე ორიენტირებულ საძიებო ინდექსებზე (SELF-INDEX)",
         "Reasoning მოდელების გამოთვლითი ხარჯების ოპტიმიზაცია დინამიკური სირთულის შეფასებით (System 1 vs System 2 დაყოფა When2Think-ის მიხედვით)"
       ]
+    },
+    {
+      "date": "2026-09-19",
+      "summary": "დღევანდელი ანგარიში ფოკუსირებულია Multi-Agent სისტემების ემპირიულ შეცდომებზე, Anthropic-ის შიდა ავტონომიურ R&D აგენტების მასშტაბირებაზე და Bedrock AgentCore-ის საწარმოო არქიტექტურაზე. კვლევები ცხადყოფს, რომ აგენტების ძირითადი პრობლემები ინფრასტრუქტურასა და კოორდინაციაშია. პარალელურად, WeVisDoc და On-Policy Self-Distillation გვთავაზობენ პრაქტიკულ მიდგომებს RAG დოკუმენტების დამუშავებასა და მცირე მოდელების მსჯელობის ოპტიმიზაციაში.",
+      "events": [
+        {
+          "event_id": "evt-multi-agent-empirical-study-issues",
+          "title": "Multi-Agent Frameworks-ის პირველი მასშტაბური ემპირიული კვლევა: არქიტექტურული ხარვეზები და Maintenance",
+          "category": "აგენტების არქიტექტურა და საიმედოობა",
+          "primary_url": "https://arxiv.org/html/2601.07136v1",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 92,
+          "tldr": "მასშტაბურმა კვლევამ გამოავლინა, რომ LangChain-ის, CrewAI-სა და AutoGen-ის მთავარი სისუსტე agent coordination და infrastructure issues-ია, რაც აფერხებს production საიმედოობას.",
+          "what_happened": "LSU-სა და University of Kentucky-ის მკვლევრებმა გამოაქვეყნეს 8 წამყვანი multi-agent framework-ის ანალიზი 42K commit-ზე დაყრდნობით.",
+          "what_changed": "ზედაპირული ვარაუდების ნაცვლად მივიღეთ ზუსტი მეტრიკები: აგენტური სისტემების ხარვეზების 10% უშუალოდ კოორდინაციაზე მოდის.",
+          "why_it_matters": "საკუთარი agent loops აწყობისას თავიდან აიცილებთ მესამე მხარის მყიფე აბსტრაქციებს და აქცენტს გააკეთებთ საიმედო orchestration-ზე.",
+          "key_takeaways": [
+            "ფრეიმვორკების განვითარება ორიენტირებულია ახალ ფუნქციებზე და არა შეცდომების გასწორებაზე.",
+            "Agent coordination შეადგენს დაფიქსირებული ხარვეზების მეათედს.",
+            "Infrastructure და environment isolation წარმოადგენს მეორე უდიდეს ტექნიკურ ბარიერს."
+          ],
+          "technical_architecture": [
+            "Orchestration Layer: AutoGen, CrewAI და LangChain core abstractions.",
+            "State and Execution: async dispatch, retry queues და isolated sandboxes."
+          ],
+          "technical_details": [
+            "Bugs: 22% total issues",
+            "Infrastructure: 14% issues",
+            "Coordination: 10% issues",
+            "Resolution time: 1-14 days"
+          ],
+          "potential_impact": "ინჟინრები გადავლენ მინიმალისტურ, მკაცრად ტიპიზირებულ deterministic graph loops-ზე bloated frameworks-ის ნაცვლად.",
+          "action_type": "LEARN",
+          "action": "გააანალიზეთ თქვენი agent loops კოდი და შეამცირეთ დამოკიდებულება მესამე მხარის multi-agent wrapper ბიბლიოთეკებზე.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "გაანალიზდა 42,000 commit და 4,700 გადაჭრილი issue რვა წამყვან MAS ფრეიმვორკში (LangChain, CrewAI, AutoGen).",
+            "ცვლილებების 40.8% არის perfective commits (ახალი ფუნქციონალი), ხოლო corrective maintenance შეადგენს მხოლოდ 27.4%-ს.",
+            "ყველაზე ხშირი პრობლემებია bugs (22%), infrastructure (14%) და agent coordination challenges (10%)."
+          ],
+          "interpretation": "Multi-Agent ეკოსისტემა განიცდის ტექნიკურ ვალს: დეველოპერები ჩქარობენ ახალი ფუნქციების დამატებას, რის გამოც runtime ინფრასტრუქტურა და კოორდინაციის მექანიზმები რჩება მყიფე.",
+          "uncertainty": "კვლევა ეყრდნობა ღია კოდის რეპოზიტორიებს და შესაძლოა სრულად არ ასახავდეს დახურულ enterprise სისტემებს.",
+          "counter_argument": "სწრაფი ევოლუცია აუცილებელია ახალი LLM API-ების მხარდასაჭერად, ხოლო სტაბილიზაცია ხშირად მეორეხარისხოვანია ადრეულ ეტაპზე."
+        },
+        {
+          "event_id": "evt-anthropic-internal-claude-engineering-scale",
+          "title": "Anthropic-ის შიდა ავტომატიზაცია: 30,000 პარალელური აგენტი და 8x კოდის გენერაცია",
+          "category": "AI საინჟინრო ინსტრუმენტები და აგენტები",
+          "primary_url": "https://www.reuters.com/business/anthropic-says-claude-now-leads-quarter-work-building-its-next-ai-models-2026-09-17",
+          "supporting_urls": [
+            "https://www.reuters.com/business/retail-consumer/hallucinating-ai-chatbots-wiping-out-humanity-how-did-we-get-here-2026-09-15"
+          ],
+          "importance": 9,
+          "relevance": 9,
+          "actionability": 7,
+          "source_quality": 8,
+          "confidence": 95,
+          "tldr": "Anthropic-ში 30,000 Claude აგენტი აწარმოებს შიდა კოდის უმრავლესობას 8x სიჩქარით, ხოლო გაფილტვრის მაჩვენებელი 1/47,000 მოქმედებაა.",
+          "what_happened": "Anthropic-მა ოფიციალურად გაასაჯაროვა შიდა R&D მეტრიკები, სადაც Claude Code და აგენტური ინფრასტრუქტურა მოდელების შექმნის ძირითადი მამოძრავებელი გახდა.",
+          "what_changed": "AI გადავიდა მარტივი code completion რეჟიმიდან კომპლექსურ task orchestration-ზე, რომელიც დღეების და კვირების სამუშაოს ავტონომიურად ასრულებს.",
+          "why_it_matters": "დეველოპერებისთვის უმთავრესი უნარი ხდება არა ხელით სინტაქსის წერა, არამედ აგენტების harness-ის, ტესტების და evaluation pipelines-ის აწყობა.",
+          "key_takeaways": [
+            "AI აგენტები მართავენ კომპანიის R&D ამოცანების მეოთხედს.",
+            "ინჟინრების კოდის გამტარუნარიანობა გაიზარდა 8-ჯერ.",
+            "Execution guardrails ბლოკავს საშუალოდ 1 მოქმედებას 47,000 გადაწყვეტილებიდან."
+          ],
+          "technical_architecture": [
+            "Harness: Claude Code CLI და automated task verification suites.",
+            "Runtime Filtering: automated pre-execution screening for safe tool calling."
+          ],
+          "technical_details": [
+            "30,000 parallel agents",
+            "1 in 47,000 actions blocked",
+            "8x code volume shipped",
+            "Reliability doubling: 4 months"
+          ],
+          "potential_impact": "პროგრამული ინჟინერიის გუნდები გარდაიქმნებიან აგენტების ზედამხედველ და verification სპეციალისტებად.",
+          "action_type": "APPLY",
+          "action": "დააინსტალირეთ CLI coding agent და დანერგეთ მკაცრი automated test suite მისი pull request-ების შესამოწმებლად.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Business Opportunity",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "Claude ხელმძღვანელობს Anthropic-ის R&D სამუშაოების 26%-ს, რაც მარტის 1%-დან გაიზარდა.",
+            "30,000 AI აგენტი ერთდროულად ასრულებს კვლევით და საინჟინრო ამოცანებს შიდა პლატფორმაზე.",
+            "ერთი მილიარდი გადაწყვეტილებიდან სისტემამ დაბლოკა დაახლოებით ყოველი 1/47,000 ქმედება.",
+            "Claude Code-ის დახმარებით ინჟინრები აგზავნიან 8-ჯერ მეტ კოდს კვარტალურად, ვიდრე 2021-2025 წლებში."
+          ],
+          "interpretation": "მოდელების მწარმოებლები გადავიდნენ მასშტაბურ self-improvement ციკლებზე, სადაც პროგრამული უზრუნველყოფის და კვლევის დიდი ნაწილი აგენტურ harness-ში სრულდება.",
+          "uncertainty": "უცნობია აგენტების მიერ დაწერილი კოდის გრძელვადიანი არქიტექტურული ხარისხი და ტექნიკური ვალის ზრდის ტემპი.",
+          "counter_argument": "კოდის რაოდენობის 8x ზრდა არ ნიშნავს სისტემური ინოვაციის ან ალგორითმული ეფექტურობის პროპორციულ ზრდას."
+        },
+        {
+          "event_id": "evt-aws-bedrock-agentcore-mrh-trowe",
+          "title": "MRH Trowe & AWS Bedrock AgentCore: Enterprise Self-Service აგენტების არქიტექტურა $14/Seat ფასად",
+          "category": "აგენტების ინფრასტრუქტურა და Runtime",
+          "primary_url": "https://aws.amazon.com/blogs/machine-learning/how-mrh-trowe-enabled-secure-self-service-ai-agents-in-financial-services",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 9,
+          "source_quality": 10,
+          "confidence": 96,
+          "tldr": "MRH Trowe-მ ააწყო enterprise აგენტური სისტემა 400 მომხმარებლისთვის Bedrock AgentCore-ით, Strands-ითა და LibreChat-ით სულ რაღაც $14/seat თვიური ხარჯით.",
+          "what_happened": "AWS-მა გამოაქვეყნა ქეისი ფინანსურ სექტორში self-service AI აგენტების უსაფრთხო, ცენტრალიზებული დანერგვის შესახებ.",
+          "what_changed": "ფრაგმენტული ჩატბოტების ნაცვლად შეიქმნა ცენტრალიზებული platform engineering შაბლონი multi-step workflows და internal data integration-ისთვის.",
+          "why_it_matters": "ახალგაზრდა დეველოპერისთვის ეს არის ზუსტი არქიტექტურული blueprint, თუ როგორ უნდა აიგოს და გაიყიდოს B2B AI აგენტების სერვისი.",
+          "key_takeaways": [
+            "Bedrock AgentCore და Strands უზრუნველყოფს institutional data integration-ს.",
+            "LibreChat გამოიყენება როგორც მზა, configurable enterprise ინტერფეისი.",
+            "საწარმოო ხარჯი ოპტიმიზაციამდე შეადგენს $14-ს მომხმარებელზე თვეში."
+          ],
+          "technical_architecture": [
+            "Frontend: LibreChat open-source UI with RBAC.",
+            "Orchestration: Amazon Bedrock AgentCore and Strands Agents engine.",
+            "Data Layer: internal document repositories and governed API connectors."
+          ],
+          "technical_details": [
+            "Cost: $14/seat/month",
+            "Scale: 400 production users",
+            "Target saving: 40% scaling",
+            "Compliance: German FinSec"
+          ],
+          "potential_impact": "B2B აგენტების ბაზარზე სტანდარტი ხდება მზა open-source UI-სა და cloud agent framework-ების ინტეგრაცია.",
+          "action_type": "BUILD",
+          "action": "გაუშვით ლოკალურად LibreChat Docker-ით და დაუკავშირეთ Bedrock API ან ლოკალური LiteLLM proxy სერვერი.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Real Business Opportunity"
+          ],
+          "verified_facts": [
+            "გერმანულმა სადაზღვევო ბროკერმა MRH Trowe-მ დანერგა self-service აგენტები 400 თანამშრომლისთვის პირველივე თვეში.",
+            "გამოყენებული არქიტექტურა აერთიანებს Strands Agents-ს, Amazon Bedrock AgentCore-სა და LibreChat-ს.",
+            "პირველი თვის production საოპერაციო ხარჯი იყო დაახლოებით $14 თითო სამუშაო ადგილზე (seat).",
+            "დაგეგმილია ინფრასტრუქტურის ხარჯების 40%-ით შემცირება scheduled scaling-ის საშუალებით."
+          ],
+          "interpretation": "LibreChat UI-ს, Bedrock AgentCore orchestration-ისა და 오픈-source runtime-ის კომბინაცია ქმნის ეკონომიურ, რეგულირებად შაბლონს B2B აგენტებისთვის.",
+          "uncertainty": "კონკრეტული დოკუმენტების დამუშავების latency და vector database სინქრონიზაციის დეტალები სრულად არ არის გაწერილი.",
+          "counter_argument": "ფინანსურ სექტორში მონაცემთა მკაცრი რეგულაციები ხშირად მოითხოვს სრულ on-premise იზოლაციას და არა hybrid cloud ინფრასტრუქტურას."
+        },
+        {
+          "event_id": "evt-wevisdoc-robust-document-parsing",
+          "title": "WeVisDoc: ორეტაპიანი End-to-End მოდელი დოკუმენტების სტრუქტურირებული პარსინგისთვის RAG-ში",
+          "category": "RAG, Retrieval და აგენტის მეხსიერება",
+          "primary_url": "https://huggingface.co/papers/2609.20423",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "Tencent-მა წარადგინა WeVisDoc (2B/4B), რომელიც OmniDocBench-ზე 95.38 ქულას აღწევს და წყვეტს დეგრადირებული დოკუმენტების პარსინგის პრობლემას RAG-ისთვის.",
+          "what_happened": "გამოქვეყნდა WeVisDoc არქიტექტურა და კოდი, რომელიც რთულ განლაგებებსა და ხარვეზიან დოკუმენტებს პირდაპირ სტრუქტურირებულ ტექსტად აქცევს.",
+          "what_changed": "ტრადიციული OCR და heuristics-ზე დაფუძნებული პარსერები იცვლება მცირე ზომის vision-language parser მოდელებით.",
+          "why_it_matters": "საკუთარ RAG პროექტებში სუფთა Markdown/JSON მონაცემების მიღება PDF და სკანირებული ფაილებიდან მკვეთრად ზრდის retrieval სიზუსტეს.",
+          "key_takeaways": [
+            "WeVisDoc-4B პირველ ადგილს იკავებს OmniDocBench v1.6 რეიტინგში.",
+            "ორეტაპიანი ტრენინგი აქტიურად ასწორებს შეცდომებს რეალურ, უხარისხო სკანირებებზე.",
+            "2B და 4B ზომები საშუალებას იძლევა მოდელი გაეშვას ლოკალურ ინფრასტრუქტურაზე."
+          ],
+          "technical_architecture": [
+            "Stage I: Broad semantic and appearance coverage with degradation synthesis.",
+            "Stage II: Residual error probe on fixed visual-structural clusters.",
+            "Model Backbone: End-to-end compact VLM (2B and 4B parameters)."
+          ],
+          "technical_details": [
+            "OmniDocBench v1.6: 95.38",
+            "PureDocBench mean: 75.54",
+            "Degraded gain: +4.03 pts",
+            "Sizes: 2B and 4B"
+          ],
+          "potential_impact": "RAG სისტემების chunking ხარისხი საგრძნობლად გაიზრდება, რადგან დოკუმენტის ვიზუალური იერარქია უცვლელად შენარჩუნდება.",
+          "action_type": "TRY",
+          "action": "გადმოწერეთ WeVisDoc HuggingFace-იდან და დატესტეთ რთული ცხრილების შემცველ ქართულ/ინგლისურ PDF ფაილებზე.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill"
+          ],
+          "verified_facts": [
+            "WeVisDoc-4B აღწევს 95.38 ქულას OmniDocBench v1.6-ზე და 75.54 საშუალო ქულას PureDocBench-ის სამ ტრეკზე.",
+            "მოდელი იყენებს ორეტაპიან მონაცემთა ჩარჩოს: ჰეტეროგენული სინთეზი და residual error probe დიაგნოსტიკა.",
+            "Stage II აუმჯობესებს 4B მოდელის შედეგს 4.03 ქულით რეალურ დეგრადირებულ დოკუმენტებზე (Real Degraded track).",
+            "ხელმისაწვდომია 2B და 4B პარამეტრიანი ეფექტური მოდელების სახით."
+          ],
+          "interpretation": "RAG pipelines-ის მთავარი bottleneck დოკუმენტების ცუდი OCR/პარსინგია; WeVisDoc-ის 2B/4B კომპაქტური მოდელები იძლევა ლოკალური parsing სერვისის აწყობის საშუალებას.",
+          "uncertainty": "უცნობია ინფერენსის ზუსტი throughput (გვერდი/წამში) სამომხმარებლო GPU-ებზე (მაგ. RTX 4090).",
+          "counter_argument": "Frontier vision-language მოდელებს (მაგ. Gemini Flash) უკვე აქვთ დოკუმენტების მაღალი დონის აღქმა დამოუკიდებელი პარსერების გარეშეც."
+        },
+        {
+          "event_id": "evt-opsd-privileged-reasoning-distillation",
+          "title": "On-Policy Self-Distillation: პრივილეგირებული ინფორმაციის რეალური როლი მცირე მოდელების მსჯელობაში",
+          "category": "LLM კვლევა და Inference-ის ოპტიმიზაცია",
+          "primary_url": "https://huggingface.co/papers/2609.20612",
+          "supporting_urls": [],
+          "importance": 7,
+          "relevance": 8,
+          "actionability": 7,
+          "source_quality": 8,
+          "confidence": 88,
+          "tldr": "ახალმა კვლევამ აჩვენა, რომ Qwen 3-1.7B-სა და SmolLM 3-3B-ში reasoning-ის დისტილაციისთვის გარე გადაწყვეტებზე მეტად თავისუფალი თვითგენერაციაა ეფექტური.",
+          "what_happened": "NUS-ის მკვლევრებმა შეისწავლეს On-Policy Self-Distillation (OPSD) მექანიზმები და გამოაქვეყნეს AMPLE-Math 5.3K ამოცანით.",
+          "what_changed": "დაიმსხვრა მითი, რომ მცირე მოდელებს ყოველთვის სჭირდებათ გიგანტური მოდელების მიერ გენერირებული მზა გადაწყვეტების (privileged references) კოპირება.",
+          "why_it_matters": "1B-3B ლოკალური მოდელების fine-tuning-ისას შეგიძლიათ მკვეთრად შეამციროთ synthetic data generation-ის ხარჯები reference-free OPSD-ის გამოყენებით.",
+          "key_takeaways": [
+            "Reference-free distillation მცირე მოდელებში აღწევს თითქმის იგივე შედეგს, რასაც სრული privileged solutions.",
+            "გრძელი CoT rollouts წვრთნის დროს ზოგჯერ ამცირებს მოდელის სტაბილურობას.",
+            "დისტილაცია აუმჯობესებს წვდომას მოდელში უკვე არსებულ latent ცოდნაზე."
+          ],
+          "technical_architecture": [
+            "Teacher-Student Setup: Frozen thinking teacher supervising direct response student.",
+            "Benchmark: AMPLE-Math with 5,319 shared-answer paired reasoning traces."
+          ],
+          "technical_details": [
+            "Tested on: Qwen 3-1.7B",
+            "Tested on: SmolLM 3-3B",
+            "Trace gain: +2% at step 50",
+            "Evaluation: thinking-enabled"
+          ],
+          "potential_impact": "მცირე აგენტური მოდელების ლოკალური post-training გახდება გაცილებით იაფი და ხელმისაწვდომი consumer აპარატურაზე.",
+          "action_type": "LEARN",
+          "action": "გაეცანით OPSD მეთოდოლოგიას და გამოსცადეთ reference-free rollouts პატარა Qwen მოდელის fine-tuning-ისას.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill"
+          ],
+          "verified_facts": [
+            "შეიქმნა AMPLE-Math ბენჩმარკი 5,319 მათემატიკური ამოცანით და 6 მსჯელობის ხედვით (reasoning views).",
+            "Qwen 3-1.7B-ში reference-free დისტილაცია პასუხისმგებელია გაუმჯობესების უდიდეს ნაწილზე thinking-enabled შეფასებისას.",
+            "SmolLM 3-3B-ში სრული reasoning traces-ის დამატებამ გააუმჯობესა სიზუსტე მხოლოდ 2 პროცენტული პუნქტით 50-ე ბიჯზე.",
+            "მოკლე direct-response rollouts-ის ჩანაცვლება გრძელი thinking rollouts-ით წვრთნისას ხშირად აუარესებს შედეგებს ორივე ოჯახში."
+          ],
+          "interpretation": "მცირე მოდელებს უკვე აქვთ ლატენტური მსჯელობის უნარი; OPSD-ის მთავარი ეფექტი ამ პარამეტრებზე წვდომის გააქტიურებაა და არა ახალი ლოგიკის ჩაწერა.",
+          "uncertainty": "კვლევა შემოიფარგლება მათემატიკური ამოცანებით და შესაძლოა განსხვავებული დინამიკა გამოავლინოს coding tasks-ზე.",
+          "counter_argument": "უფრო რთულ multi-step დავალებებში პრივილეგირებული CoT (Chain-of-Thought) ტრეკი შესაძლოა შეუცვლელი იყოს."
+        },
+        {
+          "event_id": "evt-vision-rl2-mllm-region-perception",
+          "title": "Vision-RL2: Region-Level Policy Optimization მულტიმოდალური მოდელების ტოკენების ოპტიმიზაციისთვის",
+          "category": "AI Research და RL წვრთნა",
+          "primary_url": "https://huggingface.co/papers/2609.19745",
+          "supporting_urls": [],
+          "importance": 7,
+          "relevance": 8,
+          "actionability": 7,
+          "source_quality": 8,
+          "confidence": 87,
+          "tldr": "Vision-RL2 იყენებს RL-ს ვიზუალური რეგიონების შესარჩევად, რაც MLLM-ებს საშუალებას აძლევს შეამცირონ ტოკენების ხარჯი ისე, რომ არ დაკარგონ წვრილმანი დეტალები.",
+          "what_happened": "მკვლევრებმა შეიმუშავეს Vision-RL2, რომელიც გამოსახულებას ყოფს coarse localization-ად და fine-grained recognition-ად reinforcement learning-ის დახმარებით.",
+          "what_changed": "მთლიანი სურათის უაზროდ მაღალ რეზოლუციაში გაგზავნის ნაცვლად, მოდელი სწავლობს მხოლოდ საჭირო რეგიონების დინამიურ გადიდებას.",
+          "why_it_matters": "GUI და Desktop Automation აგენტების აწყობისას ეს პრინციპი 3-4-ჯერ ამცირებს inference latency-სა და API ტოკენების ფასს.",
+          "key_takeaways": [
+            "ობიექტის პოვნა (localization) 3-4-ჯერ უფრო ტოლერანტულია შეკუმშვის მიმართ, ვიდრე ამოცნობა.",
+            "RL ჯილდო გამოითვლება გაყინული MLLM-ის პასუხის ალბათობის ცვლილებით.",
+            "მეთოდი არ საჭიროებს ძვირადღირებულ ხელით bounding box ანოტაციებს."
+          ],
+          "technical_architecture": [
+            "Architecture: Lightweight proposal network paired with frozen reader MLLM.",
+            "Policy: Subtractive and additive likelihood optimization objectives.",
+            "Encoding: Sparse token allocation filtering redundant background patches."
+          ],
+          "technical_details": [
+            "Compression: 3-4x on RoI",
+            "Supervision: Annotation-free RL",
+            "Reward: Target likelihood delta",
+            "Benchmarked on: 6 vision tasks"
+          ],
+          "potential_impact": "Computer-use აგენტები შეძლებენ მაღალი სიხშირით ეკრანის ანალიზს მინიმალური ტოკენური დანახარჯით.",
+          "action_type": "TRACK",
+          "action": "დააკვირდით open-source vision agent harnesses-ში sparse visual encoding-ის და selective cropping-ის დანერგვას.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill"
+          ],
+          "verified_facts": [
+            "ვიზუალურ ლოკალიზაციას სჭირდება 3-დან 4-ჯერ ნაკლები ტოკენი (stronger token compression), ვიდრე ამოცნობას (recognition).",
+            "Vision-RL2 ოპტიმიზაციას უკეთებს proposal network-ს region-level reinforcement learning-ით რეგიონალური ანოტაციების გარეშე.",
+            "გაყინული MLLM აფასებს რეგიონებს იმის მიხედვით, თუ როგორ ცვლის კონკრეტული არეს წაშლა სწორი პასუხის likelihood-ს.",
+            "სისტემა იყენებს sparse encoding-ს, რაც გამორიცხავს ფონურ ტოკენებს და ზრდის ფოკუსს სამიზნე ობიექტზე."
+          ],
+          "interpretation": "Computer use და vision agents ხშირად იჭედება context window-ს გადავსებით მაღალი რეზოლუციის სქრინშოტების გამო; Vision-RL2 ჭრის ამ ხარჯს ლოკალიზაციის გაფილტვრით.",
+          "uncertainty": "უცნობია, რამდენად მარტივია ამ პოლიტიკის ინტეგრაცია უკვე არსებულ commercial vision APIs-ში (მაგ. OpenAI or Anthropic tool calls).",
+          "counter_argument": "აპარატურული აჩქარების (FP4, FlashAttention) პირობებში ტოკენების რაოდენობა მალე შესაძლოა აღარ იყოს კრიტიკული შეზღუდვა."
+        }
+      ],
+      "trends": [
+        "Multi-Agent ფრეიმვორკებში აქცენტი გადადის feature expansion-იდან runtime სტაბილურობასა და orchestration-ის საიმედოობაზე.",
+        "Frontier ლაბორატორიებში (Anthropic, OpenAI) შიდა პროგრამული ინჟინერია და მოდელების წვრთნა მასობრივად გადადის 30K+ პარალელურ აგენტზე.",
+        "B2B აგენტების არქიტექტურა სტანდარტიზდება open-source ჩატის ინტერფეისების (LibreChat) და cloud runtime-ის (Bedrock AgentCore) ჰიბრიდით."
+      ]
     }
   ],
   "learning_queue": [
-    "Docker და Podman სენდბოქსების lifecycle management და resource limitation Python-იდან",
-    "Dependency Call Graphs გენერაცია Python-ში (ast მოდულის გამოყენებით) კონტექსტური კოდის ანალიზისთვის",
-    "In-context RAG reranking და synthetic query generation ტექნიკები"
+    "LLM Coordination Protocols: როგორ ავიცილოთ თავიდან race conditions და circular logic მრავალ-აგენტიან სისტემებში.",
+    "Vision-Language Model Token Pruning: როგორ ხდება გამოსახულების ზედმეტი ტოკენების მოჭრა inference-ის დაჩქარებისთვის.",
+    "On-Policy Self-Distillation (OPSD) მათემატიკური საფუძვლები და მისი იმპლემენტაცია Hugging Face TRL ბიბლიოთეკით."
   ],
-  "last_run": "2026-09-18T21:42:51.456602+00:00",
+  "last_run": "2026-09-19T13:45:29.778538+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -7134,7 +7750,11 @@
     "arxiv:2609.20784",
     "arxiv:2609.19656",
     "arxiv:2609.19671",
-    "arxiv:2609.20807"
+    "arxiv:2609.20807",
+    "arxiv:2601.07136",
+    "arxiv:2609.20423",
+    "arxiv:2609.20612",
+    "arxiv:2609.19745"
   ],
   "last_report_files": {
     "markdown": "data/reports/2026-09-19/report.md",
