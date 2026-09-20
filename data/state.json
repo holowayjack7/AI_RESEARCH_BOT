@@ -131,7 +131,14 @@
     "https://aws.amazon.com/blogs/machine-learning/how-mrh-trowe-enabled-secure-self-service-ai-agents-in-financial-services",
     "https://huggingface.co/papers/2609.20423",
     "https://huggingface.co/papers/2609.20612",
-    "https://huggingface.co/papers/2609.19745"
+    "https://huggingface.co/papers/2609.19745",
+    "https://arxiv.org/abs/2609.20800",
+    "https://github.com/autonomous-ai/openharness",
+    "https://github.com/EvoMap/awesome-agent-evolution",
+    "https://github.com/topics/skill-pack",
+    "https://github.com/topics/skill-library",
+    "https://cloud.google.com/blog/products/identity-security/cloud-ciso-perspectives-how-google-monitors-ai-threats-advances-ai-defenses",
+    "https://www.microsoft.com/en-au/security/business/ai-powered-cybersecurity/project-perception-agentic-system"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -230,73 +237,14 @@
     "evt-aws-bedrock-agentcore-mrh-trowe",
     "evt-wevisdoc-robust-document-parsing",
     "evt-opsd-privileged-reasoning-distillation",
-    "evt-vision-rl2-mllm-region-perception"
+    "evt-vision-rl2-mllm-region-perception",
+    "evt-jepa-anything-world-modeling",
+    "evt-openharness-cross-domain-agent-harness",
+    "evt-gep-agent-evolution-skill-packs",
+    "evt-google-gtig-ai-supply-chain-contamination",
+    "evt-microsoft-project-perception-security-agents"
   ],
   "events": [
-    {
-      "event_id": "evt-gpt6-astra-launch",
-      "title": "OpenAI-მ GPT-6 Astra წარადგინა — ახალი თაობის მოდელი კომპიუტერის გამოყენებისა და პროგრამული ინჟინერიის აგენტებისთვის",
-      "category": "LLM Release / Frontier Models",
-      "primary_url": "https://openai.com/index/gpt-6-astra-next-generation-work",
-      "supporting_urls": [
-        "https://openai.com/index/ai-policy-window"
-      ],
-      "importance": 10,
-      "relevance": 10,
-      "actionability": 8,
-      "source_quality": 10,
-      "confidence": 95,
-      "what_happened": "OpenAI-მ ოფიციალურად გამოაშვება GPT-6 Astra, რომელიც ხელმისაწვდომია ChatGPT Work-ში, Codex-სა და API-ში ($10/M input, $50/M output). მოდელმა დაამყარა ახალი რეკორდი DeepSWE v1.1 ბენჩმარკზე 74%-ით, აჩვენა მნიშვნელოვანი გაუმჯობესება Computer Use, Figma-ს მართვასა და მრავალფაილიან კოდის რევიუში.",
-      "what_changed": "მანამდე არსებული მოდელები (მაგ. GPT-5.6 Sol ან Claude Fable 5.1) მოითხოვდნენ ვრცელ კონტექსტურ მომზადებას და ხშირად უშვებდნენ შეცდომებს 5+ საათიან აგენტურ რიგებში. Astra-მ 89%-ით შეამცირა გაუთვალისწინებელი უარყოფითი შედეგები და ნაკლები ტოკენების დახარჯვით აღწევს მიზანს.",
-      "why_it_matters": "შესაძლებელია რთული აგენტური არქიტექტურების გამარტივება (remove scaffolding), რადგან მოდელი თავად ინარჩუნებს ხანგრძლივ მსჯელობას, უკეთ ინარჩუნებს ინსტრუმენტების (tools) გამოძახების სიზუსტეს და ეფექტურად იყენებს აპლიკაციების ინტერფეისს API-ს გარეშეც.",
-      "technical_details": [
-        "74% DeepSWE v1.1 ბენჩმარკზე ნაკლები ნაბიჯებითა და ტოკენების მაღალი ეფექტიანობით",
-        "89%-ით ნაკლები შეცდომა უსაფრთხოების შიდა Computer Use ბენჩმარკზე",
-        "API ფასი: $10 / 1M input, $50 / 1M output ტოკენი",
-        "კროს-ფაილური მსჯელობა კოდის რევიუსას და შეცდომების ორმაგი აღმოჩენა წინა ბაზისურ მოდელებთან შედარებით"
-      ],
-      "action_type": "TRY",
-      "action": "შეამოწმეთ GPT-6 Astra-ს API კოდინგის და აგენტური დავალებების შესასრულებლად, შეადარეთ ტოკენების ეფექტიანობა და latency წინა მოდელებთან.",
-      "evidence": [
-        {
-          "url": "https://openai.com/index/gpt-6-astra-next-generation-work",
-          "title": "GPT-6 Astra: The next generation in intelligence for work",
-          "domain": "openai.com",
-          "evidence": "Astra sets a new record on DeepSWE v1.1 at 74%. Pricing starts at $10 per million input tokens and $50 per million output tokens."
-        }
-      ]
-    },
-    {
-      "event_id": "evt-aws-bedrock-agent-eval",
-      "title": "AWS Bedrock AgentCore და GitHub Actions: AI აგენტების ავტომატიზებული შეფასება CI/CD Quality Gate-ით",
-      "category": "Agent Testing / Evaluation & DevOps",
-      "primary_url": "https://aws.amazon.com/blogs/machine-learning/automated-agent-evaluation-with-amazon-bedrock-agentcore-and-github-actions",
-      "supporting_urls": [],
-      "importance": 9,
-      "relevance": 10,
-      "actionability": 9,
-      "source_quality": 10,
-      "confidence": 95,
-      "what_happened": "AWS-მა წარადგინა სახელმძღვანელო და არქიტექტურა AI აგენტების ავტომატიზებული შეფასებისთვის GitHub Actions-ისა და Amazon Bedrock AgentCore-ის მეშვეობით, სადაც PR-ის შერწყმა იბლოკება, თუ აგენტის ქულა (Quality Gate) დადგენილ ზღვარს ჩამოსცდება.",
-      "what_changed": "მანამდე აგენტის ცვლილებების (System prompt-ის ან Tool-ის განახლება) ტესტირება ხდებოდა ხელით ან სუბიექტურად პროდაქშენში. ახლა OpenTelemetry ტრასების საფუძველზე LLM-as-a-judge ავტომატურად ზომავს Correctness, ToolSelectionAccuracy და GoalSuccessRate მაჩვენებლებს უშუალოდ CI/CD მილსადენში.",
-      "why_it_matters": "ნებისმიერი სერიოზული აგენტური პროექტისთვის აუცილებელია ავტომატური ევალუაცია. ეს მიდგომა აჩვენებს, თუ როგორ შეიძლება MCP სერვერების, OAuth M2M ავტორიზაციისა და LLM შეფასების გაერთიანება უწყვეტი ინტეგრაციის პროცესში.",
-      "technical_details": [
-        "გამოყენებულია OpenTelemetry ტრასები Amazon CloudWatch-იდან AgentCore Evaluate API-სთვის",
-        "OAuth-ით დაცული MCP სერვერების ტესტირება headless CI გარემოში OIDC და Cognition M2M client_credentials flow-ით",
-        "მორგებული და ჩაშენებული Evaluator-ები: TrajectoryExactOrderMatch, ToolParameterAccuracy, GoalSuccessRate",
-        "Quality Gate ბლოკავს PR-ს, თუ შეფასების ქულა (მაგ. 0.8 / 1.0) რეგრესირებს"
-      ],
-      "action_type": "BUILD",
-      "action": "შეშექმენით მარტივი GitHub Actions CI pipeline, რომელიც LLM-as-a-judge მიდგომით შეამოწმებს თქვენი აგენტის პასუხების ხარისხს და ბლოკავს Pull Request-ს ხარისხის დაცემის შემთხვევაში.",
-      "evidence": [
-        {
-          "url": "https://aws.amazon.com/blogs/machine-learning/automated-agent-evaluation-with-amazon-bedrock-agentcore-and-github-actions",
-          "title": "Automated agent evaluation with Amazon Bedrock AgentCore and GitHub Actions",
-          "domain": "aws.amazon.com",
-          "evidence": "Build a continuous integration and continuous delivery (CI/CD) quality gate that deploys an agent with role-based MCP tools, evaluates it, and blocks PRs when evaluation scores drop."
-        }
-      ]
-    },
     {
       "event_id": "evt-roam-and-kernel-memory",
       "title": "ROAM და Kernel-Managed Shared Memory: აგენტის ხანგრძლივი მეხსიერების მართვის ახალი არქიტექტურული მიდგომები",
@@ -3847,6 +3795,254 @@
       "interpretation": "Computer use და vision agents ხშირად იჭედება context window-ს გადავსებით მაღალი რეზოლუციის სქრინშოტების გამო; Vision-RL2 ჭრის ამ ხარჯს ლოკალიზაციის გაფილტვრით.",
       "uncertainty": "უცნობია, რამდენად მარტივია ამ პოლიტიკის ინტეგრაცია უკვე არსებულ commercial vision APIs-ში (მაგ. OpenAI or Anthropic tool calls).",
       "counter_argument": "აპარატურული აჩქარების (FP4, FlashAttention) პირობებში ტოკენების რაოდენობა მალე შესაძლოა აღარ იყოს კრიტიკული შეზღუდვა."
+    },
+    {
+      "event_id": "evt-jepa-anything-world-modeling",
+      "title": "JEPA-Anything: Orthogonal Predictive Factorization-ზე დაფუძნებული უნივერსალური World Model Architecture",
+      "category": "AI Research & World Models",
+      "primary_url": "https://arxiv.org/abs/2609.20800",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 92,
+      "tldr": "JEPA-Anything წარადგენს OPF-ზე დაფუძნებულ World Model არქიტექტურას, რომელიც 7 დომენში 34.8%-ით ამცირებს ინტერვენციის ცდომილებას.",
+      "what_happened": "მკვლევრებმა წარადგინეს JEPA-Anything framework, რომელიც OPF მეთოდით შლის და აერთიანებს ლატენტურ ფაქტორებს 7 სხვადასხვა სფეროში.",
+      "what_changed": "დომენურ Autoregressive მოდელებიდან გადავედით უნივერსალურ Non-Autoregressive JEPA World Model არქიტექტურაზე.",
+      "why_it_matters": "აგენტურ არქიტექტურაში გარემოს პროგნოზირებისა და Planning-ისთვის JEPA უზრუნველყოფს სტაბილურ მრავალ-ნაბიჯიან Simulation-ს.",
+      "key_takeaways": [
+        "Orthogonal Predictive Factorization შლის ლატენტურ სივრცეს დამოუკიდებელ კომპონენტებად",
+        "მოდელი აღწევს მაღალ სიზუსტეს 100-step rollout პროგნოზირებისას",
+        "არქიტექტურა მუშაობს რობოტიკაში, მოლეკულურ დინამიკასა და Control systems-ში"
+      ],
+      "technical_architecture": [
+        "JEPA-based encoder and predictor network",
+        "Orthogonal Predictive Factorization (OPF) projection head",
+        "Multi-domain shared latent space formulation"
+      ],
+      "technical_details": [
+        "34.8% error reduction on Interventional Pong",
+        "100-step molecular Dynamics rollouts",
+        "Keplerian scaling slope of -1.4991 in orbital dynamics"
+      ],
+      "potential_impact": "შექმნის საფუძველს აგენტების მიერ გარემოს შიდა სიმულაციისა და Planning-ის გაუმჯობესებისთვის.",
+      "action_type": "LEARN",
+      "action": "შეისწავლეთ JEPA-Anything-ის ოფიციალური კოდი GitHub-ზე და გააანალიზეთ OPF ლატენტური ფაქტორიზაციის იმპლემენტაცია Python-ში.",
+      "evidence": [],
+      "factuality_level": "single_source",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "JEPA-Anything იყენებს Orthogonal Predictive Factorization (OPF) ტექნიკას ლატენტური სამიზნეების დასაშლელად",
+        "ტესტირება ჩატარდა 7 განსხვავებულ დომენში: vision, biology, control, molecular dynamics, weather, clinical, physical fields",
+        "Interventional Pong ამოცანაში ერთსვლიანი პროგნოზირების ცდომილება შემცირდა 34.8%-ით",
+        "მოდელმა შეასრულა 100-სვლიანი (100-step) მოლეკულური როლაუტები მინიმალური ცდომილებით"
+      ],
+      "interpretation": "OPF საშუალებას აძლევს JEPA არქიტექტურას ისწავლოს სტაბილური World Models ცალკეული დომენური შეზღუდვების გარეშე, რაც აგენტების ხანგრძლივ დაგეგმვას რეალისტურს ხდის.",
+      "uncertainty": "უცნობია, რამდენად ეფექტურად მასშტაბირდება OPF რეალურ დროში მოქმედი მრავალ-აგენტიანი გარემოებისთვის.",
+      "counter_argument": "ტრადიციული autoregressive world models შესაძლოა უფრო მარტივი იმპლემენტაციის იყოს არსებულ LLM ინფრასტრუქტურაზე."
+    },
+    {
+      "event_id": "evt-openharness-cross-domain-agent-harness",
+      "title": "OpenHarness: ღია კოდის Multi-Agent Harness კროს-დისციპლინური ინჟინერიისა და აპარატურული მართვისთვის",
+      "category": "Agent Harness & AI Engineering Tools",
+      "primary_url": "https://github.com/autonomous-ai/openharness",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 88,
+      "tldr": "OpenHarness-მა გამოუშვა Open Source Harness პლატფორმა Claude Code და Codex აგენტების CAD, PCB და პროგრამულ ინჟინერიაში განსათავსებლად.",
+      "what_happened": "autonomous-ai გუნდმა გამოაქვეყნა OpenHarness ecosystem აგენტების cross-discipline მუშაობისთვის ლოკალურ და დისტანციურ გარემოში.",
+      "what_changed": "ცალკეული CLI კოდინგ ასისტენტებიდან გადავედით ინტეგრირებულ Cross-Domain Agent Harness გარემოზე.",
+      "why_it_matters": "საშუალებას აძლევს 16+ დეველოპერებს ააგონ სრული აპარატურული და პროგრამული პროდუქტები აგენტების ორკესტრაციით.",
+      "key_takeaways": [
+        "მხარდაჭერილია Claude Code და Codex აგენტების Session Persistence",
+        "გაერთიანებულია CAD, PCB, Software და Media Generation ინსტრუმენტები",
+        "სრულიად ღია აპარატურული და პროგრამული არქიტექტურა"
+      ],
+      "technical_architecture": [
+        "Desktop app backend and CLI harness driver",
+        "Persistent State Store across multiple nodes",
+        "Open hardware schematic and PCB runtime interface"
+      ],
+      "technical_details": [
+        "Open-source firmware and CAD files",
+        "Multi-machine session context syncing",
+        "Integrated live viewers for geometry and netlists"
+      ],
+      "potential_impact": "შესაძლებელს გახდის მცირე გუნდებისა და ინდივიდუალური დეველოპერებისთვის რთული ჰარდვერ-სოფტვერ პროექტების ავტომატიზაციას.",
+      "action_type": "BUILD",
+      "action": "ჩამოტვირთეთ OpenHarness რეპოზიტორი, გამოსცადეთ Claude Code-ის ინტეგრაცია ლოკალურ პროექტზე და დააკავშირეთ Custom Tool Calling.",
+      "evidence": [],
+      "factuality_level": "single_source",
+      "classification": [
+        "Real Technical Skill",
+        "Real Business Opportunity"
+      ],
+      "verified_facts": [
+        "OpenHarness არის ღია კოდის პროგრამული და აპარატურული პლატფორმა AI კოდინგ აგენტებისთვის",
+        "მხარს უჭერს Claude Code და Codex აგენტების ინტეგრაციას Software, CAD, PCB design და Video workflows-ში",
+        "სესიების მდგომარეობა (Session persistence) ინახება და სინქრონიზდება მომხმარებლის ყველა მოწყობილობაზე",
+        "პროექტის firmware, schematics, PCB layouts და CAD ფაილები სრულად ღიაა (Open Source)"
+      ],
+      "interpretation": "OpenHarness აფართოებს კოდინგ აგენტების მოქმედების არეალს წმინდა ტექსტური IDE-ებიდან ფიზიკურ ინჟინერიასა და CAD/PCB დიზაინამდე.",
+      "uncertainty": "აპარატურული Harness დევაისის წარმოებისა და ლოკალური Latency-ს ეფექტურობა ფართო მასშტაბზე ჯერ შესამოწმებელია.",
+      "counter_argument": "მრავალ-დომენური ინსტრუმენტების გაერთიანებამ შესაძლოა გაზარდოს Agent Loop-ის Context Window-ს გადატვირთვა."
+    },
+    {
+      "event_id": "evt-gep-agent-evolution-skill-packs",
+      "title": "Agent Self-Evolution Ecosystem: GEP Protocol, AAS Core და Skill-Pack სტანდარტები",
+      "category": "Agent Self-Improvement & Memory Systems",
+      "primary_url": "https://github.com/EvoMap/awesome-agent-evolution",
+      "supporting_urls": [
+        "https://github.com/topics/skill-pack",
+        "https://github.com/topics/skill-library"
+      ],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "შექმნა Agent Self-Evolution ეკოსისტემა GEP პროტოკოლითა და AAS Core-ით, რაც აგენტებს უნარების თვით-ევოლუციის საშუალებას აძლევს.",
+      "what_happened": "Open-Source საზოგადოებამ დაამტკიცა Genome Evolution Protocol (GEP) და AAS Core უნარების სტანდარტიზებული მართვისთვის.",
+      "what_changed": "ხელით პრომპტინგის ეპოქიდან გადავედით დინამიურ, მოഡულარულ და ევოლუციურ Agent Skill Packages-ზე.",
+      "why_it_matters": "აგენტების მეხსიერებისა და უნარების მოდულარული არქიტექტურა აუცილებელია რთული AI Agent Loop-ების ასაგებად.",
+      "key_takeaways": [
+        "GEP პროტოკოლი იყენებს Genes და Capsules სტრუქტურას მუტაციისთვის",
+        "AAS Core გთავაზობთ ლოკალურ Control Plane-ს უნარების ვალიდაციისთვის",
+        "Cross-runtime მხარდაჭერა Claude Code, OpenCode და Codex აგენტებისთვის"
+      ],
+      "technical_architecture": [
+        "GEP Genome Evolution Engine with Auditable Event logs",
+        "AAS Core local MCP and CLI validation stack",
+        "Cross-runtime skill-pack interface specification"
+      ],
+      "technical_details": [
+        "2,400+ indexed agentic skills in AAS Core",
+        "Modular skill-pack standard for Claude Code and Cursor",
+        "Prompt governance via evolutionary mutation trees"
+      ],
+      "potential_impact": "შემცირდება დრო აგენტების ახალი უნარებით აღჭურვისთვის და დაკომპლექტდება Self-Improving Agent Pipeline-ები.",
+      "action_type": "TRY",
+      "action": "გამოიკვლიეთ AAS Core ან evolver სერვერი ლოკალურად, შექმენით მცირე Skill-Pack და დააკავშირეთ იგი Claude Code CLI-სთან.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "Genome Evolution Protocol (GEP) და evolver ძრავა უზრუნველყოფს აგენტების ავტონომიურ Self-Evolution-ს Genes და Capsules მოდელით",
+        "AAS Core (agentic-awesome-skills) მოიცავს 2,400+-ზე მეტ Agentic Skill-ს ლოკალური Control Plane-ით",
+        "Skill-Pack არქიტექტურა საშუალებას აძლევს Claude Code, Cursor და OpenCode აგენტებს გაიზიარონ Skill Package-ები",
+        "აუდიტირებადი Prompt Governance უზრუნველყოფს ევოლუციური მუტაციების Traceability-ს"
+      ],
+      "interpretation": "Skill-Pack და GEP სტანდარტები გარდაქმნიან ინდივიდუალურ Prompt-ებს მრავალჯერ გამოყენებად, თვით-განვითარებად Agent Capabilities მოკლულებად.",
+      "uncertainty": "ავტონომიურმა Mutation პროცესმა შესაძლოა გამოიწვიოს Unintended Agent Drift ხანგრძლივ Runtime-ზე.",
+      "counter_argument": "სტატიკური, ხელით დაწერილი System Prompt-ები ჯერ კიდევ უფრო პროგნოზირებადია კრიტიკულ Production გარემოში."
+    },
+    {
+      "event_id": "evt-google-gtig-ai-supply-chain-contamination",
+      "title": "Google Threat Intelligence Report: AI-Assisted Code Generation და Supply Chain Contamination",
+      "category": "AI Security & Code Generation Governance",
+      "primary_url": "https://cloud.google.com/blog/products/identity-security/cloud-ciso-perspectives-how-google-monitors-ai-threats-advances-ai-defenses",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 9,
+      "confidence": 92,
+      "tldr": "Google GTIG-ის ცნობით, ჰაკერები მიზანმიმართულად წამლავენ ღია კოდის პაკეტებს, რომლებსაც AI კოდინგ აგენტები ენდობიან.",
+      "what_happened": "Google-ის CISO ანგარიშმა გამოავლინა AI ასისტენტების მიერ შეთავაზებული Upstream Package Contamination-ის ზრდის ტენდენცია.",
+      "what_changed": "ტრადიციული ხელით dependency-ების არჩევიდან გადავედით AI აგენტების მიერ ავტომატურ პაკეტების იმპორტზე, რაც ახალ საფრთხეს ქმნის.",
+      "why_it_matters": "AI coding tools-ის (Cursor, Claude Code, OpenHands) გამოყენებისას აუცილებელია ინსტრუმენტების მიერ შემოთავაზებული პაკეტების უსაფრთხოების შემოწმება.",
+      "key_takeaways": [
+        "AI ასისტენტები ხშირად ენდობიან და გვთავაზობენ დაბინძურებულ Open-Source პაკეტებს",
+        "ავტონომიური კოდის გენერაცია მოითხოვს სენდბოქსინგსა და Dependency Validation-ს",
+        "GTIG უზრუნველყოფს AI Threat Tracker მონიტორინგს რეალურ ინციდენტებზე"
+      ],
+      "technical_architecture": [
+        "Upstream package validation gateway in Agent workflows",
+        "CI/CD context contract and sidecar validation architecture",
+        "Isolated execution sandboxes for AI-generated code dependencies"
+      ],
+      "technical_details": [
+        "Malicious package contamination target AI prompts",
+        "High-velocity production code push vulnerabilities",
+        "GTIG AI Threat Tracker telemetry data"
+      ],
+      "potential_impact": "აიძულებს AI დეველოპერულ ინსტრუმენტებს ჩაშენონ ავტომატური Dependency Verification და Context Contracts.",
+      "action_type": "APPLY",
+      "action": "დაამატეთ Strict Dependency Scanning პროცესი თქვენს Agent Pipeline-ში, რათა აგენტმა არ გამოიყენოს შეუმცირებელი მესამე მხარის პაკეტები.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "Google Threat Intelligence Group (GTIG) ადასტურებს Open-Source მიწოდების ჯაჭვების დაბინძურების ზრდას 2025-2026 წლებში",
+        "თავდამსხმელები მიზანმიმართულად წამლავენ Upstream პაკეტებს, რომლებსაც AI კოდინგ ასისტენტები სთავაზობენ დეველოპერებს",
+        "ავტონომიური აგენტები უპრეცედენტო სიჩქარით აგზავნიან კოდს Production-ში, რაც ზრდის რისკის ზედაპირს",
+        "პრობლემის გადასაჭრელად საჭიროა ავტომატიზებული პაკეტების ვალიდაცია AI-assisted development workflows-ში"
+      ],
+      "interpretation": "AI კოდინგ აგენტების ფართო გამოყენებამ შექმნა ახალი ვექტორი (Prompt/Package Contamination), სადაც მავნე კოდი ხვდება პროექტში აგენტის ნდობის გამო.",
+      "uncertainty": "ზუსტად რა პროცენტი შეადგენს AI-ის მიერ შეთავაზებულ დაბინძურებულ პაკეტებს რეალურ GitHub PR-ებში, ჯერ კიდევ დასაზუსტებელია.",
+      "counter_argument": "სტატიკური ანალიზის ინსტრუმენტები და Lockfile-ის შემოწმება ამცირებს ამ საფრთხეს ტრადიციულ CI/CD პაიპლაინებში."
+    },
+    {
+      "event_id": "evt-microsoft-project-perception-security-agents",
+      "title": "Microsoft Project Perception: Red, Blue და Green აგენტების არქიტექტურა და MAI-Cyber-1-Flash მოდელი",
+      "category": "Multi-Agent Systems & Cybersecurity Architecture",
+      "primary_url": "https://www.microsoft.com/en-au/security/business/ai-powered-cybersecurity/project-perception-agentic-system",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 8,
+      "actionability": 7,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "Microsoft-მა წარადგინა Project Perception - Multi-Agent უსაფრთხოების სისტემა Red/Blue/Green აგენტებითა და MAI-Cyber-1-Flash მოდელით.",
+      "what_happened": "Microsoft-მა გამოაქვეყნა Project Perception Preview, სადაც აგენტები ავტონომიურად უცვლიან კონტექსტს და იცავენ ინფრასტრუქტურას.",
+      "what_changed": "ცალკეული რეაქტიული უსაფრთხოების ინსტრუმენტებიდან გადავედით უწყვეტ Multi-Agent ორკესტრირებულ Workflow-ზე.",
+      "why_it_matters": "აგენტების არქიტექტურის დიზაინი (Red/Blue/Green როლები + Harness + Actuators) არის საუკეთესო პრაქტიკა ნებისმიერი Multi-Agent პროექტისთვის.",
+      "key_takeaways": [
+        "Red აგენტები ეძებენ სუსტ წერტილებს, Blue იკვლევს, Green ახორციელებს ჰარდენინგს",
+        "Actuators უზრუნველყოფენ გადაწყვეტილების რეალურ მოქმედებად გარდაქმნას",
+        "Harness აკონტროლებს მოდელების საიმედოობასა და ტესტირებას"
+      ],
+      "technical_architecture": [
+        "Multi-agent role separation: Red (Probe), Blue (Investigate), Green (Hardening)",
+        "Harness Orchestration Layer with enterprise governance controls",
+        "Actuator Execution Framework for safe environment manipulation"
+      ],
+      "technical_details": [
+        "Purpose-built MAI-Cyber-1-Flash reasoning model",
+        "Evidence-grade context enrichment pipeline",
+        "Human-in-the-loop approval gate for critical actions"
+      ],
+      "potential_impact": "დაამკვიდრებს Multi-Agent არქიტექტურის სტანდარტებს უსაფრთხოებისა და IT ავტომატიზაციის სექტორში.",
+      "action_type": "LEARN",
+      "action": "გაანალიზეთ Actuator და Harness კომპონენტების გამიჯვნის პრინციპი Microsoft-ის დოკუმენტაციაში და გამოიყენეთ ის საკუთარ Agent Loop-ში.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "Project Perception წარადგენს სამ სპეციალიზებულ აგენტურ როლს: Red (probe), Blue (investigate), Green (remediate & harden)",
+        "სისტემა იყენებს ახალ სპეციალიზებულ MAI-Cyber-1-Flash მოდელს სწრაფი Security Reasoning-ისთვის",
+        "მოქმედებები ხორციელდება Actuators მექანიზმით, ხოლოდ ორკესტრაცია ეყრდნობა Harness ჩარჩოს",
+        "მაღალი რისკის მოქმედებები მოითხოვს Human-in-the-loop დასტურს enterprise governance-ის ფარგლებში"
+      ],
+      "interpretation": "Microsoft-ის არქიტექტურა ადასტურებს, რომ რთულ Enterprise დომენებში Multi-Agent სისტემები მოითხოვენ მკაცრად დაყოფილ როლებსა და Actuator/Harness საზღვრებს.",
+      "uncertainty": "MAI-Cyber-1-Flash მოდელის ზუსტი ზომა და ლოკალური ან API წვდომის დეტალები ჯერ არ არის საჯარო.",
+      "counter_argument": "სამი აგენტის ორკესტრაციამ და Human Sign-off-მა შესაძლოა შეანელოს რეაგირების დრო რეალურ ინციდენტებზე."
     }
   ],
   "topics": {
@@ -3933,7 +4129,12 @@
     "LLM კვლევა და Inference-ის ოპტიმიზაცია": 2,
     "AI Research და RL წვრთნა": 2,
     "აგენტების არქიტექტურა და საიმედოობა": 1,
-    "AI საინჟინრო ინსტრუმენტები და აგენტები": 1
+    "AI საინჟინრო ინსტრუმენტები და აგენტები": 1,
+    "AI Research & World Models": 1,
+    "Agent Harness & AI Engineering Tools": 1,
+    "Agent Self-Improvement & Memory Systems": 1,
+    "AI Security & Code Generation Governance": 1,
+    "Multi-Agent Systems & Cybersecurity Architecture": 1
   },
   "reports": [
     {
@@ -7704,14 +7905,274 @@
         "Frontier ლაბორატორიებში (Anthropic, OpenAI) შიდა პროგრამული ინჟინერია და მოდელების წვრთნა მასობრივად გადადის 30K+ პარალელურ აგენტზე.",
         "B2B აგენტების არქიტექტურა სტანდარტიზდება open-source ჩატის ინტერფეისების (LibreChat) და cloud runtime-ის (Bedrock AgentCore) ჰიბრიდით."
       ]
+    },
+    {
+      "date": "2026-09-20",
+      "summary": "დღევანდელი ანგარიში მოიცავს JEPA-Anything-ის დომენ-აგნოსტიკურ World Model არქიტექტურას, OpenHarness-ის ღია კოდის Multi-Agent გარემოს და Microsoft Project Perception-ის Red/Blue/Green უსაფრთხოების აგენტებს. ასევე ანალიზდება Agent Self-Evolution Ecosystem (GEP პროტოკოლი და AAS Core) და AI კოდინგ აგენტების Supply Chain Security საფრთხეები.",
+      "events": [
+        {
+          "event_id": "evt-jepa-anything-world-modeling",
+          "title": "JEPA-Anything: Orthogonal Predictive Factorization-ზე დაფუძნებული უნივერსალური World Model Architecture",
+          "category": "AI Research & World Models",
+          "primary_url": "https://arxiv.org/abs/2609.20800",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 92,
+          "tldr": "JEPA-Anything წარადგენს OPF-ზე დაფუძნებულ World Model არქიტექტურას, რომელიც 7 დომენში 34.8%-ით ამცირებს ინტერვენციის ცდომილებას.",
+          "what_happened": "მკვლევრებმა წარადგინეს JEPA-Anything framework, რომელიც OPF მეთოდით შლის და აერთიანებს ლატენტურ ფაქტორებს 7 სხვადასხვა სფეროში.",
+          "what_changed": "დომენურ Autoregressive მოდელებიდან გადავედით უნივერსალურ Non-Autoregressive JEPA World Model არქიტექტურაზე.",
+          "why_it_matters": "აგენტურ არქიტექტურაში გარემოს პროგნოზირებისა და Planning-ისთვის JEPA უზრუნველყოფს სტაბილურ მრავალ-ნაბიჯიან Simulation-ს.",
+          "key_takeaways": [
+            "Orthogonal Predictive Factorization შლის ლატენტურ სივრცეს დამოუკიდებელ კომპონენტებად",
+            "მოდელი აღწევს მაღალ სიზუსტეს 100-step rollout პროგნოზირებისას",
+            "არქიტექტურა მუშაობს რობოტიკაში, მოლეკულურ დინამიკასა და Control systems-ში"
+          ],
+          "technical_architecture": [
+            "JEPA-based encoder and predictor network",
+            "Orthogonal Predictive Factorization (OPF) projection head",
+            "Multi-domain shared latent space formulation"
+          ],
+          "technical_details": [
+            "34.8% error reduction on Interventional Pong",
+            "100-step molecular Dynamics rollouts",
+            "Keplerian scaling slope of -1.4991 in orbital dynamics"
+          ],
+          "potential_impact": "შექმნის საფუძველს აგენტების მიერ გარემოს შიდა სიმულაციისა და Planning-ის გაუმჯობესებისთვის.",
+          "action_type": "LEARN",
+          "action": "შეისწავლეთ JEPA-Anything-ის ოფიციალური კოდი GitHub-ზე და გააანალიზეთ OPF ლატენტური ფაქტორიზაციის იმპლემენტაცია Python-ში.",
+          "evidence": [],
+          "factuality_level": "single_source",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "JEPA-Anything იყენებს Orthogonal Predictive Factorization (OPF) ტექნიკას ლატენტური სამიზნეების დასაშლელად",
+            "ტესტირება ჩატარდა 7 განსხვავებულ დომენში: vision, biology, control, molecular dynamics, weather, clinical, physical fields",
+            "Interventional Pong ამოცანაში ერთსვლიანი პროგნოზირების ცდომილება შემცირდა 34.8%-ით",
+            "მოდელმა შეასრულა 100-სვლიანი (100-step) მოლეკულური როლაუტები მინიმალური ცდომილებით"
+          ],
+          "interpretation": "OPF საშუალებას აძლევს JEPA არქიტექტურას ისწავლოს სტაბილური World Models ცალკეული დომენური შეზღუდვების გარეშე, რაც აგენტების ხანგრძლივ დაგეგმვას რეალისტურს ხდის.",
+          "uncertainty": "უცნობია, რამდენად ეფექტურად მასშტაბირდება OPF რეალურ დროში მოქმედი მრავალ-აგენტიანი გარემოებისთვის.",
+          "counter_argument": "ტრადიციული autoregressive world models შესაძლოა უფრო მარტივი იმპლემენტაციის იყოს არსებულ LLM ინფრასტრუქტურაზე."
+        },
+        {
+          "event_id": "evt-openharness-cross-domain-agent-harness",
+          "title": "OpenHarness: ღია კოდის Multi-Agent Harness კროს-დისციპლინური ინჟინერიისა და აპარატურული მართვისთვის",
+          "category": "Agent Harness & AI Engineering Tools",
+          "primary_url": "https://github.com/autonomous-ai/openharness",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 88,
+          "tldr": "OpenHarness-მა გამოუშვა Open Source Harness პლატფორმა Claude Code და Codex აგენტების CAD, PCB და პროგრამულ ინჟინერიაში განსათავსებლად.",
+          "what_happened": "autonomous-ai გუნდმა გამოაქვეყნა OpenHarness ecosystem აგენტების cross-discipline მუშაობისთვის ლოკალურ და დისტანციურ გარემოში.",
+          "what_changed": "ცალკეული CLI კოდინგ ასისტენტებიდან გადავედით ინტეგრირებულ Cross-Domain Agent Harness გარემოზე.",
+          "why_it_matters": "საშუალებას აძლევს 16+ დეველოპერებს ააგონ სრული აპარატურული და პროგრამული პროდუქტები აგენტების ორკესტრაციით.",
+          "key_takeaways": [
+            "მხარდაჭერილია Claude Code და Codex აგენტების Session Persistence",
+            "გაერთიანებულია CAD, PCB, Software და Media Generation ინსტრუმენტები",
+            "სრულიად ღია აპარატურული და პროგრამული არქიტექტურა"
+          ],
+          "technical_architecture": [
+            "Desktop app backend and CLI harness driver",
+            "Persistent State Store across multiple nodes",
+            "Open hardware schematic and PCB runtime interface"
+          ],
+          "technical_details": [
+            "Open-source firmware and CAD files",
+            "Multi-machine session context syncing",
+            "Integrated live viewers for geometry and netlists"
+          ],
+          "potential_impact": "შესაძლებელს გახდის მცირე გუნდებისა და ინდივიდუალური დეველოპერებისთვის რთული ჰარდვერ-სოფტვერ პროექტების ავტომატიზაციას.",
+          "action_type": "BUILD",
+          "action": "ჩამოტვირთეთ OpenHarness რეპოზიტორი, გამოსცადეთ Claude Code-ის ინტეგრაცია ლოკალურ პროექტზე და დააკავშირეთ Custom Tool Calling.",
+          "evidence": [],
+          "factuality_level": "single_source",
+          "classification": [
+            "Real Technical Skill",
+            "Real Business Opportunity"
+          ],
+          "verified_facts": [
+            "OpenHarness არის ღია კოდის პროგრამული და აპარატურული პლატფორმა AI კოდინგ აგენტებისთვის",
+            "მხარს უჭერს Claude Code და Codex აგენტების ინტეგრაციას Software, CAD, PCB design და Video workflows-ში",
+            "სესიების მდგომარეობა (Session persistence) ინახება და სინქრონიზდება მომხმარებლის ყველა მოწყობილობაზე",
+            "პროექტის firmware, schematics, PCB layouts და CAD ფაილები სრულად ღიაა (Open Source)"
+          ],
+          "interpretation": "OpenHarness აფართოებს კოდინგ აგენტების მოქმედების არეალს წმინდა ტექსტური IDE-ებიდან ფიზიკურ ინჟინერიასა და CAD/PCB დიზაინამდე.",
+          "uncertainty": "აპარატურული Harness დევაისის წარმოებისა და ლოკალური Latency-ს ეფექტურობა ფართო მასშტაბზე ჯერ შესამოწმებელია.",
+          "counter_argument": "მრავალ-დომენური ინსტრუმენტების გაერთიანებამ შესაძლოა გაზარდოს Agent Loop-ის Context Window-ს გადატვირთვა."
+        },
+        {
+          "event_id": "evt-gep-agent-evolution-skill-packs",
+          "title": "Agent Self-Evolution Ecosystem: GEP Protocol, AAS Core და Skill-Pack სტანდარტები",
+          "category": "Agent Self-Improvement & Memory Systems",
+          "primary_url": "https://github.com/EvoMap/awesome-agent-evolution",
+          "supporting_urls": [
+            "https://github.com/topics/skill-pack",
+            "https://github.com/topics/skill-library"
+          ],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "შექმნა Agent Self-Evolution ეკოსისტემა GEP პროტოკოლითა და AAS Core-ით, რაც აგენტებს უნარების თვით-ევოლუციის საშუალებას აძლევს.",
+          "what_happened": "Open-Source საზოგადოებამ დაამტკიცა Genome Evolution Protocol (GEP) და AAS Core უნარების სტანდარტიზებული მართვისთვის.",
+          "what_changed": "ხელით პრომპტინგის ეპოქიდან გადავედით დინამიურ, მოഡულარულ და ევოლუციურ Agent Skill Packages-ზე.",
+          "why_it_matters": "აგენტების მეხსიერებისა და უნარების მოდულარული არქიტექტურა აუცილებელია რთული AI Agent Loop-ების ასაგებად.",
+          "key_takeaways": [
+            "GEP პროტოკოლი იყენებს Genes და Capsules სტრუქტურას მუტაციისთვის",
+            "AAS Core გთავაზობთ ლოკალურ Control Plane-ს უნარების ვალიდაციისთვის",
+            "Cross-runtime მხარდაჭერა Claude Code, OpenCode და Codex აგენტებისთვის"
+          ],
+          "technical_architecture": [
+            "GEP Genome Evolution Engine with Auditable Event logs",
+            "AAS Core local MCP and CLI validation stack",
+            "Cross-runtime skill-pack interface specification"
+          ],
+          "technical_details": [
+            "2,400+ indexed agentic skills in AAS Core",
+            "Modular skill-pack standard for Claude Code and Cursor",
+            "Prompt governance via evolutionary mutation trees"
+          ],
+          "potential_impact": "შემცირდება დრო აგენტების ახალი უნარებით აღჭურვისთვის და დაკომპლექტდება Self-Improving Agent Pipeline-ები.",
+          "action_type": "TRY",
+          "action": "გამოიკვლიეთ AAS Core ან evolver სერვერი ლოკალურად, შექმენით მცირე Skill-Pack და დააკავშირეთ იგი Claude Code CLI-სთან.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "Genome Evolution Protocol (GEP) და evolver ძრავა უზრუნველყოფს აგენტების ავტონომიურ Self-Evolution-ს Genes და Capsules მოდელით",
+            "AAS Core (agentic-awesome-skills) მოიცავს 2,400+-ზე მეტ Agentic Skill-ს ლოკალური Control Plane-ით",
+            "Skill-Pack არქიტექტურა საშუალებას აძლევს Claude Code, Cursor და OpenCode აგენტებს გაიზიარონ Skill Package-ები",
+            "აუდიტირებადი Prompt Governance უზრუნველყოფს ევოლუციური მუტაციების Traceability-ს"
+          ],
+          "interpretation": "Skill-Pack და GEP სტანდარტები გარდაქმნიან ინდივიდუალურ Prompt-ებს მრავალჯერ გამოყენებად, თვით-განვითარებად Agent Capabilities მოკლულებად.",
+          "uncertainty": "ავტონომიურმა Mutation პროცესმა შესაძლოა გამოიწვიოს Unintended Agent Drift ხანგრძლივ Runtime-ზე.",
+          "counter_argument": "სტატიკური, ხელით დაწერილი System Prompt-ები ჯერ კიდევ უფრო პროგნოზირებადია კრიტიკულ Production გარემოში."
+        },
+        {
+          "event_id": "evt-google-gtig-ai-supply-chain-contamination",
+          "title": "Google Threat Intelligence Report: AI-Assisted Code Generation და Supply Chain Contamination",
+          "category": "AI Security & Code Generation Governance",
+          "primary_url": "https://cloud.google.com/blog/products/identity-security/cloud-ciso-perspectives-how-google-monitors-ai-threats-advances-ai-defenses",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 9,
+          "confidence": 92,
+          "tldr": "Google GTIG-ის ცნობით, ჰაკერები მიზანმიმართულად წამლავენ ღია კოდის პაკეტებს, რომლებსაც AI კოდინგ აგენტები ენდობიან.",
+          "what_happened": "Google-ის CISO ანგარიშმა გამოავლინა AI ასისტენტების მიერ შეთავაზებული Upstream Package Contamination-ის ზრდის ტენდენცია.",
+          "what_changed": "ტრადიციული ხელით dependency-ების არჩევიდან გადავედით AI აგენტების მიერ ავტომატურ პაკეტების იმპორტზე, რაც ახალ საფრთხეს ქმნის.",
+          "why_it_matters": "AI coding tools-ის (Cursor, Claude Code, OpenHands) გამოყენებისას აუცილებელია ინსტრუმენტების მიერ შემოთავაზებული პაკეტების უსაფრთხოების შემოწმება.",
+          "key_takeaways": [
+            "AI ასისტენტები ხშირად ენდობიან და გვთავაზობენ დაბინძურებულ Open-Source პაკეტებს",
+            "ავტონომიური კოდის გენერაცია მოითხოვს სენდბოქსინგსა და Dependency Validation-ს",
+            "GTIG უზრუნველყოფს AI Threat Tracker მონიტორინგს რეალურ ინციდენტებზე"
+          ],
+          "technical_architecture": [
+            "Upstream package validation gateway in Agent workflows",
+            "CI/CD context contract and sidecar validation architecture",
+            "Isolated execution sandboxes for AI-generated code dependencies"
+          ],
+          "technical_details": [
+            "Malicious package contamination target AI prompts",
+            "High-velocity production code push vulnerabilities",
+            "GTIG AI Threat Tracker telemetry data"
+          ],
+          "potential_impact": "აიძულებს AI დეველოპერულ ინსტრუმენტებს ჩაშენონ ავტომატური Dependency Verification და Context Contracts.",
+          "action_type": "APPLY",
+          "action": "დაამატეთ Strict Dependency Scanning პროცესი თქვენს Agent Pipeline-ში, რათა აგენტმა არ გამოიყენოს შეუმცირებელი მესამე მხარის პაკეტები.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "Google Threat Intelligence Group (GTIG) ადასტურებს Open-Source მიწოდების ჯაჭვების დაბინძურების ზრდას 2025-2026 წლებში",
+            "თავდამსხმელები მიზანმიმართულად წამლავენ Upstream პაკეტებს, რომლებსაც AI კოდინგ ასისტენტები სთავაზობენ დეველოპერებს",
+            "ავტონომიური აგენტები უპრეცედენტო სიჩქარით აგზავნიან კოდს Production-ში, რაც ზრდის რისკის ზედაპირს",
+            "პრობლემის გადასაჭრელად საჭიროა ავტომატიზებული პაკეტების ვალიდაცია AI-assisted development workflows-ში"
+          ],
+          "interpretation": "AI კოდინგ აგენტების ფართო გამოყენებამ შექმნა ახალი ვექტორი (Prompt/Package Contamination), სადაც მავნე კოდი ხვდება პროექტში აგენტის ნდობის გამო.",
+          "uncertainty": "ზუსტად რა პროცენტი შეადგენს AI-ის მიერ შეთავაზებულ დაბინძურებულ პაკეტებს რეალურ GitHub PR-ებში, ჯერ კიდევ დასაზუსტებელია.",
+          "counter_argument": "სტატიკური ანალიზის ინსტრუმენტები და Lockfile-ის შემოწმება ამცირებს ამ საფრთხეს ტრადიციულ CI/CD პაიპლაინებში."
+        },
+        {
+          "event_id": "evt-microsoft-project-perception-security-agents",
+          "title": "Microsoft Project Perception: Red, Blue და Green აგენტების არქიტექტურა და MAI-Cyber-1-Flash მოდელი",
+          "category": "Multi-Agent Systems & Cybersecurity Architecture",
+          "primary_url": "https://www.microsoft.com/en-au/security/business/ai-powered-cybersecurity/project-perception-agentic-system",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 8,
+          "actionability": 7,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "Microsoft-მა წარადგინა Project Perception - Multi-Agent უსაფრთხოების სისტემა Red/Blue/Green აგენტებითა და MAI-Cyber-1-Flash მოდელით.",
+          "what_happened": "Microsoft-მა გამოაქვეყნა Project Perception Preview, სადაც აგენტები ავტონომიურად უცვლიან კონტექსტს და იცავენ ინფრასტრუქტურას.",
+          "what_changed": "ცალკეული რეაქტიული უსაფრთხოების ინსტრუმენტებიდან გადავედით უწყვეტ Multi-Agent ორკესტრირებულ Workflow-ზე.",
+          "why_it_matters": "აგენტების არქიტექტურის დიზაინი (Red/Blue/Green როლები + Harness + Actuators) არის საუკეთესო პრაქტიკა ნებისმიერი Multi-Agent პროექტისთვის.",
+          "key_takeaways": [
+            "Red აგენტები ეძებენ სუსტ წერტილებს, Blue იკვლევს, Green ახორციელებს ჰარდენინგს",
+            "Actuators უზრუნველყოფენ გადაწყვეტილების რეალურ მოქმედებად გარდაქმნას",
+            "Harness აკონტროლებს მოდელების საიმედოობასა და ტესტირებას"
+          ],
+          "technical_architecture": [
+            "Multi-agent role separation: Red (Probe), Blue (Investigate), Green (Hardening)",
+            "Harness Orchestration Layer with enterprise governance controls",
+            "Actuator Execution Framework for safe environment manipulation"
+          ],
+          "technical_details": [
+            "Purpose-built MAI-Cyber-1-Flash reasoning model",
+            "Evidence-grade context enrichment pipeline",
+            "Human-in-the-loop approval gate for critical actions"
+          ],
+          "potential_impact": "დაამკვიდრებს Multi-Agent არქიტექტურის სტანდარტებს უსაფრთხოებისა და IT ავტომატიზაციის სექტორში.",
+          "action_type": "LEARN",
+          "action": "გაანალიზეთ Actuator და Harness კომპონენტების გამიჯვნის პრინციპი Microsoft-ის დოკუმენტაციაში და გამოიყენეთ ის საკუთარ Agent Loop-ში.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "Project Perception წარადგენს სამ სპეციალიზებულ აგენტურ როლს: Red (probe), Blue (investigate), Green (remediate & harden)",
+            "სისტემა იყენებს ახალ სპეციალიზებულ MAI-Cyber-1-Flash მოდელს სწრაფი Security Reasoning-ისთვის",
+            "მოქმედებები ხორციელდება Actuators მექანიზმით, ხოლოდ ორკესტრაცია ეყრდნობა Harness ჩარჩოს",
+            "მაღალი რისკის მოქმედებები მოითხოვს Human-in-the-loop დასტურს enterprise governance-ის ფარგლებში"
+          ],
+          "interpretation": "Microsoft-ის არქიტექტურა ადასტურებს, რომ რთულ Enterprise დომენებში Multi-Agent სისტემები მოითხოვენ მკაცრად დაყოფილ როლებსა და Actuator/Harness საზღვრებს.",
+          "uncertainty": "MAI-Cyber-1-Flash მოდელის ზუსტი ზომა და ლოკალური ან API წვდომის დეტალები ჯერ არ არის საჯარო.",
+          "counter_argument": "სამი აგენტის ორკესტრაციამ და Human Sign-off-მა შესაძლოა შეანელოს რეაგირების დრო რეალურ ინციდენტებზე."
+        }
+      ],
+      "trends": [
+        "გადავლა მარტივი Text Prompting-იდან დინამიურ, ევოლუციურ Agent Skill Packages (GEP, Skill-Packs) სტანდარტებზე",
+        "Non-Autoregressive JEPA World Model არქიტექტურების განვითარება აგენტების მრავალ-ნაბიჯიანი Planning-ისთვის",
+        "Cross-discipline Agent Harness-ების წარმოქმნა, რომლებიც ფარავენ როგორც სოფტვერს, ისე CAD, PCB და აპარატურულ მართვას",
+        "AI-assisted coding ინსტრუმენტების მიერ შექმნილი Supply Chain პაკეტების დაბინძურების საფრთხეების ზრდა"
+      ]
     }
   ],
   "learning_queue": [
-    "LLM Coordination Protocols: როგორ ავიცილოთ თავიდან race conditions და circular logic მრავალ-აგენტიან სისტემებში.",
-    "Vision-Language Model Token Pruning: როგორ ხდება გამოსახულების ზედმეტი ტოკენების მოჭრა inference-ის დაჩქარებისთვის.",
-    "On-Policy Self-Distillation (OPSD) მათემატიკური საფუძვლები და მისი იმპლემენტაცია Hugging Face TRL ბიბლიოთეკით."
+    "JEPA (Joint-Embedding Predictive Architecture) და Orthogonal Predictive Factorization-ის მათემატიკური საფუძვლები",
+    "Genome Evolution Protocol (GEP) და Genes/Capsules სტრუქტურა აგენტების თვით-განვითარების სისტემებში",
+    "Red/Blue/Green Multi-Agent Pattern-ის იმპლემენტაცია LangGraph-ის ან Custom Python Loop-ის გამოყენებით"
   ],
-  "last_run": "2026-09-19T13:45:29.778538+00:00",
+  "last_run": "2026-09-20T14:06:52.568421+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -7754,12 +8215,13 @@
     "arxiv:2601.07136",
     "arxiv:2609.20423",
     "arxiv:2609.20612",
-    "arxiv:2609.19745"
+    "arxiv:2609.19745",
+    "arxiv:2609.20800"
   ],
   "last_report_files": {
-    "markdown": "data/reports/2026-09-19/report.md",
-    "json": "data/reports/2026-09-19/report.json",
-    "newsletter": "data/reports/2026-09-19/newsletter.md",
-    "social": "data/reports/2026-09-19/social_posts.txt"
+    "markdown": "data/reports/2026-09-20/report.md",
+    "json": "data/reports/2026-09-20/report.json",
+    "newsletter": "data/reports/2026-09-20/newsletter.md",
+    "social": "data/reports/2026-09-20/social_posts.txt"
   }
 }
