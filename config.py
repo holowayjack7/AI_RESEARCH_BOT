@@ -55,13 +55,16 @@ TELEGRAM_CHAT_ID = get_env("TELEGRAM_CHAT_ID")
 # === Model Config ===
 GEMINI_MODEL = get_env("GEMINI_MODEL", "gemini-3.6-flash")
 # Comma-separated fallback models tried in order when the primary
-# model keeps failing (e.g. 503 "high demand" capacity spikes)
+# model keeps failing (e.g. 503 "high demand" capacity spikes).
+# Cross-pool design: all "flash" models share one capacity zone, so a
+# demand storm kills the whole flash family at once (the Sept 20-23
+# outage pattern). The *lite* models live in a separate pool with more
+# free-tier headroom — both verified live under an active storm
+# (2026-09-23, exact production JSON config).
 GEMINI_MODEL_FALLBACKS = [
     m.strip() for m in get_env(
-        # gemini-2.5-flash retired (404 for new users) — verified live
-        # 2026-09-18; current flash generations + the stable alias below
         "GEMINI_MODEL_FALLBACKS",
-        "gemini-3.7-flash,gemini-flash-latest",
+        "gemini-3.7-flash,gemini-3.5-flash-lite,gemini-flash-lite-latest",
     ).split(",") if m.strip()
 ]
 

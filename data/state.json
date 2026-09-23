@@ -125,20 +125,13 @@
     "https://cloud.google.com/blog/topics/systems/using-ai-agents-to-secure-google-infrastructure",
     "https://huggingface.co/papers/2609.19671",
     "https://arxiv.org/abs/2609.20807",
-    "https://arxiv.org/html/2601.07136v1",
-    "https://www.reuters.com/business/anthropic-says-claude-now-leads-quarter-work-building-its-next-ai-models-2026-09-17",
-    "https://www.reuters.com/business/retail-consumer/hallucinating-ai-chatbots-wiping-out-humanity-how-did-we-get-here-2026-09-15",
-    "https://aws.amazon.com/blogs/machine-learning/how-mrh-trowe-enabled-secure-self-service-ai-agents-in-financial-services",
-    "https://huggingface.co/papers/2609.20423",
-    "https://huggingface.co/papers/2609.20612",
-    "https://huggingface.co/papers/2609.19745",
-    "https://arxiv.org/abs/2609.20800",
-    "https://github.com/autonomous-ai/openharness",
-    "https://github.com/EvoMap/awesome-agent-evolution",
-    "https://github.com/topics/skill-pack",
-    "https://github.com/topics/skill-library",
-    "https://cloud.google.com/blog/products/identity-security/cloud-ciso-perspectives-how-google-monitors-ai-threats-advances-ai-defenses",
-    "https://www.microsoft.com/en-au/security/business/ai-powered-cybersecurity/project-perception-agentic-system"
+    "https://arxiv.org/abs/2609.26779",
+    "https://arxiv.org/abs/2609.26761",
+    "https://arxiv.org/abs/2609.26781",
+    "https://arxiv.org/abs/2609.26760",
+    "https://ai.google.dev/gemini-api/docs/deep-research",
+    "https://arxiv.org/abs/2609.26758",
+    "https://huggingface.co/papers/2609.25804"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -232,19 +225,79 @@
     "evt-google-mantis-agentic-security",
     "evt-when2think-adaptive-reasoning",
     "evt-score-centering-rl-tim",
-    "evt-multi-agent-empirical-study-issues",
-    "evt-anthropic-internal-claude-engineering-scale",
-    "evt-aws-bedrock-agentcore-mrh-trowe",
-    "evt-wevisdoc-robust-document-parsing",
-    "evt-opsd-privileged-reasoning-distillation",
-    "evt-vision-rl2-mllm-region-perception",
-    "evt-jepa-anything-world-modeling",
-    "evt-openharness-cross-domain-agent-harness",
-    "evt-gep-agent-evolution-skill-packs",
-    "evt-google-gtig-ai-supply-chain-contamination",
-    "evt-microsoft-project-perception-security-agents"
+    "evt-cliffcompaction-coding-agent-context",
+    "evt-a2m-mcp-agent-hijacking",
+    "evt-agensh-1024-agent-harness",
+    "evt-growing-harness-specialist-agents",
+    "evt-gemini-deep-research-api",
+    "evt-typesafe-option-name-rubric-bias",
+    "evt-tasteful-agent-taste-bench"
   ],
   "events": [
+    {
+      "event_id": "evt-gpt6-astra-launch",
+      "title": "OpenAI-მ GPT-6 Astra წარადგინა — ახალი თაობის მოდელი კომპიუტერის გამოყენებისა და პროგრამული ინჟინერიის აგენტებისთვის",
+      "category": "LLM Release / Frontier Models",
+      "primary_url": "https://openai.com/index/gpt-6-astra-next-generation-work",
+      "supporting_urls": [
+        "https://openai.com/index/ai-policy-window"
+      ],
+      "importance": 10,
+      "relevance": 10,
+      "actionability": 8,
+      "source_quality": 10,
+      "confidence": 95,
+      "what_happened": "OpenAI-მ ოფიციალურად გამოაშვება GPT-6 Astra, რომელიც ხელმისაწვდომია ChatGPT Work-ში, Codex-სა და API-ში ($10/M input, $50/M output). მოდელმა დაამყარა ახალი რეკორდი DeepSWE v1.1 ბენჩმარკზე 74%-ით, აჩვენა მნიშვნელოვანი გაუმჯობესება Computer Use, Figma-ს მართვასა და მრავალფაილიან კოდის რევიუში.",
+      "what_changed": "მანამდე არსებული მოდელები (მაგ. GPT-5.6 Sol ან Claude Fable 5.1) მოითხოვდნენ ვრცელ კონტექსტურ მომზადებას და ხშირად უშვებდნენ შეცდომებს 5+ საათიან აგენტურ რიგებში. Astra-მ 89%-ით შეამცირა გაუთვალისწინებელი უარყოფითი შედეგები და ნაკლები ტოკენების დახარჯვით აღწევს მიზანს.",
+      "why_it_matters": "შესაძლებელია რთული აგენტური არქიტექტურების გამარტივება (remove scaffolding), რადგან მოდელი თავად ინარჩუნებს ხანგრძლივ მსჯელობას, უკეთ ინარჩუნებს ინსტრუმენტების (tools) გამოძახების სიზუსტეს და ეფექტურად იყენებს აპლიკაციების ინტერფეისს API-ს გარეშეც.",
+      "technical_details": [
+        "74% DeepSWE v1.1 ბენჩმარკზე ნაკლები ნაბიჯებითა და ტოკენების მაღალი ეფექტიანობით",
+        "89%-ით ნაკლები შეცდომა უსაფრთხოების შიდა Computer Use ბენჩმარკზე",
+        "API ფასი: $10 / 1M input, $50 / 1M output ტოკენი",
+        "კროს-ფაილური მსჯელობა კოდის რევიუსას და შეცდომების ორმაგი აღმოჩენა წინა ბაზისურ მოდელებთან შედარებით"
+      ],
+      "action_type": "TRY",
+      "action": "შეამოწმეთ GPT-6 Astra-ს API კოდინგის და აგენტური დავალებების შესასრულებლად, შეადარეთ ტოკენების ეფექტიანობა და latency წინა მოდელებთან.",
+      "evidence": [
+        {
+          "url": "https://openai.com/index/gpt-6-astra-next-generation-work",
+          "title": "GPT-6 Astra: The next generation in intelligence for work",
+          "domain": "openai.com",
+          "evidence": "Astra sets a new record on DeepSWE v1.1 at 74%. Pricing starts at $10 per million input tokens and $50 per million output tokens."
+        }
+      ]
+    },
+    {
+      "event_id": "evt-aws-bedrock-agent-eval",
+      "title": "AWS Bedrock AgentCore და GitHub Actions: AI აგენტების ავტომატიზებული შეფასება CI/CD Quality Gate-ით",
+      "category": "Agent Testing / Evaluation & DevOps",
+      "primary_url": "https://aws.amazon.com/blogs/machine-learning/automated-agent-evaluation-with-amazon-bedrock-agentcore-and-github-actions",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 10,
+      "confidence": 95,
+      "what_happened": "AWS-მა წარადგინა სახელმძღვანელო და არქიტექტურა AI აგენტების ავტომატიზებული შეფასებისთვის GitHub Actions-ისა და Amazon Bedrock AgentCore-ის მეშვეობით, სადაც PR-ის შერწყმა იბლოკება, თუ აგენტის ქულა (Quality Gate) დადგენილ ზღვარს ჩამოსცდება.",
+      "what_changed": "მანამდე აგენტის ცვლილებების (System prompt-ის ან Tool-ის განახლება) ტესტირება ხდებოდა ხელით ან სუბიექტურად პროდაქშენში. ახლა OpenTelemetry ტრასების საფუძველზე LLM-as-a-judge ავტომატურად ზომავს Correctness, ToolSelectionAccuracy და GoalSuccessRate მაჩვენებლებს უშუალოდ CI/CD მილსადენში.",
+      "why_it_matters": "ნებისმიერი სერიოზული აგენტური პროექტისთვის აუცილებელია ავტომატური ევალუაცია. ეს მიდგომა აჩვენებს, თუ როგორ შეიძლება MCP სერვერების, OAuth M2M ავტორიზაციისა და LLM შეფასების გაერთიანება უწყვეტი ინტეგრაციის პროცესში.",
+      "technical_details": [
+        "გამოყენებულია OpenTelemetry ტრასები Amazon CloudWatch-იდან AgentCore Evaluate API-სთვის",
+        "OAuth-ით დაცული MCP სერვერების ტესტირება headless CI გარემოში OIDC და Cognition M2M client_credentials flow-ით",
+        "მორგებული და ჩაშენებული Evaluator-ები: TrajectoryExactOrderMatch, ToolParameterAccuracy, GoalSuccessRate",
+        "Quality Gate ბლოკავს PR-ს, თუ შეფასების ქულა (მაგ. 0.8 / 1.0) რეგრესირებს"
+      ],
+      "action_type": "BUILD",
+      "action": "შეშექმენით მარტივი GitHub Actions CI pipeline, რომელიც LLM-as-a-judge მიდგომით შეამოწმებს თქვენი აგენტის პასუხების ხარისხს და ბლოკავს Pull Request-ს ხარისხის დაცემის შემთხვევაში.",
+      "evidence": [
+        {
+          "url": "https://aws.amazon.com/blogs/machine-learning/automated-agent-evaluation-with-amazon-bedrock-agentcore-and-github-actions",
+          "title": "Automated agent evaluation with Amazon Bedrock AgentCore and GitHub Actions",
+          "domain": "aws.amazon.com",
+          "evidence": "Build a continuous integration and continuous delivery (CI/CD) quality gate that deploys an agent with role-based MCP tools, evaluates it, and blocks PRs when evaluation scores drop."
+        }
+      ]
+    },
     {
       "event_id": "evt-roam-and-kernel-memory",
       "title": "ROAM და Kernel-Managed Shared Memory: აგენტის ხანგრძლივი მეხსიერების მართვის ახალი არქიტექტურული მიდგომები",
@@ -3502,138 +3555,38 @@
       "counter_argument": "ინფერენსისა და წვრთნის ძრავების იდენტურ FP16/BF16 სიზუსტეზე შენარჩუნება სრულად გამორიცხავს TIM-ს, თუ compute ბიუჯეტი იძლევა ამის საშუალებას."
     },
     {
-      "event_id": "evt-multi-agent-empirical-study-issues",
-      "title": "Multi-Agent Frameworks-ის პირველი მასშტაბური ემპირიული კვლევა: არქიტექტურული ხარვეზები და Maintenance",
-      "category": "აგენტების არქიტექტურა და საიმედოობა",
-      "primary_url": "https://arxiv.org/html/2601.07136v1",
+      "event_id": "evt-cliffcompaction-coding-agent-context",
+      "title": "CliffCompaction: უდანაკარგო context compaction ხანგრძლივი coding აგენტებისთვის",
+      "category": "LLM Infrastructure & Agent Memory",
+      "primary_url": "https://arxiv.org/abs/2609.26779",
       "supporting_urls": [],
       "importance": 9,
       "relevance": 10,
-      "actionability": 8,
+      "actionability": 9,
       "source_quality": 8,
       "confidence": 92,
-      "tldr": "მასშტაბურმა კვლევამ გამოავლინა, რომ LangChain-ის, CrewAI-სა და AutoGen-ის მთავარი სისუსტე agent coordination და infrastructure issues-ია, რაც აფერხებს production საიმედოობას.",
-      "what_happened": "LSU-სა და University of Kentucky-ის მკვლევრებმა გამოაქვეყნეს 8 წამყვანი multi-agent framework-ის ანალიზი 42K commit-ზე დაყრდნობით.",
-      "what_changed": "ზედაპირული ვარაუდების ნაცვლად მივიღეთ ზუსტი მეტრიკები: აგენტური სისტემების ხარვეზების 10% უშუალოდ კოორდინაციაზე მოდის.",
-      "why_it_matters": "საკუთარი agent loops აწყობისას თავიდან აიცილებთ მესამე მხარის მყიფე აბსტრაქციებს და აქცენტს გააკეთებთ საიმედო orchestration-ზე.",
+      "tldr": "CliffCompaction გთავაზობთ autocompaction ტექნიკას, რომელიც ინარჩუნებს ორიგინალ ტექსტს rewriting-ის გარეშე და ამცირებს ხარჯს 50%-ით.",
+      "what_happened": "შექმნეს open-source API-proxy implementations CliffCompaction-ისთვის, რომელიც არასდროს აკეთებს კომპაქტირებული კონტექსტის განმეორებით კომპაქციას.",
+      "what_changed": "LLM-generated summary-ების ნაცვლად გამოიყენება პირდაპირი truncation, რაც კვეთს context drift-ს 1-მილიონიან context window-ზე.",
+      "why_it_matters": "Claude Code და Codex harness-ებთან ინტეგრაციით შეგიძლიათ მნიშვნელოვნად შეამციროთ API ხარჯები ხანგრძლივი დებSimpleDateFormat სესიებისას.",
       "key_takeaways": [
-        "ფრეიმვორკების განვითარება ორიენტირებულია ახალ ფუნქციებზე და არა შეცდომების გასწორებაზე.",
-        "Agent coordination შეადგენს დაფიქსირებული ხარვეზების მეათედს.",
-        "Infrastructure და environment isolation წარმოადგენს მეორე უდიდეს ტექნიკურ ბარიერს."
+        "ნულის ტოლფასი context drift ორიგინალი ტექსტის შენარჩუნებით",
+        "50%-მდე დაზოგილი ტოკენები bounded context window-ში",
+        "Scaffold-agnostic API-proxy ხელმისაწვდომია ღია კოდით"
       ],
       "technical_architecture": [
-        "Orchestration Layer: AutoGen, CrewAI და LangChain core abstractions.",
-        "State and Execution: async dispatch, retry queues და isolated sandboxes."
+        "API-proxy შრე harness-სა და LLM-ს შორის",
+        "Discard mechanics ძველი კომპაქტირებული ბუფერებისთვის",
+        "Zero-rephrase truncation ალგორითმი"
       ],
       "technical_details": [
-        "Bugs: 22% total issues",
-        "Infrastructure: 14% issues",
-        "Coordination: 10% issues",
-        "Resolution time: 1-14 days"
+        "KernelBench 3.58x speedup 400 step-ზე",
+        "10+ პროცენტული პუნქტი Terminal-Bench-ზე",
+        "Claude Code და Codex-ის მხარდაჭერა"
       ],
-      "potential_impact": "ინჟინრები გადავლენ მინიმალისტურ, მკაცრად ტიპიზირებულ deterministic graph loops-ზე bloated frameworks-ის ნაცვლად.",
-      "action_type": "LEARN",
-      "action": "გააანალიზეთ თქვენი agent loops კოდი და შეამცირეთ დამოკიდებულება მესამე მხარის multi-agent wrapper ბიბლიოთეკებზე.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "გაანალიზდა 42,000 commit და 4,700 გადაჭრილი issue რვა წამყვან MAS ფრეიმვორკში (LangChain, CrewAI, AutoGen).",
-        "ცვლილებების 40.8% არის perfective commits (ახალი ფუნქციონალი), ხოლო corrective maintenance შეადგენს მხოლოდ 27.4%-ს.",
-        "ყველაზე ხშირი პრობლემებია bugs (22%), infrastructure (14%) და agent coordination challenges (10%)."
-      ],
-      "interpretation": "Multi-Agent ეკოსისტემა განიცდის ტექნიკურ ვალს: დეველოპერები ჩქარობენ ახალი ფუნქციების დამატებას, რის გამოც runtime ინფრასტრუქტურა და კოორდინაციის მექანიზმები რჩება მყიფე.",
-      "uncertainty": "კვლევა ეყრდნობა ღია კოდის რეპოზიტორიებს და შესაძლოა სრულად არ ასახავდეს დახურულ enterprise სისტემებს.",
-      "counter_argument": "სწრაფი ევოლუცია აუცილებელია ახალი LLM API-ების მხარდასაჭერად, ხოლო სტაბილიზაცია ხშირად მეორეხარისხოვანია ადრეულ ეტაპზე."
-    },
-    {
-      "event_id": "evt-anthropic-internal-claude-engineering-scale",
-      "title": "Anthropic-ის შიდა ავტომატიზაცია: 30,000 პარალელური აგენტი და 8x კოდის გენერაცია",
-      "category": "AI საინჟინრო ინსტრუმენტები და აგენტები",
-      "primary_url": "https://www.reuters.com/business/anthropic-says-claude-now-leads-quarter-work-building-its-next-ai-models-2026-09-17",
-      "supporting_urls": [
-        "https://www.reuters.com/business/retail-consumer/hallucinating-ai-chatbots-wiping-out-humanity-how-did-we-get-here-2026-09-15"
-      ],
-      "importance": 9,
-      "relevance": 9,
-      "actionability": 7,
-      "source_quality": 8,
-      "confidence": 95,
-      "tldr": "Anthropic-ში 30,000 Claude აგენტი აწარმოებს შიდა კოდის უმრავლესობას 8x სიჩქარით, ხოლო გაფილტვრის მაჩვენებელი 1/47,000 მოქმედებაა.",
-      "what_happened": "Anthropic-მა ოფიციალურად გაასაჯაროვა შიდა R&D მეტრიკები, სადაც Claude Code და აგენტური ინფრასტრუქტურა მოდელების შექმნის ძირითადი მამოძრავებელი გახდა.",
-      "what_changed": "AI გადავიდა მარტივი code completion რეჟიმიდან კომპლექსურ task orchestration-ზე, რომელიც დღეების და კვირების სამუშაოს ავტონომიურად ასრულებს.",
-      "why_it_matters": "დეველოპერებისთვის უმთავრესი უნარი ხდება არა ხელით სინტაქსის წერა, არამედ აგენტების harness-ის, ტესტების და evaluation pipelines-ის აწყობა.",
-      "key_takeaways": [
-        "AI აგენტები მართავენ კომპანიის R&D ამოცანების მეოთხედს.",
-        "ინჟინრების კოდის გამტარუნარიანობა გაიზარდა 8-ჯერ.",
-        "Execution guardrails ბლოკავს საშუალოდ 1 მოქმედებას 47,000 გადაწყვეტილებიდან."
-      ],
-      "technical_architecture": [
-        "Harness: Claude Code CLI და automated task verification suites.",
-        "Runtime Filtering: automated pre-execution screening for safe tool calling."
-      ],
-      "technical_details": [
-        "30,000 parallel agents",
-        "1 in 47,000 actions blocked",
-        "8x code volume shipped",
-        "Reliability doubling: 4 months"
-      ],
-      "potential_impact": "პროგრამული ინჟინერიის გუნდები გარდაიქმნებიან აგენტების ზედამხედველ და verification სპეციალისტებად.",
-      "action_type": "APPLY",
-      "action": "დააინსტალირეთ CLI coding agent და დანერგეთ მკაცრი automated test suite მისი pull request-ების შესამოწმებლად.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Business Opportunity",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "Claude ხელმძღვანელობს Anthropic-ის R&D სამუშაოების 26%-ს, რაც მარტის 1%-დან გაიზარდა.",
-        "30,000 AI აგენტი ერთდროულად ასრულებს კვლევით და საინჟინრო ამოცანებს შიდა პლატფორმაზე.",
-        "ერთი მილიარდი გადაწყვეტილებიდან სისტემამ დაბლოკა დაახლოებით ყოველი 1/47,000 ქმედება.",
-        "Claude Code-ის დახმარებით ინჟინრები აგზავნიან 8-ჯერ მეტ კოდს კვარტალურად, ვიდრე 2021-2025 წლებში."
-      ],
-      "interpretation": "მოდელების მწარმოებლები გადავიდნენ მასშტაბურ self-improvement ციკლებზე, სადაც პროგრამული უზრუნველყოფის და კვლევის დიდი ნაწილი აგენტურ harness-ში სრულდება.",
-      "uncertainty": "უცნობია აგენტების მიერ დაწერილი კოდის გრძელვადიანი არქიტექტურული ხარისხი და ტექნიკური ვალის ზრდის ტემპი.",
-      "counter_argument": "კოდის რაოდენობის 8x ზრდა არ ნიშნავს სისტემური ინოვაციის ან ალგორითმული ეფექტურობის პროპორციულ ზრდას."
-    },
-    {
-      "event_id": "evt-aws-bedrock-agentcore-mrh-trowe",
-      "title": "MRH Trowe & AWS Bedrock AgentCore: Enterprise Self-Service აგენტების არქიტექტურა $14/Seat ფასად",
-      "category": "აგენტების ინფრასტრუქტურა და Runtime",
-      "primary_url": "https://aws.amazon.com/blogs/machine-learning/how-mrh-trowe-enabled-secure-self-service-ai-agents-in-financial-services",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 9,
-      "source_quality": 10,
-      "confidence": 96,
-      "tldr": "MRH Trowe-მ ააწყო enterprise აგენტური სისტემა 400 მომხმარებლისთვის Bedrock AgentCore-ით, Strands-ითა და LibreChat-ით სულ რაღაც $14/seat თვიური ხარჯით.",
-      "what_happened": "AWS-მა გამოაქვეყნა ქეისი ფინანსურ სექტორში self-service AI აგენტების უსაფრთხო, ცენტრალიზებული დანერგვის შესახებ.",
-      "what_changed": "ფრაგმენტული ჩატბოტების ნაცვლად შეიქმნა ცენტრალიზებული platform engineering შაბლონი multi-step workflows და internal data integration-ისთვის.",
-      "why_it_matters": "ახალგაზრდა დეველოპერისთვის ეს არის ზუსტი არქიტექტურული blueprint, თუ როგორ უნდა აიგოს და გაიყიდოს B2B AI აგენტების სერვისი.",
-      "key_takeaways": [
-        "Bedrock AgentCore და Strands უზრუნველყოფს institutional data integration-ს.",
-        "LibreChat გამოიყენება როგორც მზა, configurable enterprise ინტერფეისი.",
-        "საწარმოო ხარჯი ოპტიმიზაციამდე შეადგენს $14-ს მომხმარებელზე თვეში."
-      ],
-      "technical_architecture": [
-        "Frontend: LibreChat open-source UI with RBAC.",
-        "Orchestration: Amazon Bedrock AgentCore and Strands Agents engine.",
-        "Data Layer: internal document repositories and governed API connectors."
-      ],
-      "technical_details": [
-        "Cost: $14/seat/month",
-        "Scale: 400 production users",
-        "Target saving: 40% scaling",
-        "Compliance: German FinSec"
-      ],
-      "potential_impact": "B2B აგენტების ბაზარზე სტანდარტი ხდება მზა open-source UI-სა და cloud agent framework-ების ინტეგრაცია.",
-      "action_type": "BUILD",
-      "action": "გაუშვით ლოკალურად LibreChat Docker-ით და დაუკავშირეთ Bedrock API ან ლოკალური LiteLLM proxy სერვერი.",
+      "potential_impact": "შემცირდება ხანგრძლივი აგენტური სესიების ფინანსური დანახარჯი და გაიზარდება კოდის გენერაციის სიზუსტე.",
+      "action_type": "TRY",
+      "action": "გამოცადეთ CliffCompaction-ის API-proxy მიდგომა თქვენს Python LLM wrapper-ში და შეადარეთ ტოკენების დანახარჯი პირდაპირ Prompt-ს.",
       "evidence": [],
       "factuality_level": "corroborated",
       "classification": [
@@ -3641,194 +3594,47 @@
         "Real Business Opportunity"
       ],
       "verified_facts": [
-        "გერმანულმა სადაზღვევო ბროკერმა MRH Trowe-მ დანერგა self-service აგენტები 400 თანამშრომლისთვის პირველივე თვეში.",
-        "გამოყენებული არქიტექტურა აერთიანებს Strands Agents-ს, Amazon Bedrock AgentCore-სა და LibreChat-ს.",
-        "პირველი თვის production საოპერაციო ხარჯი იყო დაახლოებით $14 თითო სამუშაო ადგილზე (seat).",
-        "დაგეგმილია ინფრასტრუქტურის ხარჯების 40%-ით შემცირება scheduled scaling-ის საშუალებით."
+        "CliffCompaction ამცირებს Token cost-ს 50%-მდე Terminal-Bench-ზე მუშაობისას",
+        "მეთოდი არასდროს აკეთებს ტექსტის rephrasing-ს ან rewriting-ს, მხოლოდ Truncation/Dropping-ს იყენებს",
+        "KernelBench-ზე 400 ნაბიჯის შემდეგ CUDA kernel speedup-მა მიაღწია 3.58x-ს"
       ],
-      "interpretation": "LibreChat UI-ს, Bedrock AgentCore orchestration-ისა და 오픈-source runtime-ის კომბინაცია ქმნის ეკონომიურ, რეგულირებად შაბლონს B2B აგენტებისთვის.",
-      "uncertainty": "კონკრეტული დოკუმენტების დამუშავების latency და vector database სინქრონიზაციის დეტალები სრულად არ არის გაწერილი.",
-      "counter_argument": "ფინანსურ სექტორში მონაცემთა მკაცრი რეგულაციები ხშირად მოითხოვს სრულ on-premise იზოლაციას და არა hybrid cloud ინფრასტრუქტურას."
+      "interpretation": "LLM-ით კონტექსტის შეჯამება (summarization) იწვევს ინფორმაციის დამახინჯებას (context drift), რასაც აგვარებს მხოლოდ ზუსტი წაშლა/ამოჭრა.",
+      "uncertainty": "არახელსაყრელ პირობებში Truncation-მა შესაძლოა წაშალოს იშვიათი, მაგრამ კრიტიკული დამოკიდებულებები კოდში.",
+      "counter_argument": "სემანტიკური summarization ზოგჯერ აუცილებელია, როდესაც კოდის ფრაგმენტები ძალიან დიდი ზომისაა და უბრალო წაშლა აფუჭებს სინტაქსს."
     },
     {
-      "event_id": "evt-wevisdoc-robust-document-parsing",
-      "title": "WeVisDoc: ორეტაპიანი End-to-End მოდელი დოკუმენტების სტრუქტურირებული პარსინგისთვის RAG-ში",
-      "category": "RAG, Retrieval და აგენტის მეხსიერება",
-      "primary_url": "https://huggingface.co/papers/2609.20423",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 8,
-      "source_quality": 8,
-      "confidence": 90,
-      "tldr": "Tencent-მა წარადგინა WeVisDoc (2B/4B), რომელიც OmniDocBench-ზე 95.38 ქულას აღწევს და წყვეტს დეგრადირებული დოკუმენტების პარსინგის პრობლემას RAG-ისთვის.",
-      "what_happened": "გამოქვეყნდა WeVisDoc არქიტექტურა და კოდი, რომელიც რთულ განლაგებებსა და ხარვეზიან დოკუმენტებს პირდაპირ სტრუქტურირებულ ტექსტად აქცევს.",
-      "what_changed": "ტრადიციული OCR და heuristics-ზე დაფუძნებული პარსერები იცვლება მცირე ზომის vision-language parser მოდელებით.",
-      "why_it_matters": "საკუთარ RAG პროექტებში სუფთა Markdown/JSON მონაცემების მიღება PDF და სკანირებული ფაილებიდან მკვეთრად ზრდის retrieval სიზუსტეს.",
-      "key_takeaways": [
-        "WeVisDoc-4B პირველ ადგილს იკავებს OmniDocBench v1.6 რეიტინგში.",
-        "ორეტაპიანი ტრენინგი აქტიურად ასწორებს შეცდომებს რეალურ, უხარისხო სკანირებებზე.",
-        "2B და 4B ზომები საშუალებას იძლევა მოდელი გაეშვას ლოკალურ ინფრასტრუქტურაზე."
-      ],
-      "technical_architecture": [
-        "Stage I: Broad semantic and appearance coverage with degradation synthesis.",
-        "Stage II: Residual error probe on fixed visual-structural clusters.",
-        "Model Backbone: End-to-end compact VLM (2B and 4B parameters)."
-      ],
-      "technical_details": [
-        "OmniDocBench v1.6: 95.38",
-        "PureDocBench mean: 75.54",
-        "Degraded gain: +4.03 pts",
-        "Sizes: 2B and 4B"
-      ],
-      "potential_impact": "RAG სისტემების chunking ხარისხი საგრძნობლად გაიზრდება, რადგან დოკუმენტის ვიზუალური იერარქია უცვლელად შენარჩუნდება.",
-      "action_type": "TRY",
-      "action": "გადმოწერეთ WeVisDoc HuggingFace-იდან და დატესტეთ რთული ცხრილების შემცველ ქართულ/ინგლისურ PDF ფაილებზე.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Technical Skill"
-      ],
-      "verified_facts": [
-        "WeVisDoc-4B აღწევს 95.38 ქულას OmniDocBench v1.6-ზე და 75.54 საშუალო ქულას PureDocBench-ის სამ ტრეკზე.",
-        "მოდელი იყენებს ორეტაპიან მონაცემთა ჩარჩოს: ჰეტეროგენული სინთეზი და residual error probe დიაგნოსტიკა.",
-        "Stage II აუმჯობესებს 4B მოდელის შედეგს 4.03 ქულით რეალურ დეგრადირებულ დოკუმენტებზე (Real Degraded track).",
-        "ხელმისაწვდომია 2B და 4B პარამეტრიანი ეფექტური მოდელების სახით."
-      ],
-      "interpretation": "RAG pipelines-ის მთავარი bottleneck დოკუმენტების ცუდი OCR/პარსინგია; WeVisDoc-ის 2B/4B კომპაქტური მოდელები იძლევა ლოკალური parsing სერვისის აწყობის საშუალებას.",
-      "uncertainty": "უცნობია ინფერენსის ზუსტი throughput (გვერდი/წამში) სამომხმარებლო GPU-ებზე (მაგ. RTX 4090).",
-      "counter_argument": "Frontier vision-language მოდელებს (მაგ. Gemini Flash) უკვე აქვთ დოკუმენტების მაღალი დონის აღქმა დამოუკიდებელი პარსერების გარეშეც."
-    },
-    {
-      "event_id": "evt-opsd-privileged-reasoning-distillation",
-      "title": "On-Policy Self-Distillation: პრივილეგირებული ინფორმაციის რეალური როლი მცირე მოდელების მსჯელობაში",
-      "category": "LLM კვლევა და Inference-ის ოპტიმიზაცია",
-      "primary_url": "https://huggingface.co/papers/2609.20612",
-      "supporting_urls": [],
-      "importance": 7,
-      "relevance": 8,
-      "actionability": 7,
-      "source_quality": 8,
-      "confidence": 88,
-      "tldr": "ახალმა კვლევამ აჩვენა, რომ Qwen 3-1.7B-სა და SmolLM 3-3B-ში reasoning-ის დისტილაციისთვის გარე გადაწყვეტებზე მეტად თავისუფალი თვითგენერაციაა ეფექტური.",
-      "what_happened": "NUS-ის მკვლევრებმა შეისწავლეს On-Policy Self-Distillation (OPSD) მექანიზმები და გამოაქვეყნეს AMPLE-Math 5.3K ამოცანით.",
-      "what_changed": "დაიმსხვრა მითი, რომ მცირე მოდელებს ყოველთვის სჭირდებათ გიგანტური მოდელების მიერ გენერირებული მზა გადაწყვეტების (privileged references) კოპირება.",
-      "why_it_matters": "1B-3B ლოკალური მოდელების fine-tuning-ისას შეგიძლიათ მკვეთრად შეამციროთ synthetic data generation-ის ხარჯები reference-free OPSD-ის გამოყენებით.",
-      "key_takeaways": [
-        "Reference-free distillation მცირე მოდელებში აღწევს თითქმის იგივე შედეგს, რასაც სრული privileged solutions.",
-        "გრძელი CoT rollouts წვრთნის დროს ზოგჯერ ამცირებს მოდელის სტაბილურობას.",
-        "დისტილაცია აუმჯობესებს წვდომას მოდელში უკვე არსებულ latent ცოდნაზე."
-      ],
-      "technical_architecture": [
-        "Teacher-Student Setup: Frozen thinking teacher supervising direct response student.",
-        "Benchmark: AMPLE-Math with 5,319 shared-answer paired reasoning traces."
-      ],
-      "technical_details": [
-        "Tested on: Qwen 3-1.7B",
-        "Tested on: SmolLM 3-3B",
-        "Trace gain: +2% at step 50",
-        "Evaluation: thinking-enabled"
-      ],
-      "potential_impact": "მცირე აგენტური მოდელების ლოკალური post-training გახდება გაცილებით იაფი და ხელმისაწვდომი consumer აპარატურაზე.",
-      "action_type": "LEARN",
-      "action": "გაეცანით OPSD მეთოდოლოგიას და გამოსცადეთ reference-free rollouts პატარა Qwen მოდელის fine-tuning-ისას.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Technical Skill"
-      ],
-      "verified_facts": [
-        "შეიქმნა AMPLE-Math ბენჩმარკი 5,319 მათემატიკური ამოცანით და 6 მსჯელობის ხედვით (reasoning views).",
-        "Qwen 3-1.7B-ში reference-free დისტილაცია პასუხისმგებელია გაუმჯობესების უდიდეს ნაწილზე thinking-enabled შეფასებისას.",
-        "SmolLM 3-3B-ში სრული reasoning traces-ის დამატებამ გააუმჯობესა სიზუსტე მხოლოდ 2 პროცენტული პუნქტით 50-ე ბიჯზე.",
-        "მოკლე direct-response rollouts-ის ჩანაცვლება გრძელი thinking rollouts-ით წვრთნისას ხშირად აუარესებს შედეგებს ორივე ოჯახში."
-      ],
-      "interpretation": "მცირე მოდელებს უკვე აქვთ ლატენტური მსჯელობის უნარი; OPSD-ის მთავარი ეფექტი ამ პარამეტრებზე წვდომის გააქტიურებაა და არა ახალი ლოგიკის ჩაწერა.",
-      "uncertainty": "კვლევა შემოიფარგლება მათემატიკური ამოცანებით და შესაძლოა განსხვავებული დინამიკა გამოავლინოს coding tasks-ზე.",
-      "counter_argument": "უფრო რთულ multi-step დავალებებში პრივილეგირებული CoT (Chain-of-Thought) ტრეკი შესაძლოა შეუცვლელი იყოს."
-    },
-    {
-      "event_id": "evt-vision-rl2-mllm-region-perception",
-      "title": "Vision-RL2: Region-Level Policy Optimization მულტიმოდალური მოდელების ტოკენების ოპტიმიზაციისთვის",
-      "category": "AI Research და RL წვრთნა",
-      "primary_url": "https://huggingface.co/papers/2609.19745",
-      "supporting_urls": [],
-      "importance": 7,
-      "relevance": 8,
-      "actionability": 7,
-      "source_quality": 8,
-      "confidence": 87,
-      "tldr": "Vision-RL2 იყენებს RL-ს ვიზუალური რეგიონების შესარჩევად, რაც MLLM-ებს საშუალებას აძლევს შეამცირონ ტოკენების ხარჯი ისე, რომ არ დაკარგონ წვრილმანი დეტალები.",
-      "what_happened": "მკვლევრებმა შეიმუშავეს Vision-RL2, რომელიც გამოსახულებას ყოფს coarse localization-ად და fine-grained recognition-ად reinforcement learning-ის დახმარებით.",
-      "what_changed": "მთლიანი სურათის უაზროდ მაღალ რეზოლუციაში გაგზავნის ნაცვლად, მოდელი სწავლობს მხოლოდ საჭირო რეგიონების დინამიურ გადიდებას.",
-      "why_it_matters": "GUI და Desktop Automation აგენტების აწყობისას ეს პრინციპი 3-4-ჯერ ამცირებს inference latency-სა და API ტოკენების ფასს.",
-      "key_takeaways": [
-        "ობიექტის პოვნა (localization) 3-4-ჯერ უფრო ტოლერანტულია შეკუმშვის მიმართ, ვიდრე ამოცნობა.",
-        "RL ჯილდო გამოითვლება გაყინული MLLM-ის პასუხის ალბათობის ცვლილებით.",
-        "მეთოდი არ საჭიროებს ძვირადღირებულ ხელით bounding box ანოტაციებს."
-      ],
-      "technical_architecture": [
-        "Architecture: Lightweight proposal network paired with frozen reader MLLM.",
-        "Policy: Subtractive and additive likelihood optimization objectives.",
-        "Encoding: Sparse token allocation filtering redundant background patches."
-      ],
-      "technical_details": [
-        "Compression: 3-4x on RoI",
-        "Supervision: Annotation-free RL",
-        "Reward: Target likelihood delta",
-        "Benchmarked on: 6 vision tasks"
-      ],
-      "potential_impact": "Computer-use აგენტები შეძლებენ მაღალი სიხშირით ეკრანის ანალიზს მინიმალური ტოკენური დანახარჯით.",
-      "action_type": "TRACK",
-      "action": "დააკვირდით open-source vision agent harnesses-ში sparse visual encoding-ის და selective cropping-ის დანერგვას.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Technical Skill"
-      ],
-      "verified_facts": [
-        "ვიზუალურ ლოკალიზაციას სჭირდება 3-დან 4-ჯერ ნაკლები ტოკენი (stronger token compression), ვიდრე ამოცნობას (recognition).",
-        "Vision-RL2 ოპტიმიზაციას უკეთებს proposal network-ს region-level reinforcement learning-ით რეგიონალური ანოტაციების გარეშე.",
-        "გაყინული MLLM აფასებს რეგიონებს იმის მიხედვით, თუ როგორ ცვლის კონკრეტული არეს წაშლა სწორი პასუხის likelihood-ს.",
-        "სისტემა იყენებს sparse encoding-ს, რაც გამორიცხავს ფონურ ტოკენებს და ზრდის ფოკუსს სამიზნე ობიექტზე."
-      ],
-      "interpretation": "Computer use და vision agents ხშირად იჭედება context window-ს გადავსებით მაღალი რეზოლუციის სქრინშოტების გამო; Vision-RL2 ჭრის ამ ხარჯს ლოკალიზაციის გაფილტვრით.",
-      "uncertainty": "უცნობია, რამდენად მარტივია ამ პოლიტიკის ინტეგრაცია უკვე არსებულ commercial vision APIs-ში (მაგ. OpenAI or Anthropic tool calls).",
-      "counter_argument": "აპარატურული აჩქარების (FP4, FlashAttention) პირობებში ტოკენების რაოდენობა მალე შესაძლოა აღარ იყოს კრიტიკული შეზღუდვა."
-    },
-    {
-      "event_id": "evt-jepa-anything-world-modeling",
-      "title": "JEPA-Anything: Orthogonal Predictive Factorization-ზე დაფუძნებული უნივერსალური World Model Architecture",
-      "category": "AI Research & World Models",
-      "primary_url": "https://arxiv.org/abs/2609.20800",
+      "event_id": "evt-a2m-mcp-agent-hijacking",
+      "title": "A2M: სემანტიკური supply-chain შეტევები და აგენტის ჰაიჯექინგი MCP ეკოსისტემაში",
+      "category": "Agent Security & Governance",
+      "primary_url": "https://arxiv.org/abs/2609.26761",
       "supporting_urls": [],
       "importance": 9,
-      "relevance": 9,
+      "relevance": 10,
       "actionability": 8,
       "source_quality": 8,
-      "confidence": 92,
-      "tldr": "JEPA-Anything წარადგენს OPF-ზე დაფუძნებულ World Model არქიტექტურას, რომელიც 7 დომენში 34.8%-ით ამცირებს ინტერვენციის ცდომილებას.",
-      "what_happened": "მკვლევრებმა წარადგინეს JEPA-Anything framework, რომელიც OPF მეთოდით შლის და აერთიანებს ლატენტურ ფაქტორებს 7 სხვადასხვა სფეროში.",
-      "what_changed": "დომენურ Autoregressive მოდელებიდან გადავედით უნივერსალურ Non-Autoregressive JEPA World Model არქიტექტურაზე.",
-      "why_it_matters": "აგენტურ არქიტექტურაში გარემოს პროგნოზირებისა და Planning-ისთვის JEPA უზრუნველყოფს სტაბილურ მრავალ-ნაბიჯიან Simulation-ს.",
+      "confidence": 91,
+      "tldr": "A2M ჩარჩო აჩვენებს, თუ როგორ შეიძლება MCP აგენტის გადამისამართება და მონაცემთა გაჟონვა ინსტრუმენტის მეტამონაცემების მანიპულაციით.",
+      "what_happened": "მკვლევარებმა შექმნეს A2M შეტევის მოდელი, რომელიც ორიენტირებულია MCP Tool-ების აღწერილობების ოპტიმიზაციაზე აგენტის მოტყუების მიზნით.",
+      "what_changed": "ტრადიციული API endpoint მოწყვლადობებიდან ყურადღება გადავიდა LLM-ის სემანტიკური ძიების (semantic matching) სუსტ ადგილებზე.",
+      "why_it_matters": "თუ აშენებთ MCP Server-ებს ან იყენებთ მესამე მხარის Tool-ებს, აუცილებელია შეამოწმოთ ინსტრუმენტების სემანტიკური ვალიდაცია.",
       "key_takeaways": [
-        "Orthogonal Predictive Factorization შლის ლატენტურ სივრცეს დამოუკიდებელ კომპონენტებად",
-        "მოდელი აღწევს მაღალ სიზუსტეს 100-step rollout პროგნოზირებისას",
-        "არქიტექტურა მუშაობს რობოტიკაში, მოლეკულურ დინამიკასა და Control systems-ში"
+        "Attraction phase ზრდის მავნე tool-ის არჩევის შანსს",
+        "Manipulation phase ცვლის execution trace-ებს",
+        "74.4% success rate ინფორმაციის ექსფილტრაციაზე"
       ],
       "technical_architecture": [
-        "JEPA-based encoder and predictor network",
-        "Orthogonal Predictive Factorization (OPF) projection head",
-        "Multi-domain shared latent space formulation"
+        "Two-stage black-box attack framework",
+        "Attraction metadata optimization module",
+        "Trace-optimized response manipulation"
       ],
       "technical_details": [
-        "34.8% error reduction on Interventional Pong",
-        "100-step molecular Dynamics rollouts",
-        "Keplerian scaling slope of -1.4991 in orbital dynamics"
+        "93.6% malicious tool invocation rate",
+        "32.4x token cost increase under DoS",
+        "LiveMCPBench-ზე ჩატარებული ტესტები"
       ],
-      "potential_impact": "შექმნის საფუძველს აგენტების მიერ გარემოს შიდა სიმულაციისა და Planning-ის გაუმჯობესებისთვის.",
+      "potential_impact": "აუცილებელი გახდება runtime isolation და tool metadata-ს ხელით/მკაცრი სქემით დამოწმება MCP არქიტექტურებში.",
       "action_type": "LEARN",
-      "action": "შეისწავლეთ JEPA-Anything-ის ოფიციალური კოდი GitHub-ზე და გააანალიზეთ OPF ლატენტური ფაქტორიზაციის იმპლემენტაცია Python-ში.",
+      "action": "შეისწავლეთ თქვენი MCP Server-ების schema validation და დაამატეთ strict regex / type assertions ინსტრუმენტის აღწერილობებს.",
       "evidence": [],
       "factuality_level": "single_source",
       "classification": [
@@ -3836,48 +3642,95 @@
         "Long-Term Career Value"
       ],
       "verified_facts": [
-        "JEPA-Anything იყენებს Orthogonal Predictive Factorization (OPF) ტექნიკას ლატენტური სამიზნეების დასაშლელად",
-        "ტესტირება ჩატარდა 7 განსხვავებულ დომენში: vision, biology, control, molecular dynamics, weather, clinical, physical fields",
-        "Interventional Pong ამოცანაში ერთსვლიანი პროგნოზირების ცდომილება შემცირდა 34.8%-ით",
-        "მოდელმა შეასრულა 100-სვლიანი (100-step) მოლეკულური როლაუტები მინიმალური ცდომილებით"
+        "A2M იყენებს Attraction და Manipulation ეტაპებს MCP ინსტრუმენტების საიტაცებლად",
+        "GLM-4.6-ზე მავნე tool-ის გამოძახების სიხშირემ მიაღწია 93.6%-ს LiveMCPBench-ზე",
+        "Cognitive DoS შეტევით ტოკენების დანახარჯი გაიზარდა 32.4x-ით"
       ],
-      "interpretation": "OPF საშუალებას აძლევს JEPA არქიტექტურას ისწავლოს სტაბილური World Models ცალკეული დომენური შეზღუდვების გარეშე, რაც აგენტების ხანგრძლივ დაგეგმვას რეალისტურს ხდის.",
-      "uncertainty": "უცნობია, რამდენად ეფექტურად მასშტაბირდება OPF რეალურ დროში მოქმედი მრავალ-აგენტიანი გარემოებისთვის.",
-      "counter_argument": "ტრადიციული autoregressive world models შესაძლოა უფრო მარტივი იმპლემენტაციის იყოს არსებულ LLM ინფრასტრუქტურაზე."
+      "interpretation": "MCP-ის სემანტიკური tool selection მექანიზმი მოწყვლადია metadata poisoning-ის მიმართ, რაც მოითხოვს მკაცრ static validation შრეს.",
+      "uncertainty": "უცნობია რამდენად ეფექტურად დაიცავს აგენტს ახალი intent-gating და Zero-Trust პროტოკოლები რეალურ production გარემოში.",
+      "counter_argument": "მოდელების შემდგომმა alignment-მა შესაძლოა შეამციროს მავნე metadata-ს მიმართ მგრძნობელობა დამატებითი კოდის გარეშე."
     },
     {
-      "event_id": "evt-openharness-cross-domain-agent-harness",
-      "title": "OpenHarness: ღია კოდის Multi-Agent Harness კროს-დისციპლინური ინჟინერიისა და აპარატურული მართვისთვის",
-      "category": "Agent Harness & AI Engineering Tools",
-      "primary_url": "https://github.com/autonomous-ai/openharness",
+      "event_id": "evt-agensh-1024-agent-harness",
+      "title": "Agensh: დეცენტრალიზებული მრავალ-აგენტიანი არქიტექტურის მასშტაბირება 1,024 აგენტამდე",
+      "category": "Agent Architecture & Multi-Agent Systems",
+      "primary_url": "https://arxiv.org/abs/2609.26781",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "Agensh წარმოადგენს უცენტრალო multi-agent harness-ს, რომელიც ასინქრონულად მასშტაბირდება 1,024 აგენტამდე 55%-იანი test-pass მაჩვენებლით.",
+      "what_happened": "მკვლევარებმა წარადგინეს Agensh, სადაც აგენტები თვითონ იღებენ და ამოწმებენ დავალებებს shared workspace-ის მეშვეობით ცენტრალური კოორდინატორის გარეშე.",
+      "what_changed": "ცენტრალიზებული router-ზე დაფუძნებული არქიტექტურა ჩანაცვლდა ასინქრონული self-organized loop-ით shared context-ის გარშემო.",
+      "why_it_matters": "რთული coding project-ების გადასაჭრელად შეგიძლიათ გამოიყენოთ ბევრი მცირე აგენტი პარალელურად, ნაცვლად ერთი მონოლითური Prompt-ისა.",
+      "key_takeaways": [
+        "ცენტრალური orchestrator-ის არარსებობა ხსნის სკალირების ბარიერს",
+        "Shared workspace მოიცავს proposed, ongoing და completed დავალებებს",
+        "1,024 აგენტზე pass rate გაიზარდა 21.17 პროცენტული პუნქტით"
+      ],
+      "technical_architecture": [
+        "Shared workspace ინახავს დავალებების სტატუსებს",
+        "Message interface უზრუნველყოფს ასინქრონულ კომუნიკაციას",
+        "Shared context ინარჩუნებს მიღწეულ შედეგებს"
+      ],
+      "technical_details": [
+        "GPT-5.6-sol მოდელის მხარდაჭერა",
+        "ProgramBench ბენჩმარკზე ვალიდაცია",
+        "49% relative improvement 128 აგენტზე"
+      ],
+      "potential_impact": "შემცირდება ლატენტობა რთულ software engineering დავალებებზე პარალელური აგენტური გადანაწილების ხარჯზე.",
+      "action_type": "BUILD",
+      "action": "შექმენით მცირე shared file-based workspace Python-ში და გააშვეთ 3 პარალელური worker აგენტი ცენტრალური orchestrator-ის გარეშე.",
+      "evidence": [],
+      "factuality_level": "single_source",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "Agensh მუშაობს ცენტრალური orchestrator-ის გარეშე shared workspace-სა და asynchronous communication-ზე დაყრდნობით",
+        "ProgramBench-ზე 1-დან 1024 აგენტამდე მასშტაბირებამ test-pass rate 33.89%-დან 55.06%-მდე გაზარდა",
+        "1-დან 128 აგენტამდე ზრდამ GPT-5.6-sol-ზე საშუალო pass rate 19.31%-დან 28.78%-მდე გაზარდა"
+      ],
+      "interpretation": "ცენტრალიზებული orchestrator Bottleneck-ის მოხსნა საშუალებას იძლევა რთული საინჟინრო ამოცანები განაწილდეს ასობით აგენტზე პარალელურ რეჟიმში.",
+      "uncertainty": "უცნობია API Token-ების ჯამური ღირებულების ეფექტურობა 1,024 აგენტის ერთდროული გაშვებისას სერიოზულ კომერციულ პროექტებში.",
+      "counter_argument": "ასინქრონულმა shared context-მა შესაძლოა გამოიწვიოს Race Condition და დუბლირებული შრომა დიდ გუნდებში."
+    },
+    {
+      "event_id": "evt-growing-harness-specialist-agents",
+      "title": "Growing Harness: აგენტის მართვის ლოგიკის გადატანა Context-იდან reusable კოდში",
+      "category": "AI Research & Agent Architecture",
+      "primary_url": "https://arxiv.org/abs/2609.26760",
       "supporting_urls": [],
       "importance": 8,
       "relevance": 10,
-      "actionability": 9,
+      "actionability": 8,
       "source_quality": 8,
       "confidence": 88,
-      "tldr": "OpenHarness-მა გამოუშვა Open Source Harness პლატფორმა Claude Code და Codex აგენტების CAD, PCB და პროგრამულ ინჟინერიაში განსათავსებლად.",
-      "what_happened": "autonomous-ai გუნდმა გამოაქვეყნა OpenHarness ecosystem აგენტების cross-discipline მუშაობისთვის ლოკალურ და დისტანციურ გარემოში.",
-      "what_changed": "ცალკეული CLI კოდინგ ასისტენტებიდან გადავედით ინტეგრირებულ Cross-Domain Agent Harness გარემოზე.",
-      "why_it_matters": "საშუალებას აძლევს 16+ დეველოპერებს ააგონ სრული აპარატურული და პროგრამული პროდუქტები აგენტების ორკესტრაციით.",
+      "tldr": "Growing Harness გარდაქმნის განმეორებად აგენტურ გადაწყვეტილებებს იაფ Code Harness-ად, რაც 90%-ით ამცირებს LLM გამოძახებებს.",
+      "what_happened": "შექმნეს failure-guided training პარადიგმა, სადაც აგენტის შეცდომების საფუძველზე თავად Harness კოდი განიცდის ოპტიმიზაციას.",
+      "what_changed": "LLM context-ში control logic-ის ხელახალი გენერაციის ნაცვლად, სისტემა აშენებს მუდმივ, განმეორებად Python Harness-ს.",
+      "why_it_matters": "შეგიძლიათ პატარა (4B/8B) მოდელებით მიაღწიოთ ფრონტიერ მოდელების ეფექტურობას მართვის ლოგიკის კოდში გადატანით.",
       "key_takeaways": [
-        "მხარდაჭერილია Claude Code და Codex აგენტების Session Persistence",
-        "გაერთიანებულია CAD, PCB, Software და Media Generation ინსტრუმენტები",
-        "სრულიად ღია აპარატურული და პროგრამული არქიტექტურა"
+        "Failure-guided training აუმჯობესებს კოდის სტრუქტურას",
+        "4B მოდელების წარმატება იზრდება 6.7%-დან 45%-მდე",
+        "Inference cost-ის 98%-მდე შემცირება"
       ],
       "technical_architecture": [
-        "Desktop app backend and CLI harness driver",
-        "Persistent State Store across multiple nodes",
-        "Open hardware schematic and PCB runtime interface"
+        "Strategy-free base scaffold",
+        "Function-level trace failure localizer",
+        "Success-first held-out gate rollback"
       ],
       "technical_details": [
-        "Open-source firmware and CAD files",
-        "Multi-machine session context syncing",
-        "Integrated live viewers for geometry and netlists"
+        "76.0-91.8% LLM call reduction",
+        "WebArena-Verified და BrowseComp-Plus ტესტები",
+        "4B-დან 120B-მდე მოდელების მხარდაჭერა"
       ],
-      "potential_impact": "შესაძლებელს გახდის მცირე გუნდებისა და ინდივიდუალური დეველოპერებისთვის რთული ჰარდვერ-სოფტვერ პროექტების ავტომატიზაციას.",
+      "potential_impact": "მნიშვნელოვნად შემცირდება enterprise agentic workflow-ების საექსპლუატაციო ხარჯები მცირე open-source მოდელების გამოყენებით.",
       "action_type": "BUILD",
-      "action": "ჩამოტვირთეთ OpenHarness რეპოზიტორი, გამოსცადეთ Claude Code-ის ინტეგრაცია ლოკალურ პროექტზე და დააკავშირეთ Custom Tool Calling.",
+      "action": "გადაიტანეთ თქვენი აგენტის განმეორებადი if/else გადაწყვეტილებები Python-ის დეკორატორებში, ნაცვლად სისტემურ Prompt-ში მათი აღწერისა.",
       "evidence": [],
       "factuality_level": "single_source",
       "classification": [
@@ -3885,164 +3738,157 @@
         "Real Business Opportunity"
       ],
       "verified_facts": [
-        "OpenHarness არის ღია კოდის პროგრამული და აპარატურული პლატფორმა AI კოდინგ აგენტებისთვის",
-        "მხარს უჭერს Claude Code და Codex აგენტების ინტეგრაციას Software, CAD, PCB design და Video workflows-ში",
-        "სესიების მდგომარეობა (Session persistence) ინახება და სინქრონიზდება მომხმარებლის ყველა მოწყობილობაზე",
-        "პროექტის firmware, schematics, PCB layouts და CAD ფაილები სრულად ღიაა (Open Source)"
+        "Growing Harness ამცირებს LLM გამოძახებებს 76.0-91.8%-ით ტრადიციულ Tool-Calling-თან შედარებით",
+        "Inference cost მცირდება 74.4-98.6%-ით სტრატეგიის კოდში კაფსულაციის ხარჯზე",
+        "4B მოდელზე WebArena-Verified-ზე წარმატების მაჩვენებელი გაიზარდა 6.7%-დან 45.3%-მდე"
       ],
-      "interpretation": "OpenHarness აფართოებს კოდინგ აგენტების მოქმედების არეალს წმინდა ტექსტური IDE-ებიდან ფიზიკურ ინჟინერიასა და CAD/PCB დიზაინამდე.",
-      "uncertainty": "აპარატურული Harness დევაისის წარმოებისა და ლოკალური Latency-ს ეფექტურობა ფართო მასშტაბზე ჯერ შესამოწმებელია.",
-      "counter_argument": "მრავალ-დომენური ინსტრუმენტების გაერთიანებამ შესაძლოა გაზარდოს Agent Loop-ის Context Window-ს გადატვირთვა."
+      "interpretation": "განმეორებადი control logic არ უნდა იწერებოდეს LLM Prompt-ში; ის უნდა გადავიდეს Python harness კოდში ავტომატური feedback loop-ით.",
+      "uncertainty": "კოდის ავტომატურმა Accumulation-მა ხანგრძლივ პერსპექტივაში შესაძლოა გამოიწვიოს Harness Spaghetti Code და ტექნიკური ვალი.",
+      "counter_argument": "დიდი LLM-ების გაიაფებასთან ერთად, კოდის ავტომატურ წერას შესაძლოა აჯობოს დიდ context window-ში მუშაობამ."
     },
     {
-      "event_id": "evt-gep-agent-evolution-skill-packs",
-      "title": "Agent Self-Evolution Ecosystem: GEP Protocol, AAS Core და Skill-Pack სტანდარტები",
-      "category": "Agent Self-Improvement & Memory Systems",
-      "primary_url": "https://github.com/EvoMap/awesome-agent-evolution",
-      "supporting_urls": [
-        "https://github.com/topics/skill-pack",
-        "https://github.com/topics/skill-library"
+      "event_id": "evt-gemini-deep-research-api",
+      "title": "Google-ის Gemini Deep Research Agent API: ავტონომიური multi-step კვლევა და MCP",
+      "category": "LLM APIs & Developer Tools",
+      "primary_url": "https://ai.google.dev/gemini-api/docs/deep-research",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 9,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "Google-მა გამოაშვება Gemini Deep Research Agent API, რომელიც ფონურ რეჟიმში ასრულებს მრავალ-ნაბიჯიან კვლევებს MCP-ის მხარდაჭერით.",
+      "what_happened": "Google-მა Gemini API-ში დაამატა Interactions API endpoint, საიდანაც შესაძლებელია ავტონომიური კვლევის აგენტის გაშვება background=true პარამეტრით.",
+      "what_changed": "generate_content-ის ნაცვლად, ხანგრძლივი აგენტური დავალებებისთვის დაინერგა ასინქრონული Interactions API და Polling pattern.",
+      "why_it_matters": "შეგიძლიათ მარტივად ჩააშენოთ ავტონომიური კვლევის ფუნქციონალი თქვენს აპლიკაციებში Python SDK-ის რამდენიმე სტრიქონით.",
+      "key_takeaways": [
+        "Interactions API ხანგრძლივი დავალებებისთვის",
+        "MCP Server-ებთან პირდაპირი დაკავშირება",
+        "ფონური შესრულება და შედეგების Polling"
       ],
+      "technical_architecture": [
+        "Interactions API endpoint structure",
+        "Background task processing pipeline",
+        "MCP integration layer for external tools"
+      ],
+      "technical_details": [
+        "Agent model: deep-research-preview-04-2026",
+        "Python SDK google.genai client support",
+        "Asynchronous polling with interaction.id"
+      ],
+      "potential_impact": "შემცირდება საკუთარი RAG და Search loop-ების აწყობის საჭიროება კომპლექსური საძიებო აგენტების შესაქმნელად.",
+      "action_type": "APPLY",
+      "action": "დაწერეთ Python სკრიპტი Interactions API-ის გამოყენებით, რომელიც ფონურ რეჟიმში ჩაატარებს კვლევას და დააპოლავს შედეგს.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Real Business Opportunity"
+      ],
+      "verified_facts": [
+        "Deep Research Agent ხელმისაწვდომია ექსკლუზიურად Interactions API-ს მეშვეობით (agent: deep-research-preview-04-2026)",
+        "მოითხოვს background execution-ს (background=true) და polling / streaming მექანიზმს",
+        "მხარს უჭერს MCP Server-ებთან მიერთებას, ვიზუალიზაციების გენერაციას და დოკუმენტების პირდაპირ მიწოდებას"
+      ],
+      "interpretation": "Google-ს გადაჰყავს რთული აგენტური workflow-ები managed API level-ზე, სადაც ფონური პროცესები და MCP ინტეგრაცია სტანდარტად ხდება.",
+      "uncertainty": "Preview სტატუსიდან გამომდინარე, API-ს Rate limit-ები და ფასწარმოქმნა შესაძლოა შეიცვალოს ოფიციალურ რელიზამდე.",
+      "counter_argument": "Managed Agent API-ები ამცირებენ დეველოპერის კონტროლს execution loop-ზე და სრულიად ბლოკავენ custom retry logic-ს."
+    },
+    {
+      "event_id": "evt-typesafe-option-name-rubric-bias",
+      "title": "Type-Safe Is Not Error-Free: სტრუქტურირებული Decision Head მიჰყვება ოპტიმის სახელს და არა რუბრიკას",
+      "category": "AI Research & Reliability",
+      "primary_url": "https://arxiv.org/abs/2609.26758",
+      "supporting_urls": [],
       "importance": 8,
       "relevance": 9,
       "actionability": 9,
       "source_quality": 8,
-      "confidence": 90,
-      "tldr": "შექმნა Agent Self-Evolution ეკოსისტემა GEP პროტოკოლითა და AAS Core-ით, რაც აგენტებს უნარების თვით-ევოლუციის საშუალებას აძლევს.",
-      "what_happened": "Open-Source საზოგადოებამ დაამტკიცა Genome Evolution Protocol (GEP) და AAS Core უნარების სტანდარტიზებული მართვისთვის.",
-      "what_changed": "ხელით პრომპტინგის ეპოქიდან გადავედით დინამიურ, მოഡულარულ და ევოლუციურ Agent Skill Packages-ზე.",
-      "why_it_matters": "აგენტების მეხსიერებისა და უნარების მოდულარული არქიტექტურა აუცილებელია რთული AI Agent Loop-ების ასაგებად.",
+      "confidence": 92,
+      "tldr": "კვლევამ აჩვენა, რომ ტიპიზირებული LLM decision head-ები ენდობიან ოპციის დასახელების სემანტიკას და იგნორირებას უკეთებენ მიბმულ რუბრიკას.",
+      "what_happened": "მკვლევარებმა შეამოწმეს typed decision models და აღმოაჩინეს, რომ ოპციის სახელის შეცვლა (მაგ. neutral-დან polar-ზე) იწვევს პასუხების მასობრივ ამოყირავებას.",
+      "what_changed": "დაიმსხვრა მითი, რომ Type-Safe (JSON Schema / Enum) გამონატანი ავტომატურად ნიშნავს ლოგიკურად სწორ პასუხს.",
+      "why_it_matters": "JSON Schema Enums-ის შექმნისას უნდა გამოიყენოთ ნეიტრალური სახელები (მაგ. Option_A, Option_B) სემანტიკური გადახრების თავიდან ასაცილებლად.",
       "key_takeaways": [
-        "GEP პროტოკოლი იყენებს Genes და Capsules სტრუქტურას მუტაციისთვის",
-        "AAS Core გთავაზობთ ლოკალურ Control Plane-ს უნარების ვალიდაციისთვის",
-        "Cross-runtime მხარდაჭერა Claude Code, OpenCode და Codex აგენტებისთვის"
+        "0% type error არ ნიშნავს 0% logic error-ს",
+        "No/Yes სახელები ამახინჯებენ AUC მაჩვენებელს",
+        "Random ან Neutral სახელები ხსნიან სემანტიკურ ბიასს"
       ],
       "technical_architecture": [
-        "GEP Genome Evolution Engine with Auditable Event logs",
-        "AAS Core local MCP and CLI validation stack",
-        "Cross-runtime skill-pack interface specification"
+        "Constrained decision head architecture",
+        "Mean-pooling output span comparison",
+        "Task-specific rubric binding layer"
       ],
       "technical_details": [
-        "2,400+ indexed agentic skills in AAS Core",
-        "Modular skill-pack standard for Claude Code and Cursor",
-        "Prompt governance via evolutionary mutation trees"
+        "70.4 answer flips per 100 on renaming",
+        "AUC drop from .94 to .23",
+        "1,200 workflow decision test cases"
       ],
-      "potential_impact": "შემცირდება დრო აგენტების ახალი უნარებით აღჭურვისთვის და დაკომპლექტდება Self-Improving Agent Pipeline-ები.",
-      "action_type": "TRY",
-      "action": "გამოიკვლიეთ AAS Core ან evolver სერვერი ლოკალურად, შექმენით მცირე Skill-Pack და დააკავშირეთ იგი Claude Code CLI-სთან.",
+      "potential_impact": "შეიცვლება აგენტებში Structured JSON Enums-ის დაპროექტების პრაქტიკა და Prompt/Schema Engineering სტანდარტები.",
+      "action_type": "APPLY",
+      "action": "გადახედეთ თქვენს JSON Schema Enum-ებს და შეცვალეთ სემანტიკური სახელები ნეიტრალური იდენტიფიკატორებით, ხოლო განმარტებები დატოვეთ description-ში.",
       "evidence": [],
-      "factuality_level": "corroborated",
+      "factuality_level": "single_source",
       "classification": [
         "Real Technical Skill",
-        "Long-Term Career Value"
+        "Real Business Opportunity"
       ],
       "verified_facts": [
-        "Genome Evolution Protocol (GEP) და evolver ძრავა უზრუნველყოფს აგენტების ავტონომიურ Self-Evolution-ს Genes და Capsules მოდელით",
-        "AAS Core (agentic-awesome-skills) მოიცავს 2,400+-ზე მეტ Agentic Skill-ს ლოკალური Control Plane-ით",
-        "Skill-Pack არქიტექტურა საშუალებას აძლევს Claude Code, Cursor და OpenCode აგენტებს გაიზიარონ Skill Package-ები",
-        "აუდიტირებადი Prompt Governance უზრუნველყოფს ევოლუციური მუტაციების Traceability-ს"
+        "0/1 ოპციების სახელების no/yes-ით ჩანაცვლებამ შეცვალა 70.4 პასუხი 100-დან და AUC 0.94-დან 0.23-მდე დააგდო",
+        "Type-error rate რჩება 0%-ზე, მაშინაც კი, როდესაც გადაწყვეტილების სიზუსტე კატასტროფულად ეცემა",
+        "ნეიტრალური ან შემთხვევითი სტრიქონების (random strings) გამოყენება ოპციის სახელებად აბრუნებს მოდელს სტაბილურ რეჟიმში"
       ],
-      "interpretation": "Skill-Pack და GEP სტანდარტები გარდაქმნიან ინდივიდუალურ Prompt-ებს მრავალჯერ გამოყენებად, თვით-განვითარებად Agent Capabilities მოკლულებად.",
-      "uncertainty": "ავტონომიურმა Mutation პროცესმა შესაძლოა გამოიწვიოს Unintended Agent Drift ხანგრძლივ Runtime-ზე.",
-      "counter_argument": "სტატიკური, ხელით დაწერილი System Prompt-ები ჯერ კიდევ უფრო პროგნოზირებადია კრიტიკულ Production გარემოში."
+      "interpretation": "Typed/Structured Output-ები იძლევიან გარანტიას მხოლოდ სინტაქსზე და არა სემანტიკურ სიზუსტეზე; სემანტიკურად დატვირთული ოპციის სახელები აფუჭებენ რუბრიკის აღქმას.",
+      "uncertainty": "ეფექტი შესაძლოა განსხვავდებოდეს სხვადასხვა Fine-Tuning მეთოდისა და დეკოდირების არქიტექტურის მიხედვით.",
+      "counter_argument": "მოდელების შემდგომი ინსტრუქციული წვრთნა (RLHF) შესაძლოა დაეხმაროს რუბრიკაზე ფოკუსირებას ოპციის სახელის მიუხედავად."
     },
     {
-      "event_id": "evt-google-gtig-ai-supply-chain-contamination",
-      "title": "Google Threat Intelligence Report: AI-Assisted Code Generation და Supply Chain Contamination",
-      "category": "AI Security & Code Generation Governance",
-      "primary_url": "https://cloud.google.com/blog/products/identity-security/cloud-ciso-perspectives-how-google-monitors-ai-threats-advances-ai-defenses",
+      "event_id": "evt-tasteful-agent-taste-bench",
+      "title": "The Tasteful Agent: ხანგრძლივ დავალებებში აგენტის გადაწყვეტილებების ხარისხის გაუმჯობესება",
+      "category": "AI Evaluation & Reliability",
+      "primary_url": "https://huggingface.co/papers/2609.25804",
       "supporting_urls": [],
       "importance": 8,
       "relevance": 9,
-      "actionability": 8,
-      "source_quality": 9,
-      "confidence": 92,
-      "tldr": "Google GTIG-ის ცნობით, ჰაკერები მიზანმიმართულად წამლავენ ღია კოდის პაკეტებს, რომლებსაც AI კოდინგ აგენტები ენდობიან.",
-      "what_happened": "Google-ის CISO ანგარიშმა გამოავლინა AI ასისტენტების მიერ შეთავაზებული Upstream Package Contamination-ის ზრდის ტენდენცია.",
-      "what_changed": "ტრადიციული ხელით dependency-ების არჩევიდან გადავედით AI აგენტების მიერ ავტომატურ პაკეტების იმპორტზე, რაც ახალ საფრთხეს ქმნის.",
-      "why_it_matters": "AI coding tools-ის (Cursor, Claude Code, OpenHands) გამოყენებისას აუცილებელია ინსტრუმენტების მიერ შემოთავაზებული პაკეტების უსაფრთხოების შემოწმება.",
-      "key_takeaways": [
-        "AI ასისტენტები ხშირად ენდობიან და გვთავაზობენ დაბინძურებულ Open-Source პაკეტებს",
-        "ავტონომიური კოდის გენერაცია მოითხოვს სენდბოქსინგსა და Dependency Validation-ს",
-        "GTIG უზრუნველყოფს AI Threat Tracker მონიტორინგს რეალურ ინციდენტებზე"
-      ],
-      "technical_architecture": [
-        "Upstream package validation gateway in Agent workflows",
-        "CI/CD context contract and sidecar validation architecture",
-        "Isolated execution sandboxes for AI-generated code dependencies"
-      ],
-      "technical_details": [
-        "Malicious package contamination target AI prompts",
-        "High-velocity production code push vulnerabilities",
-        "GTIG AI Threat Tracker telemetry data"
-      ],
-      "potential_impact": "აიძულებს AI დეველოპერულ ინსტრუმენტებს ჩაშენონ ავტომატური Dependency Verification და Context Contracts.",
-      "action_type": "APPLY",
-      "action": "დაამატეთ Strict Dependency Scanning პროცესი თქვენს Agent Pipeline-ში, რათა აგენტმა არ გამოიყენოს შეუმცირებელი მესამე მხარის პაკეტები.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "Google Threat Intelligence Group (GTIG) ადასტურებს Open-Source მიწოდების ჯაჭვების დაბინძურების ზრდას 2025-2026 წლებში",
-        "თავდამსხმელები მიზანმიმართულად წამლავენ Upstream პაკეტებს, რომლებსაც AI კოდინგ ასისტენტები სთავაზობენ დეველოპერებს",
-        "ავტონომიური აგენტები უპრეცედენტო სიჩქარით აგზავნიან კოდს Production-ში, რაც ზრდის რისკის ზედაპირს",
-        "პრობლემის გადასაჭრელად საჭიროა ავტომატიზებული პაკეტების ვალიდაცია AI-assisted development workflows-ში"
-      ],
-      "interpretation": "AI კოდინგ აგენტების ფართო გამოყენებამ შექმნა ახალი ვექტორი (Prompt/Package Contamination), სადაც მავნე კოდი ხვდება პროექტში აგენტის ნდობის გამო.",
-      "uncertainty": "ზუსტად რა პროცენტი შეადგენს AI-ის მიერ შეთავაზებულ დაბინძურებულ პაკეტებს რეალურ GitHub PR-ებში, ჯერ კიდევ დასაზუსტებელია.",
-      "counter_argument": "სტატიკური ანალიზის ინსტრუმენტები და Lockfile-ის შემოწმება ამცირებს ამ საფრთხეს ტრადიციულ CI/CD პაიპლაინებში."
-    },
-    {
-      "event_id": "evt-microsoft-project-perception-security-agents",
-      "title": "Microsoft Project Perception: Red, Blue და Green აგენტების არქიტექტურა და MAI-Cyber-1-Flash მოდელი",
-      "category": "Multi-Agent Systems & Cybersecurity Architecture",
-      "primary_url": "https://www.microsoft.com/en-au/security/business/ai-powered-cybersecurity/project-perception-agentic-system",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 8,
       "actionability": 7,
-      "source_quality": 10,
-      "confidence": 95,
-      "tldr": "Microsoft-მა წარადგინა Project Perception - Multi-Agent უსაფრთხოების სისტემა Red/Blue/Green აგენტებითა და MAI-Cyber-1-Flash მოდელით.",
-      "what_happened": "Microsoft-მა გამოაქვეყნა Project Perception Preview, სადაც აგენტები ავტონომიურად უცვლიან კონტექსტს და იცავენ ინფრასტრუქტურას.",
-      "what_changed": "ცალკეული რეაქტიული უსაფრთხოების ინსტრუმენტებიდან გადავედით უწყვეტ Multi-Agent ორკესტრირებულ Workflow-ზე.",
-      "why_it_matters": "აგენტების არქიტექტურის დიზაინი (Red/Blue/Green როლები + Harness + Actuators) არის საუკეთესო პრაქტიკა ნებისმიერი Multi-Agent პროექტისთვის.",
+      "source_quality": 8,
+      "confidence": 89,
+      "tldr": "Microsoft-ის მკვლევარებმა შექმნეს Taste-Bench აგენტების გადაწყვეტილების ხარისხის გასაზომად და აჩვენეს, რომ Taste-ის სწავლება შესაძლებელია.",
+      "what_happened": "წარმოადგინეს Taste-Bench, სადაც იზომება აგენტის Taste - უნარი აირჩიოს სწორი გზა Decision Fork-ის დროს.",
+      "what_changed": "End-to-end წარმატების გაზომვის ნაცვლად, შეფასება ხდება უშუალოდ გადაწყვეტილების მიღების წერტილებში (forks).",
+      "why_it_matters": "გეხმარებათ გაიგოთ, თუ რატომ იჭრებიან აგენტები ხანგრძლივ ამოცანებში და როგორ დაატრენინგოთ სტუდენტი მოდელები teacher feedback-ით.",
       "key_takeaways": [
-        "Red აგენტები ეძებენ სუსტ წერტილებს, Blue იკვლევს, Green ახორციელებს ჰარდენინგს",
-        "Actuators უზრუნველყოფენ გადაწყვეტილების რეალურ მოქმედებად გარდაქმნას",
-        "Harness აკონტროლებს მოდელების საიმედოობასა და ტესტირებას"
+        "Top მოდელების სიზუსტე მხოლოდ 59.7%-ია",
+        "Reasoning budget-ის გაზრდა არ შველის Taste-ს",
+        "Teacher-student დისტილაცია ზრდის გადაწყვეტილების ხარისხს"
       ],
       "technical_architecture": [
-        "Multi-agent role separation: Red (Probe), Blue (Investigate), Green (Hardening)",
-        "Harness Orchestration Layer with enterprise governance controls",
-        "Actuator Execution Framework for safe environment manipulation"
+        "Decision fork mining algorithm trajectories-დან",
+        "Teacher-student distillation architecture",
+        "No-lookahead fork evaluation module"
       ],
       "technical_details": [
-        "Purpose-built MAI-Cyber-1-Flash reasoning model",
-        "Evidence-grade context enrichment pipeline",
-        "Human-in-the-loop approval gate for critical actions"
+        "59.7% top model accuracy on Taste-Bench",
+        "Automatic trajectory fork mining",
+        "Distillation of outcome-aware teacher"
       ],
-      "potential_impact": "დაამკვიდრებს Multi-Agent არქიტექტურის სტანდარტებს უსაფრთხოებისა და IT ავტომატიზაციის სექტორში.",
+      "potential_impact": "შექმნის ახალ სტანდარტს აგენტების შიდა მსჯელობისა და გადაწყვეტილების მიღების ხარისხის შეფასებაში.",
       "action_type": "LEARN",
-      "action": "გაანალიზეთ Actuator და Harness კომპონენტების გამიჯვნის პრინციპი Microsoft-ის დოკუმენტაციაში და გამოიყენეთ ის საკუთარ Agent Loop-ში.",
+      "action": "გაანალიზეთ თქვენი აგენტის სესიების Execution Traces და იპოვეთ Decision Fork-ები, სადაც არასწორი ინსტრუმენტი იქნა არჩეული.",
       "evidence": [],
-      "factuality_level": "corroborated",
+      "factuality_level": "single_source",
       "classification": [
         "Real Technical Skill",
         "Long-Term Career Value"
       ],
       "verified_facts": [
-        "Project Perception წარადგენს სამ სპეციალიზებულ აგენტურ როლს: Red (probe), Blue (investigate), Green (remediate & harden)",
-        "სისტემა იყენებს ახალ სპეციალიზებულ MAI-Cyber-1-Flash მოდელს სწრაფი Security Reasoning-ისთვის",
-        "მოქმედებები ხორციელდება Actuators მექანიზმით, ხოლოდ ორკესტრაცია ეყრდნობა Harness ჩარჩოს",
-        "მაღალი რისკის მოქმედებები მოითხოვს Human-in-the-loop დასტურს enterprise governance-ის ფარგლებში"
+        "Taste-Bench ზომავს აგენტის უნარს მიიღოს სწორი გადაწყვეტილება decision fork-ზე მომავალი შედეგის დაუნახავად",
+        "საუკეთესო ფრონტიერ მოდელმა Taste-Bench-ზე მიაღწია მხოლოდ 59.7%-იან სიზუსტეს",
+        "დიდი reasoning budget (CoT) არ აუმჯობესებს აგენტის Taste-ს გადაწყვეტილების მიღებისას"
       ],
-      "interpretation": "Microsoft-ის არქიტექტურა ადასტურებს, რომ რთულ Enterprise დომენებში Multi-Agent სისტემები მოითხოვენ მკაცრად დაყოფილ როლებსა და Actuator/Harness საზღვრებს.",
-      "uncertainty": "MAI-Cyber-1-Flash მოდელის ზუსტი ზომა და ლოკალური ან API წვდომის დეტალები ჯერ არ არის საჯარო.",
-      "counter_argument": "სამი აგენტის ორკესტრაციამ და Human Sign-off-მა შესაძლოა შეანელოს რეაგირების დრო რეალურ ინციდენტებზე."
+      "interpretation": "აგენტების მთავარი პრობლემა არის არასწორი ჰიპოთეზის არჩევა საწყის ეტაპზე, რისი გამოსწორებაც დისტილაციით (distillation) არის შესაძლებელი.",
+      "uncertainty": "ავტომატურად mined decision fork-ები შესაძლოა შეიცავდნენ ხმაურს და არ ასახავდნენ რეალურ ადამიანურ Taste-ს.",
+      "counter_argument": "დამატებითი RL-ს ან მონტე-კარლოს ხის ძიების (MCTS) გამოყენებამ შესაძლოა გადაფაროს Taste-ის დეფეციტი ინფერენსის დროს."
     }
   ],
   "topics": {
@@ -4093,14 +3939,14 @@
     "Open Source AI / Foundation Models": 1,
     "AI Evaluation / Agent Safety & Internal State": 1,
     "AI Research / Self-Improvement & Agent Memory": 1,
-    "Agent Security & Governance": 4,
+    "Agent Security & Governance": 5,
     "AI Research / Agent Communication & Evaluation": 1,
     "AI Research / Structured Data & Causal ML": 1,
     "Developer Tools & Agent Frameworks": 2,
     "Model Inference & Local Hardware Optimization": 1,
     "AI Research & Model Architecture": 2,
     "Agent Security & Infrastructure": 1,
-    "LLM Infrastructure & Agent Memory": 1,
+    "LLM Infrastructure & Agent Memory": 2,
     "Multi-Agent Systems & RL": 1,
     "Autonomous Agents & Domain Tooling": 1,
     "Embodied AI & Agent Acceleration": 1,
@@ -4122,19 +3968,17 @@
     "AI Evaluation / Agent Reliability": 1,
     "AI Coding Tools / Agent Evaluation": 1,
     "Open Source AI / Ecosystem Trends": 1,
-    "აგენტების ინფრასტრუქტურა და Runtime": 2,
-    "RAG, Retrieval და აგენტის მეხსიერება": 2,
+    "აგენტების ინფრასტრუქტურა და Runtime": 1,
+    "RAG, Retrieval და აგენტის მეხსიერება": 1,
     "Tool Calling და აგენტების არქიტექტურა": 1,
     "AI Coding Tools და უსაფრთხოება": 1,
-    "LLM კვლევა და Inference-ის ოპტიმიზაცია": 2,
-    "AI Research და RL წვრთნა": 2,
-    "აგენტების არქიტექტურა და საიმედოობა": 1,
-    "AI საინჟინრო ინსტრუმენტები და აგენტები": 1,
-    "AI Research & World Models": 1,
-    "Agent Harness & AI Engineering Tools": 1,
-    "Agent Self-Improvement & Memory Systems": 1,
-    "AI Security & Code Generation Governance": 1,
-    "Multi-Agent Systems & Cybersecurity Architecture": 1
+    "LLM კვლევა და Inference-ის ოპტიმიზაცია": 1,
+    "AI Research და RL წვრთნა": 1,
+    "Agent Architecture & Multi-Agent Systems": 1,
+    "AI Research & Agent Architecture": 1,
+    "LLM APIs & Developer Tools": 1,
+    "AI Research & Reliability": 1,
+    "AI Evaluation & Reliability": 1
   },
   "reports": [
     {
@@ -7601,142 +7445,42 @@
       ]
     },
     {
-      "date": "2026-09-19",
-      "summary": "დღევანდელი ანგარიში ფოკუსირებულია Multi-Agent სისტემების ემპირიულ შეცდომებზე, Anthropic-ის შიდა ავტონომიურ R&D აგენტების მასშტაბირებაზე და Bedrock AgentCore-ის საწარმოო არქიტექტურაზე. კვლევები ცხადყოფს, რომ აგენტების ძირითადი პრობლემები ინფრასტრუქტურასა და კოორდინაციაშია. პარალელურად, WeVisDoc და On-Policy Self-Distillation გვთავაზობენ პრაქტიკულ მიდგომებს RAG დოკუმენტების დამუშავებასა და მცირე მოდელების მსჯელობის ოპტიმიზაციაში.",
+      "date": "2026-09-23",
+      "summary": "დღევანდელი ანალიზი ფოკუსირებულია აგენტების არქიტექტურის მნიშვნელოვან ტრანსფორმაციაზე. Agensh-მა და Growing Harness-მა აჩვენეს დეცენტრალიზებული მრავალ-აგენტიანი სისტემების და ჰარნესის კოდის ავტომატური გენერაციის ეფექტურობა. პარალელურად, A2M კვლევამ MCP ეკოსისტემაში სემანტიკური ჰაიჯექინგის სერიოზული რისკები გამოავლინა, ხოლო CliffCompaction გთავაზობთ კონტექსტის შეკუმშვის ახალ მეთოდს.",
       "events": [
         {
-          "event_id": "evt-multi-agent-empirical-study-issues",
-          "title": "Multi-Agent Frameworks-ის პირველი მასშტაბური ემპირიული კვლევა: არქიტექტურული ხარვეზები და Maintenance",
-          "category": "აგენტების არქიტექტურა და საიმედოობა",
-          "primary_url": "https://arxiv.org/html/2601.07136v1",
+          "event_id": "evt-cliffcompaction-coding-agent-context",
+          "title": "CliffCompaction: უდანაკარგო context compaction ხანგრძლივი coding აგენტებისთვის",
+          "category": "LLM Infrastructure & Agent Memory",
+          "primary_url": "https://arxiv.org/abs/2609.26779",
           "supporting_urls": [],
           "importance": 9,
           "relevance": 10,
-          "actionability": 8,
+          "actionability": 9,
           "source_quality": 8,
           "confidence": 92,
-          "tldr": "მასშტაბურმა კვლევამ გამოავლინა, რომ LangChain-ის, CrewAI-სა და AutoGen-ის მთავარი სისუსტე agent coordination და infrastructure issues-ია, რაც აფერხებს production საიმედოობას.",
-          "what_happened": "LSU-სა და University of Kentucky-ის მკვლევრებმა გამოაქვეყნეს 8 წამყვანი multi-agent framework-ის ანალიზი 42K commit-ზე დაყრდნობით.",
-          "what_changed": "ზედაპირული ვარაუდების ნაცვლად მივიღეთ ზუსტი მეტრიკები: აგენტური სისტემების ხარვეზების 10% უშუალოდ კოორდინაციაზე მოდის.",
-          "why_it_matters": "საკუთარი agent loops აწყობისას თავიდან აიცილებთ მესამე მხარის მყიფე აბსტრაქციებს და აქცენტს გააკეთებთ საიმედო orchestration-ზე.",
+          "tldr": "CliffCompaction გთავაზობთ autocompaction ტექნიკას, რომელიც ინარჩუნებს ორიგინალ ტექსტს rewriting-ის გარეშე და ამცირებს ხარჯს 50%-ით.",
+          "what_happened": "შექმნეს open-source API-proxy implementations CliffCompaction-ისთვის, რომელიც არასდროს აკეთებს კომპაქტირებული კონტექსტის განმეორებით კომპაქციას.",
+          "what_changed": "LLM-generated summary-ების ნაცვლად გამოიყენება პირდაპირი truncation, რაც კვეთს context drift-ს 1-მილიონიან context window-ზე.",
+          "why_it_matters": "Claude Code და Codex harness-ებთან ინტეგრაციით შეგიძლიათ მნიშვნელოვნად შეამციროთ API ხარჯები ხანგრძლივი დებSimpleDateFormat სესიებისას.",
           "key_takeaways": [
-            "ფრეიმვორკების განვითარება ორიენტირებულია ახალ ფუნქციებზე და არა შეცდომების გასწორებაზე.",
-            "Agent coordination შეადგენს დაფიქსირებული ხარვეზების მეათედს.",
-            "Infrastructure და environment isolation წარმოადგენს მეორე უდიდეს ტექნიკურ ბარიერს."
+            "ნულის ტოლფასი context drift ორიგინალი ტექსტის შენარჩუნებით",
+            "50%-მდე დაზოგილი ტოკენები bounded context window-ში",
+            "Scaffold-agnostic API-proxy ხელმისაწვდომია ღია კოდით"
           ],
           "technical_architecture": [
-            "Orchestration Layer: AutoGen, CrewAI და LangChain core abstractions.",
-            "State and Execution: async dispatch, retry queues და isolated sandboxes."
+            "API-proxy შრე harness-სა და LLM-ს შორის",
+            "Discard mechanics ძველი კომპაქტირებული ბუფერებისთვის",
+            "Zero-rephrase truncation ალგორითმი"
           ],
           "technical_details": [
-            "Bugs: 22% total issues",
-            "Infrastructure: 14% issues",
-            "Coordination: 10% issues",
-            "Resolution time: 1-14 days"
+            "KernelBench 3.58x speedup 400 step-ზე",
+            "10+ პროცენტული პუნქტი Terminal-Bench-ზე",
+            "Claude Code და Codex-ის მხარდაჭერა"
           ],
-          "potential_impact": "ინჟინრები გადავლენ მინიმალისტურ, მკაცრად ტიპიზირებულ deterministic graph loops-ზე bloated frameworks-ის ნაცვლად.",
-          "action_type": "LEARN",
-          "action": "გააანალიზეთ თქვენი agent loops კოდი და შეამცირეთ დამოკიდებულება მესამე მხარის multi-agent wrapper ბიბლიოთეკებზე.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "გაანალიზდა 42,000 commit და 4,700 გადაჭრილი issue რვა წამყვან MAS ფრეიმვორკში (LangChain, CrewAI, AutoGen).",
-            "ცვლილებების 40.8% არის perfective commits (ახალი ფუნქციონალი), ხოლო corrective maintenance შეადგენს მხოლოდ 27.4%-ს.",
-            "ყველაზე ხშირი პრობლემებია bugs (22%), infrastructure (14%) და agent coordination challenges (10%)."
-          ],
-          "interpretation": "Multi-Agent ეკოსისტემა განიცდის ტექნიკურ ვალს: დეველოპერები ჩქარობენ ახალი ფუნქციების დამატებას, რის გამოც runtime ინფრასტრუქტურა და კოორდინაციის მექანიზმები რჩება მყიფე.",
-          "uncertainty": "კვლევა ეყრდნობა ღია კოდის რეპოზიტორიებს და შესაძლოა სრულად არ ასახავდეს დახურულ enterprise სისტემებს.",
-          "counter_argument": "სწრაფი ევოლუცია აუცილებელია ახალი LLM API-ების მხარდასაჭერად, ხოლო სტაბილიზაცია ხშირად მეორეხარისხოვანია ადრეულ ეტაპზე."
-        },
-        {
-          "event_id": "evt-anthropic-internal-claude-engineering-scale",
-          "title": "Anthropic-ის შიდა ავტომატიზაცია: 30,000 პარალელური აგენტი და 8x კოდის გენერაცია",
-          "category": "AI საინჟინრო ინსტრუმენტები და აგენტები",
-          "primary_url": "https://www.reuters.com/business/anthropic-says-claude-now-leads-quarter-work-building-its-next-ai-models-2026-09-17",
-          "supporting_urls": [
-            "https://www.reuters.com/business/retail-consumer/hallucinating-ai-chatbots-wiping-out-humanity-how-did-we-get-here-2026-09-15"
-          ],
-          "importance": 9,
-          "relevance": 9,
-          "actionability": 7,
-          "source_quality": 8,
-          "confidence": 95,
-          "tldr": "Anthropic-ში 30,000 Claude აგენტი აწარმოებს შიდა კოდის უმრავლესობას 8x სიჩქარით, ხოლო გაფილტვრის მაჩვენებელი 1/47,000 მოქმედებაა.",
-          "what_happened": "Anthropic-მა ოფიციალურად გაასაჯაროვა შიდა R&D მეტრიკები, სადაც Claude Code და აგენტური ინფრასტრუქტურა მოდელების შექმნის ძირითადი მამოძრავებელი გახდა.",
-          "what_changed": "AI გადავიდა მარტივი code completion რეჟიმიდან კომპლექსურ task orchestration-ზე, რომელიც დღეების და კვირების სამუშაოს ავტონომიურად ასრულებს.",
-          "why_it_matters": "დეველოპერებისთვის უმთავრესი უნარი ხდება არა ხელით სინტაქსის წერა, არამედ აგენტების harness-ის, ტესტების და evaluation pipelines-ის აწყობა.",
-          "key_takeaways": [
-            "AI აგენტები მართავენ კომპანიის R&D ამოცანების მეოთხედს.",
-            "ინჟინრების კოდის გამტარუნარიანობა გაიზარდა 8-ჯერ.",
-            "Execution guardrails ბლოკავს საშუალოდ 1 მოქმედებას 47,000 გადაწყვეტილებიდან."
-          ],
-          "technical_architecture": [
-            "Harness: Claude Code CLI და automated task verification suites.",
-            "Runtime Filtering: automated pre-execution screening for safe tool calling."
-          ],
-          "technical_details": [
-            "30,000 parallel agents",
-            "1 in 47,000 actions blocked",
-            "8x code volume shipped",
-            "Reliability doubling: 4 months"
-          ],
-          "potential_impact": "პროგრამული ინჟინერიის გუნდები გარდაიქმნებიან აგენტების ზედამხედველ და verification სპეციალისტებად.",
-          "action_type": "APPLY",
-          "action": "დააინსტალირეთ CLI coding agent და დანერგეთ მკაცრი automated test suite მისი pull request-ების შესამოწმებლად.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Business Opportunity",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "Claude ხელმძღვანელობს Anthropic-ის R&D სამუშაოების 26%-ს, რაც მარტის 1%-დან გაიზარდა.",
-            "30,000 AI აგენტი ერთდროულად ასრულებს კვლევით და საინჟინრო ამოცანებს შიდა პლატფორმაზე.",
-            "ერთი მილიარდი გადაწყვეტილებიდან სისტემამ დაბლოკა დაახლოებით ყოველი 1/47,000 ქმედება.",
-            "Claude Code-ის დახმარებით ინჟინრები აგზავნიან 8-ჯერ მეტ კოდს კვარტალურად, ვიდრე 2021-2025 წლებში."
-          ],
-          "interpretation": "მოდელების მწარმოებლები გადავიდნენ მასშტაბურ self-improvement ციკლებზე, სადაც პროგრამული უზრუნველყოფის და კვლევის დიდი ნაწილი აგენტურ harness-ში სრულდება.",
-          "uncertainty": "უცნობია აგენტების მიერ დაწერილი კოდის გრძელვადიანი არქიტექტურული ხარისხი და ტექნიკური ვალის ზრდის ტემპი.",
-          "counter_argument": "კოდის რაოდენობის 8x ზრდა არ ნიშნავს სისტემური ინოვაციის ან ალგორითმული ეფექტურობის პროპორციულ ზრდას."
-        },
-        {
-          "event_id": "evt-aws-bedrock-agentcore-mrh-trowe",
-          "title": "MRH Trowe & AWS Bedrock AgentCore: Enterprise Self-Service აგენტების არქიტექტურა $14/Seat ფასად",
-          "category": "აგენტების ინფრასტრუქტურა და Runtime",
-          "primary_url": "https://aws.amazon.com/blogs/machine-learning/how-mrh-trowe-enabled-secure-self-service-ai-agents-in-financial-services",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 9,
-          "source_quality": 10,
-          "confidence": 96,
-          "tldr": "MRH Trowe-მ ააწყო enterprise აგენტური სისტემა 400 მომხმარებლისთვის Bedrock AgentCore-ით, Strands-ითა და LibreChat-ით სულ რაღაც $14/seat თვიური ხარჯით.",
-          "what_happened": "AWS-მა გამოაქვეყნა ქეისი ფინანსურ სექტორში self-service AI აგენტების უსაფრთხო, ცენტრალიზებული დანერგვის შესახებ.",
-          "what_changed": "ფრაგმენტული ჩატბოტების ნაცვლად შეიქმნა ცენტრალიზებული platform engineering შაბლონი multi-step workflows და internal data integration-ისთვის.",
-          "why_it_matters": "ახალგაზრდა დეველოპერისთვის ეს არის ზუსტი არქიტექტურული blueprint, თუ როგორ უნდა აიგოს და გაიყიდოს B2B AI აგენტების სერვისი.",
-          "key_takeaways": [
-            "Bedrock AgentCore და Strands უზრუნველყოფს institutional data integration-ს.",
-            "LibreChat გამოიყენება როგორც მზა, configurable enterprise ინტერფეისი.",
-            "საწარმოო ხარჯი ოპტიმიზაციამდე შეადგენს $14-ს მომხმარებელზე თვეში."
-          ],
-          "technical_architecture": [
-            "Frontend: LibreChat open-source UI with RBAC.",
-            "Orchestration: Amazon Bedrock AgentCore and Strands Agents engine.",
-            "Data Layer: internal document repositories and governed API connectors."
-          ],
-          "technical_details": [
-            "Cost: $14/seat/month",
-            "Scale: 400 production users",
-            "Target saving: 40% scaling",
-            "Compliance: German FinSec"
-          ],
-          "potential_impact": "B2B აგენტების ბაზარზე სტანდარტი ხდება მზა open-source UI-სა და cloud agent framework-ების ინტეგრაცია.",
-          "action_type": "BUILD",
-          "action": "გაუშვით ლოკალურად LibreChat Docker-ით და დაუკავშირეთ Bedrock API ან ლოკალური LiteLLM proxy სერვერი.",
+          "potential_impact": "შემცირდება ხანგრძლივი აგენტური სესიების ფინანსური დანახარჯი და გაიზარდება კოდის გენერაციის სიზუსტე.",
+          "action_type": "TRY",
+          "action": "გამოცადეთ CliffCompaction-ის API-proxy მიდგომა თქვენს Python LLM wrapper-ში და შეადარეთ ტოკენების დანახარჯი პირდაპირ Prompt-ს.",
           "evidence": [],
           "factuality_level": "corroborated",
           "classification": [
@@ -7744,205 +7488,47 @@
             "Real Business Opportunity"
           ],
           "verified_facts": [
-            "გერმანულმა სადაზღვევო ბროკერმა MRH Trowe-მ დანერგა self-service აგენტები 400 თანამშრომლისთვის პირველივე თვეში.",
-            "გამოყენებული არქიტექტურა აერთიანებს Strands Agents-ს, Amazon Bedrock AgentCore-სა და LibreChat-ს.",
-            "პირველი თვის production საოპერაციო ხარჯი იყო დაახლოებით $14 თითო სამუშაო ადგილზე (seat).",
-            "დაგეგმილია ინფრასტრუქტურის ხარჯების 40%-ით შემცირება scheduled scaling-ის საშუალებით."
+            "CliffCompaction ამცირებს Token cost-ს 50%-მდე Terminal-Bench-ზე მუშაობისას",
+            "მეთოდი არასდროს აკეთებს ტექსტის rephrasing-ს ან rewriting-ს, მხოლოდ Truncation/Dropping-ს იყენებს",
+            "KernelBench-ზე 400 ნაბიჯის შემდეგ CUDA kernel speedup-მა მიაღწია 3.58x-ს"
           ],
-          "interpretation": "LibreChat UI-ს, Bedrock AgentCore orchestration-ისა და 오픈-source runtime-ის კომბინაცია ქმნის ეკონომიურ, რეგულირებად შაბლონს B2B აგენტებისთვის.",
-          "uncertainty": "კონკრეტული დოკუმენტების დამუშავების latency და vector database სინქრონიზაციის დეტალები სრულად არ არის გაწერილი.",
-          "counter_argument": "ფინანსურ სექტორში მონაცემთა მკაცრი რეგულაციები ხშირად მოითხოვს სრულ on-premise იზოლაციას და არა hybrid cloud ინფრასტრუქტურას."
+          "interpretation": "LLM-ით კონტექსტის შეჯამება (summarization) იწვევს ინფორმაციის დამახინჯებას (context drift), რასაც აგვარებს მხოლოდ ზუსტი წაშლა/ამოჭრა.",
+          "uncertainty": "არახელსაყრელ პირობებში Truncation-მა შესაძლოა წაშალოს იშვიათი, მაგრამ კრიტიკული დამოკიდებულებები კოდში.",
+          "counter_argument": "სემანტიკური summarization ზოგჯერ აუცილებელია, როდესაც კოდის ფრაგმენტები ძალიან დიდი ზომისაა და უბრალო წაშლა აფუჭებს სინტაქსს."
         },
         {
-          "event_id": "evt-wevisdoc-robust-document-parsing",
-          "title": "WeVisDoc: ორეტაპიანი End-to-End მოდელი დოკუმენტების სტრუქტურირებული პარსინგისთვის RAG-ში",
-          "category": "RAG, Retrieval და აგენტის მეხსიერება",
-          "primary_url": "https://huggingface.co/papers/2609.20423",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "Tencent-მა წარადგინა WeVisDoc (2B/4B), რომელიც OmniDocBench-ზე 95.38 ქულას აღწევს და წყვეტს დეგრადირებული დოკუმენტების პარსინგის პრობლემას RAG-ისთვის.",
-          "what_happened": "გამოქვეყნდა WeVisDoc არქიტექტურა და კოდი, რომელიც რთულ განლაგებებსა და ხარვეზიან დოკუმენტებს პირდაპირ სტრუქტურირებულ ტექსტად აქცევს.",
-          "what_changed": "ტრადიციული OCR და heuristics-ზე დაფუძნებული პარსერები იცვლება მცირე ზომის vision-language parser მოდელებით.",
-          "why_it_matters": "საკუთარ RAG პროექტებში სუფთა Markdown/JSON მონაცემების მიღება PDF და სკანირებული ფაილებიდან მკვეთრად ზრდის retrieval სიზუსტეს.",
-          "key_takeaways": [
-            "WeVisDoc-4B პირველ ადგილს იკავებს OmniDocBench v1.6 რეიტინგში.",
-            "ორეტაპიანი ტრენინგი აქტიურად ასწორებს შეცდომებს რეალურ, უხარისხო სკანირებებზე.",
-            "2B და 4B ზომები საშუალებას იძლევა მოდელი გაეშვას ლოკალურ ინფრასტრუქტურაზე."
-          ],
-          "technical_architecture": [
-            "Stage I: Broad semantic and appearance coverage with degradation synthesis.",
-            "Stage II: Residual error probe on fixed visual-structural clusters.",
-            "Model Backbone: End-to-end compact VLM (2B and 4B parameters)."
-          ],
-          "technical_details": [
-            "OmniDocBench v1.6: 95.38",
-            "PureDocBench mean: 75.54",
-            "Degraded gain: +4.03 pts",
-            "Sizes: 2B and 4B"
-          ],
-          "potential_impact": "RAG სისტემების chunking ხარისხი საგრძნობლად გაიზრდება, რადგან დოკუმენტის ვიზუალური იერარქია უცვლელად შენარჩუნდება.",
-          "action_type": "TRY",
-          "action": "გადმოწერეთ WeVisDoc HuggingFace-იდან და დატესტეთ რთული ცხრილების შემცველ ქართულ/ინგლისურ PDF ფაილებზე.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Technical Skill"
-          ],
-          "verified_facts": [
-            "WeVisDoc-4B აღწევს 95.38 ქულას OmniDocBench v1.6-ზე და 75.54 საშუალო ქულას PureDocBench-ის სამ ტრეკზე.",
-            "მოდელი იყენებს ორეტაპიან მონაცემთა ჩარჩოს: ჰეტეროგენული სინთეზი და residual error probe დიაგნოსტიკა.",
-            "Stage II აუმჯობესებს 4B მოდელის შედეგს 4.03 ქულით რეალურ დეგრადირებულ დოკუმენტებზე (Real Degraded track).",
-            "ხელმისაწვდომია 2B და 4B პარამეტრიანი ეფექტური მოდელების სახით."
-          ],
-          "interpretation": "RAG pipelines-ის მთავარი bottleneck დოკუმენტების ცუდი OCR/პარსინგია; WeVisDoc-ის 2B/4B კომპაქტური მოდელები იძლევა ლოკალური parsing სერვისის აწყობის საშუალებას.",
-          "uncertainty": "უცნობია ინფერენსის ზუსტი throughput (გვერდი/წამში) სამომხმარებლო GPU-ებზე (მაგ. RTX 4090).",
-          "counter_argument": "Frontier vision-language მოდელებს (მაგ. Gemini Flash) უკვე აქვთ დოკუმენტების მაღალი დონის აღქმა დამოუკიდებელი პარსერების გარეშეც."
-        },
-        {
-          "event_id": "evt-opsd-privileged-reasoning-distillation",
-          "title": "On-Policy Self-Distillation: პრივილეგირებული ინფორმაციის რეალური როლი მცირე მოდელების მსჯელობაში",
-          "category": "LLM კვლევა და Inference-ის ოპტიმიზაცია",
-          "primary_url": "https://huggingface.co/papers/2609.20612",
-          "supporting_urls": [],
-          "importance": 7,
-          "relevance": 8,
-          "actionability": 7,
-          "source_quality": 8,
-          "confidence": 88,
-          "tldr": "ახალმა კვლევამ აჩვენა, რომ Qwen 3-1.7B-სა და SmolLM 3-3B-ში reasoning-ის დისტილაციისთვის გარე გადაწყვეტებზე მეტად თავისუფალი თვითგენერაციაა ეფექტური.",
-          "what_happened": "NUS-ის მკვლევრებმა შეისწავლეს On-Policy Self-Distillation (OPSD) მექანიზმები და გამოაქვეყნეს AMPLE-Math 5.3K ამოცანით.",
-          "what_changed": "დაიმსხვრა მითი, რომ მცირე მოდელებს ყოველთვის სჭირდებათ გიგანტური მოდელების მიერ გენერირებული მზა გადაწყვეტების (privileged references) კოპირება.",
-          "why_it_matters": "1B-3B ლოკალური მოდელების fine-tuning-ისას შეგიძლიათ მკვეთრად შეამციროთ synthetic data generation-ის ხარჯები reference-free OPSD-ის გამოყენებით.",
-          "key_takeaways": [
-            "Reference-free distillation მცირე მოდელებში აღწევს თითქმის იგივე შედეგს, რასაც სრული privileged solutions.",
-            "გრძელი CoT rollouts წვრთნის დროს ზოგჯერ ამცირებს მოდელის სტაბილურობას.",
-            "დისტილაცია აუმჯობესებს წვდომას მოდელში უკვე არსებულ latent ცოდნაზე."
-          ],
-          "technical_architecture": [
-            "Teacher-Student Setup: Frozen thinking teacher supervising direct response student.",
-            "Benchmark: AMPLE-Math with 5,319 shared-answer paired reasoning traces."
-          ],
-          "technical_details": [
-            "Tested on: Qwen 3-1.7B",
-            "Tested on: SmolLM 3-3B",
-            "Trace gain: +2% at step 50",
-            "Evaluation: thinking-enabled"
-          ],
-          "potential_impact": "მცირე აგენტური მოდელების ლოკალური post-training გახდება გაცილებით იაფი და ხელმისაწვდომი consumer აპარატურაზე.",
-          "action_type": "LEARN",
-          "action": "გაეცანით OPSD მეთოდოლოგიას და გამოსცადეთ reference-free rollouts პატარა Qwen მოდელის fine-tuning-ისას.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Technical Skill"
-          ],
-          "verified_facts": [
-            "შეიქმნა AMPLE-Math ბენჩმარკი 5,319 მათემატიკური ამოცანით და 6 მსჯელობის ხედვით (reasoning views).",
-            "Qwen 3-1.7B-ში reference-free დისტილაცია პასუხისმგებელია გაუმჯობესების უდიდეს ნაწილზე thinking-enabled შეფასებისას.",
-            "SmolLM 3-3B-ში სრული reasoning traces-ის დამატებამ გააუმჯობესა სიზუსტე მხოლოდ 2 პროცენტული პუნქტით 50-ე ბიჯზე.",
-            "მოკლე direct-response rollouts-ის ჩანაცვლება გრძელი thinking rollouts-ით წვრთნისას ხშირად აუარესებს შედეგებს ორივე ოჯახში."
-          ],
-          "interpretation": "მცირე მოდელებს უკვე აქვთ ლატენტური მსჯელობის უნარი; OPSD-ის მთავარი ეფექტი ამ პარამეტრებზე წვდომის გააქტიურებაა და არა ახალი ლოგიკის ჩაწერა.",
-          "uncertainty": "კვლევა შემოიფარგლება მათემატიკური ამოცანებით და შესაძლოა განსხვავებული დინამიკა გამოავლინოს coding tasks-ზე.",
-          "counter_argument": "უფრო რთულ multi-step დავალებებში პრივილეგირებული CoT (Chain-of-Thought) ტრეკი შესაძლოა შეუცვლელი იყოს."
-        },
-        {
-          "event_id": "evt-vision-rl2-mllm-region-perception",
-          "title": "Vision-RL2: Region-Level Policy Optimization მულტიმოდალური მოდელების ტოკენების ოპტიმიზაციისთვის",
-          "category": "AI Research და RL წვრთნა",
-          "primary_url": "https://huggingface.co/papers/2609.19745",
-          "supporting_urls": [],
-          "importance": 7,
-          "relevance": 8,
-          "actionability": 7,
-          "source_quality": 8,
-          "confidence": 87,
-          "tldr": "Vision-RL2 იყენებს RL-ს ვიზუალური რეგიონების შესარჩევად, რაც MLLM-ებს საშუალებას აძლევს შეამცირონ ტოკენების ხარჯი ისე, რომ არ დაკარგონ წვრილმანი დეტალები.",
-          "what_happened": "მკვლევრებმა შეიმუშავეს Vision-RL2, რომელიც გამოსახულებას ყოფს coarse localization-ად და fine-grained recognition-ად reinforcement learning-ის დახმარებით.",
-          "what_changed": "მთლიანი სურათის უაზროდ მაღალ რეზოლუციაში გაგზავნის ნაცვლად, მოდელი სწავლობს მხოლოდ საჭირო რეგიონების დინამიურ გადიდებას.",
-          "why_it_matters": "GUI და Desktop Automation აგენტების აწყობისას ეს პრინციპი 3-4-ჯერ ამცირებს inference latency-სა და API ტოკენების ფასს.",
-          "key_takeaways": [
-            "ობიექტის პოვნა (localization) 3-4-ჯერ უფრო ტოლერანტულია შეკუმშვის მიმართ, ვიდრე ამოცნობა.",
-            "RL ჯილდო გამოითვლება გაყინული MLLM-ის პასუხის ალბათობის ცვლილებით.",
-            "მეთოდი არ საჭიროებს ძვირადღირებულ ხელით bounding box ანოტაციებს."
-          ],
-          "technical_architecture": [
-            "Architecture: Lightweight proposal network paired with frozen reader MLLM.",
-            "Policy: Subtractive and additive likelihood optimization objectives.",
-            "Encoding: Sparse token allocation filtering redundant background patches."
-          ],
-          "technical_details": [
-            "Compression: 3-4x on RoI",
-            "Supervision: Annotation-free RL",
-            "Reward: Target likelihood delta",
-            "Benchmarked on: 6 vision tasks"
-          ],
-          "potential_impact": "Computer-use აგენტები შეძლებენ მაღალი სიხშირით ეკრანის ანალიზს მინიმალური ტოკენური დანახარჯით.",
-          "action_type": "TRACK",
-          "action": "დააკვირდით open-source vision agent harnesses-ში sparse visual encoding-ის და selective cropping-ის დანერგვას.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Technical Skill"
-          ],
-          "verified_facts": [
-            "ვიზუალურ ლოკალიზაციას სჭირდება 3-დან 4-ჯერ ნაკლები ტოკენი (stronger token compression), ვიდრე ამოცნობას (recognition).",
-            "Vision-RL2 ოპტიმიზაციას უკეთებს proposal network-ს region-level reinforcement learning-ით რეგიონალური ანოტაციების გარეშე.",
-            "გაყინული MLLM აფასებს რეგიონებს იმის მიხედვით, თუ როგორ ცვლის კონკრეტული არეს წაშლა სწორი პასუხის likelihood-ს.",
-            "სისტემა იყენებს sparse encoding-ს, რაც გამორიცხავს ფონურ ტოკენებს და ზრდის ფოკუსს სამიზნე ობიექტზე."
-          ],
-          "interpretation": "Computer use და vision agents ხშირად იჭედება context window-ს გადავსებით მაღალი რეზოლუციის სქრინშოტების გამო; Vision-RL2 ჭრის ამ ხარჯს ლოკალიზაციის გაფილტვრით.",
-          "uncertainty": "უცნობია, რამდენად მარტივია ამ პოლიტიკის ინტეგრაცია უკვე არსებულ commercial vision APIs-ში (მაგ. OpenAI or Anthropic tool calls).",
-          "counter_argument": "აპარატურული აჩქარების (FP4, FlashAttention) პირობებში ტოკენების რაოდენობა მალე შესაძლოა აღარ იყოს კრიტიკული შეზღუდვა."
-        }
-      ],
-      "trends": [
-        "Multi-Agent ფრეიმვორკებში აქცენტი გადადის feature expansion-იდან runtime სტაბილურობასა და orchestration-ის საიმედოობაზე.",
-        "Frontier ლაბორატორიებში (Anthropic, OpenAI) შიდა პროგრამული ინჟინერია და მოდელების წვრთნა მასობრივად გადადის 30K+ პარალელურ აგენტზე.",
-        "B2B აგენტების არქიტექტურა სტანდარტიზდება open-source ჩატის ინტერფეისების (LibreChat) და cloud runtime-ის (Bedrock AgentCore) ჰიბრიდით."
-      ]
-    },
-    {
-      "date": "2026-09-20",
-      "summary": "დღევანდელი ანგარიში მოიცავს JEPA-Anything-ის დომენ-აგნოსტიკურ World Model არქიტექტურას, OpenHarness-ის ღია კოდის Multi-Agent გარემოს და Microsoft Project Perception-ის Red/Blue/Green უსაფრთხოების აგენტებს. ასევე ანალიზდება Agent Self-Evolution Ecosystem (GEP პროტოკოლი და AAS Core) და AI კოდინგ აგენტების Supply Chain Security საფრთხეები.",
-      "events": [
-        {
-          "event_id": "evt-jepa-anything-world-modeling",
-          "title": "JEPA-Anything: Orthogonal Predictive Factorization-ზე დაფუძნებული უნივერსალური World Model Architecture",
-          "category": "AI Research & World Models",
-          "primary_url": "https://arxiv.org/abs/2609.20800",
+          "event_id": "evt-a2m-mcp-agent-hijacking",
+          "title": "A2M: სემანტიკური supply-chain შეტევები და აგენტის ჰაიჯექინგი MCP ეკოსისტემაში",
+          "category": "Agent Security & Governance",
+          "primary_url": "https://arxiv.org/abs/2609.26761",
           "supporting_urls": [],
           "importance": 9,
-          "relevance": 9,
+          "relevance": 10,
           "actionability": 8,
           "source_quality": 8,
-          "confidence": 92,
-          "tldr": "JEPA-Anything წარადგენს OPF-ზე დაფუძნებულ World Model არქიტექტურას, რომელიც 7 დომენში 34.8%-ით ამცირებს ინტერვენციის ცდომილებას.",
-          "what_happened": "მკვლევრებმა წარადგინეს JEPA-Anything framework, რომელიც OPF მეთოდით შლის და აერთიანებს ლატენტურ ფაქტორებს 7 სხვადასხვა სფეროში.",
-          "what_changed": "დომენურ Autoregressive მოდელებიდან გადავედით უნივერსალურ Non-Autoregressive JEPA World Model არქიტექტურაზე.",
-          "why_it_matters": "აგენტურ არქიტექტურაში გარემოს პროგნოზირებისა და Planning-ისთვის JEPA უზრუნველყოფს სტაბილურ მრავალ-ნაბიჯიან Simulation-ს.",
+          "confidence": 91,
+          "tldr": "A2M ჩარჩო აჩვენებს, თუ როგორ შეიძლება MCP აგენტის გადამისამართება და მონაცემთა გაჟონვა ინსტრუმენტის მეტამონაცემების მანიპულაციით.",
+          "what_happened": "მკვლევარებმა შექმნეს A2M შეტევის მოდელი, რომელიც ორიენტირებულია MCP Tool-ების აღწერილობების ოპტიმიზაციაზე აგენტის მოტყუების მიზნით.",
+          "what_changed": "ტრადიციული API endpoint მოწყვლადობებიდან ყურადღება გადავიდა LLM-ის სემანტიკური ძიების (semantic matching) სუსტ ადგილებზე.",
+          "why_it_matters": "თუ აშენებთ MCP Server-ებს ან იყენებთ მესამე მხარის Tool-ებს, აუცილებელია შეამოწმოთ ინსტრუმენტების სემანტიკური ვალიდაცია.",
           "key_takeaways": [
-            "Orthogonal Predictive Factorization შლის ლატენტურ სივრცეს დამოუკიდებელ კომპონენტებად",
-            "მოდელი აღწევს მაღალ სიზუსტეს 100-step rollout პროგნოზირებისას",
-            "არქიტექტურა მუშაობს რობოტიკაში, მოლეკულურ დინამიკასა და Control systems-ში"
+            "Attraction phase ზრდის მავნე tool-ის არჩევის შანსს",
+            "Manipulation phase ცვლის execution trace-ებს",
+            "74.4% success rate ინფორმაციის ექსფილტრაციაზე"
           ],
           "technical_architecture": [
-            "JEPA-based encoder and predictor network",
-            "Orthogonal Predictive Factorization (OPF) projection head",
-            "Multi-domain shared latent space formulation"
+            "Two-stage black-box attack framework",
+            "Attraction metadata optimization module",
+            "Trace-optimized response manipulation"
           ],
           "technical_details": [
-            "34.8% error reduction on Interventional Pong",
-            "100-step molecular Dynamics rollouts",
-            "Keplerian scaling slope of -1.4991 in orbital dynamics"
+            "93.6% malicious tool invocation rate",
+            "32.4x token cost increase under DoS",
+            "LiveMCPBench-ზე ჩატარებული ტესტები"
           ],
-          "potential_impact": "შექმნის საფუძველს აგენტების მიერ გარემოს შიდა სიმულაციისა და Planning-ის გაუმჯობესებისთვის.",
+          "potential_impact": "აუცილებელი გახდება runtime isolation და tool metadata-ს ხელით/მკაცრი სქემით დამოწმება MCP არქიტექტურებში.",
           "action_type": "LEARN",
-          "action": "შეისწავლეთ JEPA-Anything-ის ოფიციალური კოდი GitHub-ზე და გააანალიზეთ OPF ლატენტური ფაქტორიზაციის იმპლემენტაცია Python-ში.",
+          "action": "შეისწავლეთ თქვენი MCP Server-ების schema validation და დაამატეთ strict regex / type assertions ინსტრუმენტის აღწერილობებს.",
           "evidence": [],
           "factuality_level": "single_source",
           "classification": [
@@ -7950,48 +7536,95 @@
             "Long-Term Career Value"
           ],
           "verified_facts": [
-            "JEPA-Anything იყენებს Orthogonal Predictive Factorization (OPF) ტექნიკას ლატენტური სამიზნეების დასაშლელად",
-            "ტესტირება ჩატარდა 7 განსხვავებულ დომენში: vision, biology, control, molecular dynamics, weather, clinical, physical fields",
-            "Interventional Pong ამოცანაში ერთსვლიანი პროგნოზირების ცდომილება შემცირდა 34.8%-ით",
-            "მოდელმა შეასრულა 100-სვლიანი (100-step) მოლეკულური როლაუტები მინიმალური ცდომილებით"
+            "A2M იყენებს Attraction და Manipulation ეტაპებს MCP ინსტრუმენტების საიტაცებლად",
+            "GLM-4.6-ზე მავნე tool-ის გამოძახების სიხშირემ მიაღწია 93.6%-ს LiveMCPBench-ზე",
+            "Cognitive DoS შეტევით ტოკენების დანახარჯი გაიზარდა 32.4x-ით"
           ],
-          "interpretation": "OPF საშუალებას აძლევს JEPA არქიტექტურას ისწავლოს სტაბილური World Models ცალკეული დომენური შეზღუდვების გარეშე, რაც აგენტების ხანგრძლივ დაგეგმვას რეალისტურს ხდის.",
-          "uncertainty": "უცნობია, რამდენად ეფექტურად მასშტაბირდება OPF რეალურ დროში მოქმედი მრავალ-აგენტიანი გარემოებისთვის.",
-          "counter_argument": "ტრადიციული autoregressive world models შესაძლოა უფრო მარტივი იმპლემენტაციის იყოს არსებულ LLM ინფრასტრუქტურაზე."
+          "interpretation": "MCP-ის სემანტიკური tool selection მექანიზმი მოწყვლადია metadata poisoning-ის მიმართ, რაც მოითხოვს მკაცრ static validation შრეს.",
+          "uncertainty": "უცნობია რამდენად ეფექტურად დაიცავს აგენტს ახალი intent-gating და Zero-Trust პროტოკოლები რეალურ production გარემოში.",
+          "counter_argument": "მოდელების შემდგომმა alignment-მა შესაძლოა შეამციროს მავნე metadata-ს მიმართ მგრძნობელობა დამატებითი კოდის გარეშე."
         },
         {
-          "event_id": "evt-openharness-cross-domain-agent-harness",
-          "title": "OpenHarness: ღია კოდის Multi-Agent Harness კროს-დისციპლინური ინჟინერიისა და აპარატურული მართვისთვის",
-          "category": "Agent Harness & AI Engineering Tools",
-          "primary_url": "https://github.com/autonomous-ai/openharness",
+          "event_id": "evt-agensh-1024-agent-harness",
+          "title": "Agensh: დეცენტრალიზებული მრავალ-აგენტიანი არქიტექტურის მასშტაბირება 1,024 აგენტამდე",
+          "category": "Agent Architecture & Multi-Agent Systems",
+          "primary_url": "https://arxiv.org/abs/2609.26781",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "Agensh წარმოადგენს უცენტრალო multi-agent harness-ს, რომელიც ასინქრონულად მასშტაბირდება 1,024 აგენტამდე 55%-იანი test-pass მაჩვენებლით.",
+          "what_happened": "მკვლევარებმა წარადგინეს Agensh, სადაც აგენტები თვითონ იღებენ და ამოწმებენ დავალებებს shared workspace-ის მეშვეობით ცენტრალური კოორდინატორის გარეშე.",
+          "what_changed": "ცენტრალიზებული router-ზე დაფუძნებული არქიტექტურა ჩანაცვლდა ასინქრონული self-organized loop-ით shared context-ის გარშემო.",
+          "why_it_matters": "რთული coding project-ების გადასაჭრელად შეგიძლიათ გამოიყენოთ ბევრი მცირე აგენტი პარალელურად, ნაცვლად ერთი მონოლითური Prompt-ისა.",
+          "key_takeaways": [
+            "ცენტრალური orchestrator-ის არარსებობა ხსნის სკალირების ბარიერს",
+            "Shared workspace მოიცავს proposed, ongoing და completed დავალებებს",
+            "1,024 აგენტზე pass rate გაიზარდა 21.17 პროცენტული პუნქტით"
+          ],
+          "technical_architecture": [
+            "Shared workspace ინახავს დავალებების სტატუსებს",
+            "Message interface უზრუნველყოფს ასინქრონულ კომუნიკაციას",
+            "Shared context ინარჩუნებს მიღწეულ შედეგებს"
+          ],
+          "technical_details": [
+            "GPT-5.6-sol მოდელის მხარდაჭერა",
+            "ProgramBench ბენჩმარკზე ვალიდაცია",
+            "49% relative improvement 128 აგენტზე"
+          ],
+          "potential_impact": "შემცირდება ლატენტობა რთულ software engineering დავალებებზე პარალელური აგენტური გადანაწილების ხარჯზე.",
+          "action_type": "BUILD",
+          "action": "შექმენით მცირე shared file-based workspace Python-ში და გააშვეთ 3 პარალელური worker აგენტი ცენტრალური orchestrator-ის გარეშე.",
+          "evidence": [],
+          "factuality_level": "single_source",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "Agensh მუშაობს ცენტრალური orchestrator-ის გარეშე shared workspace-სა და asynchronous communication-ზე დაყრდნობით",
+            "ProgramBench-ზე 1-დან 1024 აგენტამდე მასშტაბირებამ test-pass rate 33.89%-დან 55.06%-მდე გაზარდა",
+            "1-დან 128 აგენტამდე ზრდამ GPT-5.6-sol-ზე საშუალო pass rate 19.31%-დან 28.78%-მდე გაზარდა"
+          ],
+          "interpretation": "ცენტრალიზებული orchestrator Bottleneck-ის მოხსნა საშუალებას იძლევა რთული საინჟინრო ამოცანები განაწილდეს ასობით აგენტზე პარალელურ რეჟიმში.",
+          "uncertainty": "უცნობია API Token-ების ჯამური ღირებულების ეფექტურობა 1,024 აგენტის ერთდროული გაშვებისას სერიოზულ კომერციულ პროექტებში.",
+          "counter_argument": "ასინქრონულმა shared context-მა შესაძლოა გამოიწვიოს Race Condition და დუბლირებული შრომა დიდ გუნდებში."
+        },
+        {
+          "event_id": "evt-growing-harness-specialist-agents",
+          "title": "Growing Harness: აგენტის მართვის ლოგიკის გადატანა Context-იდან reusable კოდში",
+          "category": "AI Research & Agent Architecture",
+          "primary_url": "https://arxiv.org/abs/2609.26760",
           "supporting_urls": [],
           "importance": 8,
           "relevance": 10,
-          "actionability": 9,
+          "actionability": 8,
           "source_quality": 8,
           "confidence": 88,
-          "tldr": "OpenHarness-მა გამოუშვა Open Source Harness პლატფორმა Claude Code და Codex აგენტების CAD, PCB და პროგრამულ ინჟინერიაში განსათავსებლად.",
-          "what_happened": "autonomous-ai გუნდმა გამოაქვეყნა OpenHarness ecosystem აგენტების cross-discipline მუშაობისთვის ლოკალურ და დისტანციურ გარემოში.",
-          "what_changed": "ცალკეული CLI კოდინგ ასისტენტებიდან გადავედით ინტეგრირებულ Cross-Domain Agent Harness გარემოზე.",
-          "why_it_matters": "საშუალებას აძლევს 16+ დეველოპერებს ააგონ სრული აპარატურული და პროგრამული პროდუქტები აგენტების ორკესტრაციით.",
+          "tldr": "Growing Harness გარდაქმნის განმეორებად აგენტურ გადაწყვეტილებებს იაფ Code Harness-ად, რაც 90%-ით ამცირებს LLM გამოძახებებს.",
+          "what_happened": "შექმნეს failure-guided training პარადიგმა, სადაც აგენტის შეცდომების საფუძველზე თავად Harness კოდი განიცდის ოპტიმიზაციას.",
+          "what_changed": "LLM context-ში control logic-ის ხელახალი გენერაციის ნაცვლად, სისტემა აშენებს მუდმივ, განმეორებად Python Harness-ს.",
+          "why_it_matters": "შეგიძლიათ პატარა (4B/8B) მოდელებით მიაღწიოთ ფრონტიერ მოდელების ეფექტურობას მართვის ლოგიკის კოდში გადატანით.",
           "key_takeaways": [
-            "მხარდაჭერილია Claude Code და Codex აგენტების Session Persistence",
-            "გაერთიანებულია CAD, PCB, Software და Media Generation ინსტრუმენტები",
-            "სრულიად ღია აპარატურული და პროგრამული არქიტექტურა"
+            "Failure-guided training აუმჯობესებს კოდის სტრუქტურას",
+            "4B მოდელების წარმატება იზრდება 6.7%-დან 45%-მდე",
+            "Inference cost-ის 98%-მდე შემცირება"
           ],
           "technical_architecture": [
-            "Desktop app backend and CLI harness driver",
-            "Persistent State Store across multiple nodes",
-            "Open hardware schematic and PCB runtime interface"
+            "Strategy-free base scaffold",
+            "Function-level trace failure localizer",
+            "Success-first held-out gate rollback"
           ],
           "technical_details": [
-            "Open-source firmware and CAD files",
-            "Multi-machine session context syncing",
-            "Integrated live viewers for geometry and netlists"
+            "76.0-91.8% LLM call reduction",
+            "WebArena-Verified და BrowseComp-Plus ტესტები",
+            "4B-დან 120B-მდე მოდელების მხარდაჭერა"
           ],
-          "potential_impact": "შესაძლებელს გახდის მცირე გუნდებისა და ინდივიდუალური დეველოპერებისთვის რთული ჰარდვერ-სოფტვერ პროექტების ავტომატიზაციას.",
+          "potential_impact": "მნიშვნელოვნად შემცირდება enterprise agentic workflow-ების საექსპლუატაციო ხარჯები მცირე open-source მოდელების გამოყენებით.",
           "action_type": "BUILD",
-          "action": "ჩამოტვირთეთ OpenHarness რეპოზიტორი, გამოსცადეთ Claude Code-ის ინტეგრაცია ლოკალურ პროექტზე და დააკავშირეთ Custom Tool Calling.",
+          "action": "გადაიტანეთ თქვენი აგენტის განმეორებადი if/else გადაწყვეტილებები Python-ის დეკორატორებში, ნაცვლად სისტემურ Prompt-ში მათი აღწერისა.",
           "evidence": [],
           "factuality_level": "single_source",
           "classification": [
@@ -7999,180 +7632,172 @@
             "Real Business Opportunity"
           ],
           "verified_facts": [
-            "OpenHarness არის ღია კოდის პროგრამული და აპარატურული პლატფორმა AI კოდინგ აგენტებისთვის",
-            "მხარს უჭერს Claude Code და Codex აგენტების ინტეგრაციას Software, CAD, PCB design და Video workflows-ში",
-            "სესიების მდგომარეობა (Session persistence) ინახება და სინქრონიზდება მომხმარებლის ყველა მოწყობილობაზე",
-            "პროექტის firmware, schematics, PCB layouts და CAD ფაილები სრულად ღიაა (Open Source)"
+            "Growing Harness ამცირებს LLM გამოძახებებს 76.0-91.8%-ით ტრადიციულ Tool-Calling-თან შედარებით",
+            "Inference cost მცირდება 74.4-98.6%-ით სტრატეგიის კოდში კაფსულაციის ხარჯზე",
+            "4B მოდელზე WebArena-Verified-ზე წარმატების მაჩვენებელი გაიზარდა 6.7%-დან 45.3%-მდე"
           ],
-          "interpretation": "OpenHarness აფართოებს კოდინგ აგენტების მოქმედების არეალს წმინდა ტექსტური IDE-ებიდან ფიზიკურ ინჟინერიასა და CAD/PCB დიზაინამდე.",
-          "uncertainty": "აპარატურული Harness დევაისის წარმოებისა და ლოკალური Latency-ს ეფექტურობა ფართო მასშტაბზე ჯერ შესამოწმებელია.",
-          "counter_argument": "მრავალ-დომენური ინსტრუმენტების გაერთიანებამ შესაძლოა გაზარდოს Agent Loop-ის Context Window-ს გადატვირთვა."
+          "interpretation": "განმეორებადი control logic არ უნდა იწერებოდეს LLM Prompt-ში; ის უნდა გადავიდეს Python harness კოდში ავტომატური feedback loop-ით.",
+          "uncertainty": "კოდის ავტომატურმა Accumulation-მა ხანგრძლივ პერსპექტივაში შესაძლოა გამოიწვიოს Harness Spaghetti Code და ტექნიკური ვალი.",
+          "counter_argument": "დიდი LLM-ების გაიაფებასთან ერთად, კოდის ავტომატურ წერას შესაძლოა აჯობოს დიდ context window-ში მუშაობამ."
         },
         {
-          "event_id": "evt-gep-agent-evolution-skill-packs",
-          "title": "Agent Self-Evolution Ecosystem: GEP Protocol, AAS Core და Skill-Pack სტანდარტები",
-          "category": "Agent Self-Improvement & Memory Systems",
-          "primary_url": "https://github.com/EvoMap/awesome-agent-evolution",
-          "supporting_urls": [
-            "https://github.com/topics/skill-pack",
-            "https://github.com/topics/skill-library"
+          "event_id": "evt-gemini-deep-research-api",
+          "title": "Google-ის Gemini Deep Research Agent API: ავტონომიური multi-step კვლევა და MCP",
+          "category": "LLM APIs & Developer Tools",
+          "primary_url": "https://ai.google.dev/gemini-api/docs/deep-research",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 9,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "Google-მა გამოაშვება Gemini Deep Research Agent API, რომელიც ფონურ რეჟიმში ასრულებს მრავალ-ნაბიჯიან კვლევებს MCP-ის მხარდაჭერით.",
+          "what_happened": "Google-მა Gemini API-ში დაამატა Interactions API endpoint, საიდანაც შესაძლებელია ავტონომიური კვლევის აგენტის გაშვება background=true პარამეტრით.",
+          "what_changed": "generate_content-ის ნაცვლად, ხანგრძლივი აგენტური დავალებებისთვის დაინერგა ასინქრონული Interactions API და Polling pattern.",
+          "why_it_matters": "შეგიძლიათ მარტივად ჩააშენოთ ავტონომიური კვლევის ფუნქციონალი თქვენს აპლიკაციებში Python SDK-ის რამდენიმე სტრიქონით.",
+          "key_takeaways": [
+            "Interactions API ხანგრძლივი დავალებებისთვის",
+            "MCP Server-ებთან პირდაპირი დაკავშირება",
+            "ფონური შესრულება და შედეგების Polling"
           ],
+          "technical_architecture": [
+            "Interactions API endpoint structure",
+            "Background task processing pipeline",
+            "MCP integration layer for external tools"
+          ],
+          "technical_details": [
+            "Agent model: deep-research-preview-04-2026",
+            "Python SDK google.genai client support",
+            "Asynchronous polling with interaction.id"
+          ],
+          "potential_impact": "შემცირდება საკუთარი RAG და Search loop-ების აწყობის საჭიროება კომპლექსური საძიებო აგენტების შესაქმნელად.",
+          "action_type": "APPLY",
+          "action": "დაწერეთ Python სკრიპტი Interactions API-ის გამოყენებით, რომელიც ფონურ რეჟიმში ჩაატარებს კვლევას და დააპოლავს შედეგს.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Real Business Opportunity"
+          ],
+          "verified_facts": [
+            "Deep Research Agent ხელმისაწვდომია ექსკლუზიურად Interactions API-ს მეშვეობით (agent: deep-research-preview-04-2026)",
+            "მოითხოვს background execution-ს (background=true) და polling / streaming მექანიზმს",
+            "მხარს უჭერს MCP Server-ებთან მიერთებას, ვიზუალიზაციების გენერაციას და დოკუმენტების პირდაპირ მიწოდებას"
+          ],
+          "interpretation": "Google-ს გადაჰყავს რთული აგენტური workflow-ები managed API level-ზე, სადაც ფონური პროცესები და MCP ინტეგრაცია სტანდარტად ხდება.",
+          "uncertainty": "Preview სტატუსიდან გამომდინარე, API-ს Rate limit-ები და ფასწარმოქმნა შესაძლოა შეიცვალოს ოფიციალურ რელიზამდე.",
+          "counter_argument": "Managed Agent API-ები ამცირებენ დეველოპერის კონტროლს execution loop-ზე და სრულიად ბლოკავენ custom retry logic-ს."
+        },
+        {
+          "event_id": "evt-typesafe-option-name-rubric-bias",
+          "title": "Type-Safe Is Not Error-Free: სტრუქტურირებული Decision Head მიჰყვება ოპტიმის სახელს და არა რუბრიკას",
+          "category": "AI Research & Reliability",
+          "primary_url": "https://arxiv.org/abs/2609.26758",
+          "supporting_urls": [],
           "importance": 8,
           "relevance": 9,
           "actionability": 9,
           "source_quality": 8,
-          "confidence": 90,
-          "tldr": "შექმნა Agent Self-Evolution ეკოსისტემა GEP პროტოკოლითა და AAS Core-ით, რაც აგენტებს უნარების თვით-ევოლუციის საშუალებას აძლევს.",
-          "what_happened": "Open-Source საზოგადოებამ დაამტკიცა Genome Evolution Protocol (GEP) და AAS Core უნარების სტანდარტიზებული მართვისთვის.",
-          "what_changed": "ხელით პრომპტინგის ეპოქიდან გადავედით დინამიურ, მოഡულარულ და ევოლუციურ Agent Skill Packages-ზე.",
-          "why_it_matters": "აგენტების მეხსიერებისა და უნარების მოდულარული არქიტექტურა აუცილებელია რთული AI Agent Loop-ების ასაგებად.",
+          "confidence": 92,
+          "tldr": "კვლევამ აჩვენა, რომ ტიპიზირებული LLM decision head-ები ენდობიან ოპციის დასახელების სემანტიკას და იგნორირებას უკეთებენ მიბმულ რუბრიკას.",
+          "what_happened": "მკვლევარებმა შეამოწმეს typed decision models და აღმოაჩინეს, რომ ოპციის სახელის შეცვლა (მაგ. neutral-დან polar-ზე) იწვევს პასუხების მასობრივ ამოყირავებას.",
+          "what_changed": "დაიმსხვრა მითი, რომ Type-Safe (JSON Schema / Enum) გამონატანი ავტომატურად ნიშნავს ლოგიკურად სწორ პასუხს.",
+          "why_it_matters": "JSON Schema Enums-ის შექმნისას უნდა გამოიყენოთ ნეიტრალური სახელები (მაგ. Option_A, Option_B) სემანტიკური გადახრების თავიდან ასაცილებლად.",
           "key_takeaways": [
-            "GEP პროტოკოლი იყენებს Genes და Capsules სტრუქტურას მუტაციისთვის",
-            "AAS Core გთავაზობთ ლოკალურ Control Plane-ს უნარების ვალიდაციისთვის",
-            "Cross-runtime მხარდაჭერა Claude Code, OpenCode და Codex აგენტებისთვის"
+            "0% type error არ ნიშნავს 0% logic error-ს",
+            "No/Yes სახელები ამახინჯებენ AUC მაჩვენებელს",
+            "Random ან Neutral სახელები ხსნიან სემანტიკურ ბიასს"
           ],
           "technical_architecture": [
-            "GEP Genome Evolution Engine with Auditable Event logs",
-            "AAS Core local MCP and CLI validation stack",
-            "Cross-runtime skill-pack interface specification"
+            "Constrained decision head architecture",
+            "Mean-pooling output span comparison",
+            "Task-specific rubric binding layer"
           ],
           "technical_details": [
-            "2,400+ indexed agentic skills in AAS Core",
-            "Modular skill-pack standard for Claude Code and Cursor",
-            "Prompt governance via evolutionary mutation trees"
+            "70.4 answer flips per 100 on renaming",
+            "AUC drop from .94 to .23",
+            "1,200 workflow decision test cases"
           ],
-          "potential_impact": "შემცირდება დრო აგენტების ახალი უნარებით აღჭურვისთვის და დაკომპლექტდება Self-Improving Agent Pipeline-ები.",
-          "action_type": "TRY",
-          "action": "გამოიკვლიეთ AAS Core ან evolver სერვერი ლოკალურად, შექმენით მცირე Skill-Pack და დააკავშირეთ იგი Claude Code CLI-სთან.",
+          "potential_impact": "შეიცვლება აგენტებში Structured JSON Enums-ის დაპროექტების პრაქტიკა და Prompt/Schema Engineering სტანდარტები.",
+          "action_type": "APPLY",
+          "action": "გადახედეთ თქვენს JSON Schema Enum-ებს და შეცვალეთ სემანტიკური სახელები ნეიტრალური იდენტიფიკატორებით, ხოლო განმარტებები დატოვეთ description-ში.",
           "evidence": [],
-          "factuality_level": "corroborated",
+          "factuality_level": "single_source",
           "classification": [
             "Real Technical Skill",
-            "Long-Term Career Value"
+            "Real Business Opportunity"
           ],
           "verified_facts": [
-            "Genome Evolution Protocol (GEP) და evolver ძრავა უზრუნველყოფს აგენტების ავტონომიურ Self-Evolution-ს Genes და Capsules მოდელით",
-            "AAS Core (agentic-awesome-skills) მოიცავს 2,400+-ზე მეტ Agentic Skill-ს ლოკალური Control Plane-ით",
-            "Skill-Pack არქიტექტურა საშუალებას აძლევს Claude Code, Cursor და OpenCode აგენტებს გაიზიარონ Skill Package-ები",
-            "აუდიტირებადი Prompt Governance უზრუნველყოფს ევოლუციური მუტაციების Traceability-ს"
+            "0/1 ოპციების სახელების no/yes-ით ჩანაცვლებამ შეცვალა 70.4 პასუხი 100-დან და AUC 0.94-დან 0.23-მდე დააგდო",
+            "Type-error rate რჩება 0%-ზე, მაშინაც კი, როდესაც გადაწყვეტილების სიზუსტე კატასტროფულად ეცემა",
+            "ნეიტრალური ან შემთხვევითი სტრიქონების (random strings) გამოყენება ოპციის სახელებად აბრუნებს მოდელს სტაბილურ რეჟიმში"
           ],
-          "interpretation": "Skill-Pack და GEP სტანდარტები გარდაქმნიან ინდივიდუალურ Prompt-ებს მრავალჯერ გამოყენებად, თვით-განვითარებად Agent Capabilities მოკლულებად.",
-          "uncertainty": "ავტონომიურმა Mutation პროცესმა შესაძლოა გამოიწვიოს Unintended Agent Drift ხანგრძლივ Runtime-ზე.",
-          "counter_argument": "სტატიკური, ხელით დაწერილი System Prompt-ები ჯერ კიდევ უფრო პროგნოზირებადია კრიტიკულ Production გარემოში."
+          "interpretation": "Typed/Structured Output-ები იძლევიან გარანტიას მხოლოდ სინტაქსზე და არა სემანტიკურ სიზუსტეზე; სემანტიკურად დატვირთული ოპციის სახელები აფუჭებენ რუბრიკის აღქმას.",
+          "uncertainty": "ეფექტი შესაძლოა განსხვავდებოდეს სხვადასხვა Fine-Tuning მეთოდისა და დეკოდირების არქიტექტურის მიხედვით.",
+          "counter_argument": "მოდელების შემდგომი ინსტრუქციული წვრთნა (RLHF) შესაძლოა დაეხმაროს რუბრიკაზე ფოკუსირებას ოპციის სახელის მიუხედავად."
         },
         {
-          "event_id": "evt-google-gtig-ai-supply-chain-contamination",
-          "title": "Google Threat Intelligence Report: AI-Assisted Code Generation და Supply Chain Contamination",
-          "category": "AI Security & Code Generation Governance",
-          "primary_url": "https://cloud.google.com/blog/products/identity-security/cloud-ciso-perspectives-how-google-monitors-ai-threats-advances-ai-defenses",
+          "event_id": "evt-tasteful-agent-taste-bench",
+          "title": "The Tasteful Agent: ხანგრძლივ დავალებებში აგენტის გადაწყვეტილებების ხარისხის გაუმჯობესება",
+          "category": "AI Evaluation & Reliability",
+          "primary_url": "https://huggingface.co/papers/2609.25804",
           "supporting_urls": [],
           "importance": 8,
           "relevance": 9,
-          "actionability": 8,
-          "source_quality": 9,
-          "confidence": 92,
-          "tldr": "Google GTIG-ის ცნობით, ჰაკერები მიზანმიმართულად წამლავენ ღია კოდის პაკეტებს, რომლებსაც AI კოდინგ აგენტები ენდობიან.",
-          "what_happened": "Google-ის CISO ანგარიშმა გამოავლინა AI ასისტენტების მიერ შეთავაზებული Upstream Package Contamination-ის ზრდის ტენდენცია.",
-          "what_changed": "ტრადიციული ხელით dependency-ების არჩევიდან გადავედით AI აგენტების მიერ ავტომატურ პაკეტების იმპორტზე, რაც ახალ საფრთხეს ქმნის.",
-          "why_it_matters": "AI coding tools-ის (Cursor, Claude Code, OpenHands) გამოყენებისას აუცილებელია ინსტრუმენტების მიერ შემოთავაზებული პაკეტების უსაფრთხოების შემოწმება.",
-          "key_takeaways": [
-            "AI ასისტენტები ხშირად ენდობიან და გვთავაზობენ დაბინძურებულ Open-Source პაკეტებს",
-            "ავტონომიური კოდის გენერაცია მოითხოვს სენდბოქსინგსა და Dependency Validation-ს",
-            "GTIG უზრუნველყოფს AI Threat Tracker მონიტორინგს რეალურ ინციდენტებზე"
-          ],
-          "technical_architecture": [
-            "Upstream package validation gateway in Agent workflows",
-            "CI/CD context contract and sidecar validation architecture",
-            "Isolated execution sandboxes for AI-generated code dependencies"
-          ],
-          "technical_details": [
-            "Malicious package contamination target AI prompts",
-            "High-velocity production code push vulnerabilities",
-            "GTIG AI Threat Tracker telemetry data"
-          ],
-          "potential_impact": "აიძულებს AI დეველოპერულ ინსტრუმენტებს ჩაშენონ ავტომატური Dependency Verification და Context Contracts.",
-          "action_type": "APPLY",
-          "action": "დაამატეთ Strict Dependency Scanning პროცესი თქვენს Agent Pipeline-ში, რათა აგენტმა არ გამოიყენოს შეუმცირებელი მესამე მხარის პაკეტები.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "Google Threat Intelligence Group (GTIG) ადასტურებს Open-Source მიწოდების ჯაჭვების დაბინძურების ზრდას 2025-2026 წლებში",
-            "თავდამსხმელები მიზანმიმართულად წამლავენ Upstream პაკეტებს, რომლებსაც AI კოდინგ ასისტენტები სთავაზობენ დეველოპერებს",
-            "ავტონომიური აგენტები უპრეცედენტო სიჩქარით აგზავნიან კოდს Production-ში, რაც ზრდის რისკის ზედაპირს",
-            "პრობლემის გადასაჭრელად საჭიროა ავტომატიზებული პაკეტების ვალიდაცია AI-assisted development workflows-ში"
-          ],
-          "interpretation": "AI კოდინგ აგენტების ფართო გამოყენებამ შექმნა ახალი ვექტორი (Prompt/Package Contamination), სადაც მავნე კოდი ხვდება პროექტში აგენტის ნდობის გამო.",
-          "uncertainty": "ზუსტად რა პროცენტი შეადგენს AI-ის მიერ შეთავაზებულ დაბინძურებულ პაკეტებს რეალურ GitHub PR-ებში, ჯერ კიდევ დასაზუსტებელია.",
-          "counter_argument": "სტატიკური ანალიზის ინსტრუმენტები და Lockfile-ის შემოწმება ამცირებს ამ საფრთხეს ტრადიციულ CI/CD პაიპლაინებში."
-        },
-        {
-          "event_id": "evt-microsoft-project-perception-security-agents",
-          "title": "Microsoft Project Perception: Red, Blue და Green აგენტების არქიტექტურა და MAI-Cyber-1-Flash მოდელი",
-          "category": "Multi-Agent Systems & Cybersecurity Architecture",
-          "primary_url": "https://www.microsoft.com/en-au/security/business/ai-powered-cybersecurity/project-perception-agentic-system",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 8,
           "actionability": 7,
-          "source_quality": 10,
-          "confidence": 95,
-          "tldr": "Microsoft-მა წარადგინა Project Perception - Multi-Agent უსაფრთხოების სისტემა Red/Blue/Green აგენტებითა და MAI-Cyber-1-Flash მოდელით.",
-          "what_happened": "Microsoft-მა გამოაქვეყნა Project Perception Preview, სადაც აგენტები ავტონომიურად უცვლიან კონტექსტს და იცავენ ინფრასტრუქტურას.",
-          "what_changed": "ცალკეული რეაქტიული უსაფრთხოების ინსტრუმენტებიდან გადავედით უწყვეტ Multi-Agent ორკესტრირებულ Workflow-ზე.",
-          "why_it_matters": "აგენტების არქიტექტურის დიზაინი (Red/Blue/Green როლები + Harness + Actuators) არის საუკეთესო პრაქტიკა ნებისმიერი Multi-Agent პროექტისთვის.",
+          "source_quality": 8,
+          "confidence": 89,
+          "tldr": "Microsoft-ის მკვლევარებმა შექმნეს Taste-Bench აგენტების გადაწყვეტილების ხარისხის გასაზომად და აჩვენეს, რომ Taste-ის სწავლება შესაძლებელია.",
+          "what_happened": "წარმოადგინეს Taste-Bench, სადაც იზომება აგენტის Taste - უნარი აირჩიოს სწორი გზა Decision Fork-ის დროს.",
+          "what_changed": "End-to-end წარმატების გაზომვის ნაცვლად, შეფასება ხდება უშუალოდ გადაწყვეტილების მიღების წერტილებში (forks).",
+          "why_it_matters": "გეხმარებათ გაიგოთ, თუ რატომ იჭრებიან აგენტები ხანგრძლივ ამოცანებში და როგორ დაატრენინგოთ სტუდენტი მოდელები teacher feedback-ით.",
           "key_takeaways": [
-            "Red აგენტები ეძებენ სუსტ წერტილებს, Blue იკვლევს, Green ახორციელებს ჰარდენინგს",
-            "Actuators უზრუნველყოფენ გადაწყვეტილების რეალურ მოქმედებად გარდაქმნას",
-            "Harness აკონტროლებს მოდელების საიმედოობასა და ტესტირებას"
+            "Top მოდელების სიზუსტე მხოლოდ 59.7%-ია",
+            "Reasoning budget-ის გაზრდა არ შველის Taste-ს",
+            "Teacher-student დისტილაცია ზრდის გადაწყვეტილების ხარისხს"
           ],
           "technical_architecture": [
-            "Multi-agent role separation: Red (Probe), Blue (Investigate), Green (Hardening)",
-            "Harness Orchestration Layer with enterprise governance controls",
-            "Actuator Execution Framework for safe environment manipulation"
+            "Decision fork mining algorithm trajectories-დან",
+            "Teacher-student distillation architecture",
+            "No-lookahead fork evaluation module"
           ],
           "technical_details": [
-            "Purpose-built MAI-Cyber-1-Flash reasoning model",
-            "Evidence-grade context enrichment pipeline",
-            "Human-in-the-loop approval gate for critical actions"
+            "59.7% top model accuracy on Taste-Bench",
+            "Automatic trajectory fork mining",
+            "Distillation of outcome-aware teacher"
           ],
-          "potential_impact": "დაამკვიდრებს Multi-Agent არქიტექტურის სტანდარტებს უსაფრთხოებისა და IT ავტომატიზაციის სექტორში.",
+          "potential_impact": "შექმნის ახალ სტანდარტს აგენტების შიდა მსჯელობისა და გადაწყვეტილების მიღების ხარისხის შეფასებაში.",
           "action_type": "LEARN",
-          "action": "გაანალიზეთ Actuator და Harness კომპონენტების გამიჯვნის პრინციპი Microsoft-ის დოკუმენტაციაში და გამოიყენეთ ის საკუთარ Agent Loop-ში.",
+          "action": "გაანალიზეთ თქვენი აგენტის სესიების Execution Traces და იპოვეთ Decision Fork-ები, სადაც არასწორი ინსტრუმენტი იქნა არჩეული.",
           "evidence": [],
-          "factuality_level": "corroborated",
+          "factuality_level": "single_source",
           "classification": [
             "Real Technical Skill",
             "Long-Term Career Value"
           ],
           "verified_facts": [
-            "Project Perception წარადგენს სამ სპეციალიზებულ აგენტურ როლს: Red (probe), Blue (investigate), Green (remediate & harden)",
-            "სისტემა იყენებს ახალ სპეციალიზებულ MAI-Cyber-1-Flash მოდელს სწრაფი Security Reasoning-ისთვის",
-            "მოქმედებები ხორციელდება Actuators მექანიზმით, ხოლოდ ორკესტრაცია ეყრდნობა Harness ჩარჩოს",
-            "მაღალი რისკის მოქმედებები მოითხოვს Human-in-the-loop დასტურს enterprise governance-ის ფარგლებში"
+            "Taste-Bench ზომავს აგენტის უნარს მიიღოს სწორი გადაწყვეტილება decision fork-ზე მომავალი შედეგის დაუნახავად",
+            "საუკეთესო ფრონტიერ მოდელმა Taste-Bench-ზე მიაღწია მხოლოდ 59.7%-იან სიზუსტეს",
+            "დიდი reasoning budget (CoT) არ აუმჯობესებს აგენტის Taste-ს გადაწყვეტილების მიღებისას"
           ],
-          "interpretation": "Microsoft-ის არქიტექტურა ადასტურებს, რომ რთულ Enterprise დომენებში Multi-Agent სისტემები მოითხოვენ მკაცრად დაყოფილ როლებსა და Actuator/Harness საზღვრებს.",
-          "uncertainty": "MAI-Cyber-1-Flash მოდელის ზუსტი ზომა და ლოკალური ან API წვდომის დეტალები ჯერ არ არის საჯარო.",
-          "counter_argument": "სამი აგენტის ორკესტრაციამ და Human Sign-off-მა შესაძლოა შეანელოს რეაგირების დრო რეალურ ინციდენტებზე."
+          "interpretation": "აგენტების მთავარი პრობლემა არის არასწორი ჰიპოთეზის არჩევა საწყის ეტაპზე, რისი გამოსწორებაც დისტილაციით (distillation) არის შესაძლებელი.",
+          "uncertainty": "ავტომატურად mined decision fork-ები შესაძლოა შეიცავდნენ ხმაურს და არ ასახავდნენ რეალურ ადამიანურ Taste-ს.",
+          "counter_argument": "დამატებითი RL-ს ან მონტე-კარლოს ხის ძიების (MCTS) გამოყენებამ შესაძლოა გადაფაროს Taste-ის დეფეციტი ინფერენსის დროს."
         }
       ],
       "trends": [
-        "გადავლა მარტივი Text Prompting-იდან დინამიურ, ევოლუციურ Agent Skill Packages (GEP, Skill-Packs) სტანდარტებზე",
-        "Non-Autoregressive JEPA World Model არქიტექტურების განვითარება აგენტების მრავალ-ნაბიჯიანი Planning-ისთვის",
-        "Cross-discipline Agent Harness-ების წარმოქმნა, რომლებიც ფარავენ როგორც სოფტვერს, ისე CAD, PCB და აპარატურულ მართვას",
-        "AI-assisted coding ინსტრუმენტების მიერ შექმნილი Supply Chain პაკეტების დაბინძურების საფრთხეების ზრდა"
+        "აგენტების არქიტექტურაში ცენტრალიზებული orchestrator-ებიდან გადასვლა ასინქრონულ shared-workspace და დეცენტრალიზებულ loop-ებზე",
+        "MCP (Model Context Protocol) ეკოსისტემაში სემანტიკური უსაფრთხოების, tool verification-ისა და supply-chain შეტევების პრევენციის ზრდა",
+        "LLM Context Window-ის დაზოგვის ახალი ტექნიკები: Truncation-based compaction და control logic-ის გადატანა Python harness-ის კოდში"
       ]
     }
   ],
   "learning_queue": [
-    "JEPA (Joint-Embedding Predictive Architecture) და Orthogonal Predictive Factorization-ის მათემატიკური საფუძვლები",
-    "Genome Evolution Protocol (GEP) და Genes/Capsules სტრუქტურა აგენტების თვით-განვითარების სისტემებში",
-    "Red/Blue/Green Multi-Agent Pattern-ის იმპლემენტაცია LangGraph-ის ან Custom Python Loop-ის გამოყენებით"
+    "ასინქრონული მრავალ-აგენტიანი არქიტექტურები (Agensh pattern, AsyncIO, Shared Workspace state management)",
+    "MCP Protocol-ის უსაფრთხოება, სემანტიკური ვალიდაცია და Tool Injection-ისგან დაცვის მექანიზმები",
+    "Context Window compaction ალგორითმები და Token-efficient agent harness engineering"
   ],
-  "last_run": "2026-09-20T14:06:52.568421+00:00",
+  "last_run": "2026-09-23T18:43:19.797725+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -8212,16 +7837,17 @@
     "arxiv:2609.19656",
     "arxiv:2609.19671",
     "arxiv:2609.20807",
-    "arxiv:2601.07136",
-    "arxiv:2609.20423",
-    "arxiv:2609.20612",
-    "arxiv:2609.19745",
-    "arxiv:2609.20800"
+    "arxiv:2609.26779",
+    "arxiv:2609.26761",
+    "arxiv:2609.26781",
+    "arxiv:2609.26760",
+    "arxiv:2609.26758",
+    "arxiv:2609.25804"
   ],
   "last_report_files": {
-    "markdown": "data/reports/2026-09-20/report.md",
-    "json": "data/reports/2026-09-20/report.json",
-    "newsletter": "data/reports/2026-09-20/newsletter.md",
-    "social": "data/reports/2026-09-20/social_posts.txt"
+    "markdown": "data/reports/2026-09-23/report.md",
+    "json": "data/reports/2026-09-23/report.json",
+    "newsletter": "data/reports/2026-09-23/newsletter.md",
+    "social": "data/reports/2026-09-23/social_posts.txt"
   }
 }
