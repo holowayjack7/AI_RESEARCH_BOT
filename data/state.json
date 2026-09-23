@@ -134,7 +134,10 @@
     "https://huggingface.co/papers/2609.25804",
     "https://arxiv.org/abs/2609.26777",
     "https://arxiv.org/abs/2609.26780",
-    "https://huggingface.co/papers/2609.26774"
+    "https://huggingface.co/papers/2609.26774",
+    "https://aws.amazon.com/blogs/machine-learning/a-shared-agentic-platform-for-wood-mackenzie-on-amazon-bedrock-agentcore",
+    "https://aws.amazon.com/blogs/machine-learning/how-reactiv-automates-mobile-commerce-80-faster-with-amazon-bedrock-agentcore",
+    "https://arxiv.org/abs/2609.26751"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -237,78 +240,11 @@
     "evt-tasteful-agent-taste-bench",
     "evt-sweserve-production-inference",
     "evt-speakermem-r1-multidialogue",
-    "evt-stablevq-tokenizers"
+    "evt-stablevq-tokenizers",
+    "evt-aws-bedrock-agentcore-shared-platform",
+    "evt-equivsva-rtl-assertion-dataset"
   ],
   "events": [
-    {
-      "event_id": "evt-aws-bedrock-agent-eval",
-      "title": "AWS Bedrock AgentCore და GitHub Actions: AI აგენტების ავტომატიზებული შეფასება CI/CD Quality Gate-ით",
-      "category": "Agent Testing / Evaluation & DevOps",
-      "primary_url": "https://aws.amazon.com/blogs/machine-learning/automated-agent-evaluation-with-amazon-bedrock-agentcore-and-github-actions",
-      "supporting_urls": [],
-      "importance": 9,
-      "relevance": 10,
-      "actionability": 9,
-      "source_quality": 10,
-      "confidence": 95,
-      "what_happened": "AWS-მა წარადგინა სახელმძღვანელო და არქიტექტურა AI აგენტების ავტომატიზებული შეფასებისთვის GitHub Actions-ისა და Amazon Bedrock AgentCore-ის მეშვეობით, სადაც PR-ის შერწყმა იბლოკება, თუ აგენტის ქულა (Quality Gate) დადგენილ ზღვარს ჩამოსცდება.",
-      "what_changed": "მანამდე აგენტის ცვლილებების (System prompt-ის ან Tool-ის განახლება) ტესტირება ხდებოდა ხელით ან სუბიექტურად პროდაქშენში. ახლა OpenTelemetry ტრასების საფუძველზე LLM-as-a-judge ავტომატურად ზომავს Correctness, ToolSelectionAccuracy და GoalSuccessRate მაჩვენებლებს უშუალოდ CI/CD მილსადენში.",
-      "why_it_matters": "ნებისმიერი სერიოზული აგენტური პროექტისთვის აუცილებელია ავტომატური ევალუაცია. ეს მიდგომა აჩვენებს, თუ როგორ შეიძლება MCP სერვერების, OAuth M2M ავტორიზაციისა და LLM შეფასების გაერთიანება უწყვეტი ინტეგრაციის პროცესში.",
-      "technical_details": [
-        "გამოყენებულია OpenTelemetry ტრასები Amazon CloudWatch-იდან AgentCore Evaluate API-სთვის",
-        "OAuth-ით დაცული MCP სერვერების ტესტირება headless CI გარემოში OIDC და Cognition M2M client_credentials flow-ით",
-        "მორგებული და ჩაშენებული Evaluator-ები: TrajectoryExactOrderMatch, ToolParameterAccuracy, GoalSuccessRate",
-        "Quality Gate ბლოკავს PR-ს, თუ შეფასების ქულა (მაგ. 0.8 / 1.0) რეგრესირებს"
-      ],
-      "action_type": "BUILD",
-      "action": "შეშექმენით მარტივი GitHub Actions CI pipeline, რომელიც LLM-as-a-judge მიდგომით შეამოწმებს თქვენი აგენტის პასუხების ხარისხს და ბლოკავს Pull Request-ს ხარისხის დაცემის შემთხვევაში.",
-      "evidence": [
-        {
-          "url": "https://aws.amazon.com/blogs/machine-learning/automated-agent-evaluation-with-amazon-bedrock-agentcore-and-github-actions",
-          "title": "Automated agent evaluation with Amazon Bedrock AgentCore and GitHub Actions",
-          "domain": "aws.amazon.com",
-          "evidence": "Build a continuous integration and continuous delivery (CI/CD) quality gate that deploys an agent with role-based MCP tools, evaluates it, and blocks PRs when evaluation scores drop."
-        }
-      ]
-    },
-    {
-      "event_id": "evt-roam-and-kernel-memory",
-      "title": "ROAM და Kernel-Managed Shared Memory: აგენტის ხანგრძლივი მეხსიერების მართვის ახალი არქიტექტურული მიდგომები",
-      "category": "AI Research / Agent Memory & State Management",
-      "primary_url": "https://arxiv.org/html/2609.09778v1",
-      "supporting_urls": [
-        "https://arxiv.org/html/2609.10144v1"
-      ],
-      "importance": 8,
-      "relevance": 10,
-      "actionability": 8,
-      "source_quality": 8,
-      "confidence": 90,
-      "what_happened": "ორი ახალი კვლევა (ROAM და Kernel-Managed Shared Memory) გვთავაზობს აგენტის მეხსიერების მართვის რადიკალურ გაუმჯობესებას: ROAM იყენებს სემანტიკური მიმართებების კლასიფიკაციას (Primary/Evidence), ხოლო Kernel-Managed მიდგომა მეხსიერების ამოღებასა და პრივატულობას გადასცემს აგენტის ოპერაციული სისტემის ბირთვს (Kernel).",
-      "what_changed": "მანამდე LLM აგენტები თავად ცდილობდნენ მეხსიერების წაშლას/ჩასწორებას (add/update/delete) ერთ ბუნდოვან ნაბიჯში, ან თითოეული აგენტი ცალ-ცალკე მართავდა თავის მეხსიერებას. ახალ არქიტექტურაში სემანტიკური მიმართება და ფიზიკური შენახვა განცალკევებულია, ხოლო ბირთვი (Kernel) მართავს წვდომის უფლებებსა და პრომპტში ინჟექციას.",
-      "why_it_matters": "ROAM ზრდის პასუხის სიზუსტეს 29.8 პროცენტული პუნქტით და ამცირებს კონფლიქტურ/დუბლირებულ ტოკენებს. Kernel-Managed მოდელი 15-61%-ით ამცირებს Latency-ს multi-agent სისტემებში სრული კონტექსტის დუბლირების გარეშე.",
-      "technical_details": [
-        "ROAM კლასიფიკაცია: 5 მიმართება (independent, equivalent, directionally subsuming, conflicting)",
-        "მეხსიერების როლები: Primary (აქტიური საძიებო ხედი) და Evidence (ისტორიული დასაბუთება)",
-        "Kernel-managed Shared Memory (AIOS): ცენტრალიზებული წერის იერარქია, უსაფრთხოების ბარიერები და ტოკენების ხარჯის შემცირება"
-      ],
-      "action_type": "LEARN",
-      "action": "დაแนერგეთ ROAM-ის 5-საფეხურიანი სემანტიკური მიმართებების კლასიფიკაცია (Primary/Evidence როლები) თქვენს AI აგენტის მეხსიერების მოდულში redundancy-ს შესამცირებლად.",
-      "evidence": [
-        {
-          "url": "https://arxiv.org/html/2609.09778v1",
-          "title": "ROAM: Robust Organization of Atomic Memories for Agents through Semantic Relations",
-          "domain": "arxiv.org",
-          "evidence": "ROAM factorizes this compound decision into explicit relation inference followed by deterministic policy execution... improves answer accuracy by up to 29.8 percentage points."
-        },
-        {
-          "url": "https://arxiv.org/html/2609.10144v1",
-          "title": "Kernel-Managed Shared Memory for System-Wide Personalization",
-          "domain": "arxiv.org",
-          "evidence": "Kernel-managed shared memory centralizes retrieval, privacy enforcement, and prompt injection at the agent-system kernel instead of leaving them to individual agents."
-        }
-      ]
-    },
     {
       "event_id": "evt-openviking-context-db",
       "title": "OpenViking: ღია კოდის კონტექსტური მონაცემთა ბაზა AI აგენტებისთვის `viking://` პროტოკოლით",
@@ -4029,6 +3965,114 @@
       ],
       "non_obvious_opportunity": "Region VQ Loss მიდგომა შესაძლებელია ადაპტირებული იყოს აგენტური მეხსიერების კლასტერების სემანტიკური ინდექსაციისთვის.",
       "fit_assessment": "კარგია გენერაციული მოდელებისა და ტოკენიზაციის მექანიზმების ფუნდამენტური გაგებისთვის."
+    },
+    {
+      "event_id": "evt-aws-bedrock-agentcore-shared-platform",
+      "title": "Amazon Bedrock AgentCore: მრავალ-აგენტიანი Shared Runtime და ინფრასტრუქტურა",
+      "category": "აგენტების ინფრასტრუქტურა და Runtime",
+      "primary_url": "https://aws.amazon.com/blogs/machine-learning/a-shared-agentic-platform-for-wood-mackenzie-on-amazon-bedrock-agentcore",
+      "supporting_urls": [
+        "https://aws.amazon.com/blogs/machine-learning/how-reactiv-automates-mobile-commerce-80-faster-with-amazon-bedrock-agentcore"
+      ],
+      "importance": 9,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "AWS-მა წარმოადგინა Bedrock AgentCore, რომელიც ხსნის აგენტების production-ში გაშვების ძირითად ინფრასტრუქტურულ ბარიერებს.",
+      "what_happened": "AWS-მა გამოუშვა Bedrock AgentCore, მართული პლატფორმა მრავალ-აგენტიანი სისტემების ორკესტრაციისთვის.",
+      "what_changed": "ხელით აწყობილი აგენტური ინფრასტრუქტურა იცვლება სტანდარტიზებული, მართული runtime-ებით.",
+      "why_it_matters": "გაძლევთ საშუალებას გაიგოთ რა არქიტექტურული ფენაა საჭირო აგენტის საიმედო მუშაობისთვის.",
+      "key_takeaways": [
+        "ერთიანი runtime აგვარებს სესიების იზოლაციას და უსაფრთხოებას.",
+        "მრავალ-აგენტიანი ორკესტრაცია მოითხოვს მუდმივ მეხსიერებას."
+      ],
+      "technical_architecture": [
+        "AgentCore აერთიანებს ორკესტრაციას, უსაფრთხოებას და მუდმივ მეხსიერებას.",
+        "Strands Agents SDK უზრუნველყოფს Python-ზე დაფუძნებულ აგენტის მართვას."
+      ],
+      "technical_details": [
+        "გამოიყენება მოდელზე დაფუძნებული Python SDK.",
+        "მხარდაჭერილია მუდმივი მეხსიერება და MCP ინტეგრაცია."
+      ],
+      "potential_impact": "მნიშვნელოვნად ამცირებს აგენტების დაპროგრამებისა და ტესტირების დროს.",
+      "action_type": "TRY",
+      "action": "შექმენით მარტივი მრავალ-აგენტიანი ლოგიკა Python-ში და დააკავშირეთ ერთი ხელსაწყო.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value",
+        "Long-term Opportunity"
+      ],
+      "verified_facts": [
+        "Wood Mackenzie-მ ააშენა APEX პლატფორმა Bedrock AgentCore-ზე.",
+        "Reactiv-მა შეამცირა აპების კონფიგურაციის დრო 80 პროცენტით.",
+        "პლატფორმა უზრუნველყოფს ორკესტრაციას, უსაფრთხოებას და მუდმივ მეხსიერებას."
+      ],
+      "interpretation": "ინფრასტრუქტურული层ის სტანდარტიზაცია ცვლის აგენტების დამზადების წესს: კომპანიები გადადიან ერთიანი runtime-ების გამოყენებაზე.",
+      "uncertainty": "עד რა ზომამდე იქნება შესაძლებელი მსგავსი მართული პლატფორმების გამოყენება უფასო ბიუჯეტით.",
+      "counter_argument": "მორგებული პლატფორმები ზრდის მწარმოებელზე დამოკიდებულებას და ამცირებს კუსტომიზაციის არეალს.",
+      "strategic_assessment": "შეისწავლეთ როგორ იქმნება მართული აგენტური runtime-ები და გამოიყენეთ ღია კოდის ალტერნატივები თქვენს პროექტებში.",
+      "time_horizon": "mid-term",
+      "what_could_change": "აგენტების ინფრასტრუქტურის აგება გადაინაცვლებს ნულიდან წერიდან მზა პლატფორმების კონფიგურაციაზე.",
+      "risks": [
+        "Cloud პროვაიდერების მაღალი ფასები",
+        "მოდელის არჩევანის შეზღუდვა",
+        "კონფიგურაციის სირთულე"
+      ],
+      "non_obvious_opportunity": "მცირე დეველოპერებს შეუძლიათ შესთავაზონ მსგავსი ჰარნესები როგორც სერვისი ადგილობრივი კომპანიებისთვის.",
+      "fit_assessment": "გეხმარებათ გაიგოთ როგორ იქმნება სამრეწველო დონის აგენტური სისტემები რეალურ production გარემოში."
+    },
+    {
+      "event_id": "evt-equivsva-rtl-assertion-dataset",
+      "title": "EquivSVA: ფორმალურად გადამოწმებული დეტასეტი RTL კოდის გენერაციისთვის",
+      "category": "AI Research & Model Architecture",
+      "primary_url": "https://arxiv.org/abs/2609.26751",
+      "supporting_urls": [],
+      "importance": 7,
+      "relevance": 6,
+      "actionability": 6,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "გამოვიდა EquivSVA, რომელიც აუმჯობესებს LLM-ების მიერ გენერირებული კოდის ფორმალურ ვალიდაციას.",
+      "what_happened": "მკვლევარებმა წარმოადგინეს დეტასეტი და ვალიდაციის სუიტი RTL კოდის ტესტირებისთვის.",
+      "what_changed": "ნაცვლად ზოგადი კომპილაციისა, შემოწმება ხდება ფორმალური ქცევის წესებით.",
+      "why_it_matters": "გაჩვენებთ როგორ უნდა შემოწმდეს აგენტის მიერ დაწერილი კოდის უსაფრთხოება.",
+      "key_takeaways": [
+        "ფორმალური ვალიდაცია პოულობს ბაგებს, რომლებსაც კომპილატორი ვერ ამჩნევს."
+      ],
+      "technical_architecture": [
+        "შეიცავს 17-job ვალიდაციის სუიტს RTL ეკვივალენტობის შესამოწმებლად."
+      ],
+      "technical_details": [
+        "გამოიყენება Qwen2.5-Coder-7B-Instruct მოდელი შესაფასებლად."
+      ],
+      "potential_impact": "ამცირებს აგენტების მიერ გენერირებული კოდის შეცდომებს.",
+      "action_type": "LEARN",
+      "action": "შეისწავლეთ როგორ იყენებენ ავტომატური ჰარნესები ტესტირების შედეგებს მოდელის გამოსასწორებლად.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "EquivSVA შეიცავს 120 ქცევის ოჯახს და 480 RTL იმპლემენტაციას.",
+        "გამოყენებულია Qwen2.5-Coder-7B-Instruct მოდელის ტესტირებისთვის."
+      ],
+      "interpretation": "ფორმალური ვალიდაცია სულ უფრო მნიშვნელოვანი ხდება კოდის გენერირებელი მოდელების შესამოწმებლად.",
+      "uncertainty": "რამდენად პრაქტიკულია აპარატურული აღწერის ენები ზოგადი AI ინჟინრებისთვის.",
+      "counter_argument": "حარდვერული დიზაინი სცდება ტიპიური აგენტური ინჟინერიის ფარგლებს.",
+      "strategic_assessment": "გაეცანით კოდის ფორმალური შემოწმების მეთოდოლოგიას, მაგრამ ფოკუსირდით პროგრამული უზრუნველყოფის აგენტებზე.",
+      "time_horizon": "mid-term",
+      "what_could_change": "AI კოდის გენერაცია გახდება უფრო ზუსტი ფორმალური ტესტირების ჰარნესების წყალობით.",
+      "risks": [
+        "მაღალი სირთულე",
+        "შეზღუდული გამოყენება სოფტვერში"
+      ],
+      "non_obvious_opportunity": "მსგავსი ფორმალური შემოწმების მიდგომები შეიძლება გადავიტანოთ Python აგენტების ინსტრუქციების ვალიდაციაზე.",
+      "fit_assessment": "საინტერესოა კოდის გენერაციის ხარისხის შესაფასებლად, მაგრამ ნაკლებად პრიორიტეტულია ამ ეტაპზე."
     }
   ],
   "topics": {
@@ -4084,7 +4128,7 @@
     "AI Research / Structured Data & Causal ML": 1,
     "Developer Tools & Agent Frameworks": 2,
     "Model Inference & Local Hardware Optimization": 1,
-    "AI Research & Model Architecture": 3,
+    "AI Research & Model Architecture": 4,
     "Agent Security & Infrastructure": 1,
     "LLM Infrastructure & Agent Memory": 2,
     "Multi-Agent Systems & RL": 1,
@@ -4108,7 +4152,7 @@
     "AI Evaluation / Agent Reliability": 1,
     "AI Coding Tools / Agent Evaluation": 1,
     "Open Source AI / Ecosystem Trends": 1,
-    "აგენტების ინფრასტრუქტურა და Runtime": 1,
+    "აგენტების ინფრასტრუქტურა და Runtime": 2,
     "RAG, Retrieval და აგენტის მეხსიერება": 1,
     "Tool Calling და აგენტების არქიტექტურა": 1,
     "AI Coding Tools და უსაფრთხოება": 1,
@@ -4123,272 +4167,6 @@
     "AI Research / RAG & აგენტის მეხსიერება": 1
   },
   "reports": [
-    {
-      "date": "2026-09-11",
-      "summary": "დღევანდელი ანგარიში ფოკუსირებულია AI აგენტების არქიტექტურის, ხანგრძლივი მეხსიერების (Long-term Memory), CI/CD შეფასების მექანიზმებისა და ახალი თაობის მოდელების ტექნიკურ განვითარებაზე. OpenAI-მ გამოაშვება GPT-6 Astra მოდელი, რომელიც ახალ ბენჩმარკებს ამყარებს კომპიუტერის გამოყენებასა (Computer Use) და პროგრამულ ინჟინერიაში. პარალელურად, AWS წარმოადგენს Bedrock AgentCore-ის CI/CD შეფასების პაიპლაინს, ხოლო აკადემიური კვლევები (KVMem, ROAM, OpenViking, Kernel-Managed Memory) გვთავაზობენ რევოლუციურ მიდგომებს კონტექსტის ვირტუალიზაციასა და იერარქიულ მეხსიერების მართვაში. ეს სიახლეები პირდაპირ ცვლის აგენტური სისტემების დაპროექტების სტანდარტებს.",
-      "events": [
-        {
-          "event_id": "evt-gpt6-astra-launch",
-          "title": "OpenAI-მ GPT-6 Astra წარადგინა — ახალი თაობის მოდელი კომპიუტერის გამოყენებისა და პროგრამული ინჟინერიის აგენტებისთვის",
-          "category": "LLM Release / Frontier Models",
-          "primary_url": "https://openai.com/index/gpt-6-astra-next-generation-work",
-          "supporting_urls": [
-            "https://openai.com/index/ai-policy-window"
-          ],
-          "importance": 10,
-          "relevance": 10,
-          "actionability": 8,
-          "source_quality": 10,
-          "confidence": 95,
-          "what_happened": "OpenAI-მ ოფიციალურად გამოაშვება GPT-6 Astra, რომელიც ხელმისაწვდომია ChatGPT Work-ში, Codex-სა და API-ში ($10/M input, $50/M output). მოდელმა დაამყარა ახალი რეკორდი DeepSWE v1.1 ბენჩმარკზე 74%-ით, აჩვენა მნიშვნელოვანი გაუმჯობესება Computer Use, Figma-ს მართვასა და მრავალფაილიან კოდის რევიუში.",
-          "what_changed": "მანამდე არსებული მოდელები (მაგ. GPT-5.6 Sol ან Claude Fable 5.1) მოითხოვდნენ ვრცელ კონტექსტურ მომზადებას და ხშირად უშვებდნენ შეცდომებს 5+ საათიან აგენტურ რიგებში. Astra-მ 89%-ით შეამცირა გაუთვალისწინებელი უარყოფითი შედეგები და ნაკლები ტოკენების დახარჯვით აღწევს მიზანს.",
-          "why_it_matters": "შესაძლებელია რთული აგენტური არქიტექტურების გამარტივება (remove scaffolding), რადგან მოდელი თავად ინარჩუნებს ხანგრძლივ მსჯელობას, უკეთ ინარჩუნებს ინსტრუმენტების (tools) გამოძახების სიზუსტეს და ეფექტურად იყენებს აპლიკაციების ინტერფეისს API-ს გარეშეც.",
-          "technical_details": [
-            "74% DeepSWE v1.1 ბენჩმარკზე ნაკლები ნაბიჯებითა და ტოკენების მაღალი ეფექტიანობით",
-            "89%-ით ნაკლები შეცდომა უსაფრთხოების შიდა Computer Use ბენჩმარკზე",
-            "API ფასი: $10 / 1M input, $50 / 1M output ტოკენი",
-            "კროს-ფაილური მსჯელობა კოდის რევიუსას და შეცდომების ორმაგი აღმოჩენა წინა ბაზისურ მოდელებთან შედარებით"
-          ],
-          "action_type": "TRY",
-          "action": "შეამოწმეთ GPT-6 Astra-ს API კოდინგის და აგენტური დავალებების შესასრულებლად, შეადარეთ ტოკენების ეფექტიანობა და latency წინა მოდელებთან.",
-          "evidence": [
-            {
-              "url": "https://openai.com/index/gpt-6-astra-next-generation-work",
-              "title": "GPT-6 Astra: The next generation in intelligence for work",
-              "domain": "openai.com",
-              "evidence": "Astra sets a new record on DeepSWE v1.1 at 74%. Pricing starts at $10 per million input tokens and $50 per million output tokens."
-            }
-          ]
-        },
-        {
-          "event_id": "evt-aws-bedrock-agent-eval",
-          "title": "AWS Bedrock AgentCore და GitHub Actions: AI აგენტების ავტომატიზებული შეფასება CI/CD Quality Gate-ით",
-          "category": "Agent Testing / Evaluation & DevOps",
-          "primary_url": "https://aws.amazon.com/blogs/machine-learning/automated-agent-evaluation-with-amazon-bedrock-agentcore-and-github-actions",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 10,
-          "actionability": 9,
-          "source_quality": 10,
-          "confidence": 95,
-          "what_happened": "AWS-მა წარადგინა სახელმძღვანელო და არქიტექტურა AI აგენტების ავტომატიზებული შეფასებისთვის GitHub Actions-ისა და Amazon Bedrock AgentCore-ის მეშვეობით, სადაც PR-ის შერწყმა იბლოკება, თუ აგენტის ქულა (Quality Gate) დადგენილ ზღვარს ჩამოსცდება.",
-          "what_changed": "მანამდე აგენტის ცვლილებების (System prompt-ის ან Tool-ის განახლება) ტესტირება ხდებოდა ხელით ან სუბიექტურად პროდაქშენში. ახლა OpenTelemetry ტრასების საფუძველზე LLM-as-a-judge ავტომატურად ზომავს Correctness, ToolSelectionAccuracy და GoalSuccessRate მაჩვენებლებს უშუალოდ CI/CD მილსადენში.",
-          "why_it_matters": "ნებისმიერი სერიოზული აგენტური პროექტისთვის აუცილებელია ავტომატური ევალუაცია. ეს მიდგომა აჩვენებს, თუ როგორ შეიძლება MCP სერვერების, OAuth M2M ავტორიზაციისა და LLM შეფასების გაერთიანება უწყვეტი ინტეგრაციის პროცესში.",
-          "technical_details": [
-            "გამოყენებულია OpenTelemetry ტრასები Amazon CloudWatch-იდან AgentCore Evaluate API-სთვის",
-            "OAuth-ით დაცული MCP სერვერების ტესტირება headless CI გარემოში OIDC და Cognition M2M client_credentials flow-ით",
-            "მორგებული და ჩაშენებული Evaluator-ები: TrajectoryExactOrderMatch, ToolParameterAccuracy, GoalSuccessRate",
-            "Quality Gate ბლოკავს PR-ს, თუ შეფასების ქულა (მაგ. 0.8 / 1.0) რეგრესირებს"
-          ],
-          "action_type": "BUILD",
-          "action": "შეშექმენით მარტივი GitHub Actions CI pipeline, რომელიც LLM-as-a-judge მიდგომით შეამოწმებს თქვენი აგენტის პასუხების ხარისხს და ბლოკავს Pull Request-ს ხარისხის დაცემის შემთხვევაში.",
-          "evidence": [
-            {
-              "url": "https://aws.amazon.com/blogs/machine-learning/automated-agent-evaluation-with-amazon-bedrock-agentcore-and-github-actions",
-              "title": "Automated agent evaluation with Amazon Bedrock AgentCore and GitHub Actions",
-              "domain": "aws.amazon.com",
-              "evidence": "Build a continuous integration and continuous delivery (CI/CD) quality gate that deploys an agent with role-based MCP tools, evaluates it, and blocks PRs when evaluation scores drop."
-            }
-          ]
-        },
-        {
-          "event_id": "evt-roam-and-kernel-memory",
-          "title": "ROAM და Kernel-Managed Shared Memory: აგენტის ხანგრძლივი მეხსიერების მართვის ახალი არქიტექტურული მიდგომები",
-          "category": "AI Research / Agent Memory & State Management",
-          "primary_url": "https://arxiv.org/html/2609.09778v1",
-          "supporting_urls": [
-            "https://arxiv.org/html/2609.10144v1"
-          ],
-          "importance": 8,
-          "relevance": 10,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 90,
-          "what_happened": "ორი ახალი კვლევა (ROAM და Kernel-Managed Shared Memory) გვთავაზობს აგენტის მეხსიერების მართვის რადიკალურ გაუმჯობესებას: ROAM იყენებს სემანტიკური მიმართებების კლასიფიკაციას (Primary/Evidence), ხოლო Kernel-Managed მიდგომა მეხსიერების ამოღებასა და პრივატულობას გადასცემს აგენტის ოპერაციული სისტემის ბირთვს (Kernel).",
-          "what_changed": "მანამდე LLM აგენტები თავად ცდილობდნენ მეხსიერების წაშლას/ჩასწორებას (add/update/delete) ერთ ბუნდოვან ნაბიჯში, ან თითოეული აგენტი ცალ-ცალკე მართავდა თავის მეხსიერებას. ახალ არქიტექტურაში სემანტიკური მიმართება და ფიზიკური შენახვა განცალკევებულია, ხოლო ბირთვი (Kernel) მართავს წვდომის უფლებებსა და პრომპტში ინჟექციას.",
-          "why_it_matters": "ROAM ზრდის პასუხის სიზუსტეს 29.8 პროცენტული პუნქტით და ამცირებს კონფლიქტურ/დუბლირებულ ტოკენებს. Kernel-Managed მოდელი 15-61%-ით ამცირებს Latency-ს multi-agent სისტემებში სრული კონტექსტის დუბლირების გარეშე.",
-          "technical_details": [
-            "ROAM კლასიფიკაცია: 5 მიმართება (independent, equivalent, directionally subsuming, conflicting)",
-            "მეხსიერების როლები: Primary (აქტიური საძიებო ხედი) და Evidence (ისტორიული დასაბუთება)",
-            "Kernel-managed Shared Memory (AIOS): ცენტრალიზებული წერის იერარქია, უსაფრთხოების ბარიერები და ტოკენების ხარჯის შემცირება"
-          ],
-          "action_type": "LEARN",
-          "action": "დაแนერგეთ ROAM-ის 5-საფეხურიანი სემანტიკური მიმართებების კლასიფიკაცია (Primary/Evidence როლები) თქვენს AI აგენტის მეხსიერების მოდულში redundancy-ს შესამცირებლად.",
-          "evidence": [
-            {
-              "url": "https://arxiv.org/html/2609.09778v1",
-              "title": "ROAM: Robust Organization of Atomic Memories for Agents through Semantic Relations",
-              "domain": "arxiv.org",
-              "evidence": "ROAM factorizes this compound decision into explicit relation inference followed by deterministic policy execution... improves answer accuracy by up to 29.8 percentage points."
-            },
-            {
-              "url": "https://arxiv.org/html/2609.10144v1",
-              "title": "Kernel-Managed Shared Memory for System-Wide Personalization",
-              "domain": "arxiv.org",
-              "evidence": "Kernel-managed shared memory centralizes retrieval, privacy enforcement, and prompt injection at the agent-system kernel instead of leaving them to individual agents."
-            }
-          ]
-        },
-        {
-          "event_id": "evt-openviking-context-db",
-          "title": "OpenViking: ღია კოდის კონტექსტური მონაცემთა ბაზა AI აგენტებისთვის `viking://` პროტოკოლით",
-          "category": "Open Source / Agent Memory & Context Databases",
-          "primary_url": "https://github.com/volcengine/OpenViking",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 9,
-          "source_quality": 8,
-          "confidence": 90,
-          "what_happened": "Volcengine-მა გამოაქვეყნა OpenViking, ღია კოდის კონტექსტური მონაცემთა ბაზა, რომელიც აგენტის მეხსიერებას, რესურსებსა და Skill-ებს აორგანიზებს ვირტუალურ ფაილურ სისტემად `viking://` პროტოკოლით.",
-          "what_changed": "შავი ყუთის ტიპის (black-box) ვექტორული ბაზების ნაცვლად, სადაც ძიების პროცესი გაუგებარია, აგენტი კონტექსტს სკანირებს `ls`, `tree` და `find` ბრძანებების ანალოგიურად და იყენებს 3-დონიან იერარქიას (L0 Abstract, L1 Overview, L2 Details).",
-          "why_it_matters": "კონტექსტის ფენებად დაყოფა (L0/L1/L2) ტოკენების დანახარჯს 34%-იდან 91%-მდე ამცირებს LoCoMo ბენჩმარკზე და იძლევა სრულ დებაგირებადობას, თუ კონკრეტულად რომელ ფოლდერში იპოვა აგენტმა ინფორმაცია.",
-          "technical_details": [
-            "L0 (Abstract ~100 ტოკენი), L1 (Overview ~2k ტოკენი), L2 (Details - სრული ფაილი)",
-            "LoCoMo ბენჩმარკზე სიზუსტის ზრდა 80-83%-მდე (ნაცვლად 24-57%-ისა baseline-ზე)",
-            "ინტეგრაცია Claude Code, Codex, Cursor, LangChain-თან და ლოკალურ Ollama-სთან"
-          ],
-          "action_type": "TRY",
-          "action": "დააინსტალირეთ OpenViking CLI (`pip install openviking`) და გამოსცადეთ L0/L1/L2 ფაილური სისტემის სტრუქტურა თქვენი აგენტის მეხსიერების მართვისთვის.",
-          "evidence": [
-            {
-              "url": "https://github.com/volcengine/OpenViking",
-              "title": "volcengine/OpenViking - The Context Database for AI Agents",
-              "domain": "github.com",
-              "evidence": "OpenViking is an open-source context database for AI agents. It stores memories, resources, and skills as one virtual filesystem under the viking:// protocol."
-            }
-          ]
-        },
-        {
-          "event_id": "evt-kvmem-gpu-virtualization",
-          "title": "KVMem: მილიონიანი კონტექსტის ვირტუალიზაცია AI აგენტებისთვის ჩვეულებრივ GPU-ზე",
-          "category": "Agent Infrastructure / Memory Optimization",
-          "primary_url": "https://arxiv.org/html/2609.04852v1",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 90,
-          "what_happened": "მკვლევრებმა წარადგინეს KVMem — KV-კონტექსტის ვირტუალიზაციის სისტემა, რომელიც საშუალებას აძლევს AI აგენტებს იმუშაონ 1 მილიონამდე ტოკენის მქონე სამუშაო სივრცეებში ჩვეულებრივ მომხმარებლის GPU-ზე (მაგ. RTX 5090 Laptop GPU).",
-          "what_changed": "მანამდე ხანგრძლივი ისტორიის overflow წყდებოდა ტექსტის კომპაქტაციით (compaction/summarization) သို့ ტექსტური RAG-ით, რაც კარგავდა დეტალებს და მოითხოვდა ხელახალ prefill გამოთვლებს. KVMem ინახავს დაგენერირებულ KV ბლოკებს RAM/NVMe-ზე და იძახებს მათ prefill-ის გარეშე.",
-          "why_it_matters": "ეს ცვლის აგენტების მეხსიერების არქიტექტურას: ტექსტური შეჯამების ნაცვლად გამოიყენება ვირტუალური მეხსიერების ანალოგი, სადაც KV Cache ინახება დისკზე/ოპერატიულში და იტვირთება ყოველ Agent Step-ზე მხოლოდ საჭირო ყურადღების (attention-space) ბლოკები.",
-          "technical_details": [
-            "Qwen3.6/3.8-27B მოდელზე 1M ტოკენის სამუშაო სივრცის მართვა 24GB VRAM GPU-ზე",
-            "DeepSWE ბენჩმარკზე წარმატების მაჩვენებლის ზრდა 43.8%-იდან 48.4%-მდე compaction-თან შედარებით",
-            "წარმადობა: ~50 ტოკენი/წამში ლოკალური აგენტის შესრულებისას"
-          ],
-          "action_type": "LEARN",
-          "action": "შეისწავლეთ KVMem-ის არქიტექტურა GitHub რეპოზიტორიაში (kvmem-qw3) და გაიანალიზეთ, თუ როგორ ანაცვლებს KV-cache ვირტუალიზაცია ტრადიციულ ტექსტურ კონტექსტის კომპაქტაციას (compaction).",
-          "evidence": [
-            {
-              "url": "https://arxiv.org/html/2609.04852v1",
-              "title": "Virtualizing Million-Token Agent Workspaces on a Consumer GPU",
-              "domain": "arxiv.org",
-              "evidence": "KVMem preserves overflowed workspace history as paged KV state across GPU memory, host memory, and NVMe... virtualizing agent workspaces of up to 1M tokens."
-            }
-          ]
-        },
-        {
-          "event_id": "evt-agent-native-framework",
-          "title": "Agent-Native: TypeScript ფრეიმვორკი ავტონომიური აგენტებისა და მომხმარებლის ინტერფეისის (UI) ინტეგრაციისთვის",
-          "category": "Developer Tools / Agent Frameworks",
-          "primary_url": "https://github.com/BuilderIO/agent-native",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 90,
-          "what_happened": "BuilderIO-მ წარადგინა Agent-Native — ღია კოდის TypeScript ფრეიმვორკი, რომელიც აერთიანებს აგენტის ავტონომიურ ინსტრუმენტებს (tools) და React UI კომპონენტებს ერთიანი Action ფენის გარშემო.",
-          "what_changed": "ტრადიციულად აგენტები მუშაობდნენ მხოლოდ ჩატის ტექსტურ ინტერფეისში ან სჭირდებოდათ ცალკე API-ის და UI-ის დუბლირება. Agent-Native-ში ერთხელ დაწერილი `defineAction` გამოიყენება როგორც აგენტის tool-ად, ისე UI-ს მიერ ხმობად ფუნქციად, HTTP ენდპოინტად და MCP სერვერად.",
-          "why_it_matters": "აგენტური აპლიკაციების (Agentic Apps) მშენებლობისას კოდის დუბლირება მკვეთრად მცირდება. აგენტი იღებს UI-ს მიმდინარე მდგომარეობას (active view, selected record) ღილაკებზე კლიკის გარეშე, პირდაპირ Action ფენიდან.",
-          "technical_details": [
-            "Shared Actions: ლოგიკის განსაზღვრა Zod სქემით (`defineAction`), რომელიც ხელმისაწვდომია Tool-ის, HTTP-ის, MCP-ისა და React-ის (`useActionQuery`) მიერ",
-            "PostgreSQL / PGlite ბაზის მხარდაჭერა ლოკალური და პროდაქშენ გარემოსთვის",
-            "ჩაშენებული მრავალაგენტიანი (Agent teams), მეხსიერების და ავტომატიზაციის მექანიზმები"
-          ],
-          "action_type": "BUILD",
-          "action": "შექმენით სატესტო აპლიკაცია Agent-Native-ის გამოყენებით, სადაც ერთჯერადად განსაზღვრული Action გამოიყენება როგორც აგენტის ინსტრუმენტი (tool), ისე UI კომპონენტი.",
-          "evidence": [
-            {
-              "url": "https://github.com/BuilderIO/agent-native",
-              "title": "BuilderIO/agent-native: A framework for building agentic apps",
-              "domain": "github.com",
-              "evidence": "Define each capability once as an action: the agent uses it as a tool, and the UI calls it from code."
-            }
-          ]
-        },
-        {
-          "event_id": "evt-awesome-agent-governance",
-          "title": "Awesome AI Agent Governance: პროდაქშენში AI აგენტების უსაფრთხოებისა და მართვის რესურსების კატალოგი",
-          "category": "Open Source / Security & Governance",
-          "primary_url": "https://github.com/systempromptio/awesome-ai-agent-governance",
-          "supporting_urls": [],
-          "importance": 7,
-          "relevance": 8,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 85,
-          "what_happened": "შეიქმნა Open-Source კატალოგი awesome-ai-agent-governance, რომელიც უზრუნველყოფს ინსტრუმენტების, სტანდარტების (ISO 42001, EU AI Act), MCP უსაფრთხოებისა და OWASP Agentic AI Top 10 რესურსების ერთობლიობას პროდაქშენ აგენტების მართვისთვის.",
-          "what_changed": "აგენტების განვითარებასთან ერთად გაიზარდა რისკები (Prompt Injection, Excessive Agency, Unbounded Costs). ეს რესურსი აერთიანებს პრაქტიკულ უსაფრთხოების შრეებს (Runtime Governance, Audit Trails, Least-Privilege MCP).",
-          "why_it_matters": "აგენტური ინჟინერიისთვის უსაფრთხოება და მართვა აღარ არის სურვილისამებრ. ავტონომიური ინსტრუმენტების გამოძახებისას აუცილებელია შეზღუდული უფლებები (least-privilege tool access) და აუდიტის ჟურნალები.",
-          "technical_details": [
-            "OWASP Agentic AI Top 10 შეტევის შაბლონების ანალიზი",
-            "CSA MAESTRO 7-შრიანი მუქარის მოდელირების ფრეიმვორკი",
-            "MCP და Claude Code უსაფრთხოების ინსპექტირების ინსტრუმენტები"
-          ],
-          "action_type": "APPLY",
-          "action": "გამოიყენეთ კატალოგში მოცემული OWASP Agentic AI Top 10 და MCP უსაფრთხოების პრინციპები საკუთარი აგენტების Least-Privilege წვდომის კონტროლის დასანერგად.",
-          "evidence": [
-            {
-              "url": "https://github.com/systempromptio/awesome-ai-agent-governance",
-              "title": "Awesome AI Agent Governance",
-              "domain": "github.com",
-              "evidence": "The definitive curated list of tools, frameworks, standards, and resources for governing AI agents in production."
-            }
-          ]
-        },
-        {
-          "event_id": "evt-memory-benchmarks-pragma-icm",
-          "title": "PRAGMA და ICM-Bench: AI აგენტების ხანგრძლივი მეხსიერებისა და პერსონალიზებული მსჯელობის ახალი ბენჩმარკები",
-          "category": "AI Evaluation / Memory Benchmarks",
-          "primary_url": "https://arxiv.org/html/2609.09664v1",
-          "supporting_urls": [
-            "https://arxiv.org/html/2609.04438v2"
-          ],
-          "importance": 7,
-          "relevance": 8,
-          "actionability": 7,
-          "source_quality": 8,
-          "confidence": 85,
-          "what_happened": "გამოქვეყნდა ორი ახალი სპეციალიზებული ბენჩმარკი აგენტების ხანგრძლივი მეხსიერების შესაფასებლად: PRAGMA (პერსონალიზებული რჩევები და მომხმარებლის მცდარი დაშვებების გასწორება) და ICM-Bench (მულტიმოდალური აგენტების მიერ ადამიანების იდენტობის შენარჩუნება დროში).",
-          "what_changed": "წინა ბენჩმარკები (მაგ. LongMemEval) ძირითადად ზომავდნენ უბრალო ფაქტობრივ ამოღებას (factual recall). PRAGMA და ICM-Bench ამოწმებენ, შეუძლია თუ არა აგენტს დროში განაწილებული მოვლენებიდან მომხმარებლის ცვლილებების სინთეზი და პერსონაჟთა იდენტობის დაკავშირება (cross-modal identity binding).",
-          "why_it_matters": "ტესტებმა აჩვენა, რომ ფრონტიერ მოდელებიც კი (მაგ. Gemini 3.1 Pro 74% ზოგადი სიზუსტით) 60.3%-მდე ვარდებიან ხანგრძლივი პროფილის მსჯელობისას, რაც მიუთითებს, რომ მხოლოდ RAG არ არის საკმარისი რთული პერსონალიზაციისთვის.",
-          "technical_details": [
-            "PRAGMA მოიცავს 160K ტოკენის longitudinal დიალოგებს, სადაც ფაქტები დროთა განმავლობაში იცვლება",
-            "ICM-Bench შეიცავს 839 ვიდეო კლიპს (141 წთ) და 1,217 ღია შეკითხვას პერსონაჟთა იდენტობაზე",
-            "ორივე ბენჩმარკი აფასებს Corrective Reasoning-ს (როცა მომხმარებელს არასწორი დაშვება აქვს წარსულზე)"
-          ],
-          "action_type": "LEARN",
-          "action": "გაეცანით PRAGMA-ს და ICM-Bench-ის ტესტირების სცენარებს, განსაკუთრებით იმ შემთხვევებს, სადაც მომხმარებლის მცდარი დაშვებების გასწორება და დროში განაწილებული იდენტობის ამოცნობაა საჭირო.",
-          "evidence": [
-            {
-              "url": "https://arxiv.org/html/2609.09664v1",
-              "title": "PRAGMA: Evaluating Personalized Guidance with Memory Alignment in Lifelong Conversations",
-              "domain": "arxiv.org",
-              "evidence": "PRAGMA, a benchmark for evaluating personalized guidance in long-term conversations... contains curated longitudinal conversation histories, evidence annotations, and guidance scenarios."
-            }
-          ]
-        }
-      ],
-      "trends": [
-        "ტექსტური კონტექსტის შეჯამების (Compaction) ჩანაცვლება KV-Cache-ის ვირტუალიზაციითა და იერარქიული ფაილური სისტემებით (KVMem, OpenViking).",
-        "აგენტების შეფასების (Evaluation) ინტეგრაცია CI/CD პაიპლაინებში LLM-as-a-judge და OpenTelemetry ტრასების გამოყენებით (AWS AgentCore Evaluation).",
-        "მეხსიერების მართვის გადატანა ინდივიდუალური აგენტის პრომპტიდან სისტემურ ბირთვზე (Kernel-managed memory) და სემანტიკური მიმართებების დეტერმინირებულ კლასიფიკაციაზე (ROAM).",
-        "UI და Agent Capabilities-ის გაერთიანება ერთიანი Action/Tool შრის გარშემო (Agent-Native)."
-      ]
-    },
     {
       "date": "2026-09-14",
       "summary": "დღევანდელი ანგარიში ფოკუსირებულია AI აგენტების არქიტექტურის შიდა მექანიზმებზე, უსაფრთხოებასა და ეკონომიკურ ეფექტიანობაზე. Claude Code-ის წყაროს კოდის სიღრმისეულმა ანალიზმა აჩვენა, რომ პროდაქშენ აგენტის 98.4% დეტერმინისტულ ინფრასტრუქტურას უკავია და მხოლოდ 1.6%-ია LLM-ის მსჯელობის ლოგიკა. უსაფრთხოების კუთხით, HookPry-მ გამოავლინა Lifecycle Hooks-ის კრიტიკული ხვრელები აგენტების ჰარნესებში. AWS-ის ბენჩმარკმა დაადასტურა, რომ აგენტურ რიგებში ტოკენების ერთეულის ფასზე მნიშვნელოვანი turn-ების რაოდენობა და საბოლოო შედეგის ხარჯია (Context Resending-ის კვადრატული ზრდის გამო). ასევე წარმოდგენილია Google-ის A2A პროტოკოლის ეკოსისტემის განახლება, Tencent-ის T1 RL ტერმინალის აგენტი 300+ ნაბიჯიანი ციკლებით, ECDSA.Fail ავტო-კვლევის პლატფორმა და 485+ უფასო LLM API-ის კატალოგი, რაც იდეალურ პირობებს ქმნის 16+ წლის დეველოპერებისთვის უფასო, მაღალეფექტური აგენტური სისტემების ასაგებად.",
@@ -8110,13 +7888,131 @@
         "Structured dual-track and entity-aware agent memory systems",
         "Stable optimization of VQ tokenizers for multimodal workflows"
       ]
+    },
+    {
+      "date": "2026-09-23",
+      "summary": "დღევანდელი ანალიზი მოიცავს AWS-ის მიერ წარმოდგენილ Bedrock AgentCore პლატფორმას და MCP ეკოსისტემაში უსაფრთხოების ახალ გამოწვევებს. ჩვენ ვფოკუსირდებით ინჟინრულ რეალობაზე, რომელიც აგენტების production გარემოში გაშვებას უზრუნველყოფს.",
+      "events": [
+        {
+          "event_id": "evt-aws-bedrock-agentcore-shared-platform",
+          "title": "Amazon Bedrock AgentCore: მრავალ-აგენტიანი Shared Runtime და ინფრასტრუქტურა",
+          "category": "აგენტების ინფრასტრუქტურა და Runtime",
+          "primary_url": "https://aws.amazon.com/blogs/machine-learning/a-shared-agentic-platform-for-wood-mackenzie-on-amazon-bedrock-agentcore",
+          "supporting_urls": [
+            "https://aws.amazon.com/blogs/machine-learning/how-reactiv-automates-mobile-commerce-80-faster-with-amazon-bedrock-agentcore"
+          ],
+          "importance": 9,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "AWS-მა წარმოადგინა Bedrock AgentCore, რომელიც ხსნის აგენტების production-ში გაშვების ძირითად ინფრასტრუქტურულ ბარიერებს.",
+          "what_happened": "AWS-მა გამოუშვა Bedrock AgentCore, მართული პლატფორმა მრავალ-აგენტიანი სისტემების ორკესტრაციისთვის.",
+          "what_changed": "ხელით აწყობილი აგენტური ინფრასტრუქტურა იცვლება სტანდარტიზებული, მართული runtime-ებით.",
+          "why_it_matters": "გაძლევთ საშუალებას გაიგოთ რა არქიტექტურული ფენაა საჭირო აგენტის საიმედო მუშაობისთვის.",
+          "key_takeaways": [
+            "ერთიანი runtime აგვარებს სესიების იზოლაციას და უსაფრთხოებას.",
+            "მრავალ-აგენტიანი ორკესტრაცია მოითხოვს მუდმივ მეხსიერებას."
+          ],
+          "technical_architecture": [
+            "AgentCore აერთიანებს ორკესტრაციას, უსაფრთხოებას და მუდმივ მეხსიერებას.",
+            "Strands Agents SDK უზრუნველყოფს Python-ზე დაფუძნებულ აგენტის მართვას."
+          ],
+          "technical_details": [
+            "გამოიყენება მოდელზე დაფუძნებული Python SDK.",
+            "მხარდაჭერილია მუდმივი მეხსიერება და MCP ინტეგრაცია."
+          ],
+          "potential_impact": "მნიშვნელოვნად ამცირებს აგენტების დაპროგრამებისა და ტესტირების დროს.",
+          "action_type": "TRY",
+          "action": "შექმენით მარტივი მრავალ-აგენტიანი ლოგიკა Python-ში და დააკავშირეთ ერთი ხელსაწყო.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value",
+            "Long-term Opportunity"
+          ],
+          "verified_facts": [
+            "Wood Mackenzie-მ ააშენა APEX პლატფორმა Bedrock AgentCore-ზე.",
+            "Reactiv-მა შეამცირა აპების კონფიგურაციის დრო 80 პროცენტით.",
+            "პლატფორმა უზრუნველყოფს ორკესტრაციას, უსაფრთხოებას და მუდმივ მეხსიერებას."
+          ],
+          "interpretation": "ინფრასტრუქტურული层ის სტანდარტიზაცია ცვლის აგენტების დამზადების წესს: კომპანიები გადადიან ერთიანი runtime-ების გამოყენებაზე.",
+          "uncertainty": "עד რა ზომამდე იქნება შესაძლებელი მსგავსი მართული პლატფორმების გამოყენება უფასო ბიუჯეტით.",
+          "counter_argument": "მორგებული პლატფორმები ზრდის მწარმოებელზე დამოკიდებულებას და ამცირებს კუსტომიზაციის არეალს.",
+          "strategic_assessment": "შეისწავლეთ როგორ იქმნება მართული აგენტური runtime-ები და გამოიყენეთ ღია კოდის ალტერნატივები თქვენს პროექტებში.",
+          "time_horizon": "mid-term",
+          "what_could_change": "აგენტების ინფრასტრუქტურის აგება გადაინაცვლებს ნულიდან წერიდან მზა პლატფორმების კონფიგურაციაზე.",
+          "risks": [
+            "Cloud პროვაიდერების მაღალი ფასები",
+            "მოდელის არჩევანის შეზღუდვა",
+            "კონფიგურაციის სირთულე"
+          ],
+          "non_obvious_opportunity": "მცირე დეველოპერებს შეუძლიათ შესთავაზონ მსგავსი ჰარნესები როგორც სერვისი ადგილობრივი კომპანიებისთვის.",
+          "fit_assessment": "გეხმარებათ გაიგოთ როგორ იქმნება სამრეწველო დონის აგენტური სისტემები რეალურ production გარემოში."
+        },
+        {
+          "event_id": "evt-equivsva-rtl-assertion-dataset",
+          "title": "EquivSVA: ფორმალურად გადამოწმებული დეტასეტი RTL კოდის გენერაციისთვის",
+          "category": "AI Research & Model Architecture",
+          "primary_url": "https://arxiv.org/abs/2609.26751",
+          "supporting_urls": [],
+          "importance": 7,
+          "relevance": 6,
+          "actionability": 6,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "გამოვიდა EquivSVA, რომელიც აუმჯობესებს LLM-ების მიერ გენერირებული კოდის ფორმალურ ვალიდაციას.",
+          "what_happened": "მკვლევარებმა წარმოადგინეს დეტასეტი და ვალიდაციის სუიტი RTL კოდის ტესტირებისთვის.",
+          "what_changed": "ნაცვლად ზოგადი კომპილაციისა, შემოწმება ხდება ფორმალური ქცევის წესებით.",
+          "why_it_matters": "გაჩვენებთ როგორ უნდა შემოწმდეს აგენტის მიერ დაწერილი კოდის უსაფრთხოება.",
+          "key_takeaways": [
+            "ფორმალური ვალიდაცია პოულობს ბაგებს, რომლებსაც კომპილატორი ვერ ამჩნევს."
+          ],
+          "technical_architecture": [
+            "შეიცავს 17-job ვალიდაციის სუიტს RTL ეკვივალენტობის შესამოწმებლად."
+          ],
+          "technical_details": [
+            "გამოიყენება Qwen2.5-Coder-7B-Instruct მოდელი შესაფასებლად."
+          ],
+          "potential_impact": "ამცირებს აგენტების მიერ გენერირებული კოდის შეცდომებს.",
+          "action_type": "LEARN",
+          "action": "შეისწავლეთ როგორ იყენებენ ავტომატური ჰარნესები ტესტირების შედეგებს მოდელის გამოსასწორებლად.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "EquivSVA შეიცავს 120 ქცევის ოჯახს და 480 RTL იმპლემენტაციას.",
+            "გამოყენებულია Qwen2.5-Coder-7B-Instruct მოდელის ტესტირებისთვის."
+          ],
+          "interpretation": "ფორმალური ვალიდაცია სულ უფრო მნიშვნელოვანი ხდება კოდის გენერირებელი მოდელების შესამოწმებლად.",
+          "uncertainty": "რამდენად პრაქტიკულია აპარატურული აღწერის ენები ზოგადი AI ინჟინრებისთვის.",
+          "counter_argument": "حარდვერული დიზაინი სცდება ტიპიური აგენტური ინჟინერიის ფარგლებს.",
+          "strategic_assessment": "გაეცანით კოდის ფორმალური შემოწმების მეთოდოლოგიას, მაგრამ ფოკუსირდით პროგრამული უზრუნველყოფის აგენტებზე.",
+          "time_horizon": "mid-term",
+          "what_could_change": "AI კოდის გენერაცია გახდება უფრო ზუსტი ფორმალური ტესტირების ჰარნესების წყალობით.",
+          "risks": [
+            "მაღალი სირთულე",
+            "შეზღუდული გამოყენება სოფტვერში"
+          ],
+          "non_obvious_opportunity": "მსგავსი ფორმალური შემოწმების მიდგომები შეიძლება გადავიტანოთ Python აგენტების ინსტრუქციების ვალიდაციაზე.",
+          "fit_assessment": "საინტერესოა კოდის გენერაციის ხარისხის შესაფასებლად, მაგრამ ნაკლებად პრიორიტეტულია ამ ეტაპზე."
+        }
+      ],
+      "trends": [
+        "მართული runtime-ების და პლატფორმების ინტეგრაცია აგენტურ სისტემებში",
+        "ფორმალური ვალიდაციისა და ჰარნესების გამოყენება კოდის გენერაციისას"
+      ]
     }
   ],
   "learning_queue": [
-    "SWE-Serve ბენჩმარკის ტესტირების სტრუქტურა და SGLang ინფრასტრუქტურა",
-    "SpeakerMem-R1 მეხსიერების ორმაგი ტრეკის ჰარნესის დიზაინი"
+    "AWS Bedrock AgentCore არქიტექტურული პრინციპები",
+    "Python-ში მცირე ზომის მრავალ-აგენტიანი ლოგიკის აგება"
   ],
-  "last_run": "2026-09-23T19:25:38.244212+00:00",
+  "last_run": "2026-09-23T19:41:28.303178+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -8164,7 +8060,8 @@
     "arxiv:2609.25804",
     "arxiv:2609.26777",
     "arxiv:2609.26780",
-    "arxiv:2609.26774"
+    "arxiv:2609.26774",
+    "arxiv:2609.26751"
   ],
   "last_report_files": {
     "markdown": "data/reports/2026-09-23/report.md",
