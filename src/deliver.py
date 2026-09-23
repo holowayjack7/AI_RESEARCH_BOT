@@ -279,6 +279,12 @@ def _action_plan_section(report) -> str | None:
         else:
             lines.extend(f"- {escape_html(t)}" for t in items)
 
+    # WHY THIS IS THE NEXT STEP — the reasoning behind the plan
+    if getattr(plan, "why_next", None):
+        lines.append("")
+        lines.append("<b>რატომ ეს არის შემდეგი ნაბიჯი</b>")
+        lines.append(escape_html(plan.why_next))
+
     if not lines:
         return None
     return "\n".join(["<b>ქმედების გეგმა</b>"] + lines)

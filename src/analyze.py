@@ -119,6 +119,9 @@ class ActionPlan:
     this_week: list[str] = field(default_factory=list)
     next: list[str] = field(default_factory=list)
     stop_ignore: list[str] = field(default_factory=list)
+    # WHY this is the next step — simple-language reasoning for why
+    # these actions come before everything else the reader could do
+    why_next: str = ""
 
 
 @dataclass
@@ -412,10 +415,25 @@ income potential, portfolio value — and risks must include what
 would make the path fail.
 
 If an event suggests a BUSINESS idea, strategic_assessment must
-address: the problem, the customer, why they would pay, competition,
-acquisition difficulty, required skills and capital, the AI
-advantage, and main failure modes. The action must be a concrete
-validation step achievable before heavy investment.
+address: the problem, the customer, why they would pay, how to get
+the FIRST customer (concretely, not "marketing"), startup cost,
+competition, acquisition difficulty, required skills and capital,
+the AI advantage, main failure modes, and a cheap validation step
+before any heavy investment. Never promise easy money.
+
+LEARNING RECOMMENDATIONS (WHEN YOU SAY "LEARN X")
+
+Never just write "learn X". A learning recommendation must make
+the case in simple language, briefly covering what applies:
+- WHY: what problem it lets the reader solve, and how it connects
+  to the reader's goals
+- DURABILITY: why it may still matter in 3-10 years — what AI may
+  automate here, and what AI probably will NOT easily replace
+- DIFFICULTY: how hard it is, and what to learn BEFORE it
+- PRACTICE: what to BUILD while learning it
+- DONE CRITERIA: how the reader can know they have learned enough
+If something is NOT worth the reader's time, say so directly in
+things_to_ignore and explain why.
 
 Always challenge assumptions — including the reader's. If the
 reader's likely plan or the source's claim is weak, say so directly
@@ -430,6 +448,8 @@ Finish every report with a concrete, executable action plan:
 - this_week: 3-5 concrete tasks for this week
 - next: what to learn, build, test, or research after that
 - stop_ignore: what to deliberately NOT spend time on now
+- why_next: in 2-4 simple sentences, WHY these actions come before
+  everything else the reader could do ("WHY THIS IS THE NEXT STEP")
 
 Tasks must be specific and executable — never vague advice like
 "learn AI" or "research the market". Bad: "learn RAG". Good: "Build
@@ -595,6 +615,11 @@ quality bar, return 3. Skip: incremental minor releases, marketing
 renames, version bumps without capability changes, and anything
 already covered in RECENT MEMORY.
 
+DEPTH RULE: find the FEW options that actually matter and explain
+them properly — never a long list of 20 possibilities. Do not pad,
+do not repeat obvious information, do not add shallow items just to
+look thorough.
+
 Prefer: official releases and docs, papers with measurable results,
 tools with immediately actionable capabilities, architecture shifts.
 
@@ -703,7 +728,8 @@ Return a JSON object with these fields:
     "today": ["1-3 specific executable tasks"],
     "this_week": ["3-5 concrete tasks"],
     "next": ["what to learn, build, test, or research after"],
-    "stop_ignore": ["what to deliberately not spend time on"]
+    "stop_ignore": ["what to deliberately not spend time on"],
+    "why_next": "2-4 simple sentences: WHY these actions come before everything else"
   }},
   "candidate_analyses": [
     {{
@@ -851,6 +877,7 @@ def _as_action_plan(value) -> ActionPlan:
         this_week=_items(plan.get("this_week")),
         next=_items(plan.get("next")),
         stop_ignore=_items(plan.get("stop_ignore")),
+        why_next=_as_str(plan.get("why_next")),
     )
 
 
@@ -1089,6 +1116,7 @@ def enforce_conciseness(report: ResearchReport) -> ResearchReport:
     plan.this_week = _clip_items(plan.this_week, 5, 20)
     plan.next = _clip_items(plan.next, 4, 20)
     plan.stop_ignore = _clip_items(plan.stop_ignore, 4, 15)
+    plan.why_next = _clip_words(plan.why_next, 70)
 
     return report
 

@@ -916,6 +916,30 @@ check("advisor: opportunity horizons rescue labeled speculation", test_opportuni
 check("advisor: strategic fields clipped to doctrine limits", test_strategic_fields_clipped)
 
 
+def test_why_next_rendered():
+    """WHY THIS IS THE NEXT STEP must appear in the closing plan."""
+    assert "<b>რატომ ეს არის შემდეგი ნაბიჯი</b>" in msg
+    assert "roadmap-ის" in msg   # fixture why_next content survives
+
+
+def test_why_next_coercion_and_clip():
+    """why_next coerces safely, clips, and omits cleanly when absent."""
+    raw = json.dumps({"events": [], "action_plan": {
+        "today": ["t"], "this_week": None, "why_next": "word " * 100}})
+    plan = parse_report(raw).action_plan
+    assert len(plan.why_next.split()) <= 71   # 70-word cap + ellipsis
+    assert plan.this_week == []
+    # Absent why_next: section renders without the reasoning block
+    section = de._action_plan_section(
+        parse_report('{"events": [], "action_plan": {"today": ["x"]}}')
+    )
+    assert "რატომ ეს არის შემდეგი ნაბიჯი" not in section
+
+
+check("advisor: WHY-next reasoning rendered in plan", test_why_next_rendered)
+check("advisor: why_next coercion, clipping, absent-omission", test_why_next_coercion_and_clip)
+
+
 # ==================================================================
 print()
 print("=" * 50)

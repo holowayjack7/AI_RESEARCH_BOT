@@ -766,7 +766,8 @@ SIMULATED_REPORT_JSON = """
     "today": ["გადაწერე ROAM++-ის relation classifier-ის სქემა ქაღალდზე", "დააინსტალირე fixture SDK და გაუშვი მისი example agent"],
     "this_week": ["ააწყოს minimal agent memory toy 10 test question-ზე", "გაზომე retrieval accuracy baseline-ის წინააღმდეგ", "დაწერე SDK-ის sandbox execution-ის მიმოხილვა blog-ისთვის"],
     "next": ["შეისწავლე relation taxonomy და გაავრცხეlle tool-calling graphs-ზე", "ააწყოს self-evaluation loop საკუთარი agent-ისთვის"],
-    "stop_ignore": ["multi-agent framework hype thread-ები", "ახალი model releases, რომლებსაც benchmark-ები არ მოჰყვება"]
+    "stop_ignore": ["multi-agent framework hype thread-ები", "ახალი model releases, რომლებსაც benchmark-ები არ მოჰყვება"],
+    "why_next": "მეხსიერება არის შენი roadmap-ის ზუსტად შემდეგი საფეხური და ორივე ივენთი მას ეხება — ამიტომ ისინი პირველი უნდა იყოს. STOP-სიაში ჩავაყენე ყველაფერი, რაც ამ კვირას დროს დაგეხარჯვიდა."
   },
   "candidate_analyses": [
     {
