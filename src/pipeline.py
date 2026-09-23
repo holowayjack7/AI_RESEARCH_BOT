@@ -21,6 +21,7 @@ from config import (
     MIN_RELEVANCE,
     MIN_ACTIONABILITY,
     MIN_CONFIDENCE,
+    GEMINI_MODEL,
 )
 from src.search import deduplicate_results, domain_from_url
 from src.sources import collect_all_sources
@@ -185,7 +186,14 @@ def prepare_candidates(results: list[dict], state: dict) -> list[dict]:
 HYPE_CLASSIFICATIONS = {"temporary trend", "general news"}
 # Classifications that can rescue clearly-labeled speculation: labeled
 # foresight with real strategic value survives the factuality gate.
-STRATEGIC_CLASSIFICATIONS = {"real business opportunity", "long-term career value"}
+# Includes the opportunity horizons — a clearly-labeled short/long-term
+# opportunity is exactly the strategic speculation worth keeping.
+STRATEGIC_CLASSIFICATIONS = {
+    "real business opportunity",
+    "long-term career value",
+    "short-term opportunity",
+    "long-term opportunity",
+}
 
 # Composite quality bar (importance alone never decides). Weights:
 # evidence/confidence and relevance dominate; actionability and source
@@ -514,7 +522,7 @@ def run_pipeline(
     telegram_token: str = "",
     telegram_chat_id: str = "",
     state: dict | None = None,
-    gemini_model: str = "gemini-3.6-flash",
+    gemini_model: str = GEMINI_MODEL,
 ) -> bool:
     """Execute the full research pipeline.
 
@@ -697,7 +705,13 @@ SIMULATED_REPORT_JSON = """
       ],
       "interpretation": "Memory ორგანიზაცია გადადის hand-tuned policies-დან ნასწავლებზე.",
       "uncertainty": "Benchmark-ები შეიძლება ამჯობინებდეს ავტორთა საკუთარ design choices-ს.",
-      "counter_argument": "მოგება შეიძლება შემცირდეს აკადემიურ გარემოში, curation-ის გარეშე."
+      "counter_argument": "მოგება შეიძლება შემცირდეს აკადემიურ გარემოში, curation-ის გარეშე.",
+      "strategic_assessment": "რეკომენდაცია: აითვისე learned memory organization ახლავე — ეს 3-10 წლის horizon-ზე agent engineering-ის საფუძველი გახდება.",
+      "time_horizon": "long-term",
+      "what_could_change": "თუ retrieval-ზე ფასი კიდევ დაეცემა, long-context models პირდაპირ კონკურენციას გაუწევს external memory-ს.",
+      "risks": ["Autori benchmark-ები შეიძლება cherry-picked იყოს", "Production workloads-ზე შედეგები შეიძლება არ გადავიდეს"],
+      "non_obvious_opportunity": "Relation taxonomy შეიძლება გამოყენებულ იქნას tool-calling graphs-ზეც — არა მხოლოდ memory-ზე.",
+      "fit_assessment": "იდეალური ფიტი: Python + agent loops roadmap-ის ზუსტად შემდეგი ნაბიჯი, უფასოა და portfolio-ს ძლიერი ნაწილი გახდება."
     },
     {
       "event_id": "evt-sim-agent-sdk",
@@ -733,7 +747,13 @@ SIMULATED_REPORT_JSON = """
       ],
       "interpretation": "Agent plumbing კონსოლიდირდება installable SDK-ებში.",
       "uncertainty": "მოვლა და გრძელვადიანი მხარდაჭერა უცნობია.",
-      "counter_argument": "Lock-in risk: SDK-ის abstractions-მა შეიძლება MCP-დან ჩამოცილდეს."
+      "counter_argument": "Lock-in risk: SDK-ის abstractions-მა შეიძლება MCP-დან ჩამოცილდეს.",
+      "strategic_assessment": "გამოიყენე prototype-ებისთვის, მაგრამ core abstractions-ები საკუთარი დაწერე — სწავლა ღირებულებაა, არა lock-in.",
+      "time_horizon": "short-term",
+      "what_could_change": "თუ major vendor ჩაშენებს მსგავს ფუნქციას თავის API-ში, standalone SDK-ების ღირებულება დაეცემა.",
+      "risks": ["ადრეული SDK-ები ხშირად იცვლის API-ს", "Maintenance შეიძლება შეწყდეს"],
+      "non_obvious_opportunity": "SDK-ის eval harness შეიძლება გამოყენებულ იქნას საკუთარი agents-ის შესაფასებლად, SDK-ის გარეშე.",
+      "fit_assessment": "კარგი ფიტი კვირის prototype-სთვის; გრძელვადიან skill-ად საკუთარი implementation უფრო ღირებულია."
     }
   ],
   "trends": ["Agent memory იწყებს კონვერგენციას learned organization-ზე"],
@@ -742,6 +762,12 @@ SIMULATED_REPORT_JSON = """
   "learn_next": ["ROAM++ relation taxonomy"],
   "opportunities": ["ROAM++ baselines-ის გამეორება blog post-თვის"],
   "things_to_ignore": ["უქვეითენდო hype thread-ები"],
+  "action_plan": {
+    "today": ["გადაწერე ROAM++-ის relation classifier-ის სქემა ქაღალდზე", "დააინსტალირე fixture SDK და გაუშვი მისი example agent"],
+    "this_week": ["ააწყოს minimal agent memory toy 10 test question-ზე", "გაზომე retrieval accuracy baseline-ის წინააღმდეგ", "დაწერე SDK-ის sandbox execution-ის მიმოხილვა blog-ისთვის"],
+    "next": ["შეისწავლე relation taxonomy და გაავრცხეlle tool-calling graphs-ზე", "ააწყოს self-evaluation loop საკუთარი agent-ისთვის"],
+    "stop_ignore": ["multi-agent framework hype thread-ები", "ახალი model releases, რომლებსაც benchmark-ები არ მოჰყვება"]
+  },
   "candidate_analyses": [
     {
       "title": "ROAM++: Self-Organizing Agent Memory via Learned Relations",

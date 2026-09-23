@@ -75,8 +75,8 @@ msg = de.build_telegram_message(REPORT)
 
 
 def test_ui_structure():
-    # Mandatory 4-section structure per event (Georgian UI labels)
-    assert "<b>AI დაზვერვის რეპორტი</b>" in msg
+    # Mandatory structure per event (Georgian UI labels)
+    assert "<b>სტრატეგიული ბრიფინგი</b>" in msg
     assert "<b>ამ ნომერში</b>" in msg
     assert "<blockquote expandable>" in msg       # collapsed summaries
     for section in (
@@ -143,7 +143,12 @@ print("\n[2] Chunking integrity")
 
 def test_chunking_small():
     chunks = de.split_message(msg)
-    assert len(chunks) == 1, f"short message became {len(chunks)} chunks"
+    # Message grew with the strategic sections; must still split at
+    # whole-block boundaries and stay under the Telegram hard limit
+    assert len(chunks) >= 1
+    assert all(len(c) <= de.TELEGRAM_CHUNK_SIZE for c in chunks)
+    for c in chunks:
+        assert c.count("<b>") == c.count("</b>")
 
 
 def test_chunking_large():
@@ -190,9 +195,12 @@ def test_send_all_ok():
     try:
         ok = de.send_telegram(msg, "token", "chat")
         assert ok is True, "delivery should succeed"
-        assert len(calls) == 1
-        assert calls[0]["parse_mode"] == "HTML"
-        assert calls[0]["link_preview_options"]["is_disabled"] is True
+        assert len(calls) >= 1
+        # every chunk is sent as proper HTML with preview disabled
+        assert all(c["parse_mode"] == "HTML" for c in calls)
+        assert all(
+            c["link_preview_options"]["is_disabled"] is True for c in calls
+        )
     finally:
         de.http_post, de.time.sleep = orig_post, orig_sleep
 
@@ -420,7 +428,7 @@ def test_real_pipeline_with_mocked_apis():
         )
         assert ok is True, "pipeline should succeed"
         assert sent, "Telegram must be called when configured"
-        assert "AI დაზვერვის რეპორტი" in sent[0]
+        assert "სტრატეგიული ბრიფინგი" in sent[0]
         assert state.get("last_report_files")
     finally:
         pl.collect_all_sources = orig_collect
@@ -823,6 +831,89 @@ check("gate: per-article is_relevant/should_send enforced", test_per_article_gat
 check("gate: composite score — importance alone cannot pass", test_composite_score_gate)
 check("gate: hype deprioritized in ordering and rejected below 8", test_hype_deprioritization_and_ordering)
 check("coercion: new critical-analysis fields parsed safely", test_new_fields_coerced)
+
+
+# ==================================================================
+print("\n[11] Strategic advisor (fields, action plan, horizon gates)")
+# ==================================================================
+
+def test_strategic_fields_rendered():
+    """Every strategic-advisor field must appear in the Telegram card."""
+    # Event-level strategic assessment
+    assert "<b>სტრატეგიული შეფასება</b>" in msg
+    assert "რეკომენდაცია (long-term)" in msg       # horizon tag from fixture
+    assert "რეკომენდაცია (short-term)" in msg
+    assert "რა შეიძლება შეიცვალოს" in msg
+    assert "რისკები" in msg
+    assert "არააშკარა შესაძლებლობა" in msg
+    assert "ფიტი პროფილთან" in msg
+    # Mandatory closing action plan with all four groups
+    assert "<b>ქმედების გეგმა</b>" in msg
+    assert "<b>დღეს</b>" in msg
+    assert "<b>ამ კვირას</b>" in msg
+    assert "<b>შემდეგ</b>" in msg
+    assert "<b>STOP / IGNORE</b>" in msg
+    # Still zero emojis after adding new sections
+    emoji = re.compile(
+        "[\U0001F000-\U0001FAFF\U00002600-\U000027BF\U0001F1E6-\U0001F1FF]"
+        "|[\u2190-\u21FF\u2B00-\u2BFF\u25A0-\u25FF\u2700-\u27BF]"
+    )
+    assert not emoji.findall(msg)
+
+
+def test_action_plan_coercion():
+    """Malformed action_plan must coerce, never crash."""
+    raw = json.dumps({
+        "events": [],
+        "action_plan": {
+            "today": "single string becomes a list",
+            "this_week": ["ok", None, ""],
+            "next": 42,               # non-list -> []
+            "stop_ignore": None,
+        },
+    })
+    plan = parse_report(raw).action_plan
+    assert plan.today == ["single string becomes a list"]
+    assert plan.this_week == ["ok"]
+    assert plan.next == [] and plan.stop_ignore == []
+    # Missing action_plan entirely -> empty defaults
+    empty = parse_report('{"events": []}').action_plan
+    assert empty.today == [] and empty.this_week == []
+
+
+def test_opportunity_horizon_classifications_are_strategic():
+    """Short/Long-term Opportunity rescue labeled speculation like the
+    original strategic classifications do."""
+    from src.pipeline import STRATEGIC_CLASSIFICATIONS, passes_decision_rules
+    assert "short-term opportunity" in STRATEGIC_CLASSIFICATIONS
+    assert "long-term opportunity" in STRATEGIC_CLASSIFICATIONS
+    assert passes_decision_rules(_gate_event(
+        factuality_level="speculative",
+        classification=["Long-term Opportunity"],
+    ))
+
+
+def test_strategic_fields_clipped():
+    """Conciseness doctrine covers the new strategic fields."""
+    raw = json.dumps({"events": [{
+        "title": "T", "primary_url": "https://arxiv.org/abs/1",
+        "strategic_assessment": "word " * 60,
+        "time_horizon": "a very long horizon value indeed",
+        "risks": ["r " * 30] * 5,
+    }], "action_plan": {"today": ["t " * 40] * 4}})
+    r = enforce_conciseness(parse_report(raw))
+    e = r.events[0]
+    assert len(e.strategic_assessment.split()) <= 36
+    assert len(e.time_horizon.split()) <= 4
+    assert len(e.risks) == 3
+    assert len(e.risks[0].split()) <= 16   # 15-word cap + ellipsis
+    assert len(r.action_plan.today) == 3
+
+
+check("advisor: strategic fields + action plan rendered", test_strategic_fields_rendered)
+check("advisor: action plan coercion never crashes", test_action_plan_coercion)
+check("advisor: opportunity horizons rescue labeled speculation", test_opportunity_horizon_classifications_are_strategic)
+check("advisor: strategic fields clipped to doctrine limits", test_strategic_fields_clipped)
 
 
 # ==================================================================

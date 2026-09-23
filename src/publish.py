@@ -92,6 +92,31 @@ def _event_markdown(index: int, event) -> str:
         lines.append(f"**Action ({event.action_type}):** {event.action}")
         lines.append("")
 
+    # Strategic advisor fields (rendered only when present)
+    strategic = getattr(event, "strategic_assessment", "")
+    if strategic:
+        horizon = getattr(event, "time_horizon", "") or ""
+        horizon_suffix = f" ({horizon})" if horizon else ""
+        lines.append(f"**Strategic assessment{horizon_suffix}.** {strategic}")
+        lines.append("")
+    if getattr(event, "what_could_change", ""):
+        lines.append(f"**What could change.** {event.what_could_change}")
+        lines.append("")
+    if getattr(event, "risks", None):
+        lines.append("**Risks**")
+        lines.append("")
+        for risk in event.risks:
+            lines.append(f"- {risk}")
+        lines.append("")
+    if getattr(event, "non_obvious_opportunity", ""):
+        lines.append(
+            f"**Non-obvious opportunity.** {event.non_obvious_opportunity}"
+        )
+        lines.append("")
+    if getattr(event, "fit_assessment", ""):
+        lines.append(f"**Profile fit.** {event.fit_assessment}")
+        lines.append("")
+
     links = [f"[primary source]({event.primary_url})"]
     links += [f"[supporting]({url})" for url in event.supporting_urls[:4]]
     lines.append("Links: " + " · ".join(links))
@@ -138,6 +163,23 @@ def report_to_markdown(report, date: str | None = None) -> str:
             for item in items:
                 lines.append(f"- {item}")
             lines.append("")
+
+    # Mandatory closing action plan
+    plan = getattr(report, "action_plan", None)
+    if plan is not None:
+        plan_groups = [
+            ("## Action plan — TODAY", plan.today),
+            ("## Action plan — THIS WEEK", plan.this_week),
+            ("## Action plan — NEXT", plan.next),
+            ("## STOP / IGNORE", plan.stop_ignore),
+        ]
+        for heading, items in plan_groups:
+            if items:
+                lines.append(heading)
+                lines.append("")
+                for item in items:
+                    lines.append(f"- {item}")
+                lines.append("")
 
     lines.append("---")
     lines.append("")

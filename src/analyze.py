@@ -30,45 +30,49 @@ logger = logging.getLogger("ai_research_bot")
 # ============================================================
 
 USER_PROFILE = """
-The reader is a 16-year-old developer in Georgia building toward
-independent AI / Agentic Engineering.
+The reader is a 16-year-old developer in Georgia (Tbilisi) building
+toward independent AI / Agentic Engineering. Advise THIS person —
+not a generic audience.
 
-Current roadmap:
-Python → APIs / HTTP / JSON → SQL / Databases → LLM APIs →
-Tool Calling / MCP → Agent Loops → State → Graphs → RAG →
-Evaluation → Production → Self-improvement → Real Business Agents
+SITUATION
+- 16 years old, school student, Georgia-based
+- builds and ships real projects with free/low-cost tooling
+  (GitHub Actions, free-tier LLM APIs, Telegram, open source)
+- communicates in Georgian; technical work in English
 
-The reader wants BROAD AI coverage: AI agents, AI engineering,
-model releases, research papers, developer tools, and major
-industry news — but NEVER hype, rumors, or financial noise.
+GOALS
+- become an independent AI / agentic engineer
+- build real business agents, not toy demos
+- accumulate durable career value and portfolio evidence
+- find realistic opportunities accessible at 16+
 
-Strong interests:
-- AI agents, agent architecture, agent loops
-- state and memory, MCP, tool calling
-- LLM APIs, RAG, evaluation, reliability
-- AI coding tools, open-source AI
-- AI engineering, practical projects, automation
-- AI business opportunities, free/low-cost tools
-- opportunities accessible to teenagers 16+
+SKILLS (current, honest level)
+- Python; APIs / HTTP / JSON fundamentals
+- currently moving through: SQL / databases -> LLM APIs ->
+  tool calling / MCP -> agent loops -> state -> graphs -> RAG ->
+  evaluation -> production -> self-improvement -> business agents
+
+CONSTRAINTS
+- limited capital: prefer free/low-cost tools and APIs
+- limited time (school); high-leverage learning only
+- no traditional work credentials yet — the portfolio must speak
+
+RESOURCES
+- daily automated research pipeline (this system)
+- open-source ecosystem, papers (arXiv, Hugging Face), official docs
+- Telegram as the delivery/decision channel
+
+INTERESTS
+- AI agents, agent architecture, agent loops, state and memory
+- MCP, tool calling, LLM APIs, RAG, evaluation, reliability
+- AI coding tools, open-source AI, automation
+- AI business opportunities and 16+ accessible openings
 
 The reader does NOT want hype, rumors, or empty speculation —
-but genuine AI industry news with technical substance is welcome.
-
-Prioritize information that can:
-1. improve engineering ability,
-2. change the architecture of future projects,
-3. reveal important new AI capabilities,
-4. provide something worth building/testing,
-5. reveal important ecosystem trends,
-6. provide a real learning opportunity,
-7. provide a realistic opportunity for a 16+ developer.
-
-Deprioritize:
-- stock prices, corporate financial news
-- generic AI hype, celebrity/CEO news
-- generic image/video generation
-- consumer AI features with no engineering value
-- minor product updates, repetitive announcements.
+genuinely important AI industry news with technical substance is
+welcome. Deprioritize: stock prices, corporate financial news,
+celebrity/CEO news, generic image/video generation, consumer AI
+features with no engineering value, minor product updates.
 """
 
 
@@ -109,6 +113,15 @@ class CandidateAnalysis:
 
 
 @dataclass
+class ActionPlan:
+    """Concrete execution plan that closes every advisory report."""
+    today: list[str] = field(default_factory=list)
+    this_week: list[str] = field(default_factory=list)
+    next: list[str] = field(default_factory=list)
+    stop_ignore: list[str] = field(default_factory=list)
+
+
+@dataclass
 class ResearchEvent:
     event_id: str = ""
     title: str = ""
@@ -138,6 +151,13 @@ class ResearchEvent:
     interpretation: str = ""
     uncertainty: str = ""
     counter_argument: str = ""
+    # Strategic-advisor fields (additive; defaults keep old data valid)
+    strategic_assessment: str = ""
+    time_horizon: str = ""
+    what_could_change: str = ""
+    risks: list[str] = field(default_factory=list)
+    non_obvious_opportunity: str = ""
+    fit_assessment: str = ""
 
 
 @dataclass
@@ -153,6 +173,8 @@ class ResearchReport:
     things_to_ignore: list[str] = field(default_factory=list)
     # Per-article critical analyses (one per supplied source)
     candidate_analyses: list[CandidateAnalysis] = field(default_factory=list)
+    # Mandatory closing action plan (today / this week / next / stop)
+    action_plan: ActionPlan = field(default_factory=ActionPlan)
 
 
 # ============================================================
@@ -270,14 +292,33 @@ CURRENT LEARNING QUEUE:
 {json.dumps(research_data["learning_queue"], ensure_ascii=False, indent=2)}
 
 ============================================================
-MISSION
+MISSION — PERSONAL STRATEGIC AI ADVISOR
 ============================================================
 
-Produce a DEEP DAILY AI INTELLIGENCE REPORT.
+Produce a DAILY STRATEGIC BRIEFING for one person (USER PROFILE).
 
-This is NOT a news summary. The objective is to identify information
-that can materially improve the reader's AI engineering knowledge,
-projects, decisions, or opportunities.
+You are not a news summarizer and not an idea generator. You THINK
+before advising. Core loop: RESEARCH -> UNDERSTAND -> CHALLENGE ->
+THINK LONG-TERM -> DECIDE -> ACTION.
+
+For every article, run this reasoning before any decision:
+1. UNDERSTAND: relevance to THIS reader's situation, goals, skills,
+   constraints, and resources (see USER PROFILE).
+2. TRUTH: separate verified fact from assumption, hype, prediction,
+   and opinion — the factuality levels must reflect this honestly.
+3. HORIZON: think 3-10 years ahead, not only what is popular today.
+4. CHANGE: what could AI, automation, economics, competition, or
+   technology change because of this?
+5. CHALLENGE: state the strongest argument AGAINST the obvious
+   conclusion. If an idea is weak, say so directly.
+6. TRADE-OFF: compare short-term opportunity with long-term skill
+   and career value. Never rank by popularity.
+7. RISKS: bottlenecks, hidden costs, unrealistic assumptions.
+8. HIDDEN ANGLE: opportunities the source itself does not mention.
+9. DECIDE: a clear, evidence-based recommendation.
+
+Optimize for truth, strategic advantage, learning, and execution —
+NEVER for motivation or making the reader feel good.
 
 Use the supplied source content as evidence.
 DO NOT invent facts.
@@ -318,9 +359,13 @@ Classify each selected event into one or more of:
 - "Real Technical Skill"
 - "Real Business Opportunity"
 - "Long-Term Career Value"
+- "Short-term Opportunity"
+- "Long-term Opportunity"
 - "General News"
 
 Prioritize durable knowledge and practical consequences over hype.
+Popularity alone never justifies a high rank: a Temporary Trend must
+clear the same usefulness bar as a Real Technical Skill to appear.
 
 ============================================================
 FACTUALITY LEVELS (EVERY EVENT AND ARTICLE)
@@ -357,6 +402,41 @@ source (applying these rules through is_relevant and should_send),
 then select events ONLY from sources whose should_send is true.
 
 ============================================================
+CAREER & BUSINESS ASSESSMENT (WHEN APPLICABLE)
+============================================================
+
+If an event suggests a CAREER direction, fit_assessment must
+address: why it fits or does not fit this reader, future demand,
+difficulty, competition, AI automation risk, skill durability,
+income potential, portfolio value — and risks must include what
+would make the path fail.
+
+If an event suggests a BUSINESS idea, strategic_assessment must
+address: the problem, the customer, why they would pay, competition,
+acquisition difficulty, required skills and capital, the AI
+advantage, and main failure modes. The action must be a concrete
+validation step achievable before heavy investment.
+
+Always challenge assumptions — including the reader's. If the
+reader's likely plan or the source's claim is weak, say so directly
+and explain why.
+
+============================================================
+ACTION PLAN (MANDATORY — CLOSES EVERY REPORT)
+============================================================
+
+Finish every report with a concrete, executable action plan:
+- today: 1-3 specific tasks doable TODAY
+- this_week: 3-5 concrete tasks for this week
+- next: what to learn, build, test, or research after that
+- stop_ignore: what to deliberately NOT spend time on now
+
+Tasks must be specific and executable — never vague advice like
+"learn AI" or "research the market". Bad: "learn RAG". Good: "Build
+a minimal RAG script over 3 PDFs with sentence embeddings; measure
+retrieval accuracy on 10 test questions."
+
+============================================================
 REPORT STRUCTURE (MANDATORY — EVERY EVENT)
 ============================================================
 
@@ -385,6 +465,20 @@ Each event's fields must collectively follow this exact structure:
    - primary_url + supporting_urls: source code repositories,
      research papers, official releases. Only URLs present in the
      supplied sources.
+
+5) STRATEGIC ASSESSMENT
+   - strategic_assessment: the evidence-based recommendation
+     (max 35 words) — a decision, not a restatement of the news.
+   - time_horizon: "short-term" (weeks), "mid-term" (1-3 years),
+     or "long-term" (3-10 years).
+   - what_could_change: what AI, automation, economics, competition,
+     or technology could change because of this (max 30 words).
+   - risks: up to 3 items — bottlenecks, hidden costs, unrealistic
+     assumptions (max 15 words each).
+   - non_obvious_opportunity: an angle the source does not mention
+     (max 25 words). Omit if genuinely none.
+   - fit_assessment: why this fits or does not fit THIS reader's
+     profile (max 30 words).
 
 ============================================================
 CONTENT RULES (HARD BANS)
@@ -555,6 +649,12 @@ Return a JSON object with these fields:
       "interpretation": "string - max 30 words, clearly separated from facts",
       "uncertainty": "string - max 25 words: what is unknown, speculative, or unsupported",
       "counter_argument": "string - max 25 words: strongest argument against your interpretation",
+      "strategic_assessment": "string - evidence-based recommendation, max 35 words",
+      "time_horizon": "short-term|mid-term|long-term (3-10 years)",
+      "what_could_change": "string - max 30 words: what AI/automation/economics/competition could change",
+      "risks": ["max 3 items, max 15 words each: bottlenecks, hidden costs, unrealistic assumptions"],
+      "non_obvious_opportunity": "string - max 25 words, an angle the source does not mention",
+      "fit_assessment": "string - max 30 words: why this fits or does not fit THIS reader",
       "tldr": "string - 1-2 sentences, max 30 words: what launched/broke and why it matters immediately",
       "what_happened": "string - max 30 words, concrete facts",
       "what_changed": "string - max 25 words, before -> after",
@@ -573,6 +673,12 @@ Return a JSON object with these fields:
   "learn_next": ["string"],
   "opportunities": ["string"],
   "things_to_ignore": ["string"],
+  "action_plan": {{
+    "today": ["1-3 specific executable tasks"],
+    "this_week": ["3-5 concrete tasks"],
+    "next": ["what to learn, build, test, or research after"],
+    "stop_ignore": ["what to deliberately not spend time on"]
+  }},
   "candidate_analyses": [
     {{
       "title": "string - copied from the source",
@@ -705,6 +811,23 @@ def _as_factuality(value, default: str = "single_source") -> str:
     return default if default in FACTUALITY_LEVELS else "single_source"
 
 
+def _as_action_plan(value) -> ActionPlan:
+    """Coerce the LLM action_plan object; bare strings become lists."""
+    plan = value if isinstance(value, dict) else {}
+
+    def _items(v):
+        if isinstance(v, str):
+            return _as_str_list([v]) if v.strip() else []
+        return _as_str_list(v)
+
+    return ActionPlan(
+        today=_items(plan.get("today")),
+        this_week=_items(plan.get("this_week")),
+        next=_items(plan.get("next")),
+        stop_ignore=_items(plan.get("stop_ignore")),
+    )
+
+
 def parse_report(raw_json: str) -> ResearchReport:
     """Parse Gemini's JSON response into a ResearchReport.
 
@@ -760,6 +883,12 @@ def parse_report(raw_json: str) -> ResearchReport:
             interpretation=_as_str(e.get("interpretation")),
             uncertainty=_as_str(e.get("uncertainty")),
             counter_argument=_as_str(e.get("counter_argument")),
+            strategic_assessment=_as_str(e.get("strategic_assessment")),
+            time_horizon=_as_str(e.get("time_horizon")).lower(),
+            what_could_change=_as_str(e.get("what_could_change")),
+            risks=_as_str_list(e.get("risks")),
+            non_obvious_opportunity=_as_str(e.get("non_obvious_opportunity")),
+            fit_assessment=_as_str(e.get("fit_assessment")),
         )
 
         if not event.title or not event.primary_url:
@@ -803,6 +932,7 @@ def parse_report(raw_json: str) -> ResearchReport:
         opportunities=_as_str_list(data.get("opportunities")),
         things_to_ignore=_as_str_list(data.get("things_to_ignore")),
         candidate_analyses=candidate_analyses,
+        action_plan=_as_action_plan(data.get("action_plan")),
     ))
 
 
@@ -907,6 +1037,16 @@ def enforce_conciseness(report: ResearchReport) -> ResearchReport:
         event.interpretation = _clip_words(event.interpretation, 30)
         event.uncertainty = _clip_words(event.uncertainty, 25)
         event.counter_argument = _clip_words(event.counter_argument, 25)
+        event.strategic_assessment = _clip_words(
+            event.strategic_assessment, 35
+        )
+        event.time_horizon = _clip_words(event.time_horizon, 4)
+        event.what_could_change = _clip_words(event.what_could_change, 30)
+        event.risks = _clip_items(event.risks, 3, 15)
+        event.non_obvious_opportunity = _clip_words(
+            event.non_obvious_opportunity, 25
+        )
+        event.fit_assessment = _clip_words(event.fit_assessment, 30)
 
     for analysis in report.candidate_analyses:
         analysis.verified_facts = _clip_items(analysis.verified_facts, 5, 15)
@@ -917,6 +1057,12 @@ def enforce_conciseness(report: ResearchReport) -> ResearchReport:
         analysis.actionable_takeaway = _clip_words(
             analysis.actionable_takeaway, 25
         )
+
+    plan = report.action_plan
+    plan.today = _clip_items(plan.today, 3, 25)
+    plan.this_week = _clip_items(plan.this_week, 5, 20)
+    plan.next = _clip_items(plan.next, 4, 20)
+    plan.stop_ignore = _clip_items(plan.stop_ignore, 4, 15)
 
     return report
 

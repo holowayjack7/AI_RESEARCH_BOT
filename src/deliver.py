@@ -201,6 +201,34 @@ def format_event(index: int, event) -> str:
         resources.append(f'- <a href="{escape_html(url)}">{_resource_label(url)}</a>')
     blocks.append("\n".join(["<b>გადამოწმებული რესურსები</b>"] + resources))
 
+    # --- 5. Strategic Assessment (the advisor's verdict) ---
+    strategic = []
+    if getattr(event, "strategic_assessment", None):
+        horizon = getattr(event, "time_horizon", "") or ""
+        horizon_tag = f" ({escape_html(horizon)})" if horizon else ""
+        strategic.append(
+            f"- <b>რეკომენდაცია{horizon_tag}</b>: "
+            f"{escape_html(event.strategic_assessment)}"
+        )
+    if getattr(event, "what_could_change", None):
+        strategic.append(
+            f"- რა შეიძლება შეიცვალოს: {escape_html(event.what_could_change)}"
+        )
+    if getattr(event, "risks", None):
+        risk_items = "; ".join(escape_html(r) for r in event.risks[:3])
+        strategic.append(f"- რისკები: {risk_items}")
+    if getattr(event, "non_obvious_opportunity", None):
+        strategic.append(
+            f"- არააშკარა შესაძლებლობა: "
+            f"{escape_html(event.non_obvious_opportunity)}"
+        )
+    if getattr(event, "fit_assessment", None):
+        strategic.append(
+            f"- ფიტი პროფილთან: {escape_html(event.fit_assessment)}"
+        )
+    if strategic:
+        blocks.append("\n".join(["<b>სტრატეგიული შეფასება</b>"] + strategic))
+
     return "\n\n".join(blocks)
 
 
@@ -227,6 +255,35 @@ def _list_section(report, key: str, numbered: bool = False) -> str | None:
     return "\n".join(lines)
 
 
+def _action_plan_section(report) -> str | None:
+    """Render the mandatory closing action plan (TODAY/THIS WEEK/NEXT)."""
+    plan = getattr(report, "action_plan", None)
+    if plan is None:
+        return None
+
+    groups = [
+        ("დღეს", plan.today, True),
+        ("ამ კვირას", plan.this_week, True),
+        ("შემდეგ", plan.next, False),
+        ("STOP / IGNORE", plan.stop_ignore, False),
+    ]
+
+    lines = []
+    for title, items, numbered in groups:
+        if not items:
+            continue
+        lines.append("")
+        lines.append(f"<b>{title}</b>")
+        if numbered:
+            lines.extend(f"{i}. {escape_html(t)}" for i, t in enumerate(items, 1))
+        else:
+            lines.extend(f"- {escape_html(t)}" for t in items)
+
+    if not lines:
+        return None
+    return "\n".join(["<b>ქმედების გეგმა</b>"] + lines)
+
+
 def build_telegram_blocks(report) -> list[str]:
     """Build the report as a list of self-contained HTML blocks.
 
@@ -237,7 +294,7 @@ def build_telegram_blocks(report) -> list[str]:
 
     # --- Header card ---
     header = [
-        "<b>AI დაზვერვის რეპორტი</b>",
+        "<b>სტრატეგიული ბრიფინგი</b>",
         f"{_today()} · <b>{len(report.events)}</b> შერჩეული ივენთი",
     ]
 
@@ -271,8 +328,14 @@ def build_telegram_blocks(report) -> list[str]:
         blocks.append(DIVIDER)
         blocks.extend(rendered)
 
+    # --- Mandatory closing action plan (the advisor's execution orders) ---
+    plan_section = _action_plan_section(report)
+    if plan_section:
+        blocks.append(DIVIDER)
+        blocks.append(plan_section)
+
     blocks.append(
-        f"<i>AI Research Bot · {_today()} · "
+        f"<i>AI Strategic Advisor · {_today()} · "
         f"{len(report.events)} ივენთი</i>"
     )
 
@@ -313,7 +376,7 @@ def build_no_news_message(state: dict | None = None, candidates_reviewed: int = 
     tracked_topics = len(state.get("topics", {}))
 
     lines = [
-        "<b>AI დაზვერვის რეპორტი</b>",
+        "<b>სტრატეგიული ბრიფინგი</b>",
         "<b>დღეს ახალი ინტელექტი არ არის</b>",
         f"{_today()}",
         "",
@@ -339,7 +402,7 @@ def build_delayed_message(reason: str) -> str:
     a short notice instead of silence.
     """
     return "\n".join([
-        "<b>AI დაზვერვის რეპორტი</b>",
+        "<b>სტრატეგიული ბრიფინგი</b>",
         "<b>დღევანდელი რეპორტი დაგვიანებულია</b>",
         f"{_today()}",
         "",
@@ -347,8 +410,8 @@ def build_delayed_message(reason: str) -> str:
         "",
         DIVIDER,
         "",
-        "<i>რანი ხვალ ავტომატურად განმეორდება — ან გაუშვი ახლა "
-        "GitHub Actions-იდან.</i>",
+        "<i>შემდეგი გაშვება ხვალ ავტომატურად განმეორდება — ან გაუშვი "
+        "ახლა GitHub Actions-იდან.</i>",
     ])
 
 
