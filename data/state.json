@@ -131,7 +131,10 @@
     "https://arxiv.org/abs/2609.26760",
     "https://ai.google.dev/gemini-api/docs/deep-research",
     "https://arxiv.org/abs/2609.26758",
-    "https://huggingface.co/papers/2609.25804"
+    "https://huggingface.co/papers/2609.25804",
+    "https://arxiv.org/abs/2609.26777",
+    "https://arxiv.org/abs/2609.26780",
+    "https://huggingface.co/papers/2609.26774"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -231,42 +234,12 @@
     "evt-growing-harness-specialist-agents",
     "evt-gemini-deep-research-api",
     "evt-typesafe-option-name-rubric-bias",
-    "evt-tasteful-agent-taste-bench"
+    "evt-tasteful-agent-taste-bench",
+    "evt-sweserve-production-inference",
+    "evt-speakermem-r1-multidialogue",
+    "evt-stablevq-tokenizers"
   ],
   "events": [
-    {
-      "event_id": "evt-gpt6-astra-launch",
-      "title": "OpenAI-მ GPT-6 Astra წარადგინა — ახალი თაობის მოდელი კომპიუტერის გამოყენებისა და პროგრამული ინჟინერიის აგენტებისთვის",
-      "category": "LLM Release / Frontier Models",
-      "primary_url": "https://openai.com/index/gpt-6-astra-next-generation-work",
-      "supporting_urls": [
-        "https://openai.com/index/ai-policy-window"
-      ],
-      "importance": 10,
-      "relevance": 10,
-      "actionability": 8,
-      "source_quality": 10,
-      "confidence": 95,
-      "what_happened": "OpenAI-მ ოფიციალურად გამოაშვება GPT-6 Astra, რომელიც ხელმისაწვდომია ChatGPT Work-ში, Codex-სა და API-ში ($10/M input, $50/M output). მოდელმა დაამყარა ახალი რეკორდი DeepSWE v1.1 ბენჩმარკზე 74%-ით, აჩვენა მნიშვნელოვანი გაუმჯობესება Computer Use, Figma-ს მართვასა და მრავალფაილიან კოდის რევიუში.",
-      "what_changed": "მანამდე არსებული მოდელები (მაგ. GPT-5.6 Sol ან Claude Fable 5.1) მოითხოვდნენ ვრცელ კონტექსტურ მომზადებას და ხშირად უშვებდნენ შეცდომებს 5+ საათიან აგენტურ რიგებში. Astra-მ 89%-ით შეამცირა გაუთვალისწინებელი უარყოფითი შედეგები და ნაკლები ტოკენების დახარჯვით აღწევს მიზანს.",
-      "why_it_matters": "შესაძლებელია რთული აგენტური არქიტექტურების გამარტივება (remove scaffolding), რადგან მოდელი თავად ინარჩუნებს ხანგრძლივ მსჯელობას, უკეთ ინარჩუნებს ინსტრუმენტების (tools) გამოძახების სიზუსტეს და ეფექტურად იყენებს აპლიკაციების ინტერფეისს API-ს გარეშეც.",
-      "technical_details": [
-        "74% DeepSWE v1.1 ბენჩმარკზე ნაკლები ნაბიჯებითა და ტოკენების მაღალი ეფექტიანობით",
-        "89%-ით ნაკლები შეცდომა უსაფრთხოების შიდა Computer Use ბენჩმარკზე",
-        "API ფასი: $10 / 1M input, $50 / 1M output ტოკენი",
-        "კროს-ფაილური მსჯელობა კოდის რევიუსას და შეცდომების ორმაგი აღმოჩენა წინა ბაზისურ მოდელებთან შედარებით"
-      ],
-      "action_type": "TRY",
-      "action": "შეამოწმეთ GPT-6 Astra-ს API კოდინგის და აგენტური დავალებების შესასრულებლად, შეადარეთ ტოკენების ეფექტიანობა და latency წინა მოდელებთან.",
-      "evidence": [
-        {
-          "url": "https://openai.com/index/gpt-6-astra-next-generation-work",
-          "title": "GPT-6 Astra: The next generation in intelligence for work",
-          "domain": "openai.com",
-          "evidence": "Astra sets a new record on DeepSWE v1.1 at 74%. Pricing starts at $10 per million input tokens and $50 per million output tokens."
-        }
-      ]
-    },
     {
       "event_id": "evt-aws-bedrock-agent-eval",
       "title": "AWS Bedrock AgentCore და GitHub Actions: AI აგენტების ავტომატიზებული შეფასება CI/CD Quality Gate-ით",
@@ -3889,6 +3862,173 @@
       "interpretation": "აგენტების მთავარი პრობლემა არის არასწორი ჰიპოთეზის არჩევა საწყის ეტაპზე, რისი გამოსწორებაც დისტილაციით (distillation) არის შესაძლებელი.",
       "uncertainty": "ავტომატურად mined decision fork-ები შესაძლოა შეიცავდნენ ხმაურს და არ ასახავდნენ რეალურ ადამიანურ Taste-ს.",
       "counter_argument": "დამატებითი RL-ს ან მონტე-კარლოს ხის ძიების (MCTS) გამოყენებამ შესაძლოა გადაფაროს Taste-ის დეფეციტი ინფერენსის დროს."
+    },
+    {
+      "event_id": "evt-sweserve-production-inference",
+      "title": "SWE-Serve: Benchmarking Agentic Engineering For Production Inference Serving",
+      "category": "AI Coding Tools და Agent Evaluation",
+      "primary_url": "https://arxiv.org/abs/2609.26777",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 9,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "SWE-Serve ბენჩმარკი აჩვენებს, რომ კოდირების აგენტების პატჩების თითქმის მესამედი იწუნება production E2E ტესტებში.",
+      "what_happened": "მკვლევარებმა გამოუშვეს SWE-Serve, რომელიც აფასებს coding აგენტებს SGLang-ის production ინფრასტრუქტურულ დავალებებზე.",
+      "what_changed": "Local unit test შემოწმებიდან აგენტური ვალიდაცია გადადის სრულფასოვან E2E inference სერვერულ გარემოზე.",
+      "why_it_matters": "გაძლევთ ზუსტ იარაღს იმის შესამოწმებლად, რამდენად მუშაა შენი აგენტის დაწერილი კოდი რეალურ production სერვერებზე.",
+      "key_takeaways": [
+        "53 repository-grounded tasks across SGLang.",
+        "End-to-end tests reject 33 percent of locally passing patches.",
+        "Best model achieves 75 percent mean pass@1."
+      ],
+      "technical_architecture": [
+        "Evaluates 11 models and 31 model-effort configurations.",
+        "Executes on CPU or single H100 GPU."
+      ],
+      "technical_details": [
+        "Hidden functional and regression test execution.",
+        "CPU and single GPU evaluation runtimes."
+      ],
+      "potential_impact": "ზომავს რეალურ განსხვავებას ლოკალურ წარმატებასა და production სერვერულ სისწორეს შორის.",
+      "action_type": "APPLY",
+      "action": "დაამატე integration ტესტები შენს ავტომატურ კოდირების აგენტურ ჰარნესში ადგილობრივი unit ტესტების პარალელურად.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value",
+        "Short-term Opportunity"
+      ],
+      "verified_facts": [
+        "SWE-Serve introduces 53 repository-grounded tasks from SGLang production changes.",
+        "Model-serving E2E tests reject roughly one-third of patches passing local tests.",
+        "The best-performing model configuration achieves 75 percent mean pass@1."
+      ],
+      "interpretation": "ლაკლასტიკური local unit ტესტების გავლით კოდის მუშაობა არ ნიშნავს production მზაობას inference სერვერებში.",
+      "uncertainty": "ბენჩმარკი მოიცავს მხოლოდ SGLang რეპოზიტორიის ცვლილებებს და შესაძლოა არ იყოს უნივერსალური.",
+      "counter_argument": "მხოლოდ E2E ტესტებზე ფოკუსირებამ შესაძლოა შეანელოს აგენტების ძირითადი ციკლის iter-ის სიჩქარე.",
+      "strategic_assessment": "გამოიყენე end-to-end შესრულების ტესტები შენს აგენტურ ჰარნესში, რათა თავიდან აიცილო ე.წ. silent failures.",
+      "time_horizon": "mid-term",
+      "what_could_change": "AI coding აგენტების ვალიდაციის სტანდარტები გადაინაცვლებს მარტივი compile ტესტებიდან რეალურ E2E სერვერულ ვალიდაციაზე.",
+      "risks": [
+        "E2E ტესტირების მაღალი გამოთვლითი ხარჯები",
+        "სენდბოქსების კონფიგურაციის სირთულე",
+        "GPU რესურსების შეზღუდვა"
+      ],
+      "non_obvious_opportunity": "შეგიძლია აგენტური ჰარნესისთვის ააწყო მსუბუქი integration check საიდარი, რომელიც ზრდის შენი აგენტის patch-ების სანდოობას.",
+      "fit_assessment": "იდეალურია შენი coding agent პროექტებისთვის, რადგან გასწავლის production-grade ტესტირების ორგანიზებას."
+    },
+    {
+      "event_id": "evt-speakermem-r1-multidialogue",
+      "title": "SpeakerMem-R1: Speaker-Centered Dual-Track Memory for Multi-Party Dialogue",
+      "category": "AI Research / RAG & აგენტის მეხსიერება",
+      "primary_url": "https://arxiv.org/abs/2609.26780",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 88,
+      "tldr": "SpeakerMem-R1 ნერგავს speaker-centered dual-track მეხსიერებას მრავალმხრივი დიალოგების ზუსტი ატრიბუციისთვის.",
+      "what_happened": "მკვლევარებმა გამოუშვეს SpeakerMem-R1, რომელიც ყოფს მეხსიერებას verbatim და structured ტრეკებად პერსონა და ჯგუფური ხედვებით.",
+      "what_changed": "ზოგადი ვექტორული ძებნიდან გადავდივართ პირთა და ჯგუფების ურთიერთობებზე დაფუძნებულ მრავალდონიან მეხსიერებაზე.",
+      "why_it_matters": "გაძლევთ რეფერენსულ არქიტექტურას მრავალმხრივი და რთული დიალოგური აგენტების ასაგებად.",
+      "key_takeaways": [
+        "Dual-track memory stores verbatim messages and derived states.",
+        "Organized into person-level and group-level views.",
+        "Achieves top performance on EverMemBench and LoCoMo benchmarks."
+      ],
+      "technical_architecture": [
+        "Writer-R1 trained with SpeakerLevenshtein and speaker-conditioned GRPO.",
+        "Entity, event, and time-based query-time evidence combination."
+      ],
+      "technical_details": [
+        "Dual-track storage layout.",
+        "Speaker-conditioned group preference optimization."
+      ],
+      "potential_impact": "უზრუნველყოფს აგენტების მიერ კონტექსტისა და ავტორობის ზუსტ დამახსოვრებას რთულ ჯგუფურ საუბრებში.",
+      "action_type": "BUILD",
+      "action": "ააწყვე Python სკრიპტი, რომელიც ყოფს ჩათის ისტორიას პერსონალურ და ჯგუფურ სტრუქტურირებულ მეხსიერების ფაილებად.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "SpeakerMem-R1 uses a dual-track memory storing verbatim messages and derived states.",
+        "Organizes memory into person-level and group-level views.",
+        "Achieves 62.33 percent on EverMemBench and 70.85 percent on LoCoMo benchmarks."
+      ],
+      "interpretation": "მრავალ-აგენტიან და რთულ საკომუნიკაციო სისტემებში მეხსიერება უნდა იყოს სტრუქტურირებული პერსონებისა და ჯგუფების მიხედვით და არა უბრალოდ ვექტორული ბაზა.",
+      "uncertainty": "ორმაგი ტრეკის მეხსიერების მართვა ზრდის ტოკენების ხარჯს და ინფერენსის ლატენტობას.",
+      "counter_argument": "მარტივი RAG ან მიმდინარე კონტექსტური ფანჯარა საკმარისია ბევრი ყოველდღიური აგენტური ამოცანისთვის.",
+      "strategic_assessment": "გაითვალისწინე ეს ორმაგი ტრეკის არქიტექტურა, როდესაც აგებ აგენტებს, რომლებიც კომუნიკაციას უწევენ რამდენიმე მომხმარებელს ერთდროულად.",
+      "time_horizon": "mid-term",
+      "what_could_change": "აგენტების მეხსიერების სისტემები გადავა უბრალო embedding RAG-იდან სტრუქტურირებულ, პერსონა-ორიენტირებულ ორმაგ ბაზებზე.",
+      "risks": [
+        "მეხსიერების განახლების სირთულე დიალოგის დინამიკაში",
+        "გაზრდილი გამოთვლითი ხარჯები Writer მოდელისთვის"
+      ],
+      "non_obvious_opportunity": "შეგიძლია შექმნა Telegram ბოტი, რომელიც იყენებს პერსონა-ფონურ სტრუქტურირებულ მეხსიერებას ჯგუფური ჩათების ეფექტურად სამართავად.",
+      "fit_assessment": "ძალიან შეესაბამება შენს ინტერესებს აგენტურ არქიტექტურასა და მეხსიერების სისტემებში."
+    },
+    {
+      "event_id": "evt-stablevq-tokenizers",
+      "title": "StableVQ: Practical Guidelines for Stable Vector-Quantized Tokenizer Training",
+      "category": "AI Research & Model Architecture",
+      "primary_url": "https://huggingface.co/papers/2609.26774",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 7,
+      "actionability": 7,
+      "source_quality": 8,
+      "confidence": 85,
+      "tldr": "StableVQ ნერგავს დინამიურ STE-სა და Region VQ Loss-ს, რომლებიც აგვარებენ ტოკენიზატორების ტრენინგის არასტაბილურობას.",
+      "what_happened": "Kuaishou Technology-ის გუნდმა წარადგინა StableVQ, რომელიც წყვეტს encoder-decoder და codebook ტრენინგის კონფლიქტებს.",
+      "what_changed": "მყიფე კოოპერაციული ტრენინგიდან გადავდივართ მოდულის დამოუკიდებელ ოპტიმიზაციაზე.",
+      "why_it_matters": "გაძლევთ მკაფიო გაიდლაინებს დისკრეტული ტოკენიზატორების სტაბილური წვრთნისთვის.",
+      "key_takeaways": [
+        "Dynamic STE corrects encoder learning instability.",
+        "Region VQ Loss guarantees encoder output tracking.",
+        "Decoupled Scheduler assigns independent learning rates."
+      ],
+      "technical_architecture": [
+        "Shared-projection codebook foundation.",
+        "Independent encoder-decoder and codebook optimization loops."
+      ],
+      "technical_details": [
+        "Dynamic Straight-Through Estimator configuration.",
+        "Region-based codebook loss function."
+      ],
+      "potential_impact": "ამცირებს ტოკენიზატორების კოლაფსის რისკს და აუმჯობესებს გენერაციული მოდელების ხარისხს.",
+      "action_type": "LEARN",
+      "action": "გაეცანი StableVQ-ის პაპერში აღწერილ Dynamic STE-ს და Region VQ Loss-ის מתემატიკურ ფორმულირებას.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "StableVQ addresses training instability caused by encoder-decoder and codebook entanglement.",
+        "Introduces Dynamic STE, Region VQ Loss, and Decoupled Scheduler.",
+        "Builds on top of shared-projection codebooks."
+      ],
+      "interpretation": "ტოკენიზაციის სტაბილიზაცია ხსნის მთავარ bottleneck-ს მრავალმოდალური და გენერაციული არქიტექტურების სწავლებაში.",
+      "uncertainty": "მეთოდი ძირითადად ოპტიმიზებულია ვიზუალური ტოკენიზატორებისთვის და ტექსტური ტოკენიზაციისთვის საჭიროებს დამატებით ტესტებს.",
+      "counter_argument": "ტრადიციული VQ მეთოდები საკმარისია მარტივი პროექტებისთვის და ახალი ჰარნესების დანერგვა ზრდის სირთულეს.",
+      "strategic_assessment": "გაიაზრე VQ კოდბუკების დეტაჩმენდის პრინციპები, თუ აპირებ საკუთარი multimodal მოდელების ტრენინგს ან fine-tuning-ს.",
+      "time_horizon": "mid-term",
+      "what_could_change": "დისკრეტული ვიზუალური და მულტიმოდალური ტოკენიზატორების ტრენინგი გახდება უფრო პროგნოზირებადი და ნაკლებად მგრძნობიარე ჰიპერპარამეტრების მიმართ.",
+      "risks": [
+        "ოპტიმიზაციის სირთულე მცირე ზომის ჰარვარდული რესურსებისთვის",
+        "ტრენინგის დროის ზრდა"
+      ],
+      "non_obvious_opportunity": "Region VQ Loss მიდგომა შესაძლებელია ადაპტირებული იყოს აგენტური მეხსიერების კლასტერების სემანტიკური ინდექსაციისთვის.",
+      "fit_assessment": "კარგია გენერაციული მოდელებისა და ტოკენიზაციის მექანიზმების ფუნდამენტური გაგებისთვის."
     }
   ],
   "topics": {
@@ -3944,7 +4084,7 @@
     "AI Research / Structured Data & Causal ML": 1,
     "Developer Tools & Agent Frameworks": 2,
     "Model Inference & Local Hardware Optimization": 1,
-    "AI Research & Model Architecture": 2,
+    "AI Research & Model Architecture": 3,
     "Agent Security & Infrastructure": 1,
     "LLM Infrastructure & Agent Memory": 2,
     "Multi-Agent Systems & RL": 1,
@@ -3978,7 +4118,9 @@
     "AI Research & Agent Architecture": 1,
     "LLM APIs & Developer Tools": 1,
     "AI Research & Reliability": 1,
-    "AI Evaluation & Reliability": 1
+    "AI Evaluation & Reliability": 1,
+    "AI Coding Tools და Agent Evaluation": 1,
+    "AI Research / RAG & აგენტის მეხსიერება": 1
   },
   "reports": [
     {
@@ -7790,14 +7932,191 @@
         "MCP (Model Context Protocol) ეკოსისტემაში სემანტიკური უსაფრთხოების, tool verification-ისა და supply-chain შეტევების პრევენციის ზრდა",
         "LLM Context Window-ის დაზოგვის ახალი ტექნიკები: Truncation-based compaction და control logic-ის გადატანა Python harness-ის კოდში"
       ]
+    },
+    {
+      "date": "2026-09-23",
+      "summary": "დღევანდელი ანალიზი მოიცავს production inference მოთხოვნებს SWE-Serve ბენჩმარკში, StableVQ ტოკენიზერების ტრენინგის ოპტიმიზაციას და მრავალმხრივი დიალოგის მეხსიერების ალგორითმებს. ჩვენ ვფოკუსირდებით ინჟინრულ რეალობაზე და მცირე ბიუჯეტით ასაშენებელ მექანიზმებზე.",
+      "events": [
+        {
+          "event_id": "evt-sweserve-production-inference",
+          "title": "SWE-Serve: Benchmarking Agentic Engineering For Production Inference Serving",
+          "category": "AI Coding Tools და Agent Evaluation",
+          "primary_url": "https://arxiv.org/abs/2609.26777",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 9,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "SWE-Serve ბენჩმარკი აჩვენებს, რომ კოდირების აგენტების პატჩების თითქმის მესამედი იწუნება production E2E ტესტებში.",
+          "what_happened": "მკვლევარებმა გამოუშვეს SWE-Serve, რომელიც აფასებს coding აგენტებს SGLang-ის production ინფრასტრუქტურულ დავალებებზე.",
+          "what_changed": "Local unit test შემოწმებიდან აგენტური ვალიდაცია გადადის სრულფასოვან E2E inference სერვერულ გარემოზე.",
+          "why_it_matters": "გაძლევთ ზუსტ იარაღს იმის შესამოწმებლად, რამდენად მუშაა შენი აგენტის დაწერილი კოდი რეალურ production სერვერებზე.",
+          "key_takeaways": [
+            "53 repository-grounded tasks across SGLang.",
+            "End-to-end tests reject 33 percent of locally passing patches.",
+            "Best model achieves 75 percent mean pass@1."
+          ],
+          "technical_architecture": [
+            "Evaluates 11 models and 31 model-effort configurations.",
+            "Executes on CPU or single H100 GPU."
+          ],
+          "technical_details": [
+            "Hidden functional and regression test execution.",
+            "CPU and single GPU evaluation runtimes."
+          ],
+          "potential_impact": "ზომავს რეალურ განსხვავებას ლოკალურ წარმატებასა და production სერვერულ სისწორეს შორის.",
+          "action_type": "APPLY",
+          "action": "დაამატე integration ტესტები შენს ავტომატურ კოდირების აგენტურ ჰარნესში ადგილობრივი unit ტესტების პარალელურად.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value",
+            "Short-term Opportunity"
+          ],
+          "verified_facts": [
+            "SWE-Serve introduces 53 repository-grounded tasks from SGLang production changes.",
+            "Model-serving E2E tests reject roughly one-third of patches passing local tests.",
+            "The best-performing model configuration achieves 75 percent mean pass@1."
+          ],
+          "interpretation": "ლაკლასტიკური local unit ტესტების გავლით კოდის მუშაობა არ ნიშნავს production მზაობას inference სერვერებში.",
+          "uncertainty": "ბენჩმარკი მოიცავს მხოლოდ SGLang რეპოზიტორიის ცვლილებებს და შესაძლოა არ იყოს უნივერსალური.",
+          "counter_argument": "მხოლოდ E2E ტესტებზე ფოკუსირებამ შესაძლოა შეანელოს აგენტების ძირითადი ციკლის iter-ის სიჩქარე.",
+          "strategic_assessment": "გამოიყენე end-to-end შესრულების ტესტები შენს აგენტურ ჰარნესში, რათა თავიდან აიცილო ე.წ. silent failures.",
+          "time_horizon": "mid-term",
+          "what_could_change": "AI coding აგენტების ვალიდაციის სტანდარტები გადაინაცვლებს მარტივი compile ტესტებიდან რეალურ E2E სერვერულ ვალიდაციაზე.",
+          "risks": [
+            "E2E ტესტირების მაღალი გამოთვლითი ხარჯები",
+            "სენდბოქსების კონფიგურაციის სირთულე",
+            "GPU რესურსების შეზღუდვა"
+          ],
+          "non_obvious_opportunity": "შეგიძლია აგენტური ჰარნესისთვის ააწყო მსუბუქი integration check საიდარი, რომელიც ზრდის შენი აგენტის patch-ების სანდოობას.",
+          "fit_assessment": "იდეალურია შენი coding agent პროექტებისთვის, რადგან გასწავლის production-grade ტესტირების ორგანიზებას."
+        },
+        {
+          "event_id": "evt-speakermem-r1-multidialogue",
+          "title": "SpeakerMem-R1: Speaker-Centered Dual-Track Memory for Multi-Party Dialogue",
+          "category": "AI Research / RAG & აგენტის მეხსიერება",
+          "primary_url": "https://arxiv.org/abs/2609.26780",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 88,
+          "tldr": "SpeakerMem-R1 ნერგავს speaker-centered dual-track მეხსიერებას მრავალმხრივი დიალოგების ზუსტი ატრიბუციისთვის.",
+          "what_happened": "მკვლევარებმა გამოუშვეს SpeakerMem-R1, რომელიც ყოფს მეხსიერებას verbatim და structured ტრეკებად პერსონა და ჯგუფური ხედვებით.",
+          "what_changed": "ზოგადი ვექტორული ძებნიდან გადავდივართ პირთა და ჯგუფების ურთიერთობებზე დაფუძნებულ მრავალდონიან მეხსიერებაზე.",
+          "why_it_matters": "გაძლევთ რეფერენსულ არქიტექტურას მრავალმხრივი და რთული დიალოგური აგენტების ასაგებად.",
+          "key_takeaways": [
+            "Dual-track memory stores verbatim messages and derived states.",
+            "Organized into person-level and group-level views.",
+            "Achieves top performance on EverMemBench and LoCoMo benchmarks."
+          ],
+          "technical_architecture": [
+            "Writer-R1 trained with SpeakerLevenshtein and speaker-conditioned GRPO.",
+            "Entity, event, and time-based query-time evidence combination."
+          ],
+          "technical_details": [
+            "Dual-track storage layout.",
+            "Speaker-conditioned group preference optimization."
+          ],
+          "potential_impact": "უზრუნველყოფს აგენტების მიერ კონტექსტისა და ავტორობის ზუსტ დამახსოვრებას რთულ ჯგუფურ საუბრებში.",
+          "action_type": "BUILD",
+          "action": "ააწყვე Python სკრიპტი, რომელიც ყოფს ჩათის ისტორიას პერსონალურ და ჯგუფურ სტრუქტურირებულ მეხსიერების ფაილებად.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "SpeakerMem-R1 uses a dual-track memory storing verbatim messages and derived states.",
+            "Organizes memory into person-level and group-level views.",
+            "Achieves 62.33 percent on EverMemBench and 70.85 percent on LoCoMo benchmarks."
+          ],
+          "interpretation": "მრავალ-აგენტიან და რთულ საკომუნიკაციო სისტემებში მეხსიერება უნდა იყოს სტრუქტურირებული პერსონებისა და ჯგუფების მიხედვით და არა უბრალოდ ვექტორული ბაზა.",
+          "uncertainty": "ორმაგი ტრეკის მეხსიერების მართვა ზრდის ტოკენების ხარჯს და ინფერენსის ლატენტობას.",
+          "counter_argument": "მარტივი RAG ან მიმდინარე კონტექსტური ფანჯარა საკმარისია ბევრი ყოველდღიური აგენტური ამოცანისთვის.",
+          "strategic_assessment": "გაითვალისწინე ეს ორმაგი ტრეკის არქიტექტურა, როდესაც აგებ აგენტებს, რომლებიც კომუნიკაციას უწევენ რამდენიმე მომხმარებელს ერთდროულად.",
+          "time_horizon": "mid-term",
+          "what_could_change": "აგენტების მეხსიერების სისტემები გადავა უბრალო embedding RAG-იდან სტრუქტურირებულ, პერსონა-ორიენტირებულ ორმაგ ბაზებზე.",
+          "risks": [
+            "მეხსიერების განახლების სირთულე დიალოგის დინამიკაში",
+            "გაზრდილი გამოთვლითი ხარჯები Writer მოდელისთვის"
+          ],
+          "non_obvious_opportunity": "შეგიძლია შექმნა Telegram ბოტი, რომელიც იყენებს პერსონა-ფონურ სტრუქტურირებულ მეხსიერებას ჯგუფური ჩათების ეფექტურად სამართავად.",
+          "fit_assessment": "ძალიან შეესაბამება შენს ინტერესებს აგენტურ არქიტექტურასა და მეხსიერების სისტემებში."
+        },
+        {
+          "event_id": "evt-stablevq-tokenizers",
+          "title": "StableVQ: Practical Guidelines for Stable Vector-Quantized Tokenizer Training",
+          "category": "AI Research & Model Architecture",
+          "primary_url": "https://huggingface.co/papers/2609.26774",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 7,
+          "actionability": 7,
+          "source_quality": 8,
+          "confidence": 85,
+          "tldr": "StableVQ ნერგავს დინამიურ STE-სა და Region VQ Loss-ს, რომლებიც აგვარებენ ტოკენიზატორების ტრენინგის არასტაბილურობას.",
+          "what_happened": "Kuaishou Technology-ის გუნდმა წარადგინა StableVQ, რომელიც წყვეტს encoder-decoder და codebook ტრენინგის კონფლიქტებს.",
+          "what_changed": "მყიფე კოოპერაციული ტრენინგიდან გადავდივართ მოდულის დამოუკიდებელ ოპტიმიზაციაზე.",
+          "why_it_matters": "გაძლევთ მკაფიო გაიდლაინებს დისკრეტული ტოკენიზატორების სტაბილური წვრთნისთვის.",
+          "key_takeaways": [
+            "Dynamic STE corrects encoder learning instability.",
+            "Region VQ Loss guarantees encoder output tracking.",
+            "Decoupled Scheduler assigns independent learning rates."
+          ],
+          "technical_architecture": [
+            "Shared-projection codebook foundation.",
+            "Independent encoder-decoder and codebook optimization loops."
+          ],
+          "technical_details": [
+            "Dynamic Straight-Through Estimator configuration.",
+            "Region-based codebook loss function."
+          ],
+          "potential_impact": "ამცირებს ტოკენიზატორების კოლაფსის რისკს და აუმჯობესებს გენერაციული მოდელების ხარისხს.",
+          "action_type": "LEARN",
+          "action": "გაეცანი StableVQ-ის პაპერში აღწერილ Dynamic STE-ს და Region VQ Loss-ის מתემატიკურ ფორმულირებას.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "StableVQ addresses training instability caused by encoder-decoder and codebook entanglement.",
+            "Introduces Dynamic STE, Region VQ Loss, and Decoupled Scheduler.",
+            "Builds on top of shared-projection codebooks."
+          ],
+          "interpretation": "ტოკენიზაციის სტაბილიზაცია ხსნის მთავარ bottleneck-ს მრავალმოდალური და გენერაციული არქიტექტურების სწავლებაში.",
+          "uncertainty": "მეთოდი ძირითადად ოპტიმიზებულია ვიზუალური ტოკენიზატორებისთვის და ტექსტური ტოკენიზაციისთვის საჭიროებს დამატებით ტესტებს.",
+          "counter_argument": "ტრადიციული VQ მეთოდები საკმარისია მარტივი პროექტებისთვის და ახალი ჰარნესების დანერგვა ზრდის სირთულეს.",
+          "strategic_assessment": "გაიაზრე VQ კოდბუკების დეტაჩმენდის პრინციპები, თუ აპირებ საკუთარი multimodal მოდელების ტრენინგს ან fine-tuning-ს.",
+          "time_horizon": "mid-term",
+          "what_could_change": "დისკრეტული ვიზუალური და მულტიმოდალური ტოკენიზატორების ტრენინგი გახდება უფრო პროგნოზირებადი და ნაკლებად მგრძნობიარე ჰიპერპარამეტრების მიმართ.",
+          "risks": [
+            "ოპტიმიზაციის სირთულე მცირე ზომის ჰარვარდული რესურსებისთვის",
+            "ტრენინგის დროის ზრდა"
+          ],
+          "non_obvious_opportunity": "Region VQ Loss მიდგომა შესაძლებელია ადაპტირებული იყოს აგენტური მეხსიერების კლასტერების სემანტიკური ინდექსაციისთვის.",
+          "fit_assessment": "კარგია გენერაციული მოდელებისა და ტოკენიზაციის მექანიზმების ფუნდამენტური გაგებისთვის."
+        }
+      ],
+      "trends": [
+        "Production inference serving benchەیing and validation",
+        "Structured dual-track and entity-aware agent memory systems",
+        "Stable optimization of VQ tokenizers for multimodal workflows"
+      ]
     }
   ],
   "learning_queue": [
-    "ასინქრონული მრავალ-აგენტიანი არქიტექტურები (Agensh pattern, AsyncIO, Shared Workspace state management)",
-    "MCP Protocol-ის უსაფრთხოება, სემანტიკური ვალიდაცია და Tool Injection-ისგან დაცვის მექანიზმები",
-    "Context Window compaction ალგორითმები და Token-efficient agent harness engineering"
+    "SWE-Serve ბენჩმარკის ტესტირების სტრუქტურა და SGLang ინფრასტრუქტურა",
+    "SpeakerMem-R1 მეხსიერების ორმაგი ტრეკის ჰარნესის დიზაინი"
   ],
-  "last_run": "2026-09-23T18:43:19.797725+00:00",
+  "last_run": "2026-09-23T19:25:38.244212+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -7842,7 +8161,10 @@
     "arxiv:2609.26781",
     "arxiv:2609.26760",
     "arxiv:2609.26758",
-    "arxiv:2609.25804"
+    "arxiv:2609.25804",
+    "arxiv:2609.26777",
+    "arxiv:2609.26780",
+    "arxiv:2609.26774"
   ],
   "last_report_files": {
     "markdown": "data/reports/2026-09-23/report.md",
