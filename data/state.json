@@ -137,7 +137,10 @@
     "https://huggingface.co/papers/2609.26774",
     "https://aws.amazon.com/blogs/machine-learning/a-shared-agentic-platform-for-wood-mackenzie-on-amazon-bedrock-agentcore",
     "https://aws.amazon.com/blogs/machine-learning/how-reactiv-automates-mobile-commerce-80-faster-with-amazon-bedrock-agentcore",
-    "https://arxiv.org/abs/2609.26751"
+    "https://arxiv.org/abs/2609.26751",
+    "https://arxiv.org/abs/2609.28470",
+    "https://aws.amazon.com/blogs/machine-learning/use-open-weight-models-as-your-ai-coding-agent-with-amazon-bedrock",
+    "https://arxiv.org/abs/2609.28471"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -242,99 +245,12 @@
     "evt-speakermem-r1-multidialogue",
     "evt-stablevq-tokenizers",
     "evt-aws-bedrock-agentcore-shared-platform",
-    "evt-equivsva-rtl-assertion-dataset"
+    "evt-equivsva-rtl-assertion-dataset",
+    "evt-studentbench-ai-tutoring",
+    "evt-aws-open-code-bedrock",
+    "arxiv-2609-28471-authorship-verification"
   ],
   "events": [
-    {
-      "event_id": "evt-openviking-context-db",
-      "title": "OpenViking: ღია კოდის კონტექსტური მონაცემთა ბაზა AI აგენტებისთვის `viking://` პროტოკოლით",
-      "category": "Open Source / Agent Memory & Context Databases",
-      "primary_url": "https://github.com/volcengine/OpenViking",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 9,
-      "source_quality": 8,
-      "confidence": 90,
-      "what_happened": "Volcengine-მა გამოაქვეყნა OpenViking, ღია კოდის კონტექსტური მონაცემთა ბაზა, რომელიც აგენტის მეხსიერებას, რესურსებსა და Skill-ებს აორგანიზებს ვირტუალურ ფაილურ სისტემად `viking://` პროტოკოლით.",
-      "what_changed": "შავი ყუთის ტიპის (black-box) ვექტორული ბაზების ნაცვლად, სადაც ძიების პროცესი გაუგებარია, აგენტი კონტექსტს სკანირებს `ls`, `tree` და `find` ბრძანებების ანალოგიურად და იყენებს 3-დონიან იერარქიას (L0 Abstract, L1 Overview, L2 Details).",
-      "why_it_matters": "კონტექსტის ფენებად დაყოფა (L0/L1/L2) ტოკენების დანახარჯს 34%-იდან 91%-მდე ამცირებს LoCoMo ბენჩმარკზე და იძლევა სრულ დებაგირებადობას, თუ კონკრეტულად რომელ ფოლდერში იპოვა აგენტმა ინფორმაცია.",
-      "technical_details": [
-        "L0 (Abstract ~100 ტოკენი), L1 (Overview ~2k ტოკენი), L2 (Details - სრული ფაილი)",
-        "LoCoMo ბენჩმარკზე სიზუსტის ზრდა 80-83%-მდე (ნაცვლად 24-57%-ისა baseline-ზე)",
-        "ინტეგრაცია Claude Code, Codex, Cursor, LangChain-თან და ლოკალურ Ollama-სთან"
-      ],
-      "action_type": "TRY",
-      "action": "დააინსტალირეთ OpenViking CLI (`pip install openviking`) და გამოსცადეთ L0/L1/L2 ფაილური სისტემის სტრუქტურა თქვენი აგენტის მეხსიერების მართვისთვის.",
-      "evidence": [
-        {
-          "url": "https://github.com/volcengine/OpenViking",
-          "title": "volcengine/OpenViking - The Context Database for AI Agents",
-          "domain": "github.com",
-          "evidence": "OpenViking is an open-source context database for AI agents. It stores memories, resources, and skills as one virtual filesystem under the viking:// protocol."
-        }
-      ]
-    },
-    {
-      "event_id": "evt-kvmem-gpu-virtualization",
-      "title": "KVMem: მილიონიანი კონტექსტის ვირტუალიზაცია AI აგენტებისთვის ჩვეულებრივ GPU-ზე",
-      "category": "Agent Infrastructure / Memory Optimization",
-      "primary_url": "https://arxiv.org/html/2609.04852v1",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 8,
-      "source_quality": 8,
-      "confidence": 90,
-      "what_happened": "მკვლევრებმა წარადგინეს KVMem — KV-კონტექსტის ვირტუალიზაციის სისტემა, რომელიც საშუალებას აძლევს AI აგენტებს იმუშაონ 1 მილიონამდე ტოკენის მქონე სამუშაო სივრცეებში ჩვეულებრივ მომხმარებლის GPU-ზე (მაგ. RTX 5090 Laptop GPU).",
-      "what_changed": "მანამდე ხანგრძლივი ისტორიის overflow წყდებოდა ტექსტის კომპაქტაციით (compaction/summarization) သို့ ტექსტური RAG-ით, რაც კარგავდა დეტალებს და მოითხოვდა ხელახალ prefill გამოთვლებს. KVMem ინახავს დაგენერირებულ KV ბლოკებს RAM/NVMe-ზე და იძახებს მათ prefill-ის გარეშე.",
-      "why_it_matters": "ეს ცვლის აგენტების მეხსიერების არქიტექტურას: ტექსტური შეჯამების ნაცვლად გამოიყენება ვირტუალური მეხსიერების ანალოგი, სადაც KV Cache ინახება დისკზე/ოპერატიულში და იტვირთება ყოველ Agent Step-ზე მხოლოდ საჭირო ყურადღების (attention-space) ბლოკები.",
-      "technical_details": [
-        "Qwen3.6/3.8-27B მოდელზე 1M ტოკენის სამუშაო სივრცის მართვა 24GB VRAM GPU-ზე",
-        "DeepSWE ბენჩმარკზე წარმატების მაჩვენებლის ზრდა 43.8%-იდან 48.4%-მდე compaction-თან შედარებით",
-        "წარმადობა: ~50 ტოკენი/წამში ლოკალური აგენტის შესრულებისას"
-      ],
-      "action_type": "LEARN",
-      "action": "შეისწავლეთ KVMem-ის არქიტექტურა GitHub რეპოზიტორიაში (kvmem-qw3) და გაიანალიზეთ, თუ როგორ ანაცვლებს KV-cache ვირტუალიზაცია ტრადიციულ ტექსტურ კონტექსტის კომპაქტაციას (compaction).",
-      "evidence": [
-        {
-          "url": "https://arxiv.org/html/2609.04852v1",
-          "title": "Virtualizing Million-Token Agent Workspaces on a Consumer GPU",
-          "domain": "arxiv.org",
-          "evidence": "KVMem preserves overflowed workspace history as paged KV state across GPU memory, host memory, and NVMe... virtualizing agent workspaces of up to 1M tokens."
-        }
-      ]
-    },
-    {
-      "event_id": "evt-agent-native-framework",
-      "title": "Agent-Native: TypeScript ფრეიმვორკი ავტონომიური აგენტებისა და მომხმარებლის ინტერფეისის (UI) ინტეგრაციისთვის",
-      "category": "Developer Tools / Agent Frameworks",
-      "primary_url": "https://github.com/BuilderIO/agent-native",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 8,
-      "source_quality": 8,
-      "confidence": 90,
-      "what_happened": "BuilderIO-მ წარადგინა Agent-Native — ღია კოდის TypeScript ფრეიმვორკი, რომელიც აერთიანებს აგენტის ავტონომიურ ინსტრუმენტებს (tools) და React UI კომპონენტებს ერთიანი Action ფენის გარშემო.",
-      "what_changed": "ტრადიციულად აგენტები მუშაობდნენ მხოლოდ ჩატის ტექსტურ ინტერფეისში ან სჭირდებოდათ ცალკე API-ის და UI-ის დუბლირება. Agent-Native-ში ერთხელ დაწერილი `defineAction` გამოიყენება როგორც აგენტის tool-ად, ისე UI-ს მიერ ხმობად ფუნქციად, HTTP ენდპოინტად და MCP სერვერად.",
-      "why_it_matters": "აგენტური აპლიკაციების (Agentic Apps) მშენებლობისას კოდის დუბლირება მკვეთრად მცირდება. აგენტი იღებს UI-ს მიმდინარე მდგომარეობას (active view, selected record) ღილაკებზე კლიკის გარეშე, პირდაპირ Action ფენიდან.",
-      "technical_details": [
-        "Shared Actions: ლოგიკის განსაზღვრა Zod სქემით (`defineAction`), რომელიც ხელმისაწვდომია Tool-ის, HTTP-ის, MCP-ისა და React-ის (`useActionQuery`) მიერ",
-        "PostgreSQL / PGlite ბაზის მხარდაჭერა ლოკალური და პროდაქშენ გარემოსთვის",
-        "ჩაშენებული მრავალაგენტიანი (Agent teams), მეხსიერების და ავტომატიზაციის მექანიზმები"
-      ],
-      "action_type": "BUILD",
-      "action": "შექმენით სატესტო აპლიკაცია Agent-Native-ის გამოყენებით, სადაც ერთჯერადად განსაზღვრული Action გამოიყენება როგორც აგენტის ინსტრუმენტი (tool), ისე UI კომპონენტი.",
-      "evidence": [
-        {
-          "url": "https://github.com/BuilderIO/agent-native",
-          "title": "BuilderIO/agent-native: A framework for building agentic apps",
-          "domain": "github.com",
-          "evidence": "Define each capability once as an action: the agent uses it as a tool, and the UI calls it from code."
-        }
-      ]
-    },
     {
       "event_id": "evt-awesome-agent-governance",
       "title": "Awesome AI Agent Governance: პროდაქშენში AI აგენტების უსაფრთხოებისა და მართვის რესურსების კატალოგი",
@@ -4073,6 +3989,174 @@
       ],
       "non_obvious_opportunity": "მსგავსი ფორმალური შემოწმების მიდგომები შეიძლება გადავიტანოთ Python აგენტების ინსტრუქციების ვალიდაციაზე.",
       "fit_assessment": "საინტერესოა კოდის გენერაციის ხარისხის შესაფასებლად, მაგრამ ნაკლებად პრიორიტეტულია ამ ეტაპზე."
+    },
+    {
+      "event_id": "evt-studentbench-ai-tutoring",
+      "title": "StudentBench: AI and human tutoring yield equivalent GRE learning gains",
+      "category": "AI Research & Evaluation",
+      "primary_url": "https://arxiv.org/abs/2609.28470",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 95,
+      "tldr": "StudentBench კვლევამ აჩვენა, რომ AI ტუტორინგი აჩვენებს ადამიანის ექსპერტის ტოლფას შედეგებს 918-ჯერ დაბალი ფასით.",
+      "what_happened": "მკვლევარებმა გამოაქვეყნეს StudentBench პლატფორმა და მონაცემები 175,000+ სტუდენტურ მესიჯზე.",
+      "what_changed": "ზოგადი ჩატბოტებიდან გადავედით გაზომვად, პედაგოგიურად დადასტურებულ AI სწავლების აგენტებზე.",
+      "why_it_matters": "გაძლევს ტექნიკურ არქიტექტურას, რომ ააგო მაღალი ხარისხის საგანმანათლებლო აგენტი საკუთარი პორტფოლიოსთვის.",
+      "key_takeaways": [
+        "AI ტუტორინგი სტატისტიკურად უტოლდება ექსპერტი ადამიანის სწავლებას.",
+        "ხარჯი შეადგენს მხოლოდ $0.0052-ს პროცენტული ზრდის ერთეულზე.",
+        "სწრაფი პასუხები ზრდის სტუდენტის ჩართულობას და სწორი პასუხების რაოდენობას."
+      ],
+      "technical_architecture": [
+        "მრავალსვლიანი agent loop სტრუქტურირებული პედაგოგიური რუბრიკით",
+        "セantic retrieval მეხსიერება წარსული შეცდომების აღსადგენად"
+      ],
+      "technical_details": [
+        "გამოიყენა 175,000+ სტრუქტურირებული სტუდენტურ-აგენტური დიალოგი",
+        "API ხარჯი ოპტიმიზებულია ტოკენების ქეშირებით"
+      ],
+      "potential_impact": "მცირე სტარტაპებს შეუძლიათ შექმნან ძლიერი edtech პროდუქტები მინიმალური კაპიტალით.",
+      "action_type": "BUILD",
+      "action": "ააგე მინიმალური AI ტუტორი Python-ში, რომელიც ამოწმებს ამოცანებს და აძლევს ნაბიჯ-ნაბიჯ მინიშნებებს.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Real Business Opportunity",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "StudentBench tested 2,383 participants across Quantitative and Verbal GRE questions.",
+        "AI tutoring achieved learning gains statistically equivalent to expert human tutoring (p = .015).",
+        "One AI tutor achieved human-equivalent gains at 918x lower cost ($0.0052 vs $4.81)."
+      ],
+      "interpretation": "LLM აგენტები უკვე მზად არიან პერსონალიზებული, მრავალსვლიანი ტუტორინგისთვის, რაც ქმნის მცირე ბიუჯეტით ასაშენებელი edtech აგენტების რეალურ ბაზარს.",
+      "uncertainty": "კვლევა შემოფარგლულია GRE კითხვებით და არ ზომავს გრძელვადიან ჩართულობას.",
+      "counter_argument": "ადამიანი ტუტორი უკეთ უმკლავდება მოტივაციის ვარდნას და ემოციურ ფაქტორებს, ვიდრე სუფთა ტექსტური აგენტი.",
+      "strategic_assessment": "ააგე ნიშური AI ტუტორი პრობლემებზე დაფუძნებული არქიტექტურით და დაიწყე პირველი მომხმარებლების მოზიდვა უფასო არხებით.",
+      "time_horizon": "mid-term",
+      "what_could_change": "განათლების სექტორი გადავა აგენტურ ინდივიდუალურ სწავლებაზე, რაც შეამცირებს ტრადიციული რეპეტიტორების სერვისების ფასს.",
+      "risks": [
+        "მომხმარებლის დაბალი შენარჩუნება (retention)",
+        "პრომპტების ინექცია და არასწორი ახსნა",
+        "ძვირადღირებული API გამოძახებები მასშტაბირებისას"
+      ],
+      "non_obvious_opportunity": "შეგიძლია შექმნა ავტომატური ტესტების გენერატორი მასწავლებლებისთვის, რომლებიც ეძებენ მზა ინტერაქტიულ სავარჯიშოებს.",
+      "fit_assessment": "იდეალურია 16 წლის დეველოპერისთვის, რადგან მოითხოვს მხოლოდ Python-ს, LLM API-ებს და სტრუქტურირებულ პრომპტ ინჟინერიას."
+    },
+    {
+      "event_id": "evt-aws-open-code-bedrock",
+      "title": "Use open weight models as your AI coding agent with Amazon Bedrock",
+      "category": "AI Coding Tools & Agent Architecture",
+      "primary_url": "https://aws.amazon.com/blogs/machine-learning/use-open-weight-models-as-your-ai-coding-agent-with-amazon-bedrock",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "AWS აჩვენებს, თუ როგორ შეიძლება OpenCode ტერმინალური აგენტის დაკავშირება open-weight მოდელებთან Bedrock-ში ხარჯების შესამცირებლად.",
+      "what_happened": "AWS-მა გამოაქვეყნა სახელმძღვანელო OpenCode-ისა და open weight მოდელების ინტეგრაციის შესახებ.",
+      "what_changed": "კოდირების აგენტები გახდა ხელმისაწვდომი ლოკალური და ხარჯთეფექტური ინფრასტრუქტურით.",
+      "why_it_matters": "გაძლევს შაბლონს, თუ როგორ ააგო საკუთარი კოდირების აგენტი უფასო ან იაფი ინფრასტრუქტურით.",
+      "key_takeaways": [
+        "OpenCode კითხულობს ფაილებს და უშვებს shell ბრძანებებს ტერმინალიდან.",
+        "LSP დიაგნოსტიკა აგენტს პროექტის სტრუქტურის გაგებაში ეხმარება.",
+        "Open-weight მოდელები ამცირებენ მილიონობით ტოკენის დამუშავების ხარჯს."
+      ],
+      "technical_architecture": [
+        "Terminal-native AI coding agent Go ბაზაზე",
+        "Language Server Protocol (LSP) კოდის ანალიზისთვის"
+      ],
+      "technical_details": [
+        "მუშაობს 75+ LLM პროვაიდერთან Bedrock-ის გავლით",
+        "რედაქტირებს ფაილებს და უშვებს ტერმინალის ბრძანებებს ავტომატურად"
+      ],
+      "potential_impact": "დეველოპერებს შეუძლიათ შექმნან სრულად კონტროლირებადი, იაფი AI კოდირების გარემო.",
+      "action_type": "TRY",
+      "action": "დააინსტალირე და გამოცადე OpenCode ან მსგავსი ღია კოდის აგენტის ჰარნესი შენს ლეპტოპზე.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value",
+        "Short-term Opportunity"
+      ],
+      "verified_facts": [
+        "OpenCode არის Go-ში აგებული ტერმინალის ნოტივ AI coding agent.",
+        "ის უკავშირდება 75-ზე მეტ LLM პროვაიდერს, მათ შორის Amazon Bedrock-ს.",
+        "OpenCode კითხულობს და ასწორებს ფაილებს, უშვებს shell ბრძანებებს და იყენებს LSP დიაგნოსტიკას."
+      ],
+      "interpretation": "Open-weight მოდელები ტერმინალურ აგენტებში ხსნის ძვირადღირებული API გამოძახებების საჭიროებას და იძლევა ლოკალური კონტროლის საშუალებას.",
+      "uncertainty": "Go-ზე აგებული OpenCode მოითხოვს დამატებით კონფიგურაციას პითონის დეველოპერებისთვის.",
+      "counter_argument": "პროპრიეტარული მოდელები (როგორიცაა Claude Code) კვლავ უკეთ უმკლავდებიან კომპლექსურ არქიტექტურულ ცვლილებებს.",
+      "strategic_assessment": "გამოიყენე open-weight მოდელები coding agent ჰარნესებში, რათა შეიმცირო ტოკენების ხარჯები და ისწავლო აგენტური ლუპების მართვა.",
+      "time_horizon": "mid-term",
+      "what_could_change": "დეველოპერული ხელსაწყოების ბაზარი გადაინაცვლებს ლოკალურ და ღია მოდელებზე, რაც შეამცირებს კოდირების ასისტენტების ფასს.",
+      "risks": [
+        "მოდელის ჰალუცინაცია რთულ ფაილურ სტრუქტურებში",
+        "LSP სერვერების კონფიგურაციის სირთულეები",
+        "უსაფრთხოების რისკები shell ბრძანებების ავტომატური შესრულებისას"
+      ],
+      "non_obvious_opportunity": "შეგიძლია შექმნა პითონზე დაფუძნებული მსუბუქი აგენტის ჰარნესი, რომელიც იყენებს უფასო open-weight API-ებს.",
+      "fit_assessment": "კარგად ერგება შენს პროფილს, რადგან გაძლევს საშუალებას იმუშაო coding agents არქიტექტურაზე ძვირადღირებული გამოწერების გარეშე."
+    },
+    {
+      "event_id": "arxiv-2609-28471-authorship-verification",
+      "title": "Contrastive Learning for Authorship Verification",
+      "category": "AI Research & NLP",
+      "primary_url": "https://arxiv.org/abs/2609.28471",
+      "supporting_urls": [],
+      "importance": 7,
+      "relevance": 7,
+      "actionability": 7,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "კვლევა აჩვენებს, რომ ModernBERT Bi-Encoder კონტრასტული სწავლება აღწევს 98.4% სიზუსტეს ავტორობის გადამოწმებაში.",
+      "what_happened": "გამოქვეყნდა კვლევა, სადაც Contrastive Learning უპირისპირდება კლასიფიკაციას ავტორობის ვერიფიკაციაში.",
+      "what_changed": "გაუმჯობესდა ტექსტური სტილის ანალიზის სიზუსტე ModernBERT მოდელების გამოყენებით.",
+      "why_it_matters": "გაძლევს ძლიერ ტექნიკას ტექსტების სემანტიკური შედარებისა და კლასიფიკაციისთვის.",
+      "key_takeaways": [
+        "Contrastive learning სჯობნის კლასიფიკაციას authorship verification-ში.",
+        "ModernBERT Bi-Encoder აფიქსირებს 98.4% სიზუსტეს PAN21 ტესტზე.",
+        "მნიშვნელოვანი ფაქტორებია loss function, batch size და data augmentation."
+      ],
+      "technical_architecture": [
+        "ModernBERT Bi-Encoder არქიტექტურა",
+        "Contrastive loss ოპტიმიზაციის ლუპი"
+      ],
+      "technical_details": [
+        "მიღწეულია 98.4% სიზუსტე PAN21 ბენჩმარკზე",
+        "გამოიყენება random text span data augmentation"
+      ],
+      "potential_impact": "უფრო ზუსტი ანალიტიკური ინსტრუმენტები დოკუმენტებისა და კოდის ავტორობის დასადგენად.",
+      "action_type": "LEARN",
+      "action": "გადახედე ModernBERT დოკუმენტაციას და შექმენი მარტივი Bi-Encoder სკრიპტი Hugging Face Transformers-ით.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "Contrastive learning უსწრებს კლასიფიკაციაზე დაფუძნებულ მიდგომას authorship verification-ში.",
+        "ModernBERT Bi-Encoder მოდელმა მიაღწია 98.4% სიზუსტეს PAN21 ბენჩმარკზე."
+      ],
+      "interpretation": "კონტრასტული სწავლება და ModernBERT არქიტექტურა გვთავაზობს ბევრად ზუსტ მეთოდს ტექსტის ავტორობის დასადგენად, ვიდრე ძველი კლასიფიკატორები.",
+      "uncertainty": "მეთოდი მოითხოვს ხარისხიან მონაცემთა აგმენტაციას (random text span augmentation).",
+      "counter_argument": "LLM ეპოქაში ტექსტის სტილის იდენტიფიკაცია შეიძლება მარტივად შეიცვალოს მოდელის პრომპტით.",
+      "strategic_assessment": "ისწავლე ModernBERT და bi-encoder არქიტექტურები, თუ გსურს ტექსტის ანალიზისა და უსაფრთხოების აგენტების აგება.",
+      "time_horizon": "mid-term",
+      "what_could_change": "ტექსტის ავტორობის შემოწმება და პლაგიატის აღმოჩენა გახდება უფრო ზუსტი და მცირე გამოთვლითი რესურსების მომთხოვნი.",
+      "risks": [
+        "მოდელის გადაჭარბებული მორგება (overfitting) კონკრეტულ სტილზე",
+        "მონაცემთა აგმენტაციის არასწორი შერჩევა"
+      ],
+      "non_obvious_opportunity": "შეგიძლია გამოიყენო ეს მიდგომა აგენტების გენერირებული კოდის ან ტექსტის სტილის შესამოწმებლად და უსაფრთხოების გასაძლიერებლად.",
+      "fit_assessment": "გამოდგება შენი SQL და embedding უნარების განსავითარებლად, როდესაც გადახვალ სემანტიკურ ძიებაზე."
     }
   ],
   "topics": {
@@ -4164,243 +4248,12 @@
     "AI Research & Reliability": 1,
     "AI Evaluation & Reliability": 1,
     "AI Coding Tools და Agent Evaluation": 1,
-    "AI Research / RAG & აგენტის მეხსიერება": 1
+    "AI Research / RAG & აგენტის მეხსიერება": 1,
+    "AI Research & Evaluation": 1,
+    "AI Coding Tools & Agent Architecture": 1,
+    "AI Research & NLP": 1
   },
   "reports": [
-    {
-      "date": "2026-09-14",
-      "summary": "დღევანდელი ანგარიში ფოკუსირებულია AI აგენტების არქიტექტურის შიდა მექანიზმებზე, უსაფრთხოებასა და ეკონომიკურ ეფექტიანობაზე. Claude Code-ის წყაროს კოდის სიღრმისეულმა ანალიზმა აჩვენა, რომ პროდაქშენ აგენტის 98.4% დეტერმინისტულ ინფრასტრუქტურას უკავია და მხოლოდ 1.6%-ია LLM-ის მსჯელობის ლოგიკა. უსაფრთხოების კუთხით, HookPry-მ გამოავლინა Lifecycle Hooks-ის კრიტიკული ხვრელები აგენტების ჰარნესებში. AWS-ის ბენჩმარკმა დაადასტურა, რომ აგენტურ რიგებში ტოკენების ერთეულის ფასზე მნიშვნელოვანი turn-ების რაოდენობა და საბოლოო შედეგის ხარჯია (Context Resending-ის კვადრატული ზრდის გამო). ასევე წარმოდგენილია Google-ის A2A პროტოკოლის ეკოსისტემის განახლება, Tencent-ის T1 RL ტერმინალის აგენტი 300+ ნაბიჯიანი ციკლებით, ECDSA.Fail ავტო-კვლევის პლატფორმა და 485+ უფასო LLM API-ის კატალოგი, რაც იდეალურ პირობებს ქმნის 16+ წლის დეველოპერებისთვის უფასო, მაღალეფექტური აგენტური სისტემების ასაგებად.",
-      "events": [
-        {
-          "event_id": "evt-claude-code-architecture-analysis",
-          "title": "Claude Code-ის არქიტექტურული ანალიზი: 98.4% დეტერმინისტული ინფრასტრუქტურა და მხოლოდ 1.6% AI ლოგიკა",
-          "category": "Agent Architecture / Codebase Analysis",
-          "primary_url": "https://github.com/VILA-Lab/Dive-into-Claude-Code",
-          "supporting_urls": [],
-          "importance": 10,
-          "relevance": 10,
-          "actionability": 9,
-          "source_quality": 8,
-          "confidence": 95,
-          "what_happened": "VILA-Lab-მა გამოაქვეყნა Claude Code-ის (v2.1.88, ~1,900 TypeScript ფაილი, ~512K სტრიქონი) წყაროს კოდის დონის (source-level) სრული არქიტექტურული ანალიზი.",
-          "what_changed": "მანამდე დეველოპერების უმეტესობა მიიჩნევდა, რომ AI კოდინგის აგენტის მთავარი ბირთვი რთული Prompt Engineering და LLM-ის მსჯელობა იყო. ანალიზმა აჩვენა, რომ კოდის ბაზის 98.4% არის დეტერმინისტული ინფრასტრუქტურა (Permission Gates, Context Management, Tool Routing, Session Persistence, Compacting Pipeline), ხოლო AI გადაწყვეტილების მიღების ლოგიკა მხოლოდ 1.6%-ს შეადგენს.",
-          "why_it_matters": "ეს ანალიზი ფუნდამენტურად ცვლის აგენტების დაპროექტების მიდგომას. სანდო AI აგენტის ასაშენებლად მთავარი ყურადღება უნდა დაეთმოს არა უბრალოდ While-loop prompt-ს, არამედ მის გარშემო არსებულ დეტერმინისტულ ჰარნესს (Harness) — 5-საფეხურიან კონტექსტის კომპაქტაციას, უსაფრთხოების ფენებს და შეცდომებიდან ავტომატურ აღდგენას (Graceful Recovery).",
-          "technical_details": [
-            "98.4% დეტერმინისტული კოდი (ნებართვები, კონტექსტი, ინსტრუმენტების როუტირება) და 1.6% AI მსჯელობის ლოგიკა",
-            "კონტექსტის მართვის 5-საფეხურიანი მოდელი: Budget Reduction -> Snip -> Microcompact -> Context Collapse -> Auto-Compact",
-            "უსაფრთხოების Deny-First პოლიტიკა: Strict Deny > Ask > Allow პრინციპი",
-            "ორმაგი შესრულების გზა: StreamingToolExecutor (დაბალი Latency-სთვის) და Fallback runTools"
-          ],
-          "action_type": "LEARN",
-          "action": "შეისწავლეთ VILA-Lab-ის მიერ გამოქვეყნებული Claude Code-ის 5-საფეხურიანი კონტექსტის კომპაქტაციის pipeline და დანერგეთ Microcompact/Snip ლოგიკა საკუთარ Python/TypeScript აგენტურ ციკლში.",
-          "evidence": [
-            {
-              "url": "https://github.com/VILA-Lab/Dive-into-Claude-Code",
-              "title": "GitHub - VILA-Lab/Dive-into-Claude-Code: A Systematic Analysis ...",
-              "domain": "github.com",
-              "evidence": "TL;DR -- Only 1.6% of Claude Code's codebase is AI decision logic. The other 98.4% is deterministic infrastructure -- permission gates, context management, tool routing, and recovery logic."
-            }
-          ]
-        },
-        {
-          "event_id": "evt-aws-bedrock-model-cost-benchmarking",
-          "title": "AWS-ის ბენჩმარკი: აგენტურ სამუშაოებში turn-ების რაოდენობა და კონტექსტის ზრდა განსაზღვრავს რეალურ ხარჯს",
-          "category": "LLM Benchmarking & Cost Optimization",
-          "primary_url": "https://aws.amazon.com/blogs/machine-learning/beyond-the-price-per-token-choosing-the-right-openai-model-on-amazon-bedrock-for-your-workload",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 10,
-          "actionability": 9,
-          "source_quality": 10,
-          "confidence": 95,
-          "what_happened": "AWS-მა გამოაქვეყნა ღია კოდის ბენჩმარკინგის სისტემა (openai-on-aws/benchmarks-openai), სადაც შეაფასა GPT-5.6 Luna/Terra/Sol და GPT-5.4 mini/nano მოდელების რეალური ხარჯი AIME, GPQA და DeepSearchQA აგენტურ რიგებში.",
-          "what_changed": "ტრადიციული შედარება მხოლოდ $1M ტოკენის ფასით მცდარ დასკვნებამდე მიდის აგენტურ არქიტექტურებში. ვინაიდან ყოველ turn-ზე იგზავნება მთლიანი ისტორია, კონტექსტის ზრდა კვადრატულია. უფრო იაფფასიანმა მოდელმა (Mini) ბევრი turn-ის (7.6 turn/question) გამო უფრო მეტი დახარჯა, ვიდრე უფრო ძვირიანმა, მაგრამ ეფექტურმა მოდელმა (Terra).",
-          "why_it_matters": "აგენტების ინჟინრებმა მოდელი უნდა შეარჩიონ არა \"ფასი ტოკენზე\" კრიტერიუმით, არამედ \"ფასი წარმატებულ შედეგზე\" (Cost per passing outcome). უფრო ჭკვიანი მოდელი ნაკლები turn-ით ხშირად უფრო იაფი ჯდება პროდაქშენში.",
-          "technical_details": [
-            "GPT-5.4 Mini იღებდა საშუალოდ 7.6 turn-ს (re-search loops) და ჯდებოდა $0.40 თითო სწორ პასუხზე",
-            "GPT-5.6 Terra მაღალი ტოკენის ფასის მიუხედავად ნაკლები turn-ით $0.31 დაჯდა თითო სწორ პასუხზე (F1 0.50 vs 0.39)",
-            "GPT-5.6 Luna-მ Bedrock-ის ფასდაკლების შემდეგ აჩვენა ყველაზე დაბალი ხარჯი AIME-ზე: $0.0021 vs Mini-ს $0.0139 per correct answer",
-            "კლიენტის მიერ მართული ისტორია (store: false) იწვევს სესიის ტოკენების კვადრატულ ზრდას turn-ების მატებასთან ერთად"
-          ],
-          "action_type": "APPLY",
-          "action": "გამოიყენეთ AWS-ის ღია ბენჩმარკინგის harness-ის პრინციპი თქვენს აგენტში: გაზომეთ Cost per Resolved Task და შეზღუდეთ Re-search/Tool Execution loop-ების მაქსიმალური რაოდენობა.",
-          "evidence": [
-            {
-              "url": "https://aws.amazon.com/blogs/machine-learning/beyond-the-price-per-token-choosing-the-right-openai-model-on-amazon-bedrock-for-your-workload",
-              "title": "Beyond the price per token: Choosing the right OpenAI model ... - AWS",
-              "domain": "aws.amazon.com",
-              "evidence": "Cumulative billed input can therefore grow approximately quadratically with turn count... Mini took the most turns per question of any model (7.6, mostly re-search loops)... In this sample, terra's higher token price was offset by fewer turns and higher quality: it cost $0.31 per passing answer versus mini's $0.40"
-            }
-          ]
-        },
-        {
-          "event_id": "evt-hookpry-agent-security",
-          "title": "HookPry: AI აგენტების Lifecycle Hooks-ის მომწოდებელთა ჯაჭვის (Supply Chain) ახალი უსაფრთხოების საფრთხე",
-          "category": "Agent Security / Threat Intelligence",
-          "primary_url": "https://arxiv.org/html/2609.03884v2",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 10,
-          "actionability": 9,
-          "source_quality": 8,
-          "confidence": 90,
-          "what_happened": "მკვლევრებმა წარადგინეს HookPry — ავტომატიზებული შეტევის ჩარჩო, რომელიც იყენებს AI აგენტების ჰარნესების (Claude Code, OpenClaw, Codex CLI) Lifecycle Hooks-ის განახლების გზებს სისტემური ბრძანებების ფარულად შესასრულებლად.",
-          "what_changed": "მანამდე აგენტების უსაფრთხოება ძირითადად Prompt Injection-სა და Tool Output-ის გაფილტვრაზე იყო კონცენტრირებული. HookPry-მ აჩვენა, რომ პლაგინის/ინსტრუმენტის განახლებისას ჩუმად დამატებული Lifecycle Hook სრულდება უშუალოდ ოპერაციულ სისტემაში (Host privileges) LLM-ის მსჯელობის ციკლისა და Prompt Guard-ების გვერდის ავლით.",
-          "why_it_matters": "რამდენადაც აგენტური ეკოსისტემა გადადის MCP სერვერებსა და მესამე მხარის პლაგინებზე, Lifecycle Hooks ხდება კრიტიკული შეტევის ვექტორი. აგენტების დეველოპერებმა უნდა დანერგონ დეტერმინისტული ვალიდაცია და სენდბოქსინგი Hook-ის კონფიგურაციებზე.",
-          "technical_details": [
-            "HookPry-მ წარმატებით დააზიანა 7-ვე შეფასებული აგენტის ჰარნესი 92.5%-მდე წარმატების მაჩვენებლით",
-            "ტექნიკა იყენებს Temporal Decoupling-ს: საწყისი კეთილსაიმედო ინსპექტირების შემდეგ Hook-ის ფარული განახლება",
-            "ბრძანებების გაშვება ხდება Process Subprocess-ის სახით LLM-ის Decision Path-ის მიღმა",
-            "Microsoft Defender-მა აჩვენა 0% Recall ამ ტიპის Hook-based შეტევებზე"
-          ],
-          "action_type": "APPLY",
-          "action": "თქვენს აგენტურ პროექტებში ან MCP სერვერებში აკრძალეთ არასანდო პლაგინების მიერ Lifecycle Hook-ების (post-tool-call, session-start) ავტომატური რეგისტრაცია დეტერმინისტული Static Review-ს გარეშე.",
-          "evidence": [
-            {
-              "url": "https://arxiv.org/html/2609.03884v2",
-              "title": "A Blind Trust, the Bloody Thrust: When Attacker-Controlled Hook UpdatesSteer AI Agent Harnesses towards Malicious Behaviors",
-              "domain": "arxiv.org",
-              "evidence": "Modern AI agent harnesses expose lifecycle hooks that bind shell commands to runtime events... HookPry realizes ten attack objectives; across 25 combinations of harnesses and backends in 1,000 end-to-end runs, it compromises all seven evaluated harnesses"
-            }
-          ]
-        },
-        {
-          "event_id": "evt-google-a2a-protocol-update",
-          "title": "Agent2Agent (A2A) პროტოკოლი: Google-ისა და პარტნიორების სტანდარტი მრავალაგენტიანი ინტეროპერაბელურობისთვის",
-          "category": "Multi-Agent Systems / Protocols",
-          "primary_url": "https://github.com/ai-boost/awesome-a2a",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 10,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 90,
-          "what_happened": "Google-მა და პარტნიორებმა განახლეს Agent2Agent (A2A) პროტოკოლის ეკოსისტემა (v1.0.1 HTTP binding-ით, ADK for Java 1.0.0 და OID4VP JIT ავტორიზაციით).",
-          "what_changed": "მანამდე სხვადასხვა ფრეიმვორკის (LangGraph, Genkit, AutoGen) აგენტებს შორის თანამშრომლობა მოითხოვდა ინდივიდუალურ Ad-hoc API-ებს. A2A ქმნის ღია სტანდარტს HTTP, JSON-RPC 2.0 და SSE ბაზაზე, სადაც აგენტები აქვეყნებენ Agent Card-ს და ცვლიან Task/Artifact ობიექტებს.",
-          "why_it_matters": "MCP-ის პარალელურად (რომელიც აგენტი-ინსტრუმენტის ურთიერთობას მართავს), A2A ხდება მთავარი პროტოკოლი აგენტი-აგენტის (A2A) კომუნიკაციისთვის, რაც აუცილებელია რთული, მრავალპლატფორმული მულტი-აგენტური სისტემების ასაგებად.",
-          "technical_details": [
-            "Agent Card (JSON სქემა) აცხადებს აგენტის შესაძლებლობებს, ენდპოინტს და აუტენტიფიკაციის მოთხოვნებს",
-            "კომუნიკაცია ეფუძნება HTTP / JSON-RPC 2.0 და SSE (Server-Sent Events) რეალურ დროში სტრიმინგისთვის",
-            "Opaque Execution: აგენტები თანამშრომლობენ შიდა ინსტრუმენტებისა და ლოგიკის გამჟღავნების გარეშე",
-            "OID4VP ექსტენშენი უზრუნველყოფს Just-In-Time (JIT) ავტორიზაციას სესიის დროს"
-          ],
-          "action_type": "TRY",
-          "action": "გადახედეთ `awesome-a2a` რეპოზიტორიას და შექმენით მარტივი Python/TypeScript Agent Card, რომელიც A2A პროტოკოლით მიიღებს დავალებას სხვა ლოკალური აგენტისგან.",
-          "evidence": [
-            {
-              "url": "https://github.com/ai-boost/awesome-a2a",
-              "title": "Agent2Agent (A2A) – awesome A2A agents, tools, servers & clients ...",
-              "domain": "github.com",
-              "evidence": "A2A (Agent2Agent) is an open protocol from Google and partners enabling different AI agents (from various vendors/frameworks) to communicate securely and collaborate on tasks."
-            }
-          ]
-        },
-        {
-          "event_id": "evt-awesome-free-llm-apis",
-          "title": "Awesome Free LLM APIs: 485+ უფასო LLM API-ის მოდელების კატალოგი და One-Click კონფიგურაციები",
-          "category": "Developer Tools / Free APIs & Ecosystem",
-          "primary_url": "https://github.com/open-free-llm-api/awesome-freellm-apis",
-          "supporting_urls": [
-            "https://github.com/nejib1/Free-LLM",
-            "https://github.com/ClawLabsAI/free-ai-models"
-          ],
-          "importance": 8,
-          "relevance": 10,
-          "actionability": 10,
-          "source_quality": 8,
-          "confidence": 90,
-          "what_happened": "განახლდა Awesome Free LLM APIs და Free-LLM რეპოზიტორიები, რომლებიც აერთიანებენ 485+-მდე უფასო LLM API-ს (Groq, NVIDIA NIM, Cloudflare Workers AI, Google AI Studio, Hetzner Inference, Ollama Cloud) და ავტომატურ როუტინგს.",
-          "what_changed": "16+ წლის დეველოპერებისთვის საბანკო ბარათის არქონის პრობლემა სრულად წყდება: პროვაიდერების უმეტესობა იძლევა მუდმივ უფასო Tier-ს (მაგ. Groq 30 RPM / 14,400 RPD credit card-ის გარეშე) და OpenAI-compatible endpoints-ს.",
-          "why_it_matters": "იძლევა შესაძლებლობას Claude Code, Cursor, Codex CLI და საკუთარი აგენტური პროექტები ამუშაოთ სრულიად უფასოდ, მრავალი პროვაიდერის ფოლბექით (fallback).",
-          "technical_details": [
-            "Groq: 30 RPM, 14,400 RPD უფასოდ, საკრედიტო ბარათის გარეშე (Llama 3.3 70B, Qwen3.6 27B)",
-            "Google AI Studio: 5-30 RPM, 9,000 RPD (Gemini 3.1 Flash, Gemini 3.0 Flash)",
-            "OpenAI-compatible endpoints — მარტივი ინტეგრაცია `base_url` და `api_key` ჩანაცვლებით Python/TypeScript SDK-ებში",
-            "ZeroLimitAI და Auto-router endpoints ავტომატური ფოლბექისთვის rate limit-ის დროს"
-          ],
-          "action_type": "TRY",
-          "action": "აიღეთ უფასო API key Groq-დან ან Google AI Studio-დან და დააკონფიგურირეთ საკუთარი CLI აგენტი ან Cursor/Codex უფასო ენდპოინტზე.",
-          "evidence": [
-            {
-              "url": "https://github.com/open-free-llm-api/awesome-freellm-apis",
-              "title": "open-free-llm-api/awesome-freellm-apis: 134+ ...",
-              "domain": "github.com",
-              "evidence": "485+ free LLM APIs from 31 providers — find, compare & configure free models in seconds... Credit card transparency — clearly shows which providers require a card, phone verification, or nothing at all"
-            }
-          ]
-        },
-        {
-          "event_id": "evt-t1-terminal-agent-rl",
-          "title": "T1: Tencent-ის 122B MoE ტერმინალის აგენტი 300+ ნაბიჯიანი რიგების განმავლობაში RL-ით გაწვრთნილი",
-          "category": "Agent RL / Long-Horizon Execution",
-          "primary_url": "https://arxiv.org/html/2609.11042v1",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 90,
-          "what_happened": "Tencent-მა წარადგინა T1 — 122B MoE მოდელი, რომელიც გაწვრთნილია PPO განმტკიცებითი სწავლებით (RL) რეალურ Sandbox Shell-ში 300+-მდე tool-call turn-ის განმავლობაში, საკუთარი Verifier-ების შესრულების მკაცრი სიმრავლის მიხედვით.",
-          "what_changed": "ტრადიციული LLM აგენტები იყენებდნენ მარტივ Binary Pass/Fail სიგნალებს. T1 იყენებს TITO (exact token identifier reconstruction) და R3 (rollout routing replay) ტექნიკას ტოკენისა და MoE expert drift-ის აღმოსაფხვრელად, რამაც Terminal-Bench 2.1-ზე წარმატება 43.8%-დან 64.0%-მდე გაზარდა.",
-          "why_it_matters": "ეს კვლევა გვიჩვენებს, თუ როგორ ხდება ხანგრძლივი (long-horizon) ტერმინალის აგენტების სტაბილური წვრთნა რეალური კოდის/სისტემური verifier-ების შედეგებზე დაყრდნობით, რაც გადამწყვეტია ავტონომიური DevOps და Coding აგენტებისთვის.",
-          "technical_details": [
-            "122B MoE მოდელი (116B expert weights, 8/256 experts active per token)",
-            "Dense Process Reward: ტრაექტორიის შეფასებაPassing Verifiers-ის აბსოლუტური რაოდენობით",
-            "TITO და R3 ალგორითმებმა შეამცირეს training-to-inference log-probability Gap 0.021-დან 0.013-მდე",
-            "Terminal-Bench 2.1-ზე მიაღწია 64.0% resolved-ს (გადაასწრო GPT-5.4-ს 54.8% და DeepSeek-V4-Flash-ს 56.9%)"
-          ],
-          "action_type": "LEARN",
-          "action": "წაიკითხეთ T1 სტატიის TITO და R3 სექციები, რათა გაიგოთ, თუ როგორ მოქმედებს მრავალნაბიჯიანი Tool Execution კონტექსტი ტოკენების დრიფტზე და როგორ იწერება ეფექტური Verifier-ები.",
-          "evidence": [
-            {
-              "url": "https://arxiv.org/html/2609.11042v1",
-              "title": "T1: Terminal Agent Reinforcement Learning for Long-Horizon Tasks",
-              "domain": "arxiv.org",
-              "evidence": "We introduce T1, a Mixture-of-Experts model of 122B total trained with reinforcement learning, operating a real shell in a cloud sandbox for up to 300+ tool-call turns per task, rewarded by executing each task's own verifier."
-            }
-          ]
-        },
-        {
-          "event_id": "evt-ecdsa-fail-autoresearch-rsi",
-          "title": "ECDSA.Fail და RSI ჩარჩო: AI აგენტების ავტონომიური კვლევა და რეფორმირება (Recursive Self-Improvement)",
-          "category": "AI Research / Recursive Self-Improvement & Autoresearch",
-          "primary_url": "https://arxiv.org/html/2609.09582",
-          "supporting_urls": [
-            "https://arxiv.org/html/2609.11873v1"
-          ],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 90,
-          "what_happened": "გამოქვეყნდა ECDSA.Fail ღია ავტო-კვლევის (Open Autoresearch) შედეგები და RSI-ის 5-დონიანი ავტონომიის ჩარჩო (The Last AI Built by Humans). ECDSA.Fail-ში ადამიანებმა და AI აგენტებმა 86.1%-ით შეამცირეს Shor-ის ალგორითმის secp256k1 სქემის Spacetime ქულა (Q x T).",
-          "what_changed": "კვლევა გადადის ადამიანის მიერ ხელით კოდის წერიდან ავტომატიზებულ ლიდერბორდებზე, სადაც AI აგენტები მატემატიკურად და დეტერმინისტულად ამოწმებენ თავიანთ ჰიპოთეზებს. RSI ჩარჩო განსაზღვრავს 5 დონეს: L1 (execution), L2 (strategy selection), L3 (experience acquisition), L4 (environmental adaptation), L5 (recursive meta-improvement).",
-          "why_it_matters": "გვიჩვენებს მომავალს, სადაც ინჟინრის როლი იცვლება უშუალო კოდინგისგან მკაცრი Evaluator-ების, Benchmark-ების და ავტონომიური აგენტური ციკლების დაპროექტებისკენ.",
-          "technical_details": [
-            "ECDSA.Fail-ში Q x T ქულა შემცირდა 10.75B-დან 1.496B-მდე (86.1%-იანი გაუმჯობესება)",
-            "მანქანურად შემოწმებადი Evaluator-ები საშუალებას აძლევს AI აგენტებს იმუშაონ 24/7 ავტონომიურ ციკლში",
-            "RSI 5 დონე: L1 (Execution) -> L2 (Strategy) -> L3 (Experience) -> L4 (Adaptation) -> L5 (Recursive Meta-Improvement)"
-          ],
-          "action_type": "BUILD",
-          "action": "აშენეთ მცირე ავტონომიური Autoresearch loop თქვენი ერთ-ერთი პროექტისთვის: დაწერეთ დეტერმინისტული Evaluator script და აიძულეთ აგენტი ციკლურად გააუმჯობესოს კოდი ლიდერბორდის ქულის მიხედვით.",
-          "evidence": [
-            {
-              "url": "https://arxiv.org/html/2609.09582",
-              "title": "ECDSA.Fail: Open Autoresearch for Optimizing Elliptic-Curve Point Addition in Shor's Algorithm",
-              "domain": "arxiv.org",
-              "evidence": "Participants reduced S by 86.1%, with the best circuit at the data cutoff (26 July 2026) reaching Q = 1,151 and T = 1,299,453... The public record shows that AI agents complemented human judgment, providing evidence for open autoresearch"
-            }
-          ]
-        }
-      ],
-      "trends": [
-        "აგენტების არქიტექტურის გადანაცვლება 98%+ დეტერმინისტულ ინფრასტრუქტურაზე (Permission Gates, Context Compacting Pipelines, Hardened Harnesses) LLM-ის მცირე ლოგიკურ ბირთვთან ერთად.",
-        "აგენტების ეკონომიკისა და მოდელების არჩევის შეფასება \"Cost per Passed Outcome\" მეტრიკით, სადაც turn-ების შემცირება და კონტექსტის კვადრატული ზრდის შეზღუდვა უფრო მნიშვნელოვანია, ვიდრე ტოკენის საწყისი ფასი.",
-        "სტანდარტიზებული ინტეროპერაბელურობის პროტოკოლების (A2A აგენტი-აგენტისთვის, MCP აგენტი-ინსტრუმენტისთვის) მკვეთრი ზრდა და ეკოსისტემური მიღება.",
-        "Supply Chain შეტევების გამოჩენა AI აგენტების Lifecycle Hooks-ზე და პლაგინების განახლების გზებზე, რაც მოითხოვს მკაცრ დეტერმინისტულ უსაფრთხოებას.",
-        "Open Autoresearch და დეტერმინისტული Evaluator-ებით მართული ავტონომიური ციკლები (RSI), სადაც AI აგენტები 24/7 რეჟიმში აუმჯობესებენ კოდს ლიდერბორდის ქულების მიხედვით."
-      ]
-    },
     {
       "date": "2026-09-14",
       "summary": "დღევანდელი ანგარიში ფოკუსირებულია AI აგენტების არქიტექტურულ სტანდარტებზე, იერარქიულ როლურ დელეგირებაზე, მრავალშრიან მეხსიერების სისტემებსა და ლოკალურ ჰარნესებზე. Agent Client Protocol (ACP) მკვიდრდება როგორც რედაქტორებისა და AI აგენტების დამაკავშირებელი ღია სტანდარტი, ხოლო agent-dev-team წარმოადგენს T0-T3 იერარქიულ დელეგირებასა და მკაცრ Escalation პაკეტებს. pi-go და SimSkill გვთავაზობენ არქიტექტურულ ნიმუშებს მრავალშრიანი (Episodic, Procedural, Semantic) მეხსიერების დასანერგად. გარდა ამისა, Karpathy-ს LLM Wiki არქიტექტურა RAG-ის ალტერნატივად გვთავაზობს ცოდნის ფაილურ კომპილაციას, ხოლო OpenDesign და ECC აძლიერებენ დეველოპერული ინსტრუმენტების ეკოსისტემას.",
@@ -8006,13 +7859,192 @@
         "მართული runtime-ების და პლატფორმების ინტეგრაცია აგენტურ სისტემებში",
         "ფორმალური ვალიდაციისა და ჰარნესების გამოყენება კოდის გენერაციისას"
       ]
+    },
+    {
+      "date": "2026-09-24",
+      "summary": "დღევანდელი მიმოხილვა ფოკუსირებულია open weight მოდელების გამოყენებაზე coding agent ჰარნესებში, AI ტუტორინგის ეფექტურობის დამტკიცებაზე და RAG ტექნიკების ოპტიმიზაციაზე. ჩვენ ვამუშავებთ მხოლოდ იმ ტექნიკურ სიახლეებს, რომლებიც რეალურად ეხმარება 16 წლის დეველოპერს მცირე ბიუჯეტით აგენტური სისტემების აგებაში.",
+      "events": [
+        {
+          "event_id": "evt-studentbench-ai-tutoring",
+          "title": "StudentBench: AI and human tutoring yield equivalent GRE learning gains",
+          "category": "AI Research & Evaluation",
+          "primary_url": "https://arxiv.org/abs/2609.28470",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 95,
+          "tldr": "StudentBench კვლევამ აჩვენა, რომ AI ტუტორინგი აჩვენებს ადამიანის ექსპერტის ტოლფას შედეგებს 918-ჯერ დაბალი ფასით.",
+          "what_happened": "მკვლევარებმა გამოაქვეყნეს StudentBench პლატფორმა და მონაცემები 175,000+ სტუდენტურ მესიჯზე.",
+          "what_changed": "ზოგადი ჩატბოტებიდან გადავედით გაზომვად, პედაგოგიურად დადასტურებულ AI სწავლების აგენტებზე.",
+          "why_it_matters": "გაძლევს ტექნიკურ არქიტექტურას, რომ ააგო მაღალი ხარისხის საგანმანათლებლო აგენტი საკუთარი პორტფოლიოსთვის.",
+          "key_takeaways": [
+            "AI ტუტორინგი სტატისტიკურად უტოლდება ექსპერტი ადამიანის სწავლებას.",
+            "ხარჯი შეადგენს მხოლოდ $0.0052-ს პროცენტული ზრდის ერთეულზე.",
+            "სწრაფი პასუხები ზრდის სტუდენტის ჩართულობას და სწორი პასუხების რაოდენობას."
+          ],
+          "technical_architecture": [
+            "მრავალსვლიანი agent loop სტრუქტურირებული პედაგოგიური რუბრიკით",
+            "セantic retrieval მეხსიერება წარსული შეცდომების აღსადგენად"
+          ],
+          "technical_details": [
+            "გამოიყენა 175,000+ სტრუქტურირებული სტუდენტურ-აგენტური დიალოგი",
+            "API ხარჯი ოპტიმიზებულია ტოკენების ქეშირებით"
+          ],
+          "potential_impact": "მცირე სტარტაპებს შეუძლიათ შექმნან ძლიერი edtech პროდუქტები მინიმალური კაპიტალით.",
+          "action_type": "BUILD",
+          "action": "ააგე მინიმალური AI ტუტორი Python-ში, რომელიც ამოწმებს ამოცანებს და აძლევს ნაბიჯ-ნაბიჯ მინიშნებებს.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Real Business Opportunity",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "StudentBench tested 2,383 participants across Quantitative and Verbal GRE questions.",
+            "AI tutoring achieved learning gains statistically equivalent to expert human tutoring (p = .015).",
+            "One AI tutor achieved human-equivalent gains at 918x lower cost ($0.0052 vs $4.81)."
+          ],
+          "interpretation": "LLM აგენტები უკვე მზად არიან პერსონალიზებული, მრავალსვლიანი ტუტორინგისთვის, რაც ქმნის მცირე ბიუჯეტით ასაშენებელი edtech აგენტების რეალურ ბაზარს.",
+          "uncertainty": "კვლევა შემოფარგლულია GRE კითხვებით და არ ზომავს გრძელვადიან ჩართულობას.",
+          "counter_argument": "ადამიანი ტუტორი უკეთ უმკლავდება მოტივაციის ვარდნას და ემოციურ ფაქტორებს, ვიდრე სუფთა ტექსტური აგენტი.",
+          "strategic_assessment": "ააგე ნიშური AI ტუტორი პრობლემებზე დაფუძნებული არქიტექტურით და დაიწყე პირველი მომხმარებლების მოზიდვა უფასო არხებით.",
+          "time_horizon": "mid-term",
+          "what_could_change": "განათლების სექტორი გადავა აგენტურ ინდივიდუალურ სწავლებაზე, რაც შეამცირებს ტრადიციული რეპეტიტორების სერვისების ფასს.",
+          "risks": [
+            "მომხმარებლის დაბალი შენარჩუნება (retention)",
+            "პრომპტების ინექცია და არასწორი ახსნა",
+            "ძვირადღირებული API გამოძახებები მასშტაბირებისას"
+          ],
+          "non_obvious_opportunity": "შეგიძლია შექმნა ავტომატური ტესტების გენერატორი მასწავლებლებისთვის, რომლებიც ეძებენ მზა ინტერაქტიულ სავარჯიშოებს.",
+          "fit_assessment": "იდეალურია 16 წლის დეველოპერისთვის, რადგან მოითხოვს მხოლოდ Python-ს, LLM API-ებს და სტრუქტურირებულ პრომპტ ინჟინერიას."
+        },
+        {
+          "event_id": "evt-aws-open-code-bedrock",
+          "title": "Use open weight models as your AI coding agent with Amazon Bedrock",
+          "category": "AI Coding Tools & Agent Architecture",
+          "primary_url": "https://aws.amazon.com/blogs/machine-learning/use-open-weight-models-as-your-ai-coding-agent-with-amazon-bedrock",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "AWS აჩვენებს, თუ როგორ შეიძლება OpenCode ტერმინალური აგენტის დაკავშირება open-weight მოდელებთან Bedrock-ში ხარჯების შესამცირებლად.",
+          "what_happened": "AWS-მა გამოაქვეყნა სახელმძღვანელო OpenCode-ისა და open weight მოდელების ინტეგრაციის შესახებ.",
+          "what_changed": "კოდირების აგენტები გახდა ხელმისაწვდომი ლოკალური და ხარჯთეფექტური ინფრასტრუქტურით.",
+          "why_it_matters": "გაძლევს შაბლონს, თუ როგორ ააგო საკუთარი კოდირების აგენტი უფასო ან იაფი ინფრასტრუქტურით.",
+          "key_takeaways": [
+            "OpenCode კითხულობს ფაილებს და უშვებს shell ბრძანებებს ტერმინალიდან.",
+            "LSP დიაგნოსტიკა აგენტს პროექტის სტრუქტურის გაგებაში ეხმარება.",
+            "Open-weight მოდელები ამცირებენ მილიონობით ტოკენის დამუშავების ხარჯს."
+          ],
+          "technical_architecture": [
+            "Terminal-native AI coding agent Go ბაზაზე",
+            "Language Server Protocol (LSP) კოდის ანალიზისთვის"
+          ],
+          "technical_details": [
+            "მუშაობს 75+ LLM პროვაიდერთან Bedrock-ის გავლით",
+            "რედაქტირებს ფაილებს და უშვებს ტერმინალის ბრძანებებს ავტომატურად"
+          ],
+          "potential_impact": "დეველოპერებს შეუძლიათ შექმნან სრულად კონტროლირებადი, იაფი AI კოდირების გარემო.",
+          "action_type": "TRY",
+          "action": "დააინსტალირე და გამოცადე OpenCode ან მსგავსი ღია კოდის აგენტის ჰარნესი შენს ლეპტოპზე.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value",
+            "Short-term Opportunity"
+          ],
+          "verified_facts": [
+            "OpenCode არის Go-ში აგებული ტერმინალის ნოტივ AI coding agent.",
+            "ის უკავშირდება 75-ზე მეტ LLM პროვაიდერს, მათ შორის Amazon Bedrock-ს.",
+            "OpenCode კითხულობს და ასწორებს ფაილებს, უშვებს shell ბრძანებებს და იყენებს LSP დიაგნოსტიკას."
+          ],
+          "interpretation": "Open-weight მოდელები ტერმინალურ აგენტებში ხსნის ძვირადღირებული API გამოძახებების საჭიროებას და იძლევა ლოკალური კონტროლის საშუალებას.",
+          "uncertainty": "Go-ზე აგებული OpenCode მოითხოვს დამატებით კონფიგურაციას პითონის დეველოპერებისთვის.",
+          "counter_argument": "პროპრიეტარული მოდელები (როგორიცაა Claude Code) კვლავ უკეთ უმკლავდებიან კომპლექსურ არქიტექტურულ ცვლილებებს.",
+          "strategic_assessment": "გამოიყენე open-weight მოდელები coding agent ჰარნესებში, რათა შეიმცირო ტოკენების ხარჯები და ისწავლო აგენტური ლუპების მართვა.",
+          "time_horizon": "mid-term",
+          "what_could_change": "დეველოპერული ხელსაწყოების ბაზარი გადაინაცვლებს ლოკალურ და ღია მოდელებზე, რაც შეამცირებს კოდირების ასისტენტების ფასს.",
+          "risks": [
+            "მოდელის ჰალუცინაცია რთულ ფაილურ სტრუქტურებში",
+            "LSP სერვერების კონფიგურაციის სირთულეები",
+            "უსაფრთხოების რისკები shell ბრძანებების ავტომატური შესრულებისას"
+          ],
+          "non_obvious_opportunity": "შეგიძლია შექმნა პითონზე დაფუძნებული მსუბუქი აგენტის ჰარნესი, რომელიც იყენებს უფასო open-weight API-ებს.",
+          "fit_assessment": "კარგად ერგება შენს პროფილს, რადგან გაძლევს საშუალებას იმუშაო coding agents არქიტექტურაზე ძვირადღირებული გამოწერების გარეშე."
+        },
+        {
+          "event_id": "arxiv-2609-28471-authorship-verification",
+          "title": "Contrastive Learning for Authorship Verification",
+          "category": "AI Research & NLP",
+          "primary_url": "https://arxiv.org/abs/2609.28471",
+          "supporting_urls": [],
+          "importance": 7,
+          "relevance": 7,
+          "actionability": 7,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "კვლევა აჩვენებს, რომ ModernBERT Bi-Encoder კონტრასტული სწავლება აღწევს 98.4% სიზუსტეს ავტორობის გადამოწმებაში.",
+          "what_happened": "გამოქვეყნდა კვლევა, სადაც Contrastive Learning უპირისპირდება კლასიფიკაციას ავტორობის ვერიფიკაციაში.",
+          "what_changed": "გაუმჯობესდა ტექსტური სტილის ანალიზის სიზუსტე ModernBERT მოდელების გამოყენებით.",
+          "why_it_matters": "გაძლევს ძლიერ ტექნიკას ტექსტების სემანტიკური შედარებისა და კლასიფიკაციისთვის.",
+          "key_takeaways": [
+            "Contrastive learning სჯობნის კლასიფიკაციას authorship verification-ში.",
+            "ModernBERT Bi-Encoder აფიქსირებს 98.4% სიზუსტეს PAN21 ტესტზე.",
+            "მნიშვნელოვანი ფაქტორებია loss function, batch size და data augmentation."
+          ],
+          "technical_architecture": [
+            "ModernBERT Bi-Encoder არქიტექტურა",
+            "Contrastive loss ოპტიმიზაციის ლუპი"
+          ],
+          "technical_details": [
+            "მიღწეულია 98.4% სიზუსტე PAN21 ბენჩმარკზე",
+            "გამოიყენება random text span data augmentation"
+          ],
+          "potential_impact": "უფრო ზუსტი ანალიტიკური ინსტრუმენტები დოკუმენტებისა და კოდის ავტორობის დასადგენად.",
+          "action_type": "LEARN",
+          "action": "გადახედე ModernBERT დოკუმენტაციას და შექმენი მარტივი Bi-Encoder სკრიპტი Hugging Face Transformers-ით.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "Contrastive learning უსწრებს კლასიფიკაციაზე დაფუძნებულ მიდგომას authorship verification-ში.",
+            "ModernBERT Bi-Encoder მოდელმა მიაღწია 98.4% სიზუსტეს PAN21 ბენჩმარკზე."
+          ],
+          "interpretation": "კონტრასტული სწავლება და ModernBERT არქიტექტურა გვთავაზობს ბევრად ზუსტ მეთოდს ტექსტის ავტორობის დასადგენად, ვიდრე ძველი კლასიფიკატორები.",
+          "uncertainty": "მეთოდი მოითხოვს ხარისხიან მონაცემთა აგმენტაციას (random text span augmentation).",
+          "counter_argument": "LLM ეპოქაში ტექსტის სტილის იდენტიფიკაცია შეიძლება მარტივად შეიცვალოს მოდელის პრომპტით.",
+          "strategic_assessment": "ისწავლე ModernBERT და bi-encoder არქიტექტურები, თუ გსურს ტექსტის ანალიზისა და უსაფრთხოების აგენტების აგება.",
+          "time_horizon": "mid-term",
+          "what_could_change": "ტექსტის ავტორობის შემოწმება და პლაგიატის აღმოჩენა გახდება უფრო ზუსტი და მცირე გამოთვლითი რესურსების მომთხოვნი.",
+          "risks": [
+            "მოდელის გადაჭარბებული მორგება (overfitting) კონკრეტულ სტილზე",
+            "მონაცემთა აგმენტაციის არასწორი შერჩევა"
+          ],
+          "non_obvious_opportunity": "შეგიძლია გამოიყენო ეს მიდგომა აგენტების გენერირებული კოდის ან ტექსტის სტილის შესამოწმებლად და უსაფრთხოების გასაძლიერებლად.",
+          "fit_assessment": "გამოდგება შენი SQL და embedding უნარების განსავითარებლად, როდესაც გადახვალ სემანტიკურ ძიებაზე."
+        }
+      ],
+      "trends": [
+        "Open-weight მოდელების ინტეგრაცია აგენტურ ჰარნესებში ხარჯების შესამცირებლად",
+        "AI ტუტორინგის სისტემების გაზომვადი ეკონომიკური ეფექტურობა",
+        "ModernBERT და Bi-Encoder არქიტექტურების გამოყენება ტექსტის ზუსტი ანალიზისთვის"
+      ]
     }
   ],
   "learning_queue": [
-    "AWS Bedrock AgentCore არქიტექტურული პრინციპები",
-    "Python-ში მცირე ზომის მრავალ-აგენტიანი ლოგიკის აგება"
+    "ModernBERT Bi-Encoder არქიტექტურა და სემანტიკური შედარება",
+    "Agent loop ლოგიკა და სტრუქტურირებული პედაგოგიური რუბრიკები"
   ],
-  "last_run": "2026-09-23T19:41:28.303178+00:00",
+  "last_run": "2026-09-24T14:42:50.360092+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -8061,12 +8093,14 @@
     "arxiv:2609.26777",
     "arxiv:2609.26780",
     "arxiv:2609.26774",
-    "arxiv:2609.26751"
+    "arxiv:2609.26751",
+    "arxiv:2609.28470",
+    "arxiv:2609.28471"
   ],
   "last_report_files": {
-    "markdown": "data/reports/2026-09-23/report.md",
-    "json": "data/reports/2026-09-23/report.json",
-    "newsletter": "data/reports/2026-09-23/newsletter.md",
-    "social": "data/reports/2026-09-23/social_posts.txt"
+    "markdown": "data/reports/2026-09-24/report.md",
+    "json": "data/reports/2026-09-24/report.json",
+    "newsletter": "data/reports/2026-09-24/newsletter.md",
+    "social": "data/reports/2026-09-24/social_posts.txt"
   }
 }
