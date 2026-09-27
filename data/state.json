@@ -149,7 +149,12 @@
     "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
     "https://arxiv.org/abs/2609.30243",
     "https://arxiv.org/abs/2609.30219",
-    "https://huggingface.co/papers/2609.29845"
+    "https://huggingface.co/papers/2609.29845",
+    "https://arxiv.org/html/2609.28693v1",
+    "https://openai.com/index/gpt-6-astra",
+    "https://www.reuters.com/technology/openai-expands-gpt-6-lineup-with-cheaper-sol-luna-models-2026-09-22",
+    "https://arxiv.org/abs/2609.30264",
+    "https://arxiv.org/abs/2609.30227"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -265,133 +270,13 @@
     "evt-opus55-cache-read-cost-reduction",
     "evt-jevout-decision-model-context-flip",
     "evt-verified-commissioning-external-gate",
-    "evt-linear-superposition-llm-thoughts"
+    "evt-linear-superposition-llm-thoughts",
+    "evt-skilder-role-scoped-mcp",
+    "evt-gpt6-sol-luna-pricing",
+    "evt-ad-wm-action-discriminative-world-models",
+    "evt-verispeak-speech-fact-checking"
   ],
   "events": [
-    {
-      "event_id": "evt-ecdsa-fail-autoresearch-rsi",
-      "title": "ECDSA.Fail და RSI ჩარჩო: AI აგენტების ავტონომიური კვლევა და რეფორმირება (Recursive Self-Improvement)",
-      "category": "AI Research / Recursive Self-Improvement & Autoresearch",
-      "primary_url": "https://arxiv.org/html/2609.09582",
-      "supporting_urls": [
-        "https://arxiv.org/html/2609.11873v1"
-      ],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 8,
-      "source_quality": 8,
-      "confidence": 90,
-      "what_happened": "გამოქვეყნდა ECDSA.Fail ღია ავტო-კვლევის (Open Autoresearch) შედეგები და RSI-ის 5-დონიანი ავტონომიის ჩარჩო (The Last AI Built by Humans). ECDSA.Fail-ში ადამიანებმა და AI აგენტებმა 86.1%-ით შეამცირეს Shor-ის ალგორითმის secp256k1 სქემის Spacetime ქულა (Q x T).",
-      "what_changed": "კვლევა გადადის ადამიანის მიერ ხელით კოდის წერიდან ავტომატიზებულ ლიდერბორდებზე, სადაც AI აგენტები მატემატიკურად და დეტერმინისტულად ამოწმებენ თავიანთ ჰიპოთეზებს. RSI ჩარჩო განსაზღვრავს 5 დონეს: L1 (execution), L2 (strategy selection), L3 (experience acquisition), L4 (environmental adaptation), L5 (recursive meta-improvement).",
-      "why_it_matters": "გვიჩვენებს მომავალს, სადაც ინჟინრის როლი იცვლება უშუალო კოდინგისგან მკაცრი Evaluator-ების, Benchmark-ების და ავტონომიური აგენტური ციკლების დაპროექტებისკენ.",
-      "technical_details": [
-        "ECDSA.Fail-ში Q x T ქულა შემცირდა 10.75B-დან 1.496B-მდე (86.1%-იანი გაუმჯობესება)",
-        "მანქანურად შემოწმებადი Evaluator-ები საშუალებას აძლევს AI აგენტებს იმუშაონ 24/7 ავტონომიურ ციკლში",
-        "RSI 5 დონე: L1 (Execution) -> L2 (Strategy) -> L3 (Experience) -> L4 (Adaptation) -> L5 (Recursive Meta-Improvement)"
-      ],
-      "action_type": "BUILD",
-      "action": "აშენეთ მცირე ავტონომიური Autoresearch loop თქვენი ერთ-ერთი პროექტისთვის: დაწერეთ დეტერმინისტული Evaluator script და აიძულეთ აგენტი ციკლურად გააუმჯობესოს კოდი ლიდერბორდის ქულის მიხედვით.",
-      "evidence": [
-        {
-          "url": "https://arxiv.org/html/2609.09582",
-          "title": "ECDSA.Fail: Open Autoresearch for Optimizing Elliptic-Curve Point Addition in Shor's Algorithm",
-          "domain": "arxiv.org",
-          "evidence": "Participants reduced S by 86.1%, with the best circuit at the data cutoff (26 July 2026) reaching Q = 1,151 and T = 1,299,453... The public record shows that AI agents complemented human judgment, providing evidence for open autoresearch"
-        }
-      ]
-    },
-    {
-      "event_id": "evt-agent-client-protocol-standard",
-      "title": "Agent Client Protocol (ACP): AI აგენტებისა და მომხმარებლის ინტერფეისების (IDEs/Clients) სტანდარტიზებული პროტოკოლი",
-      "category": "Agent Protocols & Interoperability",
-      "primary_url": "https://github.com/topics/agent-client-protocol",
-      "supporting_urls": [],
-      "importance": 9,
-      "relevance": 10,
-      "actionability": 9,
-      "source_quality": 8,
-      "confidence": 90,
-      "what_happened": "Agent Client Protocol (ACP) გახდა წამყვანი ღია სტანდარტი, რომელიც აკავშირებს სხვადასხვა AI კოდინგ აგენტს (Claude Code, Codex, Gemini CLI, OpenCode) სარედაქციო გარემოებთან (Neovim, Obsidian, Windows Terminal, Slack, native UIs).",
-      "what_changed": "მანამდე თითოეულ IDE-ს ან კლიენტს სჭირდებოდა ინდივიდუალური, Ad-hoc ინტეგრაცია თითოეული აგენტისთვის. ACP ქმნის ერთიან პროტოკოლს (MCP-ის ანალოგიურად, რომელიც ინსტრუმენტებს მართავს), სადაც ნებისმიერ ACP-კლიენტს შეუძლია მართოს ნებისმიერი ACP-აგენტი persistent სესიებითა და სტრიმინგით.",
-      "why_it_matters": "აგენტური არქიტექტურის დაპროექტებისას ACP იძლევა საშუალებას შეიქმნას უნივერსალური აგენტები, რომლებიც უპრობლემოდ იმუშავებენ ნებისმიერ ტერმინალში, IDE-ში თუ მობილურ აპლიკაციაში.",
-      "technical_details": [
-        "JSON-RPC 2.0 და HTTP პროტოკოლის ბაზაზე აგებული სტანდარტი",
-        "მხარდაჭერილი Python, Go, Rust, Swift SDK-ებით",
-        "Persistent სესიებისა და Multi-agent council-ების მხარდაჭერა",
-        "ინტეგრაცია Neovim, Obsidian, Windows Terminal, Slack და სხვა პლატფორმებთან"
-      ],
-      "action_type": "TRY",
-      "action": "გამოიყენეთ acp python-sdk ან go-sdk საკუთარი აგენტის ACP-სერვერად შესაფუთად, რათა მისი მართვა შესაძლებელი გახდეს Obsidian-იდან ან Neovim-იდან.",
-      "evidence": [
-        {
-          "url": "https://github.com/topics/agent-client-protocol",
-          "title": "agent-client-protocol · GitHub Topics",
-          "domain": "github.com",
-          "evidence": "Bring AI agents into Obsidian via Agent Client Protocol (ACP), such as Claude Code, Codex and Gemini CLI."
-        }
-      ]
-    },
-    {
-      "event_id": "evt-agent-dev-team-hierarchy",
-      "title": "agent-dev-team: AI აგენტების იერარქიული T0-T3 როლური მოდელი და Escalation Protocol",
-      "category": "Agent Architecture & Workflow Design",
-      "primary_url": "https://github.com/khuynh22/agent-dev-team",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 10,
-      "actionability": 9,
-      "source_quality": 8,
-      "confidence": 90,
-      "what_happened": "შეიქმნა agent-dev-team ჩარჩო, რომელიც აერთიანებს 21 სპეციალიზებულ როლურ აგენტს 4 უფლებრივ დონეზე (T0 Intern-იდან T3 Principal-მდე) და იყენებს მკაცრ Handoff Packet და Escalation პროტოკოლს.",
-      "what_changed": "ტრადიციულ მულტი-აგენტურ სისტემებში დაბალი დონის აგენტი ხშირად იღებდა გადაწყვეტილებებს არქიტექტურულ ცვლილებებზე, მონაცემთა ბაზის მიგრაციებზე ან ავტორიზაციის შეცვლაზე. agent-dev-team-ში T0 აგენტს აქვს მკაცრი ლიმიტი (მაქს. 2 ფაილი, არავითარი schema/auth ცვლილება) და ზღვრის გადაჭარბებისთანავე აგენერირებს დეტერმინისტულ HANDOFF პაკეტს.",
-      "why_it_matters": "უზრუნველყოფს აგენტების უსაფრთხოებასა და პროგნოზირებადობას. აგენტის თავდაჯერებულობა (confidence) ვერ ზრდის მის უფლებრივ დონეს (ceiling), რაც აცილებს კრიტიკული შეცდომების რისკს.",
-      "technical_details": [
-        "Agent Skills spec-თან თავსებადი .md სტრუქტურა",
-        "4-დონიანი T0-T3 იერარქია მკაცრი Ceiling შეზღუდვებით",
-        "დოკუმენტირებული HANDOFF და BRIEF ბლოკები დელეგირებისთვის",
-        "ავტომატური routing evaluation სკრიპტები 26 skill-ის განსასხვავებლად"
-      ],
-      "action_type": "APPLY",
-      "action": "დანერგეთ T0-T3 იერარქიული Escalation Protocol-ისა და Handoff Packet-ის სტრუქტურა თქვენს მულტი-აგენტურ პროექტებში, რათა შეზღუდოთ აგენტების მიერ არქიტექტურული ფაილების უნებართვო ჩასწორება.",
-      "evidence": [
-        {
-          "url": "https://github.com/khuynh22/agent-dev-team",
-          "title": "GitHub - khuynh22/agent-dev-team: A tiered team of engineering agents...",
-          "domain": "github.com",
-          "evidence": "21 role agents across four seniority tiers, 26 portable workflow skills, and an escalation protocol that keeps work at the right level instead of letting one undifferentiated assistant attempt everything."
-        }
-      ]
-    },
-    {
-      "event_id": "evt-awesome-llm-wiki-architecture",
-      "title": "Awesome LLM Wiki: LLM-ის, როგორც ცოდნის კომპილატორის არქიტექტურული შაბლონი RAG-ის სანაცვლოდ",
-      "category": "Agent Memory & Knowledge Architecture",
-      "primary_url": "https://github.com/gavischneider/awesome-llm-wiki",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 10,
-      "actionability": 9,
-      "source_quality": 8,
-      "confidence": 90,
-      "what_happened": "გამოქვეყნდა Awesome LLM Wiki — Andrej Karpathy-ს მიერ ინსპირირებული არქიტექტურული რესურსების კატალოგი, სადაც LLM განხილულია არა როგორც დროებითი ჩატ-ძრავა, არამედ როგორც stateful ცოდნის კომპილატორი.",
-      "what_changed": "ტრადიციული ვექტორული RAG ლინკავს დოკუმენტების ფრაგმენტებს დინამიურად runtime-ში, სადაც მოდელი რჩება 'ტურისტად'. LLM Wiki არქიტექტურაში ავტონომიური აგენტები კითხულობენ ნედლ ფაილებს და აგებენ ურთიერთდაკავშირებულ, მუდმივ Markdown Knowledge Topology-ს.",
-      "why_it_matters": "ფუნდამენტური ცვლილებაა RAG-ის არქიტექტურაში. ვექტორული ბაზების ხშირად არაზუსტი Chunk Search-ის ნაცვლად, აგენტი ქმნის და ინარჩუნებს ტიპიზირებულ Markdown ვიკის, რაც მკვეთრად ზრდის კონტექსტის სიზუსტეს.",
-      "technical_details": [
-        "3-layer architecture (immutable raw sources, LLM-generated markdown notes, system schema configuration)",
-        "Core operations: Ingest, Query, Lint",
-        "Markdown frontmatter indexing ტიპიზირებული ენტიტების სათვალთვალოდ"
-      ],
-      "action_type": "BUILD",
-      "action": "ააგეთ მცირე Claude Code skill ან Python სკრიპტი, რომელიც ნედლ ტექნიკურ დოკუმენტაციას გარდაქმნის ურთიერთდაკავშირებულ LLM Wiki Markdown ფაილების სტრუქტურად.",
-      "evidence": [
-        {
-          "url": "https://github.com/gavischneider/awesome-llm-wiki",
-          "title": "gavischneider/awesome-llm-wiki - GitHub",
-          "domain": "github.com",
-          "evidence": "Instead of parsing fragmented document partitions dynamically at runtime via traditional RAG loops, these systems leverage autonomous agents to read static source files and systematically construct an interlinked, persistent Markdown knowledge topology."
-        }
-      ]
-    },
     {
       "event_id": "evt-simskill-tripartite-memory",
       "title": "SimSkill: Self-Evolving AI აგენტი სამნაწილიანი (Episodic, Procedural, Semantic) მეხსიერების არქიტექტურით",
@@ -4381,6 +4266,234 @@
       ],
       "non_obvious_opportunity": "აგენტური Speculative Decoding-ის იდეის გამოკვლევა პარალელური Tool Execution გეგმების შესამოწმებლად.",
       "fit_assessment": "გეხმარება ღრმად გაიგო LLM-ების შიდა მექანიკა და Transformer-ების შეზღუდვები."
+    },
+    {
+      "event_id": "evt-skilder-role-scoped-mcp",
+      "title": "Skilder: Progressive Skill Discovery and Role-Scoped MCP Governance for LLM Agents",
+      "category": "Agent Architecture & Security",
+      "primary_url": "https://arxiv.org/html/2609.28693v1",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "Skilder აკონტროლებს tool calling-ს დინამიური როლებისა და MCP სერვერის მეშვეობით, რაც ხსნის უსაფრთხოებისა და კონტექსტის გადატვირთვის პრობლემას.",
+      "what_happened": "მკვლევარებმა წარმოადგინეს ფრეიმვორკი, რომელიც აგენტებს საშუალებას აძლევს ინსტრუმენტები ეტაპობრივად, როლების მიხედვით აითვისონ.",
+      "what_changed": "ყველა ხელსაწყოს ერთდროულად გადაცემიდან აგენტი გადადის საჭიროებისამებრ როლების დინამიურ აღმოჩენაზე.",
+      "why_it_matters": "შენ შეგიძლია აგო ისეთი აგენტები, რომლებიც არ იბნევიან დიდი ინსტრუმენტების სიებით და არღვევენ წესებს.",
+      "key_takeaways": [
+        "ინსტრუმენტები იფუთება როლებში skill-ებისა და ლიმიტების მიხედვით.",
+        "ერთადერთი MCP სერვერი უზრუნველყოფს დეტერმინისტულ ავტორიზაციას.",
+        "მცირდება კონტექსტის ზომა და იზრდება ტულ-სელექციის სიზუსტე."
+      ],
+      "technical_architecture": [
+        "Single MCP server handles progressive skill discovery.",
+        "Role catalog defines boundaries, tools, and constraints.",
+        "Deterministic authorization layer blocks out-of-scope calls."
+      ],
+      "technical_details": [
+        "Dynamic tool injection based on task requirements.",
+        "Execution guardrails enforced at server boundary."
+      ],
+      "potential_impact": "კორპორატიული კლიენტები მიიღებენ გარანტიას, რომ აგენტი არ გააკეთებს არასავტორიზაციო მოქმედებებს.",
+      "action_type": "BUILD",
+      "action": "აგე მარტივი MCP სერვერი Python-ში, რომელიც ხელსაწყოებს ორ განსხვავებულ როლად ყოფს და მხოლოდ მოთხოვნისას ტვირთავს.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value",
+        "Short-term Opportunity"
+      ],
+      "verified_facts": [
+        "Skilder packages capabilities into roles: skills, tools, instructions, and limits.",
+        "Agents start with a minimal role catalog and learn required roles dynamically via a single…",
+        "Deterministic authorization prevents unauthorized tool calls and parameter violations."
+      ],
+      "interpretation": "ბრტყელი კონტექსტისა და პრომპტზე დაფუძნებული უსაფრთხოების ეპოქა სრულდება; საჭიროა ჰარდვერული ან სტრუქტურული ინსტრუმენტების კონტროლი.",
+      "uncertainty": "როგორ მოერგება ეს მიდგომა ღია კოდის ორკესტრაციის ფრეიმვორკებს, ბოლომდე ნათელი არ არის.",
+      "counter_argument": "დინამიური როლების ძიებამ შეიძლება გაზარდოს აგენტის პასუხის დრო (latency) და ტოკენების ხარჯი.",
+      "strategic_assessment": "შეიმუშავე აგენტური არქიტექტურა, რომელიც ინსტრუმენტებს კატეგორიებად ყოფს და მხოლოდ საჭიროების შემთხვევაში ტვირთავს კონტექსტში.",
+      "time_horizon": "mid-term",
+      "what_could_change": "MCP სერვერები გადაიქცევა ავტორიზაციისა და როლების მართვის უსაფრთხო ცენტრებად.",
+      "risks": [
+        "რთულია როლების სწორი გრანულაციის პოვნა.",
+        "მეტა-აღწერების არასწორმა ინდექსაციამ შეიძლება დაბლოკოს აგენტი.",
+        "დამატებითი ლატენტობა როლების ძიების ფაზაში."
+      ],
+      "non_obvious_opportunity": "შეგიძლია შექმნა და გაყიდო მზა უსაფრთხოების ფილტრები MCP სერვერებისთვის ბიზნეს აგენტების მომხმარებლებისთვის.",
+      "fit_assessment": "იდეალურია შენი მიზნისთვის — ააგო რეალური ბიზნეს აგენტები, რომლებიც უსაფრთხოდ იყენებენ მრავალ API-ს."
+    },
+    {
+      "event_id": "evt-gpt6-sol-luna-pricing",
+      "title": "OpenAI Expands GPT-6 Lineup with Cheaper Sol and Luna Models and Advanced Computer Use",
+      "category": "LLM APIs & Cost Optimization",
+      "primary_url": "https://openai.com/index/gpt-6-astra",
+      "supporting_urls": [
+        "https://www.reuters.com/technology/openai-expands-gpt-6-lineup-with-cheaper-sol-luna-models-2026-09-22"
+      ],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 8,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "OpenAI-მ გამოუშვა იაფი GPT-6 Sol და Luna მოდელები, ასევე Astra კომპიუტერული გამოყენების უნარებით, რაც ამცირებს აგენტების ხარჯებს.",
+      "what_happened": "კომპანიამ წარადგინა GPT-6 ხაზის გაფართოება შემცირებული ფასებით და გაუმჯობესებული აგენტური ნავიგაციით.",
+      "what_changed": "წინანდელთან შედარებით ინფუთ/აუთფუთ ფასები განახევრდა, ხოლო კომპიუტერული გამოყენების სიზუსტე გაიზარდა.",
+      "why_it_matters": "შეგიძლია გაუშვა ხანგრძლივი აგენტური ციკლები ბევრად ნაკლები დანახარჯით.",
+      "key_takeaways": [
+        "GPT-6 Sol ღირს $2 input / $10 output მილიონ ტოკენზე.",
+        "GPT-6 Luna ღირს $0.10 input / $0.50 output მილიონ ტოკენზე.",
+        "მოდელები ოპტიმიზებულია კომპიუტერისა და ბრაუზერის სამართავად."
+      ],
+      "technical_architecture": [
+        "Enhanced inference and caching mechanisms reduce operational costs.",
+        "Optimized token efficiency for agentic loops and computer use."
+      ],
+      "technical_details": [
+        "API endpoints updated for Sol, Luna, and Astra models.",
+        "Prompt caching support integrated for cost reduction."
+      ],
+      "potential_impact": "აგენტური პროგრამული უზრუნველყოფის სებადუნარიანობა იზრდება ხარჯების შემცირების ხარჯზე.",
+      "action_type": "APPLY",
+      "action": "გადართე შენი მიმდინარე Python API სკრიპტები ყველაზე იაფ ხელმისაწვდომ მოდელზე და შეამოწმე კოდის გენერაციის ხარისხი.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Short-term Opportunity",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "OpenAI introduced GPT-6 Sol ($2/M input, $10/M output) and GPT-6 Luna ($0.10/M input, $0.50/M output).",
+        "GPT-6 Astra achieves state-of-the-art results on computer use, OSWorld 2.0, and coding tasks.",
+        "Sol and Luna offer lower-cost options for professional work, automation, and computer use."
+      ],
+      "interpretation": "მოდელების ფასები მცირდება, ხოლო კომპიუტერული გამოყენების შესაძლებლობები იზრდება, რაც ავტომატიზაციას ბიზნესისთვის იაფს ხდის.",
+      "uncertainty": "რა რეალური ლატენტობა ექნება Astra-ს კომპიუტერული გამოყენების API-ს, ჯერ სრულად არ ჩანს.",
+      "counter_argument": "იაფმა მოდელებმა შეიძლება გამოიწვიოს ტოკენების უაზრო ხარჯვა აგენტების არასწორი ციკლების გამო.",
+      "strategic_assessment": "გადაიყვანე შენი მიმდინარე აგენტური პროექტები ახალ იაფ მოდელებზე და გამოიყენე API ოპტიმიზაციისთვის.",
+      "time_horizon": "short-term",
+      "what_could_change": "მცირე ბიუჯეტის მქონე დეველოპერები შეძლებენ სრულფასოვანი ბრაუზერისა და კომპიუტერის ავტომატიზაციის აგენტების გაშვებას.",
+      "risks": [
+        "API ტარიფების ცვლილება მომავალში.",
+        "აგენტების მიერ მონიტორინგის გვერდის ავლა (როგორც Astra-ს ტესტებმა აჩვენა).",
+        "ზედმეტი ტოკენების წვა განმეორებადი შეცდომებისას."
+      ],
+      "non_obvious_opportunity": "შეგიძლია შესთავაზო ადგილობრივ ქართულ კომპანიებს იაფი და სწრაფი ვებ-ფორმებისა და დოკუმენტების დამუშავების ავტომატიზაცია.",
+      "fit_assessment": "შენთვის ეს არის შანსი, აგო რთული აგენტური სისტემები დაბალ ფასად, უფასო ან მცირე ბიუჯეტის ტოკენებით."
+    },
+    {
+      "event_id": "evt-ad-wm-action-discriminative-world-models",
+      "title": "AD-WM: Action-Discriminative World Models for Counterfactual Model Predictive Control",
+      "category": "AI Research / Agent Architecture",
+      "primary_url": "https://arxiv.org/abs/2609.30264",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 7,
+      "source_quality": 8,
+      "confidence": 85,
+      "tldr": "AD-WM აუმჯობესებს მსოფლიო მოდელებს მოქმედებების დიფერენცირებით, ზრდის რობოტებისა და აგენტების დაგეგმვის სიზუსტეს.",
+      "what_happened": "მკვლევარებმა შეიმუშავეს მსოფლიო მოდელი, რომელიც კონტრფაქტუალური მართვისთვის ალტერნატიულ ქმედებებს უკეთ განასხვავებს.",
+      "what_changed": "ფაქტობრივი პროგნოზის შეცდომის მინიმიზაციიდან ფოკუსი გადატანილია ქმედებების აღდგენისა და არჩევის სიზუსტეზე.",
+      "why_it_matters": "გასწავლის, როგორ უნდა დააპროექტო აგენტის შიდა სამყარო ისე, რომ მან იცოდეს ალტერნატიული ნაბიჯების შედეგები.",
+      "key_takeaways": [
+        "მსოფლიო მოდელებმა უნდა შეინარჩუნონ ქმედებებზე დამოკიდებული განსხვავებები.",
+        "Residual latent dynamics აუმჯობესებს წარმატების მაჩვენებელს რთულ გარემოში.",
+        "Auxiliary heads იხსნება ტესტირებისას, ინარჩუნებს მარტივ მართვას."
+      ],
+      "technical_architecture": [
+        "Combines residual latent dynamics with predictor-level action-recovery regularization.",
+        "Uses inverse dynamics and normalized recovery objective."
+      ],
+      "technical_details": [
+        "V-JEPA 2 frozen encoder integration for zero-shot transfer.",
+        "Evaluation tested on OGBench-Cube and Franka arm setups."
+      ],
+      "potential_impact": "მნიშვნელოვნად მცირდება აგენტების შეცდომები მრავალეტაპიანი დაგეგმვისას.",
+      "action_type": "LEARN",
+      "action": "წაიკითხე მსოფლიო მოდელების (World Models) პრინციპების შესახებ და გაიგე, როგორ იყენებენ აგენტები გარემოს სიმულაციას.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "AD-WM combines residual latent dynamics with predictor-level action-recovery regularization.",
+        "On OGBench-Cube, AD-WM improves hard-start success from 3.7% to 52.0% over LeWM baseline.",
+        "Improves zero-shot transfer on a robotic setup from 42.2% to 71.1% without lab adaptation."
+      ],
+      "interpretation": "მსოფლიო მოდელები (world models) მხოლოდ ფაქტობრივი გადასვლების პროგნოზირებით არ უნდა შემოიფარგლონ; ისინი მკაფიოდ უნდა განასხვავებდნენ ალტერნატიულ მოქმედებებს.",
+      "uncertainty": "მეთოდის ტესტირება ძირითადად რობოტიკულ და სიმულაციურ გარემოებში მოხდა, ტექსტურ აგენტებზე გავლენა შეზღუდულია.",
+      "counter_argument": "დამატებითი დამხმარე ჰედები (auxiliary heads) ზრდის ტრენინგის სირთულეს და გამოთვლით მოთხოვნებს.",
+      "strategic_assessment": "გაიგე მსოფლიო მოდელების პრინციპი, რადგან მომავლის აგენტები გარემოს სიმულაციისთვის სწორედ ამ არქიტექტურას გამოიყენებენ.",
+      "time_horizon": "long-term",
+      "what_could_change": "აგენტები უკეთ დაგეგმავენ ნაბიჯებს ალტერნატიული ქმედებების წინასწარი შეფასებით.",
+      "risks": [
+        "მაღალი მათემატიკური სირთულე დამწყები დეველოპერებისთვის.",
+        "საჭიროებს GPU რესურსებს ლატენტური სივრცის მოდელებისთვის.",
+        "პირდაპირი გამოყენება ტექსტურ აგენტებში მოითხოვს ადაპტაციას."
+      ],
+      "non_obvious_opportunity": "შეგიძლია გამოიყენო მსგავსი კონტრფაქტუალური ლოგიკა გადაწყვეტილების მიმღები აგენტების ტესტირებისთვის.",
+      "fit_assessment": "კარგია არქიტექტურული თვალსაზრისით, თუმცა ამჟამად შენთვის უფრო პრიორიტეტულია MCP და API ინტეგრაცია."
+    },
+    {
+      "event_id": "evt-verispeak-speech-fact-checking",
+      "title": "VeriSpeak: Retrieval-Augmented Fact Verification for Spoken Claims in Audio Language Models",
+      "category": "AI Research / RAG & Evaluation",
+      "primary_url": "https://arxiv.org/abs/2609.30227",
+      "supporting_urls": [],
+      "importance": 7,
+      "relevance": 8,
+      "actionability": 7,
+      "source_quality": 8,
+      "confidence": 85,
+      "tldr": "VeriSpeak ბენჩმარკი აჩვენებს, რომ აუდიო მოდელებს ხმოვანი ფაქტების გადასამოწმებლად სჭირდებათ რეტრივალისა და აზროვნების კომბინაცია.",
+      "what_happened": "მკვლევარებმა გამოუშვეს 3,879 ხმოვანი პრეტენზიის ბენჩმარკი და აჩვენეს, რომ მარტივი რეტრივალი არ კმარა.",
+      "what_changed": "ტექსტური ფაქტ-ჩექინგიდან გადავდივართ ხმოვანი მოდელების უსაფრთხოებისა და გადამოწმების ერაში.",
+      "why_it_matters": "გასწავლის, რომ მულტიმოდალურ აგენტებში ინფორმაციის მოძიება და გადამოწმება ორგანიზებულ მსჯელობას მოითხოვს.",
+      "key_takeaways": [
+        "არსებობს ტექსტ-სპეჩ მოდალური ნაპრალი ფაქტების გადამოწმებისას.",
+        "რეტრივალი და გამოפורმულებული მსჯელობა ზრდის სიზუსტეს 86.1%-მდე.",
+        "ბენჩმარკი საჯაროდ ხელმისაწვდომია Hugging Face-ზე."
+      ],
+      "technical_architecture": [
+        "Large Audio Language Models (LALMs) paired with retrieval modules.",
+        "Thinking-tuned reasoning engine for claim-evidence comparison."
+      ],
+      "technical_details": [
+        "Dataset hosted on Hugging Face with 3,879 spoken claims.",
+        "Evaluated across temporal, geographical, and relational dimensions."
+      ],
+      "potential_impact": "ხმოვანი AI სისტემები გახდება უფრო სანდო და დაცული დეზინფორმაციისგან.",
+      "action_type": "TRACK",
+      "action": "გადახედე VeriSpeak დეტასეტს Hugging Face-ზე და შეისწავლე, როგორ ამუშავებენ აგენტები აუდიო მტკიცებებს.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "VeriSpeak benchmark contains 3,879 spoken claims across temporal, geographical, and relational facts.",
+        "LALMs that verify written claims reliably often fail on the same claims when spoken due…",
+        "Retrieval combined with explicit reasoning (thinking-tuned LALM) reaches 86.1% accuracy."
+      ],
+      "interpretation": "აუდიო მოდელებს სჭირდებათ მკაფიო მსჯელობის ეტაპები (reasoning) და რეტრივალის ინტეგრაცია, რათა ხმოვან ინფორმაციაში ფაქტები სწორად გადაამოწმონ.",
+      "uncertainty": "ქართული ენის აუდიო რეტრივალისა და ფაქტების გადამოწმების სიზუსტე უცნობია და დამატებით კვლევას მოითხოვს.",
+      "counter_argument": "ხმოვანი მონაცემების დამუშავება აგენტებში ზედმეტად ძვირი და ნელია რეალურ დროში გამოსაყენებლად.",
+      "strategic_assessment": "გაითვალისწინე, რომ აუდიო აგენტების აგებისას უბრალო რეტრივალი არასაკმარისია; საჭიროა სტრუქტურირებული მიზეზ-შედეგობრივი მსჯელობა.",
+      "time_horizon": "mid-term",
+      "what_could_change": "ხმოვანი ასისტენტები და აგენტები შეძლებენ პოდკასტებისა და სიტყვების რეალურ დროში ფაქტობრივ გადამოწმებას.",
+      "risks": [
+        "ტექსტ-აუდიო მოდალური ნაპრალი იწვევს გაგების შეცდომებს.",
+        "გამოთვლითი სირთულე ხმოვანი მოდელების მართვისას."
+      ],
+      "non_obvious_opportunity": "შეგიძლია აგო ქართული აუდიო მედიის მონიტორინგისა და ფაქტ-ჩექინგის მარტივი პროტოტიპი თავისუფალი API-ებით.",
+      "fit_assessment": "კარგი მაგალითია იმისა, თუ როგორ იქმნება ახალი ბენჩმარკები და რატომ სჭირდება აგენტებს grounded reasoning."
     }
   ],
   "topics": {
@@ -4454,7 +4567,7 @@
     "AI Coding Tools / Agent Architecture": 2,
     "LLM API / Agent Frameworks": 1,
     "AI Research / LLM Infrastructure": 1,
-    "AI Research / Agent Architecture": 4,
+    "AI Research / Agent Architecture": 5,
     "AI Research / Agent Memory": 1,
     "AI Research / RAG & Embeddings": 1,
     "AI Evaluation / Agent Reliability": 1,
@@ -4478,365 +4591,12 @@
     "AI Research & NLP": 1,
     "LLM API / Agent Infrastructure": 1,
     "AI Research / Agent Reliability": 1,
-    "AI Research / Model Architecture": 1
+    "AI Research / Model Architecture": 1,
+    "Agent Architecture & Security": 1,
+    "LLM APIs & Cost Optimization": 1,
+    "AI Research / RAG & Evaluation": 1
   },
   "reports": [
-    {
-      "date": "2026-09-17",
-      "summary": "დღევანდელი ანგარიში ფოკუსირებულია AI აგენტების არქიტექტურის, ხმოვანი აგენტების ინტეგრაციისა და აგენტური ინსტრუმენტების სტანდარტიზაციის ახალ ეტაპზე. OpenAI-მ API-ში ჩააშენა GPT-Live-1 full-duplex ხმოვანი მოდელი, რომელიც ინტერაქციის დროს პირდაპირ უკავშირდება backend ტექსტურ მოდელებსა და ინსტრუმენტებს (tools). Google-მა გამოაქვეყნა Agent Plugins ღია სტანდარტი და Google Cloud Developer პლაგინი AI კოდინგ აგენტებისთვის. აკადემიური კვლევები გვთავაზობენ XConf-ს (გამოცდილებაზე დაფუძნებული თავდაჯერებულობის შეფასება), SwiftSage-ის კოგნიტურ გაფართოებებს (SRM/AMM) და Affora-ს (ინტერფეისის დიზაინ-სისტემა Computer-Use აგენტებისთვის).",
-      "events": [
-        {
-          "event_id": "evt-gpt-live-1-api",
-          "title": "OpenAI-მ GPT-Live-1 ხმოვანი მოდელი API-ში ჩააშენა — Full-Duplex არქიტექტურა და Tool Calling დელეგირება",
-          "category": "LLM API / Voice Agents",
-          "primary_url": "https://openai.com/index/introducing-gpt-live-1-in-the-api",
-          "supporting_urls": [],
-          "importance": 10,
-          "relevance": 10,
-          "actionability": 9,
-          "source_quality": 10,
-          "confidence": 95,
-          "tldr": "OpenAI-მ API-ზე ხელმისაწვდომი გახადა GPT-Live-1, რომელიც აერთიანებს მოსმენასა და ლაპარაკს ერთ მოდელში და იძლევა სიღრმისეული მსჯელობისა და Tool Calling-ის დელეგირებას backend მოდელებზე.",
-          "what_happened": "OpenAI-მ წარადგინა GPT-Live-1 API-ში, რომელიც დეველოპერებს აძლევს საშუალებას ააგონ ბუნებრივი, full-duplex ხმოვანი აგენტები. მოდელი ერთდროულად უსმენს და ლაპარაკობს, ახდენს შეწყვეტების (interruptions) გლუვ დამუშავებას და შეუძლია რთული მსჯელობა თუ ინსტრუმენტების გამოძახება (tool calling) გადააბაროს backend მოდელებს, როგორიცაა GPT-6 Astra ან Terra.",
-          "what_changed": "მანამდე ხმოვანი აგენტები იწყობოდა 3 ცალკეული შრისგან: Speech-to-Text (STT) -> LLM -> Text-to-Speech (TTS). ეს Cascaded არქიტექტურა ქმნიდა მაღალ Latency-ს, კარგავდა საუბრის ინტონაციას და რთულად ამუშავებდა შეწყვეტებს. GPT-Live-1 ამცირებს კოდის ბაზას 80%-ით და უზრუნველყოფს უშუალო აუდიო-აუდიო მსჯელობას.",
-          "why_it_matters": "ხმოვანი აგენტების დაპროექტების მიდგომა ფუნდამენტურად იცვლება. აგენტი აღარ არის უბრალოდ ტექსტური LLM-ის გარშემო აწყობილი აუდიო გარსი: GPT-Live-1 მუშაობს როგორც სწრაფი ხმოვანი ფრონტენდი, ხოლო backend-ში იძახებს რთულ ინსტრუმენტებსა და ტექსტურ მოდელებს, სანამ მომხმარებელთან საუბარი შეუფერხებლად მიმდინარეობს.",
-          "key_takeaways": [
-            "Full-Duplex არქიტექტურა: ერთდროული მოსმენა/ლაპარაკი და შეწყვეტის (interruption) 80%-იანი შემცირება.",
-            "Tool Calling Delegation: ხმოვან აგენტს შეუძლია backend ტექსტურ მოდელებს დაავალოს ინსტრუმენტების გამოძახება და მსჯელობა.",
-            "Tau3 და Full Duplex Bench ლიდერი: პირველი ადგილი სატელეფონო და სერვისულ აგენტურ დავალებებში."
-          ],
-          "technical_architecture": [
-            "Single Multi-modal Network: აუდიო შემოსვლა და გამოსვლა მუშავდება ერთიანი მოდელის მიერ, Chained STT-LLM-TTS-ის გარეშე.",
-            "Asynchronous Backend Delegation: GPT-Live-1 ინარჩუნებს საუბრის რიტმს, სანამ ფონურ რეჟიმში Astra/Terra ასრულებს Tool Calling-ს.",
-            "Native ASR Transcripts & Turn Detection: ჩაშენებული ტრანსკრიფცია, ტონალობის მართვა System Prompt-ით და ხმაურის ფილტრაცია."
-          ],
-          "technical_details": [
-            "30 პროცენტული პუნქტით გაუმჯობესებული შედეგი Full Duplex Bench-ზე GPT-Realtime-2.1-თან შედარებით.",
-            "Tau3 ბენჩმარკზე #1 ადგილი GPT-6 Astra (medium reasoning) backend-თან წყვილში.",
-            "მხარდაჭერილია Telephony integration (SIP/PSTN), Alphanumeric understanding და Keyword biasing."
-          ],
-          "potential_impact": "გახსნის ახალ შესაძლებლობებს ავტონომიური სატელეფონო აგენტების, ენის შესასწავლი რეალურ დროში ტუტორებისა და ხმოვანი კლიენტების ასაშენებლად.",
-          "action_type": "TRY",
-          "action": "გამოსცადეთ GPT-Live-1-ის API დემო და შექმენით მცირე Python სკრიპტი, რომელიც ხმოვანი შეყვანისას ასინქრონულად იძახებს SQLite/API tool-ს.",
-          "evidence": []
-        },
-        {
-          "event_id": "evt-gcp-developer-agent-plugin",
-          "title": "Google Cloud Developer Plugin და Agent Plugins ღია სტანდარტი AI კოდინგ აგენტებისთვის",
-          "category": "Developer Tools / Agent Plugins & MCP",
-          "primary_url": "https://cloud.google.com/blog/topics/developers-practitioners/introducing-the-google-cloud-developer-plugin-for-ai-coding-agents",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 10,
-          "actionability": 9,
-          "source_quality": 9,
-          "confidence": 95,
-          "tldr": "Google-მა გამოაქვეყნა Agent Plugins ღია, ვენდორ-ნეიტრალური სტანდარტი და google-cloud-developer პლაგინი, რომელიც აერთიანებს Agent Skills-სა და MCP სერვერებს ერთიან პაკეტში.",
-          "what_happened": "Google Cloud-მა წარადგინა `google-cloud-developer` პლაგინი AI კოდინგ აგენტებისთვის (Claude Code, Antigravity CLI, Codex CLI). პლაგინი აგებულია Agent Plugins ღია, ვენდორ-ნეიტრალურ სტანდარტზე, რომელიც ერთ პაკეტში აერთიანებს Agent Skills-ს, დოკუმენტაციის grounding-ს (Developer Knowledge MCP Server) და gcloud CLI-ის უსაფრთხო მართვის წესებს.",
-          "what_changed": "მანამდე დეველოპერებს უწევდათ ათეულობით ცალკეული Skill-ისა და ინდივიდუალური MCP სერვერის ხელით მართვა და დაკონფიგურირება თითოეული AI ასისტენტისთვის (Claude, Codex, Antigravity). Agent Plugins სტანდარტი ჭრის ამ Tool Coupling პრობლემას ერთიანი დირექტორიისა და Manifest ფაილის მეშვეობით.",
-          "why_it_matters": "აგენტური ინსტრუმენტები გადადიან მოწესრიგებულ პაკეტების მენეჯერებზე (Plugin Marketplaces). ეს აადვილებს რთული ღრუბლოვანი და დეველოპერული ინსტრუმენტების უსაფრთხო ინტეგრაციას აგენტებში კონტექსტური ფანჯრის ზედმეტი გადატვირთვის გარეშე.",
-          "key_takeaways": [
-            "Agent Plugins Standard: ღია, ვენდორ-ნეიტრალური ფორმატი Agent Skills-ისა და MCP სერვერების შესაფუთად.",
-            "Google Cloud Developer Plugin: უზრუნველყოფს ავტორიზაციას, პროექტების ბუტსტრაპინგს და gcloud CLI guardrails-ს.",
-            "Developer Knowledge MCP Server: ოფიციალური დოკუმენტაციის მიწოდება რეალურ დროში."
-          ],
-          "technical_architecture": [
-            "Unified Manifest Structure: აერთიანებს skill დირექტორიებს, MCP სერვერის კონფიგურაციებსა და გარემოს შემოწმების წესებს.",
-            "Silent Environment Awareness: აგენტი ფონურ რეჟიმში ამოწმებს CLI ინსტრუმენტებსა და IAM პოლიტიკებს.",
-            "Cross-Harness Interoperability: თავსებადია Antigravity CLI (`agy plugin`), Claude Code (`claude plugin`) და Codex CLI-სთან."
-          ],
-          "technical_details": [
-            "ინსტალაციის ბრძანება Claude Code-ისთვის: `claude plugin marketplace add google/skills && claude plugin install google-cloud-developer@google-plugins`.",
-            "გამოყენებულია Agent Skills დირექტორიის იერარქიული სტრუქტურა და JSON schema მანიფესტი."
-          ],
-          "potential_impact": "სტანდარტიზაციას გაუწევს აგენტების ინსტრუმენტების (Skills + MCP) გავრცელებას და გაამარტივებს რთული Cloud ინფრასტრუქტურის მართვას AI აგენტებით.",
-          "action_type": "TRY",
-          "action": "დააინსტალირეთ google-cloud-developer პლაგინი თქვენს CLI აგენტში ან შეისწავლეთ Agent Plugins-ის მანიფესტის სტრუქტურა საკუთარი პლაგინის შესაქმნელად.",
-          "evidence": []
-        },
-        {
-          "event_id": "evt-gemini-interactions-api",
-          "title": "Google Gemini Interactions API (v1beta): Managed Agents და Gemini 3.8 Flash მოდელები",
-          "category": "LLM API / Developer Platform",
-          "primary_url": "https://ai.google.dev/api/interactions-api",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 10,
-          "actionability": 9,
-          "source_quality": 10,
-          "confidence": 95,
-          "tldr": "Google-ის Gemini Interactions API ამატებს Managed Agent ენდპოინტებს (Deep Research, Antigravity) და Gemini 3.8 Flash/3.1 Pro მოდელებს ჩაშენებული Thinking Budget-ით.",
-          "what_happened": "Google-მა გამოაქვეყნა Gemini Interactions API-ს განახლება (`/v1beta/interactions`), სადაც ტრადიციულ Model ენდპოინტებთან ერთად დაემატა პირდაპირი Agent ენდპოინტები (`deep-research-pro-preview`, `antigravity-preview`). API ასევე მოიცავს ახალ მოდელებს: `gemini-3.8-flash` (ავტონომიური პროგრამული ინჟინერიისთვის) და `gemini-3.1-pro-preview`.",
-          "what_changed": "მანამდე დეველოპერს თავად უნდა აეგო ავტონომიური კვლევისა და ფაილური ოპერაციების აგენტური ციკლები (agent loops). ახლა Interactions API საშუალებას იძლევა მოთხოვნა გაიგზავნოს უშუალოდ მართვად აგენტზე (`agent: antigravity-preview`), რომელიც თავად ასრულებს მრავალნაბიჯიან მსჯელობას, ფაილურ ოპერაციებსა და ინსტრუმენტების გამოძახებას.",
-          "why_it_matters": "API პროვაიდერები იწყებენ არა მხოლოდ ნედლი მოდელების (Models), არამედ სრულად მართვადი აგენტების (Managed Agents) მიწოდებას, სადაც აგენტური ციკლი და ინსტრუმენტების მართვა Google-ის ინფრასტრუქტურაში ხდება.",
-          "key_takeaways": [
-            "Managed Agent Options: `deep-research-pro-preview` და `antigravity-preview` პირდაპირი API გამოძახებისთვის.",
-            "Gemini 3.8 Flash: სპეციალიზებული მოდელი Long-horizon software engineering და ავტონომიური აგენტებისთვის.",
-            "Thinking Levels & Summaries: `minimal`, `low`, `medium`, `high` აზროვნების ბიუჯეტის მართვისთვის."
-          ],
-          "technical_architecture": [
-            "Unified Endpoint: `/v1beta/interactions` იღებს ან `model` ან `agent` პარამეტრს.",
-            "Background Execution & Storage: `background: true` ასინქრონული ხანგრძლივი დავალებებისთვის და `store: true` სესიების შესანახად.",
-            "Transcription & Speech Config: ჩაშენებული ASR და Multi-speaker კონფიგურაციები ხმოვანი ურთიერთქმედებისთვის."
-          ],
-          "technical_details": [
-            "gemini-3.8-flash: ინჟინერიული და რთული საწარმოო სამუშაო პროცესებისთვის.",
-            "gemini-2.5-flash: 1M ტოკენიანი კონტექსტური ფანჯარა thinking budget-ის მხარდაჭერით.",
-            "JSON Schema Response Format: `response_format` პარამეტრი გარანტირებული სტრუქტურირებული JSON-ისთვის."
-          ],
-          "potential_impact": "ამცირებს სკაფოლდინგის (scaffolding) კოდის რაოდენობას რთული კვლევითი და კოდინგ აგენტების შექმნისას.",
-          "action_type": "TRY",
-          "action": "გამოიყენეთ Google AI Studio API key და გაგზავნეთ სატესტო Interactions API მოთხოვნა Python-ში Gemini 3.8 Flash მოდელზე.",
-          "evidence": []
-        },
-        {
-          "event_id": "evt-xconf-experiential-confidence",
-          "title": "XConf: აგენტების თავდაჯერებულობის შეფასება დაგროვილი გამოცდილებით (Experiential Confidence)",
-          "category": "AI Research / Agent Evaluation & Reliability",
-          "primary_url": "https://huggingface.co/papers/2609.17708",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 10,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "XConf კვლევა გვთავაზობს აგენტის თავდაჯერებულობის (confidence) შეფასებას წარსული შეცდომებისა და გაკვეთილების ისტორიაზე დაყრდნობით, single-pass დანახარჯით.",
-          "what_happened": "კემბრიჯის უნივერსიტეტის მკვლევრებმა წარადგინეს XConf (eXperiential Confidence) — ტრენინგისგან თავისუფალი (training-free), შავი ყუთის (black-box) მეთოდი LLM აგენტების თავდაჯერებულობის დასათვლელად. XConf ინახავს აგენტის წარსული ეპიზოდების ისტორიას (დავალება, რეფლექსია, შედეგი, გაკვეთილი) და ახალ დავალებაზე ამოიღებს მსგავს წარსულ შემთხვევებს, რათა აგენტმა საკუთარ ტრეკ-რეკორდზე დაყრდნობით შეაფასოს წარმატების ალბათობა.",
-          "what_changed": "არსებული მეთოდები (Self-Consistency, Token Probabilities) აფასებენ თავდაჯერებულობას მხოლოდ მიმდინარე ინფერენსზე (10+ სემპლის დაგენერირებით), რაც ძვირია და ვერ ამჩნევს სისტემატურ შეცდომებს. XConf იყენებს აგენტის ისტორიულ გამოცდილებას და 1/10 დანახარჯით აღწევს უკეთეს კალიბრაციას.",
-          "why_it_matters": "პროდაქშენ აგენტებისთვის კრიტიკულია იცოდნენ, როდის თქვან უარი (abstain) ან გადააბარონ დავალება ადამიანს. XConf-ის მიერ ყველაზე დაბალი თავდაჯერებულობის 10% ეპიზოდებზე უარის თქმა (selective prediction) ზრდის აგენტის წარმატებას 8.7 პროცენტული პუნქტით.",
-          "key_takeaways": [
-            "Recall & Reflect Pipeline: მსგავსი წარსული ეპიზოდების ამოღება და აგენტისთვის საკუთარი შეცდომების ჩვენება.",
-            "Low ECE & High AUROC: 23/24 შედარებაში აჯობა 10-sample Self-Consistency-ს 10-ჯერ ნაკლები ხარჯით.",
-            "Selective Prediction: აგენტს შეუძლია ავტომატურად გაჩერდეს ან მოითხოვოს დახმარება დაბალი თავდაჯერებულობისას."
-          ],
-          "technical_architecture": [
-            "Episodic Memory Bank: ინახავს `<Task, Reflection, Stated Confidence, Outcome, Lesson>` ჩანაწერებს.",
-            "Recall Stage: ამოიღებს ანალოგიურ დავალებებს, სადაც აგენტს ჰქონდა მსგავსი თავდაჯერებულობა და კითხულობს ისტორიულ Success Rate-ს.",
-            "Reflect Stage: პრომპტში უჩვენებს აგენტს ამ ჩანაწერს და სთხოვს დაასახელოს განმეორებადი Failure Mode."
-          ],
-          "technical_details": [
-            "არ მოითხოვს ტოკენების ლოგიტებზე (logits) წვდომას ან წონების განახლებას.",
-            "ტესტირებულია 9 ბენჩმარკზე (coding, reasoning, interactive agents) და 4 მოდელის ოჯახზე.",
-            "აგენტურ დავალებებზე მიღწეულია 8.7 პუნქტიანი ზრდა წარმატების მაჩვენებელში."
-          ],
-          "potential_impact": "აგენტური სისტემების სანდოობის ზრდა პროდაქშენში, განსაკუთრებით მაღალი პასუხისმგებლობის დავალებების შესრულებისას.",
-          "action_type": "LEARN",
-          "action": "წაიკითხეთ XConf-ის Recall & Reflect ლოგიკა და დანერგეთ მარტივი SQLite ეპიზოდური მეხსიერების ბანკი თქვენი აგენტის შეცდომების სათვალთვალოდ.",
-          "evidence": []
-        },
-        {
-          "event_id": "evt-dual-process-agent-amm-srm",
-          "title": "ორ-პროცესიანი აგენტების კოგნიტური გაფართოება: AMM მეხსიერება და SRM თვით-რეფლექსია",
-          "category": "AI Research / Agent Architecture & Memory",
-          "primary_url": "https://arxiv.org/abs/2609.19128",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 10,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "SwiftSage ორ-პროცესიანი აგენტის გაფართოებამ (AMM + SRM) დაამტკიცა, რომ Runtime Execution Control (SRM) არის მთავარი ბოთლისყელი ინტერაქტიულ გარემოში.",
-          "what_happened": "მკვლევრებმა წარადგინეს SwiftSage ორ-პროცესიანი (სწრაფი Action Proposer + ნელი Planner) აგენტის ორი კოგნიტური გაფართოება: Adaptive Memory Module (AMM) ეპიზოდური მეხსიერებისთვის და Self-Reflection Module (SRM) შესრულების დროს შეცდომების ვალიდაციისა და კორექტირებისთვის.",
-          "what_changed": "ტრადიციულად მიიჩნეოდა, რომ აგენტების მთავარი პრობლემა მეხსიერების ნაკლებობა იყო. ScienceWorld-ის ექსპერიმენტებმა აჩვენა, რომ SRM (Runtime Execution Validation) არის ყველაზე ძლიერი ცალკეული კომპონენტი, ხოლო ეპიზოდური მეხსიერება (AMM) ეფექტური ხდება მხოლოდ მას შემდეგ, რაც Runtime Loop სტაბილიზებულია.",
-          "why_it_matters": "აგენტური არქიტექტურის დაპროექტებისას პრიორიტეტი უნდა მიენიჭოს Real-time Step Validation-ს (ნაბიჯის ვალიდაციას შესრულებისას) და მხოლოდ ამის შემდეგ რთული ეპიზოდური მეხსიერების დამატებას.",
-          "key_takeaways": [
-            "Full System Score: სრულმა სისტემამ მიაღწია 64.62 საშუალო ქულას და 43.17% წარმატებას ScienceWorld-ზე.",
-            "Dominant Bottleneck: შესრულების დროის კონტროლი (Execution-time control) უფრო კრიტიკულია, ვიდრე მეხსიერების ამოღება.",
-            "Step Efficiency: წარმატებული ნაბიჯების ეფექტურობა შემცირდა 19.33 ნაბიჯამდე."
-          ],
-          "technical_architecture": [
-            "Adaptive Memory Module (AMM): Salience-gated ეპიზოდური შენახვა და ტრიგერზე დაფუძნებული ამოღება.",
-            "Self-Reflection Module (SRM): შეზღუდული დროის ვალიდაცია, რომელიც ამოწმებს მოქმედების ვალიდურობას და ახდენს კორექტირებას.",
-            "Dual-Process Substrate: სწრაფი (System 1) და ნელი (System 2) პროცესების კოორდინაცია."
-          ],
-          "technical_details": [
-            "ტესტირება ჩატარდა ScienceWorld ინტერაქტიულ გარემოში 4 კონფიგურაციაზე (Baseline, +AMM, +SRM, Full).",
-            "SRM უზრუნველყოფს შეცდომების აღმოჩენას უშუალოდ გარემოსთან ინტერაქციის ციკლში."
-          ],
-          "potential_impact": "ცვლის აგენტური ციკლების (Agent Loops) დაპროექტების პრიორიტეტებს — ვალიდაცია პირველ ადგილზე დგება.",
-          "action_type": "APPLY",
-          "action": "დაამატეთ თქვენი აგენტის Action Loop-ს SRM-ის ანალოგიური Step Validator, რომელიც ყოველი ინსტრუმენტის გამოძახების შემდეგ ამოწმებს შედეგის სისწორეს.",
-          "evidence": []
-        },
-        {
-          "event_id": "evt-affora-agent-ui-design-system",
-          "title": "Affora: ინტერფეისის დიზაინ-სისტემა Computer-Use AI აგენტებისთვის",
-          "category": "Human-Computer Interaction / Agent UI",
-          "primary_url": "https://arxiv.org/abs/2609.19125",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "Affora წარმოადგენს UI დიზაინ-სისტემას, რომელიც ვებ-ინტერფეისებს თანაბრად გასაგებს ხდის როგორც ადამიანებისთვის, ისე Computer-Use AI აგენტებისთვის.",
-          "what_happened": "წარმოდგენილია Affora — დიზაინ-სისტემა, რომელიც აუმჯობესებს ვებ-ინტერფეისების აღქმადობას Computer-Use აგენტებისთვის (Computer-use agents), ისე რომ ინარჩუნებს ვიზუალურ თავისუფლებასა და ადამიანისთვის ჩვეულ დიზაინს. Affora უზრუნველყოფს კომპონენტების რეალიზაციასა და ავტომატურ შემოწმებებს (executable checks).",
-          "what_changed": "დღევანდელი ვებ-საიტები შექმნილია მხოლოდ ადამიანის თვალისთვის, სადაც დომენური მდგომარეობა (state) და შესაძლო მოქმედებები (affordances) ხშირად გაფანტულია სკრიპტებში ან გაუგებარია DOM ხეში. Affora ქმნის ერთიან ინტერფეისის შრეს ცალკეული, მხოლოდ აგენტისთვის განკუთვნილი API-ების გარეშე.",
-          "why_it_matters": "თუ აშენებთ ვებ-აპლიკაციებს, რომლებსაც მომავალში AI აგენტებიც გამოიყენებენ, Affora-ს პრინციპების დაცვა მკვეთრად შეამცირებს აგენტის მიერ დაშვებულ შეცდომებსა და ინტერაქციის ხარჯს.",
-          "key_takeaways": [
-            "Shared Surface: ერთიანი ინტერფეისი ადამიანისთვის (UX) და აგენტისთვის (AX).",
-            "Visual Freedom: ინარჩუნებს დიზაინის თავისუფლებას სემანტიკური აფორდანსების დაცვით.",
-            "Executable Checks: ავტომატური ვალიდატორები, რომლებიც ამოწმებენ ინტერფეისის მზაობას აგენტისთვის."
-          ],
-          "technical_architecture": [
-            "Semantic Action Representation: DOM ელემენტებში მოქმედების მნიშვნელობისა და მდგომარეობის მკაფიო კოდირება.",
-            "Component Implementations: ხელახლა გამოყენებადი UI კომპონენტები ჩაშენებული აგენტური მეტამონაცემებით.",
-            "Interaction Cost Reduction: ამცირებს აგენტის მიერ საჭირო ნაბიჯებისა და DOM პარსინგის დანახარჯს."
-          ],
-          "technical_details": [
-            "20 გვერდიანი კვლევა 3 კონტროლირებადი ექსპერიმენტით.",
-            "მნიშვნელოვანი გაუმჯობესება აჩვენა იმ საიტებზე, სადაც მანამდე აგენტური წვდომის დეფიციტი არსებობდა."
-          ],
-          "potential_impact": "საფუძველს ჩაუყრის Agent-Friendly Web Standards-ს, სადაც საიტები ოპტიმიზებული იქნება AI აგენტების ნავიგაციისთვის.",
-          "action_type": "LEARN",
-          "action": "გადახედეთ Affora-ს დიზაინ პრინციპებს და დაამატეთ მკაფიო semantic ARIA/data-attributes თქვენს Frontend პროექტებში აგენტური ნავიგაციის გამასტიმულირებლად.",
-          "evidence": []
-        },
-        {
-          "event_id": "evt-flag-game-swarm-interpretability",
-          "title": "Flag Game: მექანისტიკური ინტერპრეტაბელურობის მოდელი მრავალ-აგენტიანი ჯგუფებისთვის (Swarm AI)",
-          "category": "AI Research / Multi-Agent Swarms",
-          "primary_url": "https://arxiv.org/abs/2609.19124",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 7,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "Flag Game კვლევა წარადგენს Social Circuit Attribution ტექნიკას, რომელიც ხსნის მრავალ-აგენტიან სისტემებში რწმენის კოლაფსისა და პოლარიზაციის შიდა მექანიზმებს.",
-          "what_happened": "მკვლევრებმა შექმნეს Flag Game — მოდელი მრავალ-აგენტიანი ჯგუფების (swarms) კოლექტიური რწმენის ფორმირების შესასწავლად. კვლევამ გამოავლინა, რომ პოპულაციის ზრდასთან ერთად მცირე ჯგუფების 'კოლექტიური რწმენის კოლაფსი' (belief collapse) დიდ ჯგუფებში გადადის 'კოლექტიურ პოლარიზაციაში' (polarization), რაც ამცირებს საერთო წარმადობას.",
-          "what_changed": "მულტი-აგენტური სისტემების (Multi-Agent Swarms) ანალიზი აქამდე ხდებოდა შავი ყუთის სახით. ამ შრომით პირველად დაინერგა Social Circuit Attribution და სტატისტიკური მექანიკის თეორია, რომელიც საშუალებას იძლევა განისაზღვროს, თუ რომელმა კონკრეტულმა აგენტმა ან ხედვამ მოახდინა გავლენა ჯგუფის გადაწყვეტილებაზე.",
-          "why_it_matters": "როდესაც აშენებთ მრავალ-აგენტიან სისტემებს (მაგ. Agent Councils ან Multi-Agent Code Reviewers), აგენტების რაოდენობის უბრალო ზრდა ხშირად აუარესებს შედეგს პოლარიზაციის გამო. კვლევა იძლევა არქიტექტურულ მოდელს ამის თავიდან ასაცილებლად.",
-          "key_takeaways": [
-            "Non-monotonic Scaling: პოპულაციის გაზრდა ყოველთვის არ ზრდის სიზუსტეს — დიდი ჯგუფები განიცდიან პოლარიზაციას.",
-            "Social Circuit Attribution: ტექნიკა იმის დასადგენად, თუ რომელი აგენტი განსაზღვრავს ჯგუფის დინამიკას.",
-            "Organizational Structure Effect: ორგანიზაციული სტრუქტურა და გუნდის მრავალფეროვნება ამცირებს პოლარიზაციის რისკს."
-          ],
-          "technical_architecture": [
-            "Private Crop & Social Evidence: თითოეული აგენტი ხედავს სამყაროს ნაწილს და ცვლის მოსაზრებებს მეზობლებთან.",
-            "Causal Interventions (Agent Patching): აგენტების მდგომარეობის შეცვლა კოლექტიური შედეგის დასაკვირვებლად.",
-            "Statistical Mechanical Phase Diagram: დიდი პოპულაციების ფაზური გადასვლის თეორიული მოდელირება."
-          ],
-          "technical_details": [
-            "21 გვერდიანი სტატია 10 ფიგურითა და ემპირიული ფაზური დიაგრამით.",
-            "დადასტურდა social-awareness prompting-ის ეფექტურობა პოლარიზაციის შესამცირებლად."
-          ],
-          "potential_impact": "დაახმარება ინჟინრებს სწორად დააპროექტონ მულტი-აგენტური იერარქიები და თავიდან აიცილონ ჰალუცინაციური კონსენსუსი.",
-          "action_type": "LEARN",
-          "action": "წაიკითხეთ Flag Game-ის სექცია Organizational Structure-ის შესახებ და გამოიყენეთ იერარქიული როლები მულტი-აგენტურ დებატებში.",
-          "evidence": []
-        },
-        {
-          "event_id": "evt-openai-rl-chip-design-pagi",
-          "title": "OpenAI აფართოებს RL აგენტებს ჩიპების დაპროექტებისთვის და pAGI ევალუაციის პლატფორმებს",
-          "category": "AI Infrastructure / Hardware & RL Agents",
-          "primary_url": "https://openai.com/careers/research-engineer-ai-for-chip-design-san-francisco",
-          "supporting_urls": [
-            "https://openai.com/careers/ai-infrastructure-engineer-pagi-san-francisco"
-          ],
-          "importance": 8,
-          "relevance": 8,
-          "actionability": 7,
-          "source_quality": 10,
-          "confidence": 95,
-          "tldr": "OpenAI აქტიურად აშენებს RL გარემოებებს ჩიპების ავტომატური დაპროექტებისთვის (RTL, EDA) და pAGI ავტომატიზებულ შეფასების ინფრასტრუქტურას.",
-          "what_happened": "OpenAI-ს ახალი ვაკანსიები და ტექნიკური მიმართულებები (AI for Chip Design & pAGI Infra) აჩვენებს, რომ კომპანია ქმნის Reinforcement Learning (RL) გარემოებებს ნახევარგამტარების ინჟინერიისთვის (RTL გენერაცია, დიზაინის ვერიფიკაცია, EDA ინსტრუმენტების მართვა) და ცენტრალიზებულ Grading/Evaluation სერვისებს pAGI მოდელების ტესტირებისთვის.",
-          "what_changed": "AI აგენტების გამოყენება გადადის უბრალო ვებ/კოდინგ ამოცანებიდან აპარატურულ დონეზე (Hardware-in-the-loop) და ნახევარგამტარების ფიზიკურ დაპროექტებაზე, სადაც სწორობა (correctness) და ფიზიკური შეზღუდვები (Power, Performance, Area) ავტომატურად მოწმდება RL გარემოში.",
-          "why_it_matters": "ეს მიუთითებს ტრენდზე: ფრონტიერ AI კომპანიები იყენებენ საკუთარ LLM/RL აგენტებს მომავალი თაობის AI ჩიპების დასაპროექტებლად, რაც ქმნის თვით-გაუმჯობესებად ციკლს (Self-improving Hardware Loop).",
-          "key_takeaways": [
-            "RL Environments for Hardware: RTL გენერაციის, Verilog-ისა და formal verification-ის ავტომატიზაცია RL აგენტებით.",
-            "Shared Grading Platforms: pAGI ინფრასტრუქტურა აგებს ავტომატიზებულ შეფასების პლატფორმებს GPU კლასტერებზე.",
-            "Tool-Using Agents in Chip Design: აგენტები მართავენ EDA ინსტრუმენტებს Power/Area ოპტიმიზაციისთვის."
-          ],
-          "technical_architecture": [
-            "RL Environments & Proxy Rewards: RTL შეცდომების აღმოჩენა და formal verification ავტომატური ჯილდოებით.",
-            "Distributed Grading Service: ავტომატიზებული Capacity Management და ჰელთ-მონიტორინგი ევალუაციისთვის."
-          ],
-          "technical_details": [
-            "მოითხოვს RTL, Verilog/SystemVerilog, EDA tools და formal verification ინტეგრაციას RL ციკლში.",
-            "pAGI Infra მოიცავს distributed training, inference grading platforms და compute scheduling-ს."
-          ],
-          "potential_impact": "დააჩქარებს AI-native ჩიპების შექმნის ციკლს და გაზრდის RL აგენტების როლს ტექნიკურ ინჟინერიაში.",
-          "action_type": "LEARN",
-          "action": "გაიანალიზეთ, თუ როგორ გამოიყენება RL Environment + Verification Tool პატერნი რთულ დომენებში და სცადეთ მსგავსი სტრუქტურის აგება Python-ში.",
-          "evidence": []
-        },
-        {
-          "event_id": "evt-scienceide-agent-environments",
-          "title": "ScienceIDE: სამეცნიერო კოდის ბაზის გარდაქმნა აგენტების შესასწავლ გარემოებად",
-          "category": "AI Research / Agent Environments & Training",
-          "primary_url": "https://huggingface.co/papers/2609.19134",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 8,
-          "actionability": 7,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "PhAI Labs-მა გამოაშვება ScienceIDE, რომელიც ღია სამეცნიერო კოდის რეპოზიტორიებს გარდაქმნის შესრულებად RL გარემოებად AI აგენტების გასაწვრთნელად.",
-          "what_happened": "PhAI Labs-ის მკვლევრებმა წარადგინეს ScienceIDE — ინფრასტრუქტურა, რომელიც სამეცნიერო პროგრამულ კოდს გარდაქმნის პროგრამირებად, შესრულებად გარემოებად AI აგენტებისთვის. ამ გარემოებების ტრაექტორიებზე დაყრდნობით გაიწვრთნა PhAI-IDE მოდელების ოჯახი (72B, 9B, 4B), რომლებმაც აჩვენეს მაღალი შედეგები კოდის შეკეთებასა და ზოგად მსჯელობაში.",
-          "what_changed": "მანამდე აგენტების წვრთნისთვის გამოიყენებოდა ძირითადად მარტივი სკრიპტები ან სინთეზური ამოცანები. ScienceIDE იყენებს რეალურ, ათწლეულების განმავლობაში შექმნილ სამეცნიერო კოდის ბაზებს, სადაც მიღებული გამოცდილება დადებითად გადადის (positive transfer) ზოგად კოდინგსა და მსჯელობაზე.",
-          "why_it_matters": "აჩვენებს, თუ როგორ შეიძლება რეალური კოდის რეპოზიტორიებისა და Verifier-ების გამოყენება ავტონომიური აგენტების Synthetic Data / RL წვრთნისთვის.",
-          "key_takeaways": [
-            "Executable Environments: რეალური კოდის ბაზები ხდება RL და SFT წვრთნის გარემო.",
-            "PhAI-IDE Models: 4B, 9B და 72B ღია მოდელები, გაწვრთნილი ვერიფიცირებულ ტრაექტორიებზე.",
-            "Positive Transfer: სამეცნიერო კოდზე სწავლა ზრდის აგენტის ზოგად კოდინგსა და მსჯელობის უნარს."
-          ],
-          "technical_architecture": [
-            "Acceptance Criteria Integration: ექსპერტულად განსაზღვრული კრიტერიუმები აგენტის ნაბიჯების შესამოწმებლად.",
-            "Task Generation & Execution: ავტომატური დავალებების გენერაცია და მათი შესრულება სენდბოქსში.",
-            "Trajectory Verification: მხოლოდ წარმატებული, ვერიფიცირებული ტრაექტორიების გამოყენება SFT/RL-ისთვის."
-          ],
-          "technical_details": [
-            "კოდი ხელმისაწვდომია: `github.com/aitofound/ScienceIDE`.",
-            "მოდელები გამოქვეყნებულია HuggingFace-ზე: `AItonomy/scienceide-model-series`."
-          ],
-          "potential_impact": "გახსნის გზას სამეცნიერო სფეროში ავტონომიური კვლევითი აგენტების დასანერგად.",
-          "action_type": "TRACK",
-          "action": "ადევნეთ თვალი ScienceIDE GitHub რეპოზიტორიას და შეამოწმეთ, თუ როგორ იყენებენ ისინი Docker/Sandbox გარემოებს კოდის ვერიფიკაციისთვის.",
-          "evidence": []
-        },
-        {
-          "event_id": "evt-sp3o-ppo-critic-learning",
-          "title": "SP3O: PPO Value Flattening პრობლემის გადაჭრა სფარსული სუპერვიზიით LLM RL წვრთნაში",
-          "category": "AI Research / Reinforcement Learning",
-          "primary_url": "https://huggingface.co/papers/2609.18708",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 8,
-          "actionability": 7,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "SP3O აჩვენებს, რომ PPO-ში Critic-ის Value Loss-ის მხოლოდ რამდენიმე დაშორებულ მდგომარეობაზე გამოყენება ხსნის Value Flattening შეცდომას და ზრდის RL-ის ეფექტურობას.",
-          "what_happened": "Shanghai AI Laboratory-ს მკვლევრებმა აღმოაჩინეს კრიტიკული შეცდომის რეჟიმი PPO-ს კრიტიკოსში (Critic Network), რომელსაც უწოდეს 'Value Flattening': რეალური მდგომარეობის მნიშვნელობები მკვეთრად იცვლება, ხოლო Critic-ის პროგნოზები ბრტყელი რჩება. მათ წარადგინეს Sparse PPO (SP3O), სადაც Value Loss გამოიყენება მხოლოდ 3 კარგად დაშორებულ მდგომარეობაზე თითოეულ პასუხში.",
-          "what_changed": "ტრადიციულ PPO-ში Critic Loss ითვლება პასუხის ყოველ ტოკენზე/მდგომარეობაზე, რაც ქმნის დროითად კორელირებულ რredundant განახლებებს და აფუჭებს Value ფუნქციას. SP3O-ს სფარსული supervision ამცირებს ამ ხმაურს და ზრდის პოლიტიკის ხარისხს.",
-          "why_it_matters": "მნიშვნელოვანია LLM Fine-tuning-ისა და RLHF/RLAIF ინჟინრებისთვის. აჩვენებს, რომ ნაკლები, पण უფრო ხარისხიანი სუპერვიზია კრიტიკოსის წვრთნისას უკეთეს შედეგს იძლევა.",
-          "key_takeaways": [
-            "Value Flattening Failure: PPO Critic-ის მიერ რეალური ფასეულობების ცვლილების ვერ-ასახვა.",
-            "Sparse Supervision: მხოლოდ 3 მდგომარეობის სუპერვიზია თითო პასუხზე სრულად ხსნის პრობლემას.",
-            "Qwen3 Performance: სტაბილური გაუმჯობესება Qwen3-Base მოდელებზე ყველა მასშტაბში."
-          ],
-          "technical_architecture": [
-            "Sparse Value Loss: Value loss-ის შეზღუდვა temporally correlated states-ის გამოტოვებით.",
-            "Implicit Variance Penalty Mitigation: Critic loss-ის ვარიაციული პენალტის შემცირება."
-          ],
-          "technical_details": [
-            "კოდი ხელმისაწვდომია: `github.com/Dodojordi/SP3O`.",
-            "პროექტი: `dodojordi.github.io/SP3O/`."
-          ],
-          "potential_impact": "გაამარტივებს და გახდის უფრო ეფექტურს LLM-ების PPO განმტკიცებით სწავლებას.",
-          "action_type": "LEARN",
-          "action": "გადახედეთ SP3O-ს GitHub რეპოზიტორიას და გაეცანით, თუ როგორ ხდება PPO Critic Loss-ის ოპტიმიზაცია ლოკალურ RL პაიპლაინებში.",
-          "evidence": []
-        }
-      ],
-      "trends": [
-        "ხმოვანი აგენტების გადასვლა Cascaded (STT-LLM-TTS) არქიტექტურიდან Native Full-Duplex მოდელებზე (GPT-Live-1), სადაც მოსმენა, ლაპარაკი და Tool Calling დელეგირება ხდება რეალურ დროში.",
-        "აგენტური ინსტრუმენტების (Skills + MCP) სტანდარტიზაცია Agent Plugins-ის ღია მანიფესტების ირგვლივ (Google Cloud Developer Plugin).",
-        "API პროვაიდერების მიერ უშუალოდ მართვადი აგენტების (Managed Agents - Antigravity, Deep Research) შეთავაზება ნედლი მოდელების პარალელურად.",
-        "აგენტების სანდოობისა და თავდაჯერებულობის (Confidence) შეფასება არა ინფერენსის ტოკენებით, არამედ წარსული ეპიზოდების ისტორიითა და გაკვეთილებით (XConf).",
-        "აგენტურ ციკლებში (Agent Loops) Real-time Execution Validation-ის (SRM) პრიორიტეტიზაცია ეპიზოდურ მეხსიერებასთან შედარებით."
-      ]
-    },
     {
       "date": "2026-09-17",
       "summary": "Today's developments mark significant architectural shifts in agent user interfaces, safety monitoring, and multi-agent state coordination. AWS and the MCP ecosystem introduced MCP Apps for rendering interactive HTML UI widgets inside host applications, while DeepMind and Google launched Gemini 3.8 Live and out-of-band Agent Anomaly Detection for real-time, non-blocking agent execution. Furthermore, new research establishes Git DAGs as an effective shared memory for autonomous multi-agent research loops and demonstrates low-cost internal activation probing to catch reward hacking online.",
@@ -8229,14 +7989,252 @@
         "LLM აგენტების მიერ მონიტორინგის ავტონომიური გვერდის ავლის რისკების ზრდა",
         "Frontier API-ების მხრიდან Prompt Caching-ის მკვეთრი გაიაფება Caching Read ტარიფების შემცირებით"
       ]
+    },
+    {
+      "date": "2026-09-27",
+      "summary": "OpenAI-მ და Anthropic-მა გამოუშვეს ახალი მოდელები და არქიტექტურული მიდგომები, რომლებიც ამცირებენ API ხარჯებს და აუმჯობესებენ აგენტების კომპიუტერულ გამოყენებას. პარალელურად, კვლევები გვთავაზობენ Skilder-ის ტიპის ინსტრუმენტულ ჰარნესებს tool calling-ის უსაფრთხოებისთვის.",
+      "events": [
+        {
+          "event_id": "evt-skilder-role-scoped-mcp",
+          "title": "Skilder: Progressive Skill Discovery and Role-Scoped MCP Governance for LLM Agents",
+          "category": "Agent Architecture & Security",
+          "primary_url": "https://arxiv.org/html/2609.28693v1",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "Skilder აკონტროლებს tool calling-ს დინამიური როლებისა და MCP სერვერის მეშვეობით, რაც ხსნის უსაფრთხოებისა და კონტექსტის გადატვირთვის პრობლემას.",
+          "what_happened": "მკვლევარებმა წარმოადგინეს ფრეიმვორკი, რომელიც აგენტებს საშუალებას აძლევს ინსტრუმენტები ეტაპობრივად, როლების მიხედვით აითვისონ.",
+          "what_changed": "ყველა ხელსაწყოს ერთდროულად გადაცემიდან აგენტი გადადის საჭიროებისამებრ როლების დინამიურ აღმოჩენაზე.",
+          "why_it_matters": "შენ შეგიძლია აგო ისეთი აგენტები, რომლებიც არ იბნევიან დიდი ინსტრუმენტების სიებით და არღვევენ წესებს.",
+          "key_takeaways": [
+            "ინსტრუმენტები იფუთება როლებში skill-ებისა და ლიმიტების მიხედვით.",
+            "ერთადერთი MCP სერვერი უზრუნველყოფს დეტერმინისტულ ავტორიზაციას.",
+            "მცირდება კონტექსტის ზომა და იზრდება ტულ-სელექციის სიზუსტე."
+          ],
+          "technical_architecture": [
+            "Single MCP server handles progressive skill discovery.",
+            "Role catalog defines boundaries, tools, and constraints.",
+            "Deterministic authorization layer blocks out-of-scope calls."
+          ],
+          "technical_details": [
+            "Dynamic tool injection based on task requirements.",
+            "Execution guardrails enforced at server boundary."
+          ],
+          "potential_impact": "კორპორატიული კლიენტები მიიღებენ გარანტიას, რომ აგენტი არ გააკეთებს არასავტორიზაციო მოქმედებებს.",
+          "action_type": "BUILD",
+          "action": "აგე მარტივი MCP სერვერი Python-ში, რომელიც ხელსაწყოებს ორ განსხვავებულ როლად ყოფს და მხოლოდ მოთხოვნისას ტვირთავს.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value",
+            "Short-term Opportunity"
+          ],
+          "verified_facts": [
+            "Skilder packages capabilities into roles: skills, tools, instructions, and limits.",
+            "Agents start with a minimal role catalog and learn required roles dynamically via a single…",
+            "Deterministic authorization prevents unauthorized tool calls and parameter violations."
+          ],
+          "interpretation": "ბრტყელი კონტექსტისა და პრომპტზე დაფუძნებული უსაფრთხოების ეპოქა სრულდება; საჭიროა ჰარდვერული ან სტრუქტურული ინსტრუმენტების კონტროლი.",
+          "uncertainty": "როგორ მოერგება ეს მიდგომა ღია კოდის ორკესტრაციის ფრეიმვორკებს, ბოლომდე ნათელი არ არის.",
+          "counter_argument": "დინამიური როლების ძიებამ შეიძლება გაზარდოს აგენტის პასუხის დრო (latency) და ტოკენების ხარჯი.",
+          "strategic_assessment": "შეიმუშავე აგენტური არქიტექტურა, რომელიც ინსტრუმენტებს კატეგორიებად ყოფს და მხოლოდ საჭიროების შემთხვევაში ტვირთავს კონტექსტში.",
+          "time_horizon": "mid-term",
+          "what_could_change": "MCP სერვერები გადაიქცევა ავტორიზაციისა და როლების მართვის უსაფრთხო ცენტრებად.",
+          "risks": [
+            "რთულია როლების სწორი გრანულაციის პოვნა.",
+            "მეტა-აღწერების არასწორმა ინდექსაციამ შეიძლება დაბლოკოს აგენტი.",
+            "დამატებითი ლატენტობა როლების ძიების ფაზაში."
+          ],
+          "non_obvious_opportunity": "შეგიძლია შექმნა და გაყიდო მზა უსაფრთხოების ფილტრები MCP სერვერებისთვის ბიზნეს აგენტების მომხმარებლებისთვის.",
+          "fit_assessment": "იდეალურია შენი მიზნისთვის — ააგო რეალური ბიზნეს აგენტები, რომლებიც უსაფრთხოდ იყენებენ მრავალ API-ს."
+        },
+        {
+          "event_id": "evt-gpt6-sol-luna-pricing",
+          "title": "OpenAI Expands GPT-6 Lineup with Cheaper Sol and Luna Models and Advanced Computer Use",
+          "category": "LLM APIs & Cost Optimization",
+          "primary_url": "https://openai.com/index/gpt-6-astra",
+          "supporting_urls": [
+            "https://www.reuters.com/technology/openai-expands-gpt-6-lineup-with-cheaper-sol-luna-models-2026-09-22"
+          ],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 8,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "OpenAI-მ გამოუშვა იაფი GPT-6 Sol და Luna მოდელები, ასევე Astra კომპიუტერული გამოყენების უნარებით, რაც ამცირებს აგენტების ხარჯებს.",
+          "what_happened": "კომპანიამ წარადგინა GPT-6 ხაზის გაფართოება შემცირებული ფასებით და გაუმჯობესებული აგენტური ნავიგაციით.",
+          "what_changed": "წინანდელთან შედარებით ინფუთ/აუთფუთ ფასები განახევრდა, ხოლო კომპიუტერული გამოყენების სიზუსტე გაიზარდა.",
+          "why_it_matters": "შეგიძლია გაუშვა ხანგრძლივი აგენტური ციკლები ბევრად ნაკლები დანახარჯით.",
+          "key_takeaways": [
+            "GPT-6 Sol ღირს $2 input / $10 output მილიონ ტოკენზე.",
+            "GPT-6 Luna ღირს $0.10 input / $0.50 output მილიონ ტოკენზე.",
+            "მოდელები ოპტიმიზებულია კომპიუტერისა და ბრაუზერის სამართავად."
+          ],
+          "technical_architecture": [
+            "Enhanced inference and caching mechanisms reduce operational costs.",
+            "Optimized token efficiency for agentic loops and computer use."
+          ],
+          "technical_details": [
+            "API endpoints updated for Sol, Luna, and Astra models.",
+            "Prompt caching support integrated for cost reduction."
+          ],
+          "potential_impact": "აგენტური პროგრამული უზრუნველყოფის სებადუნარიანობა იზრდება ხარჯების შემცირების ხარჯზე.",
+          "action_type": "APPLY",
+          "action": "გადართე შენი მიმდინარე Python API სკრიპტები ყველაზე იაფ ხელმისაწვდომ მოდელზე და შეამოწმე კოდის გენერაციის ხარისხი.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Short-term Opportunity",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "OpenAI introduced GPT-6 Sol ($2/M input, $10/M output) and GPT-6 Luna ($0.10/M input, $0.50/M output).",
+            "GPT-6 Astra achieves state-of-the-art results on computer use, OSWorld 2.0, and coding tasks.",
+            "Sol and Luna offer lower-cost options for professional work, automation, and computer use."
+          ],
+          "interpretation": "მოდელების ფასები მცირდება, ხოლო კომპიუტერული გამოყენების შესაძლებლობები იზრდება, რაც ავტომატიზაციას ბიზნესისთვის იაფს ხდის.",
+          "uncertainty": "რა რეალური ლატენტობა ექნება Astra-ს კომპიუტერული გამოყენების API-ს, ჯერ სრულად არ ჩანს.",
+          "counter_argument": "იაფმა მოდელებმა შეიძლება გამოიწვიოს ტოკენების უაზრო ხარჯვა აგენტების არასწორი ციკლების გამო.",
+          "strategic_assessment": "გადაიყვანე შენი მიმდინარე აგენტური პროექტები ახალ იაფ მოდელებზე და გამოიყენე API ოპტიმიზაციისთვის.",
+          "time_horizon": "short-term",
+          "what_could_change": "მცირე ბიუჯეტის მქონე დეველოპერები შეძლებენ სრულფასოვანი ბრაუზერისა და კომპიუტერის ავტომატიზაციის აგენტების გაშვებას.",
+          "risks": [
+            "API ტარიფების ცვლილება მომავალში.",
+            "აგენტების მიერ მონიტორინგის გვერდის ავლა (როგორც Astra-ს ტესტებმა აჩვენა).",
+            "ზედმეტი ტოკენების წვა განმეორებადი შეცდომებისას."
+          ],
+          "non_obvious_opportunity": "შეგიძლია შესთავაზო ადგილობრივ ქართულ კომპანიებს იაფი და სწრაფი ვებ-ფორმებისა და დოკუმენტების დამუშავების ავტომატიზაცია.",
+          "fit_assessment": "შენთვის ეს არის შანსი, აგო რთული აგენტური სისტემები დაბალ ფასად, უფასო ან მცირე ბიუჯეტის ტოკენებით."
+        },
+        {
+          "event_id": "evt-ad-wm-action-discriminative-world-models",
+          "title": "AD-WM: Action-Discriminative World Models for Counterfactual Model Predictive Control",
+          "category": "AI Research / Agent Architecture",
+          "primary_url": "https://arxiv.org/abs/2609.30264",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 7,
+          "source_quality": 8,
+          "confidence": 85,
+          "tldr": "AD-WM აუმჯობესებს მსოფლიო მოდელებს მოქმედებების დიფერენცირებით, ზრდის რობოტებისა და აგენტების დაგეგმვის სიზუსტეს.",
+          "what_happened": "მკვლევარებმა შეიმუშავეს მსოფლიო მოდელი, რომელიც კონტრფაქტუალური მართვისთვის ალტერნატიულ ქმედებებს უკეთ განასხვავებს.",
+          "what_changed": "ფაქტობრივი პროგნოზის შეცდომის მინიმიზაციიდან ფოკუსი გადატანილია ქმედებების აღდგენისა და არჩევის სიზუსტეზე.",
+          "why_it_matters": "გასწავლის, როგორ უნდა დააპროექტო აგენტის შიდა სამყარო ისე, რომ მან იცოდეს ალტერნატიული ნაბიჯების შედეგები.",
+          "key_takeaways": [
+            "მსოფლიო მოდელებმა უნდა შეინარჩუნონ ქმედებებზე დამოკიდებული განსხვავებები.",
+            "Residual latent dynamics აუმჯობესებს წარმატების მაჩვენებელს რთულ გარემოში.",
+            "Auxiliary heads იხსნება ტესტირებისას, ინარჩუნებს მარტივ მართვას."
+          ],
+          "technical_architecture": [
+            "Combines residual latent dynamics with predictor-level action-recovery regularization.",
+            "Uses inverse dynamics and normalized recovery objective."
+          ],
+          "technical_details": [
+            "V-JEPA 2 frozen encoder integration for zero-shot transfer.",
+            "Evaluation tested on OGBench-Cube and Franka arm setups."
+          ],
+          "potential_impact": "მნიშვნელოვნად მცირდება აგენტების შეცდომები მრავალეტაპიანი დაგეგმვისას.",
+          "action_type": "LEARN",
+          "action": "წაიკითხე მსოფლიო მოდელების (World Models) პრინციპების შესახებ და გაიგე, როგორ იყენებენ აგენტები გარემოს სიმულაციას.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "AD-WM combines residual latent dynamics with predictor-level action-recovery regularization.",
+            "On OGBench-Cube, AD-WM improves hard-start success from 3.7% to 52.0% over LeWM baseline.",
+            "Improves zero-shot transfer on a robotic setup from 42.2% to 71.1% without lab adaptation."
+          ],
+          "interpretation": "მსოფლიო მოდელები (world models) მხოლოდ ფაქტობრივი გადასვლების პროგნოზირებით არ უნდა შემოიფარგლონ; ისინი მკაფიოდ უნდა განასხვავებდნენ ალტერნატიულ მოქმედებებს.",
+          "uncertainty": "მეთოდის ტესტირება ძირითადად რობოტიკულ და სიმულაციურ გარემოებში მოხდა, ტექსტურ აგენტებზე გავლენა შეზღუდულია.",
+          "counter_argument": "დამატებითი დამხმარე ჰედები (auxiliary heads) ზრდის ტრენინგის სირთულეს და გამოთვლით მოთხოვნებს.",
+          "strategic_assessment": "გაიგე მსოფლიო მოდელების პრინციპი, რადგან მომავლის აგენტები გარემოს სიმულაციისთვის სწორედ ამ არქიტექტურას გამოიყენებენ.",
+          "time_horizon": "long-term",
+          "what_could_change": "აგენტები უკეთ დაგეგმავენ ნაბიჯებს ალტერნატიული ქმედებების წინასწარი შეფასებით.",
+          "risks": [
+            "მაღალი მათემატიკური სირთულე დამწყები დეველოპერებისთვის.",
+            "საჭიროებს GPU რესურსებს ლატენტური სივრცის მოდელებისთვის.",
+            "პირდაპირი გამოყენება ტექსტურ აგენტებში მოითხოვს ადაპტაციას."
+          ],
+          "non_obvious_opportunity": "შეგიძლია გამოიყენო მსგავსი კონტრფაქტუალური ლოგიკა გადაწყვეტილების მიმღები აგენტების ტესტირებისთვის.",
+          "fit_assessment": "კარგია არქიტექტურული თვალსაზრისით, თუმცა ამჟამად შენთვის უფრო პრიორიტეტულია MCP და API ინტეგრაცია."
+        },
+        {
+          "event_id": "evt-verispeak-speech-fact-checking",
+          "title": "VeriSpeak: Retrieval-Augmented Fact Verification for Spoken Claims in Audio Language Models",
+          "category": "AI Research / RAG & Evaluation",
+          "primary_url": "https://arxiv.org/abs/2609.30227",
+          "supporting_urls": [],
+          "importance": 7,
+          "relevance": 8,
+          "actionability": 7,
+          "source_quality": 8,
+          "confidence": 85,
+          "tldr": "VeriSpeak ბენჩმარკი აჩვენებს, რომ აუდიო მოდელებს ხმოვანი ფაქტების გადასამოწმებლად სჭირდებათ რეტრივალისა და აზროვნების კომბინაცია.",
+          "what_happened": "მკვლევარებმა გამოუშვეს 3,879 ხმოვანი პრეტენზიის ბენჩმარკი და აჩვენეს, რომ მარტივი რეტრივალი არ კმარა.",
+          "what_changed": "ტექსტური ფაქტ-ჩექინგიდან გადავდივართ ხმოვანი მოდელების უსაფრთხოებისა და გადამოწმების ერაში.",
+          "why_it_matters": "გასწავლის, რომ მულტიმოდალურ აგენტებში ინფორმაციის მოძიება და გადამოწმება ორგანიზებულ მსჯელობას მოითხოვს.",
+          "key_takeaways": [
+            "არსებობს ტექსტ-სპეჩ მოდალური ნაპრალი ფაქტების გადამოწმებისას.",
+            "რეტრივალი და გამოפורმულებული მსჯელობა ზრდის სიზუსტეს 86.1%-მდე.",
+            "ბენჩმარკი საჯაროდ ხელმისაწვდომია Hugging Face-ზე."
+          ],
+          "technical_architecture": [
+            "Large Audio Language Models (LALMs) paired with retrieval modules.",
+            "Thinking-tuned reasoning engine for claim-evidence comparison."
+          ],
+          "technical_details": [
+            "Dataset hosted on Hugging Face with 3,879 spoken claims.",
+            "Evaluated across temporal, geographical, and relational dimensions."
+          ],
+          "potential_impact": "ხმოვანი AI სისტემები გახდება უფრო სანდო და დაცული დეზინფორმაციისგან.",
+          "action_type": "TRACK",
+          "action": "გადახედე VeriSpeak დეტასეტს Hugging Face-ზე და შეისწავლე, როგორ ამუშავებენ აგენტები აუდიო მტკიცებებს.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "VeriSpeak benchmark contains 3,879 spoken claims across temporal, geographical, and relational facts.",
+            "LALMs that verify written claims reliably often fail on the same claims when spoken due…",
+            "Retrieval combined with explicit reasoning (thinking-tuned LALM) reaches 86.1% accuracy."
+          ],
+          "interpretation": "აუდიო მოდელებს სჭირდებათ მკაფიო მსჯელობის ეტაპები (reasoning) და რეტრივალის ინტეგრაცია, რათა ხმოვან ინფორმაციაში ფაქტები სწორად გადაამოწმონ.",
+          "uncertainty": "ქართული ენის აუდიო რეტრივალისა და ფაქტების გადამოწმების სიზუსტე უცნობია და დამატებით კვლევას მოითხოვს.",
+          "counter_argument": "ხმოვანი მონაცემების დამუშავება აგენტებში ზედმეტად ძვირი და ნელია რეალურ დროში გამოსაყენებლად.",
+          "strategic_assessment": "გაითვალისწინე, რომ აუდიო აგენტების აგებისას უბრალო რეტრივალი არასაკმარისია; საჭიროა სტრუქტურირებული მიზეზ-შედეგობრივი მსჯელობა.",
+          "time_horizon": "mid-term",
+          "what_could_change": "ხმოვანი ასისტენტები და აგენტები შეძლებენ პოდკასტებისა და სიტყვების რეალურ დროში ფაქტობრივ გადამოწმებას.",
+          "risks": [
+            "ტექსტ-აუდიო მოდალური ნაპრალი იწვევს გაგების შეცდომებს.",
+            "გამოთვლითი სირთულე ხმოვანი მოდელების მართვისას."
+          ],
+          "non_obvious_opportunity": "შეგიძლია აგო ქართული აუდიო მედიის მონიტორინგისა და ფაქტ-ჩექინგის მარტივი პროტოტიპი თავისუფალი API-ებით.",
+          "fit_assessment": "კარგი მაგალითია იმისა, თუ როგორ იქმნება ახალი ბენჩმარკები და რატომ სჭირდება აგენტებს grounded reasoning."
+        }
+      ],
+      "trends": [
+        "MCP და როლზე დაფუძნებული სტრუქტურული უსაფრთხოება ინაცვლებს ბიზნეს აგენტების ცენტრში.",
+        "OpenAI-ს ახალი Sol/Luna მოდელები ამცირებს აგენტური ციკლების და ტოკენების ხარჯებს.",
+        "მსოფლიო მოდელები დაგეგმვისთვის ითხოვენ ალტერნატიული ქმედებების მკაფიო დიფერენციაციას."
+      ]
     }
   ],
   "learning_queue": [
-    "Pydantic და Structured Output Parsing Python-ში",
-    "Grammar-based Parsing (Lark / Regex Constraints) AI Output-ის გადასამოწმებლად",
-    "Prompt Caching-ის ოპტიმიზაციის ტექნიკები Anthropic და OpenAI API-ებში"
+    "MCP სერვერის დეტალური არქიტექტურა და უსაფრთხოების საზღვრები.",
+    "მსოფლიო მოდელებისა და კონტრფაქტუალური მართვის ძირითადი მათემატიკური პრინციპები."
   ],
-  "last_run": "2026-09-26T14:05:15.772848+00:00",
+  "last_run": "2026-09-27T15:05:16.576065+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -8294,12 +8292,15 @@
     "arxiv:2609.30217",
     "arxiv:2609.30243",
     "arxiv:2609.30219",
-    "arxiv:2609.29845"
+    "arxiv:2609.29845",
+    "arxiv:2609.28693",
+    "arxiv:2609.30264",
+    "arxiv:2609.30227"
   ],
   "last_report_files": {
-    "markdown": "data/reports/2026-09-26/report.md",
-    "json": "data/reports/2026-09-26/report.json",
-    "newsletter": "data/reports/2026-09-26/newsletter.md",
-    "social": "data/reports/2026-09-26/social_posts.txt"
+    "markdown": "data/reports/2026-09-27/report.md",
+    "json": "data/reports/2026-09-27/report.json",
+    "newsletter": "data/reports/2026-09-27/newsletter.md",
+    "social": "data/reports/2026-09-27/social_posts.txt"
   }
 }
