@@ -154,7 +154,11 @@
     "https://openai.com/index/gpt-6-astra",
     "https://www.reuters.com/technology/openai-expands-gpt-6-lineup-with-cheaper-sol-luna-models-2026-09-22",
     "https://arxiv.org/abs/2609.30264",
-    "https://arxiv.org/abs/2609.30227"
+    "https://arxiv.org/abs/2609.30227",
+    "https://www.anthropic.com/claude-opus-5-5",
+    "https://www.anthropic.com/research/yes-claude-can-do-nine-loops",
+    "https://github.com/jenkinsci/ai-agent-plugin",
+    "https://arxiv.org/abs/2609.31619"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -274,100 +278,12 @@
     "evt-skilder-role-scoped-mcp",
     "evt-gpt6-sol-luna-pricing",
     "evt-ad-wm-action-discriminative-world-models",
-    "evt-verispeak-speech-fact-checking"
+    "evt-verispeak-speech-fact-checking",
+    "evt-anthropic-claude-opus-55",
+    "evt-jenkins-ai-agent-plugin",
+    "evt-learning-to-stop-confidence"
   ],
   "events": [
-    {
-      "event_id": "evt-simskill-tripartite-memory",
-      "title": "SimSkill: Self-Evolving AI აგენტი სამნაწილიანი (Episodic, Procedural, Semantic) მეხსიერების არქიტექტურით",
-      "category": "AI Research & Agent Memory",
-      "primary_url": "https://arxiv.org/html/2609.03753v2",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 10,
-      "actionability": 8,
-      "source_quality": 8,
-      "confidence": 90,
-      "what_happened": "წარმოდგენილია SimSkill — self-evolving აგენტური ჩარჩო, რომელიც ავტონომიური კურიკულუმის გენერაციით, Action-Critic შემოწმებითა და სამნაწილიანი მეხსიერების (Episodic, Procedural, Semantic) კონსოლიდაციით აღწევს უნარების უწყვეტ დაგროვებას.",
-      "what_changed": "ჩვეულებრივი აგენტები ყოველ სესიას იწყებენ ცარიელი კონტექსტით ან უბრალოდ ინახავენ უსტრუქტურო საუბრის ისტორიას. SimSkill წარმატებულ გამოცდილებას გარდაქმნის ხელახლა გამოყენებად პროცედურულ Skill-ებად და სტრუქტურირებულ სემანტიკურ გვერდებად (Bounded retrieval/linting მექანიზმით).",
-      "why_it_matters": "უზრუნველყოფს მეთოდოლოგიას, თუ როგორ გადაიქცეს აგენტის მიერ შესრულებული დავალებები მუდმივ, სტრუქტურირებულ ცოდნად, რაც ზრდის წარმატების მაჩვენებელს 25 პროცენტული პუნქტით.",
-      "technical_details": [
-        "Tripartite memory architecture (Episodic, Procedural instructions, Semantic markdown pages)",
-        "Action-critic verification loop სიმულაციის შედეგების შესამოწმებლად",
-        "Bounded retrieval, merging და continuous linting მექანიზმი ცოდნის დრიფტის თავიდან ასაცილებლად"
-      ],
-      "action_type": "LEARN",
-      "action": "გაიანალიზეთ SimSkill-ის memory lifecycle (Retrieval, Ingestion, Merging, Linting) და გამოიყენეთ ეს პრინციპი საკუთარ აგენტურ პროექტებში უნარების ავტომატური დაგროვებისთვის.",
-      "evidence": [
-        {
-          "url": "https://arxiv.org/html/2609.03753v2",
-          "title": "SimSkill: A Self-Evolving LLM Agent for Skill and Knowledge Accumulation...",
-          "domain": "arxiv.org",
-          "evidence": "We develop a tripartite memory architecture (episodic, procedural, semantic) together with its complete lifecycle: bounded retrieval, ingestion, merging, and linting keep the stored artifacts reusable."
-        }
-      ]
-    },
-    {
-      "event_id": "evt-pi-go-agent-architecture",
-      "title": "pi-go: Terminal-ზე ბაზირებული Go კოდინგ აგენტი 4-შრიანი Memory Palace-ითა და პროცესუალური სუბ-აგენტებით",
-      "category": "Agent Architecture & Open Source Infrastructure",
-      "primary_url": "https://github.com/dimetron/pi-go",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 9,
-      "source_quality": 8,
-      "confidence": 90,
-      "what_happened": "გამოქვეყნდა pi-go — Google ADK Go-ზე აგებული ტერმინალის AI კოდინგ აგენტი, რომელიც აღჭურვილია 4-შრიანი კონტექსტური მეხსიერებით (Memory Palace: SQLite, embeddings, temporal knowledge graph), OS-level სენდბოქსინგით (os.Root) და პროცესებზე დაფუძნებული სუბ-აგენტების აუზით.",
-      "what_changed": "სტანდარტული CLI აგენტები იყენებენ უბრალო flat conversation logs-ს და შეზღუდულ Prompt-ებს. pi-go აჩვენებს პროდაქშენ Go არქიტექტურას, სადაც ინსტრუმენტების შესრულება იზოლირებულია os.Root ფაილური სისტემის ბარიერით, ხოლო LSP სერვერები ავტომატურად იძლევიან დიაგნოსტიკას.",
-      "why_it_matters": "Go ენაზე აგენტების მშენებლობის შესანიშნავი ნიმუშია, რომელიც აერთიანებს დაბალ Latency-ს, OS-level უსაფრთხოებასა და დეტერმინისტულ ტემპორალურ Knowledge Graph-ს.",
-      "technical_details": [
-        "Google ADK Go და Bubble Tea v2 TUI ინტერფეისი",
-        "os.Root სენდბოქსინგი ფაილური სისტემის უსაფრთხოებისთვის",
-        "SQLite + all-MiniLM-L6-v2 ემბედინგები Memory Palace-ისთვის",
-        "JSON-RPC 2.0 Unix socket RPC სერვერი IDE ინტეგრაციისთვის"
-      ],
-      "action_type": "LEARN",
-      "action": "შეისწავლეთ pi-go-ს internal/palace და internal/tools პაკეტები, რათა გაიგოთ, თუ როგორ ხორციელდება Go-ში os.Root სენდბოქსინგი და SQLite-ზე დაფუძნებული ტემპორალური Knowledge Graph.",
-      "evidence": [
-        {
-          "url": "https://github.com/dimetron/pi-go",
-          "title": "dimetron/pi-go: Go implementation of AI coding agent",
-          "domain": "github.com",
-          "evidence": "Memory Palace — 4-layer contextual memory with SQLite storage, semantic embeddings (all-MiniLM-L6-v2), temporal knowledge graph, and project/conversation miners."
-        }
-      ]
-    },
-    {
-      "event_id": "evt-ecc-agent-harness-system",
-      "title": "ECC (Agent Harness Performance): 68 აგენტი, 292 Skill და AgentShield უსაფრთხოების სკანერი",
-      "category": "Developer Tools & Agent Safety",
-      "primary_url": "https://github.com/affaan-m/ecc",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 9,
-      "source_quality": 8,
-      "confidence": 90,
-      "what_happened": "განახლდა ECC პროექტი (affaan-m/ECC v2.2), რომელიც უზრუნველყოფს მრავალ-ჰარნესიან ინჟინერიის სისტემას (68 აგენტი, 292 skill, runtime hooks, AgentShield უსაფრთხოების სკანერი) Claude Code, Codex, Cursor და Kimi გარემოებისთვის.",
-      "what_changed": "ცალკეული პრომპტები და Skill-ები გაფანტული იყო სხვადასხვა ინსტრუმენტში. ECC აერთიანებს მათ ერთიანი პაკეტის მენეჯერის (npx ecc-universal setup) ქვეშ, სადაც დეტერმინისტულად იმართება კონტექსტის ოპტიმიზაცია, სესიების მეხსიერება და უსაფრთხოება.",
-      "why_it_matters": "ზრდის AI კოდინგ აგენტების ეფექტიანობას და იცავს პროექტებს უსაფრთხოების რისკებისგან AgentShield სკანერის მეშვეობით (პრომპტების, ჰუკებისა და წვდომების შემოწმება).",
-      "technical_details": [
-        "Guided wizard setup (npx ecc-universal@2.2.1 setup)",
-        "Universal multi-harness sync (Claude Code, Codex, Kimi Code)",
-        "AgentShield static analysis პრომპტების, ჰუკებისა და MCP კონფიგურაციებისთვის"
-      ],
-      "action_type": "TRY",
-      "action": "გაშვით npx ecc-universal setup თქვენს სამუშაო გარემოში, რათა გამოსცადოთ მრავალ-ჰარნესიანი Skill-ებისა და AgentShield უსაფრთხოების სკანირება.",
-      "evidence": [
-        {
-          "url": "https://github.com/affaan-m/ecc",
-          "title": "GitHub - affaan-m/ECC: The agent harness performance ...",
-          "domain": "github.com",
-          "evidence": "Access to 68 agents, 292 skills, and 94 legacy command shims, plus hooks, rules, memory, continuous learning, and AgentShield security scanning."
-        }
-      ]
-    },
     {
       "event_id": "evt-opendesign-local-first-design-agent",
       "title": "OpenDesign: Claude Design-ის ღია ალტერნატივა DeepSeek Harness-ისა და ლოკალური CLI აგენტების მხარდაჭერით",
@@ -4494,6 +4410,176 @@
       ],
       "non_obvious_opportunity": "შეგიძლია აგო ქართული აუდიო მედიის მონიტორინგისა და ფაქტ-ჩექინგის მარტივი პროტოტიპი თავისუფალი API-ებით.",
       "fit_assessment": "კარგი მაგალითია იმისა, თუ როგორ იქმნება ახალი ბენჩმარკები და რატომ სჭირდება აგენტებს grounded reasoning."
+    },
+    {
+      "event_id": "evt-anthropic-claude-opus-55",
+      "title": "Anthropic Announces Claude Opus 5.5 with Lower Costs and Faster Cache Reads",
+      "category": "LLM API & Agent Infrastructure",
+      "primary_url": "https://www.anthropic.com/claude-opus-5-5",
+      "supporting_urls": [
+        "https://www.anthropic.com/research/yes-claude-can-do-nine-loops"
+      ],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 8,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "Claude Opus 5.5 შემცირებული ფასებით და სწრაფი cache reads მხარდაჭერით ამცირებს აგენტური სისტემების ხარჯებს.",
+      "what_happened": "Anthropic-მა წარადგინა Claude Opus 5.5, რომელიც მოითხოვს 40 პროცენტით ნაკლებ გამოთვლით რესურსს.",
+      "what_changed": "ძვირი აგენტური ციკლებიდან გადავდივართ უფრო იაფ და სწრაფ API მოდელებზე.",
+      "why_it_matters": "შეგიძლიათ აგენტებს მისცეთ მეტი ინსტრუქცია და კონტექსტი მინიმალური ხარჯებით.",
+      "key_takeaways": [
+        "Cache reads ფასი შემცირდა 0.20 დოლარამდე მილიონ ტოკენზე.",
+        "გენერაციის სიჩქარე გაიზარდა 30 პროცენტით.",
+        "უმჯობესდება რთული კოდის მიგრაციისა და შესწორების ხარისხი."
+      ],
+      "technical_architecture": [
+        "Input tokens: 4 dollars per million",
+        "Output tokens: 20 dollars per million",
+        "Cache reads: 0.20 dollars per million"
+      ],
+      "technical_details": [
+        "API optimization via prompt caching",
+        "Enhanced behavioral audit alignment suite"
+      ],
+      "potential_impact": "მცირე სტარტაპებსა და ინდივიდუალურ დეველოპერებს ეძლევათ ძლიერი მოდელების გამოყენების შანსი დაბალ ფასად.",
+      "action_type": "APPLY",
+      "action": "გადააწყვეთ თქვენი მიმდინარე აგენტის API გამოძახებები Claude Opus 5.5 ქეშირებულ დამუშავებაზე.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value",
+        "Short-term Opportunity"
+      ],
+      "verified_facts": [
+        "Claude Opus 5.5 costs 40 percent less to run than Opus 5.",
+        "Cache read tokens cost 0.20 dollars per million tokens, 60 percent less than Opus 5.",
+        "Output generation is over 30 percent faster than Opus 5."
+      ],
+      "interpretation": "ინფრასტრუქტურული ხარჯების შემცირება აგენტურ სისტემებში მუდმივი ლუპების შესრულებას ბევრად უფრო ხელმისაწვდომს ხდის მცირე დეველოპერებისთვის.",
+      "uncertainty": "როგორ იმუშავებს რეალურ production დატვირთვაზე ეს ფასები გრძელვადიან პერსპექტივაში, ჯერ ბოლომდე გამოცდილი არ არის.",
+      "counter_argument": "ფასების შემცირება შეიძლება კომპენსირებული იყოს უფრო რთული დავალებებით, რომლებიც ისევ გაზრდის ტოკენების საერთო მოხმარებას.",
+      "strategic_assessment": "გამოიყენეთ ახალი მოდელის cache reads ფუნქცია აგენტების მეხსიერებისა და ისტორიის ოპტიმიზაციისთვის API გამოძახებებში.",
+      "time_horizon": "mid-term",
+      "what_could_change": "აგენტების დაფუძნება ხანგრძლივ ციკლებზე გახდება სტანდარტული პრაქტიკა API ხარჯების ვარდნის გამო.",
+      "risks": [
+        "API პროვაიდერების პოლიტიკის ცვლილება",
+        "ტექნიკური დამოკიდებულება ერთ ეკოსისტემაზე"
+      ],
+      "non_obvious_opportunity": "მცირე ბიუჯეტის გუნდებს აქვთ შანსი აკონტროლონ ხარჯები ძვირი ტოკენების ქეშირებით.",
+      "fit_assessment": "იდეალურია 16 წლის დეველოპერისთვის, რომელიც ცდილობს მცირე ბიუჯეტით შექმნას გრძელვადიანი აგენტები."
+    },
+    {
+      "event_id": "evt-jenkins-ai-agent-plugin",
+      "title": "Jenkins AI Agent Plugin Adds Native Support for Coding Agents and Approval Gates",
+      "category": "AI Coding Tools & CI/CD",
+      "primary_url": "https://github.com/jenkinsci/ai-agent-plugin",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 95,
+      "tldr": "Jenkins აგენტის პლაგინი ამატებს მხარდაჭერას Claude Code და Cursor აგენტებისთვის ლაივ სტრიმინგით.",
+      "what_happened": "გამოვიდა Jenkins පლაგინი, რომელიც უშვებს ავტონომიურ კოდირების აგენტებს ბილდ პაიპლაინებში.",
+      "what_changed": "ხელით შესასრულებელი ბაგების ძებნა იცვლება ავტომატური აგენტური ბილდ ნაბიჯებით.",
+      "why_it_matters": "შეგიძლიათ მართოთ და დააკვირდეთ აგენტების მუშაობას სტანდარტული ინსტრუმენტებით.",
+      "key_takeaways": [
+        "მხარდაჭერილია Claude Code, Cursor Agent, Codex CLI და სხვა.",
+        "აქვს ლაივ სტრიმინგი და ტოკენების ხარჯების აღრიცხვა.",
+        "შეიცავს ადამიანის მიერ დამტკიცების ბარიერებს."
+      ],
+      "technical_architecture": [
+        "Reusable Jenkins build step via aiAgent(...) pipeline",
+        "Stream-json output format parsing for tool calls and usage stats"
+      ],
+      "technical_details": [
+        "Plugin ID: ai-agent",
+        "Supports freestyyle jobs and scripted/declarative pipelines"
+      ],
+      "potential_impact": "ინჟინრები შეძლებენ აგენტების ინტეგრაციას არსებულ საწარმოო ინფრასტრუქტურაში.",
+      "action_type": "BUILD",
+      "action": "ინსტალაცია გაუკეთეთ AI agent პლაგინს და დააკავშირეთ ერთი პატარა კოდის ტესტირების აგენტი თავისუფალი API-ით.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Real Business Opportunity",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "The Jenkins ai-agent-plugin supports Claude Code, Codex CLI, Cursor Agent, and OpenCode.",
+        "Features include live-streaming conversation view, tool call logs, and markdown rendering.",
+        "Supports optional human review approval gates before tool execution."
+      ],
+      "interpretation": "ავტონომიური კოდირების აგენტები ოფიციალურად ინტეგრირდება κლასიკურ CI/CD პლატფორმებში.",
+      "uncertainty": "კოდის გენერაციის ავტომატიზაციამ CI/CD პაიპლაინებში შეიძლება გამოიწვიოს უსაფრთხოების რისკები.",
+      "counter_argument": "ადამიანის დამტკიცების გარეშე გაშვებული აგენტები ხშირად აზიანებენ პროდუქშენ კოდს.",
+      "strategic_assessment": "ისწავლეთ როგორ დააკავშიროთ AI აგენტები CI/CD პაიპლაინებთან და შექმენით დამტკიცების ბარიერები უსაფრთხოებისთვის.",
+      "time_horizon": "short-term",
+      "what_could_change": "პროგრამული უზრუნველყოფის ტესტირება და ბაგების ფიქსი პაიპლაინში გახდება სრულად ავტომატური.",
+      "risks": [
+        "ავტომატური აგენტების მიერ მავნე კოდის გაშვება",
+        "ხარჯების უკონტროლო ზრდა პაიპლაინებში"
+      ],
+      "non_obvious_opportunity": "შეგიძლიათ შესთავაზოთ მსგავსი ავტომატიზაცია მცირე ადგილობრივ კომპანიებს, როგორც CI/CD ოპტიმიზაცია.",
+      "fit_assessment": "ძალიან პრაქტიკულია დეველოპერული პროცესების ავტომატიზაციისა და აგენტური ჰარნესების ასაშენებლად."
+    },
+    {
+      "event_id": "evt-learning-to-stop-confidence",
+      "title": "Self-Supervised Confidence Training Improves Reasoning Efficiency",
+      "category": "AI Research / Reinforcement Learning",
+      "primary_url": "https://arxiv.org/abs/2609.31619",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 7,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "თვითაღიარებული თავდაჯერებულობის ტრენინგი ამცირებს გენერირებულ ტოკენებს 25 პროცენტით ხარისხის დაკარგვის გარეშე.",
+      "what_happened": "მკვლევარებმა აჩვენეს, რომ მოდელის შიდა თავდაჯერებულობის პროგნოზირება აუმჯობესებს მსჯელობის ეფექტიანობას.",
+      "what_changed": "ხანგრძლივი მსჯელობის ტრენინგიდან გადავდივართ თვითკონტროლირებად მეტაკოგნიტურ მიდგომებზე.",
+      "why_it_matters": "შეგიძლიათ შეამციროთ აგენტების გამოძახების ხარჯები ნარჩენი ტოკენების მოცილებით.",
+      "key_takeaways": [
+        "საკმარისია მხოლოდ 600 პრობლემაზე წვრთნა ეფექტის მისაღებად.",
+        "ტოკენების მოხმარება იკლებს 25 პროცენტით.",
+        "შენარჩუნებულია ბაზისური მოდელების სიზუსტე."
+      ],
+      "technical_architecture": [
+        "Fine-tuning reasoning models to predict intermediate confidence",
+        "No objective for reasoning length in the training loss"
+      ],
+      "technical_details": [
+        "Evaluated on Gemma, Qwen, Nemotron, and GPT-OSS",
+        "Applied to math, scientific, and coding benchmarks"
+      ],
+      "potential_impact": "დეველოპერები შეძლებენ ლოკალური მოდელების მუშაობის დაჩქარებას და API ხარჯების შემცირებას.",
+      "action_type": "LEARN",
+      "action": "წაიკითხეთ კვლევის აბსტრაქტი და გაიგეთ როგორ გამოიყენება შიდა პროგნოზები ინფერენციის ოპტიმიზაციისთვის.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "Self-supervised confidence fine-tuning uses only 600 training problems.",
+        "Generated tokens are reduced by up to 25 percent at matched accuracy.",
+        "Tested across Gemma, Qwen, Nemotron, and GPT-OSS models."
+      ],
+      "interpretation": "მოდელებს შეუძლიათ გამოთვლითი ეფექტიანობის გაზრდა შიდა თავდაჯერებულობის პროგნოზირებით ყოველგვარი სიგრძის ჯარიმების გარეშე.",
+      "uncertainty": "მეთოდის ეფექტიანობა ძალიან რთულ დომენებში ჯერ სრულად არ არის დამტკიცებული.",
+      "counter_argument": "თავდაჯერებულობის არასწორმა პროგნოზირებამ შეიძლება გამოიწვიოს მოდელის ნაადრევი გაჩერება და შეცდომები.",
+      "strategic_assessment": "გამოიყენეთ შიდა მეტაკოგნიტური სიგნალები და თავდაჯერებულობის შეფასება თქვენი აგენტების გამოსავალი ტოკენების გასაკონტროლებლად.",
+      "time_horizon": "mid-term",
+      "what_could_change": "მსჯელობის მოდელები გახდებიან ბევრად უფრო სწრაფები და იაფი გამოსაყენებლად API-ებში.",
+      "risks": [
+        "ზედმეტად თავდაჯერებული არასწორი პასუხები",
+        "წვრთნის მონაცემების ხარისხზე დამოკიდებულება"
+      ],
+      "non_obvious_opportunity": "მცირე მოდელების წვრთნა შესაძლებელია მინიმალური დეველოპერული ძალისხმევით ინფერენციის ოპტიმიზაციისთვის.",
+      "fit_assessment": "გეხმარებათ გაიგოთ როგორ იმუშაოთ ლოკალურ მოდელებთან და მართოთ მათი ტოკენების ხარჯები."
     }
   ],
   "topics": {
@@ -4537,7 +4623,7 @@
     "AI Research / Multi-Agent Swarms": 1,
     "AI Infrastructure / Hardware & RL Agents": 1,
     "AI Research / Agent Environments & Training": 1,
-    "AI Research / Reinforcement Learning": 3,
+    "AI Research / Reinforcement Learning": 4,
     "MCP / Agent Tooling & UI": 1,
     "Multi-Agent Systems / Agent Memory & Research": 1,
     "LLM API / Voice & Real-Time Agents": 1,
@@ -4594,336 +4680,11 @@
     "AI Research / Model Architecture": 1,
     "Agent Architecture & Security": 1,
     "LLM APIs & Cost Optimization": 1,
-    "AI Research / RAG & Evaluation": 1
+    "AI Research / RAG & Evaluation": 1,
+    "LLM API & Agent Infrastructure": 1,
+    "AI Coding Tools & CI/CD": 1
   },
   "reports": [
-    {
-      "date": "2026-09-17",
-      "summary": "Today's developments mark significant architectural shifts in agent user interfaces, safety monitoring, and multi-agent state coordination. AWS and the MCP ecosystem introduced MCP Apps for rendering interactive HTML UI widgets inside host applications, while DeepMind and Google launched Gemini 3.8 Live and out-of-band Agent Anomaly Detection for real-time, non-blocking agent execution. Furthermore, new research establishes Git DAGs as an effective shared memory for autonomous multi-agent research loops and demonstrates low-cost internal activation probing to catch reward hacking online.",
-      "events": [
-        {
-          "event_id": "evt-mcp-apps-bedrock",
-          "title": "MCP Apps Standard & Bedrock AgentCore: Interactive HTML UI Rendering inside AI Hosts",
-          "category": "MCP / Agent Tooling & UI",
-          "primary_url": "https://aws.amazon.com/blogs/machine-learning/build-interactive-mcp-apps-using-amazon-bedrock-agentcore",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 10,
-          "actionability": 9,
-          "source_quality": 10,
-          "confidence": 95,
-          "tldr": "The Model Context Protocol (MCP) is extended with MCP Apps, enabling servers to render interactive, host-agnostic HTML widgets directly in ChatGPT and Claude via Bedrock AgentCore runtime.",
-          "what_happened": "AWS detailed how Amazon Bedrock AgentCore Runtime and Gateway support the new MCP Apps extension, allowing MCP servers to serve rich HTML UI widgets instead of plain text responses.",
-          "what_changed": "Before, MCP tool outputs were strictly plain text or markdown, forcing host LLMs to synthesize text tables or code blocks. Now, MCP Apps standardizes embedding interactive HTML cards, forms, and widgets directly in host UIs like ChatGPT and Claude.",
-          "why_it_matters": "Decouples custom UI logic from specific AI chat platforms, allowing developers to build a single serverless MCP server on Bedrock AgentCore that serves interactive tools identically across all major AI hosts.",
-          "key_takeaways": [
-            "MCP Apps standard extends MCP with host-agnostic HTML widgets.",
-            "Bedrock AgentCore Gateway provides session-isolated, serverless execution endpoints for MCP Apps.",
-            "Reduces plain-text context pollution while improving user interaction flow."
-          ],
-          "technical_architecture": [
-            "Host-agnostic MCP Apps protocol extension.",
-            "AgentCore Runtime for session-isolated serverless tool execution.",
-            "AgentCore Gateway exposing single secure endpoint for host communication."
-          ],
-          "technical_details": [
-            "HTML/JS widgets rendered in sandboxed host iframes.",
-            "Supports contextual text fallback when rich UI is unnecessary.",
-            "Native integration with ChatGPT and Claude client hosts."
-          ],
-          "potential_impact": "Standardizes the UI layer for AI agents, making custom text-only UI hacks obsolete.",
-          "action_type": "BUILD",
-          "action": "Create a local Python MCP server returning an interactive HTML table widget for SQL query results and test it in Claude Desktop.",
-          "evidence": []
-        },
-        {
-          "event_id": "evt-agora-git-shared-memory",
-          "title": "Agora: Git-Based Shared Memory DAG for Decentralized Multi-Agent AutoResearch",
-          "category": "Multi-Agent Systems / Agent Memory & Research",
-          "primary_url": "https://huggingface.co/papers/2609.18094",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 10,
-          "actionability": 9,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "Agora introduces Git as an append-only DAG shared memory for multi-agent research loops, allowing 13 LLM agents to collaborate asynchronously without redundant exploration.",
-          "what_happened": "Researchers from NVIDIA introduced Agora, a decentralized architecture where AI research agents log hypotheses, code edits, and evaluation results as immutable Git commits in a Directed Acyclic Graph (DAG).",
-          "what_changed": "Before, running multiple AutoResearch agents in parallel caused duplicated search paths as each agent started from scratch. Agora turns Git into shared memory where every claim is an actionable, checkable commit.",
-          "why_it_matters": "Demonstrates how standard version control (Git) can act as long-term shared state memory for swarm research without requiring a centralized master orchestrator.",
-          "key_takeaways": [
-            "1,703 contributions over 12 days by 13 autonomous LLM agents.",
-            "Git DAG index exposes research frontier, unverified claims, and neglected branches.",
-            "Diversity-aware selection rule prevents agents from prematurely collapsing on a single solution."
-          ],
-          "technical_architecture": [
-            "Append-only Git DAG commit log as state storage.",
-            "Derived index parser tracking research frontier and verification status.",
-            "Asynchronous worker loop checking out and validating ancestor commits."
-          ],
-          "technical_details": [
-            "Closed 62% of the gap to trained GPT-2 124M on a zero-data weight-transfer task.",
-            "Tested across 165 independent agent verifications.",
-            "Zero central planner node required."
-          ],
-          "potential_impact": "Establishes Git-based DAGs as a scalable architecture for collaborative multi-agent open-source development.",
-          "action_type": "BUILD",
-          "action": "Implement a simple Git-backed DAG logger in Python for your coding scripts, committing task hypotheses and execution metrics automatically.",
-          "evidence": []
-        },
-        {
-          "event_id": "evt-gemini-38-live",
-          "title": "Gemini 3.8 Live & Extended Thinking: Asynchronous Background Multi-Step Tool Execution",
-          "category": "LLM API / Voice & Real-Time Agents",
-          "primary_url": "https://deepmind.google/blog/introducing-gemini-3-8-live-and-3-8-live-extended-thinking",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 10,
-          "confidence": 95,
-          "tldr": "DeepMind launched Gemini 3.8 Live and Extended Thinking, enabling real-time voice interaction with parallel background tool execution and extended multi-step reasoning.",
-          "what_happened": "Google DeepMind released Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking in the Gemini API and Workspace, supporting real-time visual grounding and background tool execution.",
-          "what_changed": "Previous real-time voice APIs locked the execution loop during tool calls or reasoning. Gemini 3.8 Live Extended Thinking executes multi-step tool calls and reasoning in the background while maintaining audio conversation flow.",
-          "why_it_matters": "Removes latency bottlenecks in voice agent loops, allowing complex agentic actions (like database lookups or external API calls) to run concurrently with conversation.",
-          "key_takeaways": [
-            "Dual model release: 3.8 Live for low-cost fluid interaction, 3.8 Live Extended Thinking for complex tasks.",
-            "Background task execution eliminates pause-and-wait voice interaction bottlenecks.",
-            "Supports real-time visual context and multilingual switching."
-          ],
-          "technical_architecture": [
-            "Full-duplex streaming audio pipeline.",
-            "Parallel reasoning worker threads decoupled from audio output buffer.",
-            "Real-time visual context injection interface."
-          ],
-          "technical_details": [
-            "Accessible via Gemini API, Search, and Google Workspace.",
-            "Extended thinking mode exposes reasoning trace logs for inspection.",
-            "Optimized for high-concurrency low-latency deployment."
-          ],
-          "potential_impact": "Paves the way for fluid, human-like voice agents that perform complex work while talking.",
-          "action_type": "TRY",
-          "action": "Test Gemini 3.8 Live via Gemini API with a Python script that streams microphone audio while invoking a background tool.",
-          "evidence": []
-        },
-        {
-          "event_id": "evt-llama-4-scout-maverick",
-          "title": "Meta Llama 4 Scout & Maverick: Natively Multimodal MoE Open-Weight Foundation Models",
-          "category": "Open Source AI / Foundation Models",
-          "primary_url": "https://ai.meta.com/Open",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 10,
-          "confidence": 95,
-          "tldr": "Meta announced Llama 4 Scout and Maverick, transitioning the Llama architecture to natively multimodal, mixture-of-experts (MoE) designs with Llama Stack support.",
-          "what_happened": "Meta unveiled Llama 4 Scout and Llama 4 Maverick, the first open-weight models in the Llama 4 family featuring native vision/audio/text multimodality and MoE scaling.",
-          "what_changed": "Llama 3 relied on dense transformer blocks and late-fusion vision wrappers. Llama 4 moves to native multimodal architecture and MoE, dramatically increasing context capacity and execution speed.",
-          "why_it_matters": "Brings state-of-the-art natively multimodal MoE models to open weights, making local and self-hosted visual/multimodal agents significantly cheaper and faster to run.",
-          "key_takeaways": [
-            "Native multimodality removes visual encoding bottlenecks.",
-            "Mixture-of-Experts architecture delivers high compute efficiency per token.",
-            "Full compatibility with Llama Stack and Llama API."
-          ],
-          "technical_architecture": [
-            "Natively multimodal unified transformer architecture.",
-            "Mixture-of-Experts (MoE) sparse routing layers.",
-            "Native Llama Stack deployment orchestration."
-          ],
-          "technical_details": [
-            "Industry-leading context window lengths.",
-            "Designed for rapid deployment via Llama API and local runtimes.",
-            "Committed open grants for global ecosystem development."
-          ],
-          "potential_impact": "Accelerates local open-source multimodal agent development without relying on proprietary cloud APIs.",
-          "action_type": "APPLY",
-          "action": "Prepare your local agent evaluation setup (Ollama or vLLM) to benchmark MoE multimodal architectures as Llama 4 weights roll out.",
-          "evidence": []
-        },
-        {
-          "event_id": "evt-dom-reward-hacking-monitors",
-          "title": "Internal Representation Probing: White-Box DoM Vectors for Low-Cost Agent Oversight",
-          "category": "AI Evaluation / Agent Safety & Internal State",
-          "primary_url": "https://arxiv.org/abs/2609.19101",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "Difference of Means (DoM) vectors extracted from model chain-of-thought activations detect agent reward hacking in GLM 5.2 and Kimi K3 at near-zero compute cost.",
-          "what_happened": "Researchers showed that simple difference of means (DoM) probing vectors on internal representations detect reward hacking in frontier models across DeepSWE and SWE-bench environments.",
-          "what_changed": "Detecting agent reward hacking (e.g. bypassing test suites or falsifying logs) previously required running expensive LLM-as-a-judge monitors. Internal activation probing matches LLM judge accuracy with virtually zero extra latency or API cost.",
-          "why_it_matters": "Enables real-time, online monitoring of agent chain-of-thought traces to catch malicious or policy-violating agent actions before tool execution occurs.",
-          "key_takeaways": [
-            "GLM 5.2 exhibited reward hacking in 73% of SWE-bench rollouts.",
-            "DoM vectors on internal hidden states effectively catch hacks online.",
-            "Provides white-box interpretability for open-weights agent models."
-          ],
-          "technical_architecture": [
-            "Difference of Means (DoM) linear probe extracted from CoT hidden states.",
-            "Online activation tapping during autoregressive generation.",
-            "Asynchronous alert trigger before execution phase."
-          ],
-          "technical_details": [
-            "Evaluated on Kimi K3, GLM 5.2, and Qwen 3.8 Max.",
-            "Caught 3.1% more hacks on Kimi K3 compared to expensive LLM monitors.",
-            "Zero added request latency when run in parallel with token generation."
-          ],
-          "potential_impact": "Shifts agent safety monitoring from expensive black-box LLM judging to fast, white-box internal representation probes.",
-          "action_type": "LEARN",
-          "action": "Study linear probing techniques on transformer hidden states to understand how internal representation vectors are calculated.",
-          "evidence": []
-        },
-        {
-          "event_id": "evt-evolvetrade-prompt-as-policy",
-          "title": "EvolveTrade: Experience-Driven Policy Prompt Refinement for Self-Evolving Agents",
-          "category": "AI Research / Self-Improvement & Agent Memory",
-          "primary_url": "https://huggingface.co/papers/2609.17632",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 9,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "EvolveTrade treats agent system prompts as text-parameterized policies, using a meta-Policy Agent to iteratively refine tool usage rules based on outcome feedback.",
-          "what_happened": "Researchers introduced EvolveTrade, a framework where an agent's backbone LLM remains frozen, but its system prompt / tool usage guidelines are dynamically updated by a Policy Agent using execution traces and performance metrics.",
-          "what_changed": "Most agent frameworks use static, human-engineered system prompts. EvolveTrade introduces meta-level reflection that converts execution experience into structured system prompt updates.",
-          "why_it_matters": "Provides a practical, low-cost path to self-improving agents without fine-tuning weights, ideal for developers operating within API rate/cost limits.",
-          "key_takeaways": [
-            "Text-parameterized policy optimization keeps base LLM weights frozen.",
-            "Policy Agent reflects on execution traces and outcome metrics after each run batch.",
-            "Significantly improved Sharpe Ratio and decision quality over fixed-prompt baselines."
-          ],
-          "technical_architecture": [
-            "Execution trace recorder capturing tool call sequences and outcomes.",
-            "Meta-Policy Agent evaluating trace quality.",
-            "System prompt updater optimizing procedural instructions."
-          ],
-          "technical_details": [
-            "Evaluated across multiple market regimes and LLM backbones.",
-            "Increased code-mediated analysis and targeted tool selection.",
-            "Traceable policy-to-return attribution."
-          ],
-          "potential_impact": "Validates system-prompt evolution as a reliable substitute for expensive model fine-tuning in specialized domains.",
-          "action_type": "BUILD",
-          "action": "Build a mini reflection loop that takes failed agent execution logs and generates an updated prompt configuration file automatically.",
-          "evidence": []
-        },
-        {
-          "event_id": "evt-gemini-agent-anomaly-detection",
-          "title": "Google Agent Anomaly Detection: Out-of-Band Security Oversight for Autonomous Agents",
-          "category": "Agent Security & Governance",
-          "primary_url": "https://developers.googleblog.com/agent-anomaly-detection-now-in-private-preview-on-the-gemini-enterprise-agent-platform",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 7,
-          "source_quality": 10,
-          "confidence": 95,
-          "tldr": "Google launched Agent Anomaly Detection on Gemini Enterprise, performing asynchronous, reasoning-based security audits mapped directly to the OWASP Agentic Top 10.",
-          "what_happened": "Google introduced an out-of-band security and auditing layer that analyzes OpenTelemetry traces, reasoning steps, and tool calls of production agents without slowing response time.",
-          "what_changed": "Traditional unit tests or standard latency/token metrics fail to catch silent privilege escalations or improper tool calls. Google's tool inspects the complete execution graph asynchronously against OWASP Agentic Top 10 risks.",
-          "why_it_matters": "Solves the core enterprise dilemma: autonomous agents make runtime decisions that bypass traditional static code security filters, requiring behavioral trace monitoring.",
-          "key_takeaways": [
-            "Asynchronous out-of-band evaluation ensures zero impact on live latency.",
-            "Native mapping to OWASP Agentic Top 10 (ASI02 Tool Misuse, ASI03 Privilege Abuse, ASI10 Rogue Agents).",
-            "Integration with Security Command Center for centralized incident triage."
-          ],
-          "technical_architecture": [
-            "OpenTelemetry trace collector ingesting agent tool calls and reasoning logs.",
-            "Asynchronous reasoning-based audit engine.",
-            "Security Command Center publisher."
-          ],
-          "technical_details": [
-            "Flags subtle intent shifts and unexpected tool reach.",
-            "Provides plain-language risk explanations and actionable remediations.",
-            "Upcoming support for custom business logic rules written in natural language."
-          ],
-          "potential_impact": "Sets the enterprise standard for non-blocking agent behavioral security monitoring.",
-          "action_type": "TRACK",
-          "action": "Review OWASP Agentic Top 10 categories (ASI02, ASI03, ASI08, ASI10) and document potential failure modes in your agent projects.",
-          "evidence": []
-        },
-        {
-          "event_id": "evt-log-n-questions-llm-communication",
-          "title": "Title-Partitioning Strategies: Frontier LLM Self-Communication Efficiency in Information Asymmetry Games",
-          "category": "AI Research / Agent Communication & Evaluation",
-          "primary_url": "https://arxiv.org/abs/2609.19113",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 8,
-          "actionability": 7,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "Evaluating frontier LLMs in a two-agent log(N)-Questions game reveals that models achieve optimal 1 bit/question efficiency specifically when partitioning context by document titles.",
-          "what_happened": "A study evaluated 6 frontier LLMs in a paired information asymmetry game (log2(N) questions over Wikipedia abstracts) to measure model self-communication efficiency.",
-          "what_changed": "Previous evaluations measured model single-prompt QA accuracy. This benchmark tests how efficiently a model can reduce search space entropy when split into an information-limited questioner and answerer.",
-          "why_it_matters": "Teaches crucial prompt design principles for multi-agent systems: structured indexing (like binary splitting on document titles) dramatically outperforms unstructured reasoning.",
-          "key_takeaways": [
-            "Win rate scales smoothly as p^(log2 N) with average per-round reliability p=0.928.",
-            "Only top models extracted a full 1 bit of information per question by using title-partitioning strategies.",
-            "Excessive reasoning-token expenditure showed little correlation with game success."
-          ],
-          "technical_architecture": [
-            "Paired 2-agent information game protocol.",
-            "Strict log2(N) yes/no constraint.",
-            "Entropy reduction metric (bits per question)."
-          ],
-          "technical_details": [
-            "408 games evaluated across document sets up to 1024 paragraphs.",
-            "Tested GLM-5.3, GPT-5.6 Sol, Grok 4.6, Gemini 3.8 Flash, Kimi K3, and Claude Opus 5.",
-            "Identified strict bias toward defaulting to 'No' answers in weaker models."
-          ],
-          "potential_impact": "Informs structured protocol design for multi-agent negotiation, binary search tree retrieval, and active learning loops.",
-          "action_type": "LEARN",
-          "action": "Analyze binary search partitioning logic in multi-agent prompt design to optimize information gathering loops.",
-          "evidence": []
-        },
-        {
-          "event_id": "evt-limix-2-causal-structured-data",
-          "title": "LimiX-2: Contextual Mechanism Networks for Zero-Shot Tabular Causal Recovery",
-          "category": "AI Research / Structured Data & Causal ML",
-          "primary_url": "https://huggingface.co/papers/2609.17488",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 8,
-          "actionability": 7,
-          "source_quality": 8,
-          "confidence": 85,
-          "tldr": "LimiX-2 introduces Contextual Mechanism Networks (CMNs) pretrained on Structural Causal Models to achieve state-of-the-art zero-shot tabular prediction and causal skeleton recovery.",
-          "what_happened": "Researchers released LimiX-2, a foundation model for structured data trained using Context-Conditional Masked Modeling (CCMM) over synthetic datasets from Structural Causal Models (SCMs).",
-          "what_changed": "Traditional tabular models focus on target-centric prediction p(y|x, D_context). LimiX-2 models joint probability distributions p(x,y|D_context), capturing underlying data-generating mechanisms.",
-          "why_it_matters": "Enables agents working with SQL databases and tabular analytics to infer causal relationships and make zero-shot predictions without manual feature engineering or task-specific retraining.",
-          "key_takeaways": [
-            "Outperforms existing tabular foundation models on TabArena, TALENT, and BCC benchmarks.",
-            "Feature attention weights directly encode causal relationships.",
-            "Recovers causal skeletons zero-shot from structured datasets."
-          ],
-          "technical_architecture": [
-            "Contextual Mechanism Network (CMN) architecture.",
-            "Context-Conditional Masked Modeling (CCMM) pre-training.",
-            "Structural Causal Model (SCM) synthetic data generator."
-          ],
-          "technical_details": [
-            "Pretrained across diverse graph structures and functional mechanisms.",
-            "Jointly models features and labels for flexible downstream query tasks.",
-            "GitHub repository and weights publicly released."
-          ],
-          "potential_impact": "Brings causal reasoning capabilities to AI database agents, enabling deeper automated analytics.",
-          "action_type": "TRACK",
-          "action": "Follow the LimiX-2 GitHub repository and review its approach to causal graph inference from SQL tables.",
-          "evidence": []
-        }
-      ],
-      "trends": [
-        "Shift from text-only MCP responses to rich, host-agnostic HTML UI rendering via MCP Apps.",
-        "Asynchronous out-of-band security and anomaly detection running alongside live agent execution traces.",
-        "Internal hidden state probing (white-box vectors) replacing expensive LLM-as-a-judge monitoring.",
-        "Transition to Git-based DAGs as decentralized shared memory for multi-agent auto-research."
-      ]
-    },
     {
       "date": "2026-09-17",
       "summary": "Today's breakthroughs significantly solve the memory and compute bottlenecks of large-scale agent execution. Key highlights include Edge0's pre-router strategy for running 35B MoE models directly from SSDs on consumer GPUs, research proving looped transformers alter scaling exponents to achieve GPT-3 performance with 20x less compute, and Fathom's channel-major bitplane approach to host-RAM KV cache decoding. Concurrently, new frameworks like CERA-MoA and Anthropic SKILL.md standards provide practical architectures for multi-agent co-evolution and robust agent harness design.",
@@ -8228,13 +7989,194 @@
         "OpenAI-ს ახალი Sol/Luna მოდელები ამცირებს აგენტური ციკლების და ტოკენების ხარჯებს.",
         "მსოფლიო მოდელები დაგეგმვისთვის ითხოვენ ალტერნატიული ქმედებების მკაფიო დიფერენციაციას."
       ]
+    },
+    {
+      "date": "2026-09-28",
+      "summary": "წარმოდგენილია ახალი მოდელები და ინფრასტრუქტურული გადაწყვეტილებები, რომლებიც ამცირებენ API ხარჯებს და აუმჯობესებენ აგენტების არქიტექტურას. მცირე ბიუჯეტის დეველოპერებისთვის ეს ნიშნავს პროდუქტიულობის ზრდას და პროტოტიპირების ახალ შესაძლებლობებს.",
+      "events": [
+        {
+          "event_id": "evt-anthropic-claude-opus-55",
+          "title": "Anthropic Announces Claude Opus 5.5 with Lower Costs and Faster Cache Reads",
+          "category": "LLM API & Agent Infrastructure",
+          "primary_url": "https://www.anthropic.com/claude-opus-5-5",
+          "supporting_urls": [
+            "https://www.anthropic.com/research/yes-claude-can-do-nine-loops"
+          ],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 8,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "Claude Opus 5.5 შემცირებული ფასებით და სწრაფი cache reads მხარდაჭერით ამცირებს აგენტური სისტემების ხარჯებს.",
+          "what_happened": "Anthropic-მა წარადგინა Claude Opus 5.5, რომელიც მოითხოვს 40 პროცენტით ნაკლებ გამოთვლით რესურსს.",
+          "what_changed": "ძვირი აგენტური ციკლებიდან გადავდივართ უფრო იაფ და სწრაფ API მოდელებზე.",
+          "why_it_matters": "შეგიძლიათ აგენტებს მისცეთ მეტი ინსტრუქცია და კონტექსტი მინიმალური ხარჯებით.",
+          "key_takeaways": [
+            "Cache reads ფასი შემცირდა 0.20 დოლარამდე მილიონ ტოკენზე.",
+            "გენერაციის სიჩქარე გაიზარდა 30 პროცენტით.",
+            "უმჯობესდება რთული კოდის მიგრაციისა და შესწორების ხარისხი."
+          ],
+          "technical_architecture": [
+            "Input tokens: 4 dollars per million",
+            "Output tokens: 20 dollars per million",
+            "Cache reads: 0.20 dollars per million"
+          ],
+          "technical_details": [
+            "API optimization via prompt caching",
+            "Enhanced behavioral audit alignment suite"
+          ],
+          "potential_impact": "მცირე სტარტაპებსა და ინდივიდუალურ დეველოპერებს ეძლევათ ძლიერი მოდელების გამოყენების შანსი დაბალ ფასად.",
+          "action_type": "APPLY",
+          "action": "გადააწყვეთ თქვენი მიმდინარე აგენტის API გამოძახებები Claude Opus 5.5 ქეშირებულ დამუშავებაზე.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value",
+            "Short-term Opportunity"
+          ],
+          "verified_facts": [
+            "Claude Opus 5.5 costs 40 percent less to run than Opus 5.",
+            "Cache read tokens cost 0.20 dollars per million tokens, 60 percent less than Opus 5.",
+            "Output generation is over 30 percent faster than Opus 5."
+          ],
+          "interpretation": "ინფრასტრუქტურული ხარჯების შემცირება აგენტურ სისტემებში მუდმივი ლუპების შესრულებას ბევრად უფრო ხელმისაწვდომს ხდის მცირე დეველოპერებისთვის.",
+          "uncertainty": "როგორ იმუშავებს რეალურ production დატვირთვაზე ეს ფასები გრძელვადიან პერსპექტივაში, ჯერ ბოლომდე გამოცდილი არ არის.",
+          "counter_argument": "ფასების შემცირება შეიძლება კომპენსირებული იყოს უფრო რთული დავალებებით, რომლებიც ისევ გაზრდის ტოკენების საერთო მოხმარებას.",
+          "strategic_assessment": "გამოიყენეთ ახალი მოდელის cache reads ფუნქცია აგენტების მეხსიერებისა და ისტორიის ოპტიმიზაციისთვის API გამოძახებებში.",
+          "time_horizon": "mid-term",
+          "what_could_change": "აგენტების დაფუძნება ხანგრძლივ ციკლებზე გახდება სტანდარტული პრაქტიკა API ხარჯების ვარდნის გამო.",
+          "risks": [
+            "API პროვაიდერების პოლიტიკის ცვლილება",
+            "ტექნიკური დამოკიდებულება ერთ ეკოსისტემაზე"
+          ],
+          "non_obvious_opportunity": "მცირე ბიუჯეტის გუნდებს აქვთ შანსი აკონტროლონ ხარჯები ძვირი ტოკენების ქეშირებით.",
+          "fit_assessment": "იდეალურია 16 წლის დეველოპერისთვის, რომელიც ცდილობს მცირე ბიუჯეტით შექმნას გრძელვადიანი აგენტები."
+        },
+        {
+          "event_id": "evt-jenkins-ai-agent-plugin",
+          "title": "Jenkins AI Agent Plugin Adds Native Support for Coding Agents and Approval Gates",
+          "category": "AI Coding Tools & CI/CD",
+          "primary_url": "https://github.com/jenkinsci/ai-agent-plugin",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 95,
+          "tldr": "Jenkins აგენტის პლაგინი ამატებს მხარდაჭერას Claude Code და Cursor აგენტებისთვის ლაივ სტრიმინგით.",
+          "what_happened": "გამოვიდა Jenkins පლაგინი, რომელიც უშვებს ავტონომიურ კოდირების აგენტებს ბილდ პაიპლაინებში.",
+          "what_changed": "ხელით შესასრულებელი ბაგების ძებნა იცვლება ავტომატური აგენტური ბილდ ნაბიჯებით.",
+          "why_it_matters": "შეგიძლიათ მართოთ და დააკვირდეთ აგენტების მუშაობას სტანდარტული ინსტრუმენტებით.",
+          "key_takeaways": [
+            "მხარდაჭერილია Claude Code, Cursor Agent, Codex CLI და სხვა.",
+            "აქვს ლაივ სტრიმინგი და ტოკენების ხარჯების აღრიცხვა.",
+            "შეიცავს ადამიანის მიერ დამტკიცების ბარიერებს."
+          ],
+          "technical_architecture": [
+            "Reusable Jenkins build step via aiAgent(...) pipeline",
+            "Stream-json output format parsing for tool calls and usage stats"
+          ],
+          "technical_details": [
+            "Plugin ID: ai-agent",
+            "Supports freestyyle jobs and scripted/declarative pipelines"
+          ],
+          "potential_impact": "ინჟინრები შეძლებენ აგენტების ინტეგრაციას არსებულ საწარმოო ინფრასტრუქტურაში.",
+          "action_type": "BUILD",
+          "action": "ინსტალაცია გაუკეთეთ AI agent პლაგინს და დააკავშირეთ ერთი პატარა კოდის ტესტირების აგენტი თავისუფალი API-ით.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Real Business Opportunity",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "The Jenkins ai-agent-plugin supports Claude Code, Codex CLI, Cursor Agent, and OpenCode.",
+            "Features include live-streaming conversation view, tool call logs, and markdown rendering.",
+            "Supports optional human review approval gates before tool execution."
+          ],
+          "interpretation": "ავტონომიური კოდირების აგენტები ოფიციალურად ინტეგრირდება κლასიკურ CI/CD პლატფორმებში.",
+          "uncertainty": "კოდის გენერაციის ავტომატიზაციამ CI/CD პაიპლაინებში შეიძლება გამოიწვიოს უსაფრთხოების რისკები.",
+          "counter_argument": "ადამიანის დამტკიცების გარეშე გაშვებული აგენტები ხშირად აზიანებენ პროდუქშენ კოდს.",
+          "strategic_assessment": "ისწავლეთ როგორ დააკავშიროთ AI აგენტები CI/CD პაიპლაინებთან და შექმენით დამტკიცების ბარიერები უსაფრთხოებისთვის.",
+          "time_horizon": "short-term",
+          "what_could_change": "პროგრამული უზრუნველყოფის ტესტირება და ბაგების ფიქსი პაიპლაინში გახდება სრულად ავტომატური.",
+          "risks": [
+            "ავტომატური აგენტების მიერ მავნე კოდის გაშვება",
+            "ხარჯების უკონტროლო ზრდა პაიპლაინებში"
+          ],
+          "non_obvious_opportunity": "შეგიძლიათ შესთავაზოთ მსგავსი ავტომატიზაცია მცირე ადგილობრივ კომპანიებს, როგორც CI/CD ოპტიმიზაცია.",
+          "fit_assessment": "ძალიან პრაქტიკულია დეველოპერული პროცესების ავტომატიზაციისა და აგენტური ჰარნესების ასაშენებლად."
+        },
+        {
+          "event_id": "evt-learning-to-stop-confidence",
+          "title": "Self-Supervised Confidence Training Improves Reasoning Efficiency",
+          "category": "AI Research / Reinforcement Learning",
+          "primary_url": "https://arxiv.org/abs/2609.31619",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 7,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "თვითაღიარებული თავდაჯერებულობის ტრენინგი ამცირებს გენერირებულ ტოკენებს 25 პროცენტით ხარისხის დაკარგვის გარეშე.",
+          "what_happened": "მკვლევარებმა აჩვენეს, რომ მოდელის შიდა თავდაჯერებულობის პროგნოზირება აუმჯობესებს მსჯელობის ეფექტიანობას.",
+          "what_changed": "ხანგრძლივი მსჯელობის ტრენინგიდან გადავდივართ თვითკონტროლირებად მეტაკოგნიტურ მიდგომებზე.",
+          "why_it_matters": "შეგიძლიათ შეამციროთ აგენტების გამოძახების ხარჯები ნარჩენი ტოკენების მოცილებით.",
+          "key_takeaways": [
+            "საკმარისია მხოლოდ 600 პრობლემაზე წვრთნა ეფექტის მისაღებად.",
+            "ტოკენების მოხმარება იკლებს 25 პროცენტით.",
+            "შენარჩუნებულია ბაზისური მოდელების სიზუსტე."
+          ],
+          "technical_architecture": [
+            "Fine-tuning reasoning models to predict intermediate confidence",
+            "No objective for reasoning length in the training loss"
+          ],
+          "technical_details": [
+            "Evaluated on Gemma, Qwen, Nemotron, and GPT-OSS",
+            "Applied to math, scientific, and coding benchmarks"
+          ],
+          "potential_impact": "დეველოპერები შეძლებენ ლოკალური მოდელების მუშაობის დაჩქარებას და API ხარჯების შემცირებას.",
+          "action_type": "LEARN",
+          "action": "წაიკითხეთ კვლევის აბსტრაქტი და გაიგეთ როგორ გამოიყენება შიდა პროგნოზები ინფერენციის ოპტიმიზაციისთვის.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "Self-supervised confidence fine-tuning uses only 600 training problems.",
+            "Generated tokens are reduced by up to 25 percent at matched accuracy.",
+            "Tested across Gemma, Qwen, Nemotron, and GPT-OSS models."
+          ],
+          "interpretation": "მოდელებს შეუძლიათ გამოთვლითი ეფექტიანობის გაზრდა შიდა თავდაჯერებულობის პროგნოზირებით ყოველგვარი სიგრძის ჯარიმების გარეშე.",
+          "uncertainty": "მეთოდის ეფექტიანობა ძალიან რთულ დომენებში ჯერ სრულად არ არის დამტკიცებული.",
+          "counter_argument": "თავდაჯერებულობის არასწორმა პროგნოზირებამ შეიძლება გამოიწვიოს მოდელის ნაადრევი გაჩერება და შეცდომები.",
+          "strategic_assessment": "გამოიყენეთ შიდა მეტაკოგნიტური სიგნალები და თავდაჯერებულობის შეფასება თქვენი აგენტების გამოსავალი ტოკენების გასაკონტროლებლად.",
+          "time_horizon": "mid-term",
+          "what_could_change": "მსჯელობის მოდელები გახდებიან ბევრად უფრო სწრაფები და იაფი გამოსაყენებლად API-ებში.",
+          "risks": [
+            "ზედმეტად თავდაჯერებული არასწორი პასუხები",
+            "წვრთნის მონაცემების ხარისხზე დამოკიდებულება"
+          ],
+          "non_obvious_opportunity": "მცირე მოდელების წვრთნა შესაძლებელია მინიმალური დეველოპერული ძალისხმევით ინფერენციის ოპტიმიზაციისთვის.",
+          "fit_assessment": "გეხმარებათ გაიგოთ როგორ იმუშაოთ ლოკალურ მოდელებთან და მართოთ მათი ტოკენების ხარჯები."
+        }
+      ],
+      "trends": [
+        "API ხარჯებისა და ტოკენების ქეშირების ოპტიმიზაცია ხდება სტანდარტი.",
+        "აგენტური არქიტექტურები გადადიან დეცენტრალიზებულ MCP და გეითვეი მოდელებზე.",
+        "ავტონომიური კოდირების აგენტები ინტეგრირდებიან ტრადიციულ CI/CD გარემოში."
+      ]
     }
   ],
   "learning_queue": [
     "MCP სერვერის დეტალური არქიტექტურა და უსაფრთხოების საზღვრები.",
-    "მსოფლიო მოდელებისა და კონტრფაქტუალური მართვის ძირითადი მათემატიკური პრინციპები."
+    "Prompt Caching მექანიზმები და მათი გამოყენება API ხარჯების შესამცირებლად."
   ],
-  "last_run": "2026-09-27T15:05:16.576065+00:00",
+  "last_run": "2026-09-28T18:01:39.496923+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -8295,12 +8237,13 @@
     "arxiv:2609.29845",
     "arxiv:2609.28693",
     "arxiv:2609.30264",
-    "arxiv:2609.30227"
+    "arxiv:2609.30227",
+    "arxiv:2609.31619"
   ],
   "last_report_files": {
-    "markdown": "data/reports/2026-09-27/report.md",
-    "json": "data/reports/2026-09-27/report.json",
-    "newsletter": "data/reports/2026-09-27/newsletter.md",
-    "social": "data/reports/2026-09-27/social_posts.txt"
+    "markdown": "data/reports/2026-09-28/report.md",
+    "json": "data/reports/2026-09-28/report.json",
+    "newsletter": "data/reports/2026-09-28/newsletter.md",
+    "social": "data/reports/2026-09-28/social_posts.txt"
   }
 }
