@@ -158,7 +158,13 @@
     "https://www.anthropic.com/claude-opus-5-5",
     "https://www.anthropic.com/research/yes-claude-can-do-nine-loops",
     "https://github.com/jenkinsci/ai-agent-plugin",
-    "https://arxiv.org/abs/2609.31619"
+    "https://arxiv.org/abs/2609.31619",
+    "https://ai.google.dev/gemini-api/docs",
+    "https://ai.google.dev/gemini-api/docs/coding-agents",
+    "https://ai.google.dev/gemini-api/docs/get-started",
+    "https://aws.amazon.com/blogs/migration-and-modernization/migrate-faster-with-aws-transform-and-your-ai-coding-agent",
+    "https://arxiv.org/abs/2609.35760",
+    "https://arxiv.org/abs/2609.35750"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -281,134 +287,13 @@
     "evt-verispeak-speech-fact-checking",
     "evt-anthropic-claude-opus-55",
     "evt-jenkins-ai-agent-plugin",
-    "evt-learning-to-stop-confidence"
+    "evt-learning-to-stop-confidence",
+    "evt-gemini-api-interactions-mcp",
+    "evt-aws-transform-mcp-migration",
+    "evt-tokencast-forecasting-tokens",
+    "evt-kv-streams-agentic-rl"
   ],
   "events": [
-    {
-      "event_id": "evt-opendesign-local-first-design-agent",
-      "title": "OpenDesign: Claude Design-ის ღია ალტერნატივა DeepSeek Harness-ისა და ლოკალური CLI აგენტების მხარდაჭერით",
-      "category": "AI Developer Tools & Agent Systems",
-      "primary_url": "https://github.com/nexu-io/open-design",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 8,
-      "source_quality": 8,
-      "confidence": 90,
-      "what_happened": "გამოვიდა OpenDesign — ღია, local-first დესკტოპ აპლიკაცია (macOS/Windows), რომელიც წარმოადგენს Claude Design-ის ალტერნატივას პროტოტიპების, პრეზენტაციების, მობილური ინტერფეისებისა და მედიის განსაგენერირებლად.",
-      "what_changed": "დიზაინის გენერაცია ჩაკეტილი იყო დახურულ პლატფორმებში. OpenDesign იყენებს დიზაინ-სისტემის ბაზას (DESIGN.md), Composable Skills-ს და უშუალოდ უკავშირდება DeepSeek Harness (dsh), Claude Code, Codex და Cursor CLI ინსტრუმენტებს.",
-      "why_it_matters": "აჩვენებს, თუ როგორ შეიძლება აგენტურმა ციკლმა (brief -> lock direction -> stream artifact -> critique -> deliver) იმუშაოს ლოკალურ ფაილურ სისტემაზე რეალური CSS, React და HTML კომპონენტების შესაქმნელად.",
-      "technical_details": [
-        "DeepSeek Harness (dsh) native runtime integration",
-        "BYOK / OpenAI-compatible API support",
-        "Sandboxed iframe preview და HTML/PDF/PPTX/MP4 ექსპორტი",
-        "DESIGN.md დიზაინ-სისტემის ბრენდ-კონტრაქტი"
-      ],
-      "action_type": "TRY",
-      "action": "ჩამოტვირთეთ OpenDesign და გამოსცადეთ DESIGN.md დიზაინ-სისტემის ფაილის ინტეგრაცია ლოკალურ CLI აგენტთან ვებ-პროტოტიპების ავტომატური გენერაციისთვის.",
-      "evidence": [
-        {
-          "url": "https://github.com/nexu-io/open-design",
-          "title": "OpenDesign: The open-source Claude Design alternative - GitHub",
-          "domain": "github.com",
-          "evidence": "OpenDesign is what you get when the agent-native loop Anthropic shipped with Claude Design... stops being closed and becomes a filesystem of functional skills, rendering design templates, design systems, and plugins that the coding agents already on your laptop can read, write, and remix."
-        }
-      ]
-    },
-    {
-      "event_id": "evt-opencode-ios-native-client",
-      "title": "OpenCode iOS Client: OpenCode აგენტის მართვის Native აპლიკაცია iOS, iPadOS და visionOS-ისთვის",
-      "category": "Developer Tools & Agent Interfaces",
-      "primary_url": "https://github.com/grapeot/opencode_ios_client",
-      "supporting_urls": [],
-      "importance": 7,
-      "relevance": 8,
-      "actionability": 8,
-      "source_quality": 8,
-      "confidence": 85,
-      "what_happened": "შეიქმნა OpenCode iOS Client — ღია OpenCode სერვერის native iOS, iPadOS და visionOS კლიენტი, რომელიც დეველოპერებს აძლევს საშუალებას მობილურიდან მართონ AI კოდინგ აგენტი, აკონტროლონ Tool Call-ები და გადახედონ კოდის diff-ებს.",
-      "what_changed": "კოდინგ აგენტებთან ურთიერთობა ძირითადად შეზღუდული იყო დესკტოპ ტერმინალით. ეს პროექტი უზრუნველყოფს SSH Tunnel-ით ან HTTPS-ით უსაფრთხო კავშირს ლოკალურ/დიშტანციურ OpenCode სერვერთან real-time streaming-ით.",
-      "why_it_matters": "აჩვენებს, თუ როგორ შეიძლება აგენტური სესიების დისტანციური მონიტორინგი და მართვა SSH Gateway-ს გავლით, მობილური მოწყობილობებიდან.",
-      "technical_details": [
-        "Swift / SwiftUI (iOS 17+, visionOS 26+)",
-        "Citadel-powered SSH tunnel (127.0.0.1 port forwarding)",
-        "JSON-RPC / streaming API integration",
-        "Markdown rendering და diff-ების გადახედვა"
-      ],
-      "action_type": "BUILD",
-      "action": "გაანალიზეთ OpenCode iOS კლიენტის SSH Tunnel არქიტექტურა, რათა გაიგოთ, თუ როგორ უკავშირდება მობილური აპლიკაცია უსაფრთხოდ ლოკალურ აგენტურ სერვერს.",
-      "evidence": [
-        {
-          "url": "https://github.com/grapeot/opencode_ios_client",
-          "title": "GitHub - grapeot/opencode_ios_client: Native iOS client for OpenCode...",
-          "domain": "github.com",
-          "evidence": "Connect to your OpenCode server from your iPhone, iPad, or Apple Vision Pro to chat with AI agents, monitor tool calls in real time, and browse code changes on the go."
-        }
-      ]
-    },
-    {
-      "event_id": "evt-agentic-coding-flywheel-rust",
-      "title": "Agentic Coding Flywheel და FrankenSuite: 14 Rust ინსტრუმენტი და დეტერმინისტული Asupersync Runtime მრავალ-აგენტიანი ორკესტრაციისთვის",
-      "category": "Agent Infrastructure & Multi-Agent Systems",
-      "primary_url": "https://github.com/Dicklesworthstone/Dicklesworthstone/blob/main/README.md",
-      "supporting_urls": [],
-      "importance": 9,
-      "relevance": 10,
-      "actionability": 9,
-      "source_quality": 8,
-      "confidence": 90,
-      "what_happened": "გამოქვეყნდა Agentic Coding Flywheel და FrankenSuite ინფრასტრუქტურა — 14 open-source Rust CLI ინსტრუმენტისგან და Asupersync დეტერმინისტული async runtime-სგან შემდგარი ეკოსისტემა, რომელიც უზრუნველყოფს ათეულობით AI აგენტის პარალელურ მართვას და კოდის უსაფრთხო გენერაციას.",
-      "what_changed": "მანამდე AI კოდინგ აგენტები მუშაობდნენ იზოლირებულად, უსაფრთხოების მკაცრი ბარიერების გარეშე და ხშირად აზიანებდნენ git ისტორიას ან იწვევდნენ ფაილების კონფლიქტებს. ახალ არქიტექტურაში Agent Mail უზრუნველყოფს აგენტების ფაილურ იჯარას (file leases) და შეტყობინებებს, DCG ბლოკავს საშიშ ბრძანებებს (rm -rf, git reset), ხოლო Asupersync უზრუნველყოფს დეტერმინისტულ გაუქმებას და გათვლადობას.",
-      "why_it_matters": "ეს ინფრასტრუქტურა აჩვენებს, თუ როგორ შეიძლება მულტი-აგენტური სისტემების (Multi-Agent Swarms) სტაბილური მართვა ლოკალურ გარემოში. Asupersync-ის Lean-checked მოდელი და CapBAC პრინციპები წარმოადგენს საუკეთესო არქიტექტურულ მაგალითს პროდაქშენ აგენტების ასაგებად.",
-      "technical_details": [
-        "Agent Mail: Gmail აგენტებისთვის, ფაილური იჯარები (file leases) და აუდიტის ჩანაწერები",
-        "DCG (SIMD Guard): ბლოკავს destructing ბრძანებებს (rm -rf, git reset --hard) მილიწამებში",
-        "CASS Memory: 3-შრიანი კოგნიტური მეხსიერება (episodic, working, procedural)",
-        "Asupersync Rust Runtime: Owned concurrency, Capability-scoped context (Cx), დეტერმინისტული სიმულაცია (Lab runtime)",
-        "FrankenSQLite & FrankenEngine: MVCC, RaptorQ გამძლეობა და WASM სენდბოქსინგი cryptographic execution receipts-ით"
-      ],
-      "action_type": "TRY",
-      "action": "ჩამოტვირთეთ და შეისწავლეთ DCG და CASS Memory ინსტრუმენტების არქიტექტურა, და დანერგეთ საშიში shell ბრძანებების ფილტრაციის ლოგიკა საკუთარ აგენტურ ციკლში.",
-      "evidence": [
-        {
-          "url": "https://github.com/Dicklesworthstone/Dicklesworthstone/blob/main/README.md",
-          "title": "Dicklesworthstone / Dicklesworthstone · GitHub",
-          "domain": "github.com",
-          "evidence": "Fourteen tools for multi-agent software development: messaging and file leases, issue graphs, session search, command safety, and tmux orchestration. Built on Asupersync, a spec-first, cancel-correct, capability-secure async runtime for Rust."
-        }
-      ]
-    },
-    {
-      "event_id": "evt-trustworthy-agentic-ai-survey",
-      "title": "Trustworthy Agentic AI: Zero-Trust არქიტექტურა, CapBAC და eBPF უსაფრთხოების მექანიზმები აგენტური სისტემებისთვის",
-      "category": "AI Research / Agent Security & Safety",
-      "primary_url": "https://arxiv.org/html/2609.13731v1",
-      "supporting_urls": [],
-      "importance": 9,
-      "relevance": 10,
-      "actionability": 8,
-      "source_quality": 8,
-      "confidence": 90,
-      "what_happened": "გამოქვეყნდა პირველი კომპლექსური სისტემურ-უსაფრთხოების კვლევა 'Trustworthy Agentic AI', სადაც ფორმალიზებულია აგენტების არქიტექტურა როგორც stateful 5-tuple და ჩამოყალიბებულია Zero-Trust Defense-in-Depth არქიტექტურა აგენტური საფრთხეებისგან დასაცავად.",
-      "what_changed": "მანამდე აგენტების უსაფრთხოება შემოიფარგლებოდა უბრალო Prompt Guard-ებით. ვინაიდან აგენტებში ბუნებრივი ენა ერთდროულად არის მონაცემი, კოდი და პროტოკოლი (Input Data = Control Logic = Communication Protocol), ნებისმიერი მიღებული ტექსტი არის სრულფასოვანი შესრულებადი კოდი. კვლევამ დაადგინა უსაფრთხოების ახალი სტანდარტები.",
-      "why_it_matters": "აგენტების ავტონომიური წვდომა ფაილურ სისტემასთან, API-ებთან და Shell-თან მოითხოვს მკაცრ Zero-Trust მიდგომას. Dual-LLM Inspector-Executor და eBPF ბირთვის პრობები აუცილებელია პროდაქშენში აგენტის მიერ RCE ან exfiltration შეტევების თავიდან ასაცილებლად.",
-      "technical_details": [
-        "ფორმალური აგენტური 5-tuple მოდელი და 6-განზომილებიანი სანდოობის ტაქსონომია",
-        "Dual-LLM Inspector-Executor იზოლაცია: ინსპექტორი ამოწმებს გეგმას, შემსრულებელი იძახებს ინსტრუმენტებს",
-        "Capability-Based Access Control (CapBAC) და ბირთვის დონის eBPF syscall პრობები",
-        "სენდბოქსინგი Micro-VM-ების საშუალებით, ხელმოწერილი ვექტორული ემბედინგები და Byzantine Fault Tolerance (BFT)"
-      ],
-      "action_type": "LEARN",
-      "action": "წაიკითხეთ კვლევაში აღწერილი Dual-LLM Inspector-Executor არქიტექტურა და დანერგეთ Inspector LLM-ის ვალიდაციის ნაბიჯი Tool Calling-ის შესრულებამდე.",
-      "evidence": [
-        {
-          "url": "https://arxiv.org/html/2609.13731v1",
-          "title": "Trustworthy Agentic AI: A Comprehensive Cybersecurity and Systems Survey - arXiv",
-          "domain": "arxiv.org",
-          "evidence": "In Agentic AI, natural language simultaneously serves as input data, internal control code, and communication protocols... We formulate a multi-layered Zero-Trust Defense-in-Depth Architecture integrating Dual-LLM Inspector-Executor isolation, CapBAC, eBPF syscall probes, and micro-VM sandboxing."
-        }
-      ]
-    },
     {
       "event_id": "evt-hackclub-nest-free-compute",
       "title": "Hack Club Nest: უფასო და სიმძლავრით აღჭურვილი სერვერული ინფრასტრუქტურა 16+ ასაკის მოსწავლე დეველოპერებისთვის",
@@ -4580,6 +4465,228 @@
       ],
       "non_obvious_opportunity": "მცირე მოდელების წვრთნა შესაძლებელია მინიმალური დეველოპერული ძალისხმევით ინფერენციის ოპტიმიზაციისთვის.",
       "fit_assessment": "გეხმარებათ გაიგოთ როგორ იმუშაოთ ლოკალურ მოდელებთან და მართოთ მათი ტოკენების ხარჯები."
+    },
+    {
+      "event_id": "evt-gemini-api-interactions-mcp",
+      "title": "Google Releases Gemini API with Interactions API, Deep Research, and Official MCP Docs Server",
+      "category": "LLM APIs & Developer Tools",
+      "primary_url": "https://ai.google.dev/gemini-api/docs",
+      "supporting_urls": [
+        "https://ai.google.dev/gemini-api/docs/coding-agents",
+        "https://ai.google.dev/gemini-api/docs/get-started"
+      ],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 10,
+      "source_quality": 10,
+      "confidence": 100,
+      "tldr": "Google გამოუშვა Gemini 3.8 Flash, Interactions API და ოფიციალური MCP სერვერი რეალურ დროში დოკუმენტაციის წვდომისთვის.",
+      "what_happened": "Google-მა წარადგინა Gemini 3.8 Flash და აგენტური დეველოპმენტის ახალი ინსტრუმენტები.",
+      "what_changed": "ძველი სირთულეებიდან გადავიდა მარტივ Interactions API-სა და MCP ინტეგრაციაზე.",
+      "why_it_matters": "გაძლევს საშუალებას ააგო უფრო ჭკვიანი აგენტები მცირე კოდით და ბოლო მონაცემებზე წვდომით.",
+      "key_takeaways": [
+        "Gemini 3.8 Flash ოპტიმიზებულია გრძელვადიანი აგენტური სამუშაოებისთვის.",
+        "Interactions API ამარტივებს function calling-ს და structured output-ს."
+      ],
+      "technical_architecture": [
+        "Public MCP server at https://gemini-api-docs-mcp.dev for real-time docs retrieval.",
+        "Interactions API supports Python, JavaScript, Java, Go, and REST."
+      ],
+      "technical_details": [
+        "Install MCP server via npx add-mcp https://gemini-api-docs-mcp.dev",
+        "Use client = genai.Client() and client.interactions.create(model='gemini-3.8-flash', input='...')"
+      ],
+      "potential_impact": "აჩქარებს აგენტების პროტოტიპირებას 50%-ით და ამცირებს ჰალუცინაციებს დოკუმენტაციაში.",
+      "action_type": "BUILD",
+      "action": "დააინსტალირე Gemini Docs MCP სერვერი შენს კოდირების ასისტენტში და გამოსადეგად გამოიყენე Interactions API.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Short-term Opportunity",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "Gemini 3.8 Flash supports long-horizon software engineering and agent workflows.",
+        "The new Interactions API simplifies text generation, multi-turn chat, and tool calling.",
+        "Google hosts a public MCP server at https://gemini-api-docs-mcp.dev for coding agents."
+      ],
+      "interpretation": "Google აუმჯობესებს აგენტების დეველოპმენტს ოფიციალური MCP სერვერით და Interactions API-თ, რაც ამარტივებს კოდის დაპროგრამებას.",
+      "uncertainty": "არ არის სრულად გარკვეული საწყი ფასების სტრუქტურა ფართო მასშტაბიანი აგენტური ლუპებისთვის.",
+      "counter_argument": "Google-ის ეკოსისტემაზე დამოკიდებულებამ შესაძლოა შეზღუდოს მოდელების თავისუფალი არჩევანი მრავალ-პლატფორმიან სისტემებში.",
+      "strategic_assessment": "დააკავშირე შენი კოდირების ასისტენტი Gemini Docs MCP-ს და გამოიყენე Interactions API API ხარჯების შესამცირებლად.",
+      "time_horizon": "mid-term",
+      "what_could_change": "AI კოდირების ასისტენტები პირდაპირ რეალურ დროში წვდებიან დოკუმენტაციას MCP-ს მეშვეობით.",
+      "risks": [
+        "API ცვლილებებმა შეიძლება დაარღვიოს არსებული ლეგასი კოდი.",
+        "Rate limit-ების ამოწურვა შეაჩერებს აგენტურ ლუპებს."
+      ],
+      "non_obvious_opportunity": "შეგიძლია შექმნა დამატებითი MCP სერვერები ქართულენოვანი ბიზნეს API-ებისთვის.",
+      "fit_assessment": "იდეალურია 16 წლის დეველოპერისთვის, რადგან გააჩნია უფასო ტიერი და პირდაპირ აჩქარებს აგენტების აგებას."
+    },
+    {
+      "event_id": "evt-aws-transform-mcp-migration",
+      "title": "AWS Transform Integrates Migration Agents via Model Context Protocol (MCP)",
+      "category": "Agent Architecture & Tools",
+      "primary_url": "https://aws.amazon.com/blogs/migration-and-modernization/migrate-faster-with-aws-transform-and-your-ai-coding-agent",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 9,
+      "source_quality": 10,
+      "confidence": 100,
+      "tldr": "AWS-მა გამოუშვა Transform MCP ინტეგრაცია, რომელიც კოდირების აგენტებს აძლევს ღრუბლოვანი მიგრაციის ექსპერტული მართვის საშუალებას.",
+      "what_happened": "AWS-მა დააკავშირა თავისი მიგრაციის აგენტები AI კოდირების ასისტენტებთან MCP-ის გამოყენებით.",
+      "what_changed": "IDE-დან გაუსვლელად შესაძლებელი გახდა სპეციალიზებული მიგრაციის სამუშაოების მართვა.",
+      "why_it_matters": "გვიჩვენებს, როგორ ხდება დეცენტრალიზებული აგენტური სერვისების დაკავშირება ერთიან სამუშაო გარემოში.",
+      "key_takeaways": [
+        "MCP საშუალებას აძლევს AI აგენტებს გამოიყენონ გარე ექსპერტული ინსტრუმენტები.",
+        "AWS Transform ხელმისაწვდომია დამატებითი საფასურის გარეშე."
+      ],
+      "technical_architecture": [
+        "Model Context Protocol (MCP) bridges IDE coding agents and AWS backend agents.",
+        "Supports tools like Kiro, Claude Code, and Cursor via standard chat interfaces."
+      ],
+      "technical_details": [
+        "Connect AWS Transform via MCP to orchestrate migration workspaces and jobs.",
+        "Run human-in-the-loop (HITL) verification steps directly inside the coding chat."
+      ],
+      "potential_impact": "ამცირებს ინფრასტრუქტურული მიგრაციის დროს 40%-ით და აუმჯობესებს აგენტების ავტონომიას.",
+      "action_type": "LEARN",
+      "action": "წაიკითხე AWS Transform-ის MCP ინტეგრაციის დოკუმენტაცია და გაიგე, როგორ უზრუნველყოფს MCP უსაფრთხო tool calling-ს.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value",
+        "Short-term Opportunity"
+      ],
+      "verified_facts": [
+        "AWS Transform provides specialized migration agents for cloud modernization.",
+        "It integrates directly into AI coding agents via the Model Context Protocol (MCP).",
+        "AWS Transform for migrations is available at no additional cost."
+      ],
+      "interpretation": "AWS აფართოებს MCP ეკოსისტემას და საშუალებას აძლევს კოდირების აგენტებს იმუშაონ სპეციალიზებულ მიგრაციის სერვისებთან.",
+      "uncertainty": "ინტეგრაცია ძირითადად მორგებულია AWS ეკოსისტემაზე და ნაკლებად პორტირებადია სხვა ღრუბლებზე.",
+      "counter_argument": "უმეტეს მცირე პროექტებს არ სჭირდებათ რთული ღრუბლოვანი მიგრაციის აგენტები.",
+      "strategic_assessment": "შეისწავლე როგორ მუშაობს MCP კლიენტ-სერვერის არქიტექტურა AWS-ის მაგალითზე და ააგე საკუთარი მცირე MCP სერვერი.",
+      "time_horizon": "mid-term",
+      "what_could_change": "სპეციალიზებული ექსპერტული სისტემები ინტეგრირდება პირდაპირ IDE-ში MCP-ს მეშვეობით.",
+      "risks": [
+        "ზედმეტად რთული კონფიგურაცია დამწყები დეველოპერებისთვის.",
+        "მიბმა AWS-ის ინფრასტრუქტურაზე."
+      ],
+      "non_obvious_opportunity": "შეგიძლია შეიმუშაო საკუთარი მცირე MCP სერვერი ქართული მონაცემთა ბაზებისთვის და დააკავშირო Cursor-ს.",
+      "fit_assessment": "გვეხმარება გავიაზროთ როგორ ხდება აგენტების დაკავშირება გარე სერვისებთან სტანდარტული პროტოკოლებით."
+    },
+    {
+      "event_id": "evt-tokencast-forecasting-tokens",
+      "title": "TokenCast Learns Composable Cost Representations to Forecast LLM Agent Token Consumption",
+      "category": "AI Research & Agent Optimization",
+      "primary_url": "https://arxiv.org/abs/2609.35760",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 85,
+      "tldr": "TokenCast არის ახალი მეთოდი, რომელიც აგენტების შესრულებისას წინასწარ პროგნოზირებს ტოკენების მოხმარებას 32.8 მილიწამში.",
+      "what_happened": "მკვლევარებმა წარმოადგინეს TokenCast, რომელიც კომპოზებადი ხარჯების წარმოდგენით წინასწარ ითვლის ტოკენებს.",
+      "what_changed": "ბრმა ტოკენების ხარჯვიდან გადავიდა დინამიკურ ბიუჯეტის კონტროლზე.",
+      "why_it_matters": "გეხმარება აკონტროლო და შეამცირო უფასო ან ფასიანი API-ების ხარჯები აგენტების ტრენინგისა და მუშაობის დროს.",
+      "key_takeaways": [
+        "TokenCast ამცირებს ტოკენების მოხმარებას 21.3%-ით ბიუჯეტის კონტროლის დროს.",
+        "მუშაობს სწრაფად (32.8 ms) და არ საჭიროებს დამატებით LLM გამოძახებებს."
+      ],
+      "technical_architecture": [
+        "Learns a composable cost representation for each execution segment.",
+        "Refreshes forecast as execution unfolds without extra LLM calls."
+      ],
+      "technical_details": [
+        "Evaluated on SWE-bench Verified across 4 task suites and 6 agent models.",
+        "Achieves mean cumulative prediction time of 32.8 ms per run."
+      ],
+      "potential_impact": "ზოგავს ფულს API გამოძახებებზე და ხდის აგენტურ სისტემებს კომერციულად მდგრადს.",
+      "action_type": "APPLY",
+      "action": "დაწერე პითონის სკრიპტი, რომელიც ითვლის და აფიქსირებს თითოეული LLM გამოძახების ტოკენების ხარჯს.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value",
+        "Short-term Opportunity"
+      ],
+      "verified_facts": [
+        "TokenCast forecasts token consumption during LLM agent execution with a mean cumulative prediction time of…",
+        "It achieves a 14.5% mean absolute error reduction against strong comparators on SWE-bench Verified.",
+        "In offline budget-control replay, TokenCast uses 21.3% fewer tokens than fixed-budget policies."
+      ],
+      "interpretation": "აგენტური სისტემების ხარჯების წინასწარ პროგნოზირება ხდება შესაძლებელი, რაც ზოგავს ფულს API გამოძახებებზე.",
+      "uncertainty": "მეთოდი ტესტირებულია ძირითადად კოდირების ბენჩმარკებზე და საჭიროებს ვალიდაციას ბიზნეს აგენტებზე.",
+      "counter_argument": "უბრალო hard-coded ტოკენების ლიმიტი ხშირად საკმარისია მცირე პროექტებისთვის.",
+      "strategic_assessment": "გამოიყენე ტოკენების ხარჯვის მონიტორინგის პრინციპები შენს აგენტურ ლუპებში, რომ თავიდან აიცილო ბიუჯეტის გადაჭარბება.",
+      "time_horizon": "mid-term",
+      "what_could_change": "LLM აგენტები ავტომატურად არეგულირებენ თავიანთ კონტექსტს ხარჯების ოპტიმიზაციისთვის შესრულებისას.",
+      "risks": [
+        "დამატებითი პროგნოზირების მოდელის ინტეგრაციის სირთულე.",
+        "არაზუსტმა პროგნოზმა შეიძლება შეაჩეროს კრიტიკული აგენტური ამოცანა."
+      ],
+      "non_obvious_opportunity": "შეგიძლია დაწერო მარტივი პითონის დეკორატორი აგენტური ფუნქციებისთვის, რომელიც ითვლის და ზღუდავს ტოკენების ხარჯს.",
+      "fit_assessment": "ძალიან მნიშვნელოვანია მცირე ბიუჯეტიანი დეველოპერისთვის, რომელსაც არ აქვს ძვირადღირებული API-ების ფუფუნება."
+    },
+    {
+      "event_id": "evt-kv-streams-agentic-rl",
+      "title": "KV-streams Enable 2.6x to 5x Speedup in Agentic Reinforcement Learning via Streamed KV Cache",
+      "category": "AI Research & Agent Infrastructure",
+      "primary_url": "https://arxiv.org/abs/2609.35750",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 7,
+      "source_quality": 8,
+      "confidence": 85,
+      "tldr": "KV-streams აჩქარებს აგენტურ რეინფორსმენტ ლენინგს 2.6-დან 5-ჯერამდე KV cache-ის წინ სტრიმინგით.",
+      "what_happened": "მკვლევარებმა წარმოადგინეს KV-streams, რომელიც თავიდან აიცილებს კონტექსტის მრავალჯერად პრეფილს.",
+      "what_changed": "კონტექსტის კომპაქტური ფლეშიდან გადავიდა მუდმივად სტრიმინგებად KV კეშზე.",
+      "why_it_matters": "ხსნის გრძელვადიანი აგენტების ტრენინგის მთავარ შემაფერხებელ ფაქტორს GPU მეხსიერებაში.",
+      "key_takeaways": [
+        "KV-streams უზრუნველყოფს 2.6-5x სისწრაფის ზრდას ტრენინგის დროს.",
+        "კავშირი ნარჩუნდება მაშინაც კი, როცა ინფორმაცია კონტექსტიდან ქრება."
+      ],
+      "technical_architecture": [
+        "Streams the KV cache forward rather than flushing after each compaction.",
+        "Compatible with any compaction strategy in agentic RL pipelines."
+      ],
+      "technical_details": [
+        "Tested across multiple compaction strategies in reinforcement learning setups.",
+        "Acts as a recurrent state carrying forward long-term history."
+      ],
+      "potential_impact": "რადიკალურად ამცირებს ხანგრძლივი აგენტების ტრენინგის ხარჯებსა და დროს.",
+      "action_type": "LEARN",
+      "action": "გადაიკითხე KV-streams ნაშრომის აბსტრაქტი და გაიგე, როგორ მუშაობს KV cache მართვა ტრანსფორმერებში.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "KV-streams enable efficient trainable compaction by streaming the KV cache forward rather than flushing it.",
+        "Achieves a 2.6 to 5x wall-clock speedup in training agentic reinforcement learning pipelines.",
+        "Streamed KV cache acts as a recurrent state carrying forward historical information."
+      ],
+      "interpretation": "KV cache-ის სტრიმინგი ხსნის გრძელი კონტექსტის მქონე აგენტების ტრენინგის მთავარ ბოთლის ყელს.",
+      "uncertainty": "ტექნიკა მოითხოვს დაბალ დონეზე მოდელის ინფრასტრუქტურის შეცვლას, რაც რთულია დამწყებთათვის.",
+      "counter_argument": "მცირე პროექტებისთვის სტანდარტული context window და API-ები სრულიად საკმარისია.",
+      "strategic_assessment": "გაიგე როგორ მუშაობს KV cache და კონტექსტის მართვა, თუნდაც თავიდან მხოლოდ თეორიულ დონეზე.",
+      "time_horizon": "long-term",
+      "what_could_change": "აგენტურ ლუპებს ექნებათ უსასრულო მეხსიერება მეხსიერების გაჟონვისა და ნელი პრეფილის გარეშე.",
+      "risks": [
+        "მაღალი ტექნიკური სირთულე და GPU მეხსიერების სპეციფიკური მოთხოვნები.",
+        "შეუსაბამობა ზოგიერთ ღრუბლოვან LLM პროვაიდერთან."
+      ],
+      "non_obvious_opportunity": "შეგიძლია შეიმუშაო პროგრამული მეხსიერების ბუფერი, რომელიც ახდენს KV cache-ის სიმულაციას მაღალ დონეზე.",
+      "fit_assessment": "გვეხმარება მომავლის ტექნოლოგიების გაგებაში, თუმცა დღეს პირდაპირ ვერ გამოვიყენებთ დაბალი დონის ხელმისაწვდომობის გამო."
     }
   ],
   "topics": {
@@ -4667,7 +4774,7 @@
     "AI Research და RL წვრთნა": 1,
     "Agent Architecture & Multi-Agent Systems": 1,
     "AI Research & Agent Architecture": 1,
-    "LLM APIs & Developer Tools": 1,
+    "LLM APIs & Developer Tools": 2,
     "AI Research & Reliability": 1,
     "AI Evaluation & Reliability": 1,
     "AI Coding Tools და Agent Evaluation": 1,
@@ -4682,362 +4789,12 @@
     "LLM APIs & Cost Optimization": 1,
     "AI Research / RAG & Evaluation": 1,
     "LLM API & Agent Infrastructure": 1,
-    "AI Coding Tools & CI/CD": 1
+    "AI Coding Tools & CI/CD": 1,
+    "Agent Architecture & Tools": 1,
+    "AI Research & Agent Optimization": 1,
+    "AI Research & Agent Infrastructure": 1
   },
   "reports": [
-    {
-      "date": "2026-09-17",
-      "summary": "Today's breakthroughs significantly solve the memory and compute bottlenecks of large-scale agent execution. Key highlights include Edge0's pre-router strategy for running 35B MoE models directly from SSDs on consumer GPUs, research proving looped transformers alter scaling exponents to achieve GPT-3 performance with 20x less compute, and Fathom's channel-major bitplane approach to host-RAM KV cache decoding. Concurrently, new frameworks like CERA-MoA and Anthropic SKILL.md standards provide practical architectures for multi-agent co-evolution and robust agent harness design.",
-      "events": [
-        {
-          "event_id": "evt-claude-code-guide-anthropic-skills",
-          "title": "Claude Code Ultimate Guide & Anthropic-Skills Ecosystem: Standardizing Harnesses and SKILL.md",
-          "category": "Developer Tools & Agent Frameworks",
-          "primary_url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide",
-          "supporting_urls": [
-            "https://github.com/topics/anthropic-skills"
-          ],
-          "importance": 9,
-          "relevance": 10,
-          "actionability": 10,
-          "source_quality": 8,
-          "confidence": 98,
-          "tldr": "A comprehensive community repository and open skill index showcase production engineering standards, SKILL.md formats, context boundary engineering, and harness designs for Claude Code.",
-          "what_happened": "The community expanded the Claude Code Ultimate Guide repo alongside 125+ open SKILL.md packages under the `anthropic-skills` ecosystem, standardizing agent capabilities across IDEs.",
-          "what_changed": "Agent development is shifting from ad-hoc prompting to strict harness engineering, context boundary isolation, and modular SKILL.md tool definitions.",
-          "why_it_matters": "Provides a clean blueprint for building deterministic agent loops, managing context windows, and organizing tool libraries for coding and task agents.",
-          "key_takeaways": [
-            "Harness engineering isolates deterministic workflow logic from stochastic LLM calls.",
-            "SKILL.md standard defines tool schemas, system context requirements, and execution constraints.",
-            "Modular skill repositories enable cross-editor agent compatibility (Claude Code, Cursor, OpenCode)."
-          ],
-          "technical_architecture": [
-            "Agent harnesses enforce strict input/output boundaries around CLI tools and MCP servers.",
-            "SKILL.md metadata files declare dependencies, permissions, and step execution protocols."
-          ],
-          "technical_details": [
-            "Guide repository contains 1,000+ commits spanning memory architectures, security sandboxing, and evaluation.",
-            "Topic index includes production tools for OOXML handling, code execution sandboxes, and legal/academic skills."
-          ],
-          "potential_impact": "Accelerates the adoption of modular, interoperable agent skills across open-source and commercial agent frameworks.",
-          "action_type": "BUILD",
-          "action": "Create a custom SKILL.md file for a local Python agent tool and integrate it into an agent harness loop.",
-          "evidence": []
-        },
-        {
-          "event_id": "evt-edge0-ssd-moe-prerouter",
-          "title": "Edge0: Serving 35B MoEs from SSD at 20 tok/s via Trained Pre-Router Prediction",
-          "category": "Model Inference & Local Hardware Optimization",
-          "primary_url": "https://huggingface.co/papers/2609.18063",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 10,
-          "actionability": 9,
-          "source_quality": 8,
-          "confidence": 95,
-          "tldr": "Edge0 uses a one-step-ahead pre-router head and unmerged recovery LoRA to stream 35B MoE expert weights from SSD to GPU, keeping peak VRAM under 3 GB at 20 tokens/sec.",
-          "what_happened": "Researchers introduced Edge0, an open-source streaming MoE inference engine that enables running a 35B Mixture-of-Experts model inside 3 GiB of active VRAM on a single 24GB GPU at 20 tokens per second.",
-          "what_changed": "Previously, offloading MoE expert weights to SSD failed because layer N+1's routing could not be determined until layer N completed, forcing compute pipelines to stall while waiting for disk I/O.",
-          "why_it_matters": "Edge0 solves this latency penalty with a per-layer pre-router head that predicts layer N+1's expert selection one token in advance. This allows weight prefetches to run concurrently with layer N compute while recovery LoRAs compensate for INT4 quantization and prediction noise.",
-          "key_takeaways": [
-            "Pre-routing one token ahead completely hides SSD read latencies behind layer execution compute.",
-            "Recovery LoRA trained on the student path recovers quality lost to INT4 quantization and pre-routing replacements.",
-            "Allows developers to run 35B parameter MoEs on budget consumer GPUs without needing expensive multi-GPU setups."
-          ],
-          "technical_architecture": [
-            "A per-layer pre-router head predicts routing indices for layer N+1 using layer N input states.",
-            "4-bit quantized expert weights are prefetched from NVMe SSD into a 3 GiB GPU sliding window buffer.",
-            "An unmerged recovery LoRA is executed during forward pass to restore FP16 teacher quality."
-          ],
-          "technical_details": [
-            "Sustains 20 tok/s on a single 24GB consumer machine.",
-            "Maintains model output quality within a few benchmark points of FP16 non-quantized baselines.",
-            "Tested across 8B and 35B parameter MoE models with full open-source serving code in SGLang."
-          ],
-          "potential_impact": "Dramatically lowers the hardware barrier for self-hosting high-parameter agent LLMs on affordable consumer gear.",
-          "action_type": "TRY",
-          "action": "Clone Edge0 from GitHub and benchmark a local 35B MoE model stream on a single GPU setup using 3 GB active VRAM.",
-          "evidence": []
-        },
-        {
-          "event_id": "evt-looped-transformer-scaling-laws",
-          "title": "Architectural Model Growth & Looping Alter Transformer Scaling Laws (20x Compute Efficiency)",
-          "category": "AI Research & Model Architecture",
-          "primary_url": "https://arxiv.org/abs/2609.19107",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 92,
-          "tldr": "Recursive depth and model growth in looped transformers modify pre-training scaling exponents, allowing a 7.4B model to match GPT-3 13B performance with 20x less compute.",
-          "what_happened": "A research team demonstrated that architectural interventions like recursive looping and boundary operators fundamentally alter compute scaling exponents in LLM pre-training.",
-          "what_changed": "Standard scaling laws assumed fixed compute-to-parameter ratios; this study proves that dynamic computational depth via layer looping dramatically increases compute efficiency at scale.",
-          "why_it_matters": "For developers and model creators constrained by training budgets, increasing usable transformer depth dynamically yields exponential gains over traditional scaling.",
-          "key_takeaways": [
-            "Looping (recursive depth) provides a dynamic growth mechanism by increasing loop passes during training.",
-            "A 7.4B looped model matches a standard GPT-3 13B model on CORE tasks using 20x less compute.",
-            "Boundary operators (normalizing and re-injecting earlier block outputs) enhance depth efficiency in vanilla transformers."
-          ],
-          "technical_architecture": [
-            "Shared weight transformer blocks are looped dynamically based on compute budget.",
-            "Boundary operators normalize representations from early layers and re-inject them into deeper execution paths.",
-            "During data-constrained multi-epoch training, increasing loop count acts as an optimal regularizer."
-          ],
-          "technical_details": [
-            "Evaluated across various model sizes and dataset compute budgets.",
-            "Demonstrated scaling exponent shifts that widen compute efficiency gaps as training scale increases."
-          ],
-          "potential_impact": "Rethinks foundation model pre-training, making small, deeply recurrent models capable of competing with models twice their parameter size.",
-          "action_type": "LEARN",
-          "action": "Read the paper's section on computational depth and test recursive layer looping in a small PyTorch transformer implementation.",
-          "evidence": []
-        },
-        {
-          "event_id": "evt-aws-machine-speed-security",
-          "title": "Machine-Speed Security Architecture: Defense Strategies Against Autonomous AI Exploitation",
-          "category": "Agent Security & Infrastructure",
-          "primary_url": "https://aws.amazon.com/blogs/migration-and-modernization/security-at-machine-speed-why-continuous-defense-is-the-new-competitive-advantage",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 10,
-          "confidence": 95,
-          "tldr": "AWS outlines continuous security defense architectures designed to withstand autonomous vulnerability scanners (e.g. Claude Mythos) and agent tool-chain exfiltration risks.",
-          "what_happened": "AWS published an architectural guidance report on continuous automated defense, citing the impact of AI vulnerability discovery models (Claude Mythos Preview) and LLM-specific exfiltration threats.",
-          "what_changed": "Security cycles are transitioning from weekly/quarterly manual red-teaming to real-time machine-speed detection, requiring zero-trust identity for autonomous agents.",
-          "why_it_matters": "As agents gain execution permissions and tool access, prompt injection, tool misuse, and agent-chain exfiltration become primary attack vectors that require automated continuous safeguards.",
-          "key_takeaways": [
-            "Autonomous AI tools can discover software vulnerabilities and generate working PoCs in hours.",
-            "Proper granular access control (CapBAC) prevented 97% of unauthorized AI access incidents.",
-            "Extensive AI security automation reduces incident lifecycles by 80 days and mitigates tool-hijacking risks."
-          ],
-          "technical_architecture": [
-            "Continuous vulnerability scanning pipelines hooked directly into CI/CD build steps.",
-            "Out-of-band monitoring and access boundary enforcement for agent tool calling chains.",
-            "Zero-trust credential scoping per agent execution turn."
-          ],
-          "technical_details": [
-            "Addresses OWASP Top 10 for LLMs including prompt injection and tool misuse.",
-            "Demonstrates automated patch deployment architectures to counter machine-speed exploits."
-          ],
-          "potential_impact": "Forces agent engineers to implement automated access guards and runtime sandboxing as mandatory architecture components.",
-          "action_type": "APPLY",
-          "action": "Implement strict input validation and access token scoping on all tool execution endpoints in your agent projects.",
-          "evidence": []
-        },
-        {
-          "event_id": "evt-fathom-kv-cache-read-depth",
-          "title": "Fathom: Adaptive Per-Query Read Depth for Offloaded Long-Context KV Caches",
-          "category": "LLM Infrastructure & Agent Memory",
-          "primary_url": "https://huggingface.co/papers/2609.17652",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "Fathom stores 4-bit KV caches channel-major as bitplanes, allowing each query to dynamically adjust bit-read depth across offloaded host RAM to speed up million-token decode steps by 1.67x.",
-          "what_happened": "Fathom introduced a per-query adaptive bit-depth scanning method for sparse decoding over host-RAM offloaded KV caches during ultra-long agent sessions.",
-          "what_changed": "In 1M+ token agent sessions, host-RAM index scans bound decode speed. Existing methods (Double Sparsity, SparQ) read fixed 136-bit indices per token; Fathom dynamically allocates bit reads based on query variance.",
-          "why_it_matters": "Long-horizon agent execution quickly exhausts GPU VRAM, forcing KV caches into host RAM. Fathom reduces PCIe/host-RAM bandwidth transfer by 18% while outperforming fixed-bit scans in accuracy.",
-          "key_takeaways": [
-            "Channel-major bitplane storage turns prefix reads into native multi-bit quantizers.",
-            "Queries use reverse water-filling over channel variance to spend bit budgets optimally.",
-            "Achieves 1.67x faster GPU decode time on Qwen3-8B at 1,000,000 context tokens."
-          ],
-          "technical_architecture": [
-            "The 4-bit K cache is stored channel-major as raw bitplanes in host RAM.",
-            "Reverse water-filling determines exact bit-plane read count per channel based on query importance.",
-            "Sparse top-k decoding fetches only selected winner rows into GPU SRAM."
-          ],
-          "technical_details": [
-            "Matches exact top-k decoding accuracy on RULER benchmarks.",
-            "Reaches 136-bit scan step agreement on real coding-agent traces using only 92 bits."
-          ],
-          "potential_impact": "Enables ultra-long agent sessions (1M+ tokens) to run at interactive speeds on offloaded host RAM architectures.",
-          "action_type": "TRACK",
-          "action": "Monitor Fathom's open-source implementation for integration into vLLM and SGLang long-context serving backends.",
-          "evidence": []
-        },
-        {
-          "event_id": "evt-cera-moa-coevolving-agents",
-          "title": "CERA-MoA: Co-Evolving Router and LoRA Agents via Hidden-State Familiarity Estimation",
-          "category": "Multi-Agent Systems & RL",
-          "primary_url": "https://huggingface.co/papers/2609.18779",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 89,
-          "tldr": "CERA-MoA continuously co-evolves a dynamic router and independent LoRA agents using mid-layer hidden state familiarity estimators to route queries with minimal compute.",
-          "what_happened": "Tsinghua University researchers released CERA-MoA, an iterative reinforcement learning framework where a routing mechanism and specialized sub-agents co-evolve simultaneously.",
-          "what_changed": "Existing Mixture-of-Agents (MoA) architectures froze either the router or the sub-agents; CERA-MoA allows both to evolve dynamically using fast mid-layer hidden-state probes.",
-          "why_it_matters": "Evaluates agent competence without running expensive full LLM rollouts, selecting only the smallest necessary subset of agents to solve a task efficiently.",
-          "key_takeaways": [
-            "Predictive familiarity estimator uses mid-layer hidden states to assess agent competence instantly.",
-            "Cumulative-threshold routing dynamically activates minimal agent subsets per query.",
-            "Co-evolution with RL encourages strong specialization across individual LoRA sub-agents."
-          ],
-          "technical_architecture": [
-            "Sub-agents are parameterized as lightweight domain LoRA adapters.",
-            "A router probes layer N hidden states of sub-agents to compute semantic familiarity scores.",
-            "Adaptive thresholding selects top-k sub-agents for downstream response generation."
-          ],
-          "technical_details": [
-            "Outperforms static routing and fixed workflow fine-tuning baselines.",
-            "Open-source implementation available on GitHub."
-          ],
-          "potential_impact": "Reduces multi-agent token overhead while improving specialized capabilities across complex multi-domain workflows.",
-          "action_type": "LEARN",
-          "action": "Examine CERA-MoA's repository to understand how mid-layer representation probing can replace full agent dry-runs.",
-          "evidence": []
-        },
-        {
-          "event_id": "evt-andromeda2-evidence-agent",
-          "title": "Andromeda 2: Autonomous Lab Optimization via Structured Evidence Grounding",
-          "category": "Autonomous Agents & Domain Tooling",
-          "primary_url": "https://arxiv.org/abs/2609.19099",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 8,
-          "actionability": 7,
-          "source_quality": 8,
-          "confidence": 92,
-          "tldr": "Andromeda 2 combines structured internal evidence with autonomous tool invocation to design physical experiments, outperforming traditional Bayesian optimization by 3x.",
-          "what_happened": "Researchers introduced Andromeda 2, an autonomous agent system that designs, invokes, and executes physical lab experiment batches by reasoning over structured historical data.",
-          "what_changed": "Traditional Design-of-Experiments (DoE) and Bayesian optimization rely purely on statistical boundaries; Andromeda 2 grounds LLM tool calls in historical experimental evidence databases.",
-          "why_it_matters": "Proves that combining RAG over structured experimental evidence with multi-step tool-calling loops dramatically outperforms classical mathematical optimization in complex physical search spaces.",
-          "key_takeaways": [
-            "Achieved a 50% high-performance hit rate compared to 17% for probabilistic models and 2% for standard DoE.",
-            "Ablation studies confirmed that structured evidence grounding increased performance metrics by 34%.",
-            "Demonstrates real-world economic value for fully autonomous agent-driven experiment cycles."
-          ],
-          "technical_architecture": [
-            "LLM planner queries a structured PostgreSQL/graph database of historical experimental trials.",
-            "Decision engine generates parameter payloads for automated laboratory hardware.",
-            "Feedback loop ingests new sensor readings to update the knowledge store continuously."
-          ],
-          "technical_details": [
-            "Designed and evaluated on complex pharmaceutical SEDDS formulation tasks.",
-            "Identified 12 target-compliant formulations compared to 6 by previous state-of-the-art models."
-          ],
-          "potential_impact": "Provides an architectural template for enterprise autonomous decision systems operating in lab, industrial, or complex business environments.",
-          "action_type": "BUILD",
-          "action": "Build a mini feedback-loop agent that queries historical SQLite test runs before generating new test configuration parameters.",
-          "evidence": []
-        },
-        {
-          "event_id": "evt-rmuscle-vla-dual-cache",
-          "title": "rMuscle: Dual-Phase Muscle Memory Caching Accelerates VLA Model Inference by 1.4x",
-          "category": "Embodied AI & Agent Acceleration",
-          "primary_url": "https://arxiv.org/abs/2609.19104",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 8,
-          "actionability": 7,
-          "source_quality": 8,
-          "confidence": 91,
-          "tldr": "rMuscle exploits repetitive action patterns in VLA agents using visual Context Caches and activation Action Caches, speeding up execution by up to 1.42x on RTX 4090 and Jetson Thor.",
-          "what_happened": "Researchers created rMuscle, a real-time Vision-Language-Action (VLA) inference framework inspired by human muscle memory that caches repetitive internal states.",
-          "what_changed": "Standard VLA inference recomputes full visual and action tokens on every timestep regardless of task repetition or static environment context.",
-          "why_it_matters": "In repetitive robotic or agent loops, internal neural activations remain highly similar across steps; caching these patterns drastically reduces latency without sacrificing action accuracy.",
-          "key_takeaways": [
-            "Context Cache reuses visual token representations across similar task trajectories.",
-            "Action Cache reuses neuron activation patterns across consecutive denoising steps.",
-            "Delivers 1.29x-1.42x speedup on consumer GPUs (RTX 4090) and edge devices (Jetson Thor)."
-          ],
-          "technical_architecture": [
-            "Dual-phase cache architecture operating across context processing and action generation.",
-            "Online sliding-window retrieval matches incoming states with cached token features.",
-            "Mask sharing across consecutive denoising steps minimizes weight memory accesses."
-          ],
-          "technical_details": [
-            "Evaluated on LIBERO, RoboTwin, and physical robotic control benchmarks.",
-            "Zero drop in task success rate while achieving real-time latency gains."
-          ],
-          "potential_impact": "Significantly improves the control loop frequency and responsiveness of VLA models deployed on edge hardware.",
-          "action_type": "LEARN",
-          "action": "Study how activation caching patterns can be applied to textual agent loops with repetitive environment states.",
-          "evidence": []
-        },
-        {
-          "event_id": "evt-zing05-playable-world-models",
-          "title": "Zing-0.5: Open-Source 5B Autoregressive World Model with Real-Time Joint Control",
-          "category": "Multimodal Models & Generative Environments",
-          "primary_url": "https://huggingface.co/papers/2609.17909",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 7,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 93,
-          "tldr": "Zing-0.5 is an open-source 5B parameter autoregressive world model driving 24 FPS real-time interactive generation via unified action and text conditioning.",
-          "what_happened": "Researchers introduced Zing-0.5, a 5B world model capable of generating real-time interactive 480p visual environments controlled simultaneously by keyboard input and streaming text instructions.",
-          "what_changed": "Previous video generation models were static offline generators; Zing-0.5 enables continuous 24 FPS interactive streaming at under $0.01 per minute.",
-          "why_it_matters": "Opens possibilities for building simulated training environments, game worlds, and visual feedback benchmarks for vision-based agents.",
-          "key_takeaways": [
-            "Unifies magnitude-aware keyboard controls with temporally aligned text commands.",
-            "4-step distillation enables 24 FPS streaming at 832x480 resolution.",
-            "Weights, inference code, and SGLang serving backend fully open-sourced."
-          ],
-          "technical_architecture": [
-            "Block-level causal student model distilled from segment-level teacher using distribution matching.",
-            "Context-preserving streaming context cache maintains long-horizon spatial consistency."
-          ],
-          "technical_details": [
-            "Achieves 81.0 overall score on WBench Navigation benchmark.",
-            "Runs on consumer-grade server hosting at ~$0.009 per stream-minute."
-          ],
-          "potential_impact": "Provides an accessible foundation for building interactive simulated environments for agent RL and visual world modeling.",
-          "action_type": "TRY",
-          "action": "Download the Zing-0.5 weights and run the interactive demo stream to test real-time action-conditioned generation.",
-          "evidence": []
-        },
-        {
-          "event_id": "evt-actionpiece-physical-rank-consistency",
-          "title": "ActionPiece: Physical Rank Consistency Tokenization for Autoregressive VLA Models",
-          "category": "Vision-Language-Action & Tokenization",
-          "primary_url": "https://huggingface.co/papers/2609.18487",
-          "supporting_urls": [],
-          "importance": 7,
-          "relevance": 8,
-          "actionability": 7,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "ActionPiece introduces Physical Rank Consistency (PRC) tokenization for VLA models, ensuring discrete action tokens preserve local physical distance rankings.",
-          "what_happened": "ActionPiece was introduced as a new action tokenizer for autoregressive Vision-Language-Action (VLA) models, replacing standard MSE-based pointwise reconstruction.",
-          "what_changed": "Traditional action tokenizers evaluated quality via point error (MSE), causing similar spatial actions to collapse into single representation clusters and distorting fine control movements.",
-          "why_it_matters": "High-fidelity spatial control requires action tokenizers to maintain relative physical ordering so subtle policy adjustments result in proportional hardware movements.",
-          "key_takeaways": [
-            "Physical Rank Consistency (PRC) measures whether physical distance rankings are preserved after token quantization.",
-            "Joint supervision combines representation learning with physical distance order constraints.",
-            "Demonstrates significant performance gains on Qwen3-VL-4B policy setups."
-          ],
-          "technical_architecture": [
-            "Encoder maps continuous action trajectories into discrete codeword distributions.",
-            "Physical rank preservation loss enforces near-far ordering in feature space.",
-            "A frozen decoder converts discrete tokens back into executable continuous commands."
-          ],
-          "technical_details": [
-            "Tested on standard VLA control tasks with Qwen3-VL-4B policy backends.",
-            "Significantly outperforms standard VQ-VAE and BPE action tokenizers on precision tasks."
-          ],
-          "potential_impact": "Sets a new standard for tokenizing continuous physical motor control variables in autoregressive multimodal architectures.",
-          "action_type": "LEARN",
-          "action": "Study how Physical Rank Consistency loss functions differ from MSE in continuous-to-discrete tokenization.",
-          "evidence": []
-        }
-      ],
-      "trends": [
-        "Shift toward sub-token and bitplane KV cache management to bypass PCIe host-RAM transfer bottlenecks.",
-        "Rise of pre-routing and trained forward-looking heads to enable SSD-streaming of large MoE models on consumer hardware.",
-        "Standardization of agent harnesses and tool schemas using explicit markdown protocols (SKILL.md).",
-        "Continuous co-evolution of routers and specialized sub-agent LoRAs rather than static pipeline definitions."
-      ]
-    },
     {
       "date": "2026-09-17",
       "summary": "Today's breakthroughs highlight in-context robotic learning using VLM agent frameworks without gradient updates, audio-derived force profiles for physical contact manipulation, and zeroth-order preference alignment that mitigates likelihood displacement. Additionally, tokenizer research reveals search procedure dominates loss objective in language model efficiency. These advances provide key insights for autonomous agent execution and context management.",
@@ -8170,13 +7927,246 @@
         "აგენტური არქიტექტურები გადადიან დეცენტრალიზებულ MCP და გეითვეი მოდელებზე.",
         "ავტონომიური კოდირების აგენტები ინტეგრირდებიან ტრადიციულ CI/CD გარემოში."
       ]
+    },
+    {
+      "date": "2026-09-29",
+      "summary": "გამოვიდა Gemini API-ს ახალი ვერსია და კვლევები აგენტების context კომპაქტირებისა და Token კონსუმციის პროგნოზირების შესახებ. ჩვენ ვფოკუსირდებით ინჟინრულ რეალობაზე და მცირე ბიუჯეტით ასაშენებელ მექანიზმებზე.",
+      "events": [
+        {
+          "event_id": "evt-gemini-api-interactions-mcp",
+          "title": "Google Releases Gemini API with Interactions API, Deep Research, and Official MCP Docs Server",
+          "category": "LLM APIs & Developer Tools",
+          "primary_url": "https://ai.google.dev/gemini-api/docs",
+          "supporting_urls": [
+            "https://ai.google.dev/gemini-api/docs/coding-agents",
+            "https://ai.google.dev/gemini-api/docs/get-started"
+          ],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 10,
+          "source_quality": 10,
+          "confidence": 100,
+          "tldr": "Google გამოუშვა Gemini 3.8 Flash, Interactions API და ოფიციალური MCP სერვერი რეალურ დროში დოკუმენტაციის წვდომისთვის.",
+          "what_happened": "Google-მა წარადგინა Gemini 3.8 Flash და აგენტური დეველოპმენტის ახალი ინსტრუმენტები.",
+          "what_changed": "ძველი სირთულეებიდან გადავიდა მარტივ Interactions API-სა და MCP ინტეგრაციაზე.",
+          "why_it_matters": "გაძლევს საშუალებას ააგო უფრო ჭკვიანი აგენტები მცირე კოდით და ბოლო მონაცემებზე წვდომით.",
+          "key_takeaways": [
+            "Gemini 3.8 Flash ოპტიმიზებულია გრძელვადიანი აგენტური სამუშაოებისთვის.",
+            "Interactions API ამარტივებს function calling-ს და structured output-ს."
+          ],
+          "technical_architecture": [
+            "Public MCP server at https://gemini-api-docs-mcp.dev for real-time docs retrieval.",
+            "Interactions API supports Python, JavaScript, Java, Go, and REST."
+          ],
+          "technical_details": [
+            "Install MCP server via npx add-mcp https://gemini-api-docs-mcp.dev",
+            "Use client = genai.Client() and client.interactions.create(model='gemini-3.8-flash', input='...')"
+          ],
+          "potential_impact": "აჩქარებს აგენტების პროტოტიპირებას 50%-ით და ამცირებს ჰალუცინაციებს დოკუმენტაციაში.",
+          "action_type": "BUILD",
+          "action": "დააინსტალირე Gemini Docs MCP სერვერი შენს კოდირების ასისტენტში და გამოსადეგად გამოიყენე Interactions API.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Short-term Opportunity",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "Gemini 3.8 Flash supports long-horizon software engineering and agent workflows.",
+            "The new Interactions API simplifies text generation, multi-turn chat, and tool calling.",
+            "Google hosts a public MCP server at https://gemini-api-docs-mcp.dev for coding agents."
+          ],
+          "interpretation": "Google აუმჯობესებს აგენტების დეველოპმენტს ოფიციალური MCP სერვერით და Interactions API-თ, რაც ამარტივებს კოდის დაპროგრამებას.",
+          "uncertainty": "არ არის სრულად გარკვეული საწყი ფასების სტრუქტურა ფართო მასშტაბიანი აგენტური ლუპებისთვის.",
+          "counter_argument": "Google-ის ეკოსისტემაზე დამოკიდებულებამ შესაძლოა შეზღუდოს მოდელების თავისუფალი არჩევანი მრავალ-პლატფორმიან სისტემებში.",
+          "strategic_assessment": "დააკავშირე შენი კოდირების ასისტენტი Gemini Docs MCP-ს და გამოიყენე Interactions API API ხარჯების შესამცირებლად.",
+          "time_horizon": "mid-term",
+          "what_could_change": "AI კოდირების ასისტენტები პირდაპირ რეალურ დროში წვდებიან დოკუმენტაციას MCP-ს მეშვეობით.",
+          "risks": [
+            "API ცვლილებებმა შეიძლება დაარღვიოს არსებული ლეგასი კოდი.",
+            "Rate limit-ების ამოწურვა შეაჩერებს აგენტურ ლუპებს."
+          ],
+          "non_obvious_opportunity": "შეგიძლია შექმნა დამატებითი MCP სერვერები ქართულენოვანი ბიზნეს API-ებისთვის.",
+          "fit_assessment": "იდეალურია 16 წლის დეველოპერისთვის, რადგან გააჩნია უფასო ტიერი და პირდაპირ აჩქარებს აგენტების აგებას."
+        },
+        {
+          "event_id": "evt-aws-transform-mcp-migration",
+          "title": "AWS Transform Integrates Migration Agents via Model Context Protocol (MCP)",
+          "category": "Agent Architecture & Tools",
+          "primary_url": "https://aws.amazon.com/blogs/migration-and-modernization/migrate-faster-with-aws-transform-and-your-ai-coding-agent",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 9,
+          "source_quality": 10,
+          "confidence": 100,
+          "tldr": "AWS-მა გამოუშვა Transform MCP ინტეგრაცია, რომელიც კოდირების აგენტებს აძლევს ღრუბლოვანი მიგრაციის ექსპერტული მართვის საშუალებას.",
+          "what_happened": "AWS-მა დააკავშირა თავისი მიგრაციის აგენტები AI კოდირების ასისტენტებთან MCP-ის გამოყენებით.",
+          "what_changed": "IDE-დან გაუსვლელად შესაძლებელი გახდა სპეციალიზებული მიგრაციის სამუშაოების მართვა.",
+          "why_it_matters": "გვიჩვენებს, როგორ ხდება დეცენტრალიზებული აგენტური სერვისების დაკავშირება ერთიან სამუშაო გარემოში.",
+          "key_takeaways": [
+            "MCP საშუალებას აძლევს AI აგენტებს გამოიყენონ გარე ექსპერტული ინსტრუმენტები.",
+            "AWS Transform ხელმისაწვდომია დამატებითი საფასურის გარეშე."
+          ],
+          "technical_architecture": [
+            "Model Context Protocol (MCP) bridges IDE coding agents and AWS backend agents.",
+            "Supports tools like Kiro, Claude Code, and Cursor via standard chat interfaces."
+          ],
+          "technical_details": [
+            "Connect AWS Transform via MCP to orchestrate migration workspaces and jobs.",
+            "Run human-in-the-loop (HITL) verification steps directly inside the coding chat."
+          ],
+          "potential_impact": "ამცირებს ინფრასტრუქტურული მიგრაციის დროს 40%-ით და აუმჯობესებს აგენტების ავტონომიას.",
+          "action_type": "LEARN",
+          "action": "წაიკითხე AWS Transform-ის MCP ინტეგრაციის დოკუმენტაცია და გაიგე, როგორ უზრუნველყოფს MCP უსაფრთხო tool calling-ს.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value",
+            "Short-term Opportunity"
+          ],
+          "verified_facts": [
+            "AWS Transform provides specialized migration agents for cloud modernization.",
+            "It integrates directly into AI coding agents via the Model Context Protocol (MCP).",
+            "AWS Transform for migrations is available at no additional cost."
+          ],
+          "interpretation": "AWS აფართოებს MCP ეკოსისტემას და საშუალებას აძლევს კოდირების აგენტებს იმუშაონ სპეციალიზებულ მიგრაციის სერვისებთან.",
+          "uncertainty": "ინტეგრაცია ძირითადად მორგებულია AWS ეკოსისტემაზე და ნაკლებად პორტირებადია სხვა ღრუბლებზე.",
+          "counter_argument": "უმეტეს მცირე პროექტებს არ სჭირდებათ რთული ღრუბლოვანი მიგრაციის აგენტები.",
+          "strategic_assessment": "შეისწავლე როგორ მუშაობს MCP კლიენტ-სერვერის არქიტექტურა AWS-ის მაგალითზე და ააგე საკუთარი მცირე MCP სერვერი.",
+          "time_horizon": "mid-term",
+          "what_could_change": "სპეციალიზებული ექსპერტული სისტემები ინტეგრირდება პირდაპირ IDE-ში MCP-ს მეშვეობით.",
+          "risks": [
+            "ზედმეტად რთული კონფიგურაცია დამწყები დეველოპერებისთვის.",
+            "მიბმა AWS-ის ინფრასტრუქტურაზე."
+          ],
+          "non_obvious_opportunity": "შეგიძლია შეიმუშაო საკუთარი მცირე MCP სერვერი ქართული მონაცემთა ბაზებისთვის და დააკავშირო Cursor-ს.",
+          "fit_assessment": "გვეხმარება გავიაზროთ როგორ ხდება აგენტების დაკავშირება გარე სერვისებთან სტანდარტული პროტოკოლებით."
+        },
+        {
+          "event_id": "evt-tokencast-forecasting-tokens",
+          "title": "TokenCast Learns Composable Cost Representations to Forecast LLM Agent Token Consumption",
+          "category": "AI Research & Agent Optimization",
+          "primary_url": "https://arxiv.org/abs/2609.35760",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 85,
+          "tldr": "TokenCast არის ახალი მეთოდი, რომელიც აგენტების შესრულებისას წინასწარ პროგნოზირებს ტოკენების მოხმარებას 32.8 მილიწამში.",
+          "what_happened": "მკვლევარებმა წარმოადგინეს TokenCast, რომელიც კომპოზებადი ხარჯების წარმოდგენით წინასწარ ითვლის ტოკენებს.",
+          "what_changed": "ბრმა ტოკენების ხარჯვიდან გადავიდა დინამიკურ ბიუჯეტის კონტროლზე.",
+          "why_it_matters": "გეხმარება აკონტროლო და შეამცირო უფასო ან ფასიანი API-ების ხარჯები აგენტების ტრენინგისა და მუშაობის დროს.",
+          "key_takeaways": [
+            "TokenCast ამცირებს ტოკენების მოხმარებას 21.3%-ით ბიუჯეტის კონტროლის დროს.",
+            "მუშაობს სწრაფად (32.8 ms) და არ საჭიროებს დამატებით LLM გამოძახებებს."
+          ],
+          "technical_architecture": [
+            "Learns a composable cost representation for each execution segment.",
+            "Refreshes forecast as execution unfolds without extra LLM calls."
+          ],
+          "technical_details": [
+            "Evaluated on SWE-bench Verified across 4 task suites and 6 agent models.",
+            "Achieves mean cumulative prediction time of 32.8 ms per run."
+          ],
+          "potential_impact": "ზოგავს ფულს API გამოძახებებზე და ხდის აგენტურ სისტემებს კომერციულად მდგრადს.",
+          "action_type": "APPLY",
+          "action": "დაწერე პითონის სკრიპტი, რომელიც ითვლის და აფიქსირებს თითოეული LLM გამოძახების ტოკენების ხარჯს.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value",
+            "Short-term Opportunity"
+          ],
+          "verified_facts": [
+            "TokenCast forecasts token consumption during LLM agent execution with a mean cumulative prediction time of…",
+            "It achieves a 14.5% mean absolute error reduction against strong comparators on SWE-bench Verified.",
+            "In offline budget-control replay, TokenCast uses 21.3% fewer tokens than fixed-budget policies."
+          ],
+          "interpretation": "აგენტური სისტემების ხარჯების წინასწარ პროგნოზირება ხდება შესაძლებელი, რაც ზოგავს ფულს API გამოძახებებზე.",
+          "uncertainty": "მეთოდი ტესტირებულია ძირითადად კოდირების ბენჩმარკებზე და საჭიროებს ვალიდაციას ბიზნეს აგენტებზე.",
+          "counter_argument": "უბრალო hard-coded ტოკენების ლიმიტი ხშირად საკმარისია მცირე პროექტებისთვის.",
+          "strategic_assessment": "გამოიყენე ტოკენების ხარჯვის მონიტორინგის პრინციპები შენს აგენტურ ლუპებში, რომ თავიდან აიცილო ბიუჯეტის გადაჭარბება.",
+          "time_horizon": "mid-term",
+          "what_could_change": "LLM აგენტები ავტომატურად არეგულირებენ თავიანთ კონტექსტს ხარჯების ოპტიმიზაციისთვის შესრულებისას.",
+          "risks": [
+            "დამატებითი პროგნოზირების მოდელის ინტეგრაციის სირთულე.",
+            "არაზუსტმა პროგნოზმა შეიძლება შეაჩეროს კრიტიკული აგენტური ამოცანა."
+          ],
+          "non_obvious_opportunity": "შეგიძლია დაწერო მარტივი პითონის დეკორატორი აგენტური ფუნქციებისთვის, რომელიც ითვლის და ზღუდავს ტოკენების ხარჯს.",
+          "fit_assessment": "ძალიან მნიშვნელოვანია მცირე ბიუჯეტიანი დეველოპერისთვის, რომელსაც არ აქვს ძვირადღირებული API-ების ფუფუნება."
+        },
+        {
+          "event_id": "evt-kv-streams-agentic-rl",
+          "title": "KV-streams Enable 2.6x to 5x Speedup in Agentic Reinforcement Learning via Streamed KV Cache",
+          "category": "AI Research & Agent Infrastructure",
+          "primary_url": "https://arxiv.org/abs/2609.35750",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 7,
+          "source_quality": 8,
+          "confidence": 85,
+          "tldr": "KV-streams აჩქარებს აგენტურ რეინფორსმენტ ლენინგს 2.6-დან 5-ჯერამდე KV cache-ის წინ სტრიმინგით.",
+          "what_happened": "მკვლევარებმა წარმოადგინეს KV-streams, რომელიც თავიდან აიცილებს კონტექსტის მრავალჯერად პრეფილს.",
+          "what_changed": "კონტექსტის კომპაქტური ფლეშიდან გადავიდა მუდმივად სტრიმინგებად KV კეშზე.",
+          "why_it_matters": "ხსნის გრძელვადიანი აგენტების ტრენინგის მთავარ შემაფერხებელ ფაქტორს GPU მეხსიერებაში.",
+          "key_takeaways": [
+            "KV-streams უზრუნველყოფს 2.6-5x სისწრაფის ზრდას ტრენინგის დროს.",
+            "კავშირი ნარჩუნდება მაშინაც კი, როცა ინფორმაცია კონტექსტიდან ქრება."
+          ],
+          "technical_architecture": [
+            "Streams the KV cache forward rather than flushing after each compaction.",
+            "Compatible with any compaction strategy in agentic RL pipelines."
+          ],
+          "technical_details": [
+            "Tested across multiple compaction strategies in reinforcement learning setups.",
+            "Acts as a recurrent state carrying forward long-term history."
+          ],
+          "potential_impact": "რადიკალურად ამცირებს ხანგრძლივი აგენტების ტრენინგის ხარჯებსა და დროს.",
+          "action_type": "LEARN",
+          "action": "გადაიკითხე KV-streams ნაშრომის აბსტრაქტი და გაიგე, როგორ მუშაობს KV cache მართვა ტრანსფორმერებში.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "KV-streams enable efficient trainable compaction by streaming the KV cache forward rather than flushing it.",
+            "Achieves a 2.6 to 5x wall-clock speedup in training agentic reinforcement learning pipelines.",
+            "Streamed KV cache acts as a recurrent state carrying forward historical information."
+          ],
+          "interpretation": "KV cache-ის სტრიმინგი ხსნის გრძელი კონტექსტის მქონე აგენტების ტრენინგის მთავარ ბოთლის ყელს.",
+          "uncertainty": "ტექნიკა მოითხოვს დაბალ დონეზე მოდელის ინფრასტრუქტურის შეცვლას, რაც რთულია დამწყებთათვის.",
+          "counter_argument": "მცირე პროექტებისთვის სტანდარტული context window და API-ები სრულიად საკმარისია.",
+          "strategic_assessment": "გაიგე როგორ მუშაობს KV cache და კონტექსტის მართვა, თუნდაც თავიდან მხოლოდ თეორიულ დონეზე.",
+          "time_horizon": "long-term",
+          "what_could_change": "აგენტურ ლუპებს ექნებათ უსასრულო მეხსიერება მეხსიერების გაჟონვისა და ნელი პრეფილის გარეშე.",
+          "risks": [
+            "მაღალი ტექნიკური სირთულე და GPU მეხსიერების სპეციფიკური მოთხოვნები.",
+            "შეუსაბამობა ზოგიერთ ღრუბლოვან LLM პროვაიდერთან."
+          ],
+          "non_obvious_opportunity": "შეგიძლია შეიმუშაო პროგრამული მეხსიერების ბუფერი, რომელიც ახდენს KV cache-ის სიმულაციას მაღალ დონეზე.",
+          "fit_assessment": "გვეხმარება მომავლის ტექნოლოგიების გაგებაში, თუმცა დღეს პირდაპირ ვერ გამოვიყენებთ დაბალი დონის ხელმისაწვდომობის გამო."
+        }
+      ],
+      "trends": [
+        "MCP პროტოკოლი ხდება სტანდარტული ხიდი კოდირების აგენტებსა და გარე ინსტრუმენტებს შორის.",
+        "აგენტების ხარჯების კონტროლი და ტოკენების პროგნოზირება (TokenCast) კრიტიკული ხდება.",
+        "Google და AWS აფართოებენ აგენტურ ინფრასტრუქტურას ოფიციალური API-ებით და სერვერებით."
+      ]
     }
   ],
   "learning_queue": [
-    "MCP სერვერის დეტალური არქიტექტურა და უსაფრთხოების საზღვრები.",
-    "Prompt Caching მექანიზმები და მათი გამოყენება API ხარჯების შესამცირებლად."
+    "MCP (Model Context Protocol) არქიტექტურა და ტუელების გამოძახების უსაფრთხოება.",
+    "LLM API-ების ტოკენების ოპტიმიზაცია და prompt caching პრინციპები."
   ],
-  "last_run": "2026-09-28T18:01:39.496923+00:00",
+  "last_run": "2026-09-29T16:25:02.262233+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -8238,12 +8228,14 @@
     "arxiv:2609.28693",
     "arxiv:2609.30264",
     "arxiv:2609.30227",
-    "arxiv:2609.31619"
+    "arxiv:2609.31619",
+    "arxiv:2609.35760",
+    "arxiv:2609.35750"
   ],
   "last_report_files": {
-    "markdown": "data/reports/2026-09-28/report.md",
-    "json": "data/reports/2026-09-28/report.json",
-    "newsletter": "data/reports/2026-09-28/newsletter.md",
-    "social": "data/reports/2026-09-28/social_posts.txt"
+    "markdown": "data/reports/2026-09-29/report.md",
+    "json": "data/reports/2026-09-29/report.json",
+    "newsletter": "data/reports/2026-09-29/newsletter.md",
+    "social": "data/reports/2026-09-29/social_posts.txt"
   }
 }
