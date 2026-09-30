@@ -164,7 +164,10 @@
     "https://ai.google.dev/gemini-api/docs/get-started",
     "https://aws.amazon.com/blogs/migration-and-modernization/migrate-faster-with-aws-transform-and-your-ai-coding-agent",
     "https://arxiv.org/abs/2609.35760",
-    "https://arxiv.org/abs/2609.35750"
+    "https://arxiv.org/abs/2609.35750",
+    "https://github.com/autonomous-ai/openharness",
+    "https://huggingface.co/papers/2609.35427",
+    "https://arxiv.org/abs/2609.38147"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -291,101 +294,12 @@
     "evt-gemini-api-interactions-mcp",
     "evt-aws-transform-mcp-migration",
     "evt-tokencast-forecasting-tokens",
-    "evt-kv-streams-agentic-rl"
+    "evt-kv-streams-agentic-rl",
+    "evt-openharness-coding-agents-command-center",
+    "evt-async-llm-asyncio-agents",
+    "evt-thinking-before-thinking-meta-reasoning"
   ],
   "events": [
-    {
-      "event_id": "evt-hackclub-nest-free-compute",
-      "title": "Hack Club Nest: უფასო და სიმძლავრით აღჭურვილი სერვერული ინფრასტრუქტურა 16+ ასაკის მოსწავლე დეველოპერებისთვის",
-      "category": "Young Developer Opportunities & Infrastructure",
-      "primary_url": "https://github.com/orgs/hackclub/repositories",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 10,
-      "actionability": 10,
-      "source_quality": 8,
-      "confidence": 90,
-      "what_happened": "Hack Club-მა განაახლა Nest პროექტი — სრულიად უფასო Linux სერვერული და გამოთვლითი ინფრასტრუქტურა, რომელიც სპეციალურად შექმნილია სკოლის მოსწავლე და მოზარდი დეველოპერებისთვის (16+) ლოკალური პროექტების, აგენტების და მონაცემთა ბაზების ასაშვებად.",
-      "what_changed": "ტრადიციული ღრუბლოვანი პროვაიდერები (AWS, GCP, DigitalOcean) მოითხოვენ საკრედიტო ბარათის ავტორიზაციას, რაც 16 წლის დეველოპერებისთვის მთავარ ბარიერს წარმოადგენს. Nest იძლევა სრულფასოვან Linux compute გარემოს ბარათის გარეშე.",
-      "why_it_matters": "იდეალური პლატფორმაა საკუთარი Python AI აგენტების, MCP სერვერების, SQLite ბაზებისა და Telegram/Discord ბოტების 24/7 რეჟიმში ჰოსტინგისთვის სრულიად უფასოდ.",
-      "technical_details": [
-        "უფასო Linux Compute გარემო SSH წვდომით",
-        "მხარდაჭერილია Node.js, Python, Go, Rust runtimes და SQLite/PostgreSQL ბაზები",
-        "ინტეგრირებულია Hack Club-ის YSWS (You Ship, We Ship) და HCB ფისკალურ ეკოსისტემასთან"
-      ],
-      "action_type": "APPLY",
-      "action": "დარეგისტრირდით Hack Club Nest-ზე, მიიღეთ უფასო Linux სერვერული გარემო და განათავსეთ თქვენი AI აგენტის MCP სერვერი ან Python backend 24/7 შესრულებისთვის.",
-      "evidence": [
-        {
-          "url": "https://github.com/orgs/hackclub/repositories",
-          "title": "hackclub repositories · GitHub",
-          "domain": "github.com",
-          "evidence": "nest: Free, powerful, and versatile compute infrastructure for all high school hackers!"
-        }
-      ]
-    },
-    {
-      "event_id": "evt-nexu-opendesign-looper-ecosystem",
-      "title": "OpenDesign და Nexu ეკოსისტემა: ლოკალური აგენტების ინტეგრაცია Slack/Discord/WeChat-ში და Looper ავტონომიური CI/CD Dev Loop",
-      "category": "AI Developer Tools & Agent Ecosystem",
-      "primary_url": "https://github.com/nexu-io",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 9,
-      "source_quality": 8,
-      "confidence": 90,
-      "what_happened": "OpenDesign/Nexu გუნდმა წარმოადგინა Open-source ინსტრუმენტების ნაკრები: Nexu (ლოკალური დესკტოპ კლიენტი AI აგენტების Slack, Discord, Feishu, WeChat-თან დასაკავშირებლად) და Looper (Go-ზე დაწერილი ავტონომიური აგენტური ციკლი, რომელიც გეგმავს, ამოწმებს და ასწორებს PR-ებს GitHub რეპოზიტორიებში).",
-      "what_changed": "მანამდე AI კოდინგ აგენტები შეზღუდული იყვნენ მხოლოდ ტერმინალით ან IDE-თ. Nexu-ს მეშვეობით ლოკალური აგენტი (Claude Code, Codex) ხდება ხელმისაწვდომი მესენჯერებიდან 24/7, ხოლო Looper უზრუნველყოფს უწყვეტ ავტონომიურ დეველოპმენტს GitHub-ის რეპოზიტორიებზე.",
-      "why_it_matters": "ადგება ლოკალური, Local-first და BYOK (Bring Your Own Key) პრინციპებზე დაფუძნებული აგენტური ინფრასტრუქტურა. დეველოპერს შეუძლია საკუთარი ლეპტოპიდან მართოს აგენტი, რომელიც მუშაობს მესენჯერებში და ავტომატურად ხურავს GitHub Issue-ებს.",
-      "technical_details": [
-        "Nexu: Local-first დესკტოპ კლიენტი, BYOK/OAuth, შიდა მონაცემების ლოკალურად შენახვა",
-        "Looper: Go-ზე აგებული ავტონომიური აგენტური ციკლი GitHub რეპოზიტორიების მართვისთვის (Plan, Review, Fix, Ship)",
-        "html-anything & html-video: HTML/CSS-ის პროგრამული გარდაქმნა MP4 ვიდეოებად და ინტერფეისებად 75+ Skill-ის გამოყენებით",
-        "SKILL.md convention: უნარების ჩატვირთვა უბრალო ფოლდერის დამატებით"
-      ],
-      "action_type": "BUILD",
-      "action": "გამოიყენეთ Nexu ან დაწერეთ მარტივი Python/TypeScript Bot, რომელიც თქვენს ლოკალურ CLI აგენტს დააკავშირებს Discord Webhook-თან.",
-      "evidence": [
-        {
-          "url": "https://github.com/nexu-io",
-          "title": "OpenDesign - GitHub",
-          "domain": "github.com",
-          "evidence": "nexu: The open-source desktop client that connects your AI Agent to WeChat, Slack, Discord... looper: Run AI coding agents as an autonomous dev team across all your GitHub repos — plan, review, fix, and ship, on a loop."
-        }
-      ]
-    },
-    {
-      "event_id": "evt-aws-lambda-90min-opensearch-v0",
-      "title": "AWS Lambda-ს 90-წუთიანი Execution Timeout და OpenSearch Serverless ინტეგრაცია v0-ში ხანგრძლივი აგენტური დავალებებისთვის",
-      "category": "Cloud Infrastructure & Agent RAG",
-      "primary_url": "https://aws.amazon.com/blogs/aws/aws-weekly-roundup-openai-gpt-6-astra-on-amazon-bedrock-amazon-quick-desktop-ga-kiro-for-students-and-more-september-14-2026",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 8,
-      "source_quality": 10,
-      "confidence": 95,
-      "what_happened": "AWS-მა გამოაცხადა AWS Lambda Managed Instances-ის 90-წუთიანი function timeout (წინა 15-წუთიანი ლიმიტის 6x გაზრდა) და Amazon OpenSearch Serverless-ის პირდაპირი მხარდაჭერა v0 by Vercel-ში RAG აპლიკაციების სწრაფი გენერაციისთვის.",
-      "what_changed": "მანამდე ხანგრძლივი აგენტური რიგები (Agent Loops, multi-step code refactoring, batch inference) მოითხოვდნენ 15-წუთიან ინტერვალებში სამუშაოს დაშლას ან ECS/EC2 სერვერების მართვას. 90-წუთიანი ტაიმაუტი საშუალებას იძლევა სერვერლეს ფუნქციებში გაშვებულ იქნას ხანგრძლივი ავტონომიური აგენტები.",
-      "why_it_matters": "სერვერლეს არქიტექტურა ხდება სრულად თავსებადი Long-horizon AI აგენტებთან. პარალელურად, v0-ის მიერ OpenSearch Serverless vector search-ის ავტომატური პროვიჟონინგი ამარტივებს RAG აპლიკაციების პროტოტიპირებას.",
-      "technical_details": [
-        "AWS Lambda Managed Instances მხარს უჭერს 90-წუთიან ტაიმაუტს ასინქრონული და ESM ინვოკაციებისთვის",
-        "Durable Functions პროცესებს შეუძლიათ იფუნქციონირონ 1 წლამდე",
-        "v0 by Vercel ავტომატურად აკონფიგურირებს OpenSearch Serverless კოლექციებს და ენდპოინტებს Full-text და Vector Search-ისთვის",
-        "Kiro for Students: უფასო 1-წლიანი წვდომა Kiro AI coding assistant-ზე სტუდენტებისთვის"
-      ],
-      "action_type": "TRY",
-      "action": "დარეგისტრირდით Kiro for Students პროგრამაში (თუ გაქვთ სტუდენტური სტატუსი) ან გამოსცადეთ ხანგრძლივი აგენტური ციკლის გაშვება Lambda-ს ასინქრონულ ფუნქციაში.",
-      "evidence": [
-        {
-          "url": "https://aws.amazon.com/blogs/aws/aws-weekly-roundup-openai-gpt-6-astra-on-amazon-bedrock-amazon-quick-desktop-ga-kiro-for-students-and-more-september-14-2026",
-          "title": "AWS Weekly Roundup: OpenAI GPT-6 Astra on Amazon Bedrock...",
-          "domain": "aws.amazon.com",
-          "evidence": "You can now configure a function timeout of up to 90 minutes for asynchronous and event source mapping (ESM) invocations on Lambda Managed Instances... OpenSearch Serverless is now available on v0 by Vercel."
-        }
-      ]
-    },
     {
       "event_id": "evt-exygen-kg-shex-void-rag",
       "title": "EXYGEN: Knowledge Graph RAG არქიტექტურა ShEx სქემებითა და VoID მეტამონაცემებით SFT-ის გარეშე",
@@ -4687,6 +4601,182 @@
       ],
       "non_obvious_opportunity": "შეგიძლია შეიმუშაო პროგრამული მეხსიერების ბუფერი, რომელიც ახდენს KV cache-ის სიმულაციას მაღალ დონეზე.",
       "fit_assessment": "გვეხმარება მომავლის ტექნოლოგიების გაგებაში, თუმცა დღეს პირდაპირ ვერ გამოვიყენებთ დაბალი დონის ხელმისაწვდომობის გამო."
+    },
+    {
+      "event_id": "evt-openharness-coding-agents-command-center",
+      "title": "OpenHarness: The Ultimate Open-Source Command Center for Multi-Agent Coding",
+      "category": "AI Coding Tools და Agent Architecture",
+      "primary_url": "https://github.com/autonomous-ai/openharness",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 10,
+      "source_quality": 8,
+      "confidence": 95,
+      "tldr": "OpenHarness აერთიანებს Claude Code, Codex და სხვა აგენტებს ერთ ადგილას, tmux პანელებისა და P2P ტერმინალების გამოყენებით.",
+      "what_happened": "გამოვიდა open-source პროექტი openharness, რომელიც აერთიანებს სხვადასხვა AI კოდირების აგენტს და მოწყობილობას.",
+      "what_changed": "ცალკეული აგენტების ხელით მართვიდან გადავდივართ ერთიან კლავიატურაზე ორიენტირებულ ბრძანების ცენტრზე.",
+      "why_it_matters": "გაძლევს სრულ კონტროლს შენს აგენტებზე ერთი ეკრანიდან, ყოველგვარი ფასიანი სერვისების გარეშე.",
+      "key_takeaways": [
+        "ყველა აგენტი მუშაობს საკუთარ tmux პანელში.",
+        "მხარს უჭერს ლოკალურ მოდელებს Ollama-სა და vLLM-ის მეშვეობით.",
+        "არ გამოიყენებს ელექტრონს, არის სწორი ნატივ აპლიკაცია."
+      ],
+      "technical_architecture": [
+        "Native desktop app with Go/Rust backend components",
+        "tmux integration for process isolation",
+        "P2P encrypted relay for multi-device communication"
+      ],
+      "technical_details": [
+        "Reads transcripts and vendor hooks directly",
+        "Uses worktree per harness for clean working copies",
+        "Configurable via a single JSONC file"
+      ],
+      "potential_impact": "დეველოპერის პროდუქტიულობა იზრდება მრავალი აგენტის ერთდროული მართვით ყოველგვარი გამოწერის ხარჯის გარეშე.",
+      "action_type": "BUILD",
+      "action": "დააინსტალირე OpenHarness შენს მანქანაზე და დააკავშირე ერთი ლოკალური მოდელი Ollama-დან.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value",
+        "Real Business Opportunity"
+      ],
+      "verified_facts": [
+        "OpenHarness is an open-source native app serving as a command center for multiple coding agents.",
+        "It runs agents in dedicated tmux panes, reading transcripts and vendor hooks without wrapping them.",
+        "Supports local models via Grid, Ollama, MLX-LM, and vLLM with end-to-end P2P encryption."
+      ],
+      "interpretation": "ღია კოდის ჰარნესები საშუალებას აძლევს ინდივიდუალურ დეველოპერებს მართონ მრავალი აგენტი ერთი ფანჯრიდან.",
+      "uncertainty": "როგორ იმუშავებს რესურსების მართვა სუსტ ლეპტოპებზე მრავალი აგენტის ერთდროული გაშვებისას.",
+      "counter_argument": "ცალკეული ტერმინალების გამოყენება უფრო მარტივია, ვიდრე ერთიანი კომპლექსური ჰარნესის დასტაბილურება.",
+      "strategic_assessment": "გამოიყენე OpenHarness შენი კოდირების აგენტების გასაერთიანებლად და ინფრასტრუქტურის ხარჯების შესამცირებლად.",
+      "time_horizon": "mid-term",
+      "what_could_change": "დეველოპმენტის პროცესი გადავა ერთიანი აგენტური მართვის ცენტრიდან მრავალი აგენტის ავტონომიურ კოორდინაციაზე.",
+      "risks": [
+        "მაღალი RAM მოხმარება მრავალი აგენტის ფონზე",
+        "კონფიგურაციის სირთულე JSONC ფაილებში",
+        "პერიფერიული მოწყობილობების სინქრონიზაციის ხარვეზები"
+      ],
+      "non_obvious_opportunity": "შეგიძლია დააკავშირო შენი სახლის ძველი კომპიუტერი და ლეპტოპი ერთიან ჰარნესში უფასო ძალის მისაღებად.",
+      "fit_assessment": "ძალიან უხდება 16 წლის დეველოპერს, რომელიც ცდილობს მაქსიმალური ეფექტურობა მიიღოს უფასო ან იაფფასიანი ინსტრუმენტებით."
+    },
+    {
+      "event_id": "evt-async-llm-asyncio-agents",
+      "title": "LLMs are General Asynchronous Agents: AsyncLLM Open-Source Framework",
+      "category": "აგენტების ინფრასტრუქტურა და Runtime",
+      "primary_url": "https://huggingface.co/papers/2609.35427",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "AsyncLLM framework მოაქვს Python asyncio coroutines პირდაპირ LLM inference ძრავში, რაც უზრუნველყოფს მრავალამოცანიან პარალელურ აგენტებს.",
+      "what_happened": "Yandex Research-ის მკვლევარებმა წარმოადგინეს AsyncLLM, რომელიც საშუალებას აძლევს LLM-ებს იმუშაონ asynchronous რეჟიმში.",
+      "what_changed": "სერიული read-think-act ციკლიდან გადავდივართ პარალელურ cache-block აგენტურ მუშაობაზე.",
+      "why_it_matters": "გაძლევს საშუალებას ააგო რეალურ დროში მოქმედი აგენტები დამატებითი წვრთნის გარეშე.",
+      "key_takeaways": [
+        "კონკურენცია ხორციელდება inference დონეზე და არა API გამოძახებებს გარეთ.",
+        "გამოიყენებს Python asyncio მოვლენებსა და კორუტინებს.",
+        "აგენტები კითხულობენ ერთმანეთის ვითარებად მდგომარეობას cache-block მეხსიერებიდან."
+      ],
+      "technical_architecture": [
+        "Mini-SGLang inference engine backend",
+        "Python asyncio event loops and queues",
+        "Shared cache blocks for overlapping memory states"
+      ],
+      "technical_details": [
+        "Supports full attention and Gated DeltaNet models",
+        "Uses standard asyncio locks and events for coordination",
+        "Enables streaming video and monitoring tasks concurrently"
+      ],
+      "potential_impact": "ამცირებს რეალურ დროში აგენტების პასუხის დროს და ხსნის ახალ გზებს ხმოვანი და ვიდეო ასისტენტებისთვის.",
+      "action_type": "TRY",
+      "action": "ჩამოქაჩე AsyncLLM რეპოზიტორი და დატესტე Python asyncio coroutines ინტეგრაცია მარტივ LLM სკრიპტში.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value",
+        "Real Business Opportunity"
+      ],
+      "verified_facts": [
+        "AsyncLLM lets pretrained LLMs observe, reason and act concurrently without task-specific training.",
+        "Concurrency lives inside inference using Python asyncio coroutines and cache blocks.",
+        "The framework is built on Mini-SGLang and supports full attention and Gated DeltaNet models."
+      ],
+      "interpretation": "კონკურენტული და asynchronous აგენტური არქიტექტურა ცვლის სერიული ციკლების ძველ მიდგომას.",
+      "uncertainty": "რამდენად სტაბილურია Mini-SGLang ბაზაზე აწყობილი კორუტინები დაბალი ბიუჯეტის სერვერებზე.",
+      "counter_argument": "სერიული agent loop უფრო მარტივი დასადებგრია და ნაკლებ ძალისხმევას მოითხოვს.",
+      "strategic_assessment": "შეისწავლე asyncio-ზე დაფუძნებული აგენტური არქიტექტურა, რადგან მომავლის სისტემები მოითხოვს პარალელურ რეაგირებას.",
+      "time_horizon": "mid-term",
+      "what_could_change": "მომხმარებელთან ინტერაქცია გახდება რეალურ დროში პარალელური, რაც გაбუქებს ძველ სერიულ tool calling მიდგომებს.",
+      "risks": [
+        "კორუტინების სინქრონიზაციის სირთულე",
+        "არასწორი მეხსიერების გაზიარება",
+        "ከፍተኛ ტოკენების მოხმარება"
+      ],
+      "non_obvious_opportunity": "შეგიძლია შექმნა მცირე ბიუჯეტის მქონე რეალურ დროში მოსმენის აგენტი.",
+      "fit_assessment": "იდეალურია Python-ის ცოდნის მქონე დეველოპერისთვის, რომელიც ცდილობს გასცდეს მარტივი რიგიანი სკრიპტების საზღვრებს."
+    },
+    {
+      "event_id": "evt-thinking-before-thinking-meta-reasoning",
+      "title": "Thinking Before Thinking: Scaling Agentic Inference Through Meta-Reasoning",
+      "category": "AI Research & Agent Architecture",
+      "primary_url": "https://arxiv.org/abs/2609.38147",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 88,
+      "tldr": "მეტა-მსჯელობის ჰარნესი იყენებს ცალკე კონტროლერს, რომელიც გეგმავს და ანაწილებს სამუშაოს აგენტებს შორის, ზრდის რა რეზულტატის სიზუსტეს.",
+      "what_happened": "წარმოდგენილია კვლევა, სადაც აგენტური დასკვნა მართულია ცალკე მეტა-კონტროლერის მიერ.",
+      "what_changed": "პირდაპირი თანმიმდევრული პრომპტებიდან გადავდივართ კონტროლერით მართულ სტრუქტურირებულ გამოთვლებზე.",
+      "why_it_matters": "გაჩვენებს როგორ უნდა ააგო უფრო რთული აგენტური სისტემები, რომლებიც არ იბნევიან გრძელვადიან დავალებებში.",
+      "key_takeaways": [
+        "კონტროლერი ამუშავებს მხოლოდ მოკლე შემაჯამებელ ისტორიას და არა მთელ ჟურნალს.",
+        "აუმჯობესებს კოდის რეკონსტრუქციის შედეგებს 13 პროცენტზე მეტად.",
+        "ამცირებს განმეორებით შეცდომებს გრძელი სესიების დროს."
+      ],
+      "technical_architecture": [
+        "Inference-time meta-reasoning harness",
+        "Dedicated controller model for task distribution",
+        "Persistent memory state for worker coordination"
+      ],
+      "technical_details": [
+        "Evaluated on ProgramBench and multi-domain reasoning suites",
+        "Prevents history replaying by keeping compact state accounts",
+        "Optimizes budget allocation across parallel worker prompts"
+      ],
+      "potential_impact": "იძლევა საშუალებას აგენტებმა წარმატებით დაასრულონ ისეთი რთული მრავალსაათიანი ამოცანები, სადაც ძველი მოდელები იჭრებოდნენ.",
+      "action_type": "LEARN",
+      "action": "დაწერე პითონის მარტივი კლასი, რომელიც ყოფს რთულ დავალებას ქვედა ამოცანებად და აგზავნის ცალკეულ API გამოძახებებში.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "Agentic meta-reasoning introduces an inference-time harness making control choices explicit.",
+        "A controller consolidates run state, explores options, and dispatches work with persistent memory context.",
+        "On ProgramBench, meta-reasoning achieved 71.5% with GPT-5.5 compared to 58.0% for direct Codex."
+      ],
+      "interpretation": "კონტროლერის დამატება, რომელიც მართავს მუშა აგენტებს, მკვეთრად აუმჯობესებს გრძელვადიან დავალებებს.",
+      "uncertainty": "მეტა-მსჯელობის დამატება ზრდის გამოთვლით ხარჯებს და ლატენტობას მცირე ბიუჯეტის სისტემებისთვის.",
+      "counter_argument": "პირდაპირი მოდელის მართვა უფრო იაფია და მცირე ამოცანებისთვის მეტა-კონტროლერი ზედმეტი სირთულეა.",
+      "strategic_assessment": "ისწავლე მორგებული კონტროლერების აგება, რომლებიც არიგებენ სამუშაოს მცირე მოდელებზე.",
+      "time_horizon": "mid-term",
+      "what_could_change": "აგენტების არქიტექტურა გადავა ერთიანი პრომპტიდან იერარქიულ, კონტროლერზე დამყარებულ სისტემებზე.",
+      "risks": [
+        "ზედმეტი გამოთვლითი ხარჯები მცირე ამოცანებზე",
+        "კონტროლერის ჰალუცინაცია დავალებების გადანაწილებისას",
+        "ინფრასტრუქტურული სირთულე"
+      ],
+      "non_obvious_opportunity": "შეგიძლია შექმნა ორსაფეხურიანი აგენტი, სადაც პატარა მოდელი მუშაობს კონტროლერად, ხოლო უფასო API მუშაობს შემსრულებლად.",
+      "fit_assessment": "ძალიან სასარგებლოა აგენტური არქიტექტურის შესასწავლად, გაძლევს წარმოდგენას რეალურ production სისტემებზე."
     }
   ],
   "topics": {
@@ -4766,14 +4856,14 @@
     "AI Evaluation / Agent Reliability": 1,
     "AI Coding Tools / Agent Evaluation": 1,
     "Open Source AI / Ecosystem Trends": 1,
-    "აგენტების ინფრასტრუქტურა და Runtime": 2,
+    "აგენტების ინფრასტრუქტურა და Runtime": 3,
     "RAG, Retrieval და აგენტის მეხსიერება": 1,
     "Tool Calling და აგენტების არქიტექტურა": 1,
     "AI Coding Tools და უსაფრთხოება": 1,
     "LLM კვლევა და Inference-ის ოპტიმიზაცია": 1,
     "AI Research და RL წვრთნა": 1,
     "Agent Architecture & Multi-Agent Systems": 1,
-    "AI Research & Agent Architecture": 1,
+    "AI Research & Agent Architecture": 2,
     "LLM APIs & Developer Tools": 2,
     "AI Research & Reliability": 1,
     "AI Evaluation & Reliability": 1,
@@ -4792,195 +4882,10 @@
     "AI Coding Tools & CI/CD": 1,
     "Agent Architecture & Tools": 1,
     "AI Research & Agent Optimization": 1,
-    "AI Research & Agent Infrastructure": 1
+    "AI Research & Agent Infrastructure": 1,
+    "AI Coding Tools და Agent Architecture": 1
   },
   "reports": [
-    {
-      "date": "2026-09-17",
-      "summary": "Today's breakthroughs highlight in-context robotic learning using VLM agent frameworks without gradient updates, audio-derived force profiles for physical contact manipulation, and zeroth-order preference alignment that mitigates likelihood displacement. Additionally, tokenizer research reveals search procedure dominates loss objective in language model efficiency. These advances provide key insights for autonomous agent execution and context management.",
-      "events": [
-        {
-          "event_id": "evt-gpt-policy-in-context-robot-learning",
-          "title": "GPT-Policy: In-Context Robot Learning via Frontier VLM Agents",
-          "category": "Embodied AI & Agent Architecture",
-          "primary_url": "https://huggingface.co/papers/2609.19138",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 92,
-          "tldr": "GPT-Policy enables robots to adapt to new tasks zero-shot using VLM in-context learning and verified control loops without gradient updates.",
-          "what_happened": "Researchers introduced GPT-Policy, a framework where VLM agents (such as GPT-6 Astra) interpret human video demonstrations and context to execute verifiable robotic manipulation actions in real time.",
-          "what_changed": "Before, robotic adaptation required task-specific fine-tuning or parameter updates; now, VLMs learn new contact-sensitive behaviors purely in-context through execution feedback.",
-          "why_it_matters": "Demonstrates that agentic scaffoldings combining context compilation and constrained verification controllers can achieve physical tool manipulation without retraining model weights.",
-          "key_takeaways": [
-            "In-context learning enables zero-shot robot adaptation without gradient updates",
-            "Context compiler preserves task-relevant visual transitions for VLM decision-making",
-            "Constrained controller verifies and executes actions before sending outcome feedback"
-          ],
-          "technical_architecture": [
-            "Context Compiler filtering visual transitions into structured history",
-            "VLM Agent proposing high-level robot-tool action primitives",
-            "Constrained Execution Controller verifying safety constraints and reporting outcomes"
-          ],
-          "technical_details": [
-            "Evaluated on GPT-6 Astra VLM agent architecture",
-            "Zero gradient updates required during deployment adaptation",
-            "Closed-loop feedback via interaction outcomes"
-          ],
-          "potential_impact": "Accelerates deployment of generalist robotic agents in dynamic environments using standard LLM/VLM tool-calling patterns.",
-          "action_type": "LEARN",
-          "action": "Study how the context compiler filters interaction history into structured observation-action-outcome tuples for zero-shot VLM agent controllers.",
-          "evidence": []
-        },
-        {
-          "event_id": "evt-compo-zeroth-order-alignment",
-          "title": "ComPO: Comparison-Based Zeroth-Order Preference Alignment for LLMs",
-          "category": "AI Research & Model Alignment",
-          "primary_url": "https://arxiv.org/abs/2609.19144",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 8,
-          "actionability": 7,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "ComPO introduces a zeroth-order comparison oracle alignment framework that outperforms direct preference optimization by mitigating likelihood displacement.",
-          "what_happened": "Researchers proposed Comparison-based Preference Optimization (ComPO), extracting directional gradient signals from preference pairs without directly optimizing a differentiable loss function.",
-          "what_changed": "Traditional DPO methods suffer from likelihood displacement on narrow margins; ComPO uses comparison mechanisms and unlabeled policy generations for reverse-KL control.",
-          "why_it_matters": "Provides a robust mathematical alternative to DPO for aligning open-weight models (Llama, Gemma, Qwen) with higher length-controlled win rates.",
-          "key_takeaways": [
-            "Zeroth-order comparison oracles prevent likelihood displacement on small likelihood margins",
-            "Online ComPO uses unlabeled policy generations to maintain reverse-KL control",
-            "Consistently improves length-controlled win rates across frontier open models"
-          ],
-          "technical_architecture": [
-            "Offline comparison oracle for non-differentiable preference extraction",
-            "Online reverse-KL regularization using unlabelled policy outputs",
-            "Constrained optimization scheme under local sample coverage"
-          ],
-          "technical_details": [
-            "Validated on Mistral, Llama, Gemma-2, Qwen3, Gemma-3",
-            "Proven theoretical convergence under gradient sparsity assumptions",
-            "39-page formal proof and pair-level diagnostic evaluation"
-          ],
-          "potential_impact": "Improves preference fine-tuning stability and performance for open-source foundation model custom alignments.",
-          "action_type": "TRACK",
-          "action": "Track ComPO implementation code releases to evaluate as an alternative alignment method for custom fine-tuned assistant models.",
-          "evidence": []
-        },
-        {
-          "event_id": "evt-tokenizer-search-vs-objective",
-          "title": "Tokenizer Mechanics: Search Procedure Dominates Objective Function",
-          "category": "AI Research & Model Architecture",
-          "primary_url": "https://arxiv.org/abs/2609.19145",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 7,
-          "actionability": 7,
-          "source_quality": 8,
-          "confidence": 95,
-          "tldr": "EMNLP 2026 study proves bottom-up search (BPE) drives lower bits-per-byte in language models, regardless of optimization objective.",
-          "what_happened": "Researchers introduced BottomUpLL and TopDownComp tokenizers to complete a 2x2 grid, isolating tokenizer search procedure from optimization objective.",
-          "what_changed": "Previously, BPE and UnigramLM differences were conflated; researchers now prove search strategy (bottom-up vs top-down) drives compression efficiency, not the objective.",
-          "why_it_matters": "Understanding tokenizer design aids in building custom domain-specific tokenizers for structured agent workflows, code generation, and multilingual data.",
-          "key_takeaways": [
-            "Search procedure is the primary determinant of language model bits-per-byte efficiency",
-            "Bottom-up tokenizers consistently outperform top-down pruning methods in compression",
-            "Downstream syntactic tasks (BLiMP) show no strict sensitivity to tokenizer design"
-          ],
-          "technical_architecture": [
-            "2x2 factorial evaluation matrix: Compression vs Likelihood / Bottom-Up vs Top-Down",
-            "BottomUpLL: Bottom-up likelihood-based greedy tokenization algorithm",
-            "TopDownComp: Top-down compression-based pruning tokenization algorithm"
-          ],
-          "technical_details": [
-            "Evaluated across English-only and multilingual datasets",
-            "Accepted at EMNLP 2026",
-            "Evaluated on bits-per-byte and BLiMP benchmarks"
-          ],
-          "potential_impact": "Guides more principled construction of custom tokenizers for specialized code and multilingual language models.",
-          "action_type": "LEARN",
-          "action": "Review the BottomUpLL implementation to understand how bottom-up vocabulary selection impacts LLM context window efficiency.",
-          "evidence": []
-        },
-        {
-          "event_id": "evt-panorama-panoptic-grounded-captioning",
-          "title": "PANORAMA: Panoptic Grounded Captioning via Proposal Selection",
-          "category": "AI Research & Multimodal Models",
-          "primary_url": "https://arxiv.org/abs/2609.19143",
-          "supporting_urls": [],
-          "importance": 7,
-          "relevance": 7,
-          "actionability": 7,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "PANORAMA links VLM textual phrase generation directly to pixel-level segment masks via phrase-conditioned proposal selection.",
-          "what_happened": "Researchers created PanoCaps and PANORAMA, a VLM framework conditioning pretrained segmenters on textual phrase representations to select precise entity-level masks.",
-          "what_changed": "Prior grounded VLMs produced either incomplete descriptions or inaccurate masks; PANORAMA unifies detailed text generation with precise multi-instance pixel segmentation.",
-          "why_it_matters": "Enables visual GUI and computer-use agents to ground text referring expressions directly to exact pixel boundaries and UI element masks.",
-          "key_takeaways": [
-            "Conditions segmenters directly on phrase representations for joint captioning and mask selection",
-            "Generalized Panoptic Quality (gPQ) metric evaluates textual and mask consistency jointly",
-            "Supports single-region and multi-instance referring phrase grounding"
-          ],
-          "technical_architecture": [
-            "Phrase-conditioned mask proposal pool generated from pretrained segmenter",
-            "VLM selection head mapping textual referring expressions to candidate masks",
-            "Joint loss optimization balancing caption fluency and segmentation accuracy"
-          ],
-          "technical_details": [
-            "PanoCaps benchmark with human-annotated entity-level alignment",
-            "Supports both foreground objects and background region segmentation",
-            "Code and dataset publicly released"
-          ],
-          "potential_impact": "Improves visual grounding accuracy for autonomous computer-use agents operating on complex graphical interfaces.",
-          "action_type": "TRY",
-          "action": "Test PANORAMA open-source code to evaluate phrase-to-mask mapping performance on web browser and UI element detection tasks.",
-          "evidence": []
-        },
-        {
-          "event_id": "evt-audio-video-force-aware-manipulation",
-          "title": "Audio-Visual Force Profiling for Closed-Loop Manipulation Agents",
-          "category": "Embodied AI & Robotics",
-          "primary_url": "https://arxiv.org/abs/2609.19137",
-          "supporting_urls": [],
-          "importance": 7,
-          "relevance": 7,
-          "actionability": 6,
-          "source_quality": 8,
-          "confidence": 88,
-          "tldr": "Researchers use generated contact sound loudness to derive time-varying force profiles for zero-shot robotic force regulation.",
-          "what_happened": "A novel pipeline combines video and audio generation models to extract kinematic trajectories and desired contact force profiles from natural language prompts.",
-          "what_changed": "Generative video baselines produce purely kinematic trajectories lacking force; this framework uses generated contact sound intensity to shape dynamic force profiles.",
-          "why_it_matters": "Shows how multimodal generative models can create rich physical world feedback representations for closed-loop execution controllers without physical force sensors.",
-          "key_takeaways": [
-            "Generated contact audio loudness maps directly to desired physical force profiles",
-            "Closed-loop force regulators track sound-shaped profiles during task execution",
-            "Serves as an automated synthetic data generation engine for physical policy training"
-          ],
-          "technical_architecture": [
-            "Text-to-Video and Text-to-Audio generative models driven by task prompts",
-            "Sound loudness envelope extractor converting decibels to target contact forces",
-            "Closed-loop force regulator on Franka Panda tracking trajectory and target force"
-          ],
-          "technical_details": [
-            "Tested zero-shot on physical Franka Panda robot arm",
-            "Outperforms kinematic-only video trajectory generation baselines",
-            "Synthetic data generation engine for contact-rich tasks"
-          ],
-          "potential_impact": "Enables low-cost multimodal simulation of tactile and force feedback for physical agent policy training.",
-          "action_type": "LEARN",
-          "action": "Examine how multimodal generation can synthesize non-visual feedback channels (e.g. audio loudness) into numeric control parameters.",
-          "evidence": []
-        }
-      ],
-      "trends": [
-        "In-context agent deployment over weight fine-tuning for complex real-world control loops",
-        "Zeroth-order alignment techniques gaining traction to solve DPO likelihood displacement issues",
-        "Multimodal state grounding combining text, pixel masks, and synthetic audio for environment interaction"
-      ]
-    },
     {
       "date": "2026-09-17",
       "summary": "Today's releases highlight critical advancements in securing AI agent tool calls and optimizing multi-step workflows. AWS and Microsoft established production patterns for identity-aware MCP servers and OAuth session binding across agent hosts. Additionally, TypeSafe launched Jev for sub-millisecond agent routing, while Google open-sourced specialized AGENTS.md context sidecars for Claude Code.",
@@ -8160,13 +8065,201 @@
         "აგენტების ხარჯების კონტროლი და ტოკენების პროგნოზირება (TokenCast) კრიტიკული ხდება.",
         "Google და AWS აფართოებენ აგენტურ ინფრასტრუქტურას ოფიციალური API-ებით და სერვერებით."
       ]
+    },
+    {
+      "date": "2026-09-30",
+      "summary": "გამოვიდა ახალი ღია კოდის asynchronous agent ჰარნესები და კონტექსტის მართვის ინსტრუმენტები. ეს სიახლეები საშუალებას გვაძლევს, უფასო ტულებით დავტესტოთ რთული აგენტური ციკლები.",
+      "events": [
+        {
+          "event_id": "evt-openharness-coding-agents-command-center",
+          "title": "OpenHarness: The Ultimate Open-Source Command Center for Multi-Agent Coding",
+          "category": "AI Coding Tools და Agent Architecture",
+          "primary_url": "https://github.com/autonomous-ai/openharness",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 10,
+          "source_quality": 8,
+          "confidence": 95,
+          "tldr": "OpenHarness აერთიანებს Claude Code, Codex და სხვა აგენტებს ერთ ადგილას, tmux პანელებისა და P2P ტერმინალების გამოყენებით.",
+          "what_happened": "გამოვიდა open-source პროექტი openharness, რომელიც აერთიანებს სხვადასხვა AI კოდირების აგენტს და მოწყობილობას.",
+          "what_changed": "ცალკეული აგენტების ხელით მართვიდან გადავდივართ ერთიან კლავიატურაზე ორიენტირებულ ბრძანების ცენტრზე.",
+          "why_it_matters": "გაძლევს სრულ კონტროლს შენს აგენტებზე ერთი ეკრანიდან, ყოველგვარი ფასიანი სერვისების გარეშე.",
+          "key_takeaways": [
+            "ყველა აგენტი მუშაობს საკუთარ tmux პანელში.",
+            "მხარს უჭერს ლოკალურ მოდელებს Ollama-სა და vLLM-ის მეშვეობით.",
+            "არ გამოიყენებს ელექტრონს, არის სწორი ნატივ აპლიკაცია."
+          ],
+          "technical_architecture": [
+            "Native desktop app with Go/Rust backend components",
+            "tmux integration for process isolation",
+            "P2P encrypted relay for multi-device communication"
+          ],
+          "technical_details": [
+            "Reads transcripts and vendor hooks directly",
+            "Uses worktree per harness for clean working copies",
+            "Configurable via a single JSONC file"
+          ],
+          "potential_impact": "დეველოპერის პროდუქტიულობა იზრდება მრავალი აგენტის ერთდროული მართვით ყოველგვარი გამოწერის ხარჯის გარეშე.",
+          "action_type": "BUILD",
+          "action": "დააინსტალირე OpenHarness შენს მანქანაზე და დააკავშირე ერთი ლოკალური მოდელი Ollama-დან.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value",
+            "Real Business Opportunity"
+          ],
+          "verified_facts": [
+            "OpenHarness is an open-source native app serving as a command center for multiple coding agents.",
+            "It runs agents in dedicated tmux panes, reading transcripts and vendor hooks without wrapping them.",
+            "Supports local models via Grid, Ollama, MLX-LM, and vLLM with end-to-end P2P encryption."
+          ],
+          "interpretation": "ღია კოდის ჰარნესები საშუალებას აძლევს ინდივიდუალურ დეველოპერებს მართონ მრავალი აგენტი ერთი ფანჯრიდან.",
+          "uncertainty": "როგორ იმუშავებს რესურსების მართვა სუსტ ლეპტოპებზე მრავალი აგენტის ერთდროული გაშვებისას.",
+          "counter_argument": "ცალკეული ტერმინალების გამოყენება უფრო მარტივია, ვიდრე ერთიანი კომპლექსური ჰარნესის დასტაბილურება.",
+          "strategic_assessment": "გამოიყენე OpenHarness შენი კოდირების აგენტების გასაერთიანებლად და ინფრასტრუქტურის ხარჯების შესამცირებლად.",
+          "time_horizon": "mid-term",
+          "what_could_change": "დეველოპმენტის პროცესი გადავა ერთიანი აგენტური მართვის ცენტრიდან მრავალი აგენტის ავტონომიურ კოორდინაციაზე.",
+          "risks": [
+            "მაღალი RAM მოხმარება მრავალი აგენტის ფონზე",
+            "კონფიგურაციის სირთულე JSONC ფაილებში",
+            "პერიფერიული მოწყობილობების სინქრონიზაციის ხარვეზები"
+          ],
+          "non_obvious_opportunity": "შეგიძლია დააკავშირო შენი სახლის ძველი კომპიუტერი და ლეპტოპი ერთიან ჰარნესში უფასო ძალის მისაღებად.",
+          "fit_assessment": "ძალიან უხდება 16 წლის დეველოპერს, რომელიც ცდილობს მაქსიმალური ეფექტურობა მიიღოს უფასო ან იაფფასიანი ინსტრუმენტებით."
+        },
+        {
+          "event_id": "evt-async-llm-asyncio-agents",
+          "title": "LLMs are General Asynchronous Agents: AsyncLLM Open-Source Framework",
+          "category": "აგენტების ინფრასტრუქტურა და Runtime",
+          "primary_url": "https://huggingface.co/papers/2609.35427",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "AsyncLLM framework მოაქვს Python asyncio coroutines პირდაპირ LLM inference ძრავში, რაც უზრუნველყოფს მრავალამოცანიან პარალელურ აგენტებს.",
+          "what_happened": "Yandex Research-ის მკვლევარებმა წარმოადგინეს AsyncLLM, რომელიც საშუალებას აძლევს LLM-ებს იმუშაონ asynchronous რეჟიმში.",
+          "what_changed": "სერიული read-think-act ციკლიდან გადავდივართ პარალელურ cache-block აგენტურ მუშაობაზე.",
+          "why_it_matters": "გაძლევს საშუალებას ააგო რეალურ დროში მოქმედი აგენტები დამატებითი წვრთნის გარეშე.",
+          "key_takeaways": [
+            "კონკურენცია ხორციელდება inference დონეზე და არა API გამოძახებებს გარეთ.",
+            "გამოიყენებს Python asyncio მოვლენებსა და კორუტინებს.",
+            "აგენტები კითხულობენ ერთმანეთის ვითარებად მდგომარეობას cache-block მეხსიერებიდან."
+          ],
+          "technical_architecture": [
+            "Mini-SGLang inference engine backend",
+            "Python asyncio event loops and queues",
+            "Shared cache blocks for overlapping memory states"
+          ],
+          "technical_details": [
+            "Supports full attention and Gated DeltaNet models",
+            "Uses standard asyncio locks and events for coordination",
+            "Enables streaming video and monitoring tasks concurrently"
+          ],
+          "potential_impact": "ამცირებს რეალურ დროში აგენტების პასუხის დროს და ხსნის ახალ გზებს ხმოვანი და ვიდეო ასისტენტებისთვის.",
+          "action_type": "TRY",
+          "action": "ჩამოქაჩე AsyncLLM რეპოზიტორი და დატესტე Python asyncio coroutines ინტეგრაცია მარტივ LLM სკრიპტში.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value",
+            "Real Business Opportunity"
+          ],
+          "verified_facts": [
+            "AsyncLLM lets pretrained LLMs observe, reason and act concurrently without task-specific training.",
+            "Concurrency lives inside inference using Python asyncio coroutines and cache blocks.",
+            "The framework is built on Mini-SGLang and supports full attention and Gated DeltaNet models."
+          ],
+          "interpretation": "კონკურენტული და asynchronous აგენტური არქიტექტურა ცვლის სერიული ციკლების ძველ მიდგომას.",
+          "uncertainty": "რამდენად სტაბილურია Mini-SGLang ბაზაზე აწყობილი კორუტინები დაბალი ბიუჯეტის სერვერებზე.",
+          "counter_argument": "სერიული agent loop უფრო მარტივი დასადებგრია და ნაკლებ ძალისხმევას მოითხოვს.",
+          "strategic_assessment": "შეისწავლე asyncio-ზე დაფუძნებული აგენტური არქიტექტურა, რადგან მომავლის სისტემები მოითხოვს პარალელურ რეაგირებას.",
+          "time_horizon": "mid-term",
+          "what_could_change": "მომხმარებელთან ინტერაქცია გახდება რეალურ დროში პარალელური, რაც გაбუქებს ძველ სერიულ tool calling მიდგომებს.",
+          "risks": [
+            "კორუტინების სინქრონიზაციის სირთულე",
+            "არასწორი მეხსიერების გაზიარება",
+            "ከፍተኛ ტოკენების მოხმარება"
+          ],
+          "non_obvious_opportunity": "შეგიძლია შექმნა მცირე ბიუჯეტის მქონე რეალურ დროში მოსმენის აგენტი.",
+          "fit_assessment": "იდეალურია Python-ის ცოდნის მქონე დეველოპერისთვის, რომელიც ცდილობს გასცდეს მარტივი რიგიანი სკრიპტების საზღვრებს."
+        },
+        {
+          "event_id": "evt-thinking-before-thinking-meta-reasoning",
+          "title": "Thinking Before Thinking: Scaling Agentic Inference Through Meta-Reasoning",
+          "category": "AI Research & Agent Architecture",
+          "primary_url": "https://arxiv.org/abs/2609.38147",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 88,
+          "tldr": "მეტა-მსჯელობის ჰარნესი იყენებს ცალკე კონტროლერს, რომელიც გეგმავს და ანაწილებს სამუშაოს აგენტებს შორის, ზრდის რა რეზულტატის სიზუსტეს.",
+          "what_happened": "წარმოდგენილია კვლევა, სადაც აგენტური დასკვნა მართულია ცალკე მეტა-კონტროლერის მიერ.",
+          "what_changed": "პირდაპირი თანმიმდევრული პრომპტებიდან გადავდივართ კონტროლერით მართულ სტრუქტურირებულ გამოთვლებზე.",
+          "why_it_matters": "გაჩვენებს როგორ უნდა ააგო უფრო რთული აგენტური სისტემები, რომლებიც არ იბნევიან გრძელვადიან დავალებებში.",
+          "key_takeaways": [
+            "კონტროლერი ამუშავებს მხოლოდ მოკლე შემაჯამებელ ისტორიას და არა მთელ ჟურნალს.",
+            "აუმჯობესებს კოდის რეკონსტრუქციის შედეგებს 13 პროცენტზე მეტად.",
+            "ამცირებს განმეორებით შეცდომებს გრძელი სესიების დროს."
+          ],
+          "technical_architecture": [
+            "Inference-time meta-reasoning harness",
+            "Dedicated controller model for task distribution",
+            "Persistent memory state for worker coordination"
+          ],
+          "technical_details": [
+            "Evaluated on ProgramBench and multi-domain reasoning suites",
+            "Prevents history replaying by keeping compact state accounts",
+            "Optimizes budget allocation across parallel worker prompts"
+          ],
+          "potential_impact": "იძლევა საშუალებას აგენტებმა წარმატებით დაასრულონ ისეთი რთული მრავალსაათიანი ამოცანები, სადაც ძველი მოდელები იჭრებოდნენ.",
+          "action_type": "LEARN",
+          "action": "დაწერე პითონის მარტივი კლასი, რომელიც ყოფს რთულ დავალებას ქვედა ამოცანებად და აგზავნის ცალკეულ API გამოძახებებში.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "Agentic meta-reasoning introduces an inference-time harness making control choices explicit.",
+            "A controller consolidates run state, explores options, and dispatches work with persistent memory context.",
+            "On ProgramBench, meta-reasoning achieved 71.5% with GPT-5.5 compared to 58.0% for direct Codex."
+          ],
+          "interpretation": "კონტროლერის დამატება, რომელიც მართავს მუშა აგენტებს, მკვეთრად აუმჯობესებს გრძელვადიან დავალებებს.",
+          "uncertainty": "მეტა-მსჯელობის დამატება ზრდის გამოთვლით ხარჯებს და ლატენტობას მცირე ბიუჯეტის სისტემებისთვის.",
+          "counter_argument": "პირდაპირი მოდელის მართვა უფრო იაფია და მცირე ამოცანებისთვის მეტა-კონტროლერი ზედმეტი სირთულეა.",
+          "strategic_assessment": "ისწავლე მორგებული კონტროლერების აგება, რომლებიც არიგებენ სამუშაოს მცირე მოდელებზე.",
+          "time_horizon": "mid-term",
+          "what_could_change": "აგენტების არქიტექტურა გადავა ერთიანი პრომპტიდან იერარქიულ, კონტროლერზე დამყარებულ სისტემებზე.",
+          "risks": [
+            "ზედმეტი გამოთვლითი ხარჯები მცირე ამოცანებზე",
+            "კონტროლერის ჰალუცინაცია დავალებების გადანაწილებისას",
+            "ინფრასტრუქტურული სირთულე"
+          ],
+          "non_obvious_opportunity": "შეგიძლია შექმნა ორსაფეხურიანი აგენტი, სადაც პატარა მოდელი მუშაობს კონტროლერად, ხოლო უფასო API მუშაობს შემსრულებლად.",
+          "fit_assessment": "ძალიან სასარგებლოა აგენტური არქიტექტურის შესასწავლად, გაძლევს წარმოდგენას რეალურ production სისტემებზე."
+        }
+      ],
+      "trends": [
+        "Asynchronous agent architectures replacing serial tool-calling loops.",
+        "Open-source multi-agent command centers running locally via Ollama and vLLM.",
+        "Meta-reasoning and controller-based harnesses for long-horizon reliability."
+      ]
     }
   ],
   "learning_queue": [
-    "MCP (Model Context Protocol) არქიტექტურა და ტუელების გამოძახების უსაფრთხოება.",
-    "LLM API-ების ტოკენების ოპტიმიზაცია და prompt caching პრინციპები."
+    "Python asyncio მოდული და თანმდევი კორუტინების მართვა",
+    "Model Context Protocol (MCP) უსაფრთხოების და ინტეგრაციის პრინციპები",
+    "Agent state persistence და memory management მეთოდები"
   ],
-  "last_run": "2026-09-29T16:25:02.262233+00:00",
+  "last_run": "2026-09-30T16:20:29.849165+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -8230,12 +8323,14 @@
     "arxiv:2609.30227",
     "arxiv:2609.31619",
     "arxiv:2609.35760",
-    "arxiv:2609.35750"
+    "arxiv:2609.35750",
+    "arxiv:2609.35427",
+    "arxiv:2609.38147"
   ],
   "last_report_files": {
-    "markdown": "data/reports/2026-09-29/report.md",
-    "json": "data/reports/2026-09-29/report.json",
-    "newsletter": "data/reports/2026-09-29/newsletter.md",
-    "social": "data/reports/2026-09-29/social_posts.txt"
+    "markdown": "data/reports/2026-09-30/report.md",
+    "json": "data/reports/2026-09-30/report.json",
+    "newsletter": "data/reports/2026-09-30/newsletter.md",
+    "social": "data/reports/2026-09-30/social_posts.txt"
   }
 }
