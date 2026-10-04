@@ -185,7 +185,12 @@
     "https://huggingface.co/papers/2610.01762",
     "https://arxiv.org/abs/2610.02199",
     "https://aws.amazon.com/blogs/machine-learning/scaling-cloud-migrations-with-agentic-ai-on-amazon-bedrock-agentcore",
-    "https://arxiv.org/abs/2610.02202"
+    "https://arxiv.org/abs/2610.02202",
+    "https://arxiv.org/abs/2610.02204",
+    "https://arxiv.org/abs/2610.02200",
+    "https://ai.google.dev/gemini-api/docs/pricing",
+    "https://aws.amazon.com/developer/generative-ai",
+    "https://www.anthropic.com/research/glm-5-3-and-the-spread-of-advanced-cyber-capabilities"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -327,182 +332,14 @@
     "evt-onestreamer-streaming-video",
     "evt-taco-ternary-optimizer",
     "evt-aws-bedrock-mcp-migrations",
-    "evt-scholarcatalyst-benchmark"
+    "evt-scholarcatalyst-benchmark",
+    "evt-rpg-embodied-agent-self-improvement",
+    "evt-vista-visual-agent-harness",
+    "evt-gemini-3-8-flash-pricing-context-caching",
+    "evt-aws-strands-mcp-agent-sdk",
+    "evt-anthropic-glm53-cyber-exploit-analysis"
   ],
   "events": [
-    {
-      "event_id": "evt-sp3o-ppo-critic-learning",
-      "title": "SP3O: PPO Value Flattening პრობლემის გადაჭრა სფარსული სუპერვიზიით LLM RL წვრთნაში",
-      "category": "AI Research / Reinforcement Learning",
-      "primary_url": "https://huggingface.co/papers/2609.18708",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 8,
-      "actionability": 7,
-      "source_quality": 8,
-      "confidence": 90,
-      "tldr": "SP3O აჩვენებს, რომ PPO-ში Critic-ის Value Loss-ის მხოლოდ რამდენიმე დაშორებულ მდგომარეობაზე გამოყენება ხსნის Value Flattening შეცდომას და ზრდის RL-ის ეფექტურობას.",
-      "what_happened": "Shanghai AI Laboratory-ს მკვლევრებმა აღმოაჩინეს კრიტიკული შეცდომის რეჟიმი PPO-ს კრიტიკოსში (Critic Network), რომელსაც უწოდეს 'Value Flattening': რეალური მდგომარეობის მნიშვნელობები მკვეთრად იცვლება, ხოლო Critic-ის პროგნოზები ბრტყელი რჩება. მათ წარადგინეს Sparse PPO (SP3O), სადაც Value Loss გამოიყენება მხოლოდ 3 კარგად დაშორებულ მდგომარეობაზე თითოეულ პასუხში.",
-      "what_changed": "ტრადიციულ PPO-ში Critic Loss ითვლება პასუხის ყოველ ტოკენზე/მდგომარეობაზე, რაც ქმნის დროითად კორელირებულ რredundant განახლებებს და აფუჭებს Value ფუნქციას. SP3O-ს სფარსული supervision ამცირებს ამ ხმაურს და ზრდის პოლიტიკის ხარისხს.",
-      "why_it_matters": "მნიშვნელოვანია LLM Fine-tuning-ისა და RLHF/RLAIF ინჟინრებისთვის. აჩვენებს, რომ ნაკლები, पण უფრო ხარისხიანი სუპერვიზია კრიტიკოსის წვრთნისას უკეთეს შედეგს იძლევა.",
-      "key_takeaways": [
-        "Value Flattening Failure: PPO Critic-ის მიერ რეალური ფასეულობების ცვლილების ვერ-ასახვა.",
-        "Sparse Supervision: მხოლოდ 3 მდგომარეობის სუპერვიზია თითო პასუხზე სრულად ხსნის პრობლემას.",
-        "Qwen3 Performance: სტაბილური გაუმჯობესება Qwen3-Base მოდელებზე ყველა მასშტაბში."
-      ],
-      "technical_architecture": [
-        "Sparse Value Loss: Value loss-ის შეზღუდვა temporally correlated states-ის გამოტოვებით.",
-        "Implicit Variance Penalty Mitigation: Critic loss-ის ვარიაციული პენალტის შემცირება."
-      ],
-      "technical_details": [
-        "კოდი ხელმისაწვდომია: `github.com/Dodojordi/SP3O`.",
-        "პროექტი: `dodojordi.github.io/SP3O/`."
-      ],
-      "potential_impact": "გაამარტივებს და გახდის უფრო ეფექტურს LLM-ების PPO განმტკიცებით სწავლებას.",
-      "action_type": "LEARN",
-      "action": "გადახედეთ SP3O-ს GitHub რეპოზიტორიას და გაეცანით, თუ როგორ ხდება PPO Critic Loss-ის ოპტიმიზაცია ლოკალურ RL პაიპლაინებში.",
-      "evidence": []
-    },
-    {
-      "event_id": "evt-mcp-apps-bedrock",
-      "title": "MCP Apps Standard & Bedrock AgentCore: Interactive HTML UI Rendering inside AI Hosts",
-      "category": "MCP / Agent Tooling & UI",
-      "primary_url": "https://aws.amazon.com/blogs/machine-learning/build-interactive-mcp-apps-using-amazon-bedrock-agentcore",
-      "supporting_urls": [],
-      "importance": 9,
-      "relevance": 10,
-      "actionability": 9,
-      "source_quality": 10,
-      "confidence": 95,
-      "tldr": "The Model Context Protocol (MCP) is extended with MCP Apps, enabling servers to render interactive, host-agnostic HTML widgets directly in ChatGPT and Claude via Bedrock AgentCore runtime.",
-      "what_happened": "AWS detailed how Amazon Bedrock AgentCore Runtime and Gateway support the new MCP Apps extension, allowing MCP servers to serve rich HTML UI widgets instead of plain text responses.",
-      "what_changed": "Before, MCP tool outputs were strictly plain text or markdown, forcing host LLMs to synthesize text tables or code blocks. Now, MCP Apps standardizes embedding interactive HTML cards, forms, and widgets directly in host UIs like ChatGPT and Claude.",
-      "why_it_matters": "Decouples custom UI logic from specific AI chat platforms, allowing developers to build a single serverless MCP server on Bedrock AgentCore that serves interactive tools identically across all major AI hosts.",
-      "key_takeaways": [
-        "MCP Apps standard extends MCP with host-agnostic HTML widgets.",
-        "Bedrock AgentCore Gateway provides session-isolated, serverless execution endpoints for MCP Apps.",
-        "Reduces plain-text context pollution while improving user interaction flow."
-      ],
-      "technical_architecture": [
-        "Host-agnostic MCP Apps protocol extension.",
-        "AgentCore Runtime for session-isolated serverless tool execution.",
-        "AgentCore Gateway exposing single secure endpoint for host communication."
-      ],
-      "technical_details": [
-        "HTML/JS widgets rendered in sandboxed host iframes.",
-        "Supports contextual text fallback when rich UI is unnecessary.",
-        "Native integration with ChatGPT and Claude client hosts."
-      ],
-      "potential_impact": "Standardizes the UI layer for AI agents, making custom text-only UI hacks obsolete.",
-      "action_type": "BUILD",
-      "action": "Create a local Python MCP server returning an interactive HTML table widget for SQL query results and test it in Claude Desktop.",
-      "evidence": []
-    },
-    {
-      "event_id": "evt-agora-git-shared-memory",
-      "title": "Agora: Git-Based Shared Memory DAG for Decentralized Multi-Agent AutoResearch",
-      "category": "Multi-Agent Systems / Agent Memory & Research",
-      "primary_url": "https://huggingface.co/papers/2609.18094",
-      "supporting_urls": [],
-      "importance": 9,
-      "relevance": 10,
-      "actionability": 9,
-      "source_quality": 8,
-      "confidence": 90,
-      "tldr": "Agora introduces Git as an append-only DAG shared memory for multi-agent research loops, allowing 13 LLM agents to collaborate asynchronously without redundant exploration.",
-      "what_happened": "Researchers from NVIDIA introduced Agora, a decentralized architecture where AI research agents log hypotheses, code edits, and evaluation results as immutable Git commits in a Directed Acyclic Graph (DAG).",
-      "what_changed": "Before, running multiple AutoResearch agents in parallel caused duplicated search paths as each agent started from scratch. Agora turns Git into shared memory where every claim is an actionable, checkable commit.",
-      "why_it_matters": "Demonstrates how standard version control (Git) can act as long-term shared state memory for swarm research without requiring a centralized master orchestrator.",
-      "key_takeaways": [
-        "1,703 contributions over 12 days by 13 autonomous LLM agents.",
-        "Git DAG index exposes research frontier, unverified claims, and neglected branches.",
-        "Diversity-aware selection rule prevents agents from prematurely collapsing on a single solution."
-      ],
-      "technical_architecture": [
-        "Append-only Git DAG commit log as state storage.",
-        "Derived index parser tracking research frontier and verification status.",
-        "Asynchronous worker loop checking out and validating ancestor commits."
-      ],
-      "technical_details": [
-        "Closed 62% of the gap to trained GPT-2 124M on a zero-data weight-transfer task.",
-        "Tested across 165 independent agent verifications.",
-        "Zero central planner node required."
-      ],
-      "potential_impact": "Establishes Git-based DAGs as a scalable architecture for collaborative multi-agent open-source development.",
-      "action_type": "BUILD",
-      "action": "Implement a simple Git-backed DAG logger in Python for your coding scripts, committing task hypotheses and execution metrics automatically.",
-      "evidence": []
-    },
-    {
-      "event_id": "evt-gemini-38-live",
-      "title": "Gemini 3.8 Live & Extended Thinking: Asynchronous Background Multi-Step Tool Execution",
-      "category": "LLM API / Voice & Real-Time Agents",
-      "primary_url": "https://deepmind.google/blog/introducing-gemini-3-8-live-and-3-8-live-extended-thinking",
-      "supporting_urls": [],
-      "importance": 9,
-      "relevance": 9,
-      "actionability": 8,
-      "source_quality": 10,
-      "confidence": 95,
-      "tldr": "DeepMind launched Gemini 3.8 Live and Extended Thinking, enabling real-time voice interaction with parallel background tool execution and extended multi-step reasoning.",
-      "what_happened": "Google DeepMind released Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking in the Gemini API and Workspace, supporting real-time visual grounding and background tool execution.",
-      "what_changed": "Previous real-time voice APIs locked the execution loop during tool calls or reasoning. Gemini 3.8 Live Extended Thinking executes multi-step tool calls and reasoning in the background while maintaining audio conversation flow.",
-      "why_it_matters": "Removes latency bottlenecks in voice agent loops, allowing complex agentic actions (like database lookups or external API calls) to run concurrently with conversation.",
-      "key_takeaways": [
-        "Dual model release: 3.8 Live for low-cost fluid interaction, 3.8 Live Extended Thinking for complex tasks.",
-        "Background task execution eliminates pause-and-wait voice interaction bottlenecks.",
-        "Supports real-time visual context and multilingual switching."
-      ],
-      "technical_architecture": [
-        "Full-duplex streaming audio pipeline.",
-        "Parallel reasoning worker threads decoupled from audio output buffer.",
-        "Real-time visual context injection interface."
-      ],
-      "technical_details": [
-        "Accessible via Gemini API, Search, and Google Workspace.",
-        "Extended thinking mode exposes reasoning trace logs for inspection.",
-        "Optimized for high-concurrency low-latency deployment."
-      ],
-      "potential_impact": "Paves the way for fluid, human-like voice agents that perform complex work while talking.",
-      "action_type": "TRY",
-      "action": "Test Gemini 3.8 Live via Gemini API with a Python script that streams microphone audio while invoking a background tool.",
-      "evidence": []
-    },
-    {
-      "event_id": "evt-llama-4-scout-maverick",
-      "title": "Meta Llama 4 Scout & Maverick: Natively Multimodal MoE Open-Weight Foundation Models",
-      "category": "Open Source AI / Foundation Models",
-      "primary_url": "https://ai.meta.com/Open",
-      "supporting_urls": [],
-      "importance": 9,
-      "relevance": 9,
-      "actionability": 8,
-      "source_quality": 10,
-      "confidence": 95,
-      "tldr": "Meta announced Llama 4 Scout and Maverick, transitioning the Llama architecture to natively multimodal, mixture-of-experts (MoE) designs with Llama Stack support.",
-      "what_happened": "Meta unveiled Llama 4 Scout and Llama 4 Maverick, the first open-weight models in the Llama 4 family featuring native vision/audio/text multimodality and MoE scaling.",
-      "what_changed": "Llama 3 relied on dense transformer blocks and late-fusion vision wrappers. Llama 4 moves to native multimodal architecture and MoE, dramatically increasing context capacity and execution speed.",
-      "why_it_matters": "Brings state-of-the-art natively multimodal MoE models to open weights, making local and self-hosted visual/multimodal agents significantly cheaper and faster to run.",
-      "key_takeaways": [
-        "Native multimodality removes visual encoding bottlenecks.",
-        "Mixture-of-Experts architecture delivers high compute efficiency per token.",
-        "Full compatibility with Llama Stack and Llama API."
-      ],
-      "technical_architecture": [
-        "Natively multimodal unified transformer architecture.",
-        "Mixture-of-Experts (MoE) sparse routing layers.",
-        "Native Llama Stack deployment orchestration."
-      ],
-      "technical_details": [
-        "Industry-leading context window lengths.",
-        "Designed for rapid deployment via Llama API and local runtimes.",
-        "Committed open grants for global ecosystem development."
-      ],
-      "potential_impact": "Accelerates local open-source multimodal agent development without relying on proprietary cloud APIs.",
-      "action_type": "APPLY",
-      "action": "Prepare your local agent evaluation setup (Ollama or vLLM) to benchmark MoE multimodal architectures as Llama 4 weights roll out.",
-      "evidence": []
-    },
     {
       "event_id": "evt-dom-reward-hacking-monitors",
       "title": "Internal Representation Probing: White-Box DoM Vectors for Low-Cost Agent Oversight",
@@ -5095,6 +4932,292 @@
       ],
       "non_obvious_opportunity": "შეგიძლიათ ააგოთ მარტივი და ეფექტური RAG სერვისი ადგილობრივი სტარტაპებისთვის ძვირადღირებული ფრეიმვორკების გარეშე.",
       "fit_assessment": "გეხმარებათ თავიდან აიცილოთ რთული აგენტური ჰარნესების ხაფანგი და ფოკუსირდეთ მარტივ, მუშა პროტოტიპებზე."
+    },
+    {
+      "event_id": "evt-rpg-embodied-agent-self-improvement",
+      "title": "RPG: აგენტების მართვადი თვითგანვითარება მოდელის წონების შეცვლის გარეშე",
+      "category": "AI Research / Agent Architecture",
+      "primary_url": "https://arxiv.org/abs/2610.02204",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "RPG ფრეიმვორკმა აჩვენა, რომ აგენტს შეუძლია 28.6%-დან 95%-მდე გაზარდოს წარმატება მხოლოდ ხელსაწყოებისა და prompt-ის განახლებით.",
+      "what_happened": "ბერკლის მკვლევარებმა შექმნეს RPG სისტემა, რომელიც შეცდომების დიაგნოსტიკის შემდეგ ქმნის ახალ symbolic skill-ებს და ანახლებს system prompt-ს.",
+      "what_changed": "მოდელის fine-tuning-ის გარეშე მიიღწევა frontier მოდელებზე უკეთესი სიზუსტე reusable კოდის ბიბლიოთეკით.",
+      "why_it_matters": "საშუალებას გაძლევს, უფასო ან იაფი მოდელებით ააგო თვითგანვითარებადი სისტემა კოდის გენერაციის ხარჯზე.",
+      "key_takeaways": [
+        "წარმატება გაიზარდა 28.6%-დან 95.0%-მდე 15 ციკლში",
+        "წონების შეცვლა არ არის საჭირო, იცვლება მხოლოდ prompt და skills",
+        "გამოიყენება reusable symbolic Python ფუნქციები"
+      ],
+      "technical_architecture": [
+        "Simulated execution feedback analyzer",
+        "Symbolic skill library synthesizer",
+        "Cross-task regression gate"
+      ],
+      "technical_details": [
+        "15 rounds practice cycle",
+        "95.0% success on 22 tasks",
+        "Zero-weight-update framework"
+      ],
+      "potential_impact": "შეამცირებს ძვირადღირებული fine-tuning-ის საჭიროებას აგენტურ ამოცანებში.",
+      "action_type": "BUILD",
+      "action": "შექმენი სკრიპტი, სადაც აგენტი წარუმატებელი დავალების შემდეგ წერს ახალ Python ფუნქციას და ინახავს tools.py ფაილში მომავალი გამოყენებისთვის.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "RPG აუმჯობესებს შესრულებას symbolic skill-ების და system prompt-ის ავტონომიური რედაქტირებით",
+        "22 მანიპულაციის დავალებაზე წარმატების მაჩვენებელი გაიზარდა 28.6%-დან 95.0%-მდე 15 რაუნდში",
+        "გადააჭარბა GPT-6 Astra Pro-ზე მომუშავე CaP-Agent0-ის ბაზისს (60.0%)"
+      ],
+      "interpretation": "აგენტების ევოლუციის საუკეთესო გზა არის შეცდომების დიაგნოსტიკა და reusable Python ხელსაწყოების ბიბლიოთეკის დინამიკური გენერაცია.",
+      "uncertainty": "სიმულაციიდან რეალურ გარემოში გადატანისას საჭიროებს დამატებით hardware-adaptation ეტაპს.",
+      "counter_argument": "დროთა განმავლობაში skill library შეიძლება გადაიტვირთოს დუბლირებული და არაოპტიმალური ფუნქციებით.",
+      "strategic_assessment": "დანერგე self-reflection და dynamic skill storage შენს პითონის აგენტებში; ეს ზრდის საიმედოობას.",
+      "time_horizon": "mid-term",
+      "what_could_change": "აგენტები თავად დაწერენ და შეამოწმებენ საკუთარ tool-ებს ტესტების საშუალებით run-time-ში.",
+      "risks": [
+        "არასწორი prompt mutation-ის გამო აგენტის დეგრადაცია",
+        "დაუსრულებელი self-improvement loop-ების რისკი"
+      ],
+      "non_obvious_opportunity": "ავტომატური unit-test გენერატორის მიბმა აგენტის მიერ შექმნილ ახალ ხელსაწყოებზე.",
+      "fit_assessment": "პირდაპირ პასუხობს მომხმარებლის მიზანს: self-improvement და tool calling-ის დახვეწა."
+    },
+    {
+      "event_id": "evt-vista-visual-agent-harness",
+      "title": "VISTA: Visual Harness და უდანაკარგო ვიზუალური მეხსიერება Multimodal აგენტებისთვის",
+      "category": "აგენტის არქიტექტურა და მეხსიერება",
+      "primary_url": "https://arxiv.org/abs/2610.02200",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 88,
+      "tldr": "VISTA-ს ვიზუალურმა ჰარნესმა და უდანაკარგო მეხსიერებამ Claude Opus 5.0-ს ARC-AGI-3-ზე 100%-იანი შედეგი დაადებინა.",
+      "what_happened": "MIT-ისა და კვლევითი ჯგუფების მიერ წარმოდგენილია VISTA, რომელიც multimodal მოდელებს აძლევს lossless visual memory-სა და დინამიკურ retrieval-ს.",
+      "what_changed": "მოდელები აღარ კარგავენ წინა ნაბიჯების ვიზუალურ კონტექსტს და მოქმედებენ ნაკლები ზედმეტი ნაბიჯით.",
+      "why_it_matters": "გაჩვენებს, რომ სწორი agent harness უფრო მნიშვნელოვანია შედეგისთვის, ვიდრე უბრალოდ უფრო დიდი მოდელის გამოყენება.",
+      "key_takeaways": [
+        "Lossless visual memory ინახავს გარემოს სუფთა მდგომარეობას",
+        "Action efficiency გაუმჯობესდა 57.4%-ით ადამიანებთან შედარებით",
+        "მუშაობს სტანდარტულ multimodal LLM API-ებთან დამატებითი fine-tuning-ის გარეშე"
+      ],
+      "technical_architecture": [
+        "Lossless visual history buffer",
+        "Active observation retrieval engine",
+        "Multimodal LLM inference connector"
+      ],
+      "technical_details": [
+        "ARC-AGI-3 benchmark evaluation",
+        "Claude Opus 5.0 integration",
+        "57.4% action reduction"
+      ],
+      "potential_impact": "შექმნის სტანდარტს ვიზუალური UI და თამაშების ავტომატიზაციის აგენტებისთვის.",
+      "action_type": "LEARN",
+      "action": "გააანალიზე VISTA-ს არქიტექტურა და დაწერე მარტივი Python კლასი, რომელიც აგენტის ნაბიჯების სურათებს ინახავს და ფილტრავს.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "VISTA ქმნის lossless visual memory-ს წარსული დაკვირვებების ორიგინალი სახით შესანახად",
+        "ARC-AGI-3 ბენჩმარკზე Claude Opus 5.0-ის შედეგი გაიზარდა 40.68-დან 100.00-მდე",
+        "აგენტმა 25-ვე საჯარო თამაში დაასრულა ადამიანზე 57.4%-ით ნაკლები მოქმედებით"
+      ],
+      "interpretation": "მოდელის უნარების გაზრდისთვის ხშირად საკმარისია არა თავად მოდელის შეცვლა, არამედ გარედან სწორი harness-ისა და მეხსიერების სტრუქტურის მიწოდება.",
+      "uncertainty": "უცნობია, რამდენად კარგად მასშტაბირდება ეს მიდგომა ვებ-ბრაუზინგის რეალურ, ხმაურიან DOM გარემოზე.",
+      "counter_argument": "სრული ვიზუალური ისტორიის შენახვა ზრდის context window-ს მოცულობას და API-ს გამოძახების ხარჯებს.",
+      "strategic_assessment": "შეისწავლე harness არქიტექტურა; აგენტის ლოგიკისა და მეხსიერების გამოყოფა არის საიმედო სისტემების ფუნდამენტი.",
+      "time_horizon": "mid-term",
+      "what_could_change": "აგენტების benchmark ტესტირება გახდება harness-ზე დამოკიდებული და არა მხოლოდ raw model-ის შესაძლებლობებზე.",
+      "risks": [
+        "მაღალი token consumption ვიზუალური ისტორიის გადაცემისას",
+        "API rate limit-ების გადაჭარბება სწრაფი ლუპებისას"
+      ],
+      "non_obvious_opportunity": "მარტივი Python Wrapper-ის აგება local screenshots-ის ინდექსირებისთვის CLI აგენტებში.",
+      "fit_assessment": "ზუსტად ერგება მომხმარებლის ინტერესს agent loops, memory და harness დიზაინის მიმართულებით."
+    },
+    {
+      "event_id": "evt-gemini-3-8-flash-pricing-context-caching",
+      "title": "Gemini 3.8 Flash: დეველოპერის ტარიფები, Context Caching და უფასო რესურსები",
+      "category": "LLM APIs და Cost Optimization",
+      "primary_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 10,
+      "confidence": 98,
+      "tldr": "Google-მა გამოაქვეყნა Gemini 3.8 Flash-ის ფასები: სრული უფასო ტარიფი, Context Caching და 5,000 უფასო Search grounding თვეში.",
+      "what_happened": "Google AI for Developers-მა განაახლა Gemini API ფასების გვერდი Gemini 3.8 Flash მოდელისთვის.",
+      "what_changed": "დეველოპერებს აქვთ წვდომა იაფ context caching-ზე და უფასო საძიებო grounding-ზე ავტონომიური აგენტებისთვის.",
+      "why_it_matters": "საშუალებას გაძლევს, ნულოვანი კაპიტალით ააშენო RAG და Web Search აგენტები Google Search API-ს უფასო კვოტით.",
+      "key_takeaways": [
+        "Google AI Studio-ში მოქმედებს Free Tier",
+        "5,000 უფასო Search/Maps grounding თვეში",
+        "Context caching $0.075 / 1M token-ზე ამცირებს მეხსიერების ხარჯებს"
+      ],
+      "technical_architecture": [
+        "Gemini 3.8 Flash runtime",
+        "Context Caching API engine",
+        "Search & Maps Grounding integration"
+      ],
+      "technical_details": [
+        "$0.75 input / $3.75 output per 1M",
+        "Context cache storage $0.50/1M/hr",
+        "5000 free search requests monthly"
+      ],
+      "potential_impact": "ხელს შეუწყობს უფასო და დაბალბიუჯეტიანი ავტონომიური აგენტების სწრაფ განვითარებას.",
+      "action_type": "APPLY",
+      "action": "აიღე უფასო Gemini API key Google AI Studio-დან და გატესტე Search Grounding მარტივ Python სკრიპტში.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Real Business Opportunity"
+      ],
+      "verified_facts": [
+        "Gemini 3.8 Flash ხელმისაწვდომია უფასო ტარებით Google AI Studio-ში",
+        "Paid Tier ფასი შეადგენს $0.75 / 1M input tokens და $3.75 / 1M output tokens…",
+        "Context caching ღირს $0.075 / 1M tokens და $0.50 საათში 1M token-ის შენახვა",
+        "მოყვება 5,000 უფასო Google Search და Maps grounding მოთხოვნა თვეში"
+      ],
+      "interpretation": "Gemini 3.8 Flash ხდება ერთ-ერთი ყველაზე ხელმისაწვდომი frontier-level მოდელი long-horizon აგენტური სამუშაოებისთვის.",
+      "uncertainty": "2027 წლიდან ფასები ორმაგდება ($1.50 input / $7.50 output).",
+      "counter_argument": "უფასო ტარიფზე მონაცემები გამოიყენება პროდუქტის გასაუმჯობესებლად, რაც კონფიდენციალურ მონაცემებს ზღუდავს.",
+      "strategic_assessment": "გამოიყენე Gemini 3.8 Flash უფასო ტარიფი და 5,000 უფასო Search grounding შენი საძიებო აგენტების ასაშენებლად.",
+      "time_horizon": "short-term",
+      "what_could_change": "მცირე ბიუჯეტიანი დეველოპერები შეძლებენ agentic search სისტემების აწყობას 0 ხარჯით.",
+      "risks": [
+        "Free tier rate limit-ები მაღალი დატვირთვისას",
+        "Grounding ლიმიტის ამოწურვის შემდეგ $14 ყოველ 1,000 მოთხოვნაზე"
+      ],
+      "non_obvious_opportunity": "Context caching-ის გამოყენება დიდი MCP documentation-ის და JSON schema-ების უფასოდ შესანახად.",
+      "fit_assessment": "იდეალურია 16 წლის დეველოპერისთვის: ნულოვანი ბიუჯეტით იძლევა უმაღლესი დონის tooling-ს."
+    },
+    {
+      "event_id": "evt-aws-strands-mcp-agent-sdk",
+      "title": "AWS Strands Agents: ღია კოდის Python SDK და MCP მხარდაჭერა",
+      "category": "აგენტების ინფრასტრუქტურა და MCP",
+      "primary_url": "https://aws.amazon.com/developer/generative-ai",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 9,
+      "source_quality": 10,
+      "confidence": 92,
+      "tldr": "AWS-მა გამოუშვა Strands Agents — მსუბუქი ღია კოდის Python SDK აგენტებისა და MCP კლიენტ/სერვერების სამართავად.",
+      "what_happened": "AWS Builder Center-მა გამოაქვეყნა Strands Agents SDK-ს გაიდები და MCP სერვერების ინტეგრაციის სახელმძღვანელოები.",
+      "what_changed": "აგენტის აწყობა, ხელსაწყოების მიბმა და MCP სერვერებთან დაკავშირება გამარტივდა მინიმალურ კოდში.",
+      "why_it_matters": "გაძლევს სუფთა, ინდუსტრიულ პატერნს, თუ როგორ უნდა დაიწეროს tool-calling და MCP ლოგიკა Python-ში.",
+      "key_takeaways": [
+        "ღია კოდის Python SDK მოდელ-აგნოსტიკური მიდგომით",
+        "ჩაშენებული MCP (Model Context Protocol) მხარდაჭერა",
+        "მარტივი გადართვა სხვადასხვა LLM პროვაიდერებს შორის"
+      ],
+      "technical_architecture": [
+        "Strands Agents Python SDK Core",
+        "Model Context Protocol (MCP) client/server",
+        "Local execution and debug logger"
+      ],
+      "technical_details": [
+        "Open source Python SDK",
+        "Multi-provider model support",
+        "MCP integration with Spring AI & Python"
+      ],
+      "potential_impact": "გაამარტივებს სტანდარტიზებული MCP ხელსაწყოების შექმნას და ინტეგრაციას.",
+      "action_type": "TRY",
+      "action": "გაეცანი Strands SDK-ს tool integration სტრუქტურას და შეადარე შენს მიერ დაწერილ Tool Calling ლოგიკას.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Short-term Opportunity"
+      ],
+      "verified_facts": [
+        "AWS-მა წარადგინა Strands Agents — ღია კოდის model-driven Python SDK აგენტებისთვის",
+        "მოიცავს Model Context Protocol (MCP) კლიენტებისა და სერვერების გაშვების გაიდებს",
+        "მხარს უჭერს custom tools-ის ინტეგრაციას, local debugging-ს და მოდელის პროვაიდერების მარტივ ცვლას"
+      ],
+      "interpretation": "ინდუსტრია გადადის მსუბუქ, მოდელ-აგნოსტიკურ Python SDK-ებზე, სადაც MCP არის მთავარი დამაკავშირებელი პროტოკოლი.",
+      "uncertainty": "დოკუმენტაციის ნაწილი ფოკუსირებულია Bedrock-ზე, თუმცა SDK ღია კოდისაა და ლოკალურადაც მუშაობს.",
+      "counter_argument": "ბაზარზე უკვე ბევრი მსგავსი SDK არსებობს (LangGraph, CrewAI, Autogen) და ახალი SDK-ს სწავლა დროს მოითხოვს.",
+      "strategic_assessment": "შეისწავლე Strands SDK-ს tool integration პატერნები; MCP სტანდარტის გაგება პირდაპირ ზრდის შენს საინჟინრო ფასს.",
+      "time_horizon": "short-term",
+      "what_could_change": "სტანდარტიზებული MCP სერვერები ჩაანაცვლებს ფრეიმვორკზე მიბმულ custom tool wrapper-ებს.",
+      "risks": [
+        "AWS Bedrock-ზე ზედმეტი დამოკიდებულება, თუ ლოკალურ მოდელებს არ გამოიყენებ",
+        "SDK-ს ადრეული ვერსიის შეცდომები"
+      ],
+      "non_obvious_opportunity": "საკუთარი ლოკალური MCP სერვერის აწყობა და მისი მიერთება ნებისმიერ ღია SDK-ზე.",
+      "fit_assessment": "იდეალურად ემთხვევა მომხმარებლის მიმდინარე მიზანს: MCP და agent loops Python-ში."
+    },
+    {
+      "event_id": "evt-anthropic-glm53-cyber-exploit-analysis",
+      "title": "Anthropic-ის ანალიზი: GLM-5.3-ის კიბერ-შესაძლებლობები და უსაფრთხოების გარღვევა",
+      "category": "აგენტების უსაფრთხოება და Governance",
+      "primary_url": "https://www.anthropic.com/research/glm-5-3-and-the-spread-of-advanced-cyber-capabilities",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 7,
+      "actionability": 7,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "Anthropic-ის კვლევით, ღია წონიანი GLM-5.3 ავტონომიურად ქმნის ექსპლოიტებს, ხოლო მისი დაცვის მექანიზმები 64-100%-ში ირღვევა.",
+      "what_happened": "Anthropic-ის Frontier Red Team-მა გამოაქვეყნა ანალიზი GLM-5.3-ის კიბერ-შესაძლებლობებზე და უსაფრთხოების სისუსტეებზე.",
+      "what_changed": "Frontier დონის ავტონომიური კიბერ-შესაძლებლობები ხელმისაწვდომი გახდა ღია წონიან მოდელებში მინიმალური ფილტრაციით.",
+      "why_it_matters": "აჩვენებს, რომ რეალურ ბიზნეს აგენტებში კოდის შესრულება უნდა მოხდეს მკაცრად იზოლირებულ sandbox-ში.",
+      "key_takeaways": [
+        "GLM-5.3 არის ყველაზე ძლიერი open-weight კიბერ-მოდელი",
+        "შიდა safeguard-ები ირღვევა შემთხვევათა 64-100%-ში",
+        "გარე სისტემური დაცვა აუცილებელია აგენტის უსაფრთხოებისთვის"
+      ],
+      "technical_architecture": [
+        "Open-weight LLM execution architecture",
+        "Autonomous exploit generation pipeline",
+        "Frontier Red Team evaluation harness"
+      ],
+      "technical_details": [
+        "64% to 100% bypass rate",
+        "NIST CAISI benchmark validation",
+        "End-to-end exploit synthesis"
+      ],
+      "potential_impact": "გაზრდის მოთხოვნას აგენტების უსაფრთხოებისა და sandbox გარემოების ინჟინრებზე.",
+      "action_type": "LEARN",
+      "action": "შეისწავლე როგორ შეზღუდო Python-ის `subprocess` და `eval` ბრძანებები Docker კონტეინერში აგენტის ხელსაწყოების გაშვებისას.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "Zhipu AI-ს GLM-5.3-ს შეუძლია ავტონომიურად შექმნას end-to-end კიბერ-ექსპლოიტები",
+        "Anthropic-ის ტესტებით, GLM-5.3-ის safeguard-ების გვერდის ავლა მარტივი ტექნიკით 64%-დან 100%-მდე შემთხვევაში ხდება",
+        "NIST CAISI-ს შეფასებით, GLM-5.3 არის ყველაზე ძლიერი open-weight კიბერ-მოდელი"
+      ],
+      "interpretation": "Open-weight მოდელების გაძლიერებასთან ერთად, აგენტების უსაფრთხოების დაცვა მოდელის დონეზე შეუძლებელი ხდება; საჭიროა მკაცრი გარე sandbox-ები.",
+      "uncertainty": "კონკრეტული bypass ტექნიკები დეტალურად არ არის გასაჯაროებული უსაფრთხოების მიზნით.",
+      "counter_argument": "ეს შესაძლებლობები თანაბრად ეხმარება კიბერ-უსაფრთხოების დამცველებს სისტემების პატჩინგში.",
+      "strategic_assessment": "არასოდეს ენდო LLM-ის შიდა ფილტრებს; ააგე სისტემური იზოლაცია (Docker, restricted execution) შენი აგენტებისთვის.",
+      "time_horizon": "long-term",
+      "what_could_change": "კოდის გამშვები აგენტები ვალდებული იქნებიან იმუშაონ იზოლირებულ microVM გარემოებში.",
+      "risks": [
+        "დაუცველი აგენტის მიერ სისტემური ბრძანებების თვითნებური შესრულება",
+        "API გასაღებების გაჟონვა unsafe tool execution-ისას"
+      ],
+      "non_obvious_opportunity": "ავტონომიური უსაფრთხოების gate-ების და validator-ების შექმნა open-source აგენტებისთვის.",
+      "fit_assessment": "მნიშვნელოვანია production agent engineering-ისთვის: გასწავლის საიმედო execution guardrails-ის აგებას."
     }
   ],
   "topics": {
@@ -5168,7 +5291,7 @@
     "AI Coding Tools / Agent Architecture": 2,
     "LLM API / Agent Frameworks": 1,
     "AI Research / LLM Infrastructure": 1,
-    "AI Research / Agent Architecture": 5,
+    "AI Research / Agent Architecture": 6,
     "AI Research / Agent Memory": 1,
     "AI Research / RAG & Embeddings": 1,
     "AI Evaluation / Agent Reliability": 1,
@@ -5202,359 +5325,15 @@
     "AI Research & Agent Optimization": 1,
     "AI Research & Agent Infrastructure": 1,
     "AI Coding Tools და Agent Architecture": 1,
-    "აგენტების ინფრასტრუქტურა და MCP": 3,
+    "აგენტების ინფრასტრუქტურა და MCP": 4,
     "აგენტების ინფრასტრუქტურა და უსაფრთხოება": 1,
     "": 1,
-    "AI Research & RAG": 1
+    "AI Research & RAG": 1,
+    "აგენტის არქიტექტურა და მეხსიერება": 1,
+    "LLM APIs და Cost Optimization": 1,
+    "აგენტების უსაფრთხოება და Governance": 1
   },
   "reports": [
-    {
-      "date": "2026-09-23",
-      "summary": "დღევანდელი ანალიზი ფოკუსირებულია აგენტების არქიტექტურის მნიშვნელოვან ტრანსფორმაციაზე. Agensh-მა და Growing Harness-მა აჩვენეს დეცენტრალიზებული მრავალ-აგენტიანი სისტემების და ჰარნესის კოდის ავტომატური გენერაციის ეფექტურობა. პარალელურად, A2M კვლევამ MCP ეკოსისტემაში სემანტიკური ჰაიჯექინგის სერიოზული რისკები გამოავლინა, ხოლო CliffCompaction გთავაზობთ კონტექსტის შეკუმშვის ახალ მეთოდს.",
-      "events": [
-        {
-          "event_id": "evt-cliffcompaction-coding-agent-context",
-          "title": "CliffCompaction: უდანაკარგო context compaction ხანგრძლივი coding აგენტებისთვის",
-          "category": "LLM Infrastructure & Agent Memory",
-          "primary_url": "https://arxiv.org/abs/2609.26779",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 10,
-          "actionability": 9,
-          "source_quality": 8,
-          "confidence": 92,
-          "tldr": "CliffCompaction გთავაზობთ autocompaction ტექნიკას, რომელიც ინარჩუნებს ორიგინალ ტექსტს rewriting-ის გარეშე და ამცირებს ხარჯს 50%-ით.",
-          "what_happened": "შექმნეს open-source API-proxy implementations CliffCompaction-ისთვის, რომელიც არასდროს აკეთებს კომპაქტირებული კონტექსტის განმეორებით კომპაქციას.",
-          "what_changed": "LLM-generated summary-ების ნაცვლად გამოიყენება პირდაპირი truncation, რაც კვეთს context drift-ს 1-მილიონიან context window-ზე.",
-          "why_it_matters": "Claude Code და Codex harness-ებთან ინტეგრაციით შეგიძლიათ მნიშვნელოვნად შეამციროთ API ხარჯები ხანგრძლივი დებSimpleDateFormat სესიებისას.",
-          "key_takeaways": [
-            "ნულის ტოლფასი context drift ორიგინალი ტექსტის შენარჩუნებით",
-            "50%-მდე დაზოგილი ტოკენები bounded context window-ში",
-            "Scaffold-agnostic API-proxy ხელმისაწვდომია ღია კოდით"
-          ],
-          "technical_architecture": [
-            "API-proxy შრე harness-სა და LLM-ს შორის",
-            "Discard mechanics ძველი კომპაქტირებული ბუფერებისთვის",
-            "Zero-rephrase truncation ალგორითმი"
-          ],
-          "technical_details": [
-            "KernelBench 3.58x speedup 400 step-ზე",
-            "10+ პროცენტული პუნქტი Terminal-Bench-ზე",
-            "Claude Code და Codex-ის მხარდაჭერა"
-          ],
-          "potential_impact": "შემცირდება ხანგრძლივი აგენტური სესიების ფინანსური დანახარჯი და გაიზარდება კოდის გენერაციის სიზუსტე.",
-          "action_type": "TRY",
-          "action": "გამოცადეთ CliffCompaction-ის API-proxy მიდგომა თქვენს Python LLM wrapper-ში და შეადარეთ ტოკენების დანახარჯი პირდაპირ Prompt-ს.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Technical Skill",
-            "Real Business Opportunity"
-          ],
-          "verified_facts": [
-            "CliffCompaction ამცირებს Token cost-ს 50%-მდე Terminal-Bench-ზე მუშაობისას",
-            "მეთოდი არასდროს აკეთებს ტექსტის rephrasing-ს ან rewriting-ს, მხოლოდ Truncation/Dropping-ს იყენებს",
-            "KernelBench-ზე 400 ნაბიჯის შემდეგ CUDA kernel speedup-მა მიაღწია 3.58x-ს"
-          ],
-          "interpretation": "LLM-ით კონტექსტის შეჯამება (summarization) იწვევს ინფორმაციის დამახინჯებას (context drift), რასაც აგვარებს მხოლოდ ზუსტი წაშლა/ამოჭრა.",
-          "uncertainty": "არახელსაყრელ პირობებში Truncation-მა შესაძლოა წაშალოს იშვიათი, მაგრამ კრიტიკული დამოკიდებულებები კოდში.",
-          "counter_argument": "სემანტიკური summarization ზოგჯერ აუცილებელია, როდესაც კოდის ფრაგმენტები ძალიან დიდი ზომისაა და უბრალო წაშლა აფუჭებს სინტაქსს."
-        },
-        {
-          "event_id": "evt-a2m-mcp-agent-hijacking",
-          "title": "A2M: სემანტიკური supply-chain შეტევები და აგენტის ჰაიჯექინგი MCP ეკოსისტემაში",
-          "category": "Agent Security & Governance",
-          "primary_url": "https://arxiv.org/abs/2609.26761",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 10,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 91,
-          "tldr": "A2M ჩარჩო აჩვენებს, თუ როგორ შეიძლება MCP აგენტის გადამისამართება და მონაცემთა გაჟონვა ინსტრუმენტის მეტამონაცემების მანიპულაციით.",
-          "what_happened": "მკვლევარებმა შექმნეს A2M შეტევის მოდელი, რომელიც ორიენტირებულია MCP Tool-ების აღწერილობების ოპტიმიზაციაზე აგენტის მოტყუების მიზნით.",
-          "what_changed": "ტრადიციული API endpoint მოწყვლადობებიდან ყურადღება გადავიდა LLM-ის სემანტიკური ძიების (semantic matching) სუსტ ადგილებზე.",
-          "why_it_matters": "თუ აშენებთ MCP Server-ებს ან იყენებთ მესამე მხარის Tool-ებს, აუცილებელია შეამოწმოთ ინსტრუმენტების სემანტიკური ვალიდაცია.",
-          "key_takeaways": [
-            "Attraction phase ზრდის მავნე tool-ის არჩევის შანსს",
-            "Manipulation phase ცვლის execution trace-ებს",
-            "74.4% success rate ინფორმაციის ექსფილტრაციაზე"
-          ],
-          "technical_architecture": [
-            "Two-stage black-box attack framework",
-            "Attraction metadata optimization module",
-            "Trace-optimized response manipulation"
-          ],
-          "technical_details": [
-            "93.6% malicious tool invocation rate",
-            "32.4x token cost increase under DoS",
-            "LiveMCPBench-ზე ჩატარებული ტესტები"
-          ],
-          "potential_impact": "აუცილებელი გახდება runtime isolation და tool metadata-ს ხელით/მკაცრი სქემით დამოწმება MCP არქიტექტურებში.",
-          "action_type": "LEARN",
-          "action": "შეისწავლეთ თქვენი MCP Server-ების schema validation და დაამატეთ strict regex / type assertions ინსტრუმენტის აღწერილობებს.",
-          "evidence": [],
-          "factuality_level": "single_source",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "A2M იყენებს Attraction და Manipulation ეტაპებს MCP ინსტრუმენტების საიტაცებლად",
-            "GLM-4.6-ზე მავნე tool-ის გამოძახების სიხშირემ მიაღწია 93.6%-ს LiveMCPBench-ზე",
-            "Cognitive DoS შეტევით ტოკენების დანახარჯი გაიზარდა 32.4x-ით"
-          ],
-          "interpretation": "MCP-ის სემანტიკური tool selection მექანიზმი მოწყვლადია metadata poisoning-ის მიმართ, რაც მოითხოვს მკაცრ static validation შრეს.",
-          "uncertainty": "უცნობია რამდენად ეფექტურად დაიცავს აგენტს ახალი intent-gating და Zero-Trust პროტოკოლები რეალურ production გარემოში.",
-          "counter_argument": "მოდელების შემდგომმა alignment-მა შესაძლოა შეამციროს მავნე metadata-ს მიმართ მგრძნობელობა დამატებითი კოდის გარეშე."
-        },
-        {
-          "event_id": "evt-agensh-1024-agent-harness",
-          "title": "Agensh: დეცენტრალიზებული მრავალ-აგენტიანი არქიტექტურის მასშტაბირება 1,024 აგენტამდე",
-          "category": "Agent Architecture & Multi-Agent Systems",
-          "primary_url": "https://arxiv.org/abs/2609.26781",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 10,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "Agensh წარმოადგენს უცენტრალო multi-agent harness-ს, რომელიც ასინქრონულად მასშტაბირდება 1,024 აგენტამდე 55%-იანი test-pass მაჩვენებლით.",
-          "what_happened": "მკვლევარებმა წარადგინეს Agensh, სადაც აგენტები თვითონ იღებენ და ამოწმებენ დავალებებს shared workspace-ის მეშვეობით ცენტრალური კოორდინატორის გარეშე.",
-          "what_changed": "ცენტრალიზებული router-ზე დაფუძნებული არქიტექტურა ჩანაცვლდა ასინქრონული self-organized loop-ით shared context-ის გარშემო.",
-          "why_it_matters": "რთული coding project-ების გადასაჭრელად შეგიძლიათ გამოიყენოთ ბევრი მცირე აგენტი პარალელურად, ნაცვლად ერთი მონოლითური Prompt-ისა.",
-          "key_takeaways": [
-            "ცენტრალური orchestrator-ის არარსებობა ხსნის სკალირების ბარიერს",
-            "Shared workspace მოიცავს proposed, ongoing და completed დავალებებს",
-            "1,024 აგენტზე pass rate გაიზარდა 21.17 პროცენტული პუნქტით"
-          ],
-          "technical_architecture": [
-            "Shared workspace ინახავს დავალებების სტატუსებს",
-            "Message interface უზრუნველყოფს ასინქრონულ კომუნიკაციას",
-            "Shared context ინარჩუნებს მიღწეულ შედეგებს"
-          ],
-          "technical_details": [
-            "GPT-5.6-sol მოდელის მხარდაჭერა",
-            "ProgramBench ბენჩმარკზე ვალიდაცია",
-            "49% relative improvement 128 აგენტზე"
-          ],
-          "potential_impact": "შემცირდება ლატენტობა რთულ software engineering დავალებებზე პარალელური აგენტური გადანაწილების ხარჯზე.",
-          "action_type": "BUILD",
-          "action": "შექმენით მცირე shared file-based workspace Python-ში და გააშვეთ 3 პარალელური worker აგენტი ცენტრალური orchestrator-ის გარეშე.",
-          "evidence": [],
-          "factuality_level": "single_source",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "Agensh მუშაობს ცენტრალური orchestrator-ის გარეშე shared workspace-სა და asynchronous communication-ზე დაყრდნობით",
-            "ProgramBench-ზე 1-დან 1024 აგენტამდე მასშტაბირებამ test-pass rate 33.89%-დან 55.06%-მდე გაზარდა",
-            "1-დან 128 აგენტამდე ზრდამ GPT-5.6-sol-ზე საშუალო pass rate 19.31%-დან 28.78%-მდე გაზარდა"
-          ],
-          "interpretation": "ცენტრალიზებული orchestrator Bottleneck-ის მოხსნა საშუალებას იძლევა რთული საინჟინრო ამოცანები განაწილდეს ასობით აგენტზე პარალელურ რეჟიმში.",
-          "uncertainty": "უცნობია API Token-ების ჯამური ღირებულების ეფექტურობა 1,024 აგენტის ერთდროული გაშვებისას სერიოზულ კომერციულ პროექტებში.",
-          "counter_argument": "ასინქრონულმა shared context-მა შესაძლოა გამოიწვიოს Race Condition და დუბლირებული შრომა დიდ გუნდებში."
-        },
-        {
-          "event_id": "evt-growing-harness-specialist-agents",
-          "title": "Growing Harness: აგენტის მართვის ლოგიკის გადატანა Context-იდან reusable კოდში",
-          "category": "AI Research & Agent Architecture",
-          "primary_url": "https://arxiv.org/abs/2609.26760",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 10,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 88,
-          "tldr": "Growing Harness გარდაქმნის განმეორებად აგენტურ გადაწყვეტილებებს იაფ Code Harness-ად, რაც 90%-ით ამცირებს LLM გამოძახებებს.",
-          "what_happened": "შექმნეს failure-guided training პარადიგმა, სადაც აგენტის შეცდომების საფუძველზე თავად Harness კოდი განიცდის ოპტიმიზაციას.",
-          "what_changed": "LLM context-ში control logic-ის ხელახალი გენერაციის ნაცვლად, სისტემა აშენებს მუდმივ, განმეორებად Python Harness-ს.",
-          "why_it_matters": "შეგიძლიათ პატარა (4B/8B) მოდელებით მიაღწიოთ ფრონტიერ მოდელების ეფექტურობას მართვის ლოგიკის კოდში გადატანით.",
-          "key_takeaways": [
-            "Failure-guided training აუმჯობესებს კოდის სტრუქტურას",
-            "4B მოდელების წარმატება იზრდება 6.7%-დან 45%-მდე",
-            "Inference cost-ის 98%-მდე შემცირება"
-          ],
-          "technical_architecture": [
-            "Strategy-free base scaffold",
-            "Function-level trace failure localizer",
-            "Success-first held-out gate rollback"
-          ],
-          "technical_details": [
-            "76.0-91.8% LLM call reduction",
-            "WebArena-Verified და BrowseComp-Plus ტესტები",
-            "4B-დან 120B-მდე მოდელების მხარდაჭერა"
-          ],
-          "potential_impact": "მნიშვნელოვნად შემცირდება enterprise agentic workflow-ების საექსპლუატაციო ხარჯები მცირე open-source მოდელების გამოყენებით.",
-          "action_type": "BUILD",
-          "action": "გადაიტანეთ თქვენი აგენტის განმეორებადი if/else გადაწყვეტილებები Python-ის დეკორატორებში, ნაცვლად სისტემურ Prompt-ში მათი აღწერისა.",
-          "evidence": [],
-          "factuality_level": "single_source",
-          "classification": [
-            "Real Technical Skill",
-            "Real Business Opportunity"
-          ],
-          "verified_facts": [
-            "Growing Harness ამცირებს LLM გამოძახებებს 76.0-91.8%-ით ტრადიციულ Tool-Calling-თან შედარებით",
-            "Inference cost მცირდება 74.4-98.6%-ით სტრატეგიის კოდში კაფსულაციის ხარჯზე",
-            "4B მოდელზე WebArena-Verified-ზე წარმატების მაჩვენებელი გაიზარდა 6.7%-დან 45.3%-მდე"
-          ],
-          "interpretation": "განმეორებადი control logic არ უნდა იწერებოდეს LLM Prompt-ში; ის უნდა გადავიდეს Python harness კოდში ავტომატური feedback loop-ით.",
-          "uncertainty": "კოდის ავტომატურმა Accumulation-მა ხანგრძლივ პერსპექტივაში შესაძლოა გამოიწვიოს Harness Spaghetti Code და ტექნიკური ვალი.",
-          "counter_argument": "დიდი LLM-ების გაიაფებასთან ერთად, კოდის ავტომატურ წერას შესაძლოა აჯობოს დიდ context window-ში მუშაობამ."
-        },
-        {
-          "event_id": "evt-gemini-deep-research-api",
-          "title": "Google-ის Gemini Deep Research Agent API: ავტონომიური multi-step კვლევა და MCP",
-          "category": "LLM APIs & Developer Tools",
-          "primary_url": "https://ai.google.dev/gemini-api/docs/deep-research",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 9,
-          "source_quality": 10,
-          "confidence": 95,
-          "tldr": "Google-მა გამოაშვება Gemini Deep Research Agent API, რომელიც ფონურ რეჟიმში ასრულებს მრავალ-ნაბიჯიან კვლევებს MCP-ის მხარდაჭერით.",
-          "what_happened": "Google-მა Gemini API-ში დაამატა Interactions API endpoint, საიდანაც შესაძლებელია ავტონომიური კვლევის აგენტის გაშვება background=true პარამეტრით.",
-          "what_changed": "generate_content-ის ნაცვლად, ხანგრძლივი აგენტური დავალებებისთვის დაინერგა ასინქრონული Interactions API და Polling pattern.",
-          "why_it_matters": "შეგიძლიათ მარტივად ჩააშენოთ ავტონომიური კვლევის ფუნქციონალი თქვენს აპლიკაციებში Python SDK-ის რამდენიმე სტრიქონით.",
-          "key_takeaways": [
-            "Interactions API ხანგრძლივი დავალებებისთვის",
-            "MCP Server-ებთან პირდაპირი დაკავშირება",
-            "ფონური შესრულება და შედეგების Polling"
-          ],
-          "technical_architecture": [
-            "Interactions API endpoint structure",
-            "Background task processing pipeline",
-            "MCP integration layer for external tools"
-          ],
-          "technical_details": [
-            "Agent model: deep-research-preview-04-2026",
-            "Python SDK google.genai client support",
-            "Asynchronous polling with interaction.id"
-          ],
-          "potential_impact": "შემცირდება საკუთარი RAG და Search loop-ების აწყობის საჭიროება კომპლექსური საძიებო აგენტების შესაქმნელად.",
-          "action_type": "APPLY",
-          "action": "დაწერეთ Python სკრიპტი Interactions API-ის გამოყენებით, რომელიც ფონურ რეჟიმში ჩაატარებს კვლევას და დააპოლავს შედეგს.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Real Business Opportunity"
-          ],
-          "verified_facts": [
-            "Deep Research Agent ხელმისაწვდომია ექსკლუზიურად Interactions API-ს მეშვეობით (agent: deep-research-preview-04-2026)",
-            "მოითხოვს background execution-ს (background=true) და polling / streaming მექანიზმს",
-            "მხარს უჭერს MCP Server-ებთან მიერთებას, ვიზუალიზაციების გენერაციას და დოკუმენტების პირდაპირ მიწოდებას"
-          ],
-          "interpretation": "Google-ს გადაჰყავს რთული აგენტური workflow-ები managed API level-ზე, სადაც ფონური პროცესები და MCP ინტეგრაცია სტანდარტად ხდება.",
-          "uncertainty": "Preview სტატუსიდან გამომდინარე, API-ს Rate limit-ები და ფასწარმოქმნა შესაძლოა შეიცვალოს ოფიციალურ რელიზამდე.",
-          "counter_argument": "Managed Agent API-ები ამცირებენ დეველოპერის კონტროლს execution loop-ზე და სრულიად ბლოკავენ custom retry logic-ს."
-        },
-        {
-          "event_id": "evt-typesafe-option-name-rubric-bias",
-          "title": "Type-Safe Is Not Error-Free: სტრუქტურირებული Decision Head მიჰყვება ოპტიმის სახელს და არა რუბრიკას",
-          "category": "AI Research & Reliability",
-          "primary_url": "https://arxiv.org/abs/2609.26758",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 9,
-          "source_quality": 8,
-          "confidence": 92,
-          "tldr": "კვლევამ აჩვენა, რომ ტიპიზირებული LLM decision head-ები ენდობიან ოპციის დასახელების სემანტიკას და იგნორირებას უკეთებენ მიბმულ რუბრიკას.",
-          "what_happened": "მკვლევარებმა შეამოწმეს typed decision models და აღმოაჩინეს, რომ ოპციის სახელის შეცვლა (მაგ. neutral-დან polar-ზე) იწვევს პასუხების მასობრივ ამოყირავებას.",
-          "what_changed": "დაიმსხვრა მითი, რომ Type-Safe (JSON Schema / Enum) გამონატანი ავტომატურად ნიშნავს ლოგიკურად სწორ პასუხს.",
-          "why_it_matters": "JSON Schema Enums-ის შექმნისას უნდა გამოიყენოთ ნეიტრალური სახელები (მაგ. Option_A, Option_B) სემანტიკური გადახრების თავიდან ასაცილებლად.",
-          "key_takeaways": [
-            "0% type error არ ნიშნავს 0% logic error-ს",
-            "No/Yes სახელები ამახინჯებენ AUC მაჩვენებელს",
-            "Random ან Neutral სახელები ხსნიან სემანტიკურ ბიასს"
-          ],
-          "technical_architecture": [
-            "Constrained decision head architecture",
-            "Mean-pooling output span comparison",
-            "Task-specific rubric binding layer"
-          ],
-          "technical_details": [
-            "70.4 answer flips per 100 on renaming",
-            "AUC drop from .94 to .23",
-            "1,200 workflow decision test cases"
-          ],
-          "potential_impact": "შეიცვლება აგენტებში Structured JSON Enums-ის დაპროექტების პრაქტიკა და Prompt/Schema Engineering სტანდარტები.",
-          "action_type": "APPLY",
-          "action": "გადახედეთ თქვენს JSON Schema Enum-ებს და შეცვალეთ სემანტიკური სახელები ნეიტრალური იდენტიფიკატორებით, ხოლო განმარტებები დატოვეთ description-ში.",
-          "evidence": [],
-          "factuality_level": "single_source",
-          "classification": [
-            "Real Technical Skill",
-            "Real Business Opportunity"
-          ],
-          "verified_facts": [
-            "0/1 ოპციების სახელების no/yes-ით ჩანაცვლებამ შეცვალა 70.4 პასუხი 100-დან და AUC 0.94-დან 0.23-მდე დააგდო",
-            "Type-error rate რჩება 0%-ზე, მაშინაც კი, როდესაც გადაწყვეტილების სიზუსტე კატასტროფულად ეცემა",
-            "ნეიტრალური ან შემთხვევითი სტრიქონების (random strings) გამოყენება ოპციის სახელებად აბრუნებს მოდელს სტაბილურ რეჟიმში"
-          ],
-          "interpretation": "Typed/Structured Output-ები იძლევიან გარანტიას მხოლოდ სინტაქსზე და არა სემანტიკურ სიზუსტეზე; სემანტიკურად დატვირთული ოპციის სახელები აფუჭებენ რუბრიკის აღქმას.",
-          "uncertainty": "ეფექტი შესაძლოა განსხვავდებოდეს სხვადასხვა Fine-Tuning მეთოდისა და დეკოდირების არქიტექტურის მიხედვით.",
-          "counter_argument": "მოდელების შემდგომი ინსტრუქციული წვრთნა (RLHF) შესაძლოა დაეხმაროს რუბრიკაზე ფოკუსირებას ოპციის სახელის მიუხედავად."
-        },
-        {
-          "event_id": "evt-tasteful-agent-taste-bench",
-          "title": "The Tasteful Agent: ხანგრძლივ დავალებებში აგენტის გადაწყვეტილებების ხარისხის გაუმჯობესება",
-          "category": "AI Evaluation & Reliability",
-          "primary_url": "https://huggingface.co/papers/2609.25804",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 7,
-          "source_quality": 8,
-          "confidence": 89,
-          "tldr": "Microsoft-ის მკვლევარებმა შექმნეს Taste-Bench აგენტების გადაწყვეტილების ხარისხის გასაზომად და აჩვენეს, რომ Taste-ის სწავლება შესაძლებელია.",
-          "what_happened": "წარმოადგინეს Taste-Bench, სადაც იზომება აგენტის Taste - უნარი აირჩიოს სწორი გზა Decision Fork-ის დროს.",
-          "what_changed": "End-to-end წარმატების გაზომვის ნაცვლად, შეფასება ხდება უშუალოდ გადაწყვეტილების მიღების წერტილებში (forks).",
-          "why_it_matters": "გეხმარებათ გაიგოთ, თუ რატომ იჭრებიან აგენტები ხანგრძლივ ამოცანებში და როგორ დაატრენინგოთ სტუდენტი მოდელები teacher feedback-ით.",
-          "key_takeaways": [
-            "Top მოდელების სიზუსტე მხოლოდ 59.7%-ია",
-            "Reasoning budget-ის გაზრდა არ შველის Taste-ს",
-            "Teacher-student დისტილაცია ზრდის გადაწყვეტილების ხარისხს"
-          ],
-          "technical_architecture": [
-            "Decision fork mining algorithm trajectories-დან",
-            "Teacher-student distillation architecture",
-            "No-lookahead fork evaluation module"
-          ],
-          "technical_details": [
-            "59.7% top model accuracy on Taste-Bench",
-            "Automatic trajectory fork mining",
-            "Distillation of outcome-aware teacher"
-          ],
-          "potential_impact": "შექმნის ახალ სტანდარტს აგენტების შიდა მსჯელობისა და გადაწყვეტილების მიღების ხარისხის შეფასებაში.",
-          "action_type": "LEARN",
-          "action": "გაანალიზეთ თქვენი აგენტის სესიების Execution Traces და იპოვეთ Decision Fork-ები, სადაც არასწორი ინსტრუმენტი იქნა არჩეული.",
-          "evidence": [],
-          "factuality_level": "single_source",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "Taste-Bench ზომავს აგენტის უნარს მიიღოს სწორი გადაწყვეტილება decision fork-ზე მომავალი შედეგის დაუნახავად",
-            "საუკეთესო ფრონტიერ მოდელმა Taste-Bench-ზე მიაღწია მხოლოდ 59.7%-იან სიზუსტეს",
-            "დიდი reasoning budget (CoT) არ აუმჯობესებს აგენტის Taste-ს გადაწყვეტილების მიღებისას"
-          ],
-          "interpretation": "აგენტების მთავარი პრობლემა არის არასწორი ჰიპოთეზის არჩევა საწყის ეტაპზე, რისი გამოსწორებაც დისტილაციით (distillation) არის შესაძლებელი.",
-          "uncertainty": "ავტომატურად mined decision fork-ები შესაძლოა შეიცავდნენ ხმაურს და არ ასახავდნენ რეალურ ადამიანურ Taste-ს.",
-          "counter_argument": "დამატებითი RL-ს ან მონტე-კარლოს ხის ძიების (MCTS) გამოყენებამ შესაძლოა გადაფაროს Taste-ის დეფეციტი ინფერენსის დროს."
-        }
-      ],
-      "trends": [
-        "აგენტების არქიტექტურაში ცენტრალიზებული orchestrator-ებიდან გადასვლა ასინქრონულ shared-workspace და დეცენტრალიზებულ loop-ებზე",
-        "MCP (Model Context Protocol) ეკოსისტემაში სემანტიკური უსაფრთხოების, tool verification-ისა და supply-chain შეტევების პრევენციის ზრდა",
-        "LLM Context Window-ის დაზოგვის ახალი ტექნიკები: Truncation-based compaction და control logic-ის გადატანა Python harness-ის კოდში"
-      ]
-    },
     {
       "date": "2026-09-23",
       "summary": "დღევანდელი ანალიზი მოიცავს production inference მოთხოვნებს SWE-Serve ბენჩმარკში, StableVQ ტოკენიზერების ტრენინგის ოპტიმიზაციას და მრავალმხრივი დიალოგის მეხსიერების ალგორითმებს. ჩვენ ვფოკუსირდებით ინჟინრულ რეალობაზე და მცირე ბიუჯეტით ასაშენებელ მექანიზმებზე.",
@@ -8081,13 +7860,311 @@
         "RAG სისტემების და აგენტური ძიების შედარებითი ოპტიმიზაცია და ხარჯების შემცირება",
         "კოდირებისა და ავტომატიზაციის აგენტების ღრმა ინტეგრაცია ღრუბლოვან სერვისებთან"
       ]
+    },
+    {
+      "date": "2026-10-04",
+      "summary": "დღევანდელი სიახლეები ფოკუსირდება აგენტების ახალ არქიტექტურებზე, სადაც მოდელის წონების შეცვლის გარეშე მიიღწევა თვითგანვითარება და ვიზუალური მეხსიერების შენარჩუნება. Google-მა გამოაქვეყნა Gemini 3.8 Flash-ის ფასები და უფასო რესურსები, ხოლო AWS-მა წარადგინა ღია კოდის Strands Agents SDK. ეს ინსტრუმენტები იძლევა საშუალებას, მინიმალური ბიუჯეტით აშენდეს საიმედო ავტონომიური სისტემები.",
+      "events": [
+        {
+          "event_id": "evt-rpg-embodied-agent-self-improvement",
+          "title": "RPG: აგენტების მართვადი თვითგანვითარება მოდელის წონების შეცვლის გარეშე",
+          "category": "AI Research / Agent Architecture",
+          "primary_url": "https://arxiv.org/abs/2610.02204",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "RPG ფრეიმვორკმა აჩვენა, რომ აგენტს შეუძლია 28.6%-დან 95%-მდე გაზარდოს წარმატება მხოლოდ ხელსაწყოებისა და prompt-ის განახლებით.",
+          "what_happened": "ბერკლის მკვლევარებმა შექმნეს RPG სისტემა, რომელიც შეცდომების დიაგნოსტიკის შემდეგ ქმნის ახალ symbolic skill-ებს და ანახლებს system prompt-ს.",
+          "what_changed": "მოდელის fine-tuning-ის გარეშე მიიღწევა frontier მოდელებზე უკეთესი სიზუსტე reusable კოდის ბიბლიოთეკით.",
+          "why_it_matters": "საშუალებას გაძლევს, უფასო ან იაფი მოდელებით ააგო თვითგანვითარებადი სისტემა კოდის გენერაციის ხარჯზე.",
+          "key_takeaways": [
+            "წარმატება გაიზარდა 28.6%-დან 95.0%-მდე 15 ციკლში",
+            "წონების შეცვლა არ არის საჭირო, იცვლება მხოლოდ prompt და skills",
+            "გამოიყენება reusable symbolic Python ფუნქციები"
+          ],
+          "technical_architecture": [
+            "Simulated execution feedback analyzer",
+            "Symbolic skill library synthesizer",
+            "Cross-task regression gate"
+          ],
+          "technical_details": [
+            "15 rounds practice cycle",
+            "95.0% success on 22 tasks",
+            "Zero-weight-update framework"
+          ],
+          "potential_impact": "შეამცირებს ძვირადღირებული fine-tuning-ის საჭიროებას აგენტურ ამოცანებში.",
+          "action_type": "BUILD",
+          "action": "შექმენი სკრიპტი, სადაც აგენტი წარუმატებელი დავალების შემდეგ წერს ახალ Python ფუნქციას და ინახავს tools.py ფაილში მომავალი გამოყენებისთვის.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "RPG აუმჯობესებს შესრულებას symbolic skill-ების და system prompt-ის ავტონომიური რედაქტირებით",
+            "22 მანიპულაციის დავალებაზე წარმატების მაჩვენებელი გაიზარდა 28.6%-დან 95.0%-მდე 15 რაუნდში",
+            "გადააჭარბა GPT-6 Astra Pro-ზე მომუშავე CaP-Agent0-ის ბაზისს (60.0%)"
+          ],
+          "interpretation": "აგენტების ევოლუციის საუკეთესო გზა არის შეცდომების დიაგნოსტიკა და reusable Python ხელსაწყოების ბიბლიოთეკის დინამიკური გენერაცია.",
+          "uncertainty": "სიმულაციიდან რეალურ გარემოში გადატანისას საჭიროებს დამატებით hardware-adaptation ეტაპს.",
+          "counter_argument": "დროთა განმავლობაში skill library შეიძლება გადაიტვირთოს დუბლირებული და არაოპტიმალური ფუნქციებით.",
+          "strategic_assessment": "დანერგე self-reflection და dynamic skill storage შენს პითონის აგენტებში; ეს ზრდის საიმედოობას.",
+          "time_horizon": "mid-term",
+          "what_could_change": "აგენტები თავად დაწერენ და შეამოწმებენ საკუთარ tool-ებს ტესტების საშუალებით run-time-ში.",
+          "risks": [
+            "არასწორი prompt mutation-ის გამო აგენტის დეგრადაცია",
+            "დაუსრულებელი self-improvement loop-ების რისკი"
+          ],
+          "non_obvious_opportunity": "ავტომატური unit-test გენერატორის მიბმა აგენტის მიერ შექმნილ ახალ ხელსაწყოებზე.",
+          "fit_assessment": "პირდაპირ პასუხობს მომხმარებლის მიზანს: self-improvement და tool calling-ის დახვეწა."
+        },
+        {
+          "event_id": "evt-vista-visual-agent-harness",
+          "title": "VISTA: Visual Harness და უდანაკარგო ვიზუალური მეხსიერება Multimodal აგენტებისთვის",
+          "category": "აგენტის არქიტექტურა და მეხსიერება",
+          "primary_url": "https://arxiv.org/abs/2610.02200",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 88,
+          "tldr": "VISTA-ს ვიზუალურმა ჰარნესმა და უდანაკარგო მეხსიერებამ Claude Opus 5.0-ს ARC-AGI-3-ზე 100%-იანი შედეგი დაადებინა.",
+          "what_happened": "MIT-ისა და კვლევითი ჯგუფების მიერ წარმოდგენილია VISTA, რომელიც multimodal მოდელებს აძლევს lossless visual memory-სა და დინამიკურ retrieval-ს.",
+          "what_changed": "მოდელები აღარ კარგავენ წინა ნაბიჯების ვიზუალურ კონტექსტს და მოქმედებენ ნაკლები ზედმეტი ნაბიჯით.",
+          "why_it_matters": "გაჩვენებს, რომ სწორი agent harness უფრო მნიშვნელოვანია შედეგისთვის, ვიდრე უბრალოდ უფრო დიდი მოდელის გამოყენება.",
+          "key_takeaways": [
+            "Lossless visual memory ინახავს გარემოს სუფთა მდგომარეობას",
+            "Action efficiency გაუმჯობესდა 57.4%-ით ადამიანებთან შედარებით",
+            "მუშაობს სტანდარტულ multimodal LLM API-ებთან დამატებითი fine-tuning-ის გარეშე"
+          ],
+          "technical_architecture": [
+            "Lossless visual history buffer",
+            "Active observation retrieval engine",
+            "Multimodal LLM inference connector"
+          ],
+          "technical_details": [
+            "ARC-AGI-3 benchmark evaluation",
+            "Claude Opus 5.0 integration",
+            "57.4% action reduction"
+          ],
+          "potential_impact": "შექმნის სტანდარტს ვიზუალური UI და თამაშების ავტომატიზაციის აგენტებისთვის.",
+          "action_type": "LEARN",
+          "action": "გააანალიზე VISTA-ს არქიტექტურა და დაწერე მარტივი Python კლასი, რომელიც აგენტის ნაბიჯების სურათებს ინახავს და ფილტრავს.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "VISTA ქმნის lossless visual memory-ს წარსული დაკვირვებების ორიგინალი სახით შესანახად",
+            "ARC-AGI-3 ბენჩმარკზე Claude Opus 5.0-ის შედეგი გაიზარდა 40.68-დან 100.00-მდე",
+            "აგენტმა 25-ვე საჯარო თამაში დაასრულა ადამიანზე 57.4%-ით ნაკლები მოქმედებით"
+          ],
+          "interpretation": "მოდელის უნარების გაზრდისთვის ხშირად საკმარისია არა თავად მოდელის შეცვლა, არამედ გარედან სწორი harness-ისა და მეხსიერების სტრუქტურის მიწოდება.",
+          "uncertainty": "უცნობია, რამდენად კარგად მასშტაბირდება ეს მიდგომა ვებ-ბრაუზინგის რეალურ, ხმაურიან DOM გარემოზე.",
+          "counter_argument": "სრული ვიზუალური ისტორიის შენახვა ზრდის context window-ს მოცულობას და API-ს გამოძახების ხარჯებს.",
+          "strategic_assessment": "შეისწავლე harness არქიტექტურა; აგენტის ლოგიკისა და მეხსიერების გამოყოფა არის საიმედო სისტემების ფუნდამენტი.",
+          "time_horizon": "mid-term",
+          "what_could_change": "აგენტების benchmark ტესტირება გახდება harness-ზე დამოკიდებული და არა მხოლოდ raw model-ის შესაძლებლობებზე.",
+          "risks": [
+            "მაღალი token consumption ვიზუალური ისტორიის გადაცემისას",
+            "API rate limit-ების გადაჭარბება სწრაფი ლუპებისას"
+          ],
+          "non_obvious_opportunity": "მარტივი Python Wrapper-ის აგება local screenshots-ის ინდექსირებისთვის CLI აგენტებში.",
+          "fit_assessment": "ზუსტად ერგება მომხმარებლის ინტერესს agent loops, memory და harness დიზაინის მიმართულებით."
+        },
+        {
+          "event_id": "evt-gemini-3-8-flash-pricing-context-caching",
+          "title": "Gemini 3.8 Flash: დეველოპერის ტარიფები, Context Caching და უფასო რესურსები",
+          "category": "LLM APIs და Cost Optimization",
+          "primary_url": "https://ai.google.dev/gemini-api/docs/pricing",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 10,
+          "confidence": 98,
+          "tldr": "Google-მა გამოაქვეყნა Gemini 3.8 Flash-ის ფასები: სრული უფასო ტარიფი, Context Caching და 5,000 უფასო Search grounding თვეში.",
+          "what_happened": "Google AI for Developers-მა განაახლა Gemini API ფასების გვერდი Gemini 3.8 Flash მოდელისთვის.",
+          "what_changed": "დეველოპერებს აქვთ წვდომა იაფ context caching-ზე და უფასო საძიებო grounding-ზე ავტონომიური აგენტებისთვის.",
+          "why_it_matters": "საშუალებას გაძლევს, ნულოვანი კაპიტალით ააშენო RAG და Web Search აგენტები Google Search API-ს უფასო კვოტით.",
+          "key_takeaways": [
+            "Google AI Studio-ში მოქმედებს Free Tier",
+            "5,000 უფასო Search/Maps grounding თვეში",
+            "Context caching $0.075 / 1M token-ზე ამცირებს მეხსიერების ხარჯებს"
+          ],
+          "technical_architecture": [
+            "Gemini 3.8 Flash runtime",
+            "Context Caching API engine",
+            "Search & Maps Grounding integration"
+          ],
+          "technical_details": [
+            "$0.75 input / $3.75 output per 1M",
+            "Context cache storage $0.50/1M/hr",
+            "5000 free search requests monthly"
+          ],
+          "potential_impact": "ხელს შეუწყობს უფასო და დაბალბიუჯეტიანი ავტონომიური აგენტების სწრაფ განვითარებას.",
+          "action_type": "APPLY",
+          "action": "აიღე უფასო Gemini API key Google AI Studio-დან და გატესტე Search Grounding მარტივ Python სკრიპტში.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Real Business Opportunity"
+          ],
+          "verified_facts": [
+            "Gemini 3.8 Flash ხელმისაწვდომია უფასო ტარებით Google AI Studio-ში",
+            "Paid Tier ფასი შეადგენს $0.75 / 1M input tokens და $3.75 / 1M output tokens…",
+            "Context caching ღირს $0.075 / 1M tokens და $0.50 საათში 1M token-ის შენახვა",
+            "მოყვება 5,000 უფასო Google Search და Maps grounding მოთხოვნა თვეში"
+          ],
+          "interpretation": "Gemini 3.8 Flash ხდება ერთ-ერთი ყველაზე ხელმისაწვდომი frontier-level მოდელი long-horizon აგენტური სამუშაოებისთვის.",
+          "uncertainty": "2027 წლიდან ფასები ორმაგდება ($1.50 input / $7.50 output).",
+          "counter_argument": "უფასო ტარიფზე მონაცემები გამოიყენება პროდუქტის გასაუმჯობესებლად, რაც კონფიდენციალურ მონაცემებს ზღუდავს.",
+          "strategic_assessment": "გამოიყენე Gemini 3.8 Flash უფასო ტარიფი და 5,000 უფასო Search grounding შენი საძიებო აგენტების ასაშენებლად.",
+          "time_horizon": "short-term",
+          "what_could_change": "მცირე ბიუჯეტიანი დეველოპერები შეძლებენ agentic search სისტემების აწყობას 0 ხარჯით.",
+          "risks": [
+            "Free tier rate limit-ები მაღალი დატვირთვისას",
+            "Grounding ლიმიტის ამოწურვის შემდეგ $14 ყოველ 1,000 მოთხოვნაზე"
+          ],
+          "non_obvious_opportunity": "Context caching-ის გამოყენება დიდი MCP documentation-ის და JSON schema-ების უფასოდ შესანახად.",
+          "fit_assessment": "იდეალურია 16 წლის დეველოპერისთვის: ნულოვანი ბიუჯეტით იძლევა უმაღლესი დონის tooling-ს."
+        },
+        {
+          "event_id": "evt-aws-strands-mcp-agent-sdk",
+          "title": "AWS Strands Agents: ღია კოდის Python SDK და MCP მხარდაჭერა",
+          "category": "აგენტების ინფრასტრუქტურა და MCP",
+          "primary_url": "https://aws.amazon.com/developer/generative-ai",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 9,
+          "source_quality": 10,
+          "confidence": 92,
+          "tldr": "AWS-მა გამოუშვა Strands Agents — მსუბუქი ღია კოდის Python SDK აგენტებისა და MCP კლიენტ/სერვერების სამართავად.",
+          "what_happened": "AWS Builder Center-მა გამოაქვეყნა Strands Agents SDK-ს გაიდები და MCP სერვერების ინტეგრაციის სახელმძღვანელოები.",
+          "what_changed": "აგენტის აწყობა, ხელსაწყოების მიბმა და MCP სერვერებთან დაკავშირება გამარტივდა მინიმალურ კოდში.",
+          "why_it_matters": "გაძლევს სუფთა, ინდუსტრიულ პატერნს, თუ როგორ უნდა დაიწეროს tool-calling და MCP ლოგიკა Python-ში.",
+          "key_takeaways": [
+            "ღია კოდის Python SDK მოდელ-აგნოსტიკური მიდგომით",
+            "ჩაშენებული MCP (Model Context Protocol) მხარდაჭერა",
+            "მარტივი გადართვა სხვადასხვა LLM პროვაიდერებს შორის"
+          ],
+          "technical_architecture": [
+            "Strands Agents Python SDK Core",
+            "Model Context Protocol (MCP) client/server",
+            "Local execution and debug logger"
+          ],
+          "technical_details": [
+            "Open source Python SDK",
+            "Multi-provider model support",
+            "MCP integration with Spring AI & Python"
+          ],
+          "potential_impact": "გაამარტივებს სტანდარტიზებული MCP ხელსაწყოების შექმნას და ინტეგრაციას.",
+          "action_type": "TRY",
+          "action": "გაეცანი Strands SDK-ს tool integration სტრუქტურას და შეადარე შენს მიერ დაწერილ Tool Calling ლოგიკას.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Short-term Opportunity"
+          ],
+          "verified_facts": [
+            "AWS-მა წარადგინა Strands Agents — ღია კოდის model-driven Python SDK აგენტებისთვის",
+            "მოიცავს Model Context Protocol (MCP) კლიენტებისა და სერვერების გაშვების გაიდებს",
+            "მხარს უჭერს custom tools-ის ინტეგრაციას, local debugging-ს და მოდელის პროვაიდერების მარტივ ცვლას"
+          ],
+          "interpretation": "ინდუსტრია გადადის მსუბუქ, მოდელ-აგნოსტიკურ Python SDK-ებზე, სადაც MCP არის მთავარი დამაკავშირებელი პროტოკოლი.",
+          "uncertainty": "დოკუმენტაციის ნაწილი ფოკუსირებულია Bedrock-ზე, თუმცა SDK ღია კოდისაა და ლოკალურადაც მუშაობს.",
+          "counter_argument": "ბაზარზე უკვე ბევრი მსგავსი SDK არსებობს (LangGraph, CrewAI, Autogen) და ახალი SDK-ს სწავლა დროს მოითხოვს.",
+          "strategic_assessment": "შეისწავლე Strands SDK-ს tool integration პატერნები; MCP სტანდარტის გაგება პირდაპირ ზრდის შენს საინჟინრო ფასს.",
+          "time_horizon": "short-term",
+          "what_could_change": "სტანდარტიზებული MCP სერვერები ჩაანაცვლებს ფრეიმვორკზე მიბმულ custom tool wrapper-ებს.",
+          "risks": [
+            "AWS Bedrock-ზე ზედმეტი დამოკიდებულება, თუ ლოკალურ მოდელებს არ გამოიყენებ",
+            "SDK-ს ადრეული ვერსიის შეცდომები"
+          ],
+          "non_obvious_opportunity": "საკუთარი ლოკალური MCP სერვერის აწყობა და მისი მიერთება ნებისმიერ ღია SDK-ზე.",
+          "fit_assessment": "იდეალურად ემთხვევა მომხმარებლის მიმდინარე მიზანს: MCP და agent loops Python-ში."
+        },
+        {
+          "event_id": "evt-anthropic-glm53-cyber-exploit-analysis",
+          "title": "Anthropic-ის ანალიზი: GLM-5.3-ის კიბერ-შესაძლებლობები და უსაფრთხოების გარღვევა",
+          "category": "აგენტების უსაფრთხოება და Governance",
+          "primary_url": "https://www.anthropic.com/research/glm-5-3-and-the-spread-of-advanced-cyber-capabilities",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 7,
+          "actionability": 7,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "Anthropic-ის კვლევით, ღია წონიანი GLM-5.3 ავტონომიურად ქმნის ექსპლოიტებს, ხოლო მისი დაცვის მექანიზმები 64-100%-ში ირღვევა.",
+          "what_happened": "Anthropic-ის Frontier Red Team-მა გამოაქვეყნა ანალიზი GLM-5.3-ის კიბერ-შესაძლებლობებზე და უსაფრთხოების სისუსტეებზე.",
+          "what_changed": "Frontier დონის ავტონომიური კიბერ-შესაძლებლობები ხელმისაწვდომი გახდა ღია წონიან მოდელებში მინიმალური ფილტრაციით.",
+          "why_it_matters": "აჩვენებს, რომ რეალურ ბიზნეს აგენტებში კოდის შესრულება უნდა მოხდეს მკაცრად იზოლირებულ sandbox-ში.",
+          "key_takeaways": [
+            "GLM-5.3 არის ყველაზე ძლიერი open-weight კიბერ-მოდელი",
+            "შიდა safeguard-ები ირღვევა შემთხვევათა 64-100%-ში",
+            "გარე სისტემური დაცვა აუცილებელია აგენტის უსაფრთხოებისთვის"
+          ],
+          "technical_architecture": [
+            "Open-weight LLM execution architecture",
+            "Autonomous exploit generation pipeline",
+            "Frontier Red Team evaluation harness"
+          ],
+          "technical_details": [
+            "64% to 100% bypass rate",
+            "NIST CAISI benchmark validation",
+            "End-to-end exploit synthesis"
+          ],
+          "potential_impact": "გაზრდის მოთხოვნას აგენტების უსაფრთხოებისა და sandbox გარემოების ინჟინრებზე.",
+          "action_type": "LEARN",
+          "action": "შეისწავლე როგორ შეზღუდო Python-ის `subprocess` და `eval` ბრძანებები Docker კონტეინერში აგენტის ხელსაწყოების გაშვებისას.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "Zhipu AI-ს GLM-5.3-ს შეუძლია ავტონომიურად შექმნას end-to-end კიბერ-ექსპლოიტები",
+            "Anthropic-ის ტესტებით, GLM-5.3-ის safeguard-ების გვერდის ავლა მარტივი ტექნიკით 64%-დან 100%-მდე შემთხვევაში ხდება",
+            "NIST CAISI-ს შეფასებით, GLM-5.3 არის ყველაზე ძლიერი open-weight კიბერ-მოდელი"
+          ],
+          "interpretation": "Open-weight მოდელების გაძლიერებასთან ერთად, აგენტების უსაფრთხოების დაცვა მოდელის დონეზე შეუძლებელი ხდება; საჭიროა მკაცრი გარე sandbox-ები.",
+          "uncertainty": "კონკრეტული bypass ტექნიკები დეტალურად არ არის გასაჯაროებული უსაფრთხოების მიზნით.",
+          "counter_argument": "ეს შესაძლებლობები თანაბრად ეხმარება კიბერ-უსაფრთხოების დამცველებს სისტემების პატჩინგში.",
+          "strategic_assessment": "არასოდეს ენდო LLM-ის შიდა ფილტრებს; ააგე სისტემური იზოლაცია (Docker, restricted execution) შენი აგენტებისთვის.",
+          "time_horizon": "long-term",
+          "what_could_change": "კოდის გამშვები აგენტები ვალდებული იქნებიან იმუშაონ იზოლირებულ microVM გარემოებში.",
+          "risks": [
+            "დაუცველი აგენტის მიერ სისტემური ბრძანებების თვითნებური შესრულება",
+            "API გასაღებების გაჟონვა unsafe tool execution-ისას"
+          ],
+          "non_obvious_opportunity": "ავტონომიური უსაფრთხოების gate-ების და validator-ების შექმნა open-source აგენტებისთვის.",
+          "fit_assessment": "მნიშვნელოვანია production agent engineering-ისთვის: გასწავლის საიმედო execution guardrails-ის აგებას."
+        }
+      ],
+      "trends": [
+        "Agent Harness დიზაინი (VISTA, RPG) უფრო დიდ გავლენას ახდენს შედეგზე, ვიდრე მოდელის ზომის გაზრდა",
+        "მოდელის წონების უცვლელად დატოვება და Run-time Tool/Prompt ევოლუცია ხდება თვითგანვითარების მთავარი გზა",
+        "Context Caching-ისა და Grounding-ის გაიაფება ამცირებს ავტონომიური აგენტების შენახვის ხარჯებს ნულამდე"
+      ]
     }
   ],
   "learning_queue": [
-    "MCP სერვერების არქიტექტურა და სტანდარტები Python-ში",
-    "აგენტური მეხსიერებისა და კონტექსტის მართვის ოპტიმიზაცია"
+    "Docker-ის გამოყენება Python-ში აგენტის მიერ გენერირებული კოდის უსაფრთხოდ გასაშვებად",
+    "Context Caching-ის რეალიზაცია Google GenAI SDK-ში ხარჯების 90%-ით შესამცირებლად",
+    "Multi-turn Agent State-ის შენახვა SQLite-ში JSON სტრუქტურით"
   ],
-  "last_run": "2026-10-03T14:37:44.127509+00:00",
+  "last_run": "2026-10-04T15:13:11.567944+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -8160,12 +8237,14 @@
     "arxiv:2610.02206",
     "arxiv:2610.01762",
     "arxiv:2610.02199",
-    "arxiv:2610.02202"
+    "arxiv:2610.02202",
+    "arxiv:2610.02204",
+    "arxiv:2610.02200"
   ],
   "last_report_files": {
-    "markdown": "data/reports/2026-10-03/report.md",
-    "json": "data/reports/2026-10-03/report.json",
-    "newsletter": "data/reports/2026-10-03/newsletter.md",
-    "social": "data/reports/2026-10-03/social_posts.txt"
+    "markdown": "data/reports/2026-10-04/report.md",
+    "json": "data/reports/2026-10-04/report.json",
+    "newsletter": "data/reports/2026-10-04/newsletter.md",
+    "social": "data/reports/2026-10-04/social_posts.txt"
   }
 }
