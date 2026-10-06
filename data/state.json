@@ -195,7 +195,10 @@
     "https://www.wired.com/story/openai-dots-always-on-ai-agents-that-proactively-help",
     "https://techcrunch.com/2026/09/29/openai-gives-codex-reusable-cloud-environments-that-work-across-devices",
     "https://venturebeat.com/orchestration/openclaw-launches-free-enterprise-control-plane-for-persistent-ai-agents-backed-by-openai-red-hat-and-nvidia",
-    "https://techcrunch.com/2026/09/29/heres-why-openai-is-absent-from-nvidias-industry-wide-effort-to-end-rogue-ai-agents"
+    "https://techcrunch.com/2026/09/29/heres-why-openai-is-absent-from-nvidias-industry-wide-effort-to-end-rogue-ai-agents",
+    "https://arxiv.org/abs/2610.06830",
+    "https://arxiv.org/abs/2610.06851",
+    "https://arxiv.org/abs/2610.06852"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -344,114 +347,12 @@
     "evt-aws-strands-mcp-agent-sdk",
     "evt-anthropic-glm53-cyber-exploit-analysis",
     "evt-openai-devday-dots-decisions-api",
-    "evt-openclaw-runtime-governance-control-plane"
+    "evt-openclaw-runtime-governance-control-plane",
+    "evt-mempilot-multimodal-memory",
+    "evt-base-models-reasoning-cues",
+    "evt-editable-flowchart-relayout"
   ],
   "events": [
-    {
-      "event_id": "evt-gemini-agent-anomaly-detection",
-      "title": "Google Agent Anomaly Detection: Out-of-Band Security Oversight for Autonomous Agents",
-      "category": "Agent Security & Governance",
-      "primary_url": "https://developers.googleblog.com/agent-anomaly-detection-now-in-private-preview-on-the-gemini-enterprise-agent-platform",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 7,
-      "source_quality": 10,
-      "confidence": 95,
-      "tldr": "Google launched Agent Anomaly Detection on Gemini Enterprise, performing asynchronous, reasoning-based security audits mapped directly to the OWASP Agentic Top 10.",
-      "what_happened": "Google introduced an out-of-band security and auditing layer that analyzes OpenTelemetry traces, reasoning steps, and tool calls of production agents without slowing response time.",
-      "what_changed": "Traditional unit tests or standard latency/token metrics fail to catch silent privilege escalations or improper tool calls. Google's tool inspects the complete execution graph asynchronously against OWASP Agentic Top 10 risks.",
-      "why_it_matters": "Solves the core enterprise dilemma: autonomous agents make runtime decisions that bypass traditional static code security filters, requiring behavioral trace monitoring.",
-      "key_takeaways": [
-        "Asynchronous out-of-band evaluation ensures zero impact on live latency.",
-        "Native mapping to OWASP Agentic Top 10 (ASI02 Tool Misuse, ASI03 Privilege Abuse, ASI10 Rogue Agents).",
-        "Integration with Security Command Center for centralized incident triage."
-      ],
-      "technical_architecture": [
-        "OpenTelemetry trace collector ingesting agent tool calls and reasoning logs.",
-        "Asynchronous reasoning-based audit engine.",
-        "Security Command Center publisher."
-      ],
-      "technical_details": [
-        "Flags subtle intent shifts and unexpected tool reach.",
-        "Provides plain-language risk explanations and actionable remediations.",
-        "Upcoming support for custom business logic rules written in natural language."
-      ],
-      "potential_impact": "Sets the enterprise standard for non-blocking agent behavioral security monitoring.",
-      "action_type": "TRACK",
-      "action": "Review OWASP Agentic Top 10 categories (ASI02, ASI03, ASI08, ASI10) and document potential failure modes in your agent projects.",
-      "evidence": []
-    },
-    {
-      "event_id": "evt-log-n-questions-llm-communication",
-      "title": "Title-Partitioning Strategies: Frontier LLM Self-Communication Efficiency in Information Asymmetry Games",
-      "category": "AI Research / Agent Communication & Evaluation",
-      "primary_url": "https://arxiv.org/abs/2609.19113",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 8,
-      "actionability": 7,
-      "source_quality": 8,
-      "confidence": 90,
-      "tldr": "Evaluating frontier LLMs in a two-agent log(N)-Questions game reveals that models achieve optimal 1 bit/question efficiency specifically when partitioning context by document titles.",
-      "what_happened": "A study evaluated 6 frontier LLMs in a paired information asymmetry game (log2(N) questions over Wikipedia abstracts) to measure model self-communication efficiency.",
-      "what_changed": "Previous evaluations measured model single-prompt QA accuracy. This benchmark tests how efficiently a model can reduce search space entropy when split into an information-limited questioner and answerer.",
-      "why_it_matters": "Teaches crucial prompt design principles for multi-agent systems: structured indexing (like binary splitting on document titles) dramatically outperforms unstructured reasoning.",
-      "key_takeaways": [
-        "Win rate scales smoothly as p^(log2 N) with average per-round reliability p=0.928.",
-        "Only top models extracted a full 1 bit of information per question by using title-partitioning strategies.",
-        "Excessive reasoning-token expenditure showed little correlation with game success."
-      ],
-      "technical_architecture": [
-        "Paired 2-agent information game protocol.",
-        "Strict log2(N) yes/no constraint.",
-        "Entropy reduction metric (bits per question)."
-      ],
-      "technical_details": [
-        "408 games evaluated across document sets up to 1024 paragraphs.",
-        "Tested GLM-5.3, GPT-5.6 Sol, Grok 4.6, Gemini 3.8 Flash, Kimi K3, and Claude Opus 5.",
-        "Identified strict bias toward defaulting to 'No' answers in weaker models."
-      ],
-      "potential_impact": "Informs structured protocol design for multi-agent negotiation, binary search tree retrieval, and active learning loops.",
-      "action_type": "LEARN",
-      "action": "Analyze binary search partitioning logic in multi-agent prompt design to optimize information gathering loops.",
-      "evidence": []
-    },
-    {
-      "event_id": "evt-limix-2-causal-structured-data",
-      "title": "LimiX-2: Contextual Mechanism Networks for Zero-Shot Tabular Causal Recovery",
-      "category": "AI Research / Structured Data & Causal ML",
-      "primary_url": "https://huggingface.co/papers/2609.17488",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 8,
-      "actionability": 7,
-      "source_quality": 8,
-      "confidence": 85,
-      "tldr": "LimiX-2 introduces Contextual Mechanism Networks (CMNs) pretrained on Structural Causal Models to achieve state-of-the-art zero-shot tabular prediction and causal skeleton recovery.",
-      "what_happened": "Researchers released LimiX-2, a foundation model for structured data trained using Context-Conditional Masked Modeling (CCMM) over synthetic datasets from Structural Causal Models (SCMs).",
-      "what_changed": "Traditional tabular models focus on target-centric prediction p(y|x, D_context). LimiX-2 models joint probability distributions p(x,y|D_context), capturing underlying data-generating mechanisms.",
-      "why_it_matters": "Enables agents working with SQL databases and tabular analytics to infer causal relationships and make zero-shot predictions without manual feature engineering or task-specific retraining.",
-      "key_takeaways": [
-        "Outperforms existing tabular foundation models on TabArena, TALENT, and BCC benchmarks.",
-        "Feature attention weights directly encode causal relationships.",
-        "Recovers causal skeletons zero-shot from structured datasets."
-      ],
-      "technical_architecture": [
-        "Contextual Mechanism Network (CMN) architecture.",
-        "Context-Conditional Masked Modeling (CCMM) pre-training.",
-        "Structural Causal Model (SCM) synthetic data generator."
-      ],
-      "technical_details": [
-        "Pretrained across diverse graph structures and functional mechanisms.",
-        "Jointly models features and labels for flexible downstream query tasks.",
-        "GitHub repository and weights publicly released."
-      ],
-      "potential_impact": "Brings causal reasoning capabilities to AI database agents, enabling deeper automated analytics.",
-      "action_type": "TRACK",
-      "action": "Follow the LimiX-2 GitHub repository and review its approach to causal graph inference from SQL tables.",
-      "evidence": []
-    },
     {
       "event_id": "evt-claude-code-guide-anthropic-skills",
       "title": "Claude Code Ultimate Guide & Anthropic-Skills Ecosystem: Standardizing Harnesses and SKILL.md",
@@ -5271,6 +5172,172 @@
       ],
       "non_obvious_opportunity": "Docker კონტეინერების გამოყენება MCP სერვერების იზოლაციისთვის იძლევა საწარმოო დონის უსაფრთხოებას უფასოდ.",
       "fit_assessment": "გეხმარება შეისწავლო როგორ აიცილო თავიდან აგენტების არასასურველი ქცევა რეალურ პროექტებში."
+    },
+    {
+      "event_id": "evt-mempilot-multimodal-memory",
+      "title": "MemPilot: Orchestrating On-Demand Multimodal Memory Curation for LLM Agents",
+      "category": "AI Research / Agent Architecture",
+      "primary_url": "https://arxiv.org/abs/2610.06830",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "MemPilot მართავს მულტიმოდალურ მეხსიერებას დინამიურად, აკონტროლებს შესრულების, ღირებულებისა და ლატენტობის ბალანსს.",
+      "what_happened": "მკვლევარებმა წარმოადგინეს MemPilot, RL-ზე დაფუძნებული ფრეიმვორკი აგენტის მეხსიერების ოპტიმიზაციისთვის.",
+      "what_changed": "სტატიკური მეხსიერების ძებნიდან გადავდივართ მოთხოვნაზე დაფუძნებულ დინამიურ კურაციაზე.",
+      "why_it_matters": "გაძლევთ საშუალებას შეამციროთ LLM API ტოკენების ხარჯები და აწიოთ აგენტის ეფექტურობა.",
+      "key_takeaways": [
+        "იყენებს RL პოლიტიკას მეხსიერების მოსაძებნად.",
+        "ოპტიმიზებს შესრულებას, ღირებულებას და ლატენტობას.",
+        "აუმჯობესებს მულტიმოდალური აგენტების ეფექტურობას."
+      ],
+      "technical_architecture": [
+        "Multi-step LLM policy trained via reinforcement learning",
+        "Heterogeneous LLMs and VLMs for raw history curation"
+      ],
+      "technical_details": [
+        "Objective-wise advantage decoupling",
+        "Prefix-based marginal utility estimation"
+      ],
+      "potential_impact": "მნიშვნელოვნად ამცირებს დიდი კონტექსტის მქონე აგენტების საოპერაციო ხარჯებს.",
+      "action_type": "BUILD",
+      "action": "დაწერეთ Python სკრიპტი, რომელიც ფილტრავს დუპლიკატურ მულტიმოდალურ კონტექსტს API გამოძახებამდე.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value",
+        "Long-term Opportunity"
+      ],
+      "verified_facts": [
+        "MemPilot uses reinforcement learning to iteratively choose between query-agnostic memory and VLM curation.",
+        "It decouples advantages across objectives to optimize multi-step policies under competing performance-cost-latency preferences."
+      ],
+      "interpretation": "აგენტებისთვის მულტიმოდალური ისტორიის დინამიკური ფილტრაცია ამცირებს API ხარჯებს და აუმჯობესებს შესრულების სიზუსტეს.",
+      "uncertainty": "RL პოლიტიკის ტრენინგის დახვეწა და გამოთვლითი სირთულე მცირე მასშტაბის სერვერებზე ბოლომდე შესწავლილი არ არის.",
+      "counter_argument": "მარტივი სტატიკური RAG ხშირად საკმარისია და მულტიმოდალური მეხსიერების ავტომატური კურაცია ზედმეტ ინჟინრულ სირთულეს ქმნის.",
+      "strategic_assessment": "გამოიყენეთ დინამიური მეხსიერების მიდგომები აგენტების RAG სისტემებში კონტექსტის ხარჯების შესამცირებლად.",
+      "time_horizon": "mid-term",
+      "what_could_change": "აგენტის მეხსიერების მართვა გადავა სტატიკური ვექტორული ბაზებიდან დინამიურ, RL-ზე დაფუძნებულ კურაციაზე.",
+      "risks": [
+        "გადამეტებული გამოთვლითი სირთულე",
+        "RL პოლიტიკის არასტაბილურობა",
+        "ინტეგრაციის მაღალი დროითი დანახარჯები"
+      ],
+      "non_obvious_opportunity": "შეგიძლიათ ააგოთ მცირე ზომის ჰიბრიდული მეხსიერების ფილტრი Python-ით და გაყიდოთ როგორც ღია კოდის მიკროსერვისი.",
+      "fit_assessment": "იდეალურია თქვენი მიზნისთვის, ააგოთ რეალური ბიზნეს აგენტები ოპტიმიზებული ხარჯებით."
+    },
+    {
+      "event_id": "evt-base-models-reasoning-cues",
+      "title": "Base Models Can Reason By Taking a Cue From Training Data",
+      "category": "AI Research / Model Architecture",
+      "primary_url": "https://arxiv.org/abs/2610.06851",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 9,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "სპეციალური საწყისი ტოკენების (cues) გამოყენებით ბაზისური მოდელები აჩვენებენ რაზნინგის მაღალ სიზუსტეს ძვირადღირებული RL-ის გარეშე.",
+      "what_happened": "მკვლევარებმა აჩვენეს, რომ ტოკენების ფიქსირებული დასაწყისი ზრდის ბაზისური მოდელების მათემატიკურ და კოდირების სიზუსტეს.",
+      "what_changed": "ადანტური RL ტრენინგის ნაცვლად, საწყისი ტოკენების კორექციით ვიღებთ მსგავს სიზუსტეს.",
+      "why_it_matters": "ზოგავს უზარმაზარ გამოთვლით რესურსებს და ფულს ღია კოდის მოდელებთან მუშაობისას.",
+      "key_takeaways": [
+        "სტარტური ტოკენები ააქტიურებენ ბაზისური მოდელის მსჯელობას.",
+        "მაგალითად, '..\\n\\nOkay' ზრდის OLMO-ს სიზუსტეს 42%-დან 78%-მდე.",
+        "მეთოდი არ საჭიროებს დამატებით მოდელის წონების ფაინ-თუნინგს."
+      ],
+      "technical_architecture": [
+        "Base transformer models without RL post-training",
+        "Causal data interventions on hidden states"
+      ],
+      "technical_details": [
+        "Starting token cues injection",
+        "MATH-500 and Qwen3-14B evaluation setups"
+      ],
+      "potential_impact": "აძლევს საშუალებას ინჟინრებს მიიღონ მაღალი ხარისხის რაზნინგი უფასო ან იაფი ბაზისური მოდელებიდან.",
+      "action_type": "TRY",
+      "action": "გატესტეთ ღია კოდის ბაზისური მოდელი Python-ში სპეციალური საწყისი ტოკენებით და გაზომეთ პასუხის ხარისხი.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value",
+        "Real Business Opportunity"
+      ],
+      "verified_facts": [
+        "Fixing starting token cues makes base model performance competitive with RL-trained counterparts.",
+        "The cue '..\\n\\nOkay' raises Olmo-3-7B MATH-500 accuracy from 42% to 78%."
+      ],
+      "interpretation": "ბაზისური მოდელების სწორი პრეფიქსებით ინიციალიზაცია ხსნის ძვირადღირებული RL ტრენინგის გარეშე მსჯელობის უნარს.",
+      "uncertainty": "სპეციფიკური ტოკენების ქცევა განსხვავებულ არქიტექტურებსა და დომენებში ბოლომდე პროგნოზირებადი არ არის.",
+      "counter_argument": "ეს არის მხოლოდ ზედაპირული ასოციაციების გააქტიურება და არა ღრმა მართული მსჯელობა.",
+      "strategic_assessment": "გამოიყენეთ მორგებული პრეფიქსული ტოკენები ღია კოდის ბაზისური მოდელების გამოსაყენებლად დამატებითი ხარჯების გარეშე.",
+      "time_horizon": "mid-term",
+      "what_could_change": "მცირე ბიუჯეტის დეველოპერები შეძლებენ ბაზისური მოდელების რაზნინგის ოპტიმიზაციას ძვირადღირებული ფაინ-თუნინგის გარეშე.",
+      "risks": [
+        "არასტაბილური პასუხები არასწორი პრეფიქსის დროს",
+        "დომენთშორისი გადატანის სირთულე"
+      ],
+      "non_obvious_opportunity": "შეგიძლიათ ააგოთ ღია კოდის API კლუბი, რომელიც იყენებს პრეფიქსულ ოპტიმიზაციას და ყიდის იაფ ინფერენსს.",
+      "fit_assessment": "გაძლევთ მძლავრ ინსტრუმენტს იმუშაოთ მცირე ზომის ღია მოდელებთან შეზღუდული ბიუჯეტით."
+    },
+    {
+      "event_id": "evt-editable-flowchart-relayout",
+      "title": "One Figure, Every Canvas: Editable Flowchart Relayout via Agentic Pipeline",
+      "category": "AI Research / Agent Architecture",
+      "primary_url": "https://arxiv.org/abs/2610.06852",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 85,
+      "tldr": "აგენტური პიპლაპი Parse, Style და Layout ეტაპებით გარქმნის რასტრულ დიაგრამებს რედაქტირებად mxGraph XML ფორმატში.",
+      "what_happened": "მკვლევარებმა წარმოადგინეს აგენტური სისტემა, რომელიც ადაპტირებს ფლოუჩარტებს სხვადასხვა ასპექტ-რაციოზე კავშირების დარღვევის გარეშე.",
+      "what_changed": "სურათის უბრალო დაჭიმვის ან დამახინჯების მაგივრად ვიღებთ სტრუქტურულად ზუსტ, რედაქტირებად ფაილებს.",
+      "why_it_matters": "გვიჩვენებს, როგორ მუშაობს Main-Critic აგენტური არქიტექტურა ვიზუალურ დომენში.",
+      "key_takeaways": [
+        "იყენებს Parse, Style და Layout ფაზებს.",
+        "მთავარი აგენტი მუშაობს VLM კრიტიკოსთან ერთად.",
+        "გამოსავალში აგენტი აგენერირებს mxGraph XML ფაილებს."
+      ],
+      "technical_architecture": [
+        "Agentic pipeline with Parse, Style, and Layout stages",
+        "VLM visual feedback paired with deterministic constraint checks"
+      ],
+      "technical_details": [
+        "mxGraph XML output format",
+        "Evaluated on 100 flowcharts using Gemini 3.1 Pro"
+      ],
+      "potential_impact": "ზოგავს საათობით მექანიკურ დიზაინის სამუშაოს ტექნიკური დოკუმენტაციის მომზადებისას.",
+      "action_type": "BUILD",
+      "action": "ააწყვეთ მცირე Python სკრიპტი, რომელიც უშვებს ორაგენტიან (Main-Critic) ციკლს JSON კონფიგურაციების შესამოწმებლად.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Real Business Opportunity",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "The method parses, styles, and lays out flowcharts into editable mxGraph XML formats.",
+        "It achieves 68.6% Content Fidelity compared to 11.2-41.4% for prior work on a 100 flowchart…"
+      ],
+      "interpretation": "მულტიმოდალური აგენტებისა და კრიტიკოსების კომბინაცია წყვეტს სტრუქტურული დიაგრამების ავტომატური რედაქტირების პრობლემას.",
+      "uncertainty": "კომპლექსური ბლოკ-სქემების გარდაქმნის სიზუსტე ძალზე პატარა მოდელებზე არ არის დადასტურებული.",
+      "counter_argument": "ტრადიციული გრაფიკული რედაქტორები და სკრიპტები უფრო სწრაფად აკეთებენ იმავეს.",
+      "strategic_assessment": "შექმენით ავტომატური დიაგრამების გადამყვანი აგენტი, როგორც ფრილანს სერვისი ან SaaS პროდუქტი.",
+      "time_horizon": "mid-term",
+      "what_could_change": "დიაგრამებისა და ტექნიკური ნახაზების ადაპტაცია სხვადასხვა ფორმატებზე სრულად ავტომატიზირდება.",
+      "risks": [
+        "ვიზუალური კავშირების გაწყვეტა რელაუტის დროს",
+        "VLM კრიტიკოსების მაღალი ლატენტობა"
+      ],
+      "non_obvious_opportunity": "შეგიძლიათ შესთავაზოთ ეს ავტომატიზაცია კონსულტანტებს, რომლებიც მუდმივად ცვლიან პრეზენტაციების ფორმატებს.",
+      "fit_assessment": "გამოგადგებათ აგენტური პიპლაინებისა და Critic-Main ციკლების პრაქტიკული ტესტირებისთვის."
     }
   ],
   "topics": {
@@ -5344,7 +5411,7 @@
     "AI Coding Tools / Agent Architecture": 2,
     "LLM API / Agent Frameworks": 1,
     "AI Research / LLM Infrastructure": 1,
-    "AI Research / Agent Architecture": 6,
+    "AI Research / Agent Architecture": 8,
     "AI Research / Agent Memory": 1,
     "AI Research / RAG & Embeddings": 1,
     "AI Evaluation / Agent Reliability": 1,
@@ -5368,7 +5435,7 @@
     "AI Research & NLP": 1,
     "LLM API / Agent Infrastructure": 1,
     "AI Research / Agent Reliability": 1,
-    "AI Research / Model Architecture": 1,
+    "AI Research / Model Architecture": 2,
     "Agent Architecture & Security": 1,
     "LLM APIs & Cost Optimization": 1,
     "AI Research / RAG & Evaluation": 1,
@@ -5388,124 +5455,6 @@
     "Agent Architecture & APIs": 1
   },
   "reports": [
-    {
-      "date": "2026-09-23",
-      "summary": "დღევანდელი ანალიზი მოიცავს AWS-ის მიერ წარმოდგენილ Bedrock AgentCore პლატფორმას და MCP ეკოსისტემაში უსაფრთხოების ახალ გამოწვევებს. ჩვენ ვფოკუსირდებით ინჟინრულ რეალობაზე, რომელიც აგენტების production გარემოში გაშვებას უზრუნველყოფს.",
-      "events": [
-        {
-          "event_id": "evt-aws-bedrock-agentcore-shared-platform",
-          "title": "Amazon Bedrock AgentCore: მრავალ-აგენტიანი Shared Runtime და ინფრასტრუქტურა",
-          "category": "აგენტების ინფრასტრუქტურა და Runtime",
-          "primary_url": "https://aws.amazon.com/blogs/machine-learning/a-shared-agentic-platform-for-wood-mackenzie-on-amazon-bedrock-agentcore",
-          "supporting_urls": [
-            "https://aws.amazon.com/blogs/machine-learning/how-reactiv-automates-mobile-commerce-80-faster-with-amazon-bedrock-agentcore"
-          ],
-          "importance": 9,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 10,
-          "confidence": 95,
-          "tldr": "AWS-მა წარმოადგინა Bedrock AgentCore, რომელიც ხსნის აგენტების production-ში გაშვების ძირითად ინფრასტრუქტურულ ბარიერებს.",
-          "what_happened": "AWS-მა გამოუშვა Bedrock AgentCore, მართული პლატფორმა მრავალ-აგენტიანი სისტემების ორკესტრაციისთვის.",
-          "what_changed": "ხელით აწყობილი აგენტური ინფრასტრუქტურა იცვლება სტანდარტიზებული, მართული runtime-ებით.",
-          "why_it_matters": "გაძლევთ საშუალებას გაიგოთ რა არქიტექტურული ფენაა საჭირო აგენტის საიმედო მუშაობისთვის.",
-          "key_takeaways": [
-            "ერთიანი runtime აგვარებს სესიების იზოლაციას და უსაფრთხოებას.",
-            "მრავალ-აგენტიანი ორკესტრაცია მოითხოვს მუდმივ მეხსიერებას."
-          ],
-          "technical_architecture": [
-            "AgentCore აერთიანებს ორკესტრაციას, უსაფრთხოებას და მუდმივ მეხსიერებას.",
-            "Strands Agents SDK უზრუნველყოფს Python-ზე დაფუძნებულ აგენტის მართვას."
-          ],
-          "technical_details": [
-            "გამოიყენება მოდელზე დაფუძნებული Python SDK.",
-            "მხარდაჭერილია მუდმივი მეხსიერება და MCP ინტეგრაცია."
-          ],
-          "potential_impact": "მნიშვნელოვნად ამცირებს აგენტების დაპროგრამებისა და ტესტირების დროს.",
-          "action_type": "TRY",
-          "action": "შექმენით მარტივი მრავალ-აგენტიანი ლოგიკა Python-ში და დააკავშირეთ ერთი ხელსაწყო.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value",
-            "Long-term Opportunity"
-          ],
-          "verified_facts": [
-            "Wood Mackenzie-მ ააშენა APEX პლატფორმა Bedrock AgentCore-ზე.",
-            "Reactiv-მა შეამცირა აპების კონფიგურაციის დრო 80 პროცენტით.",
-            "პლატფორმა უზრუნველყოფს ორკესტრაციას, უსაფრთხოებას და მუდმივ მეხსიერებას."
-          ],
-          "interpretation": "ინფრასტრუქტურული层ის სტანდარტიზაცია ცვლის აგენტების დამზადების წესს: კომპანიები გადადიან ერთიანი runtime-ების გამოყენებაზე.",
-          "uncertainty": "עד რა ზომამდე იქნება შესაძლებელი მსგავსი მართული პლატფორმების გამოყენება უფასო ბიუჯეტით.",
-          "counter_argument": "მორგებული პლატფორმები ზრდის მწარმოებელზე დამოკიდებულებას და ამცირებს კუსტომიზაციის არეალს.",
-          "strategic_assessment": "შეისწავლეთ როგორ იქმნება მართული აგენტური runtime-ები და გამოიყენეთ ღია კოდის ალტერნატივები თქვენს პროექტებში.",
-          "time_horizon": "mid-term",
-          "what_could_change": "აგენტების ინფრასტრუქტურის აგება გადაინაცვლებს ნულიდან წერიდან მზა პლატფორმების კონფიგურაციაზე.",
-          "risks": [
-            "Cloud პროვაიდერების მაღალი ფასები",
-            "მოდელის არჩევანის შეზღუდვა",
-            "კონფიგურაციის სირთულე"
-          ],
-          "non_obvious_opportunity": "მცირე დეველოპერებს შეუძლიათ შესთავაზონ მსგავსი ჰარნესები როგორც სერვისი ადგილობრივი კომპანიებისთვის.",
-          "fit_assessment": "გეხმარებათ გაიგოთ როგორ იქმნება სამრეწველო დონის აგენტური სისტემები რეალურ production გარემოში."
-        },
-        {
-          "event_id": "evt-equivsva-rtl-assertion-dataset",
-          "title": "EquivSVA: ფორმალურად გადამოწმებული დეტასეტი RTL კოდის გენერაციისთვის",
-          "category": "AI Research & Model Architecture",
-          "primary_url": "https://arxiv.org/abs/2609.26751",
-          "supporting_urls": [],
-          "importance": 7,
-          "relevance": 6,
-          "actionability": 6,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "გამოვიდა EquivSVA, რომელიც აუმჯობესებს LLM-ების მიერ გენერირებული კოდის ფორმალურ ვალიდაციას.",
-          "what_happened": "მკვლევარებმა წარმოადგინეს დეტასეტი და ვალიდაციის სუიტი RTL კოდის ტესტირებისთვის.",
-          "what_changed": "ნაცვლად ზოგადი კომპილაციისა, შემოწმება ხდება ფორმალური ქცევის წესებით.",
-          "why_it_matters": "გაჩვენებთ როგორ უნდა შემოწმდეს აგენტის მიერ დაწერილი კოდის უსაფრთხოება.",
-          "key_takeaways": [
-            "ფორმალური ვალიდაცია პოულობს ბაგებს, რომლებსაც კომპილატორი ვერ ამჩნევს."
-          ],
-          "technical_architecture": [
-            "შეიცავს 17-job ვალიდაციის სუიტს RTL ეკვივალენტობის შესამოწმებლად."
-          ],
-          "technical_details": [
-            "გამოიყენება Qwen2.5-Coder-7B-Instruct მოდელი შესაფასებლად."
-          ],
-          "potential_impact": "ამცირებს აგენტების მიერ გენერირებული კოდის შეცდომებს.",
-          "action_type": "LEARN",
-          "action": "შეისწავლეთ როგორ იყენებენ ავტომატური ჰარნესები ტესტირების შედეგებს მოდელის გამოსასწორებლად.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "EquivSVA შეიცავს 120 ქცევის ოჯახს და 480 RTL იმპლემენტაციას.",
-            "გამოყენებულია Qwen2.5-Coder-7B-Instruct მოდელის ტესტირებისთვის."
-          ],
-          "interpretation": "ფორმალური ვალიდაცია სულ უფრო მნიშვნელოვანი ხდება კოდის გენერირებელი მოდელების შესამოწმებლად.",
-          "uncertainty": "რამდენად პრაქტიკულია აპარატურული აღწერის ენები ზოგადი AI ინჟინრებისთვის.",
-          "counter_argument": "حარდვერული დიზაინი სცდება ტიპიური აგენტური ინჟინერიის ფარგლებს.",
-          "strategic_assessment": "გაეცანით კოდის ფორმალური შემოწმების მეთოდოლოგიას, მაგრამ ფოკუსირდით პროგრამული უზრუნველყოფის აგენტებზე.",
-          "time_horizon": "mid-term",
-          "what_could_change": "AI კოდის გენერაცია გახდება უფრო ზუსტი ფორმალური ტესტირების ჰარნესების წყალობით.",
-          "risks": [
-            "მაღალი სირთულე",
-            "შეზღუდული გამოყენება სოფტვერში"
-          ],
-          "non_obvious_opportunity": "მსგავსი ფორმალური შემოწმების მიდგომები შეიძლება გადავიტანოთ Python აგენტების ინსტრუქციების ვალიდაციაზე.",
-          "fit_assessment": "საინტერესოა კოდის გენერაციის ხარისხის შესაფასებლად, მაგრამ ნაკლებად პრიორიტეტულია ამ ეტაპზე."
-        }
-      ],
-      "trends": [
-        "მართული runtime-ების და პლატფორმების ინტეგრაცია აგენტურ სისტემებში",
-        "ფორმალური ვალიდაციისა და ჰარნესების გამოყენება კოდის გენერაციისას"
-      ]
-    },
     {
       "date": "2026-09-24",
       "summary": "დღევანდელი მიმოხილვა ფოკუსირებულია open weight მოდელების გამოყენებაზე coding agent ჰარნესებში, AI ტუტორინგის ეფექტურობის დამტკიცებაზე და RAG ტექნიკების ოპტიმიზაციაზე. ჩვენ ვამუშავებთ მხოლოდ იმ ტექნიკურ სიახლეებს, რომლებიც რეალურად ეხმარება 16 წლის დეველოპერს მცირე ბიუჯეტით აგენტური სისტემების აგებაში.",
@@ -8160,13 +8109,190 @@
         "სტრუქტურირებული გადაწყვეტილებების API-ები ჩაენაცვლებს ძვირადღირებულ ტექსტურ ზარებს",
         "მრავალ-აგენტიანი უსაფრთხოება და აუდიტი ხდება სტანდარტული მოთხოვნა"
       ]
+    },
+    {
+      "date": "2026-10-06",
+      "summary": "დღევანდელი კვლევები და ახალი ტექნიკური რელიზები გვთავაზობს აგენტების მეხსიერების ოპტიმიზაციისა და ბაზისური მოდელების მართვის ახალ მიდგომებს. ჩვენ განვიხილავთ MemPilot ფრეიმვორკს და ბაზისური მოდელების რაზნინგის (reasoning) ხელოვნურ ტოკენებს, რომლებიც პირდაპირ გამოიყენება აგენტური არქიტექტურების ასაწყობად.",
+      "events": [
+        {
+          "event_id": "evt-mempilot-multimodal-memory",
+          "title": "MemPilot: Orchestrating On-Demand Multimodal Memory Curation for LLM Agents",
+          "category": "AI Research / Agent Architecture",
+          "primary_url": "https://arxiv.org/abs/2610.06830",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "MemPilot მართავს მულტიმოდალურ მეხსიერებას დინამიურად, აკონტროლებს შესრულების, ღირებულებისა და ლატენტობის ბალანსს.",
+          "what_happened": "მკვლევარებმა წარმოადგინეს MemPilot, RL-ზე დაფუძნებული ფრეიმვორკი აგენტის მეხსიერების ოპტიმიზაციისთვის.",
+          "what_changed": "სტატიკური მეხსიერების ძებნიდან გადავდივართ მოთხოვნაზე დაფუძნებულ დინამიურ კურაციაზე.",
+          "why_it_matters": "გაძლევთ საშუალებას შეამციროთ LLM API ტოკენების ხარჯები და აწიოთ აგენტის ეფექტურობა.",
+          "key_takeaways": [
+            "იყენებს RL პოლიტიკას მეხსიერების მოსაძებნად.",
+            "ოპტიმიზებს შესრულებას, ღირებულებას და ლატენტობას.",
+            "აუმჯობესებს მულტიმოდალური აგენტების ეფექტურობას."
+          ],
+          "technical_architecture": [
+            "Multi-step LLM policy trained via reinforcement learning",
+            "Heterogeneous LLMs and VLMs for raw history curation"
+          ],
+          "technical_details": [
+            "Objective-wise advantage decoupling",
+            "Prefix-based marginal utility estimation"
+          ],
+          "potential_impact": "მნიშვნელოვნად ამცირებს დიდი კონტექსტის მქონე აგენტების საოპერაციო ხარჯებს.",
+          "action_type": "BUILD",
+          "action": "დაწერეთ Python სკრიპტი, რომელიც ფილტრავს დუპლიკატურ მულტიმოდალურ კონტექსტს API გამოძახებამდე.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value",
+            "Long-term Opportunity"
+          ],
+          "verified_facts": [
+            "MemPilot uses reinforcement learning to iteratively choose between query-agnostic memory and VLM curation.",
+            "It decouples advantages across objectives to optimize multi-step policies under competing performance-cost-latency preferences."
+          ],
+          "interpretation": "აგენტებისთვის მულტიმოდალური ისტორიის დინამიკური ფილტრაცია ამცირებს API ხარჯებს და აუმჯობესებს შესრულების სიზუსტეს.",
+          "uncertainty": "RL პოლიტიკის ტრენინგის დახვეწა და გამოთვლითი სირთულე მცირე მასშტაბის სერვერებზე ბოლომდე შესწავლილი არ არის.",
+          "counter_argument": "მარტივი სტატიკური RAG ხშირად საკმარისია და მულტიმოდალური მეხსიერების ავტომატური კურაცია ზედმეტ ინჟინრულ სირთულეს ქმნის.",
+          "strategic_assessment": "გამოიყენეთ დინამიური მეხსიერების მიდგომები აგენტების RAG სისტემებში კონტექსტის ხარჯების შესამცირებლად.",
+          "time_horizon": "mid-term",
+          "what_could_change": "აგენტის მეხსიერების მართვა გადავა სტატიკური ვექტორული ბაზებიდან დინამიურ, RL-ზე დაფუძნებულ კურაციაზე.",
+          "risks": [
+            "გადამეტებული გამოთვლითი სირთულე",
+            "RL პოლიტიკის არასტაბილურობა",
+            "ინტეგრაციის მაღალი დროითი დანახარჯები"
+          ],
+          "non_obvious_opportunity": "შეგიძლიათ ააგოთ მცირე ზომის ჰიბრიდული მეხსიერების ფილტრი Python-ით და გაყიდოთ როგორც ღია კოდის მიკროსერვისი.",
+          "fit_assessment": "იდეალურია თქვენი მიზნისთვის, ააგოთ რეალური ბიზნეს აგენტები ოპტიმიზებული ხარჯებით."
+        },
+        {
+          "event_id": "evt-base-models-reasoning-cues",
+          "title": "Base Models Can Reason By Taking a Cue From Training Data",
+          "category": "AI Research / Model Architecture",
+          "primary_url": "https://arxiv.org/abs/2610.06851",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 9,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "სპეციალური საწყისი ტოკენების (cues) გამოყენებით ბაზისური მოდელები აჩვენებენ რაზნინგის მაღალ სიზუსტეს ძვირადღირებული RL-ის გარეშე.",
+          "what_happened": "მკვლევარებმა აჩვენეს, რომ ტოკენების ფიქსირებული დასაწყისი ზრდის ბაზისური მოდელების მათემატიკურ და კოდირების სიზუსტეს.",
+          "what_changed": "ადანტური RL ტრენინგის ნაცვლად, საწყისი ტოკენების კორექციით ვიღებთ მსგავს სიზუსტეს.",
+          "why_it_matters": "ზოგავს უზარმაზარ გამოთვლით რესურსებს და ფულს ღია კოდის მოდელებთან მუშაობისას.",
+          "key_takeaways": [
+            "სტარტური ტოკენები ააქტიურებენ ბაზისური მოდელის მსჯელობას.",
+            "მაგალითად, '..\\n\\nOkay' ზრდის OLMO-ს სიზუსტეს 42%-დან 78%-მდე.",
+            "მეთოდი არ საჭიროებს დამატებით მოდელის წონების ფაინ-თუნინგს."
+          ],
+          "technical_architecture": [
+            "Base transformer models without RL post-training",
+            "Causal data interventions on hidden states"
+          ],
+          "technical_details": [
+            "Starting token cues injection",
+            "MATH-500 and Qwen3-14B evaluation setups"
+          ],
+          "potential_impact": "აძლევს საშუალებას ინჟინრებს მიიღონ მაღალი ხარისხის რაზნინგი უფასო ან იაფი ბაზისური მოდელებიდან.",
+          "action_type": "TRY",
+          "action": "გატესტეთ ღია კოდის ბაზისური მოდელი Python-ში სპეციალური საწყისი ტოკენებით და გაზომეთ პასუხის ხარისხი.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value",
+            "Real Business Opportunity"
+          ],
+          "verified_facts": [
+            "Fixing starting token cues makes base model performance competitive with RL-trained counterparts.",
+            "The cue '..\\n\\nOkay' raises Olmo-3-7B MATH-500 accuracy from 42% to 78%."
+          ],
+          "interpretation": "ბაზისური მოდელების სწორი პრეფიქსებით ინიციალიზაცია ხსნის ძვირადღირებული RL ტრენინგის გარეშე მსჯელობის უნარს.",
+          "uncertainty": "სპეციფიკური ტოკენების ქცევა განსხვავებულ არქიტექტურებსა და დომენებში ბოლომდე პროგნოზირებადი არ არის.",
+          "counter_argument": "ეს არის მხოლოდ ზედაპირული ასოციაციების გააქტიურება და არა ღრმა მართული მსჯელობა.",
+          "strategic_assessment": "გამოიყენეთ მორგებული პრეფიქსული ტოკენები ღია კოდის ბაზისური მოდელების გამოსაყენებლად დამატებითი ხარჯების გარეშე.",
+          "time_horizon": "mid-term",
+          "what_could_change": "მცირე ბიუჯეტის დეველოპერები შეძლებენ ბაზისური მოდელების რაზნინგის ოპტიმიზაციას ძვირადღირებული ფაინ-თუნინგის გარეშე.",
+          "risks": [
+            "არასტაბილური პასუხები არასწორი პრეფიქსის დროს",
+            "დომენთშორისი გადატანის სირთულე"
+          ],
+          "non_obvious_opportunity": "შეგიძლიათ ააგოთ ღია კოდის API კლუბი, რომელიც იყენებს პრეფიქსულ ოპტიმიზაციას და ყიდის იაფ ინფერენსს.",
+          "fit_assessment": "გაძლევთ მძლავრ ინსტრუმენტს იმუშაოთ მცირე ზომის ღია მოდელებთან შეზღუდული ბიუჯეტით."
+        },
+        {
+          "event_id": "evt-editable-flowchart-relayout",
+          "title": "One Figure, Every Canvas: Editable Flowchart Relayout via Agentic Pipeline",
+          "category": "AI Research / Agent Architecture",
+          "primary_url": "https://arxiv.org/abs/2610.06852",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 85,
+          "tldr": "აგენტური პიპლაპი Parse, Style და Layout ეტაპებით გარქმნის რასტრულ დიაგრამებს რედაქტირებად mxGraph XML ფორმატში.",
+          "what_happened": "მკვლევარებმა წარმოადგინეს აგენტური სისტემა, რომელიც ადაპტირებს ფლოუჩარტებს სხვადასხვა ასპექტ-რაციოზე კავშირების დარღვევის გარეშე.",
+          "what_changed": "სურათის უბრალო დაჭიმვის ან დამახინჯების მაგივრად ვიღებთ სტრუქტურულად ზუსტ, რედაქტირებად ფაილებს.",
+          "why_it_matters": "გვიჩვენებს, როგორ მუშაობს Main-Critic აგენტური არქიტექტურა ვიზუალურ დომენში.",
+          "key_takeaways": [
+            "იყენებს Parse, Style და Layout ფაზებს.",
+            "მთავარი აგენტი მუშაობს VLM კრიტიკოსთან ერთად.",
+            "გამოსავალში აგენტი აგენერირებს mxGraph XML ფაილებს."
+          ],
+          "technical_architecture": [
+            "Agentic pipeline with Parse, Style, and Layout stages",
+            "VLM visual feedback paired with deterministic constraint checks"
+          ],
+          "technical_details": [
+            "mxGraph XML output format",
+            "Evaluated on 100 flowcharts using Gemini 3.1 Pro"
+          ],
+          "potential_impact": "ზოგავს საათობით მექანიკურ დიზაინის სამუშაოს ტექნიკური დოკუმენტაციის მომზადებისას.",
+          "action_type": "BUILD",
+          "action": "ააწყვეთ მცირე Python სკრიპტი, რომელიც უშვებს ორაგენტიან (Main-Critic) ციკლს JSON კონფიგურაციების შესამოწმებლად.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Real Business Opportunity",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "The method parses, styles, and lays out flowcharts into editable mxGraph XML formats.",
+            "It achieves 68.6% Content Fidelity compared to 11.2-41.4% for prior work on a 100 flowchart…"
+          ],
+          "interpretation": "მულტიმოდალური აგენტებისა და კრიტიკოსების კომბინაცია წყვეტს სტრუქტურული დიაგრამების ავტომატური რედაქტირების პრობლემას.",
+          "uncertainty": "კომპლექსური ბლოკ-სქემების გარდაქმნის სიზუსტე ძალზე პატარა მოდელებზე არ არის დადასტურებული.",
+          "counter_argument": "ტრადიციული გრაფიკული რედაქტორები და სკრიპტები უფრო სწრაფად აკეთებენ იმავეს.",
+          "strategic_assessment": "შექმენით ავტომატური დიაგრამების გადამყვანი აგენტი, როგორც ფრილანს სერვისი ან SaaS პროდუქტი.",
+          "time_horizon": "mid-term",
+          "what_could_change": "დიაგრამებისა და ტექნიკური ნახაზების ადაპტაცია სხვადასხვა ფორმატებზე სრულად ავტომატიზირდება.",
+          "risks": [
+            "ვიზუალური კავშირების გაწყვეტა რელაუტის დროს",
+            "VLM კრიტიკოსების მაღალი ლატენტობა"
+          ],
+          "non_obvious_opportunity": "შეგიძლიათ შესთავაზოთ ეს ავტომატიზაცია კონსულტანტებს, რომლებიც მუდმივად ცვლიან პრეზენტაციების ფორმატებს.",
+          "fit_assessment": "გამოგადგებათ აგენტური პიპლაინებისა და Critic-Main ციკლების პრაქტიკული ტესტირებისთვის."
+        }
+      ],
+      "trends": [
+        "დინამიური მულტიმოდალური მეხსიერების კურაცია აგენტებში",
+        "ბაზისური მოდელების რაზნინგის გააქტიურება პრეფიქსული ტოკენებით",
+        "Main-Critic აგენტური პიპლაინები ვიზუალური და სტრუქტურული ამოცანებისთვის"
+      ]
     }
   ],
   "learning_queue": [
-    "Docker Python SDK-ის გამოყენება აგენტის მიერ გენერირებული კოდის გასაშვებად",
-    "MCP პროტოკოლის დეტალური არქიტექტურა და ტულების რეგისტრაცია"
+    "აგენტური მეხსიერების ოპტიმიზაცია და წინასწარი კურაციის ალგორითმები",
+    "ბაზისური მოდელების ფიქსირებული ტოკენებით ინიციალიზაციის მექანიზმები"
   ],
-  "last_run": "2026-10-05T19:08:24.250206+00:00",
+  "last_run": "2026-10-06T16:36:38.574081+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -8241,12 +8367,15 @@
     "arxiv:2610.02199",
     "arxiv:2610.02202",
     "arxiv:2610.02204",
-    "arxiv:2610.02200"
+    "arxiv:2610.02200",
+    "arxiv:2610.06830",
+    "arxiv:2610.06851",
+    "arxiv:2610.06852"
   ],
   "last_report_files": {
-    "markdown": "data/reports/2026-10-05/report.md",
-    "json": "data/reports/2026-10-05/report.json",
-    "newsletter": "data/reports/2026-10-05/newsletter.md",
-    "social": "data/reports/2026-10-05/social_posts.txt"
+    "markdown": "data/reports/2026-10-06/report.md",
+    "json": "data/reports/2026-10-06/report.json",
+    "newsletter": "data/reports/2026-10-06/newsletter.md",
+    "social": "data/reports/2026-10-06/social_posts.txt"
   }
 }
