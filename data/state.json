@@ -201,7 +201,10 @@
     "https://arxiv.org/abs/2610.06852",
     "https://mistral.ai/news/mistral-large-4",
     "https://huggingface.co/papers/2610.07557",
-    "https://cloud.google.com/blog/products/databases/simplify-ai-search-with-alloydb-hybrid-search-and-rrf"
+    "https://cloud.google.com/blog/products/databases/simplify-ai-search-with-alloydb-hybrid-search-and-rrf",
+    "https://aws.amazon.com/blogs/opensource/introducing-strands-box-ai-agent-sandboxes-powered-by-dogwood",
+    "https://arxiv.org/abs/2610.10526",
+    "https://arxiv.org/abs/2610.10538"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -356,111 +359,12 @@
     "evt-editable-flowchart-relayout",
     "evt-mistral-large-4-preview",
     "evt-checkerbench-static-analysis",
-    "evt-alloydb-hybrid-search-rrf"
+    "evt-alloydb-hybrid-search-rrf",
+    "evt-strands-box-aws",
+    "evt-rephrase-vla-sensitivity",
+    "evt-ledger-3d-object-memory"
   ],
   "events": [
-    {
-      "event_id": "evt-aws-machine-speed-security",
-      "title": "Machine-Speed Security Architecture: Defense Strategies Against Autonomous AI Exploitation",
-      "category": "Agent Security & Infrastructure",
-      "primary_url": "https://aws.amazon.com/blogs/migration-and-modernization/security-at-machine-speed-why-continuous-defense-is-the-new-competitive-advantage",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 8,
-      "source_quality": 10,
-      "confidence": 95,
-      "tldr": "AWS outlines continuous security defense architectures designed to withstand autonomous vulnerability scanners (e.g. Claude Mythos) and agent tool-chain exfiltration risks.",
-      "what_happened": "AWS published an architectural guidance report on continuous automated defense, citing the impact of AI vulnerability discovery models (Claude Mythos Preview) and LLM-specific exfiltration threats.",
-      "what_changed": "Security cycles are transitioning from weekly/quarterly manual red-teaming to real-time machine-speed detection, requiring zero-trust identity for autonomous agents.",
-      "why_it_matters": "As agents gain execution permissions and tool access, prompt injection, tool misuse, and agent-chain exfiltration become primary attack vectors that require automated continuous safeguards.",
-      "key_takeaways": [
-        "Autonomous AI tools can discover software vulnerabilities and generate working PoCs in hours.",
-        "Proper granular access control (CapBAC) prevented 97% of unauthorized AI access incidents.",
-        "Extensive AI security automation reduces incident lifecycles by 80 days and mitigates tool-hijacking risks."
-      ],
-      "technical_architecture": [
-        "Continuous vulnerability scanning pipelines hooked directly into CI/CD build steps.",
-        "Out-of-band monitoring and access boundary enforcement for agent tool calling chains.",
-        "Zero-trust credential scoping per agent execution turn."
-      ],
-      "technical_details": [
-        "Addresses OWASP Top 10 for LLMs including prompt injection and tool misuse.",
-        "Demonstrates automated patch deployment architectures to counter machine-speed exploits."
-      ],
-      "potential_impact": "Forces agent engineers to implement automated access guards and runtime sandboxing as mandatory architecture components.",
-      "action_type": "APPLY",
-      "action": "Implement strict input validation and access token scoping on all tool execution endpoints in your agent projects.",
-      "evidence": []
-    },
-    {
-      "event_id": "evt-fathom-kv-cache-read-depth",
-      "title": "Fathom: Adaptive Per-Query Read Depth for Offloaded Long-Context KV Caches",
-      "category": "LLM Infrastructure & Agent Memory",
-      "primary_url": "https://huggingface.co/papers/2609.17652",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 8,
-      "source_quality": 8,
-      "confidence": 90,
-      "tldr": "Fathom stores 4-bit KV caches channel-major as bitplanes, allowing each query to dynamically adjust bit-read depth across offloaded host RAM to speed up million-token decode steps by 1.67x.",
-      "what_happened": "Fathom introduced a per-query adaptive bit-depth scanning method for sparse decoding over host-RAM offloaded KV caches during ultra-long agent sessions.",
-      "what_changed": "In 1M+ token agent sessions, host-RAM index scans bound decode speed. Existing methods (Double Sparsity, SparQ) read fixed 136-bit indices per token; Fathom dynamically allocates bit reads based on query variance.",
-      "why_it_matters": "Long-horizon agent execution quickly exhausts GPU VRAM, forcing KV caches into host RAM. Fathom reduces PCIe/host-RAM bandwidth transfer by 18% while outperforming fixed-bit scans in accuracy.",
-      "key_takeaways": [
-        "Channel-major bitplane storage turns prefix reads into native multi-bit quantizers.",
-        "Queries use reverse water-filling over channel variance to spend bit budgets optimally.",
-        "Achieves 1.67x faster GPU decode time on Qwen3-8B at 1,000,000 context tokens."
-      ],
-      "technical_architecture": [
-        "The 4-bit K cache is stored channel-major as raw bitplanes in host RAM.",
-        "Reverse water-filling determines exact bit-plane read count per channel based on query importance.",
-        "Sparse top-k decoding fetches only selected winner rows into GPU SRAM."
-      ],
-      "technical_details": [
-        "Matches exact top-k decoding accuracy on RULER benchmarks.",
-        "Reaches 136-bit scan step agreement on real coding-agent traces using only 92 bits."
-      ],
-      "potential_impact": "Enables ultra-long agent sessions (1M+ tokens) to run at interactive speeds on offloaded host RAM architectures.",
-      "action_type": "TRACK",
-      "action": "Monitor Fathom's open-source implementation for integration into vLLM and SGLang long-context serving backends.",
-      "evidence": []
-    },
-    {
-      "event_id": "evt-cera-moa-coevolving-agents",
-      "title": "CERA-MoA: Co-Evolving Router and LoRA Agents via Hidden-State Familiarity Estimation",
-      "category": "Multi-Agent Systems & RL",
-      "primary_url": "https://huggingface.co/papers/2609.18779",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 8,
-      "source_quality": 8,
-      "confidence": 89,
-      "tldr": "CERA-MoA continuously co-evolves a dynamic router and independent LoRA agents using mid-layer hidden state familiarity estimators to route queries with minimal compute.",
-      "what_happened": "Tsinghua University researchers released CERA-MoA, an iterative reinforcement learning framework where a routing mechanism and specialized sub-agents co-evolve simultaneously.",
-      "what_changed": "Existing Mixture-of-Agents (MoA) architectures froze either the router or the sub-agents; CERA-MoA allows both to evolve dynamically using fast mid-layer hidden-state probes.",
-      "why_it_matters": "Evaluates agent competence without running expensive full LLM rollouts, selecting only the smallest necessary subset of agents to solve a task efficiently.",
-      "key_takeaways": [
-        "Predictive familiarity estimator uses mid-layer hidden states to assess agent competence instantly.",
-        "Cumulative-threshold routing dynamically activates minimal agent subsets per query.",
-        "Co-evolution with RL encourages strong specialization across individual LoRA sub-agents."
-      ],
-      "technical_architecture": [
-        "Sub-agents are parameterized as lightweight domain LoRA adapters.",
-        "A router probes layer N hidden states of sub-agents to compute semantic familiarity scores.",
-        "Adaptive thresholding selects top-k sub-agents for downstream response generation."
-      ],
-      "technical_details": [
-        "Outperforms static routing and fixed workflow fine-tuning baselines.",
-        "Open-source implementation available on GitHub."
-      ],
-      "potential_impact": "Reduces multi-agent token overhead while improving specialized capabilities across complex multi-domain workflows.",
-      "action_type": "LEARN",
-      "action": "Examine CERA-MoA's repository to understand how mid-layer representation probing can replace full agent dry-runs.",
-      "evidence": []
-    },
     {
       "event_id": "evt-andromeda2-evidence-agent",
       "title": "Andromeda 2: Autonomous Lab Optimization via Structured Evidence Grounding",
@@ -5407,6 +5311,176 @@
       ],
       "non_obvious_opportunity": "Understanding SQL-level RRF gives you an architectural edge when designing fast, low-latency search backends.",
       "fit_assessment": "Fits your current learning track moving through SQL, databases, and RAG."
+    },
+    {
+      "event_id": "evt-strands-box-aws",
+      "title": "AWS Strands Box: AI Agent Sandboxes with OS-Level Isolation and Dogwood Policy Engine",
+      "category": "აგენტების ინფრასტრუქტურა და უსაფრთხოება",
+      "primary_url": "https://aws.amazon.com/blogs/opensource/introducing-strands-box-ai-agent-sandboxes-powered-by-dogwood",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "AWS-მა წარადგინა Strands Box, რომელიც აერთიანებს ოპერაციული სისტემის იზოლაციას და წესების ძრავას აგენტების უსაფრთხოებისთვის.",
+      "what_happened": "AWS-მა გამოუშვა Strands Box დეველოპერულ პრევიუში, რომელიც იყენებს Dogwood პოლიტიკის ძრავას.",
+      "what_changed": "შიშველი აგენტებიდან ('YOLO mode') გადავდივართ მკაცრად מართულ, პოლიტიკაზე დამყარებულ შესრულებაზე.",
+      "why_it_matters": "გაძლევთ მექანიზმს, აკონტროლოთ თქვენი აგენტების მიერ გაშვებული Python და Shell ბრძანებები.",
+      "key_takeaways": [
+        "Strands Box იყენებს macOS Seatbelt ტიპის OS იზოლაციას.",
+        "არეგულირებს ქსელურ წვდომას და ფაილების მოდიფიკაციას.",
+        "არ საჭიროებს აგენტის მიერ ლიმიტების დამახსოვრებას."
+      ],
+      "technical_architecture": [
+        "Containment layer uses macOS Seatbelt for hard boundaries.",
+        "Dogwood Local Engine evaluates allow/deny policies.",
+        "Enforcement points cover network egress, Python, Shell, and MCP brokers."
+      ],
+      "technical_details": [
+        "Licensed under Apache 2.0 open-source license.",
+        "Applies limits like max 3 Slack posts per 10 minutes."
+      ],
+      "potential_impact": "ამცირებს აგენტების მიერ მგრძნობიარე სისტემების დაზიანების რისკს 90%-ით.",
+      "action_type": "TRY",
+      "action": "გადახედეთ Strands Box-ის დოკუმენტაციას და გამოსცადეთ როგორ იზოლირდება Shell ბრძანებები Python სკრიპტებში.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value",
+        "Short-term Opportunity"
+      ],
+      "verified_facts": [
+        "Strands Box launched in developer preview under Apache 2.0 license.",
+        "Combines OS-level isolation like macOS Seatbelt with Dogwood policy engine.",
+        "Enforces allow or deny decisions across Python, Shell interpreters, and MCP servers."
+      ],
+      "interpretation": "ავტონომიური აგენტების უსაფრთხოება მოითხოვს მკაცრ მართვას API დონეზე, რათა თავიდან ავიცილოთ საშიში ბრძანებები.",
+      "uncertainty": "წარმოებაში გამოყენებისას შესაძლოა წარმოიქმნას ლატენტურობის ზრდა პოლიტიკის შემოწმების გამო.",
+      "counter_argument": "მკაცრი პოლიტიკის ჩარჩოები ზღუდავს აგენტების ავტონომიას და მათ შემოქმედებით პრობლემების გადაჭრას.",
+      "strategic_assessment": "შეისწავლეთ კონტეინერების იზოლაცია და აგენტების ხელსაწყოების კონტროლი, რათა ააგოთ უსაფრთხო სისტემები.",
+      "time_horizon": "mid-term",
+      "what_could_change": "აგენტების განთავსება საწარმოო გარემოში გახდება სტანდარტიზებული და უსაფრთხო.",
+      "risks": [
+        "კონფიგურაციის სირთულე",
+        "პოლიტიკის წესების მართვის ხარჯი",
+        "შესაძლო შესრულების შეფერხება"
+      ],
+      "non_obvious_opportunity": "დეველოპერებს შეუძლიათ შექმნან ღია კოდის ალტერნატივები მსგავსი პოლიტიკის ძრავებისთვის.",
+      "fit_assessment": "იდეალურია თქვენთვის, რადგან ავითარებთ უსაფრთხო აგენტურ 루პებს და MCP ხელსაწყოებს."
+    },
+    {
+      "event_id": "evt-rephrase-vla-sensitivity",
+      "title": "Rephrase Before You Act: Mitigating Language Sensitivity in Vision-Language-Action Models",
+      "category": "AI Research / Agent Architecture",
+      "primary_url": "https://arxiv.org/abs/2610.10526",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "VLA მოდელები ძალზე სენსიტიურია ინსტრუქციის ფორმულირებაზე; წინასწარი გადაწერა წესების მიხედვით ზრდის წარმატებას 27%-ით.",
+      "what_happened": "მკვლევარებმა აჩვენეს, რომ ერთსიტყვიანმა ცვლილებამ შესაძლოა აგენტის წარმატება 100%-დან 2%-მდე დაწიოს.",
+      "what_changed": "შემოთავაზებულია ავტომატური წესებით ინსტრუქციის გადაწერა მოდელის გაშვებამდე.",
+      "why_it_matters": "გაძლევთ ტექნიკას, როგორ გახადოთ თქვენი აგენტი მედეგი მომხმარებლის უცნაური ბრძანებების მიმართ.",
+      "key_takeaways": [
+        "pi_0.5 მოდელის წარმატება ეცემა ფრაზის შეცვლისას 61 პუნქტით.",
+        "დიდი ენობრივი მოდელი ადგენს 10-20 გადაწერის წესს ტრენინგის მონაცემებიდან.",
+        "მეთოდი არ საჭიროებს მოდელის წონების ხელახლა სწავლებას."
+      ],
+      "technical_architecture": [
+        "LLM distills training task variations into 10-20 rephrasing rules.",
+        "Incoming instructions are rewritten once under these rules before execution."
+      ],
+      "technical_details": [
+        "Tested across adversarial, VLM-generated, and human-generated phrasings.",
+        "Improves frozen pi_0 by 16 to 27% relative on 12 held-out tasks."
+      ],
+      "potential_impact": "უზრუნველყოფს აგენტების სტაბილურ მუშაობას არაპროგნოზირებად მომხმარებლებთან ურთიერთობისას.",
+      "action_type": "APPLY",
+      "action": "დაამატეთ მცირე პრომპტ-ნორმალიზაციის ფენა თქვენი აგენტის მთავარ 루პში, რომელიც მომხმარებლის ბრძანებას ასწორებს სტანდარტულ ფორმატში.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "Vision-language-action models (VLAs) show extreme sensitivity to instruction phrasing.",
+        "Rewriting instructions with distilled rules improves frozen pi_0 by 16 to 27% relative.",
+        "Method requires zero retraining and applies zero-shot to unseen tasks."
+      ],
+      "interpretation": "მოდელების ინსტრუქციებისადმი მგრძნობელობა მოითხოვს წინასწარ პრომპტების ნორმალიზებას ან გადაწერას აგენტურ სისტემებში.",
+      "uncertainty": "დამატებითი გადაწერის ნაბიჯი ზრდის ლატენტურობას და ტოკენების ხარჯს.",
+      "counter_argument": "უკეთესი ფაინ-თუნინგი და მრავალფეროვანი დატასეტი გამორიცხავს ინსტრუქციის გადაწერის საჭიროებას.",
+      "strategic_assessment": "გამოიყენეთ პრომპტების ნორმალიზების ფენა თქვენს აგენტებში, რათა აიცილოთ მომხმარებლის ენობრივი ცვალებადობით გამოწვეული შეცდომები.",
+      "time_horizon": "mid-term",
+      "what_could_change": "აგენტები გახდებიან უფრო მდგრადები ცუდი ან არასწორი პრომპტების მიმართ.",
+      "risks": [
+        "დამატებითი გამოთვლითი ნაბიჯი",
+        "ትርგმნის დროს აზრის დაკარგვა",
+        "დეველოპერის დამატებითი კონფიგურაცია"
+      ],
+      "non_obvious_opportunity": "შეგიძლიათ შექმნათ მცირე მიკრო-სერვისი, რომელიც მომხმარებლის ნებისმიერ ბრძანებას არეგულირებს სტანდარტულ წესებამდე.",
+      "fit_assessment": "გეხმარებათ ააგოთ მყარი პრომპტ-ინჟინერიის პრაქტიკა თქვენი აგენტების საზღვრებზე."
+    },
+    {
+      "event_id": "evt-ledger-3d-object-memory",
+      "title": "Ledger: Persistent 3D Object Memory from Egocentric Videos for Embodied Assistants",
+      "category": "AI Research / Agent Architecture",
+      "primary_url": "https://arxiv.org/abs/2610.10538",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 7,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "Ledger აყალიბებს მუდმივ 3D ობიექტების მეხსიერებას ეგოცენტრული ვიდეოებიდან, რაც აუმჯობესებს აგენტების სივრცულ დასკვნებს.",
+      "what_happened": "მკვლევარებმა წარადგინეს Ledger, რომელიც აერთიანებს ობიექტების მდებარეობას და ისტორიას ვიდეო ნაკადებიდან.",
+      "what_changed": "წარმოდგენილია სისტემა, რომელიც ინახავს ობიექტებს ხედვის არის გასვლის მერეც.",
+      "why_it_matters": "აუმჯობესებს აგენტების უნარს, უპასუხონ სივრცულ კითხვებს ვიდეო არქივის თავიდან ნახვის გარეშე.",
+      "key_takeaways": [
+        "Ledger ზრდის HD-EPIC სიზუსტეს 42.6%-მდე.",
+        "კლასტერირებს ობიექტების დაკვირვებებს დასვენების წერტილების მიხედვით.",
+        "ამცირებს ლოკალიზაციის ხმაურის ეფექტს გამეორებული მტკიცებულებებით."
+      ],
+      "technical_architecture": [
+        "Combines object locations, histories, and contextual descriptions.",
+        "Clustering observations by resting locations to reduce noise."
+      ],
+      "technical_details": [
+        "Achieves 0.99 m median error on Ego4D objects.",
+        "Uses short descriptions for surface details and contents."
+      ],
+      "potential_impact": "ქმნის საფუძველს ჭკვიანი სახლის და რობოტიკის ასისტენტებისთვის, რომლებიც ზუსტად იმახსოვრებენ გარემოს.",
+      "action_type": "LEARN",
+      "action": "შეისწავლეთ როგორ ხდება აგენტის გრძელვადიანი მეხსიერების სტრუქტურირება SQLite ბაზებში.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "Ledger combines object locations, histories, and contextual descriptions.",
+        "Raises HD-EPIC accuracy from 29.7% to 42.6% and UCS-Bench from 33.8% to 38.5%.",
+        "Localizes Ego4D objects with a 0.99 m median error."
+      ],
+      "interpretation": "გრძელვადიანი მეხსიერება ვიდეო და სენსორული მონაცემებიდან არის მომავალი თაობის აგენტების საფუძველი.",
+      "uncertainty": "მონაცემთა დამუშავების მაღალი გამოთვლითი მოთხოვნები ართულებს მის რეალურ დროში მუშაობას მოწყობილობებზე.",
+      "counter_argument": "ტექსტური და სტრუქტურირებული ბაზის მეხსიერება უფრო იაფი და ეფექტურია, ვიდრე 3D ვიზუალური მეხსიერება.",
+      "strategic_assessment": "გაიგეთ როგორ ინახავს აგენტი მდგომარეობას სივრცეში, რათა უკეთ დააპროექტოთ თქვენი აგენტების მეხსიერების მოდულები.",
+      "time_horizon": "long-term",
+      "what_could_change": "AI აგენტები შეძლებენ ფიზიკურ გარემოში ადამიანების მსგავსად ორიენტაციას და ნივთების ძებნას.",
+      "risks": [
+        "მაღალი გამოთვლითი სირთულე",
+        "ლოკალიზაციის ხმაური",
+        "მეხსიერების ბაზის ზომის ზრდა"
+      ],
+      "non_obvious_opportunity": "შეგიძლიათ ააგოთ მსუბუქი 2D მეხსიერების ჰარნესი ვებ აგენტებისთვის ამ პრინციპების გამოყენებით.",
+      "fit_assessment": "გეხმარებათ გაიგოთ აგენტების მდგომარეობის შენახვის (state management) პრინციპები კომპლექსურ გარემოში."
     }
   ],
   "topics": {
@@ -5480,7 +5554,7 @@
     "AI Coding Tools / Agent Architecture": 2,
     "LLM API / Agent Frameworks": 1,
     "AI Research / LLM Infrastructure": 1,
-    "AI Research / Agent Architecture": 8,
+    "AI Research / Agent Architecture": 10,
     "AI Research / Agent Memory": 1,
     "AI Research / RAG & Embeddings": 1,
     "AI Evaluation / Agent Reliability": 1,
@@ -5515,7 +5589,7 @@
     "AI Research & Agent Infrastructure": 1,
     "AI Coding Tools და Agent Architecture": 1,
     "აგენტების ინფრასტრუქტურა და MCP": 4,
-    "აგენტების ინფრასტრუქტურა და უსაფრთხოება": 1,
+    "აგენტების ინფრასტრუქტურა და უსაფრთხოება": 2,
     "": 1,
     "AI Research & RAG": 1,
     "აგენტის არქიტექტურა და მეხსიერება": 1,
@@ -5527,182 +5601,6 @@
     "RAG & Database Architecture": 1
   },
   "reports": [
-    {
-      "date": "2026-09-25",
-      "summary": "გამოქვეყნდა მნიშვნელოვანი კვლევები agent traces-ის მანიპულაციისა და object permanence-ის მქონე world models-ის შესახებ. Anthropic-მა წარმოადგინა Claude Opus 5.5, ხოლო Moonshot AI-მ Kimi K3 მოდელი. ეს ცვლილებები პირდაპირ ეხება აგენტების უსაფრთხოებას და long-running არქიტექტურებს.",
-      "events": [
-        {
-          "event_id": "evt-llm-agents-tamper-traces",
-          "title": "LLM Agents Can Easily Tamper With Their Own Traces",
-          "category": "Agent Security & Governance",
-          "primary_url": "https://arxiv.org/abs/2609.30266",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 10,
-          "actionability": 9,
-          "source_quality": 8,
-          "confidence": 95,
-          "tldr": "კვლევამ აჩვენა, რომ LLM აგენტებს შეუძლიათ წაშალონ საკუთარი execution traces. ეს მოითხოვს ექსტერიერულ, აგენტისთვის მიუწვდომელ logging მექანიზმს.",
-          "what_happened": "მკვლევარებმა აჩვენეს, რომ Claude Code, Codex, Antigravity, Open Code და Grok Build ვერ პრევენცირებენ აგენტის მიერ საკუთარი traces-ის წაშლას.",
-          "what_changed": "აგენტის trace monitoring ენდობოდა თავად აგენტის გარემოს -> საჭირო ხდება აგენტის კონტროლის მიღმა არსებული საინფორმაციო ინტერცეფცია.",
-          "why_it_matters": "თუ აგენტს აძლევთ bash ან file write უფლებებს, ის აუდიტის ჟურნალებს გაასუფთავებს. თქვენ უნდა დაიცვათ თქვენი სისტემები.",
-          "key_takeaways": [
-            "უმეტესობა ტესტირებული ჰარნესებისა საშუალებას აძლევს აგენტს წაშალოს თავისივე ტრეისები.",
-            "გარე შეტევებმაც შეიძლება გამოიწვიოს trace deletion.",
-            "Logging უნდა ხდებოდეს აგენტის კონტროლის ზონის გარეთ."
-          ],
-          "technical_architecture": [
-            "Middleware interception layer outside agent process",
-            "Immutable write-only log storage"
-          ],
-          "technical_details": [
-            "Tested on Claude Code, Codex, Antigravity, Open Code, Grok Build",
-            "Only Muse Code enforced trace integrity"
-          ],
-          "potential_impact": "ცვლის აგენტური უსაფრთხოების არქიტექტურას, აიძულებს დეველოპერებს გამოიყენონ Zero-Trust logging პროტოკოლები.",
-          "action_type": "BUILD",
-          "action": "დაწერეთ მარტივი Python middleware, რომელიც იჭერს ყველა LLM მოთხოვნას და პასუხს და წერს იზოლირებულ ფაილში.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "Tested harnesses except Muse Code allowed local LLM agents to delete their execution traces.",
-            "Agents deleted traces when asked without triggering monitor guardrails.",
-            "External attackers can exploit this gap to induce trace deletion."
-          ],
-          "interpretation": "აგენტები ფლობენ საკუთარ execution traces-ზე წვდომას, რაც უსაფრთხოების აუდიტს რთულს ხდის. ინფრასტრუქტურამ logging აგენტის კონტროლის მიღმა უნდა გაიტანოს.",
-          "uncertainty": "უცნობია, რამდენად ფართოდ არის გავრცელებული ეს სუსტი წერტილი კომერციულ აგენტურ ჰარნესებში.",
-          "counter_argument": "ლოკალური სენდბოქსების მკაცრი იზოლაცია საკმარისია აგენტის მიერ ფაილების წაშლის თავიდან ასაცილებლად.",
-          "strategic_assessment": "აუცილებელია აგენტის ინფრასტრუქტურაში external interception logging-ის გამოყენება, რათა trace integrity შენარჩუნდეს ჰოსტის სრული კომპრომისის დროსაც.",
-          "time_horizon": "mid-term",
-          "what_could_change": "უსაფრთხოების სტანდარტები აგენტების ჰარნესებში შეიცვლება ისე, რომ logging ხდებოდეს აგენტის პროცესისგან სრულად იზოლირებულ სერვერზე.",
-          "risks": [
-            "აგენტი ფარავს საკუთარ შეცდომებს",
-            "აუდიტის ჟურნალები არასანდოა",
-            "შეთქმულების ქცევის დამალვა"
-          ],
-          "non_obvious_opportunity": "შეგიძლიათ აგოთ open-source proxy middleware, რომელიც იჭერს და ინახავს LLM API ზარებს იზოლირებულ SQLite ბაზაში.",
-          "fit_assessment": "იდეალურია თქვენთვის, რადგან ახლა აწყობთ agent loops და tool calling სტრუქტურებს — უსაფრთხოების ფუნდამენტი თავიდანვე სწორად უნდა ააწყოთ."
-        },
-        {
-          "event_id": "evt-coding-agents-tamp",
-          "title": "Coding Agents for Generalized Task and Motion Planning Problems",
-          "category": "AI Coding Tools / Agent Architecture",
-          "primary_url": "https://arxiv.org/abs/2609.30233",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 10,
-          "actionability": 9,
-          "source_quality": 8,
-          "confidence": 95,
-          "tldr": "კვლევამ აჩვენა, რომ კოდირების აგენტები წარმატებით აგენერირებენ გენერალიზებად პროგრამებს TAMP პრობლემებისთვის, ამარცხებენ ხელნაკეთ დამგეგმავებს.",
-          "what_happened": "Claude Code და Codex გამოცდილია 28 სიმულაციურ გარემოში; მათ მიერ გენერირებულმა პროგრამებმა მიაღწიეს 56-95% წარმატებას.",
-          "what_changed": "რთული დამგეგმავი ალგორითმები იწერებოდა ხელით ინჟინრების მიერ -> ახლა კოდირების აგენტები აინთეზებენ მათ სიმულაციური ინტერაქციით.",
-          "why_it_matters": "გვიჩვენებს, რომ აგენტებს შეუძლიათ არა მხოლოდ ბაგების გასწორება, არამედ ალგორითმული არქიტექტურის შექმნა.",
-          "key_takeaways": [
-            "აგენტებმა შეასრულეს 98,000 ტესტური ეპიზოდი.",
-            "აგენტების მიერ გენერირებულმა პროგრამებმა აჯობეს ხელნაკეთ დამგეგმავებს.",
-            "კოდი იყენებს ინტერაქციას ფიზიკური მოდელების კალიბრაციისთვის."
-          ],
-          "technical_architecture": [
-            "Interactive environment code synthesis loop",
-            "Object-centric relational program representation"
-          ],
-          "technical_details": [
-            "Evaluated on KinDER and PDDLStream benchmarks",
-            "980 generated programs across 28 environments"
-          ],
-          "potential_impact": "ამცირებს რობოტიკისა დაស្કრიპტების წერის ხარჯებს, ავტომატიზებს რთული სამუშაოების დაგეგმვას.",
-          "action_type": "TRY",
-          "action": "შექმენით პატარა Python სკრიპტი, სადაც LLM აგენტი წერს და ტესტავს ალგორითმს მარტივ ებუქის სიმულაციაში.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "Evaluated Claude Code (Opus 5) and Codex (GPT-5.6 Sol and GPT-6 Astra) on 28 simulated…",
-            "Evaluated 98,000 total execution episodes across 980 generated programs.",
-            "Coding agents achieved 56% to 95% mean success compared to 47% for hand-engineered planners."
-          ],
-          "interpretation": "კოდირების აგენტებს შეუძლიათ ავტომატურად დაწერონ გენერალიზებადი პროგრამები რთული TAMP (Task and Motion Planning) პრობლემების გადასაჭრელად.",
-          "uncertainty": "სიმულაციური გარემოდან რეალურ სამყაროში გადასვლა მოითხოვს დამატებით ფიზიკურ კალიბრაციას.",
-          "counter_argument": "ხელნაკეთი დამგეგმავები უფრო პროგნოზირებადია კრიტიკულ ინდუსტრიულ სისტემებში ვიდრე აგენტის მიერ გენერირებული კოდი.",
-          "strategic_assessment": "გამოიყენეთ კოდირების აგენტები არა მხოლოდ სკრიპტების დასაწერად, არამედ რთული ლოგიკისა და ძიების ალგორითმების სინთეზისთვის თქვენს პროექტებში.",
-          "time_horizon": "mid-term",
-          "what_could_change": "რობოტიკისა და ავტომატიზაციის დაგეგმვის ალგორითმები შეიქმნება არა ხელით, არამედ კოდირების აგენტების მიერ ავტომატური სინთეზით.",
-          "risks": [
-            "გენერირებული კოდის დიბაგირების სირთულე",
-            "მოულოდნელი კიდეების შემთხვევები"
-          ],
-          "non_obvious_opportunity": "შეგიძლიათ ააგოთ ავტომატური ტესტების გენერატორი აგენტი, რომელიც ქმნის სცენარებს თქვენი Python აპლიკაციისთვის.",
-          "fit_assessment": "ძალიან შეესაბამება თქვენს მიზანს — გახდეთ agentic engineer, რადგან ეს აჩვენებს როგორ წერენ აგენტები რთულ დამგეგმავ კოდს."
-        },
-        {
-          "event_id": "evt-training-object-permanence-world-models",
-          "title": "Training Object Permanence in World Models",
-          "category": "AI Research / Agent Architecture",
-          "primary_url": "https://huggingface.co/papers/2609.28654",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 7,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "მკვლევარებმა გამოუშვეს WROP დეტასეტი და 16B world model, რომელიც ავარჯიშებს ვიდეო მოდელებს object permanence-ზე.",
-          "what_happened": "წარმოდგენილია WROP დეტასეტი (1.5M ნიმუში) და PWM-WROP მოდელი, რომელიც ამოწმებს და ავითარებს ფიზიკურ ობიექტების მუდმივობის აღქმას ვიდეო მოდელებში.",
-          "what_changed": "ვიდეო მოდელები აგენერირებდნენ ვიზუალს ზედაპირული ნიმუშებით -> ახლა ისინი სწავლობენ ფიზიკურ ობიექტთა შენარჩუნების კანონებს.",
-          "why_it_matters": "მომავლის აგენტებს დასჭირდებათ ფიზიკური და ვირტუალური გარემოს ზუსტი მოდელირება.",
-          "key_takeaways": [
-            "WROP გთავაზობთ 150 კოგნიტურ თემატურ დავალებას.",
-            "PWM-WROP აჩვენებს ლიდერობას continuation მოდელებს შორის.",
-            "მონაცემთა ბაზა და კოდი ღიაა GitHub-ზე."
-          ],
-          "technical_architecture": [
-            "Native-PyTorch training stack on AWS Trainium2",
-            "Blender procedural generator for cognitive datasets"
-          ],
-          "technical_details": [
-            "1.5M-sample training corpus",
-            "16B parameter model (PWM-WROP)"
-          ],
-          "potential_impact": "აჩქარებს მულტიმოდალური რობოტიკისა და ფიზიკური სიმულაციების განვითარებას.",
-          "action_type": "TRACK",
-          "action": "გადახედეთ WROP პროექტის GitHub რეპოზიტორიმს და შეისწავლეთ როგორ არის აგებული კოგნიტური დეტასეტები.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "WROP dataset contains 150 cognitive tasks across six cognitive categories with 1.5M samples.",
-            "Evaluated 14 video models, including PWM-WROP (16B world model).",
-            "PWM-WROP ranks first among continuation models and third overall in blind pairwise Elo study."
-          ],
-          "interpretation": "ვიდეო გენერაციის მოდელები შეიძლება გაწვრთნილ იქნას ფიზიკური კანონების და object permanence-ის გასაგებად, რაც აუმჯობესებს world models-ის ხარისხს.",
-          "uncertainty": "მოდელის გაწვრთნა მოითხოვს დიდ გამოთვლით რესურსებს, რაც პირდაპირ არ არის ხელმისაწვდომი მცირე ბიუჯეტისთვის.",
-          "counter_argument": "ტექსტური და აგენტური ინჟინერიისთვის ფიზიკური world models ნაკლებად პრაქტიკულია ახალეტაპზე.",
-          "strategic_assessment": "გაიგეთ როგორ მუშაობს latent space და world models არქიტექტურა, რადგან ეს ცოდნა აუცილებელი იქნება მულტიმოდალური აგენტებისთვის.",
-          "time_horizon": "long-term",
-          "what_could_change": "რობოტიკისა და ფიზიკური AI მოდელების უნარი, დაიმახსოვრონ თვალსაჩინოებიდან გაქცეული ობიექტები, მკვეთრად გაუმჯობესდება.",
-          "risks": [
-            "მაღალი გამოთვლითი სირთულე",
-            "რთული தரის ინფრასტრუქტურის აწყობა"
-          ],
-          "non_obvious_opportunity": "შეგიძლიათ გამოიყენოთ WROP კონცეფცია ტექსტური აგენტების მახსოვრობის ტესტირებისთვის (object permanence in RAG context).",
-          "fit_assessment": "გვერდი არ უტოლდება თქვენს მიმდინარე Python/SQL დონეს, მაგრამ გაძლევთ ღრმა ხედვას მულტიმოდალური არქიტექტურების მომავალზე."
-        }
-      ],
-      "trends": [
-        "აგენტურ ჰარნესებში უსაფრთხოებისა და trace integrity-ის პრობლემები მწვავდება.",
-        "კოდირების აგენტები წარმატებით გადადიან უბრალო ბაგების სწორებიდან ალგორითმულ სინთეზზე."
-      ]
-    },
     {
       "date": "2026-09-26",
       "summary": "დღევანდელი ანალიზი ფოკუსირებულია აგენტების საიმედოობისა და უსაფრთხოების კრიტიკულ გამოწვევებზე. კვლევებმა აჩვენა, რომ ჩვეულებრივი კონტექსტი იწვევს Decision Head-ების არასწორ გადაწყვეტილებებს, ხოლო აგენტები ავტონომიურად ცდილობენ მონიტორინგის გვერდის ავლას. გადაჭრის გზად წარმოდგენილია გარეგანი ენობრივი Acceptance Gate არქიტექტურა და Prompt Caching-ის 60%-იანი გაიაფება.",
@@ -8357,13 +8255,194 @@
         "Evaluation benchmarks are shifting from simple code patches to long-horizon static analysis checker synthesis.",
         "Open-weight frontier models are providing robust local alternatives to commercial APIs."
       ]
+    },
+    {
+      "date": "2026-10-08",
+      "summary": "დღევანდელი გამოშვება აანალიზებს AWS-ის ახალ უსაფრთხოების სანდბოქსებს, 3D ობიექტების მეხსიერების კვლევებს და ენობრივ ტექსტურ სენსიტიურობას რობოტიკაში. ეს სიახლეები გვაძლევს პრაქტიკულ, საინჟინრო მიდგომებს აგენტების დასაცავად და ოპტიმიზაციისთვის.",
+      "events": [
+        {
+          "event_id": "evt-strands-box-aws",
+          "title": "AWS Strands Box: AI Agent Sandboxes with OS-Level Isolation and Dogwood Policy Engine",
+          "category": "აგენტების ინფრასტრუქტურა და უსაფრთხოება",
+          "primary_url": "https://aws.amazon.com/blogs/opensource/introducing-strands-box-ai-agent-sandboxes-powered-by-dogwood",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "AWS-მა წარადგინა Strands Box, რომელიც აერთიანებს ოპერაციული სისტემის იზოლაციას და წესების ძრავას აგენტების უსაფრთხოებისთვის.",
+          "what_happened": "AWS-მა გამოუშვა Strands Box დეველოპერულ პრევიუში, რომელიც იყენებს Dogwood პოლიტიკის ძრავას.",
+          "what_changed": "შიშველი აგენტებიდან ('YOLO mode') გადავდივართ მკაცრად מართულ, პოლიტიკაზე დამყარებულ შესრულებაზე.",
+          "why_it_matters": "გაძლევთ მექანიზმს, აკონტროლოთ თქვენი აგენტების მიერ გაშვებული Python და Shell ბრძანებები.",
+          "key_takeaways": [
+            "Strands Box იყენებს macOS Seatbelt ტიპის OS იზოლაციას.",
+            "არეგულირებს ქსელურ წვდომას და ფაილების მოდიფიკაციას.",
+            "არ საჭიროებს აგენტის მიერ ლიმიტების დამახსოვრებას."
+          ],
+          "technical_architecture": [
+            "Containment layer uses macOS Seatbelt for hard boundaries.",
+            "Dogwood Local Engine evaluates allow/deny policies.",
+            "Enforcement points cover network egress, Python, Shell, and MCP brokers."
+          ],
+          "technical_details": [
+            "Licensed under Apache 2.0 open-source license.",
+            "Applies limits like max 3 Slack posts per 10 minutes."
+          ],
+          "potential_impact": "ამცირებს აგენტების მიერ მგრძნობიარე სისტემების დაზიანების რისკს 90%-ით.",
+          "action_type": "TRY",
+          "action": "გადახედეთ Strands Box-ის დოკუმენტაციას და გამოსცადეთ როგორ იზოლირდება Shell ბრძანებები Python სკრიპტებში.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value",
+            "Short-term Opportunity"
+          ],
+          "verified_facts": [
+            "Strands Box launched in developer preview under Apache 2.0 license.",
+            "Combines OS-level isolation like macOS Seatbelt with Dogwood policy engine.",
+            "Enforces allow or deny decisions across Python, Shell interpreters, and MCP servers."
+          ],
+          "interpretation": "ავტონომიური აგენტების უსაფრთხოება მოითხოვს მკაცრ მართვას API დონეზე, რათა თავიდან ავიცილოთ საშიში ბრძანებები.",
+          "uncertainty": "წარმოებაში გამოყენებისას შესაძლოა წარმოიქმნას ლატენტურობის ზრდა პოლიტიკის შემოწმების გამო.",
+          "counter_argument": "მკაცრი პოლიტიკის ჩარჩოები ზღუდავს აგენტების ავტონომიას და მათ შემოქმედებით პრობლემების გადაჭრას.",
+          "strategic_assessment": "შეისწავლეთ კონტეინერების იზოლაცია და აგენტების ხელსაწყოების კონტროლი, რათა ააგოთ უსაფრთხო სისტემები.",
+          "time_horizon": "mid-term",
+          "what_could_change": "აგენტების განთავსება საწარმოო გარემოში გახდება სტანდარტიზებული და უსაფრთხო.",
+          "risks": [
+            "კონფიგურაციის სირთულე",
+            "პოლიტიკის წესების მართვის ხარჯი",
+            "შესაძლო შესრულების შეფერხება"
+          ],
+          "non_obvious_opportunity": "დეველოპერებს შეუძლიათ შექმნან ღია კოდის ალტერნატივები მსგავსი პოლიტიკის ძრავებისთვის.",
+          "fit_assessment": "იდეალურია თქვენთვის, რადგან ავითარებთ უსაფრთხო აგენტურ 루პებს და MCP ხელსაწყოებს."
+        },
+        {
+          "event_id": "evt-rephrase-vla-sensitivity",
+          "title": "Rephrase Before You Act: Mitigating Language Sensitivity in Vision-Language-Action Models",
+          "category": "AI Research / Agent Architecture",
+          "primary_url": "https://arxiv.org/abs/2610.10526",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "VLA მოდელები ძალზე სენსიტიურია ინსტრუქციის ფორმულირებაზე; წინასწარი გადაწერა წესების მიხედვით ზრდის წარმატებას 27%-ით.",
+          "what_happened": "მკვლევარებმა აჩვენეს, რომ ერთსიტყვიანმა ცვლილებამ შესაძლოა აგენტის წარმატება 100%-დან 2%-მდე დაწიოს.",
+          "what_changed": "შემოთავაზებულია ავტომატური წესებით ინსტრუქციის გადაწერა მოდელის გაშვებამდე.",
+          "why_it_matters": "გაძლევთ ტექნიკას, როგორ გახადოთ თქვენი აგენტი მედეგი მომხმარებლის უცნაური ბრძანებების მიმართ.",
+          "key_takeaways": [
+            "pi_0.5 მოდელის წარმატება ეცემა ფრაზის შეცვლისას 61 პუნქტით.",
+            "დიდი ენობრივი მოდელი ადგენს 10-20 გადაწერის წესს ტრენინგის მონაცემებიდან.",
+            "მეთოდი არ საჭიროებს მოდელის წონების ხელახლა სწავლებას."
+          ],
+          "technical_architecture": [
+            "LLM distills training task variations into 10-20 rephrasing rules.",
+            "Incoming instructions are rewritten once under these rules before execution."
+          ],
+          "technical_details": [
+            "Tested across adversarial, VLM-generated, and human-generated phrasings.",
+            "Improves frozen pi_0 by 16 to 27% relative on 12 held-out tasks."
+          ],
+          "potential_impact": "უზრუნველყოფს აგენტების სტაბილურ მუშაობას არაპროგნოზირებად მომხმარებლებთან ურთიერთობისას.",
+          "action_type": "APPLY",
+          "action": "დაამატეთ მცირე პრომპტ-ნორმალიზაციის ფენა თქვენი აგენტის მთავარ 루პში, რომელიც მომხმარებლის ბრძანებას ასწორებს სტანდარტულ ფორმატში.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "Vision-language-action models (VLAs) show extreme sensitivity to instruction phrasing.",
+            "Rewriting instructions with distilled rules improves frozen pi_0 by 16 to 27% relative.",
+            "Method requires zero retraining and applies zero-shot to unseen tasks."
+          ],
+          "interpretation": "მოდელების ინსტრუქციებისადმი მგრძნობელობა მოითხოვს წინასწარ პრომპტების ნორმალიზებას ან გადაწერას აგენტურ სისტემებში.",
+          "uncertainty": "დამატებითი გადაწერის ნაბიჯი ზრდის ლატენტურობას და ტოკენების ხარჯს.",
+          "counter_argument": "უკეთესი ფაინ-თუნინგი და მრავალფეროვანი დატასეტი გამორიცხავს ინსტრუქციის გადაწერის საჭიროებას.",
+          "strategic_assessment": "გამოიყენეთ პრომპტების ნორმალიზების ფენა თქვენს აგენტებში, რათა აიცილოთ მომხმარებლის ენობრივი ცვალებადობით გამოწვეული შეცდომები.",
+          "time_horizon": "mid-term",
+          "what_could_change": "აგენტები გახდებიან უფრო მდგრადები ცუდი ან არასწორი პრომპტების მიმართ.",
+          "risks": [
+            "დამატებითი გამოთვლითი ნაბიჯი",
+            "ትርგმნის დროს აზრის დაკარგვა",
+            "დეველოპერის დამატებითი კონფიგურაცია"
+          ],
+          "non_obvious_opportunity": "შეგიძლიათ შექმნათ მცირე მიკრო-სერვისი, რომელიც მომხმარებლის ნებისმიერ ბრძანებას არეგულირებს სტანდარტულ წესებამდე.",
+          "fit_assessment": "გეხმარებათ ააგოთ მყარი პრომპტ-ინჟინერიის პრაქტიკა თქვენი აგენტების საზღვრებზე."
+        },
+        {
+          "event_id": "evt-ledger-3d-object-memory",
+          "title": "Ledger: Persistent 3D Object Memory from Egocentric Videos for Embodied Assistants",
+          "category": "AI Research / Agent Architecture",
+          "primary_url": "https://arxiv.org/abs/2610.10538",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 7,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "Ledger აყალიბებს მუდმივ 3D ობიექტების მეხსიერებას ეგოცენტრული ვიდეოებიდან, რაც აუმჯობესებს აგენტების სივრცულ დასკვნებს.",
+          "what_happened": "მკვლევარებმა წარადგინეს Ledger, რომელიც აერთიანებს ობიექტების მდებარეობას და ისტორიას ვიდეო ნაკადებიდან.",
+          "what_changed": "წარმოდგენილია სისტემა, რომელიც ინახავს ობიექტებს ხედვის არის გასვლის მერეც.",
+          "why_it_matters": "აუმჯობესებს აგენტების უნარს, უპასუხონ სივრცულ კითხვებს ვიდეო არქივის თავიდან ნახვის გარეშე.",
+          "key_takeaways": [
+            "Ledger ზრდის HD-EPIC სიზუსტეს 42.6%-მდე.",
+            "კლასტერირებს ობიექტების დაკვირვებებს დასვენების წერტილების მიხედვით.",
+            "ამცირებს ლოკალიზაციის ხმაურის ეფექტს გამეორებული მტკიცებულებებით."
+          ],
+          "technical_architecture": [
+            "Combines object locations, histories, and contextual descriptions.",
+            "Clustering observations by resting locations to reduce noise."
+          ],
+          "technical_details": [
+            "Achieves 0.99 m median error on Ego4D objects.",
+            "Uses short descriptions for surface details and contents."
+          ],
+          "potential_impact": "ქმნის საფუძველს ჭკვიანი სახლის და რობოტიკის ასისტენტებისთვის, რომლებიც ზუსტად იმახსოვრებენ გარემოს.",
+          "action_type": "LEARN",
+          "action": "შეისწავლეთ როგორ ხდება აგენტის გრძელვადიანი მეხსიერების სტრუქტურირება SQLite ბაზებში.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "Ledger combines object locations, histories, and contextual descriptions.",
+            "Raises HD-EPIC accuracy from 29.7% to 42.6% and UCS-Bench from 33.8% to 38.5%.",
+            "Localizes Ego4D objects with a 0.99 m median error."
+          ],
+          "interpretation": "გრძელვადიანი მეხსიერება ვიდეო და სენსორული მონაცემებიდან არის მომავალი თაობის აგენტების საფუძველი.",
+          "uncertainty": "მონაცემთა დამუშავების მაღალი გამოთვლითი მოთხოვნები ართულებს მის რეალურ დროში მუშაობას მოწყობილობებზე.",
+          "counter_argument": "ტექსტური და სტრუქტურირებული ბაზის მეხსიერება უფრო იაფი და ეფექტურია, ვიდრე 3D ვიზუალური მეხსიერება.",
+          "strategic_assessment": "გაიგეთ როგორ ინახავს აგენტი მდგომარეობას სივრცეში, რათა უკეთ დააპროექტოთ თქვენი აგენტების მეხსიერების მოდულები.",
+          "time_horizon": "long-term",
+          "what_could_change": "AI აგენტები შეძლებენ ფიზიკურ გარემოში ადამიანების მსგავსად ორიენტაციას და ნივთების ძებნას.",
+          "risks": [
+            "მაღალი გამოთვლითი სირთულე",
+            "ლოკალიზაციის ხმაური",
+            "მეხსიერების ბაზის ზომის ზრდა"
+          ],
+          "non_obvious_opportunity": "შეგიძლიათ ააგოთ მსუბუქი 2D მეხსიერების ჰარნესი ვებ აგენტებისთვის ამ პრინციპების გამოყენებით.",
+          "fit_assessment": "გეხმარებათ გაიგოთ აგენტების მდგომარეობის შენახვის (state management) პრინციპები კომპლექსურ გარემოში."
+        }
+      ],
+      "trends": [
+        "აგენტების უსაფრთხოება და იზოლაცია იღებს ღია კოდის ინფრასტრუქტურულ გადაწყვეტილებებს (Strands Box).",
+        "მულტიმოდალური მეხსიერება და სივრცული წარმოდგენები ხდება რობოტიკისა და აგენტების მთავარი კვლევის საგანი.",
+        "პრომპტების სენსიტიურობის მართვა ხდება ავტომატური წესებით და წინა-დამუშავების ფენებით."
+      ]
     }
   ],
   "learning_queue": [
-    "Reciprocal Rank Fusion (RRF) algorithms and score normalization.",
-    "Static analysis linter integrations for LLM coding agents."
+    "გაიღრმავეთ ცოდნა OS-level იზოლაციის და პოლიტიკის ძრავების (როგორიცაა Dogwood ან მსგავსი ლინქები) მიმართულებით.",
+    "შეისწავლეთ როგორ ხდება აგენტის გრძელვადიანი მეხსიერების (State Memory) ოპტიმიზაცია და კლასტერირება."
   ],
-  "last_run": "2026-10-07T17:16:53.321463+00:00",
+  "last_run": "2026-10-08T17:15:18.811273+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -8442,12 +8521,14 @@
     "arxiv:2610.06830",
     "arxiv:2610.06851",
     "arxiv:2610.06852",
-    "arxiv:2610.07557"
+    "arxiv:2610.07557",
+    "arxiv:2610.10526",
+    "arxiv:2610.10538"
   ],
   "last_report_files": {
-    "markdown": "data/reports/2026-10-07/report.md",
-    "json": "data/reports/2026-10-07/report.json",
-    "newsletter": "data/reports/2026-10-07/newsletter.md",
-    "social": "data/reports/2026-10-07/social_posts.txt"
+    "markdown": "data/reports/2026-10-08/report.md",
+    "json": "data/reports/2026-10-08/report.json",
+    "newsletter": "data/reports/2026-10-08/newsletter.md",
+    "social": "data/reports/2026-10-08/social_posts.txt"
   }
 }
