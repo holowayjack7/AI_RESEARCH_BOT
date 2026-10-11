@@ -214,7 +214,14 @@
     "https://www.anthropic.com/research/investigating-unintended-model-actions",
     "https://research.google/blog/does-better-work-always-mean-better-workers",
     "https://arxiv.org/abs/2610.12453",
-    "https://www.anthropic.com/news/anthropic-cyber-mission"
+    "https://www.anthropic.com/news/anthropic-cyber-mission",
+    "https://github.com/mempalace/mempalace",
+    "https://github.com/cq27-dev/rag-rat",
+    "https://arxiv.org/html/2610.10455v1",
+    "https://techcrunch.com/2026/10/06/the-next-hurdle-for-ai-agents-getting-websites-to-let-them-in",
+    "https://techcrunch.com/2026/10/07/metas-muse-launches-on-ipad-just-a-month-after-its-mobile-debut",
+    "https://github.com/ovid/paad",
+    "https://github.com/blakemcbride/Code-RAG"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -382,236 +389,15 @@
     "evt-anthropic-unintended-actions-persistence",
     "evt-google-study-ai-skill-atrophy",
     "evt-neurips-mental-models-mas",
-    "evt-anthropic-cyber-mission-oss-scanner"
+    "evt-anthropic-cyber-mission-oss-scanner",
+    "evt-mempalace-local-ai-memory",
+    "evt-rag-rat-mcp-repo-intelligence",
+    "evt-phrbench-post-hallucination-reasoning",
+    "evt-agent-to-business-open-standard",
+    "evt-paad-2-engineering-driven-ai",
+    "evt-code-rag-local-mcp-postgres"
   ],
   "events": [
-    {
-      "event_id": "evt-typesafe-jev-system-one-model",
-      "title": "TypeSafe Jev: RLCD-Trained Non-Autoregressive System One Model for Sub-Millisecond Agent Routing",
-      "category": "AI Research / Agent Loop Optimization",
-      "primary_url": "https://www.latent.space/p/ainews-jev-a-system-one-model-that",
-      "supporting_urls": [],
-      "importance": 9,
-      "relevance": 9,
-      "actionability": 9,
-      "source_quality": 8,
-      "confidence": 90,
-      "tldr": "TypeSafe released Jev, a non-autoregressive decision model trained via RLCD that routes agent tool calls over 100x faster than small LLMs.",
-      "what_happened": "TypeSafe launched Jev, a specialized non-generative model designed strictly for classification, scoring, and tool routing without autoregressive string generation.",
-      "what_changed": "Before, agent loops relied on expensive, slow LLMs for routing. Now, Jev executes deterministic routing decisions with parallel sampling and zero hallucination.",
-      "why_it_matters": "Drastically slashes agent loop latency and token costs by offloading control flow, gating, and tool selection away from slow reasoning models.",
-      "key_takeaways": [
-        "Delivers 20x to 200x faster execution than small frontier LLMs",
-        "Operates 40x to 400x cheaper than standard autoregressive models",
-        "Trained via Reinforcement Learning from Calibrated Decisions (RLCD)"
-      ],
-      "technical_architecture": [
-        "Non-autoregressive classifier architecture for parallel logit decision sampling",
-        "Calibrated logit scoring system eliminating generative hallucination risk",
-        "System One complementary layer positioned in front of System Two LLMs"
-      ],
-      "technical_details": [
-        "RLCD optimization for calibrated confidence scores across discrete actions",
-        "Sub-millisecond inference execution for agent loop conditional branching",
-        "Structured input parsing for direct routing array outputs"
-      ],
-      "potential_impact": "Redefines agent orchestration pipelines by splitting fast control flow decisions from compute-heavy reasoning tasks.",
-      "action_type": "TRY",
-      "action": "Replace LLM-based classification prompts in your agent loops with specialized fast routing endpoints to lower latency.",
-      "evidence": []
-    },
-    {
-      "event_id": "evt-fastmcp-entra-id-auth",
-      "title": "Building Identity-Aware FastMCP Servers with Microsoft Entra ID Integration",
-      "category": "MCP / Developer Frameworks",
-      "primary_url": "https://www.microsoft.com/en-us/thesource-developer/Event/583/building-mcp-servers-with-entra-id-and-pre-authorized-clients-microsoft-community-hub",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 9,
-      "source_quality": 10,
-      "confidence": 92,
-      "tldr": "Microsoft published implementation patterns for securing Python FastMCP servers with Entra ID authentication for IDE clients like VS Code.",
-      "what_happened": "Microsoft demonstrated how to build identity-aware MCP servers using the Python FastMCP library integrated with Entra ID pre-authorized clients.",
-      "what_changed": "Before, MCP servers often ran unauthenticated locally. Now, tool servers can authenticate client tokens to restrict tool access by user identity.",
-      "why_it_matters": "Enables safe enterprise deployment of custom local and remote MCP tools that access sensitive database or system APIs.",
-      "key_takeaways": [
-        "Integrates Python FastMCP directly with Microsoft Entra ID authentication",
-        "Supports pre-authorized client validation from VS Code and editor hosts",
-        "Enforces user-level security context inside individual MCP tool functions"
-      ],
-      "technical_architecture": [
-        "FastMCP Python framework with OAuth 2.0 bearer token validation middleware",
-        "Entra ID pre-authorized client application verification workflow",
-        "VS Code MCP client connection context propagation"
-      ],
-      "technical_details": [
-        "FastMCP decorator-based tool definitions with identity claims inspection",
-        "Bearer token parsing from incoming MCP JSON-RPC headers",
-        "Scope validation against Entra ID client permissions"
-      ],
-      "potential_impact": "Standardizes secure authentication implementation patterns for custom Python MCP tool servers in developer environments.",
-      "action_type": "BUILD",
-      "action": "Build a test Python FastMCP server using OAuth header validation to restrict tool invocation based on user tokens.",
-      "evidence": []
-    },
-    {
-      "event_id": "evt-openhands-isolated-sandbox-ami",
-      "title": "OpenHands Autonomous Coding Agent: Isolated Container Sandboxing and Multi-LLM Architecture",
-      "category": "AI Coding Tools / Agent Architecture",
-      "primary_url": "https://aws.amazon.com/marketplace/pp/prodview-huiw6we65bt7c",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 8,
-      "source_quality": 10,
-      "confidence": 90,
-      "tldr": "OpenHands detailed its self-hosted agent deployment architecture featuring sidecar Docker sandboxes and automatic state preservation.",
-      "what_happened": "OpenHands released its self-hosted deployment architecture on AWS, featuring isolated per-conversation Docker sidecars with headless shell and browser access.",
-      "what_changed": "Before, open-source coding agents often executed code directly on host environments. OpenHands enforces per-task sandbox container isolation.",
-      "why_it_matters": "Provides a production-grade blueprint for running autonomous software engineering agents safely without risking host environment corruption.",
-      "key_takeaways": [
-        "Runs each agent session in an isolated sidecar container with shell and browser",
-        "Prevents concurrent developer task collisions through sandbox containerization",
-        "Supports decoupled connections to OpenAI, Anthropic, or open-weights LLMs"
-      ],
-      "technical_architecture": [
-        "Docker Compose sidecar sandbox architecture per agent conversation",
-        "Nginx reverse proxy for WebSocket event streaming and dashboard access",
-        "S3 backup integration for persistent agent state and history retention"
-      ],
-      "technical_details": [
-        "Ubuntu 26.04 pre-hardened base AMI with Docker engine",
-        "Isolated VS Code server and browser execution sidecars",
-        "Asynchronous event stream serialization over HTTP/HTTPS"
-      ],
-      "potential_impact": "Offers developers an open, controllable alternative to proprietary coding agents with enterprise-grade execution isolation.",
-      "action_type": "APPLY",
-      "action": "Adopt sidecar Docker container isolation in your local coding agent projects to isolate bash tool execution.",
-      "evidence": []
-    },
-    {
-      "event_id": "evt-ope-exponential-hardness-history-logging",
-      "title": "Theoretical Intractability of Off-Policy Evaluation Under History-Dependent Logging",
-      "category": "AI Research / Agent Evaluation & Reliability",
-      "primary_url": "https://arxiv.org/abs/2609.19135",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 7,
-      "actionability": 6,
-      "source_quality": 8,
-      "confidence": 88,
-      "tldr": "New research proves off-policy evaluation of agents under history-dependent logging requires exponential sample complexity over horizon H.",
-      "what_happened": "Researcher Pranaya Jajoo proved that evaluating a deterministic agent policy from logged history requires exponential sample complexity when the logging policy has memory.",
-      "what_changed": "Rebuts assumptions that offline trajectory datasets with good action coverage are sufficient for reliable offline evaluation of memoryful agents.",
-      "why_it_matters": "Proves that off-policy evaluation (OPE) for complex multi-step agents cannot rely purely on historical log data without explicit model resets.",
-      "key_takeaways": [
-        "Requires exponential trajectory samples relative to task horizon length H",
-        "Applies even when latent states, action coverage, and model dynamics are known",
-        "Demonstrates how memory resets in loggers erase critical diagnostic state signals"
-      ],
-      "technical_architecture": [
-        "POMDP formulation with two latent states and history-dependent loggers",
-        "Statistical lower bound derivation establishing exponential sample lower bound",
-        "Directed two-lane gridworld simulation environment for trajectory verification"
-      ],
-      "technical_details": [
-        "Sample complexity lower bound of order (3/2)^H log(1/delta)",
-        "Behavior-marginal outcome-revealing condition analysis in Stage POMDPs",
-        "History-dependent memory state transitions in target policy loggers"
-      ],
-      "potential_impact": "Forces agent evaluation benchmarks to adopt active, online, or state-reset evaluation paradigms rather than static offline trajectory logs.",
-      "action_type": "LEARN",
-      "action": "Design agent evaluation frameworks around live interaction environments rather than relying exclusively on static historical trajectory logs.",
-      "evidence": []
-    },
-    {
-      "event_id": "evt-google-ads-api-developer-assistant-plugin",
-      "title": "Google Ads API Developer Assistant v4.0.0: Context Contracts and Sidecar Validation Pipelines",
-      "category": "Developer Tools & Agent Frameworks",
-      "primary_url": "https://developers.google.com/google-ads/api/docs/developer-toolkit/ai-assistant",
-      "supporting_urls": [],
-      "importance": 7,
-      "relevance": 8,
-      "actionability": 8,
-      "source_quality": 9,
-      "confidence": 90,
-      "tldr": "Google open-sourced its Ads API Developer Assistant v4.0.0 plugin using AGENTS.md/CLAUDE.md context contracts and local sidecars.",
-      "what_happened": "Google released version 4.0.0 of its Ads API Developer Assistant plugin for Google Antigravity and Claude Code agent frameworks.",
-      "what_changed": "Shifted from monolithic project scripts to a global plugin architecture utilizing explicit AGENTS.md context contracts and Python validation sidecars.",
-      "why_it_matters": "Demonstrates how major vendors structure domain-specific agent plugins using standardized repository context files and local verification scripts.",
-      "key_takeaways": [
-        "Uses AGENTS.md and CLAUDE.md files for maintaining persistent repo context",
-        "Integrates local Python validation sidecars for automated payload checks",
-        "Supports modular slash commands inside Antigravity and Claude Code CLI"
-      ],
-      "technical_architecture": [
-        "Global plugin architecture for Google Antigravity and Claude Code v4.0.0",
-        "Local Python 3.10+ validation sidecar executing read-only API calls",
-        "Declarative context contract files (AGENTS.md / CLAUDE.md)"
-      ],
-      "technical_details": [
-        "Slash command registration interface for CLI agent hosts",
-        "OAuth 2.0 configuration file parsing from system home directory",
-        "Ad-hoc streaming reporting pipelines via client sidecars"
-      ],
-      "potential_impact": "Provides a clean template for building complex SDK or API assistant plugins for modern AI coding agent environments.",
-      "action_type": "LEARN",
-      "action": "Study the AGENTS.md context contracts and sidecar validation structure in Google's repository to structure your own developer tool plugins.",
-      "evidence": []
-    },
-    {
-      "event_id": "evt-gemini-antigravity-agent-credentials",
-      "title": "Google Gemini Antigravity Agent and Egress Secret Credential Proxy",
-      "category": "LLM API / Agent Frameworks",
-      "primary_url": "https://ai.google.dev/gemini-api/docs/antigravity-agent",
-      "supporting_urls": [
-        "https://ai.google.dev/gemini-api/docs/agent-credentials",
-        "https://ai.google.dev/gemini-api/docs/latest-model"
-      ],
-      "importance": 9,
-      "relevance": 10,
-      "actionability": 9,
-      "source_quality": 10,
-      "confidence": 95,
-      "tldr": "Google introduced the Antigravity agent on Gemini 3.8 Flash, featuring hosted remote Linux sandboxes and server-managed credential injection.",
-      "what_happened": "Google launched Antigravity managed agents via the Interactions API alongside write-only secret proxying and Gemini 3.8 Flash availability.",
-      "what_changed": "Local or manual agent sandboxing to Managed Linux execution environment with server-side credential proxying that hides tokens from agent code.",
-      "why_it_matters": "Enables secure execution of untrusted generated code and multi-step agent tool loops without exposing sensitive API keys.",
-      "key_takeaways": [
-        "Single API call provisions isolated Linux sandbox running Python and Node.js",
-        "Credential API stores secrets write-only and injects them at network egress",
-        "Gemini 3.8 Flash introduces tunable thinking levels for software tasks"
-      ],
-      "technical_architecture": [
-        "Gemini 3.8 Flash powering remote Linux execution environment",
-        "Network allowlist egress proxy injecting domain-bound authorization bearer tokens",
-        "Google AI Studio and Interactions API integration"
-      ],
-      "technical_details": [
-        "Context window: 1M tokens",
-        "Max output: 64k tokens",
-        "Default model ID: gemini-3.8-flash",
-        "Introductory pricing: 0.75 USD per 1M input"
-      ],
-      "potential_impact": "Simplifies secure deployment of code-executing autonomous agents without risking API credential leaks.",
-      "action_type": "TRY",
-      "action": "Test Google Interactions API with Antigravity preview to run sandboxed Python scripts using egress network credential injection.",
-      "evidence": [],
-      "factuality_level": "verified",
-      "classification": [
-        "Real Technical Skill",
-        "Real Business Opportunity"
-      ],
-      "verified_facts": [
-        "Antigravity agent runs Gemini 3.8 Flash inside Google-hosted Linux sandboxes via Interactions API",
-        "Egress proxy injects server-managed write-only secrets without exposing tokens to agent runtime",
-        "Gemini 3.8 Flash supports 1M context and tunable low, medium, high thinking levels"
-      ],
-      "interpretation": "Google provides a complete managed agent infrastructure combining remote code execution, sandboxing, and zero-trust credential handling.",
-      "uncertainty": "Sandbox cold starts and remote network isolation constraints may introduce latency for interactive agent interactions.",
-      "counter_argument": "Managed sandbox lock-in restricts developer control over custom container runtimes and local environment dependencies."
-    },
     {
       "event_id": "evt-deepseek-v41-flash-kv-compression",
       "title": "DeepSeek-V4.1-Flash: Causal Encoder-Decoder MoE with FP4 KV Cache Compression",
@@ -5740,6 +5526,350 @@
       ],
       "non_obvious_opportunity": "შექმენი მინი GitHub Action, რომელიც commit-ის დროს static analysis-ს აკეთებს და მოდელს ამოწმებინებს კოდს.",
       "fit_assessment": "იდეალურია შენი პროექტებისთვის GitHub-ზე: გაძლევს საშუალებას ისწავლო secure coding უფასო ინსტრუმენტებით."
+    },
+    {
+      "event_id": "evt-mempalace-local-ai-memory",
+      "title": "MemPalace: უფასო ლოკალური AI მეხსიერების სისტემა ნულოვანი API ხარჯით",
+      "category": "AI Research / RAG & აგენტის მეხსიერება",
+      "primary_url": "https://github.com/mempalace/mempalace",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 95,
+      "tldr": "MemPalace არის ღია კოდის AI მეხსიერების სისტემა, რომელიც 96.6% Recall-ს აღწევს ლოკალურად ChromaDB-სა და MCP-ს გამოყენებით.",
+      "what_happened": "mempalace რეპოზიტორიამ წარმოადგინა ლოკალური AI memory architecture, რომელიც ტექსტს არ ასუმარებს და ინახავს verbatim სტრუქტურაში.",
+      "what_changed": "ძვირადღირებული LLM extraction/summarization-ის ნაცვლად გამოიყენება verbatim ლოკალური ინდექსაცია სკოპირებული ძებნით.",
+      "why_it_matters": "შეგიძლია აგენტებს მისცე მუდმივი მეხსიერება (persistence) ნულოვანი ფინანსური დანახარჯით.",
+      "key_takeaways": [
+        "96.6% R@5 LongMemEval ბენჩმარკზე API Call-ების გარეშე",
+        "სტრუქტურირებული დაყოფა: Wings, Rooms, Drawers",
+        "მხარდაჭერილია MCP პროტოკოლი და Python SDK"
+      ],
+      "technical_architecture": [
+        "ChromaDB local vector store backend",
+        "Pluggable backend layer via base.py",
+        "MCP skills integration layer"
+      ],
+      "technical_details": [
+        "npx skills add MemPalace/mempalace",
+        "pip install mempalace",
+        "verbatim raw text indexing"
+      ],
+      "potential_impact": "მაღალი სიზუსტის პრივატული მეხსიერების აგენტები პერსონალურ მოწყობილობებსა და ლოკალურ სერვერებზე.",
+      "action_type": "BUILD",
+      "action": "ინტეგრირება გაუკეთე MemPalace-ს შენს Python Telegram ბოტში, чтобы მიიღო მუდმივი კონტექსტი უფასოდ.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "MemPalace აღწევს 96.6% Recall@5 მაჩვენებელს LongMemEval ბენჩმარკზე ნულოვანი API call-ით",
+        "ინახავს ტექსტს ვერბატიმულად სტრუქტურირებულ იერარქიაში (wings, rooms, drawers)",
+        "default ბექენდად იყენებს ChromaDB-ს და სრულად ინტეგრირდება MCP პროტოკოლთან"
+      ],
+      "interpretation": "LLM-ის მიერ ტექსტის სუმარიზაცია ხშირად კარგავს მნიშვნელოვან დეტალებს. verbatim storage + structured index უკეთესია აგენტის გრძელვადიანი მეხსიერებისთვის.",
+      "uncertainty": "დიდი მოცულობის ტექსტურ ბაზებზე ChromaDB ლოკალური ძებნის სიჩქარე შესაძლოა შემცირდეს.",
+      "counter_argument": "დინამიური სუმარიზაცია და LLM-based graph extraction უფრო მოქნილია, ვიდრე უბრალო verbatim ტექსტის შენახვა.",
+      "strategic_assessment": "გამოიყენე MemPalace შენს Telegram ბოტებსა და აგენტებში უფასო, ლოკალური Long-term Memory შრის დასამატებლად.",
+      "time_horizon": "mid-term",
+      "what_could_change": "აგენტები შეძლებენ თვეების მანძილზე დაგროვილი დიალოგების დამახსოვრებას API-ის ხარჯის გაზრდის გარეშე.",
+      "risks": [
+        "ლოკალური დისკის მეხსიერების ზრდა",
+        "ChromaDB-ს სკალირების შეზღუდვები"
+      ],
+      "non_obvious_opportunity": "შეგიძლია შექმნა Telegram ბოტი-ასისტენტი Georgian SMB-ებისთვის, რომელიც კლიენტების ისტორიას სრულიად უფასოდ და პრივატულად შეინახავს.",
+      "fit_assessment": "საუკეთესო ინსტრუმენტი 16 წლის დეველოპერისთვის: 0 API cost, პრივატული ლოკალური მეხსიერება და მარტივი Python SDK."
+    },
+    {
+      "event_id": "evt-rag-rat-mcp-repo-intelligence",
+      "title": "rag-rat: ლოკალური MCP სერვერი და რეპოზიტორიის მეხსიერების გრაფი აგენტებისთვის",
+      "category": "აგენტების ინფრასტრუქტურა და MCP",
+      "primary_url": "https://github.com/cq27-dev/rag-rat",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 95,
+      "tldr": "გამოვიდა rag-rat — ლოკალური MCP სერვერი, რომელიც აგენტებს აძლევს კოდის გრაფს, Git ისტორიას და შენახულ მეხსიერებას provenance-ით.",
+      "what_happened": "cq27-dev-მა გამოაქვეყნა rag-rat — ლოკალური SQLite-ზე დაფუძნებული MCP ინდექსერი coding harness-ებისთვის.",
+      "what_changed": "უბრალო grep/read ინსტრუმენტების ნაცვლად, აგენტს ახლა აქვს source-anchored decision memory და code call-graph.",
+      "why_it_matters": "შეგიძლია აგენტს მისცე სრული კონტექსტი და ისტორიული მეხსიერება ძვირადღირებული Vector Cloud API-ების გარეშე.",
+      "key_takeaways": [
+        "მუშაობს ლოკალურად SQLite-ზე და არ სჭირდება გარეგანი API",
+        "პასუხობს provenance-ით და confidence score-ებით",
+        "ინახავს Decision და Invariant ტიპის მეხსიერებას"
+      ],
+      "technical_architecture": [
+        "SQLite local database index",
+        "MCP server protocol integration",
+        "SCIP oracle static analysis graph"
+      ],
+      "technical_details": [
+        "cargo build backend",
+        "rag-rat.toml configuration",
+        "ctrl+alt+r visual lens overlay"
+      ],
+      "potential_impact": "შემცირებული ტოკენების დანახარჯი და უფრო ზუსტი რეფაქტორინგი რთულ Open Source პროექტებში.",
+      "action_type": "BUILD",
+      "action": "დააყენე rag-rat შენს ლოკალურ რეპოზიტორიაზე და გამოსცადე MCP სერვერი Claude Code-თან ან Cursor-თან ერთად.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "rag-rat ინახავს მონაცემებს ლოკალურ SQLite ბაზაში source-anchored provenance-ით",
+        "სისტემა უზრუნველყოფს symbol lookup, code graph და git/GitHub history ინდექსაციას MCP პროტოკოლით",
+        "ყველა პასუხი შეიცავს confidence label-ებს და coverage warning-ებს"
+      ],
+      "interpretation": "კოდირების აგენტებს სჭირდებათ არამხოლოდ grep, არამედ არქიტექტურული კონტექსტი და გადაწყვეტილებების მეხსიერება, რაც ამცირებს შეცდომებს რეფაქტორინგისას.",
+      "uncertainty": "დიდ რეპოზიტორიებზე SQLite ინდექსაციის latency და SCIP oracle-ის კონფიგურაციის სირთულე ჯერ კიდევ შესამოწმებელია.",
+      "counter_argument": "სტანდარტულ IDE ინდექსერებსა და Vector DB-ებს შეუძლიათ მსგავსი შედეგის მოცემა უფრო მარტივი არქიტექტურით.",
+      "strategic_assessment": "გამოიყენე rag-rat როგორც სანიმუშო არქიტექტურა საკუთარ პროექტებში source-anchored agent memory-ს ასაგებად უფასოდ.",
+      "time_horizon": "mid-term",
+      "what_could_change": "აგენტები შეძლებენ წინა სესიების გადაწყვეტილებების შენარჩუნებას რეფაქტორინგის დროს, რაც შეამცირებს სემანტიკურ რეგრესიებს.",
+      "risks": [
+        "დიდ ბაზებზე ინდექსაციის დროის ზრდა",
+        "SQLite ბაზის ზომის სწრაფი გაზრდა"
+      ],
+      "non_obvious_opportunity": "შეგიძლია შექმნა custom MCP ინსტრუმენტი, რომელიც კლიენტის legacy კოდიდან ბიზნეს-წესების გრაფს ავტომატურად ააწყობს.",
+      "fit_assessment": "იდეალურად ერგება 16 წლის დეველოპერს: ლოკალური, უფასო Open Source ინსტრუმენტია Python/SQLite ბაზაზე."
+    },
+    {
+      "event_id": "evt-phrbench-post-hallucination-reasoning",
+      "title": "PHRBench: მრავალ-ეტაპიანი აგენტების ქცევის ანალიზი ჰალუცინირებული კონტექსტის დროს",
+      "category": "AI Evaluation & Agent Reliability",
+      "primary_url": "https://arxiv.org/html/2610.10455v1",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "PHRBench კვლევამ აჩვენა, რომ LLM-ები იშვიათად ასწორებენ კონტექსტში მოხვედრილ ჰალუცინაციებს და საჭიროებენ დამატებით belief updates მექანიზმებს.",
+      "what_happened": "მკვლევარებმა წარადგინეს PHRBench 18 მოდელის შესაფასებლად post-hallucination reasoning სცენარებში.",
+      "what_changed": "დადასტურდა, რომ მოდელები ძირითადად ეგუებიან შეცდომებს (compliance), ვიდრე შეასწორებენ მათ (heuristic correction).",
+      "why_it_matters": "ბიზნეს აგენტების აგებისას არ უნდა ეყრდნო მხოლოდ LLM-ის შიდა მსჯელობას შეცდომების აღმოსაჩენად.",
+      "key_takeaways": [
+        "ჰალუცინაცია კონტექსტში ვრცელდება შემდგომ ნაბიჯებზე",
+        "წარმატებული აღდგენა მოითხოვს დინამიურ belief update-ებს",
+        "0.847 AUROC პრედიქტორი პროგნოზირებს აღდგენის შანსს"
+      ],
+      "technical_architecture": [
+        "Post-Hallucination Reasoning Framework",
+        "Trajectory evaluation via Compliance vs Avoidance",
+        "Lightweight recovery predictor model"
+      ],
+      "technical_details": [
+        "4820 controlled evaluation instances",
+        "0.847 AUROC score for predictor",
+        "18 LLMs evaluated across 4 domains"
+      ],
+      "potential_impact": "უფრო საიმედო არქიტექტურული შაბლონები ავტონომიური multi-step აგენტების პროდუქტივში გასაშვებად.",
+      "action_type": "LEARN",
+      "action": "დაამატე explicit JSON validation step შენს აგენტის loop-ში, რომ თავიდან აიცილო შეცდომების გავრცელება კონტექსტში.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "PHRBench აფასებს 18 LLM-ის ქცევას 4,820 კონტროლირებად ტესტზე, როცა კონტექსტში არასწორი (hallucinated) ინფორმაციაა",
+        "წარმატებული თვითშესწორება (successful recovery) იშვიათია და მოითხოვს ხშირ belief update-ებს reasoning trajectory-ის გასწვრივ",
+        "მსუბუქმა პრედიქტორმა (lightweight predictor) მიაღწია 0.847 AUROC-ს იმის საპროგნოზოდ, შეძლებს თუ არა მოდელი შეცდომის გამოსწორებას"
+      ],
+      "interpretation": "თუ აგენტის წინა ნაბიჯმა ჰალუცინაცია წარმოქმნა, შემდგომი LLM ნაბიჯები უბრალოდ იმეორებენ შეცდომას (compliance), თუ არ არსებობს სპეციალური პრომპტინგი ან verifier.",
+      "uncertainty": "კვლევა ძირითადად ფოკუსირებულია ტექსტურ მსჯელობაზე და ნაკლებად მოიცავს real-world tool-execution feedback loops-ს.",
+      "counter_argument": "გარე ინსტრუმენტების (კოდის გაშვება, SQL ვალიდაცია) შედეგები ავტომატურად ამსხვრევს ჰალუცინაციებს, რაც ამცირებს შიდა reasoning-ზე დამოკიდებულებას.",
+      "strategic_assessment": "აგენტურ არქიტექტურაში ჩასვი დამოუკიდებელი Verification Step ყოველი ნაბიჯის შემდეგ, ნაცვლად იმისა, რომ LLM-ის თვითშესწორებას ენდო.",
+      "time_horizon": "long-term",
+      "what_could_change": "მრავალ-ეტაპიანი აგენტების დიზაინში სტანდარტი გახდება explicit error-detection/probing მექანიზმები.",
+      "risks": [
+        "დამატებითი LLM call-ების ხარჯი verification-ისთვის",
+        "False positive განგაშები ვალიდაციისას"
+      ],
+      "non_obvious_opportunity": "შეგიძლია შექმნა მსუბუქი Python guardrail-ბიბლიოთეკა, რომელიც აგენტიდან გამავალ JSON payload-ებს ამოწმებს სანამ შემდგომ step-ს მიაწვდის.",
+      "fit_assessment": "კრიტიკული ცოდნა აგენტების საიმედოობისთვის: აჩვენებს, თუ რატომ ფუჭდება multi-step agent loops და როგორ ავიცილოთ ეს."
+    },
+    {
+      "event_id": "evt-agent-to-business-open-standard",
+      "title": "Agent-to-Business Standard: ინდუსტრიული ღია სტანდარტი აგენტების ვებ-ავტორიზაციისთვის",
+      "category": "Real Business Opportunity & Agent Infrastructure",
+      "primary_url": "https://techcrunch.com/2026/10/06/the-next-hurdle-for-ai-agents-getting-websites-to-let-them-in",
+      "supporting_urls": [
+        "https://techcrunch.com/2026/10/07/metas-muse-launches-on-ipad-just-a-month-after-its-mobile-debut"
+      ],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 7,
+      "source_quality": 7,
+      "confidence": 85,
+      "tldr": "Meta, Stripe და Walmart ქმნიან ღია სტანდარტს აგენტებსა და ბიზნესებს შორის კომუნიკაციისთვის anti-bot ბლოკირებების გვერდის ავლით.",
+      "what_happened": "მსხვილმა კომპანიებმა დაიწყეს მუშაობა ღია პროტოკოლზე, რომელიც აგენტებს საშუალებას მისცემს ლეგიტიმურად გაიარონ იდენტიფიკაცია ვებ-საიტებზე.",
+      "what_changed": "UI-based scraping-ის დაბლოკვის ფონზე ინდუსტრია გადადის structured Agent-to-Business API სტანდარტზე.",
+      "why_it_matters": "რეალური ბიზნეს აგენტების შესაქმნელად საჭიროა API-first და MCP არქიტექტურა, და არა მხოლოდ ბრაუზერის ავტომატიზაცია.",
+      "key_takeaways": [
+        "Stripe, Meta და Walmart ქმნიან ახალ პროტოკოლს",
+        "Anti-bot სისტემები ბლოკავენ ბრაუზერულ აგენტებს",
+        "ფოკუსი გადადის Agent-to-Agent ტრანზაქციებზე"
+      ],
+      "technical_architecture": [
+        "Agent-to-Business authentication protocol",
+        "Structured connector API integration",
+        "OAuth/Token based agent identity"
+      ],
+      "technical_details": [
+        "Meta Muse connector architecture",
+        "Stripe agentic payment protocol",
+        "Open standard RFC proposal"
+      ],
+      "potential_impact": "ახალი ეპოქა e-commerce-ში, სადაც აგენტები უსაფრთხოდ ყიდულობენ მომსახურებას მომხმარებლის სახელით.",
+      "action_type": "TRACK",
+      "action": "ადევნე თვალი Stripe-ისა და Meta-ს Agent-to-Business API ინიციატივებს და გამოიყენე Webhook/API მიდგომა პროექტებში.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Business Opportunity",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "Meta, Walmart, Stripe, Sierra და Decagon იწყებენ მუშაობას Agent-to-Business ღია სტანდარტზე",
+        "Amazon-მა და სხვა Retailer-ებმა დაიწყეს მომხმარებლის AI აგენტების (მაგ. Meta Muse) დაბლოკვა anti-bot სისტემებით",
+        "ახალი პროტოკოლი მიზნად ისახავს ლეგიტიმური AI აგენტების განასხვავებას მავნე ბოტებისგან commerce ტრანზაქციებისას"
+      ],
+      "interpretation": "Browser automation (Playwright/Puppeteer) ვებ-საიტებზე ბლოკადებს აწყდება. მომავალი ბიზნეს აგენტები იმუშავებენ პირდაპირ Agent-to-Business პროტოკოლებითა და API Connectors-ით.",
+      "uncertainty": "სტანდარტის საბოლოო მიღებას და საყოველთაო დანერგვას შესაძლოა წლები დასჭირდეს.",
+      "counter_argument": "ვებ-საიტები ამჯობინებენ საკუთარ დახურულ API-ებს, ვიდრე საერთო ღია სტანდარტის მხარდაჭერას.",
+      "strategic_assessment": "ნუ ააგებ ბიზნესს მხოლოდ fragile browser scraping-ზე; ისწავლე API connectors და MCP server integration-ის გამოყენება.",
+      "time_horizon": "mid-term",
+      "what_could_change": "ვებ-საიტები დაამატებენ agent-friendly endpoints-ებს, რაც ჩაანაცვლებს ტრადიციულ UI scraping-ს.",
+      "risks": [
+        "ტრადიციული scraping ინსტრუმენტების გათიშვა",
+        "ახალი ავტორიზაციის პროტოკოლების სირთულე"
+      ],
+      "non_obvious_opportunity": "შეგიძლია Georgian e-commerce საიტებს შესთავაზო მარტივი MCP/Agent API შრე, რომ AI ასისტენტებმა შეძლონ მათი პროდუქტების წაკითხვა.",
+      "fit_assessment": "მნიშვნელოვანია ბიზნეს აგენტების სტრატეგიისთვის: აჩვენებს, სად მიდის რეალური agentic e-commerce."
+    },
+    {
+      "event_id": "evt-paad-2-engineering-driven-ai",
+      "title": "PAAD 2.0: საინჟინრო დისციპლინისა და კოდის ხარისხის Skill-ების ფრეიმვორკი აგენტებისთვის",
+      "category": "AI Coding Tools & Agent Workflows",
+      "primary_url": "https://github.com/ovid/paad",
+      "supporting_urls": [],
+      "importance": 7,
+      "relevance": 9,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "PAAD 2.0-მა გამოაშვება საინჟინრო დისციპლინის skill-ების ნაკრები, რომელიც აიძულებს აგენტებს დაიცვან TDD, არქიტექტურა და OWASP უსაფრთხოება.",
+      "what_happened": "Ovid-მა განახლა PAAD ფრეიმვორკი, რომელიც აგენტურ ინსტრუმენტებს ამატებს TDD-ს, pushback-ს და არქიტექტურულ სკანირებას.",
+      "what_changed": "აგენტი აღარ წერს უბრალო კოდს; ის გადის spec alignment-ს, architecture review-ს და ტესტებს სანამ merge მოხდება.",
+      "why_it_matters": "საშუალებას გაძლევს შექმნა წარმოებისთვის მზადყოფნაში მყოფი (production-grade) კოდი აგენტების ასისტენტირებით.",
+      "key_takeaways": [
+        "70+ აგენტის მხარდაჭერა npx skills-ის მეშვეობით",
+        "TDD guardrail-ები და /vibe სესიების მართვა",
+        "OWASP უსაფრთხოებისა და არქიტექტურის ავტოსკანირება"
+      ],
+      "technical_architecture": [
+        "Multi-agent skill pipeline",
+        "CLI plugin system via npx skills",
+        "Configuration driven rule engine"
+      ],
+      "technical_details": [
+        "npx skills@latest add Ovid/paad",
+        "/agentic-architecture path scanning",
+        "/pushback specification verification"
+      ],
+      "potential_impact": "მაღალი ხარისხის, ტესტებით დაფარული კოდი AI აგენტებისგან მინიმალური ტექნიკური ვალით.",
+      "action_type": "TRY",
+      "action": "დააყენე PAAD skill-ები npx-ით შენს სავარჯიშო Python პროექტში და გაატარე /agentic-review.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Short-term Opportunity"
+      ],
+      "verified_facts": [
+        "გამოვიდა PAAD 2.0.0, რომელიც ამატებს კონფიგურაციის ფაილებს და უსაფრთხოების რეპორტების იზოლაციას",
+        "მოიცავს მზა skill-ებს: /pushback, /alignment, /agentic-review, /agentic-architecture და TDD guardrail-ებს",
+        "თავსებადია 70+ აგენტურ სისტემასთან (Claude Code, Cursor, Codex CLI) npx skills-ის საშუალებით"
+      ],
+      "interpretation": "vibe coding-ის ნაცვლად, პროფესიონალური AI ინჟინერია მოითხოვს მკაცრ არქიტექტურულ Pushback-ს და TDD-ს აგენტის მუშაობის პროცესში.",
+      "uncertainty": "მრავალი დისციპლინური skill-ის ჩართვამ შესაძლოა გაზარდოს ტოკენების მოხმარება და შეანელოს განვითარების ტემპი.",
+      "counter_argument": "მცირე პროექტებისთვის ასეთი მკაცრი არქიტექტურული მიმოხილვა შესაძლოა ზედმეტი ბიუროკრატია იყოს.",
+      "strategic_assessment": "გამოიყენე PAAD-ის პრინციპები (TDD, Architecture pushback), რომ შენი პორტფოლიოს კოდი გამოიყურებოდეს როგორც Senior Engineer-ის ნამუშევარი.",
+      "time_horizon": "short-term",
+      "what_could_change": "დეველოპერები გადავლენ უბრალო კოდის გენერაციიდან აგენტების საინჟინრო მართვაზე (Engineering-driven AI).",
+      "risks": [
+        "მაღალი ტოკენების დანახარჯი ხშირი review-ების გამო",
+        "კონფიგურაციის სირთულე მცირე პროექტებში"
+      ],
+      "non_obvious_opportunity": "შეგიძლია შექმნა custom prompt-skills ნაკრები ქართული ბიზნესების სპეციფიკური ტექნიკური მოთხოვნებისთვის.",
+      "fit_assessment": "ეხმარება 16 წლის დეველოპერს, აჩვენოს უფროსი ინჟინრის დონის სადისციპლინო პრაქტიკა თავის GitHub რეპოზიტორიებში."
+    },
+    {
+      "event_id": "evt-code-rag-local-mcp-postgres",
+      "title": "Code-RAG: ლოკალური PostgreSQL + Ollama RAG სერვერი MCP აგენტებისთვის",
+      "category": "RAG & Database Architecture",
+      "primary_url": "https://github.com/blakemcbride/Code-RAG",
+      "supporting_urls": [],
+      "importance": 7,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "Code-RAG არის ლოკალური PostgreSQL 17 + pgvector სერვერი, რომელიც აგენტებს აძლევს სემანტიკურ ძებნას კოდის ბაზებში MCP-ით.",
+      "what_happened": "blakemcbride-მა გამოაქვეყნა Code-RAG — ლოკალური MCP სერვერი, რომელიც იყენებს Ollama-ს ემბედინგებს და Postgres vector search-ს.",
+      "what_changed": "კოდის ფაილების მთლიანად context window-ში ჩატვირთვის ნაცვლად, აგენტი იღებს ზუსტ ჩანკებს HNSW ინდექსიდან.",
+      "why_it_matters": "საშუალებას გაძლევს შეისწავლო რეალური, Production-ready PostgreSQL RAG არქიტექტურა უფასოდ.",
+      "key_takeaways": [
+        "PostgreSQL 17 + pgvector (HNSW) ბაზა",
+        "Ollama nomic-embed-text ლოკალური ემბედინგები",
+        "Symbol-aware chunking 15+ დაპროგრამების ენისთვის"
+      ],
+      "technical_architecture": [
+        "PostgreSQL 17 schema-per-project isolation",
+        "pgvector HNSW index cosine similarity",
+        "Ollama embedding API pipeline"
+      ],
+      "technical_details": [
+        "nomic-embed-text:v1.5 embeddings",
+        "MCP server protocol via Kiss framework",
+        "Cron sweep index updating"
+      ],
+      "potential_impact": "იაფი და უსაფრთხო კოდის RAG სისტემები ლოკალურ დეველოპმენტ სერვერებზე.",
+      "action_type": "BUILD",
+      "action": "გააშევე Docker-ით PostgreSQL + pgvector ლოკალურად და ააგე მინიმალური Python სკრიპტი HNSW ინდექსით ტექსტის საძიებლად.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Short-term Opportunity"
+      ],
+      "verified_facts": [
+        "Code-RAG იყენებს PostgreSQL 17 + pgvector (HNSW) და ლოკალურ Ollama-ს (nomic-embed-text) ემბედინგებისთვის",
+        "უზრუნველყოფს სემანტიკურ ძებნას 15+ ენისთვის (Python, Rust, Go, TS) სიმბოლოების გათვალისწინებით (symbol-aware chunking)",
+        "მუშაობს როგორც სუფთა MCP სერვერი multi-project isolation-ით (ერთი schema თითო პროექტზე)"
+      ],
+      "interpretation": "ლოკალური PostgreSQL + pgvector არის ყველაზე საიმედო და იაფი Production Stack RAG-ისთვის, რაც სცდება უბრალო Chroma/FAISS დემოებს.",
+      "uncertainty": "Ollama-ს მეშვეობით დიდი კოდის ბაზების პირველადი ინდექსაცია GPU-ს გარეშე შესაძლოა ნელი იყოს.",
+      "counter_argument": "მხოლოდ ემბედინგებზე დაფუძნებული ძებნა კოდში ხშირად ჩამოუვარდება AST-ზე დაფუძნებულ ზუსტ deterministic search-ს.",
+      "strategic_assessment": "ისწავლე PostgreSQL + pgvector-ის მართვა SQL დონეზე — ეს არის ყველაზე მოთხოვნადი უნარი Enterprise RAG სისტემებში.",
+      "time_horizon": "mid-term",
+      "what_could_change": "PostgreSQL გახდება ცენტრალური ბაზა არამხოლოდ ტრანზაქციებისთვის, არამედ აგენტების ვექტორული და ჰიბრიდული ძებნისთვის.",
+      "risks": [
+        "PostgreSQL 17-ისა და pgvector-ის გამართვის საჭიროება",
+        "ლოკალური GPU-ს არარსებობისას ნელი ინდექსაცია"
+      ],
+      "non_obvious_opportunity": "შეგიძლია შესთავაზო ადგილობრივ კომპანიებს PostgreSQL-ზე დაფუძნებული პრივატული დოკუმენტების RAG, სადაც მონაცემები არ ტოვებს სერვერს.",
+      "fit_assessment": "ზუსტად პასუხობს მომხმარებლის სასწავლო გეგმას: SQL/Databases -> RAG -> MCP ლოკალურ ინფრასტრუქტურაზე."
     }
   ],
   "topics": {
@@ -5831,7 +5961,7 @@
     "AI Research & Reliability": 1,
     "AI Evaluation & Reliability": 2,
     "AI Coding Tools და Agent Evaluation": 1,
-    "AI Research / RAG & აგენტის მეხსიერება": 2,
+    "AI Research / RAG & აგენტის მეხსიერება": 3,
     "AI Research & Evaluation": 1,
     "AI Coding Tools & Agent Architecture": 1,
     "AI Research & NLP": 1,
@@ -5847,7 +5977,7 @@
     "AI Research & Agent Optimization": 1,
     "AI Research & Agent Infrastructure": 1,
     "AI Coding Tools და Agent Architecture": 1,
-    "აგენტების ინფრასტრუქტურა და MCP": 4,
+    "აგენტების ინფრასტრუქტურა და MCP": 5,
     "აგენტების ინფრასტრუქტურა და უსაფრთხოება": 2,
     "": 1,
     "AI Research & RAG": 1,
@@ -5856,197 +5986,18 @@
     "აგენტების უსაფრთხოება და Governance": 1,
     "Agent Architecture & APIs": 1,
     "LLM API & Model Architecture": 1,
-    "AI Evaluation & Agent Reliability": 1,
-    "RAG & Database Architecture": 1,
+    "AI Evaluation & Agent Reliability": 2,
+    "RAG & Database Architecture": 2,
     "აგენტის არქიტექტურა და Cost Optimization": 1,
     "აგენტების უსაფრთხოება და Sandbox": 2,
     "AI Evaluation & საიმედოობა": 1,
     "აგენტის არქიტექტურა და ხელსაწყოები": 1,
     "Long-Term Career Strategy": 1,
-    "უსაფრთხოება და ღია კოდი": 1
+    "უსაფრთხოება და ღია კოდი": 1,
+    "Real Business Opportunity & Agent Infrastructure": 1,
+    "AI Coding Tools & Agent Workflows": 1
   },
   "reports": [
-    {
-      "date": "2026-09-28",
-      "summary": "წარმოდგენილია ახალი მოდელები და ინფრასტრუქტურული გადაწყვეტილებები, რომლებიც ამცირებენ API ხარჯებს და აუმჯობესებენ აგენტების არქიტექტურას. მცირე ბიუჯეტის დეველოპერებისთვის ეს ნიშნავს პროდუქტიულობის ზრდას და პროტოტიპირების ახალ შესაძლებლობებს.",
-      "events": [
-        {
-          "event_id": "evt-anthropic-claude-opus-55",
-          "title": "Anthropic Announces Claude Opus 5.5 with Lower Costs and Faster Cache Reads",
-          "category": "LLM API & Agent Infrastructure",
-          "primary_url": "https://www.anthropic.com/claude-opus-5-5",
-          "supporting_urls": [
-            "https://www.anthropic.com/research/yes-claude-can-do-nine-loops"
-          ],
-          "importance": 9,
-          "relevance": 10,
-          "actionability": 8,
-          "source_quality": 10,
-          "confidence": 95,
-          "tldr": "Claude Opus 5.5 შემცირებული ფასებით და სწრაფი cache reads მხარდაჭერით ამცირებს აგენტური სისტემების ხარჯებს.",
-          "what_happened": "Anthropic-მა წარადგინა Claude Opus 5.5, რომელიც მოითხოვს 40 პროცენტით ნაკლებ გამოთვლით რესურსს.",
-          "what_changed": "ძვირი აგენტური ციკლებიდან გადავდივართ უფრო იაფ და სწრაფ API მოდელებზე.",
-          "why_it_matters": "შეგიძლიათ აგენტებს მისცეთ მეტი ინსტრუქცია და კონტექსტი მინიმალური ხარჯებით.",
-          "key_takeaways": [
-            "Cache reads ფასი შემცირდა 0.20 დოლარამდე მილიონ ტოკენზე.",
-            "გენერაციის სიჩქარე გაიზარდა 30 პროცენტით.",
-            "უმჯობესდება რთული კოდის მიგრაციისა და შესწორების ხარისხი."
-          ],
-          "technical_architecture": [
-            "Input tokens: 4 dollars per million",
-            "Output tokens: 20 dollars per million",
-            "Cache reads: 0.20 dollars per million"
-          ],
-          "technical_details": [
-            "API optimization via prompt caching",
-            "Enhanced behavioral audit alignment suite"
-          ],
-          "potential_impact": "მცირე სტარტაპებსა და ინდივიდუალურ დეველოპერებს ეძლევათ ძლიერი მოდელების გამოყენების შანსი დაბალ ფასად.",
-          "action_type": "APPLY",
-          "action": "გადააწყვეთ თქვენი მიმდინარე აგენტის API გამოძახებები Claude Opus 5.5 ქეშირებულ დამუშავებაზე.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value",
-            "Short-term Opportunity"
-          ],
-          "verified_facts": [
-            "Claude Opus 5.5 costs 40 percent less to run than Opus 5.",
-            "Cache read tokens cost 0.20 dollars per million tokens, 60 percent less than Opus 5.",
-            "Output generation is over 30 percent faster than Opus 5."
-          ],
-          "interpretation": "ინფრასტრუქტურული ხარჯების შემცირება აგენტურ სისტემებში მუდმივი ლუპების შესრულებას ბევრად უფრო ხელმისაწვდომს ხდის მცირე დეველოპერებისთვის.",
-          "uncertainty": "როგორ იმუშავებს რეალურ production დატვირთვაზე ეს ფასები გრძელვადიან პერსპექტივაში, ჯერ ბოლომდე გამოცდილი არ არის.",
-          "counter_argument": "ფასების შემცირება შეიძლება კომპენსირებული იყოს უფრო რთული დავალებებით, რომლებიც ისევ გაზრდის ტოკენების საერთო მოხმარებას.",
-          "strategic_assessment": "გამოიყენეთ ახალი მოდელის cache reads ფუნქცია აგენტების მეხსიერებისა და ისტორიის ოპტიმიზაციისთვის API გამოძახებებში.",
-          "time_horizon": "mid-term",
-          "what_could_change": "აგენტების დაფუძნება ხანგრძლივ ციკლებზე გახდება სტანდარტული პრაქტიკა API ხარჯების ვარდნის გამო.",
-          "risks": [
-            "API პროვაიდერების პოლიტიკის ცვლილება",
-            "ტექნიკური დამოკიდებულება ერთ ეკოსისტემაზე"
-          ],
-          "non_obvious_opportunity": "მცირე ბიუჯეტის გუნდებს აქვთ შანსი აკონტროლონ ხარჯები ძვირი ტოკენების ქეშირებით.",
-          "fit_assessment": "იდეალურია 16 წლის დეველოპერისთვის, რომელიც ცდილობს მცირე ბიუჯეტით შექმნას გრძელვადიანი აგენტები."
-        },
-        {
-          "event_id": "evt-jenkins-ai-agent-plugin",
-          "title": "Jenkins AI Agent Plugin Adds Native Support for Coding Agents and Approval Gates",
-          "category": "AI Coding Tools & CI/CD",
-          "primary_url": "https://github.com/jenkinsci/ai-agent-plugin",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 9,
-          "source_quality": 8,
-          "confidence": 95,
-          "tldr": "Jenkins აგენტის პლაგინი ამატებს მხარდაჭერას Claude Code და Cursor აგენტებისთვის ლაივ სტრიმინგით.",
-          "what_happened": "გამოვიდა Jenkins පლაგინი, რომელიც უშვებს ავტონომიურ კოდირების აგენტებს ბილდ პაიპლაინებში.",
-          "what_changed": "ხელით შესასრულებელი ბაგების ძებნა იცვლება ავტომატური აგენტური ბილდ ნაბიჯებით.",
-          "why_it_matters": "შეგიძლიათ მართოთ და დააკვირდეთ აგენტების მუშაობას სტანდარტული ინსტრუმენტებით.",
-          "key_takeaways": [
-            "მხარდაჭერილია Claude Code, Cursor Agent, Codex CLI და სხვა.",
-            "აქვს ლაივ სტრიმინგი და ტოკენების ხარჯების აღრიცხვა.",
-            "შეიცავს ადამიანის მიერ დამტკიცების ბარიერებს."
-          ],
-          "technical_architecture": [
-            "Reusable Jenkins build step via aiAgent(...) pipeline",
-            "Stream-json output format parsing for tool calls and usage stats"
-          ],
-          "technical_details": [
-            "Plugin ID: ai-agent",
-            "Supports freestyyle jobs and scripted/declarative pipelines"
-          ],
-          "potential_impact": "ინჟინრები შეძლებენ აგენტების ინტეგრაციას არსებულ საწარმოო ინფრასტრუქტურაში.",
-          "action_type": "BUILD",
-          "action": "ინსტალაცია გაუკეთეთ AI agent პლაგინს და დააკავშირეთ ერთი პატარა კოდის ტესტირების აგენტი თავისუფალი API-ით.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Real Business Opportunity",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "The Jenkins ai-agent-plugin supports Claude Code, Codex CLI, Cursor Agent, and OpenCode.",
-            "Features include live-streaming conversation view, tool call logs, and markdown rendering.",
-            "Supports optional human review approval gates before tool execution."
-          ],
-          "interpretation": "ავტონომიური კოდირების აგენტები ოფიციალურად ინტეგრირდება κლასიკურ CI/CD პლატფორმებში.",
-          "uncertainty": "კოდის გენერაციის ავტომატიზაციამ CI/CD პაიპლაინებში შეიძლება გამოიწვიოს უსაფრთხოების რისკები.",
-          "counter_argument": "ადამიანის დამტკიცების გარეშე გაშვებული აგენტები ხშირად აზიანებენ პროდუქშენ კოდს.",
-          "strategic_assessment": "ისწავლეთ როგორ დააკავშიროთ AI აგენტები CI/CD პაიპლაინებთან და შექმენით დამტკიცების ბარიერები უსაფრთხოებისთვის.",
-          "time_horizon": "short-term",
-          "what_could_change": "პროგრამული უზრუნველყოფის ტესტირება და ბაგების ფიქსი პაიპლაინში გახდება სრულად ავტომატური.",
-          "risks": [
-            "ავტომატური აგენტების მიერ მავნე კოდის გაშვება",
-            "ხარჯების უკონტროლო ზრდა პაიპლაინებში"
-          ],
-          "non_obvious_opportunity": "შეგიძლიათ შესთავაზოთ მსგავსი ავტომატიზაცია მცირე ადგილობრივ კომპანიებს, როგორც CI/CD ოპტიმიზაცია.",
-          "fit_assessment": "ძალიან პრაქტიკულია დეველოპერული პროცესების ავტომატიზაციისა და აგენტური ჰარნესების ასაშენებლად."
-        },
-        {
-          "event_id": "evt-learning-to-stop-confidence",
-          "title": "Self-Supervised Confidence Training Improves Reasoning Efficiency",
-          "category": "AI Research / Reinforcement Learning",
-          "primary_url": "https://arxiv.org/abs/2609.31619",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 7,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "თვითაღიარებული თავდაჯერებულობის ტრენინგი ამცირებს გენერირებულ ტოკენებს 25 პროცენტით ხარისხის დაკარგვის გარეშე.",
-          "what_happened": "მკვლევარებმა აჩვენეს, რომ მოდელის შიდა თავდაჯერებულობის პროგნოზირება აუმჯობესებს მსჯელობის ეფექტიანობას.",
-          "what_changed": "ხანგრძლივი მსჯელობის ტრენინგიდან გადავდივართ თვითკონტროლირებად მეტაკოგნიტურ მიდგომებზე.",
-          "why_it_matters": "შეგიძლიათ შეამციროთ აგენტების გამოძახების ხარჯები ნარჩენი ტოკენების მოცილებით.",
-          "key_takeaways": [
-            "საკმარისია მხოლოდ 600 პრობლემაზე წვრთნა ეფექტის მისაღებად.",
-            "ტოკენების მოხმარება იკლებს 25 პროცენტით.",
-            "შენარჩუნებულია ბაზისური მოდელების სიზუსტე."
-          ],
-          "technical_architecture": [
-            "Fine-tuning reasoning models to predict intermediate confidence",
-            "No objective for reasoning length in the training loss"
-          ],
-          "technical_details": [
-            "Evaluated on Gemma, Qwen, Nemotron, and GPT-OSS",
-            "Applied to math, scientific, and coding benchmarks"
-          ],
-          "potential_impact": "დეველოპერები შეძლებენ ლოკალური მოდელების მუშაობის დაჩქარებას და API ხარჯების შემცირებას.",
-          "action_type": "LEARN",
-          "action": "წაიკითხეთ კვლევის აბსტრაქტი და გაიგეთ როგორ გამოიყენება შიდა პროგნოზები ინფერენციის ოპტიმიზაციისთვის.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "Self-supervised confidence fine-tuning uses only 600 training problems.",
-            "Generated tokens are reduced by up to 25 percent at matched accuracy.",
-            "Tested across Gemma, Qwen, Nemotron, and GPT-OSS models."
-          ],
-          "interpretation": "მოდელებს შეუძლიათ გამოთვლითი ეფექტიანობის გაზრდა შიდა თავდაჯერებულობის პროგნოზირებით ყოველგვარი სიგრძის ჯარიმების გარეშე.",
-          "uncertainty": "მეთოდის ეფექტიანობა ძალიან რთულ დომენებში ჯერ სრულად არ არის დამტკიცებული.",
-          "counter_argument": "თავდაჯერებულობის არასწორმა პროგნოზირებამ შეიძლება გამოიწვიოს მოდელის ნაადრევი გაჩერება და შეცდომები.",
-          "strategic_assessment": "გამოიყენეთ შიდა მეტაკოგნიტური სიგნალები და თავდაჯერებულობის შეფასება თქვენი აგენტების გამოსავალი ტოკენების გასაკონტროლებლად.",
-          "time_horizon": "mid-term",
-          "what_could_change": "მსჯელობის მოდელები გახდებიან ბევრად უფრო სწრაფები და იაფი გამოსაყენებლად API-ებში.",
-          "risks": [
-            "ზედმეტად თავდაჯერებული არასწორი პასუხები",
-            "წვრთნის მონაცემების ხარისხზე დამოკიდებულება"
-          ],
-          "non_obvious_opportunity": "მცირე მოდელების წვრთნა შესაძლებელია მინიმალური დეველოპერული ძალისხმევით ინფერენციის ოპტიმიზაციისთვის.",
-          "fit_assessment": "გეხმარებათ გაიგოთ როგორ იმუშაოთ ლოკალურ მოდელებთან და მართოთ მათი ტოკენების ხარჯები."
-        }
-      ],
-      "trends": [
-        "API ხარჯებისა და ტოკენების ქეშირების ოპტიმიზაცია ხდება სტანდარტი.",
-        "აგენტური არქიტექტურები გადადიან დეცენტრალიზებულ MCP და გეითვეი მოდელებზე.",
-        "ავტონომიური კოდირების აგენტები ინტეგრირდებიან ტრადიციულ CI/CD გარემოში."
-      ]
-    },
     {
       "date": "2026-09-29",
       "summary": "გამოვიდა Gemini API-ს ახალი ვერსია და კვლევები აგენტების context კომპაქტირებისა და Token კონსუმციის პროგნოზირების შესახებ. ჩვენ ვფოკუსირდებით ინჟინრულ რეალობაზე და მცირე ბიუჯეტით ასაშენებელ მექანიზმებზე.",
@@ -8765,14 +8716,369 @@
         "აგენტების იზოლაციისა და უსაფრთხოების გამკაცრება ლაბორატორიებში unintended persistence ქცევების გამოვლენის გამო.",
         "ყურადღების გადატანა მარტივი prompt engineering-იდან structured state representation-სა და partner modeling-ზე."
       ]
+    },
+    {
+      "date": "2026-10-11",
+      "summary": "დღევანდელი ანალიზი ფოკუსირდება ლოკალურ, უფასო ინფრასტრუქტურაზე აგენტების მეხსიერებისა და MCP ინტეგრაციებისთვის. MemPalace და rag-rat იძლევა საშუალებას, ნულოვანი API ხარჯით შეიქმნას კონტექსტზე დაფუძნებული აგენტური სისტემები. PHRBench კვლევა კი აჩვენებს multi-stage აგენტებში ჰალუცინაციების გავრცელებისა და თვითშესწორების მექანიზმებს.",
+      "events": [
+        {
+          "event_id": "evt-mempalace-local-ai-memory",
+          "title": "MemPalace: უფასო ლოკალური AI მეხსიერების სისტემა ნულოვანი API ხარჯით",
+          "category": "AI Research / RAG & აგენტის მეხსიერება",
+          "primary_url": "https://github.com/mempalace/mempalace",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 95,
+          "tldr": "MemPalace არის ღია კოდის AI მეხსიერების სისტემა, რომელიც 96.6% Recall-ს აღწევს ლოკალურად ChromaDB-სა და MCP-ს გამოყენებით.",
+          "what_happened": "mempalace რეპოზიტორიამ წარმოადგინა ლოკალური AI memory architecture, რომელიც ტექსტს არ ასუმარებს და ინახავს verbatim სტრუქტურაში.",
+          "what_changed": "ძვირადღირებული LLM extraction/summarization-ის ნაცვლად გამოიყენება verbatim ლოკალური ინდექსაცია სკოპირებული ძებნით.",
+          "why_it_matters": "შეგიძლია აგენტებს მისცე მუდმივი მეხსიერება (persistence) ნულოვანი ფინანსური დანახარჯით.",
+          "key_takeaways": [
+            "96.6% R@5 LongMemEval ბენჩმარკზე API Call-ების გარეშე",
+            "სტრუქტურირებული დაყოფა: Wings, Rooms, Drawers",
+            "მხარდაჭერილია MCP პროტოკოლი და Python SDK"
+          ],
+          "technical_architecture": [
+            "ChromaDB local vector store backend",
+            "Pluggable backend layer via base.py",
+            "MCP skills integration layer"
+          ],
+          "technical_details": [
+            "npx skills add MemPalace/mempalace",
+            "pip install mempalace",
+            "verbatim raw text indexing"
+          ],
+          "potential_impact": "მაღალი სიზუსტის პრივატული მეხსიერების აგენტები პერსონალურ მოწყობილობებსა და ლოკალურ სერვერებზე.",
+          "action_type": "BUILD",
+          "action": "ინტეგრირება გაუკეთე MemPalace-ს შენს Python Telegram ბოტში, чтобы მიიღო მუდმივი კონტექსტი უფასოდ.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "MemPalace აღწევს 96.6% Recall@5 მაჩვენებელს LongMemEval ბენჩმარკზე ნულოვანი API call-ით",
+            "ინახავს ტექსტს ვერბატიმულად სტრუქტურირებულ იერარქიაში (wings, rooms, drawers)",
+            "default ბექენდად იყენებს ChromaDB-ს და სრულად ინტეგრირდება MCP პროტოკოლთან"
+          ],
+          "interpretation": "LLM-ის მიერ ტექსტის სუმარიზაცია ხშირად კარგავს მნიშვნელოვან დეტალებს. verbatim storage + structured index უკეთესია აგენტის გრძელვადიანი მეხსიერებისთვის.",
+          "uncertainty": "დიდი მოცულობის ტექსტურ ბაზებზე ChromaDB ლოკალური ძებნის სიჩქარე შესაძლოა შემცირდეს.",
+          "counter_argument": "დინამიური სუმარიზაცია და LLM-based graph extraction უფრო მოქნილია, ვიდრე უბრალო verbatim ტექსტის შენახვა.",
+          "strategic_assessment": "გამოიყენე MemPalace შენს Telegram ბოტებსა და აგენტებში უფასო, ლოკალური Long-term Memory შრის დასამატებლად.",
+          "time_horizon": "mid-term",
+          "what_could_change": "აგენტები შეძლებენ თვეების მანძილზე დაგროვილი დიალოგების დამახსოვრებას API-ის ხარჯის გაზრდის გარეშე.",
+          "risks": [
+            "ლოკალური დისკის მეხსიერების ზრდა",
+            "ChromaDB-ს სკალირების შეზღუდვები"
+          ],
+          "non_obvious_opportunity": "შეგიძლია შექმნა Telegram ბოტი-ასისტენტი Georgian SMB-ებისთვის, რომელიც კლიენტების ისტორიას სრულიად უფასოდ და პრივატულად შეინახავს.",
+          "fit_assessment": "საუკეთესო ინსტრუმენტი 16 წლის დეველოპერისთვის: 0 API cost, პრივატული ლოკალური მეხსიერება და მარტივი Python SDK."
+        },
+        {
+          "event_id": "evt-rag-rat-mcp-repo-intelligence",
+          "title": "rag-rat: ლოკალური MCP სერვერი და რეპოზიტორიის მეხსიერების გრაფი აგენტებისთვის",
+          "category": "აგენტების ინფრასტრუქტურა და MCP",
+          "primary_url": "https://github.com/cq27-dev/rag-rat",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 95,
+          "tldr": "გამოვიდა rag-rat — ლოკალური MCP სერვერი, რომელიც აგენტებს აძლევს კოდის გრაფს, Git ისტორიას და შენახულ მეხსიერებას provenance-ით.",
+          "what_happened": "cq27-dev-მა გამოაქვეყნა rag-rat — ლოკალური SQLite-ზე დაფუძნებული MCP ინდექსერი coding harness-ებისთვის.",
+          "what_changed": "უბრალო grep/read ინსტრუმენტების ნაცვლად, აგენტს ახლა აქვს source-anchored decision memory და code call-graph.",
+          "why_it_matters": "შეგიძლია აგენტს მისცე სრული კონტექსტი და ისტორიული მეხსიერება ძვირადღირებული Vector Cloud API-ების გარეშე.",
+          "key_takeaways": [
+            "მუშაობს ლოკალურად SQLite-ზე და არ სჭირდება გარეგანი API",
+            "პასუხობს provenance-ით და confidence score-ებით",
+            "ინახავს Decision და Invariant ტიპის მეხსიერებას"
+          ],
+          "technical_architecture": [
+            "SQLite local database index",
+            "MCP server protocol integration",
+            "SCIP oracle static analysis graph"
+          ],
+          "technical_details": [
+            "cargo build backend",
+            "rag-rat.toml configuration",
+            "ctrl+alt+r visual lens overlay"
+          ],
+          "potential_impact": "შემცირებული ტოკენების დანახარჯი და უფრო ზუსტი რეფაქტორინგი რთულ Open Source პროექტებში.",
+          "action_type": "BUILD",
+          "action": "დააყენე rag-rat შენს ლოკალურ რეპოზიტორიაზე და გამოსცადე MCP სერვერი Claude Code-თან ან Cursor-თან ერთად.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "rag-rat ინახავს მონაცემებს ლოკალურ SQLite ბაზაში source-anchored provenance-ით",
+            "სისტემა უზრუნველყოფს symbol lookup, code graph და git/GitHub history ინდექსაციას MCP პროტოკოლით",
+            "ყველა პასუხი შეიცავს confidence label-ებს და coverage warning-ებს"
+          ],
+          "interpretation": "კოდირების აგენტებს სჭირდებათ არამხოლოდ grep, არამედ არქიტექტურული კონტექსტი და გადაწყვეტილებების მეხსიერება, რაც ამცირებს შეცდომებს რეფაქტორინგისას.",
+          "uncertainty": "დიდ რეპოზიტორიებზე SQLite ინდექსაციის latency და SCIP oracle-ის კონფიგურაციის სირთულე ჯერ კიდევ შესამოწმებელია.",
+          "counter_argument": "სტანდარტულ IDE ინდექსერებსა და Vector DB-ებს შეუძლიათ მსგავსი შედეგის მოცემა უფრო მარტივი არქიტექტურით.",
+          "strategic_assessment": "გამოიყენე rag-rat როგორც სანიმუშო არქიტექტურა საკუთარ პროექტებში source-anchored agent memory-ს ასაგებად უფასოდ.",
+          "time_horizon": "mid-term",
+          "what_could_change": "აგენტები შეძლებენ წინა სესიების გადაწყვეტილებების შენარჩუნებას რეფაქტორინგის დროს, რაც შეამცირებს სემანტიკურ რეგრესიებს.",
+          "risks": [
+            "დიდ ბაზებზე ინდექსაციის დროის ზრდა",
+            "SQLite ბაზის ზომის სწრაფი გაზრდა"
+          ],
+          "non_obvious_opportunity": "შეგიძლია შექმნა custom MCP ინსტრუმენტი, რომელიც კლიენტის legacy კოდიდან ბიზნეს-წესების გრაფს ავტომატურად ააწყობს.",
+          "fit_assessment": "იდეალურად ერგება 16 წლის დეველოპერს: ლოკალური, უფასო Open Source ინსტრუმენტია Python/SQLite ბაზაზე."
+        },
+        {
+          "event_id": "evt-phrbench-post-hallucination-reasoning",
+          "title": "PHRBench: მრავალ-ეტაპიანი აგენტების ქცევის ანალიზი ჰალუცინირებული კონტექსტის დროს",
+          "category": "AI Evaluation & Agent Reliability",
+          "primary_url": "https://arxiv.org/html/2610.10455v1",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "PHRBench კვლევამ აჩვენა, რომ LLM-ები იშვიათად ასწორებენ კონტექსტში მოხვედრილ ჰალუცინაციებს და საჭიროებენ დამატებით belief updates მექანიზმებს.",
+          "what_happened": "მკვლევარებმა წარადგინეს PHRBench 18 მოდელის შესაფასებლად post-hallucination reasoning სცენარებში.",
+          "what_changed": "დადასტურდა, რომ მოდელები ძირითადად ეგუებიან შეცდომებს (compliance), ვიდრე შეასწორებენ მათ (heuristic correction).",
+          "why_it_matters": "ბიზნეს აგენტების აგებისას არ უნდა ეყრდნო მხოლოდ LLM-ის შიდა მსჯელობას შეცდომების აღმოსაჩენად.",
+          "key_takeaways": [
+            "ჰალუცინაცია კონტექსტში ვრცელდება შემდგომ ნაბიჯებზე",
+            "წარმატებული აღდგენა მოითხოვს დინამიურ belief update-ებს",
+            "0.847 AUROC პრედიქტორი პროგნოზირებს აღდგენის შანსს"
+          ],
+          "technical_architecture": [
+            "Post-Hallucination Reasoning Framework",
+            "Trajectory evaluation via Compliance vs Avoidance",
+            "Lightweight recovery predictor model"
+          ],
+          "technical_details": [
+            "4820 controlled evaluation instances",
+            "0.847 AUROC score for predictor",
+            "18 LLMs evaluated across 4 domains"
+          ],
+          "potential_impact": "უფრო საიმედო არქიტექტურული შაბლონები ავტონომიური multi-step აგენტების პროდუქტივში გასაშვებად.",
+          "action_type": "LEARN",
+          "action": "დაამატე explicit JSON validation step შენს აგენტის loop-ში, რომ თავიდან აიცილო შეცდომების გავრცელება კონტექსტში.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "PHRBench აფასებს 18 LLM-ის ქცევას 4,820 კონტროლირებად ტესტზე, როცა კონტექსტში არასწორი (hallucinated) ინფორმაციაა",
+            "წარმატებული თვითშესწორება (successful recovery) იშვიათია და მოითხოვს ხშირ belief update-ებს reasoning trajectory-ის გასწვრივ",
+            "მსუბუქმა პრედიქტორმა (lightweight predictor) მიაღწია 0.847 AUROC-ს იმის საპროგნოზოდ, შეძლებს თუ არა მოდელი შეცდომის გამოსწორებას"
+          ],
+          "interpretation": "თუ აგენტის წინა ნაბიჯმა ჰალუცინაცია წარმოქმნა, შემდგომი LLM ნაბიჯები უბრალოდ იმეორებენ შეცდომას (compliance), თუ არ არსებობს სპეციალური პრომპტინგი ან verifier.",
+          "uncertainty": "კვლევა ძირითადად ფოკუსირებულია ტექსტურ მსჯელობაზე და ნაკლებად მოიცავს real-world tool-execution feedback loops-ს.",
+          "counter_argument": "გარე ინსტრუმენტების (კოდის გაშვება, SQL ვალიდაცია) შედეგები ავტომატურად ამსხვრევს ჰალუცინაციებს, რაც ამცირებს შიდა reasoning-ზე დამოკიდებულებას.",
+          "strategic_assessment": "აგენტურ არქიტექტურაში ჩასვი დამოუკიდებელი Verification Step ყოველი ნაბიჯის შემდეგ, ნაცვლად იმისა, რომ LLM-ის თვითშესწორებას ენდო.",
+          "time_horizon": "long-term",
+          "what_could_change": "მრავალ-ეტაპიანი აგენტების დიზაინში სტანდარტი გახდება explicit error-detection/probing მექანიზმები.",
+          "risks": [
+            "დამატებითი LLM call-ების ხარჯი verification-ისთვის",
+            "False positive განგაშები ვალიდაციისას"
+          ],
+          "non_obvious_opportunity": "შეგიძლია შექმნა მსუბუქი Python guardrail-ბიბლიოთეკა, რომელიც აგენტიდან გამავალ JSON payload-ებს ამოწმებს სანამ შემდგომ step-ს მიაწვდის.",
+          "fit_assessment": "კრიტიკული ცოდნა აგენტების საიმედოობისთვის: აჩვენებს, თუ რატომ ფუჭდება multi-step agent loops და როგორ ავიცილოთ ეს."
+        },
+        {
+          "event_id": "evt-agent-to-business-open-standard",
+          "title": "Agent-to-Business Standard: ინდუსტრიული ღია სტანდარტი აგენტების ვებ-ავტორიზაციისთვის",
+          "category": "Real Business Opportunity & Agent Infrastructure",
+          "primary_url": "https://techcrunch.com/2026/10/06/the-next-hurdle-for-ai-agents-getting-websites-to-let-them-in",
+          "supporting_urls": [
+            "https://techcrunch.com/2026/10/07/metas-muse-launches-on-ipad-just-a-month-after-its-mobile-debut"
+          ],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 7,
+          "source_quality": 7,
+          "confidence": 85,
+          "tldr": "Meta, Stripe და Walmart ქმნიან ღია სტანდარტს აგენტებსა და ბიზნესებს შორის კომუნიკაციისთვის anti-bot ბლოკირებების გვერდის ავლით.",
+          "what_happened": "მსხვილმა კომპანიებმა დაიწყეს მუშაობა ღია პროტოკოლზე, რომელიც აგენტებს საშუალებას მისცემს ლეგიტიმურად გაიარონ იდენტიფიკაცია ვებ-საიტებზე.",
+          "what_changed": "UI-based scraping-ის დაბლოკვის ფონზე ინდუსტრია გადადის structured Agent-to-Business API სტანდარტზე.",
+          "why_it_matters": "რეალური ბიზნეს აგენტების შესაქმნელად საჭიროა API-first და MCP არქიტექტურა, და არა მხოლოდ ბრაუზერის ავტომატიზაცია.",
+          "key_takeaways": [
+            "Stripe, Meta და Walmart ქმნიან ახალ პროტოკოლს",
+            "Anti-bot სისტემები ბლოკავენ ბრაუზერულ აგენტებს",
+            "ფოკუსი გადადის Agent-to-Agent ტრანზაქციებზე"
+          ],
+          "technical_architecture": [
+            "Agent-to-Business authentication protocol",
+            "Structured connector API integration",
+            "OAuth/Token based agent identity"
+          ],
+          "technical_details": [
+            "Meta Muse connector architecture",
+            "Stripe agentic payment protocol",
+            "Open standard RFC proposal"
+          ],
+          "potential_impact": "ახალი ეპოქა e-commerce-ში, სადაც აგენტები უსაფრთხოდ ყიდულობენ მომსახურებას მომხმარებლის სახელით.",
+          "action_type": "TRACK",
+          "action": "ადევნე თვალი Stripe-ისა და Meta-ს Agent-to-Business API ინიციატივებს და გამოიყენე Webhook/API მიდგომა პროექტებში.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Business Opportunity",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "Meta, Walmart, Stripe, Sierra და Decagon იწყებენ მუშაობას Agent-to-Business ღია სტანდარტზე",
+            "Amazon-მა და სხვა Retailer-ებმა დაიწყეს მომხმარებლის AI აგენტების (მაგ. Meta Muse) დაბლოკვა anti-bot სისტემებით",
+            "ახალი პროტოკოლი მიზნად ისახავს ლეგიტიმური AI აგენტების განასხვავებას მავნე ბოტებისგან commerce ტრანზაქციებისას"
+          ],
+          "interpretation": "Browser automation (Playwright/Puppeteer) ვებ-საიტებზე ბლოკადებს აწყდება. მომავალი ბიზნეს აგენტები იმუშავებენ პირდაპირ Agent-to-Business პროტოკოლებითა და API Connectors-ით.",
+          "uncertainty": "სტანდარტის საბოლოო მიღებას და საყოველთაო დანერგვას შესაძლოა წლები დასჭირდეს.",
+          "counter_argument": "ვებ-საიტები ამჯობინებენ საკუთარ დახურულ API-ებს, ვიდრე საერთო ღია სტანდარტის მხარდაჭერას.",
+          "strategic_assessment": "ნუ ააგებ ბიზნესს მხოლოდ fragile browser scraping-ზე; ისწავლე API connectors და MCP server integration-ის გამოყენება.",
+          "time_horizon": "mid-term",
+          "what_could_change": "ვებ-საიტები დაამატებენ agent-friendly endpoints-ებს, რაც ჩაანაცვლებს ტრადიციულ UI scraping-ს.",
+          "risks": [
+            "ტრადიციული scraping ინსტრუმენტების გათიშვა",
+            "ახალი ავტორიზაციის პროტოკოლების სირთულე"
+          ],
+          "non_obvious_opportunity": "შეგიძლია Georgian e-commerce საიტებს შესთავაზო მარტივი MCP/Agent API შრე, რომ AI ასისტენტებმა შეძლონ მათი პროდუქტების წაკითხვა.",
+          "fit_assessment": "მნიშვნელოვანია ბიზნეს აგენტების სტრატეგიისთვის: აჩვენებს, სად მიდის რეალური agentic e-commerce."
+        },
+        {
+          "event_id": "evt-paad-2-engineering-driven-ai",
+          "title": "PAAD 2.0: საინჟინრო დისციპლინისა და კოდის ხარისხის Skill-ების ფრეიმვორკი აგენტებისთვის",
+          "category": "AI Coding Tools & Agent Workflows",
+          "primary_url": "https://github.com/ovid/paad",
+          "supporting_urls": [],
+          "importance": 7,
+          "relevance": 9,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "PAAD 2.0-მა გამოაშვება საინჟინრო დისციპლინის skill-ების ნაკრები, რომელიც აიძულებს აგენტებს დაიცვან TDD, არქიტექტურა და OWASP უსაფრთხოება.",
+          "what_happened": "Ovid-მა განახლა PAAD ფრეიმვორკი, რომელიც აგენტურ ინსტრუმენტებს ამატებს TDD-ს, pushback-ს და არქიტექტურულ სკანირებას.",
+          "what_changed": "აგენტი აღარ წერს უბრალო კოდს; ის გადის spec alignment-ს, architecture review-ს და ტესტებს სანამ merge მოხდება.",
+          "why_it_matters": "საშუალებას გაძლევს შექმნა წარმოებისთვის მზადყოფნაში მყოფი (production-grade) კოდი აგენტების ასისტენტირებით.",
+          "key_takeaways": [
+            "70+ აგენტის მხარდაჭერა npx skills-ის მეშვეობით",
+            "TDD guardrail-ები და /vibe სესიების მართვა",
+            "OWASP უსაფრთხოებისა და არქიტექტურის ავტოსკანირება"
+          ],
+          "technical_architecture": [
+            "Multi-agent skill pipeline",
+            "CLI plugin system via npx skills",
+            "Configuration driven rule engine"
+          ],
+          "technical_details": [
+            "npx skills@latest add Ovid/paad",
+            "/agentic-architecture path scanning",
+            "/pushback specification verification"
+          ],
+          "potential_impact": "მაღალი ხარისხის, ტესტებით დაფარული კოდი AI აგენტებისგან მინიმალური ტექნიკური ვალით.",
+          "action_type": "TRY",
+          "action": "დააყენე PAAD skill-ები npx-ით შენს სავარჯიშო Python პროექტში და გაატარე /agentic-review.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Short-term Opportunity"
+          ],
+          "verified_facts": [
+            "გამოვიდა PAAD 2.0.0, რომელიც ამატებს კონფიგურაციის ფაილებს და უსაფრთხოების რეპორტების იზოლაციას",
+            "მოიცავს მზა skill-ებს: /pushback, /alignment, /agentic-review, /agentic-architecture და TDD guardrail-ებს",
+            "თავსებადია 70+ აგენტურ სისტემასთან (Claude Code, Cursor, Codex CLI) npx skills-ის საშუალებით"
+          ],
+          "interpretation": "vibe coding-ის ნაცვლად, პროფესიონალური AI ინჟინერია მოითხოვს მკაცრ არქიტექტურულ Pushback-ს და TDD-ს აგენტის მუშაობის პროცესში.",
+          "uncertainty": "მრავალი დისციპლინური skill-ის ჩართვამ შესაძლოა გაზარდოს ტოკენების მოხმარება და შეანელოს განვითარების ტემპი.",
+          "counter_argument": "მცირე პროექტებისთვის ასეთი მკაცრი არქიტექტურული მიმოხილვა შესაძლოა ზედმეტი ბიუროკრატია იყოს.",
+          "strategic_assessment": "გამოიყენე PAAD-ის პრინციპები (TDD, Architecture pushback), რომ შენი პორტფოლიოს კოდი გამოიყურებოდეს როგორც Senior Engineer-ის ნამუშევარი.",
+          "time_horizon": "short-term",
+          "what_could_change": "დეველოპერები გადავლენ უბრალო კოდის გენერაციიდან აგენტების საინჟინრო მართვაზე (Engineering-driven AI).",
+          "risks": [
+            "მაღალი ტოკენების დანახარჯი ხშირი review-ების გამო",
+            "კონფიგურაციის სირთულე მცირე პროექტებში"
+          ],
+          "non_obvious_opportunity": "შეგიძლია შექმნა custom prompt-skills ნაკრები ქართული ბიზნესების სპეციფიკური ტექნიკური მოთხოვნებისთვის.",
+          "fit_assessment": "ეხმარება 16 წლის დეველოპერს, აჩვენოს უფროსი ინჟინრის დონის სადისციპლინო პრაქტიკა თავის GitHub რეპოზიტორიებში."
+        },
+        {
+          "event_id": "evt-code-rag-local-mcp-postgres",
+          "title": "Code-RAG: ლოკალური PostgreSQL + Ollama RAG სერვერი MCP აგენტებისთვის",
+          "category": "RAG & Database Architecture",
+          "primary_url": "https://github.com/blakemcbride/Code-RAG",
+          "supporting_urls": [],
+          "importance": 7,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "Code-RAG არის ლოკალური PostgreSQL 17 + pgvector სერვერი, რომელიც აგენტებს აძლევს სემანტიკურ ძებნას კოდის ბაზებში MCP-ით.",
+          "what_happened": "blakemcbride-მა გამოაქვეყნა Code-RAG — ლოკალური MCP სერვერი, რომელიც იყენებს Ollama-ს ემბედინგებს და Postgres vector search-ს.",
+          "what_changed": "კოდის ფაილების მთლიანად context window-ში ჩატვირთვის ნაცვლად, აგენტი იღებს ზუსტ ჩანკებს HNSW ინდექსიდან.",
+          "why_it_matters": "საშუალებას გაძლევს შეისწავლო რეალური, Production-ready PostgreSQL RAG არქიტექტურა უფასოდ.",
+          "key_takeaways": [
+            "PostgreSQL 17 + pgvector (HNSW) ბაზა",
+            "Ollama nomic-embed-text ლოკალური ემბედინგები",
+            "Symbol-aware chunking 15+ დაპროგრამების ენისთვის"
+          ],
+          "technical_architecture": [
+            "PostgreSQL 17 schema-per-project isolation",
+            "pgvector HNSW index cosine similarity",
+            "Ollama embedding API pipeline"
+          ],
+          "technical_details": [
+            "nomic-embed-text:v1.5 embeddings",
+            "MCP server protocol via Kiss framework",
+            "Cron sweep index updating"
+          ],
+          "potential_impact": "იაფი და უსაფრთხო კოდის RAG სისტემები ლოკალურ დეველოპმენტ სერვერებზე.",
+          "action_type": "BUILD",
+          "action": "გააშევე Docker-ით PostgreSQL + pgvector ლოკალურად და ააგე მინიმალური Python სკრიპტი HNSW ინდექსით ტექსტის საძიებლად.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Short-term Opportunity"
+          ],
+          "verified_facts": [
+            "Code-RAG იყენებს PostgreSQL 17 + pgvector (HNSW) და ლოკალურ Ollama-ს (nomic-embed-text) ემბედინგებისთვის",
+            "უზრუნველყოფს სემანტიკურ ძებნას 15+ ენისთვის (Python, Rust, Go, TS) სიმბოლოების გათვალისწინებით (symbol-aware chunking)",
+            "მუშაობს როგორც სუფთა MCP სერვერი multi-project isolation-ით (ერთი schema თითო პროექტზე)"
+          ],
+          "interpretation": "ლოკალური PostgreSQL + pgvector არის ყველაზე საიმედო და იაფი Production Stack RAG-ისთვის, რაც სცდება უბრალო Chroma/FAISS დემოებს.",
+          "uncertainty": "Ollama-ს მეშვეობით დიდი კოდის ბაზების პირველადი ინდექსაცია GPU-ს გარეშე შესაძლოა ნელი იყოს.",
+          "counter_argument": "მხოლოდ ემბედინგებზე დაფუძნებული ძებნა კოდში ხშირად ჩამოუვარდება AST-ზე დაფუძნებულ ზუსტ deterministic search-ს.",
+          "strategic_assessment": "ისწავლე PostgreSQL + pgvector-ის მართვა SQL დონეზე — ეს არის ყველაზე მოთხოვნადი უნარი Enterprise RAG სისტემებში.",
+          "time_horizon": "mid-term",
+          "what_could_change": "PostgreSQL გახდება ცენტრალური ბაზა არამხოლოდ ტრანზაქციებისთვის, არამედ აგენტების ვექტორული და ჰიბრიდული ძებნისთვის.",
+          "risks": [
+            "PostgreSQL 17-ისა და pgvector-ის გამართვის საჭიროება",
+            "ლოკალური GPU-ს არარსებობისას ნელი ინდექსაცია"
+          ],
+          "non_obvious_opportunity": "შეგიძლია შესთავაზო ადგილობრივ კომპანიებს PostgreSQL-ზე დაფუძნებული პრივატული დოკუმენტების RAG, სადაც მონაცემები არ ტოვებს სერვერს.",
+          "fit_assessment": "ზუსტად პასუხობს მომხმარებლის სასწავლო გეგმას: SQL/Databases -> RAG -> MCP ლოკალურ ინფრასტრუქტურაზე."
+        }
+      ],
+      "trends": [
+        "ლოკალური, zero-cost აგენტური მეხსიერება (SQLite, ChromaDB, MemPalace, rag-rat) სულ უფრო ანაცვლებს ძვირადღირებულ Cloud Vector API-ებს.",
+        "აგენტების საინჟინრო დისციპლინისა (TDD, Spec Pushback) და უსაფრთხოების ავტომატური ინსტრუმენტების (PAAD) ინტეგრაცია დეველოპმენტ ციკლში.",
+        "გადავლა UI Scraping-იდან პირდაპირ Agent-to-Business და Agent-to-Agent API სტანდარტებზე e-commerce-ში."
+      ]
     }
   ],
   "learning_queue": [
-    "როგორ მუშაობს Anthropic prompt caching და როგორ დაიყვანო token ხარჯი მინიმუმამდე განმეორებად system prompt-ებზე.",
-    "Python subprocess და resource module: როგორ შევზღუდოთ აგენტის მიერ გაშვებული სკრიპტის უფლებები OS დონეზე.",
-    "Theory-of-Mind და Partner State Modeling: როგორ შევინახოთ აგენტის მოლოდინები მარტივ JSON სქემაში."
+    "PostgreSQL 17-ში pgvector ექსტენშენი, HNSW ინდექსები და SQL-ით Cosine Distance ძებნა.",
+    "Pydantic / Structured Outputs და Python-ის subprocess-ით აგენტის მიერ შესრულებული კოდის უსაფრთხო ვალიდაცია.",
+    "MCP (Model Context Protocol) custom server-ის დაწერა Python-ში (FastMCP ბიბლიოთეკის გამოყენებით)."
   ],
-  "last_run": "2026-10-10T15:45:42.458197+00:00",
+  "last_run": "2026-10-11T16:12:13.218488+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -8857,12 +9163,13 @@
     "arxiv:2610.12463",
     "arxiv:2610.12445",
     "arxiv:2610.11959",
-    "arxiv:2610.12453"
+    "arxiv:2610.12453",
+    "arxiv:2610.10455"
   ],
   "last_report_files": {
-    "markdown": "data/reports/2026-10-10/report.md",
-    "json": "data/reports/2026-10-10/report.json",
-    "newsletter": "data/reports/2026-10-10/newsletter.md",
-    "social": "data/reports/2026-10-10/social_posts.txt"
+    "markdown": "data/reports/2026-10-11/report.md",
+    "json": "data/reports/2026-10-11/report.json",
+    "newsletter": "data/reports/2026-10-11/newsletter.md",
+    "social": "data/reports/2026-10-11/social_posts.txt"
   }
 }
