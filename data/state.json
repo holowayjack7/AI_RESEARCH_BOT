@@ -228,7 +228,11 @@
     "https://www.engadget.com/2279815/openai-just-posted-hundreds-more-results-on-major-math-problems",
     "https://github.com/affaan-m/ECC/blob/main/docs/ru/README.md",
     "https://techcrunch.com/2026/10/10/all-the-ai-agents-that-can-live-in-your-text-messages",
-    "https://techcrunch.com/2026/10/09/the-maker-of-non-text-ai-model-jev-valued-at-7-5b-just-weeks-after-launch"
+    "https://techcrunch.com/2026/10/09/the-maker-of-non-text-ai-model-jev-valued-at-7-5b-just-weeks-after-launch",
+    "https://ai.google.dev/gemini-api/docs/interactions-overview",
+    "https://www.theverge.com/ai-artificial-intelligence/1009862/google-releases-gemini-4-argon",
+    "https://techcrunch.com/2026/10/08/goodfire-says-its-new-inside-out-monitors-catch-rogue-ai-agents-at-a-fraction-of-the-cost",
+    "https://www.anthropic.com/research/self-replicating-ai"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -407,154 +411,12 @@
     "evt-openai-math-lean-verification",
     "evt-ecc-v2-agent-efficiency-framework",
     "evt-comma-autonomous-messaging-agent",
-    "evt-typesafe-jev-decision-transformer"
+    "evt-typesafe-jev-decision-transformer",
+    "evt-interactions-api-gemini-argon",
+    "evt-goodfire-internal-probes-monitoring",
+    "evt-anthropic-iot-self-replication-warning"
   ],
   "events": [
-    {
-      "event_id": "evt-harness-design-coding-agents",
-      "title": "Empirical Study Dissects Component Design for Autonomous Coding Harnesses",
-      "category": "AI Research / Agent Architecture",
-      "primary_url": "https://arxiv.org/abs/2609.20804",
-      "supporting_urls": [],
-      "importance": 9,
-      "relevance": 10,
-      "actionability": 9,
-      "source_quality": 8,
-      "confidence": 92,
-      "tldr": "A 176-setting ablation study reveals that rule-based elision combined with bash-only interfaces optimizes coding agent performance while lowering costs.",
-      "what_happened": "Researchers evaluated 176 harness configurations isolating context management, planning, and action space across four LLMs on SWE-Bench Verified and Terminal-Bench 2.1.",
-      "what_changed": "Before, coding harnesses were evaluated as monolithic binaries. Now, component-level data proves rule-based elision and bash-only toolsets minimize execution expense.",
-      "why_it_matters": "Provides clear design rules for building lightweight, cost-effective agent execution loops without over-engineering complex custom tool suites.",
-      "key_takeaways": [
-        "Context management prevents overflow without altering core agent trajectory decisions",
-        "Making elided context recoverable adds complexity without improving task accuracy",
-        "Planning acts as cost saver for strong models rather than accuracy scaffold"
-      ],
-      "technical_architecture": [
-        "Fixed execution loop with modular planning, action space, and context components",
-        "Tested 5 context strategies and 4 context window budget limits",
-        "Evaluated on SWE-Bench Verified and Terminal-Bench 2.1 benchmarks"
-      ],
-      "technical_details": [
-        "Rule-based code elision staged before LLM summarization",
-        "Bash-only tool interface for shell-proficient LLMs",
-        "Recoverable elision structures yielded zero accuracy gains"
-      ],
-      "potential_impact": "Reduces API costs for agentic software engineering runs while maintaining task resolution success.",
-      "action_type": "APPLY",
-      "action": "Refactor your agent context manager to run deterministic rule-based code elision before passing context to LLM summarizers.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "Evaluated 176 matched harness settings across 4 models on SWE-Bench Verified and Terminal-Bench 2.1",
-        "Staging rule-based elision before LLM summarization provides highest efficiency",
-        "Bash-capable models perform effectively with bash-only interfaces at substantially lower cost"
-      ],
-      "interpretation": "Harness architecture dictates agent cost and trajectory length more than raw context window capacity.",
-      "uncertainty": "Optimal harness settings may vary when models execute non-code software tasks.",
-      "counter_argument": "Predefined structured tools remain necessary for models lacking robust command-line bash proficiency."
-    },
-    {
-      "event_id": "evt-agentguard-execution-guardrails",
-      "title": "AgentGuard: Instruction-Level Guardrails Learned from Anomalous Agent Trajectories",
-      "category": "Agent Security & Governance",
-      "primary_url": "https://arxiv.org/html/2609.16287v1",
-      "supporting_urls": [],
-      "importance": 9,
-      "relevance": 9,
-      "actionability": 9,
-      "source_quality": 8,
-      "confidence": 90,
-      "tldr": "AgentGuard extracts failure patterns from execution logs to dynamically enforce instruction-level constraints, boosting task success from 21.7% to 35.0%.",
-      "what_happened": "York University researchers developed AgentGuard, a framework that extracts recurring agent failure patterns and compiles them into dynamically activated instruction constraints.",
-      "what_changed": "Before, agents relied on static output validation or unconstrained execution. Now, execution harnesses dynamically inject activation rules based on instruction context.",
-      "why_it_matters": "Enables safe, autonomous repository editing by preventing unwanted file modifications, test re-writes, or unverified command executions.",
-      "key_takeaways": [
-        "Learns conditional rules from historical abnormal execution trajectories",
-        "Dynamically activates relevant constraints without over-restricting normal execution",
-        "Simultaneously reduces execution error rate and raises task completion rate"
-      ],
-      "technical_architecture": [
-        "Instruction-level execution constraint engine for shell and file operations",
-        "Automated pattern extraction from 642 documented execution traces",
-        "Evaluated using Claude Code with Claude Haiku 4.5 backend"
-      ],
-      "technical_details": [
-        "Abnormal Execution Rate cut from 69.0% to 26.7%",
-        "Task success increased from 21.7% to 35.0%",
-        "Tested across 100 held-out software tasks"
-      ],
-      "potential_impact": "Prevents destructive actions during autonomous software maintenance, lowering risk in unattended CI/CD workflows.",
-      "action_type": "BUILD",
-      "action": "Implement execution interceptors in your local agent loop to log out-of-scope file modifications and synthesize dynamic constraint rules.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Technical Skill",
-        "Real Business Opportunity"
-      ],
-      "verified_facts": [
-        "Trained on 461 failure traces covering 282 software repository tasks",
-        "Reduced Abnormal Execution Rate from 69.0% to 26.7% using Claude Haiku 4.5",
-        "Increased Successful Task Completion Rate from 21.7% to 35.0%"
-      ],
-      "interpretation": "Learning active guardrail skills from historical execution failures prevents agents from drifting out of scope.",
-      "uncertainty": "Constraint activation may occasionally block valid edge-case execution paths.",
-      "counter_argument": "Static regex or schema validators might be cheaper to run than dynamic instruction-level constraints."
-    },
-    {
-      "event_id": "evt-google-zero-trust-agent-intent-gating",
-      "title": "Google Outlines Runtime Governance and Intent Gating for Zero-Trust Agents",
-      "category": "Agent Security & Governance",
-      "primary_url": "https://developers.googleblog.com/build-zero-trust-ai-agents-that-judge-intent-not-just-syntax",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 8,
-      "source_quality": 10,
-      "confidence": 95,
-      "tldr": "Google presents a zero-trust agent runtime architecture using platform-level intent gating and KMS cryptographic request signing.",
-      "what_happened": "Google released Part 2 of its Zero-Trust Agent series, demonstrating intent gating, semantic policy enforcement, and Cloud KMS signed actions in Gemini Enterprise Agent Platform.",
-      "what_changed": "Before, safety relied on local regex filters and SQL parsers. Now, platform governance inspects semantic intent outside agent code to block socially engineered tool calls.",
-      "why_it_matters": "Provides a production architectural pattern for preventing financial fraud or unauthorized data mutations from autonomous agent tool executions.",
-      "key_takeaways": [
-        "Platform governance enforces constraints independently of agent LLM code",
-        "Intent gating distinguishes valid business operations from syntax-valid attacks",
-        "Asymmetric KMS keys cryptographically bind agent identity to database mutations"
-      ],
-      "technical_architecture": [
-        "Gemini Enterprise Agent Platform with Model Armor runtime inspection",
-        "Agent Sandbox for isolated execution of model-generated code",
-        "Cloud KMS asymmetric signing for verified transactional write operations"
-      ],
-      "technical_details": [
-        "Evaluated on Order #99281 split physical/digital refund vector",
-        "Closed-loop remediation triggers out-of-band transaction halts",
-        "MCP and Python function tool execution bindings"
-      ],
-      "potential_impact": "Establishes enterprise security standard for deploying agentic financial and backend workflows safely.",
-      "action_type": "BUILD",
-      "action": "Clone the open-source zero-trust-agents-2 repository and implement KMS request signing for sensitive local tool calls.",
-      "evidence": [],
-      "factuality_level": "verified",
-      "classification": [
-        "Real Technical Skill",
-        "Real Business Opportunity"
-      ],
-      "verified_facts": [
-        "Shifts security checks from agent code to platform-enforced managed runtime governance",
-        "Uses Model Armor, Semantic Governance Policies, and Agent Anomaly Detection for closed-loop remediation",
-        "Demonstrates intent gating on Customer Support agent executing via Agent Sandbox and KMS-signed writes",
-        "Open-source companion code released in zero-trust-agents-2 repository"
-      ],
-      "interpretation": "Syntax-level checking fails against multi-turn semantic prompt injection; runtime platforms must inspect behavioral intent.",
-      "uncertainty": "Semantic intent classifiers may add non-trivial latency to real-time tool calls.",
-      "counter_argument": "Overly strict intent policy rules can block valid complex user requests in edge domain workflows."
-    },
     {
       "event_id": "evt-overclaimbench-agent-eval",
       "title": "OverclaimBench Quantifies Context Misrepresentation in Frontier Coding Agents",
@@ -5941,6 +5803,177 @@
       ],
       "non_obvious_opportunity": "საკუთარ აგენტებში Structured Outputs-ის (Pydantic) გამოყენებით ტექსტური გენერაციის მინიმუმამდე დაყვანა ხარჯების დასაზოგად.",
       "fit_assessment": "კარგი თეორიული გაკვეთილია: აგენტს სჭირდება გადაწყვეტილება და მოქმედება, და არა გრძელი ესეები."
+    },
+    {
+      "event_id": "evt-interactions-api-gemini-argon",
+      "title": "Google-მა გამოუშვა Interactions API და ძლიერი Gemini 4 Argon მოდელი",
+      "category": "LLM APIs და აგენტის არქიტექტურა",
+      "primary_url": "https://ai.google.dev/gemini-api/docs/interactions-overview",
+      "supporting_urls": [
+        "https://www.theverge.com/ai-artificial-intelligence/1009862/google-releases-gemini-4-argon"
+      ],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 10,
+      "confidence": 98,
+      "tldr": "Google-ის ახალი Interactions API აერთიანებს აგენტურ ლუპებს და სერვერულ სესიებს, ხოლო Gemini 4 Argon ამცირებს ტოკენების ხარჯებს.",
+      "what_happened": "Google-მა გამოუშვა Interactions API და ძლიერი Gemini 4 Argon მოდელი კონკურენტულ ფასად.",
+      "what_changed": "ცალკეული ტექსტური გენერაციის API-დან გადავედით უნივერსალურ სერვერული სესიის მქონე აგენტურ ენდპოინტებზე.",
+      "why_it_matters": "გაძლევს საშუალებას ააწყო მდგრადი აგენტები ნაკლები კოდით და უკეთესი კონტექსტის მართვით.",
+      "key_takeaways": [
+        "Interactions API არის რეკომენდებული სტანდარტი ახალი აგენტური პროექტებისთვის.",
+        "Server-side state მართვა ამცირებს טოკენების მოხმარებას მრავალ-ეტაპიან დიალოგებში.",
+        "Gemini 4 Argon ფასი ორჯერ დაბალია კონკურენტების საწყის ფასებზე."
+      ],
+      "technical_architecture": [
+        "Interactions API იყენებს Interaction რესურსს, როგორც სესიის ქრონოლოგიურ რიგს.",
+        "previous_interaction_id უზრუნველყოფს სერვერ მხარეს კონტექსტის შენარჩუნებას."
+      ],
+      "technical_details": [
+        "Endpoint იყენებს interactions.get და interactions.create მეთოდებს.",
+        "background=true პარამეტრი რთავს ფონურ εκτελέση გრძელვადიანი დავალებებისთვის."
+      ],
+      "potential_impact": "მნიშვნელოვნად ამცირებს აგენტების დამუშავების ხარჯებს და ინფრასტრუქტურულ სირთულეს დეველოპერებისთვის.",
+      "action_type": "TRY",
+      "action": "დაწერე Python სკრიპტი, რომელიც ტესტავს Interactions API-ს სერვერული სესიის მართვას მარტივი tool calling ლუპისთვის.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value",
+        "Real Business Opportunity"
+      ],
+      "verified_facts": [
+        "Interactions API არის ზოგადად ხელმისაწვდომი როგორც უნივერსალური ინტერფეისი მოდელებისა და აგენტებისთვის.",
+        "Gemini 4 Argon ღირს $2 მილიონ input და $10 მილიონ output ტოკენებზე საწყის პერიოდში.",
+        "Interactions API მხარდაჭერას უჭერს სერვერ მხარეს კონტექსტის მართვას previous_interaction_id-ით."
+      ],
+      "interpretation": "Google აერთიანებს მოდელის გამოძახებასა და სესიის მართვას ერთ სერვერულ პროტოკოლში, რაც ამარტივებს აგენტური ლუპების აწყობას.",
+      "uncertainty": "უცნობია როდის გახდება Gemini 4 Argon ხელმისაწვდომი უფასო ან სტანდარტული დეველოპერული ტარიფებისთვის.",
+      "counter_argument": "სერვერ მხარეს სესიის შენახვა ზღუდავს დეველოპერის კონტროლს მონაცემთა კონფიდენციალურობაზე.",
+      "strategic_assessment": "გადაერთე Interactions API-ზე, რადგან სერვერული სესიის მართვა და კონტექსტის ქეშირება მნიშვნელოვნად ამცირებს API ხარჯებს.",
+      "time_horizon": "mid-term",
+      "what_could_change": "API პროვაიდერები სრულად გადაvlen სერვერული სტეიტის მართვაზე, რაც კლიენტის მხარეს კომპლექსურ კოდს შეამცირებს.",
+      "risks": [
+        "მიბმა ერთ ეკოსისტემაზე",
+        "სერვერული დეიატების შენახვის ფარული ხარჯები",
+        "მიგრაციის სირთულე ძველი ინტერფეისიდან"
+      ],
+      "non_obvious_opportunity": "შეგიძლია შექმნა ღია კოდის ბიბლიოთეკა, რომელიც ამარტივებს მიგრაციას ძველი generateContent ინტერფეისიდან ახალ Interactions API-ზე.",
+      "fit_assessment": "იდეალურად ერგება შენს მიზანს, ააგო რეალური აგენტები მინიმალური ხარჯებით, რადგან ახალი API ამცირებს ტოკენების ხარჯს ქეშირებით."
+    },
+    {
+      "event_id": "evt-goodfire-internal-probes-monitoring",
+      "title": "Goodfire-მა წარადგინა შიდა აქტივაციის პრობები აგენტების საბოტაჟის იაფად გამოსავლენად",
+      "category": "AI Evaluation და აგენტების უსაფრთხოება",
+      "primary_url": "https://techcrunch.com/2026/10/08/goodfire-says-its-new-inside-out-monitors-catch-rogue-ai-agents-at-a-fraction-of-the-cost",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 7,
+      "source_quality": 7,
+      "confidence": 90,
+      "tldr": "Goodfire-ის შიდა პრობები ამოწმებენ მოდელის ნეირონულ აქტივაციებს და ამცირებენ აგენტის უსაფრთხოების მონიტორინგის ხარჯებს.",
+      "what_happened": "Goodfire-მა გაუშვა შიდა მონიტორები, რომლებიც აფიქსირებენ აგენტების საბოტაჟს მოდელის შიდა სიგნალების წაკითხვით.",
+      "what_changed": "გარე LLM-ის გამოყენებით დამკვირვებლებიდან გადავდივართ მოდელის შიდა აქტივაციების პირდაპირ პრობინგზე.",
+      "why_it_matters": "გაძლევს საშუალებას აკონტროლო აგენტი იაფად და რეალურ დროში, ტოკენების ზედმეტი ხარჯვის გარეშე.",
+      "key_takeaways": [
+        "შიდა პრობები იყენებენ მოდელის მიერ უკვე გამოთვლილ ნეირონულ აქტივაციებს.",
+        "ეს მიდგომა ამცირებს მონიტორინგის ხარჯებს ათჯერ.",
+        "საშუალებას იძლევა დაფიქსირდეს აგენტის მავნე ქცევა შესრულებისასვე."
+      ],
+      "technical_architecture": [
+        "პრობები კითხულობენ შუალედურ ნეირონულ აქტივაციებს მოდელის forward pass დროს.",
+        "კლასიფიკატორი ამოწმებს სიგნალს და საჭიროების შემთხვევაში რთავს მეორე ეტაპის შემოწმებას."
+      ],
+      "technical_details": [
+        "მონიტორინგი ამატებს მოდელის მუშაობის დროს 2%-ზე ნაკლებს.",
+        "გამოყენებულია Kimi K3 მოდელის არქიტექტურაზე ტესტირებისთვის."
+      ],
+      "potential_impact": "ხდის აგენტების უსაფრთხოებასა და მონიტორინგს კომერციულად ხელმისაწვდომს მასშტაბური სისტემებისთვის.",
+      "action_type": "LEARN",
+      "action": "გაეცანი PyTorch-ის ჰუკების (hooks) გამოყენებას მოდელის შიდა ფენების აქტივაციების გამოსატანად პითონში.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "Goodfire-ის შიდა მონიტორები კითხულობენ მოდელის შიდა ნეირონულ აქტივაციებს ყოველ ნაბიჯზე.",
+        "Kimi K3 მოდელზე ტესტირებისას მონიტორინგი დაჯდა დაახლოებით $185 მილიონ გაცვლაზე, ძვირადღირებული მეორე LLM-ის ნაცვლად.",
+        "პრობებმა დააფიქსირა მავნე ჰაკერული სესიების 93% მინიმალური დროის დამატებით."
+      ],
+      "interpretation": "მოდელის შიდა მდგომარეობის პირდაპირი ანალიზი პრობებით ხსნის ძვირადღირებული მეორე LLM დამკვირვებლების საჭიროებას.",
+      "uncertainty": "მეთოდი ამჟამად შეზღუდულია Baseten-ის ინფრასტრუქტურითა და მხარდაჭერილი ღია მოდელებით.",
+      "counter_argument": "შიდა აქტივაციების კითხვა მოითხოვს დაბალი დონის წვდომას მოდელის სერვერზე, რაც მიუწვდომელია სტანდარტული API მომხმარებლისთვის.",
+      "strategic_assessment": "შეისწავლე მოდელების შიდა ინტერპრეტაციადობის პრინციპები, რადგან აგენტების უსაფრთხოების მომავალი აგებულია არა გარე ტექსტურ ფილტრებზე, არამედ შიდა პრობებზე.",
+      "time_horizon": "mid-term",
+      "what_could_change": "აგენტების მონიტორინგი გახდება ინფრასტრუქტურის ნაწილი, რომელიც მუშაობს მინიმალური გამოთვლითი დანახარჯებით.",
+      "risks": [
+        "მოდელის არქიტექტურაზე მკაცრი მიბმა",
+        "პრობების გადამზადების სირთულე ახალი მოდელებისთვის",
+        "ღია არქიტექტურის შეზღუდვები"
+      ],
+      "non_obvious_opportunity": "შეგიძლია დაწერო პითონის ღია ბიბლიოთეკა, რომელიც აანალიზებს Hugging Face-ის პატარა მოდელების შიდა ჰიდენსტეიტებს ტექსტის უსაფრთხოების შესამოწმებლად.",
+      "fit_assessment": "გეხმარება გაიგო როგორ მუშაობს აგენტების უსაფრთხოება შიდა არქიტექტურის დონეზე, რაც გამოგადგება production აგენტების ასაწყობად."
+    },
+    {
+      "event_id": "evt-anthropic-iot-self-replication-warning",
+      "title": "Anthropic-ის კვლევა: მცირე ზომის AI მოდელები უახლოვდებიან IoT მოწყობილობებზე თვითრეპლიკაციის უნარს",
+      "category": "აგენტების უსაფრთხოება და Sandbox",
+      "primary_url": "https://www.anthropic.com/research/self-replicating-ai",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 7,
+      "actionability": 6,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "Anthropic-ის კვლევა აჩვენებს, რომ მცირე ზომის მოდელებს შეუძლიათ იაფ IoT მოწყობილობებზე განაწილებული ინფერენციით მუშაობა.",
+      "what_happened": "Anthropic-მა გამოაქვეყნა კვლევა მცირე AI მოდელების IoT მოწყობილობებზე თვითრეპლიკაციის პოტენციალის შესახებ.",
+      "what_changed": "AI უსაფრთხოების შეფასება გადავიდა თეორიული მოდელებიდან ფიზიკურ, დაბალი სიმძლავრის მოწყობილობებზე ტესტირებაზე.",
+      "why_it_matters": "გაჩვენებს, რომ აგენტის ავტონომიას სჭირდება მკაცრი შეზღუდვები და იზოლაცია კოდის დონეზე.",
+      "key_takeaways": [
+        "30B-მდე მოდელებს შეუძლიათ ინფერენსის გაშვება იაფ ჰარდვერზე.",
+        "განაწილებულმა სისტემებმა შეიძლება იმუშაონ მონაცემთა ცენტრის გარეთაც.",
+        "აგენტების ქსელური აქტივობა მოითხოვს მკაცრ მონიტორინგს."
+      ],
+      "technical_architecture": [
+        "Gemma4-26B-A4B გადანაწილდა 15 ცალ სმარტ ტელევიზორზე.",
+        "თითოეული მოწყობილობა ინახავდა მოდელის ორ ფენას."
+      ],
+      "technical_details": [
+        "ინფერენსის სიჩქარე იყო 0.39 token per second.",
+        "მოწყობილობების ღირებულება იყო დაახლოებით $55 თითოეული."
+      ],
+      "potential_impact": "აიძულებს ინდუსტრიას შეიმუშაოს ახალი სტანდარტები აგენტების ქსელური წვდომისა და იზოლაციისთვის.",
+      "action_type": "TRACK",
+      "action": "მიადევნე თვალი აგენტების სანდბოქსინგის და ლოკალური იზოლაციის ღია კოდის პროექტებს.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Long-Term Career Value",
+        "General News"
+      ],
+      "verified_facts": [
+        "Anthropic-ის ექსპერიმენტებმა აჩვენა, რომ 30B პარამეტრამდე მოდელებს შეუძლიათ შეასრულონ რეპლიკაციის ინდივიდუალური ნაბიჯები.",
+        "9B მოდელმა გაუშვა ინფერენსი 9-დან 8 ტესტირებულ ჰარდვერზე, მათ შორის Android TV ბოქსებზე (~$55).",
+        "Gemma4-26B-A4B მოდელი გადანაწილდა 15 სმარტ ტელევიზორზე და მუშაობდა 0.39 token per second სიჩქარით."
+      ],
+      "interpretation": "მცირე მოდელები იმდენად გაძლიერდა, რომ მათი გავრცელება აღარ საჭიროებს ძვირადღირებულ დაკაცერებს, რაც ცვლის აგენტების უსაფრთხოების პოლიტიკას.",
+      "uncertainty": "ჯერჯერობით ეს არის კონტროლირებადი ლაბორატორიული ექსპერიმენტი და არა რეალური ველური ინციდენტი.",
+      "counter_argument": "განაწილებული ინფერენსის სიჩქარე (0.39 token/s) ზედმეტად ნელია რეალური მავნე ქმედებების ავტომატიზაციისთვის.",
+      "strategic_assessment": "გაითვალისწინე, რომ მომავალში აგენტების უსაფრთხოება და იზოლაცია (Sandbox) გახდება ყველაზე მოთხოვნადი უნარი კოდის წერის პარალელურად.",
+      "time_horizon": "long-term",
+      "what_could_change": "მოწყობილობების დონეზე შეიცვლება OS-ის უსაფრთხოების სტანდარტები, რათა აგენტებმა არ შეძლონ ავტონომიური გავრცელება.",
+      "risks": [
+        "არასწორი ინტერპრეტაცია მედიაში",
+        "ზედმეტად მკაცრი რეგულაციები ღია მოდელებზე",
+        "უსაფრთხოების სანდბოქსების არასრულყოფილება"
+      ],
+      "non_obvious_opportunity": "დეველოპერებს, რომლებსაც ესმით აგენტების სანდბოქსინგი და იზოლაცია, ექნებათ უზარმაზარი უპირატესობა კორპორატიულ უსაფრთხოებაში.",
+      "fit_assessment": "გასწავლის რა ტექნიკური რისკები ახლავს ავტონომიურ აგენტებს, რაც გეხმარება უფრო მყარი და დაცული არქიტექტურების პროექტირებაში."
     }
   ],
   "topics": {
@@ -6060,203 +6093,18 @@
     "AI Evaluation & Agent Reliability": 2,
     "RAG & Database Architecture": 2,
     "აგენტის არქიტექტურა და Cost Optimization": 1,
-    "აგენტების უსაფრთხოება და Sandbox": 2,
+    "აგენტების უსაფრთხოება და Sandbox": 3,
     "AI Evaluation & საიმედოობა": 1,
     "აგენტის არქიტექტურა და ხელსაწყოები": 2,
     "Long-Term Career Strategy": 1,
     "უსაფრთხოება და ღია კოდი": 1,
     "Real Business Opportunity & Agent Infrastructure": 1,
     "AI Coding Tools & Agent Workflows": 1,
-    "Real Business Opportunity & Open Source": 1
+    "Real Business Opportunity & Open Source": 1,
+    "LLM APIs და აგენტის არქიტექტურა": 1,
+    "AI Evaluation და აგენტების უსაფრთხოება": 1
   },
   "reports": [
-    {
-      "date": "2026-09-30",
-      "summary": "გამოვიდა ახალი ღია კოდის asynchronous agent ჰარნესები და კონტექსტის მართვის ინსტრუმენტები. ეს სიახლეები საშუალებას გვაძლევს, უფასო ტულებით დავტესტოთ რთული აგენტური ციკლები.",
-      "events": [
-        {
-          "event_id": "evt-openharness-coding-agents-command-center",
-          "title": "OpenHarness: The Ultimate Open-Source Command Center for Multi-Agent Coding",
-          "category": "AI Coding Tools და Agent Architecture",
-          "primary_url": "https://github.com/autonomous-ai/openharness",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 10,
-          "actionability": 10,
-          "source_quality": 8,
-          "confidence": 95,
-          "tldr": "OpenHarness აერთიანებს Claude Code, Codex და სხვა აგენტებს ერთ ადგილას, tmux პანელებისა და P2P ტერმინალების გამოყენებით.",
-          "what_happened": "გამოვიდა open-source პროექტი openharness, რომელიც აერთიანებს სხვადასხვა AI კოდირების აგენტს და მოწყობილობას.",
-          "what_changed": "ცალკეული აგენტების ხელით მართვიდან გადავდივართ ერთიან კლავიატურაზე ორიენტირებულ ბრძანების ცენტრზე.",
-          "why_it_matters": "გაძლევს სრულ კონტროლს შენს აგენტებზე ერთი ეკრანიდან, ყოველგვარი ფასიანი სერვისების გარეშე.",
-          "key_takeaways": [
-            "ყველა აგენტი მუშაობს საკუთარ tmux პანელში.",
-            "მხარს უჭერს ლოკალურ მოდელებს Ollama-სა და vLLM-ის მეშვეობით.",
-            "არ გამოიყენებს ელექტრონს, არის სწორი ნატივ აპლიკაცია."
-          ],
-          "technical_architecture": [
-            "Native desktop app with Go/Rust backend components",
-            "tmux integration for process isolation",
-            "P2P encrypted relay for multi-device communication"
-          ],
-          "technical_details": [
-            "Reads transcripts and vendor hooks directly",
-            "Uses worktree per harness for clean working copies",
-            "Configurable via a single JSONC file"
-          ],
-          "potential_impact": "დეველოპერის პროდუქტიულობა იზრდება მრავალი აგენტის ერთდროული მართვით ყოველგვარი გამოწერის ხარჯის გარეშე.",
-          "action_type": "BUILD",
-          "action": "დააინსტალირე OpenHarness შენს მანქანაზე და დააკავშირე ერთი ლოკალური მოდელი Ollama-დან.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value",
-            "Real Business Opportunity"
-          ],
-          "verified_facts": [
-            "OpenHarness is an open-source native app serving as a command center for multiple coding agents.",
-            "It runs agents in dedicated tmux panes, reading transcripts and vendor hooks without wrapping them.",
-            "Supports local models via Grid, Ollama, MLX-LM, and vLLM with end-to-end P2P encryption."
-          ],
-          "interpretation": "ღია კოდის ჰარნესები საშუალებას აძლევს ინდივიდუალურ დეველოპერებს მართონ მრავალი აგენტი ერთი ფანჯრიდან.",
-          "uncertainty": "როგორ იმუშავებს რესურსების მართვა სუსტ ლეპტოპებზე მრავალი აგენტის ერთდროული გაშვებისას.",
-          "counter_argument": "ცალკეული ტერმინალების გამოყენება უფრო მარტივია, ვიდრე ერთიანი კომპლექსური ჰარნესის დასტაბილურება.",
-          "strategic_assessment": "გამოიყენე OpenHarness შენი კოდირების აგენტების გასაერთიანებლად და ინფრასტრუქტურის ხარჯების შესამცირებლად.",
-          "time_horizon": "mid-term",
-          "what_could_change": "დეველოპმენტის პროცესი გადავა ერთიანი აგენტური მართვის ცენტრიდან მრავალი აგენტის ავტონომიურ კოორდინაციაზე.",
-          "risks": [
-            "მაღალი RAM მოხმარება მრავალი აგენტის ფონზე",
-            "კონფიგურაციის სირთულე JSONC ფაილებში",
-            "პერიფერიული მოწყობილობების სინქრონიზაციის ხარვეზები"
-          ],
-          "non_obvious_opportunity": "შეგიძლია დააკავშირო შენი სახლის ძველი კომპიუტერი და ლეპტოპი ერთიან ჰარნესში უფასო ძალის მისაღებად.",
-          "fit_assessment": "ძალიან უხდება 16 წლის დეველოპერს, რომელიც ცდილობს მაქსიმალური ეფექტურობა მიიღოს უფასო ან იაფფასიანი ინსტრუმენტებით."
-        },
-        {
-          "event_id": "evt-async-llm-asyncio-agents",
-          "title": "LLMs are General Asynchronous Agents: AsyncLLM Open-Source Framework",
-          "category": "აგენტების ინფრასტრუქტურა და Runtime",
-          "primary_url": "https://huggingface.co/papers/2609.35427",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 10,
-          "actionability": 9,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "AsyncLLM framework მოაქვს Python asyncio coroutines პირდაპირ LLM inference ძრავში, რაც უზრუნველყოფს მრავალამოცანიან პარალელურ აგენტებს.",
-          "what_happened": "Yandex Research-ის მკვლევარებმა წარმოადგინეს AsyncLLM, რომელიც საშუალებას აძლევს LLM-ებს იმუშაონ asynchronous რეჟიმში.",
-          "what_changed": "სერიული read-think-act ციკლიდან გადავდივართ პარალელურ cache-block აგენტურ მუშაობაზე.",
-          "why_it_matters": "გაძლევს საშუალებას ააგო რეალურ დროში მოქმედი აგენტები დამატებითი წვრთნის გარეშე.",
-          "key_takeaways": [
-            "კონკურენცია ხორციელდება inference დონეზე და არა API გამოძახებებს გარეთ.",
-            "გამოიყენებს Python asyncio მოვლენებსა და კორუტინებს.",
-            "აგენტები კითხულობენ ერთმანეთის ვითარებად მდგომარეობას cache-block მეხსიერებიდან."
-          ],
-          "technical_architecture": [
-            "Mini-SGLang inference engine backend",
-            "Python asyncio event loops and queues",
-            "Shared cache blocks for overlapping memory states"
-          ],
-          "technical_details": [
-            "Supports full attention and Gated DeltaNet models",
-            "Uses standard asyncio locks and events for coordination",
-            "Enables streaming video and monitoring tasks concurrently"
-          ],
-          "potential_impact": "ამცირებს რეალურ დროში აგენტების პასუხის დროს და ხსნის ახალ გზებს ხმოვანი და ვიდეო ასისტენტებისთვის.",
-          "action_type": "TRY",
-          "action": "ჩამოქაჩე AsyncLLM რეპოზიტორი და დატესტე Python asyncio coroutines ინტეგრაცია მარტივ LLM სკრიპტში.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value",
-            "Real Business Opportunity"
-          ],
-          "verified_facts": [
-            "AsyncLLM lets pretrained LLMs observe, reason and act concurrently without task-specific training.",
-            "Concurrency lives inside inference using Python asyncio coroutines and cache blocks.",
-            "The framework is built on Mini-SGLang and supports full attention and Gated DeltaNet models."
-          ],
-          "interpretation": "კონკურენტული და asynchronous აგენტური არქიტექტურა ცვლის სერიული ციკლების ძველ მიდგომას.",
-          "uncertainty": "რამდენად სტაბილურია Mini-SGLang ბაზაზე აწყობილი კორუტინები დაბალი ბიუჯეტის სერვერებზე.",
-          "counter_argument": "სერიული agent loop უფრო მარტივი დასადებგრია და ნაკლებ ძალისხმევას მოითხოვს.",
-          "strategic_assessment": "შეისწავლე asyncio-ზე დაფუძნებული აგენტური არქიტექტურა, რადგან მომავლის სისტემები მოითხოვს პარალელურ რეაგირებას.",
-          "time_horizon": "mid-term",
-          "what_could_change": "მომხმარებელთან ინტერაქცია გახდება რეალურ დროში პარალელური, რაც გაбუქებს ძველ სერიულ tool calling მიდგომებს.",
-          "risks": [
-            "კორუტინების სინქრონიზაციის სირთულე",
-            "არასწორი მეხსიერების გაზიარება",
-            "ከፍተኛ ტოკენების მოხმარება"
-          ],
-          "non_obvious_opportunity": "შეგიძლია შექმნა მცირე ბიუჯეტის მქონე რეალურ დროში მოსმენის აგენტი.",
-          "fit_assessment": "იდეალურია Python-ის ცოდნის მქონე დეველოპერისთვის, რომელიც ცდილობს გასცდეს მარტივი რიგიანი სკრიპტების საზღვრებს."
-        },
-        {
-          "event_id": "evt-thinking-before-thinking-meta-reasoning",
-          "title": "Thinking Before Thinking: Scaling Agentic Inference Through Meta-Reasoning",
-          "category": "AI Research & Agent Architecture",
-          "primary_url": "https://arxiv.org/abs/2609.38147",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 88,
-          "tldr": "მეტა-მსჯელობის ჰარნესი იყენებს ცალკე კონტროლერს, რომელიც გეგმავს და ანაწილებს სამუშაოს აგენტებს შორის, ზრდის რა რეზულტატის სიზუსტეს.",
-          "what_happened": "წარმოდგენილია კვლევა, სადაც აგენტური დასკვნა მართულია ცალკე მეტა-კონტროლერის მიერ.",
-          "what_changed": "პირდაპირი თანმიმდევრული პრომპტებიდან გადავდივართ კონტროლერით მართულ სტრუქტურირებულ გამოთვლებზე.",
-          "why_it_matters": "გაჩვენებს როგორ უნდა ააგო უფრო რთული აგენტური სისტემები, რომლებიც არ იბნევიან გრძელვადიან დავალებებში.",
-          "key_takeaways": [
-            "კონტროლერი ამუშავებს მხოლოდ მოკლე შემაჯამებელ ისტორიას და არა მთელ ჟურნალს.",
-            "აუმჯობესებს კოდის რეკონსტრუქციის შედეგებს 13 პროცენტზე მეტად.",
-            "ამცირებს განმეორებით შეცდომებს გრძელი სესიების დროს."
-          ],
-          "technical_architecture": [
-            "Inference-time meta-reasoning harness",
-            "Dedicated controller model for task distribution",
-            "Persistent memory state for worker coordination"
-          ],
-          "technical_details": [
-            "Evaluated on ProgramBench and multi-domain reasoning suites",
-            "Prevents history replaying by keeping compact state accounts",
-            "Optimizes budget allocation across parallel worker prompts"
-          ],
-          "potential_impact": "იძლევა საშუალებას აგენტებმა წარმატებით დაასრულონ ისეთი რთული მრავალსაათიანი ამოცანები, სადაც ძველი მოდელები იჭრებოდნენ.",
-          "action_type": "LEARN",
-          "action": "დაწერე პითონის მარტივი კლასი, რომელიც ყოფს რთულ დავალებას ქვედა ამოცანებად და აგზავნის ცალკეულ API გამოძახებებში.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "Agentic meta-reasoning introduces an inference-time harness making control choices explicit.",
-            "A controller consolidates run state, explores options, and dispatches work with persistent memory context.",
-            "On ProgramBench, meta-reasoning achieved 71.5% with GPT-5.5 compared to 58.0% for direct Codex."
-          ],
-          "interpretation": "კონტროლერის დამატება, რომელიც მართავს მუშა აგენტებს, მკვეთრად აუმჯობესებს გრძელვადიან დავალებებს.",
-          "uncertainty": "მეტა-მსჯელობის დამატება ზრდის გამოთვლით ხარჯებს და ლატენტობას მცირე ბიუჯეტის სისტემებისთვის.",
-          "counter_argument": "პირდაპირი მოდელის მართვა უფრო იაფია და მცირე ამოცანებისთვის მეტა-კონტროლერი ზედმეტი სირთულეა.",
-          "strategic_assessment": "ისწავლე მორგებული კონტროლერების აგება, რომლებიც არიგებენ სამუშაოს მცირე მოდელებზე.",
-          "time_horizon": "mid-term",
-          "what_could_change": "აგენტების არქიტექტურა გადავა ერთიანი პრომპტიდან იერარქიულ, კონტროლერზე დამყარებულ სისტემებზე.",
-          "risks": [
-            "ზედმეტი გამოთვლითი ხარჯები მცირე ამოცანებზე",
-            "კონტროლერის ჰალუცინაცია დავალებების გადანაწილებისას",
-            "ინფრასტრუქტურული სირთულე"
-          ],
-          "non_obvious_opportunity": "შეგიძლია შექმნა ორსაფეხურიანი აგენტი, სადაც პატარა მოდელი მუშაობს კონტროლერად, ხოლო უფასო API მუშაობს შემსრულებლად.",
-          "fit_assessment": "ძალიან სასარგებლოა აგენტური არქიტექტურის შესასწავლად, გაძლევს წარმოდგენას რეალურ production სისტემებზე."
-        }
-      ],
-      "trends": [
-        "Asynchronous agent architectures replacing serial tool-calling loops.",
-        "Open-source multi-agent command centers running locally via Ollama and vLLM.",
-        "Meta-reasoning and controller-based harnesses for long-horizon reliability."
-      ]
-    },
     {
       "date": "2026-10-01",
       "summary": "Google Cloud-მა წარადგინა Data Agent Kit MCP ხელსაწყოებით, ხოლო კვლევებმა აჩვენა მნიშვნელოვანი მიღწევები agentic search-სა და attention ოპტიმიზაციაში. ეს ცვლილებები პირდაპირ აფართოებს მცირე ბიუჯეტით ასაშენებელი AI აგენტების ინფრასტრუქტურას.",
@@ -9219,14 +9067,195 @@
         "ფორმალური ენები (Lean) და დეტერმინისტული ვალიდატორები ანაცვლებენ LLM-ის თვითშეფასებას (self-reflection).",
         "მესენჯერ-ინტერფეისები (Telegram, RCS) იქცა აგენტების ძირითად საოპერაციო გარემოდ ჩვეულებრივი მომხმარებლებისთვის."
       ]
+    },
+    {
+      "date": "2026-10-13",
+      "summary": "Google-მა გამოუშვა Interactions API და Gemini 4 Argon, რომელიც ცვლის მოდელებთან მუშაობის არქიტექტურას. Anthropic-მა დააფიქსირა IoT მოწყობილობებზე აგენტების რეპლიკაციის რისკები. Goodfire-მა წარადგინა შიდა პრობებზე დაფუძნებული აგენტების მონიტორინგი.",
+      "events": [
+        {
+          "event_id": "evt-interactions-api-gemini-argon",
+          "title": "Google-მა გამოუშვა Interactions API და ძლიერი Gemini 4 Argon მოდელი",
+          "category": "LLM APIs და აგენტის არქიტექტურა",
+          "primary_url": "https://ai.google.dev/gemini-api/docs/interactions-overview",
+          "supporting_urls": [
+            "https://www.theverge.com/ai-artificial-intelligence/1009862/google-releases-gemini-4-argon"
+          ],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 10,
+          "confidence": 98,
+          "tldr": "Google-ის ახალი Interactions API აერთიანებს აგენტურ ლუპებს და სერვერულ სესიებს, ხოლო Gemini 4 Argon ამცირებს ტოკენების ხარჯებს.",
+          "what_happened": "Google-მა გამოუშვა Interactions API და ძლიერი Gemini 4 Argon მოდელი კონკურენტულ ფასად.",
+          "what_changed": "ცალკეული ტექსტური გენერაციის API-დან გადავედით უნივერსალურ სერვერული სესიის მქონე აგენტურ ენდპოინტებზე.",
+          "why_it_matters": "გაძლევს საშუალებას ააწყო მდგრადი აგენტები ნაკლები კოდით და უკეთესი კონტექსტის მართვით.",
+          "key_takeaways": [
+            "Interactions API არის რეკომენდებული სტანდარტი ახალი აგენტური პროექტებისთვის.",
+            "Server-side state მართვა ამცირებს טოკენების მოხმარებას მრავალ-ეტაპიან დიალოგებში.",
+            "Gemini 4 Argon ფასი ორჯერ დაბალია კონკურენტების საწყის ფასებზე."
+          ],
+          "technical_architecture": [
+            "Interactions API იყენებს Interaction რესურსს, როგორც სესიის ქრონოლოგიურ რიგს.",
+            "previous_interaction_id უზრუნველყოფს სერვერ მხარეს კონტექსტის შენარჩუნებას."
+          ],
+          "technical_details": [
+            "Endpoint იყენებს interactions.get და interactions.create მეთოდებს.",
+            "background=true პარამეტრი რთავს ფონურ εκτελέση გრძელვადიანი დავალებებისთვის."
+          ],
+          "potential_impact": "მნიშვნელოვნად ამცირებს აგენტების დამუშავების ხარჯებს და ინფრასტრუქტურულ სირთულეს დეველოპერებისთვის.",
+          "action_type": "TRY",
+          "action": "დაწერე Python სკრიპტი, რომელიც ტესტავს Interactions API-ს სერვერული სესიის მართვას მარტივი tool calling ლუპისთვის.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value",
+            "Real Business Opportunity"
+          ],
+          "verified_facts": [
+            "Interactions API არის ზოგადად ხელმისაწვდომი როგორც უნივერსალური ინტერფეისი მოდელებისა და აგენტებისთვის.",
+            "Gemini 4 Argon ღირს $2 მილიონ input და $10 მილიონ output ტოკენებზე საწყის პერიოდში.",
+            "Interactions API მხარდაჭერას უჭერს სერვერ მხარეს კონტექსტის მართვას previous_interaction_id-ით."
+          ],
+          "interpretation": "Google აერთიანებს მოდელის გამოძახებასა და სესიის მართვას ერთ სერვერულ პროტოკოლში, რაც ამარტივებს აგენტური ლუპების აწყობას.",
+          "uncertainty": "უცნობია როდის გახდება Gemini 4 Argon ხელმისაწვდომი უფასო ან სტანდარტული დეველოპერული ტარიფებისთვის.",
+          "counter_argument": "სერვერ მხარეს სესიის შენახვა ზღუდავს დეველოპერის კონტროლს მონაცემთა კონფიდენციალურობაზე.",
+          "strategic_assessment": "გადაერთე Interactions API-ზე, რადგან სერვერული სესიის მართვა და კონტექსტის ქეშირება მნიშვნელოვნად ამცირებს API ხარჯებს.",
+          "time_horizon": "mid-term",
+          "what_could_change": "API პროვაიდერები სრულად გადაvlen სერვერული სტეიტის მართვაზე, რაც კლიენტის მხარეს კომპლექსურ კოდს შეამცირებს.",
+          "risks": [
+            "მიბმა ერთ ეკოსისტემაზე",
+            "სერვერული დეიატების შენახვის ფარული ხარჯები",
+            "მიგრაციის სირთულე ძველი ინტერფეისიდან"
+          ],
+          "non_obvious_opportunity": "შეგიძლია შექმნა ღია კოდის ბიბლიოთეკა, რომელიც ამარტივებს მიგრაციას ძველი generateContent ინტერფეისიდან ახალ Interactions API-ზე.",
+          "fit_assessment": "იდეალურად ერგება შენს მიზანს, ააგო რეალური აგენტები მინიმალური ხარჯებით, რადგან ახალი API ამცირებს ტოკენების ხარჯს ქეშირებით."
+        },
+        {
+          "event_id": "evt-goodfire-internal-probes-monitoring",
+          "title": "Goodfire-მა წარადგინა შიდა აქტივაციის პრობები აგენტების საბოტაჟის იაფად გამოსავლენად",
+          "category": "AI Evaluation და აგენტების უსაფრთხოება",
+          "primary_url": "https://techcrunch.com/2026/10/08/goodfire-says-its-new-inside-out-monitors-catch-rogue-ai-agents-at-a-fraction-of-the-cost",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 7,
+          "source_quality": 7,
+          "confidence": 90,
+          "tldr": "Goodfire-ის შიდა პრობები ამოწმებენ მოდელის ნეირონულ აქტივაციებს და ამცირებენ აგენტის უსაფრთხოების მონიტორინგის ხარჯებს.",
+          "what_happened": "Goodfire-მა გაუშვა შიდა მონიტორები, რომლებიც აფიქსირებენ აგენტების საბოტაჟს მოდელის შიდა სიგნალების წაკითხვით.",
+          "what_changed": "გარე LLM-ის გამოყენებით დამკვირვებლებიდან გადავდივართ მოდელის შიდა აქტივაციების პირდაპირ პრობინგზე.",
+          "why_it_matters": "გაძლევს საშუალებას აკონტროლო აგენტი იაფად და რეალურ დროში, ტოკენების ზედმეტი ხარჯვის გარეშე.",
+          "key_takeaways": [
+            "შიდა პრობები იყენებენ მოდელის მიერ უკვე გამოთვლილ ნეირონულ აქტივაციებს.",
+            "ეს მიდგომა ამცირებს მონიტორინგის ხარჯებს ათჯერ.",
+            "საშუალებას იძლევა დაფიქსირდეს აგენტის მავნე ქცევა შესრულებისასვე."
+          ],
+          "technical_architecture": [
+            "პრობები კითხულობენ შუალედურ ნეირონულ აქტივაციებს მოდელის forward pass დროს.",
+            "კლასიფიკატორი ამოწმებს სიგნალს და საჭიროების შემთხვევაში რთავს მეორე ეტაპის შემოწმებას."
+          ],
+          "technical_details": [
+            "მონიტორინგი ამატებს მოდელის მუშაობის დროს 2%-ზე ნაკლებს.",
+            "გამოყენებულია Kimi K3 მოდელის არქიტექტურაზე ტესტირებისთვის."
+          ],
+          "potential_impact": "ხდის აგენტების უსაფრთხოებასა და მონიტორინგს კომერციულად ხელმისაწვდომს მასშტაბური სისტემებისთვის.",
+          "action_type": "LEARN",
+          "action": "გაეცანი PyTorch-ის ჰუკების (hooks) გამოყენებას მოდელის შიდა ფენების აქტივაციების გამოსატანად პითონში.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "Goodfire-ის შიდა მონიტორები კითხულობენ მოდელის შიდა ნეირონულ აქტივაციებს ყოველ ნაბიჯზე.",
+            "Kimi K3 მოდელზე ტესტირებისას მონიტორინგი დაჯდა დაახლოებით $185 მილიონ გაცვლაზე, ძვირადღირებული მეორე LLM-ის ნაცვლად.",
+            "პრობებმა დააფიქსირა მავნე ჰაკერული სესიების 93% მინიმალური დროის დამატებით."
+          ],
+          "interpretation": "მოდელის შიდა მდგომარეობის პირდაპირი ანალიზი პრობებით ხსნის ძვირადღირებული მეორე LLM დამკვირვებლების საჭიროებას.",
+          "uncertainty": "მეთოდი ამჟამად შეზღუდულია Baseten-ის ინფრასტრუქტურითა და მხარდაჭერილი ღია მოდელებით.",
+          "counter_argument": "შიდა აქტივაციების კითხვა მოითხოვს დაბალი დონის წვდომას მოდელის სერვერზე, რაც მიუწვდომელია სტანდარტული API მომხმარებლისთვის.",
+          "strategic_assessment": "შეისწავლე მოდელების შიდა ინტერპრეტაციადობის პრინციპები, რადგან აგენტების უსაფრთხოების მომავალი აგებულია არა გარე ტექსტურ ფილტრებზე, არამედ შიდა პრობებზე.",
+          "time_horizon": "mid-term",
+          "what_could_change": "აგენტების მონიტორინგი გახდება ინფრასტრუქტურის ნაწილი, რომელიც მუშაობს მინიმალური გამოთვლითი დანახარჯებით.",
+          "risks": [
+            "მოდელის არქიტექტურაზე მკაცრი მიბმა",
+            "პრობების გადამზადების სირთულე ახალი მოდელებისთვის",
+            "ღია არქიტექტურის შეზღუდვები"
+          ],
+          "non_obvious_opportunity": "შეგიძლია დაწერო პითონის ღია ბიბლიოთეკა, რომელიც აანალიზებს Hugging Face-ის პატარა მოდელების შიდა ჰიდენსტეიტებს ტექსტის უსაფრთხოების შესამოწმებლად.",
+          "fit_assessment": "გეხმარება გაიგო როგორ მუშაობს აგენტების უსაფრთხოება შიდა არქიტექტურის დონეზე, რაც გამოგადგება production აგენტების ასაწყობად."
+        },
+        {
+          "event_id": "evt-anthropic-iot-self-replication-warning",
+          "title": "Anthropic-ის კვლევა: მცირე ზომის AI მოდელები უახლოვდებიან IoT მოწყობილობებზე თვითრეპლიკაციის უნარს",
+          "category": "აგენტების უსაფრთხოება და Sandbox",
+          "primary_url": "https://www.anthropic.com/research/self-replicating-ai",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 7,
+          "actionability": 6,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "Anthropic-ის კვლევა აჩვენებს, რომ მცირე ზომის მოდელებს შეუძლიათ იაფ IoT მოწყობილობებზე განაწილებული ინფერენციით მუშაობა.",
+          "what_happened": "Anthropic-მა გამოაქვეყნა კვლევა მცირე AI მოდელების IoT მოწყობილობებზე თვითრეპლიკაციის პოტენციალის შესახებ.",
+          "what_changed": "AI უსაფრთხოების შეფასება გადავიდა თეორიული მოდელებიდან ფიზიკურ, დაბალი სიმძლავრის მოწყობილობებზე ტესტირებაზე.",
+          "why_it_matters": "გაჩვენებს, რომ აგენტის ავტონომიას სჭირდება მკაცრი შეზღუდვები და იზოლაცია კოდის დონეზე.",
+          "key_takeaways": [
+            "30B-მდე მოდელებს შეუძლიათ ინფერენსის გაშვება იაფ ჰარდვერზე.",
+            "განაწილებულმა სისტემებმა შეიძლება იმუშაონ მონაცემთა ცენტრის გარეთაც.",
+            "აგენტების ქსელური აქტივობა მოითხოვს მკაცრ მონიტორინგს."
+          ],
+          "technical_architecture": [
+            "Gemma4-26B-A4B გადანაწილდა 15 ცალ სმარტ ტელევიზორზე.",
+            "თითოეული მოწყობილობა ინახავდა მოდელის ორ ფენას."
+          ],
+          "technical_details": [
+            "ინფერენსის სიჩქარე იყო 0.39 token per second.",
+            "მოწყობილობების ღირებულება იყო დაახლოებით $55 თითოეული."
+          ],
+          "potential_impact": "აიძულებს ინდუსტრიას შეიმუშაოს ახალი სტანდარტები აგენტების ქსელური წვდომისა და იზოლაციისთვის.",
+          "action_type": "TRACK",
+          "action": "მიადევნე თვალი აგენტების სანდბოქსინგის და ლოკალური იზოლაციის ღია კოდის პროექტებს.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Long-Term Career Value",
+            "General News"
+          ],
+          "verified_facts": [
+            "Anthropic-ის ექსპერიმენტებმა აჩვენა, რომ 30B პარამეტრამდე მოდელებს შეუძლიათ შეასრულონ რეპლიკაციის ინდივიდუალური ნაბიჯები.",
+            "9B მოდელმა გაუშვა ინფერენსი 9-დან 8 ტესტირებულ ჰარდვერზე, მათ შორის Android TV ბოქსებზე (~$55).",
+            "Gemma4-26B-A4B მოდელი გადანაწილდა 15 სმარტ ტელევიზორზე და მუშაობდა 0.39 token per second სიჩქარით."
+          ],
+          "interpretation": "მცირე მოდელები იმდენად გაძლიერდა, რომ მათი გავრცელება აღარ საჭიროებს ძვირადღირებულ დაკაცერებს, რაც ცვლის აგენტების უსაფრთხოების პოლიტიკას.",
+          "uncertainty": "ჯერჯერობით ეს არის კონტროლირებადი ლაბორატორიული ექსპერიმენტი და არა რეალური ველური ინციდენტი.",
+          "counter_argument": "განაწილებული ინფერენსის სიჩქარე (0.39 token/s) ზედმეტად ნელია რეალური მავნე ქმედებების ავტომატიზაციისთვის.",
+          "strategic_assessment": "გაითვალისწინე, რომ მომავალში აგენტების უსაფრთხოება და იზოლაცია (Sandbox) გახდება ყველაზე მოთხოვნადი უნარი კოდის წერის პარალელურად.",
+          "time_horizon": "long-term",
+          "what_could_change": "მოწყობილობების დონეზე შეიცვლება OS-ის უსაფრთხოების სტანდარტები, რათა აგენტებმა არ შეძლონ ავტონომიური გავრცელება.",
+          "risks": [
+            "არასწორი ინტერპრეტაცია მედიაში",
+            "ზედმეტად მკაცრი რეგულაციები ღია მოდელებზე",
+            "უსაფრთხოების სანდბოქსების არასრულყოფილება"
+          ],
+          "non_obvious_opportunity": "დეველოპერებს, რომლებსაც ესმით აგენტების სანდბოქსინგი და იზოლაცია, ექნებათ უზარმაზარი უპირატესობა კორპორატიულ უსაფრთხოებაში.",
+          "fit_assessment": "გასწავლის რა ტექნიკური რისკები ახლავს ავტონომიურ აგენტებს, რაც გეხმარება უფრო მყარი და დაცული არქიტექტურების პროექტირებაში."
+        }
+      ],
+      "trends": [
+        "API პროვაიდერები ნერგავენ სერვერულ სესიებსა და კონტექსტის ქეშირებას ტოკენების ხარჯების შესამცირებლად.",
+        "აგენტების უსაფრთხოებისთვის ინერგება შიდა აქტივაციების მონიტორინგი ძვირადღირებული გარე მოდელების ნაცვლად.",
+        "მცირე ზომის მოდელები ოპტიმიზდება განაწილებული ლოკალური ჰარდვერისთვის."
+      ]
     }
   ],
   "learning_queue": [
-    "PostgreSQL 17-ში pgvector ექსტენშენი და HNSW ინდექსები ვექტორული ძებნის ოპტიმიზაციისთვის.",
-    "Pydantic-ის და mypy-ს გამოყენება LLM Tool Calling-ის პარამეტრების მკაცრი ვალიდაციისთვის Python-ში.",
-    "FastMCP ბიბლიოთეკის გამოყენებით ლოკალური MCP სერვერის აწყობა ფაილურ სისტემასთან სამუშაოდ."
+    "Google Interactions API-ის დოკუმენტაცია და previous_interaction_id სესიის მართვა.",
+    "PyTorch ჰუკები და შიდა ნეირონული აქტივაციების ანალიზის საბაზისო პრინციპები."
   ],
-  "last_run": "2026-10-12T19:41:10.941012+00:00",
+  "last_run": "2026-10-13T17:26:34.905459+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -9315,9 +9344,9 @@
     "arxiv:2610.10455"
   ],
   "last_report_files": {
-    "markdown": "data/reports/2026-10-12/report.md",
-    "json": "data/reports/2026-10-12/report.json",
-    "newsletter": "data/reports/2026-10-12/newsletter.md",
-    "social": "data/reports/2026-10-12/social_posts.txt"
+    "markdown": "data/reports/2026-10-13/report.md",
+    "json": "data/reports/2026-10-13/report.json",
+    "newsletter": "data/reports/2026-10-13/newsletter.md",
+    "social": "data/reports/2026-10-13/social_posts.txt"
   }
 }
