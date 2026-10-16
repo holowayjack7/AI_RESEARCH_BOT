@@ -237,7 +237,10 @@
     "https://huggingface.co/papers/2610.19698",
     "https://aws.amazon.com/blogs/machine-learning/build-self-improving-document-processing-using-amazon-bedrock-agentcore",
     "https://arxiv.org/abs/2610.20576",
-    "https://arxiv.org/abs/2610.20572"
+    "https://arxiv.org/abs/2610.20572",
+    "https://huggingface.co/papers/2610.22350",
+    "https://arxiv.org/abs/2610.22344",
+    "https://huggingface.co/papers/2610.20939"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -424,153 +427,12 @@
     "evt-ruletrek-benchmark-rule-reasoning",
     "evt-aws-bedrock-self-improving-idp",
     "evt-cross-interface-consistency-cipr",
-    "evt-critic-guided-on-policy-distillation"
+    "evt-critic-guided-on-policy-distillation",
+    "evt-fde-gym-delivery-benchmark",
+    "evt-mlexpert-autonomous-ml",
+    "evt-mai-gym-gui-agents"
   ],
   "events": [
-    {
-      "event_id": "evt-google-agent-substrate-gke",
-      "title": "Google Agent Substrate: ღია კოდის მაღალი სიმკვრივის გაშვების გარემო AI აგენტებისთვის GKE-ზე",
-      "category": "აგენტების ინფრასტრუქტურა და Runtime",
-      "primary_url": "https://cloud.google.com/blog/products/containers-kubernetes/agent-substrate-available-on-gke",
-      "supporting_urls": [],
-      "importance": 9,
-      "relevance": 10,
-      "actionability": 9,
-      "source_quality": 9,
-      "confidence": 95,
-      "tldr": "Google-მა გამოუშვა Agent Substrate GKE-ზე, რაც აგენტებს აძლევს 10x უფრო მკვრივ, sub-500ms suspend/resume უსაფრთხო იზოლირებულ runtime-ს.",
-      "what_happened": "Google Cloud-მა წარადგინა ღია Agent Substrate, სპეციალურად შექმნილი მილიონობით ავტონომიური აგენტის ქოდ-ექსექუშენისა და CLI ხელსაწყოების უსაფრთხო იზოლაციისთვის Kubernetes-ში.",
-      "what_changed": "მძიმე კონტეინერული VM-ების ნაცვლად მივიღეთ ნულოვანი ნდობის kernel იზოლაცია და მყისიერი suspend/resume უმოქმედო აგენტებისთვის.",
-      "why_it_matters": "შენს coding agent პროექტებში საშუალებას მოგცემს უსაფრთხოდ გაუშვა LLM-ის გენერირებული bash ბრძანებები და კოდი მინიმალური latency-ით.",
-      "key_takeaways": [
-        "10x მაღალი density კონტეინერებთან შედარებით",
-        "Sub-500ms resume latency 500 ops/sec ტემპით",
-        "Zero-trust kernel და ქსელური იზოლაცია"
-      ],
-      "technical_architecture": [
-        "Cloud-native Kubernetes execution layer",
-        "Decoupled machine management agent execution-ისგან",
-        "Native zero-trust network controls"
-      ],
-      "technical_details": [
-        "GKE runtime integration",
-        "500 suspend/resume per second",
-        "Hermes Agent backend support"
-      ],
-      "potential_impact": "აგენტების ჰოსტინგის ხარჯები მკვეთრად შემცირდება, ხოლო untrusted კოდის გაშვება გახდება უსაფრთხო ნებისმიერი developer-ისთვის.",
-      "action_type": "TRY",
-      "action": "შეისწავლე Agent Substrate-ის არქიტექტურა და სცადე მსგავსი suspend/resume ლოგიკის მოდელირება Docker sandboxing-ში.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "Agent Substrate უზრუნველყოფს 10x მაღალ density-ს სტანდარტულ კონტეინერებთან შედარებით",
-        "სისტემა ახორციელებს sub-500ms resume ოპერაციებს 500-ზე მეტი suspend/resume აქტივაციით წამში",
-        "Nous Research-ის Hermes Agent უკვე აგებულია Agent Substrate-ის ბაზაზე GKE-ზე"
-      ],
-      "interpretation": "ავტონომიური აგენტების ინფრასტრუქტურა შორდება მძიმე VM-ებს და გადადის მიკრო-სენდბოქსებზე, სადაც უმოქმედო აგენტის state მომენტალურად იყინება resouces-ის დასაზოგად.",
-      "uncertainty": "უცნობია Agent Substrate-ის self-hosted დაყენების სირთულე vanilla Kubernetes კლასტერებზე GKE-ს ფარგლებს გარეთ.",
-      "counter_argument": "მცირე პროექტებისთვის სტანდარტული Docker კონტეინერები საკმარისია და Kubernetes-ზე დამატებითი runtime-ის მართვა ზედმეტ სირთულეს ქმნის."
-    },
-    {
-      "event_id": "evt-self-evolving-search-index",
-      "title": "SELF-INDEX: ავტონომიური თვითგანახლებადი საძიებო ინდექსი LLM აგენტებისთვის",
-      "category": "RAG, Retrieval და აგენტის მეხსიერება",
-      "primary_url": "https://huggingface.co/papers/2609.19656",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 9,
-      "source_quality": 8,
-      "confidence": 88,
-      "tldr": "SELF-INDEX ქმნის თვითგანახლებად საძიებო ინდექსს, რომელიც ავტონომიურად ასწორებს შეცდომებს და აგენერირებს ახალ სინთეტიკურ საძიებო გასაღებებს.",
-      "what_happened": "მკვლევრებმა შექმნეს ჩარჩო, სადაც Optimizer დიაგნოსტიკას უკეთებს ჩავარდნილ retrieval-ს, ხოლო Query Simulator პროაქტიულად აფართოებს საძიებო გასაღებებს.",
-      "what_changed": "RAG ინდექსების ხელით ოპტიმიზაციისა და ჩაშენებული prompt-ების მორგების ნაცვლად, სისტემა თავად აახლებს დოკუმენტის მეტამონაცემებსა და გასაღებებს.",
-      "why_it_matters": "პირდაპირ ეხება შენს RAG და agent memory მოდულებს: აგენტის მეხსიერება უფრო ზუსტი ხდება ყოველი წარუმატებელი ძიების შემდეგ.",
-      "key_takeaways": [
-        "ავტონომიური დიაგნოსტიკა ჩავარდნილ ძიებებზე",
-        "Query Simulator ახალი მოთხოვნების საპროგნოზოდ",
-        "ვალიდაცია ინდექსის გასაღებების განახლებამდე"
-      ],
-      "technical_architecture": [
-        "Autonomous Optimizer feedback loop",
-        "Synthetic Query Simulator module",
-        "Validation-gated index key updater"
-      ],
-      "technical_details": [
-        "Targeted index key revision",
-        "Pre-update validation check",
-        "Agent memory retrieval booster"
-      ],
-      "potential_impact": "შექმნის საძიებო და ცოდნის ბაზებს, რომლებიც კომპანიის შიდა დოკუმენტებზე მუშაობისას დროთა განმავლობაში თავისით ხდებიან უფრო ზუსტები.",
-      "action_type": "BUILD",
-      "action": "ააგე მარტივი SQLite/Chroma RAG პაიპლაინი, სადაც ჩავარდნილი ძიებისას LLM დოკუმენტს უმატებს ახალ ალტერნატიულ საკვანძო კითხვებს.",
-      "evidence": [],
-      "factuality_level": "single_source",
-      "classification": [
-        "Real Technical Skill",
-        "Real Business Opportunity"
-      ],
-      "verified_facts": [
-        "SELF-INDEX ავტონომიურად სვამს დიაგნოზს retrieval shortfall-ზე და არედაქტირებს ინდექსის გასაღებებს ადამიანის გარეშე",
-        "Query Simulator მოდული პროაქტიულად გენერირებს ჰიპოთეტურ მოთხოვნებს ინდექსის გასაუმჯობესებლად",
-        "აუმჯობესებს search agent-ების ეფექტურობას და agent memory სისტემებში წარსული გამოცდილების ამოღებას"
-      ],
-      "interpretation": "სტატიკური ვექტორული ბაზები ვეღარ აკმაყოფილებენ მრავალეტაპიან აგენტებს; ინდექსი თავად უნდა სწავლობდეს წარუმატებელი მოთხოვნების ანალიზით.",
-      "uncertainty": "არ არის შეფასებული ინდექსის ზომის ზრდა და compute ხარჯები უწყვეტი query simulation-ის დროს დიდი კორპუსებისთვის.",
-      "counter_argument": "ხშირმა ავტომატურმა გადაწერამ შესაძლოა გამოიწვიოს ინდექსის დეგრადაცია და ადრე მოქმედი შეკითხვების პასუხების გაუარესება."
-    },
-    {
-      "event_id": "evt-bedrock-agentcore-scratchpad",
-      "title": "Amazon Bedrock AgentCore Code Interpreter: მიკრო-VM სენდბოქსები აგენტების გამოთვლითი Scratch Pad-ისთვის",
-      "category": "Tool Calling და აგენტების არქიტექტურა",
-      "primary_url": "https://aws.amazon.com/blogs/machine-learning/abnormal-ai-amazon-bedrock-agentcore-for-agentic-email-security-at-scale",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 8,
-      "source_quality": 10,
-      "confidence": 92,
-      "tldr": "Abnormal AI-მ აჩვენა, თუ როგორ იყენებს AgentCore Code Interpreter-ის ეფემერულ MicroVM-ებს როგორც dynamic scratch pad-ს მასშტაბური ანალიზისთვის.",
-      "what_happened": "AWS-მა დეტალურად აღწერა Abnormal AI-ს საწარმოო არქიტექტურა, სადაც უსაფრთხოების აგენტები რთული მონაცემების ასაგრეგირებლად იყენებენ სერვერლეს Python/Node.js გარემოებს.",
-      "what_changed": "აგენტი აღარ ცდილობს რთული გამოთვლების ჩატარებას context window-ში, არამედ აგენერირებს კოდს და შედეგს იღებს იზოლირებული MicroVM-იდან.",
-      "why_it_matters": "გასწავლის სწორ არქიტექტურულ პატერნს: როგორ დააკავშირო აგენტის tool calling რეალურ runtime სენდბოქსთან მონაცემთა დასამუშავებლად.",
-      "key_takeaways": [
-        "Ephemeral MicroVM სესიები 15m-8h TTL-ით",
-        "Host OS დონის სრული იზოლაცია",
-        "Python და Node.js წინასწარ ჩატვირთული ბიბლიოთეკები"
-      ],
-      "technical_architecture": [
-        "Serverless MicroVM sandbox runtime",
-        "Configurable VPC mode ან public access",
-        "Direct API file transfer 100MB-მდე"
-      ],
-      "technical_details": [
-        "Code Interpreter REST API",
-        "CloudWatch და CloudTrail logs",
-        "Python/Node.js execution environment"
-      ],
-      "potential_impact": "საშუალებას გაძლევს ააგო რეალური business automation აგენტები, რომლებიც უსაფრთხოდ ამუშავებენ მომხმარებლის ექსელის და CSV ფაილებს.",
-      "action_type": "BUILD",
-      "action": "დაწერე Python სკრიპტი, სადაც LLM აგენერირებს pandas კოდს და უსაფრთხო იზოლირებულ subprocess-ში ამუშავებს მონაცემთა ცხრილს.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Technical Skill",
-        "Real Business Opportunity"
-      ],
-      "verified_facts": [
-        "Abnormal AI იყენებს Bedrock AgentCore Code Interpreter-ს მილიარდობით inline შეტყობინების რეალურ დროში გასაანალიზებლად",
-        "სესიები იყენებენ ეფემერულ MicroVM-ებს 15 წუთიდან 8 საათამდე TTL კონფიგურაციით",
-        "API უზრუნველყოფს 100 მბ ფაილების პირდაპირ დამუშავებას ან S3 ინტეგრაციას"
-      ],
-      "interpretation": "LLM-ის სემანტიკური მსჯელობა არასაკმარისია მონაცემთა აგრეგაციისთვის; აგენტებს ესაჭიროებათ იზოლირებული dynamic code execution გარემო როგორც გამოთვლითი scratch pad.",
-      "uncertainty": "AWS Bedrock API-ს დამოკიდებულება ზრდის cloud vendor lock-in-ის რისკს self-hosted ალტერნატივებთან შედარებით.",
-      "counter_argument": "API-ზე დაფუძნებული Code Interpreter-ის გამოძახება ზრდის latency-ს მარტივ ფუნქციურ tool calling-თან შედარებით."
-    },
     {
       "event_id": "evt-google-mantis-agentic-security",
       "title": "Google Mantis: Pre-Submit მრავალ-აგენტიანი უსაფრთხოების ჰარნესი კოდის ლოკალური მუქარის მოდელებით",
@@ -6032,6 +5894,172 @@
       ],
       "non_obvious_opportunity": "გამოიყენე უფასო Gemini Flash როგორც კრიტიკოსი შენი ლოკალური მცირე Python სკრიპტების ლოგიკის შესამოწმებლად.",
       "fit_assessment": "კარგი თეორიული და პრაქტიკული ბაზაა თვითგანვითარებადი აგენტების ლოგიკის გასაგებად."
+    },
+    {
+      "event_id": "evt-fde-gym-delivery-benchmark",
+      "title": "FDE-Gym: რეალური მომხმარებლის მიწოდებისა და გაურკვეველი მოთხოვნების ბენჩმარკი აგენტებისთვის",
+      "category": "AI Evaluation & Agent Reliability",
+      "primary_url": "https://huggingface.co/papers/2610.22350",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 95,
+      "tldr": "FDE-Gym ტესტავს აგენტებს რეალურ მიწოდების ტასკებზე და აჩვენებს, რომ მოდელები უჭირთ დაფარული მოთხოვნების აღმოჩენა.",
+      "what_happened": "გამოვიდა FDE-Gym ბენჩმარკი 95 რეალური დელივერის ტასკით და 20 სცენარით.",
+      "what_changed": "კარგად გაწერილი თექეთებიდან გადავედით ბუნდოვან, ცოცხალ სისტემებში აგენტების ტესტირებაზე.",
+      "why_it_matters": "გასწავლის, რომ რეალურ ბიზნესში აგენტმა თავად უნდა გამოიკვლიოს პრობლემა და არა უბრალოდ კოდი დაწეროს.",
+      "key_takeaways": [
+        "საუკეთესო მოდელმაც კი მოაგვარა ტასკების მხოლოდ 14%.",
+        "დაფარული შეზღუდვების პოვნა აგენტების მთავარი სისუსტეა.",
+        "წარმატება იზომება მომხმარებლის ბიზნეს მეტრიკით."
+      ],
+      "technical_architecture": [
+        "სიმულირებული გარემო სკრიპტირებული სტეიკჰოლდერებითა და მოდიფიცირებადი სისტემებით."
+      ],
+      "technical_details": [
+        "ქულები იზომება 0-დან 1-მდე ბიზნეს აფლიფტის მიხედვით.",
+        "ჯარიმები ედება ზედმეტ შეტყობინებებსა და მოლოდინის დროს."
+      ],
+      "potential_impact": "ქმნის ახალ სტანდარტს B2B აგენტების ტესტირებისთვის, სადაც ავტომატიზაცია ცვლის forward-deployed ინჟინრებს.",
+      "action_type": "APPLY",
+      "action": "დაამატე შენს მიმდინარე აგენტურ ლოგიკაში კითხვების დასმის ფაზა მომხმარებლის მოთხოვნების დასაზუსტებლად.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value",
+        "Real Business Opportunity"
+      ],
+      "verified_facts": [
+        "FDE-Gym აფასებს აგენტებს 95 რეალურ დელივერის ტასკზე 20 მომხმარებლის სცენარით.",
+        "საუკეთესო კონფიგურაციამ მიაღწია საშუალოდ 0.56 ქულას და მოაგვარა მხოლოდ 14 ტასკი 95-დან.",
+        "არასაკმარისი მოთხოვნებისა და ფაქტების აღმოჩენა მთავარ ბოთლენკს წარმოადგენს."
+      ],
+      "interpretation": "ტრადიციული ბენჩმარკები აგენტებს კარგად გაწერილ თექეთებს აძლევენ, მაგრამ რეალურ ბიზნესში მომხმარებელმა არ იცის რა სურს. ეს ნიშნავს, რომ აგენტმა თავად უნდა დასვას სწორი კითხვები.",
+      "uncertainty": "სკრიპტირებული სტეიკჰოლდერების სიმულაცია ვერ ფარავს ადამიანური ემოციებისა და რეალური კომუნიკაციის სრულ სირთულეს.",
+      "counter_argument": "შესაძლოა FDE-Gym უბრალოდ ზომავს მოდელის პრომპტ-ჰანდლინგის სისუსტეს და არა მის რეალურ საინჟინრო პოტენციალს.",
+      "strategic_assessment": "ისწავლე აგენტებში clarifying questions-ის დაზუსტების ლოგიკის ჩადება. ბიზნესს სწორედ ისეთი აგენტები სჭირდება, რომლებიც არასრული დავალებიდან იწყებენ მუშაობას.",
+      "time_horizon": "mid-term",
+      "what_could_change": "AI აგენტების შეფასება იცვლება სტატიკური ქვიზებიდან ინტერაქტიულ, ბიზნეს-მეტრიკებზე დამყარებულ ტესტებზე.",
+      "risks": [
+        "მომხმარებელთან არასწორი კომუნიკაცია ზრდის ტასკის შესრულების დროს.",
+        "გაურკვეველი შეზღუდვები იწვევს ჰალუცინაციებსა და არასწორ კოდს."
+      ],
+      "non_obvious_opportunity": "შეგიძლია შექმნა მცირე აგენტი, რომელიც ტექნიკურ დავალებას ამოწმებს და მომხმარებელს დამატებით კითხვებს უსვამს დასრულებამდე.",
+      "fit_assessment": "იდეალურად ერგება შენს მიზანს: ააშენო რეალური ბიზნეს აგენტები და არა ტოი დემოები."
+    },
+    {
+      "event_id": "evt-mlexpert-autonomous-ml",
+      "title": "MLExpert: 35B MoE მოდელი ავტონომიური მანქანური სწავლებისა და კვლევისთვის",
+      "category": "AI Research / Agent Architecture",
+      "primary_url": "https://arxiv.org/abs/2610.22344",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 95,
+      "tldr": "MLExpert არის 35B MoE მოდელი, რომელიც ავტონომიურად ატარებს მანქანური სწავლების ექსპერიმენტებს და აღწევს ფრონტიერ მოდელების დონეს.",
+      "what_happened": "წარმოდგენილია MLExpert და Windowed Interaction RL (WIRL) მეთოდი გრძელვადიანი ექსპერიმენტების სამართავად.",
+      "what_changed": "ერთჯერადი კოდის გენერაციიდან გადავედით მრავალსვლიან, თვითშესწორებად ML ექსპერიმენტებზე.",
+      "why_it_matters": "გაჩვენებს, როგორ უნდა მოაწყო აგენტის მიერ ექსპერიმენტების მართვისა და ტრენინგის ციკლი.",
+      "key_takeaways": [
+        "MLExpert აუმჯობესებს ბაზის მოდელის მედალოსნობის მაჩვენებელს MLE-Bench Lite-ზე 72.7%-მდე.",
+        "WIRL მეთოდი ანაწილებს ჯილდოს მრავალსვლიანი ექსპერიმენტის შედეგებზე.",
+        "აღწევს ისეთსავე შედეგებს, როგორიც უფრო დიდ ფრონტიერ მოდელებს აქვთ."
+      ],
+      "technical_architecture": [
+        "35B Mixture-of-Experts არქიტექტურა.",
+        "Kaggle-MLE Factory შესასრულებელი ტასკებისა და ინტერაქციის ჰარნესისთვის."
+      ],
+      "technical_details": [
+        "Windowed Interaction RL (WIRL) აერთიანებს მრავალსვლიან გადაწყვეტილებებს ერთიანი ჯილდოს ქვეშ.",
+        "ასინქრონული კოლექცია და პოლიტიკის კორექცია ტრენინგის დასრულებამდე."
+      ],
+      "potential_impact": "ავტომატიზირებს მონაცემთა მეცნიერისა და ML ინჟინრის რუტინულ ექსპერიმენტულ სამუშაოს.",
+      "action_type": "LEARN",
+      "action": "შეისწავლე როგორ მუშაობს Windowed Interaction RL (WIRL) და სად შეიძლება მისი გამოყენება აგენტის მახსოვრობის ოპტიმიზაციისთვის.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value",
+        "Real Business Opportunity"
+      ],
+      "verified_facts": [
+        "MLExpert არის 35B Mixture-of-Experts აგენტური მოდელი ავტონომიური MLE ოპტიმიზაციისთვის.",
+        "მოდელმა MLE-Bench Lite-ზე საშუალო მედალოსნობის მაჩვენებელი გაზარდა 37.9%-დან 72.7%-მდე.",
+        "იყენებს Windowed Interaction RL (WIRL) მეთოდს მრავალსვლიანი ექსპერიმენტების ჯილდოს განსასაზღვრად."
+      ],
+      "interpretation": "აგენტები აღარ უბრალოდ წერენ კოდს, არამედ ატარებენ გრძელვადიან ექსპერიმენტებს, აანალიზებენ მეტრიკებს და აუმჯობესებენ საკუთარ მოდელებს.",
+      "uncertainty": "გრძელვადიანი ექსპერიმენტები მოითხოვს უზარმაზარ გამოთვლით რესურსებს და უსაფრთხო სანდბოქს გარემოს.",
+      "counter_argument": "Kaggle ტიპის ამოცანებზე ავტონომიური ოპტიმიზაცია არ ნიშნავს რეალური ბიზნეს პრობლემების წარმატებით გადაჭრას.",
+      "strategic_assessment": "გაიგე, როგორ მუშაობს agentic reinforcement learning და ექსპერიმენტების ორკესტრაცია გრძელვადიან ციკლებში.",
+      "time_horizon": "mid-term",
+      "what_could_change": "მანქანური სწავლებისა და მონაცემთა ანალიზის საბაზისო ექსპერიმენტები მთლიანად ავტომატიზდება აგენტების მიერ.",
+      "risks": [
+        "აგენტმა შეიძლება ზედმეტად მოარგოს მოდელი ტესტურ მეტრიკებს (overfitting).",
+        "მაღალი ხარჯები ექსპერიმენტების მრავალსვლიანი ციკლების გამო."
+      ],
+      "non_obvious_opportunity": "შეგიძლია შექმნა მსუბუქი აგენტი, რომელიც უბრალოდ ატარებს ჰიპერპარამეტრების ძიებას და უბრალო ML სკრიპტებს აკონტროლებს.",
+      "fit_assessment": "გაინტერესებს აგენტური არქიტექტურები, ხოლო MLExpert გჩვენებს, როგორ ხდება მრავალსვლიანი ტასკების ოპტიმიზაცია."
+    },
+    {
+      "event_id": "evt-mai-gym-gui-agents",
+      "title": "MAI-Gym: ღია პლატფორმა GUI აგენტების შესაფასებლად და ონლაინ RL ტრენინგისთვის",
+      "category": "AI Research / Agent Architecture",
+      "primary_url": "https://huggingface.co/papers/2610.20939",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 95,
+      "tldr": "MAI-Gym არის ღია პლატფორმა, რომელიც აერთიანებს მობილური და კომპიუტერული GUI აგენტების ევალუაციასა და RL ტრენინგს.",
+      "what_happened": "წარმოდგენილია MAI-Gym, რომელიც აერთიანებს 10 ბენჩმარკს და 20,000 პარალელურ გარემოს.",
+      "what_changed": "ფრაგმენტული GUI ტესტებიდან გადავედით ერთიან, მასშტაბურ ევალუაციისა და ტრენინგის პლატფორმაზე.",
+      "why_it_matters": "გაძლევს შაბლონებს, თუ როგორ მართო აგენტი, რომელიც მუშაობს ოპერაციულ სისტემებსა და აპლიკაციებში.",
+      "key_takeaways": [
+        "MAI-Gym-9B აღწევს სახელმწიფო დონის შედეგებს 10B-ზე პატარა მოდელებისთვის.",
+        "მოვლენები დაფუძნებულია execution-validated ტასკებზე.",
+        "ღია კოდი მოიცავს იმიტირებულ აპებსა და სინთეზის ხელსაწყოებს."
+      ],
+      "technical_architecture": [
+        "საერთო rollout პიპლაინი ტრენინგისა და ევალუაციისთვის.",
+        "კოდზე დამყარებული ტასკების ვერიფიკატორები."
+      ],
+      "technical_details": [
+        "78.4% წარმატება MobileWorld ბენჩმარკზე.",
+        "76.2% წარმატება OSWorld-Verified ბენჩმარკზე."
+      ],
+      "potential_impact": "აჩქარებს ღია კოდის კომპიუტერული აგენტების განვითარებას და ამცირებს დამოკიდებულებას დახურულ ეკოსისტემებზე.",
+      "action_type": "TRACK",
+      "action": "გადახედე MAI-Gym პროექტის GitHub რეპოზიტორიას და შეისწავლე მათი კოდ-ვერიფიკატორების არქიტექტურა.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "MAI-Gym აერთიანებს GUI აგენტების ევალუაციასა და RL ტრენინგს მობილურ და კომპიუტერულ გარემოებში.",
+        "მოდელმა MAI-Gym-9B აჩვენა 78.4% MobileWorld-ზე და 76.2% OSWorld-Verified-ზე.",
+        "პლატფორმა მხარს უჭერს 20,000 პარალელურ გარემოს ინსტანსს."
+      ],
+      "interpretation": "GUI ავტომატიზაცია აღარ არის მხოლოდ კლავიატურისა და მაუსის სიმულაცია; ის მოითხოვს სრულყოფილ ეკოსისტემას და შესრულების ვერიფიკაციას.",
+      "uncertainty": "ასეთი მასშტაბის პარალელური გარემოების გაშვება მოითხოვს დიდ გამოთვლით რესურსებს.",
+      "counter_argument": "მსგავსი იმიტირებული აპლიკაციები შეიძლება სრულად ვერ ასახავდნენ რეალური დესკტოპ გარემოს არაპროგნოზირებადობას.",
+      "strategic_assessment": "გაეცანი MAI-Gym-ის არქიტექტურას, რათა გაიგო, როგორ მუშაობს აგენტი ეკრანის ვიზუალური და პროგრამული ინტერფეისებით.",
+      "time_horizon": "mid-term",
+      "what_could_change": "მობილური და დესკტოპ აპლიკაციების ტესტირება მთლიანად გადადის აგენტურ, ეკრანზე დამყარებულ ავტომატიზაციაზე.",
+      "risks": [
+        "იმიტირებულ გარემოში ნასწავლი პოლიტიკა შეიძლება რეალურ მოწყობილობაზე არ მუშაობდეს.",
+        "მაღალი გამოთვლითი ხარჯები RL ტრენინგის დროს."
+      ],
+      "non_obvious_opportunity": "შეგიძლია გამოიყენო მათი ღია 59 იმიტირებული აპლიკაცია შენივე აგენტების ტესტირებისთვის მცირე ბიუჯეტით.",
+      "fit_assessment": "კარგია დესკტოპ ავტომატიზაციის პრინციპების ასათვისებლად, თუმცა მოითხოვს ძლიერ აპარატურას სრული ტრენინგისთვის."
     }
   ],
   "topics": {
@@ -6105,7 +6133,7 @@
     "AI Coding Tools / Agent Architecture": 2,
     "LLM API / Agent Frameworks": 1,
     "AI Research / LLM Infrastructure": 1,
-    "AI Research / Agent Architecture": 11,
+    "AI Research / Agent Architecture": 13,
     "AI Research / Agent Memory": 1,
     "AI Research / RAG & Embeddings": 1,
     "AI Evaluation / Agent Reliability": 1,
@@ -6148,7 +6176,7 @@
     "აგენტების უსაფრთხოება და Governance": 1,
     "Agent Architecture & APIs": 1,
     "LLM API & Model Architecture": 1,
-    "AI Evaluation & Agent Reliability": 2,
+    "AI Evaluation & Agent Reliability": 3,
     "RAG & Database Architecture": 2,
     "აგენტის არქიტექტურა და Cost Optimization": 1,
     "აგენტების უსაფრთხოება და Sandbox": 3,
@@ -6164,252 +6192,6 @@
     "აგენტების ინფრასტრუქტურა და ხელსაწყოები": 1
   },
   "reports": [
-    {
-      "date": "2026-10-01",
-      "summary": "ეს დღიური ბრიფინგი აანალიზებს აგენტური უსაფრთხოების, მრავალ-აგენტიანი ჰარნესების და მულტიმოდალური რბილი სწავლების (RL) უახლეს ტექნიკურ მიღწევებს. ჩვენ ვფოკუსირდებით ინჟინრულ რეალობაზე და იმ მექანიზმებზე, რომელთა ტესტირებაც მცირე ბიუჯეტით არის შესაძლებელი.",
-      "events": [
-        {
-          "event_id": "evt-google-cloud-apigee-mcp-governance",
-          "title": "Google Cloud Apigee: MCP Tool Authorization and Agent Governance",
-          "category": "აგენტების ინფრასტრუქტურა და MCP",
-          "primary_url": "https://cloud.google.com/blog/topics/inside-google-cloud/whats-new-google-cloud",
-          "supporting_urls": [
-            "https://aws.amazon.com/blogs/networking-and-content-delivery/ai-best-practices-for-aws-network-operations-with-ai-agents-and-mcp"
-          ],
-          "importance": 9,
-          "relevance": 10,
-          "actionability": 9,
-          "source_quality": 9,
-          "confidence": 95,
-          "tldr": "Google Cloud-მა წარადგინა Apigee-ზე დაფუძნებული MCP მართვის სისტემა, რომელიც უზრუნველყოფს აგენტების მკაცრ ავტორიზაციასა და აუდიტს.",
-          "what_happened": "Google-მა აჩვენა, როგორ გამოიყენება Apigee API-ხელმისაწვდომობის გასაკონტროლებლად AI აგენტებსა და back-end სერვისებს შორის.",
-          "what_changed": "უსონტროლო tool calling-იდან ვუახლოვდებით სტანდარტიზებულ, პოლიტიკაზე დამყარებულ (policy-driven) აგენტურ უსაფრთხოებას.",
-          "why_it_matters": "გასწავლის, რომ რეალურ ბიზნეს აგენტებს სჭირდებათ წვდომის მკაცრი შეზღუდვები.",
-          "key_takeaways": [
-            "Apigee აკონტროლებს MCP კლიენტების მიერ ბაზებისა და CRM სისტემების რედაქტირებას.",
-            "გამოიყენება AuthZEN სტანდარტი პოლიტიკის შესაფასებლად.",
-            "API Hub ამცირებს აგენტებისა და ხელსაწყოების ქაოსს."
-          ],
-          "technical_architecture": [
-            "Apigee acts as proxy between MCP client and enterprise backends.",
-            "Fine-grained authorization (FGA) enforces endpoint safety.",
-            "OpenID AuthZEN integration handles decentralized policy checks."
-          ],
-          "technical_details": [
-            "Positioned between LLM agent frameworks and SQL/CRM systems.",
-            "Inspects JSON payloads for unauthorized mutations."
-          ],
-          "potential_impact": "ხსნის გზას საწარმოებში AI აგენტების უსაფრთხო დანერგვისთვის.",
-          "action_type": "BUILD",
-          "action": "დაამატე მარტივი JWT ავტორიზაციის ფენა შენს Python MCP სერვერში, რათა მხოლოდ უფლებამოსილმა აგენტმა შეძლოს ხელსაწყოს გამოძახება.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value",
-            "Real Business Opportunity"
-          ],
-          "verified_facts": [
-            "Apigee positions between MCP clients and enterprise backends for fine-grained authorization (FGA).",
-            "Supports policy evaluation via standards like OpenID AuthZEN.",
-            "Apigee API Hub provides a central discovery surface to eliminate agent sprawl."
-          ],
-          "interpretation": "MCP სერვერების მასშტაბირებასთან ერთად, აუცილებელი ხდება უსაფრთხოების ფენის დამატება, რომელიც აგენტს უკრძალავს არაავტორიზებულ ბაზებთან წვდომას.",
-          "uncertainty": "საწარმოო გეითვეიები (Enterprise gateways) ხშირად ზედმეტად რთულია მცირე პროექტებისთვის.",
-          "counter_argument": "მარტივი აგენტებისთვის საკმარისია კოდშივე ჩადებული API გასაღებების შემოწმება.",
-          "strategic_assessment": "ისწავლე როგორ შექმნა შენს MCP სერვერებში წვდომის კონტროლი (Authorization), რათა შენმა აგენტებმა ვერ შეძლონ საშიში ბრძანებების გაშვება.",
-          "time_horizon": "mid-term",
-          "what_could_change": "ყველა პროფესიონალური MCP არქიტექტორი გამოიყენებს შუალედურ პროქსი-გეითვეიებს უსაფრთხოებისთვის.",
-          "risks": [
-            "ზედმეტი ლატენტურობა API გამოძახებებში",
-            "კონფიგურაციის სირთულე"
-          ],
-          "non_obvious_opportunity": "შეგიძლია დაწერო მსუბუქი Python პროქსი FastAPI-ით, რომელიც ამოწმებს MCP კლიენტის ტოკენებს და შესთავაზო open-source საზოგადოებას.",
-          "fit_assessment": "ზუსტად ერგება შენს მიმდინარე გეგმას MCP და tool calling ტექნოლოგიების შესწავლის შესახებ."
-        },
-        {
-          "event_id": "evt-aws-devops-agent-audit-trails",
-          "title": "AWS DevOps Agent: Immutable Audit Trails and Agent Journals",
-          "category": "აგენტების ინფრასტრუქტურა და უსაფრთხოება",
-          "primary_url": "https://aws.amazon.com/blogs/devops/audit-trails-for-autonomous-agents-with-aws-devops-agent",
-          "supporting_urls": [
-            "https://aws.amazon.com/blogs/networking-and-content-delivery/ai-best-practices-for-aws-network-operations-with-ai-agents-and-mcp"
-          ],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 10,
-          "confidence": 95,
-          "tldr": "AWS-მა წარმოადგინა ავტონომიური აგენტების აუდიტის და ჟურნალირების არქიტექტურა, რომელიც უზრუნველყოფს უცვლელ რეესტრს.",
-          "what_happened": "AWS-მა გამოაქვეყნა მექანიზმი, სადაც DevOps Agent ინახავს თავის აზროვნების ნაბიჯებსა და დასკვნებს წაუშლელ ჟურნალში.",
-          "what_changed": "მექანიკური ლოგებიდან გადავდივართ აგენტის მიერ გენერირებულ, სტრუქტურირებულ მიზეზ-შედეგობრივ აუდიტზე.",
-          "why_it_matters": "გაძლევს მაგალითს, როგორ ააგო შენს აგენტებში გამჭვირვალე და უსაფრთხო შესრულების ისტორია.",
-          "key_takeaways": [
-            "Immutable journal ინახავს symptom, observation და finding ტიპის ჩანაწერებს.",
-            "ჟურნალის ჩანაწერები დამცავია prompt injection შეტევებისგან.",
-            "მოვლენები იფილტრება Amazon EventBridge-ისა და AWS Lambda-ს მეშვეობით."
-          ],
-          "technical_architecture": [
-            "Agent Journal API records ordered execution steps.",
-            "EventBridge routes lifecycle events to audit pipeline.",
-            "S3 archives investigation summaries for compliance."
-          ],
-          "technical_details": [
-            "aws devops-agent list-journal-records --agent-space-id <id>",
-            "Record types include symptom, observation, finding."
-          ],
-          "potential_impact": "ქმნის ნდობას რთულ აგენტურ სისტემებში, რაც აუცილებელია ბიზნეს ავტომატიზაციისთვის.",
-          "action_type": "BUILD",
-          "action": "დაწერე Python სკრიპტი, რომელიც შენი აგენტის ყველა tool call-ს და პასუხს ინახავს JSONL ფაილში როგორც immutable ჟურნალს.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value",
-            "Short-term Opportunity"
-          ],
-          "verified_facts": [
-            "AWS DevOps Agent maintains an immutable, step-by-step record of reasoning and actions.",
-            "The agent journal API records symptom, observation, finding, and investigation summary.",
-            "Journal entries cannot be modified once written, resisting prompt injection."
-          ],
-          "interpretation": "აგენტების ავტონომიის ზრდასთან ერთად, მათი ნაბიჯების აუდიტი და უცვლელი ჟურნალების (immutable journals) წარმოება კრიტიკული ხდება უსაფრთხოებისთვის.",
-          "uncertainty": "საკუთარი კოდის ბაზაზე მსგავსი ჟურნალების აგება დამატებითი ინფრასტრუქტურული ხარჯია.",
-          "counter_argument": "ლოგირება არ აჩერებს აგენტს შეცდომის დაშვებამდე, ის მხოლოდ ფიქსირებს შედეგს.",
-          "strategic_assessment": "შეიმუშავე შენს აგენტებში მსგავსი სტრუქტურირებული ჟურნალების სისტემა, რათა ყოველი tool call და reasoning step აღებჭდოს.",
-          "time_horizon": "mid-term",
-          "what_could_change": "აუდიტი და უსაფრთხოების კონტროლი გახდება ნებისმიერი production აგენტის სავალდებულო სტანდარტი.",
-          "risks": [
-            "დამატებითი ლატენტურობა ჟურნალების ჩაწერის გამო",
-            "კონტექსტის ზედმეტი ზრდა"
-          ],
-          "non_obvious_opportunity": "შეგიძლია ააგო ღია კოდის მსუბუქი აუდიტორული პროქსი Python-ით და შესთავაზო ბიზნესებს.",
-          "fit_assessment": "იდეალურია შენი ასაკისთვის, რომ ისწავლო უსაფრთხო აგენტების დაპროგრამება."
-        },
-        {
-          "event_id": "arxiv-2609-40340-evoduet",
-          "title": "EvoDuet: Bilevel Co-Evolution of Web Searching and Task Solving",
-          "category": "AI Research & Agent Architecture",
-          "primary_url": "https://arxiv.org/abs/2609.40340",
-          "supporting_urls": [
-            "https://arxiv.org/abs/2609.40324"
-          ],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 7,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "EvoDuet მეთოდი ორდონიანი ოპტიმიზაციით აერთიანებს ვებ ძიებასა და ამოცანების გადაჭრას, რაც ზრდის აგენტის კვლევით სიზუსტეს.",
-          "what_happened": "მკვლევრებმა წარადგინეს EvoDuet, რომელიც ერთდროულად ავითარებს გადაწყვეტილებებს და საძიებო კითხვებს.",
-          "what_changed": "სტატიკური ვებ ძიებიდან გადავდივართ აგენტის მიერ საძიებო სტრატეგიის დინამიკურ კო-ევოლუციაზე.",
-          "why_it_matters": "გასწავლის, როგორ აიძულო აგენტი, თავადვე გაასწოროს თავისი არასწორი საძიებო კითხვები.",
-          "key_takeaways": [
-            "Retrieval gate აფასებს მოდელის ცოდნის ხარვეზს ძიების დაწყებამდე.",
-            "შიდა ციკლი აზუსტებს საძიებო ფრაზებს მოსალოდნელი შედეგების მიხედვით.",
-            "მეთოდი მუშაობს სხვადასხვა LLM ბაზაზე და ზრდის აღმოჩენების სიზუსტეს."
-          ],
-          "technical_architecture": [
-            "Bi-level optimization co-evolves solutions and search queries.",
-            "Retrieval gate decides when to fetch external documents.",
-            "Inner loop refines queries based on predicted solution scores."
-          ],
-          "technical_details": [
-            "Evaluated across 21 optimization tasks.",
-            "Compatible with evolutionary search scaffolds."
-          ],
-          "potential_impact": "ქმნის უფრო ჭკვიან კვლევით აგენტებს, რომლებიც არ იკარგებიან არასწორ ძიებებში.",
-          "action_type": "BUILD",
-          "action": "დაწერე Python ფუნქცია, სადაც აგენტი აფასებს ვებ ძიების შედეგს და თუ პასუხი ბუნდოვანია, თავადვე აგენერირებს ახალ, უფრო კონკრეტულ საძიებო ფრაზას.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value",
-            "Short-term Opportunity"
-          ],
-          "verified_facts": [
-            "EvoDuet is a bi-level optimization method co-evolving solutions and search queries.",
-            "A retrieval gate lets the LLM assess its knowledge gap and choose retrieval.",
-            "Raises OpenEvolve's normalized discovery gain from 61.3% to 82.3% with Gemini-3.8-Flash."
-          ],
-          "interpretation": "აგენტები ხშირად მარცხდებიან ძიებისას, რადგან არასწორ კითხვებს სვამენ; ორდონიანი კო-ევოლუცია წყვეტს ამ პრობლემას საძიებო მოთხოვნების დინამიკური ოპტიმიზაციით.",
-          "uncertainty": "მეთოდი მოითხოვს მრავალჯერად გამოძახებას (evolutionary search), რაც ზრდის ტოკენების ხარჯს.",
-          "counter_argument": "მარტივი RAG და ვებ ძიება ხშირად საკმარისია ყოველდღიური ამოცანების უმეტესობისთვის.",
-          "strategic_assessment": "გამოიყენე აგენტებში რეფლექსიის და საძიებო კითხვების ხელახლა დაწერის (query rewriting) ლოგიკა, სანამ ზუსტ პასუხს არ მიიღებ.",
-          "time_horizon": "mid-term",
-          "what_could_change": "ავტონომიური კვლევითი აგენტები გახდებიან ბევრად უფრო ზუსტები ინფორმაციის ძიებაში.",
-          "risks": [
-            "ტოკენების მოხმარების ზრდა",
-            "გამოძახების დროის გახანგრძლივება"
-          ],
-          "non_obvious_opportunity": "შეგიძლია ააგო მცირე აგენტი, რომელიც ამოწმებს საკუთარი ვებ ძიების შედეგების ხარისხს და ცვლის საძიებო ფრაზას.",
-          "fit_assessment": "ძალიან კარგია შენი აგენტური ციკლების და state მართვის გასაუმჯობესებლად."
-        },
-        {
-          "event_id": "evt-skyrl-sagemaker-multimodal-rl",
-          "title": "SkyRL on SageMaker HyperPod: Multimodal RL Post-Training for Agents",
-          "category": "AI Research & Model Architecture",
-          "primary_url": "https://aws.amazon.com/blogs/machine-learning/accelerate-multimodal-rl-training-with-skyrl-on-amazon-sagemaker-hyperpod",
-          "supporting_urls": [
-            "https://arxiv.org/abs/2609.40316"
-          ],
-          "importance": 8,
-          "relevance": 8,
-          "actionability": 7,
-          "source_quality": 10,
-          "confidence": 95,
-          "tldr": "SkyRL-ისა და SageMaker HyperPod-ის გამოყენებამ აამაღლა მულტიმოდალური მოდელების წარმადობა ვიზუალურ ლაბირინთებში 95%-მდე.",
-          "what_happened": "AWS-მა აჩვენა, როგორ გამოიყენება SkyRL და GRPO Qwen3-VL-8B მოდელის განსავითარებლად.",
-          "what_changed": "გახდა შესაძლებელი გრძელი RL ტრაექტორიების ეფექტური რლ-ტრენინგი კლასტერებში.",
-          "why_it_matters": "გაჩვენებს, როგორ იწვრთნება აგენტები რთული გარემოებების დასაძლევად.",
-          "key_takeaways": [
-            "GRPO პოსტ-ტრენინგი აუმჯობესებს აგენტის ნაბიჯების თანმიმდევრობას.",
-            "SageMaker HyperPod უზრუნველყოფს კლასტერის მდგრადობას.",
-            "ხარვეზების ავტომატური ჩანაცვლება იცავს გრძელ ტრენინგებს."
-          ],
-          "technical_architecture": [
-            "SkyRL open-source framework runs on SageMaker HyperPod.",
-            "Ray capabilities create distributed clusters for rollouts.",
-            "FSx for Lustre stores checkpoints and LoRA adapters."
-          ],
-          "technical_details": [
-            "Uses Qwen3-VL-8B vision-language model.",
-            "Group Relative Policy Optimization (GRPO) training loop."
-          ],
-          "potential_impact": "აგენტებს აძლევს ვიზუალური გარემოს ნავიგაციის მაღალ სიზუსტეს.",
-          "action_type": "LEARN",
-          "action": "გაეცანი GRPO (Group Relative Policy Optimization) ალგორითმის პრინციპებს და წაიკითხე მისი გამოყენების შესახებ აგენტურ სისტემებში.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "SkyRL framework trains Qwen3-VL-8B using Group Relative Policy Optimization (GRPO).",
-            "Maze solve rate improved from 43.75% to over 95% on a fixed 64-maze set.",
-            "SageMaker HyperPod provides cluster resiliency and automatic replacement of faulty nodes."
-          ],
-          "interpretation": "მულტიმოდალური აგენტების პოსტ-ტრენინგი GRPO მეთოდით მკვეთრად აუმჯობესებს მათ სივრცულ და ლოგიკურ მსჯელობას.",
-          "uncertainty": "მრავალკვანძიანი კლასტერების მართვა ძვირი და რთულია ინდივიდუალური დეველოპერისთვის.",
-          "counter_argument": "დეველოპერების უმრავლესობისთვის API-ების გამოყენება უფრო იაფია, ვიდრე საკუთარი RL ტრენინგი.",
-          "strategic_assessment": "გაიგე როგორ მუშაობს GRPO და მიხვდი აგენტების პოსტ-ტრენინგის პრინციპებს, თუმცა გამოთვლითი რესურსების გამო თავი შეიკავე დიდი კლასტერების აწყობისგან.",
-          "time_horizon": "mid-term",
-          "what_could_change": "მულტიმოდალური აგენტები გახდებიან უფრო ზუსტები ვიზუალური დავალებების შესრულებაში.",
-          "risks": [
-            "მაღალი გამოთვლითი ხარჯები",
-            "ინფრასტრუქტურის სირთულე"
-          ],
-          "non_obvious_opportunity": "შეგიძლია შეისწავლო LoRA და მიკრო-მოდელების ფაინთუნინგი ღია კოდის ბაზაზე დაბალბიუჯეტიანი GPU-ებით.",
-          "fit_assessment": "კარგია თეორიული ცოდნის გასაღრმავებლად, მაგრამ პრაქტიკაში ფრთხილად უნდა გამოიყენო ბიუჯეტის გამო."
-        }
-      ],
-      "trends": [
-        "Agent governance and Apigee-based MCP authorization replacing unmanaged tool calling",
-        "Immutable audit trails becoming standard for production autonomous agents",
-        "Bilevel co-evolution and query rewriting improving agentic search reliability"
-      ]
-    },
     {
       "date": "2026-10-02",
       "summary": "დღევანდელი ბრიფინგი მოიცავს კოდირების აგენტების ახალ უსაფრთხოების რისკებს, ეკოსისტემურ ბენჩმარკებსა და სตรีმინგული ვიდეო აგენტების არქიტექტურულ სიახლეებს. ჩვენ ვფოკუსირდებით იმაზე, თუ რა ინსტრუმენტების ტესტირება და ათვისებაა შესაძლებელი მცირე ბიუჯეტით ამ კვირაშივე.",
@@ -9432,14 +9214,190 @@
         "დოკუმენტების დამუშავების (IDP) გადასვლა სტატიკური შაბლონებიდან თვითშემსწავლელ multi-agent გრაფებზე",
         "მეხსიერების აქტიური გასუფთავება (Forgetting) ხდება აუცილებელი პირობა ხანგრძლივი მსჯელობისთვის"
       ]
+    },
+    {
+      "date": "2026-10-16",
+      "summary": "დღევანდელი გამოშვება აანალიზებს ახალ კვლევებს, რომლებიც აგენტების რეალურ მიწოდებას, GUI ავტომატიზაციას და მანქანური სწავლების თვითგანვითარებას ეხება. ეს სიგნალები გვიჩვენებს, რომ ტოპ- მოდელების ტესტირება გადადის თეორიული ქვიზებიდან სრულფასოვან საინჟინრო გარემოზე. შენთვის მთავარი მიზანია შეისწავლო ეს არქიტექტურები და აკონტროლო აგენტების შესრულება ლოკალურ, უფასო სტეკზე.",
+      "events": [
+        {
+          "event_id": "evt-fde-gym-delivery-benchmark",
+          "title": "FDE-Gym: რეალური მომხმარებლის მიწოდებისა და გაურკვეველი მოთხოვნების ბენჩმარკი აგენტებისთვის",
+          "category": "AI Evaluation & Agent Reliability",
+          "primary_url": "https://huggingface.co/papers/2610.22350",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 95,
+          "tldr": "FDE-Gym ტესტავს აგენტებს რეალურ მიწოდების ტასკებზე და აჩვენებს, რომ მოდელები უჭირთ დაფარული მოთხოვნების აღმოჩენა.",
+          "what_happened": "გამოვიდა FDE-Gym ბენჩმარკი 95 რეალური დელივერის ტასკით და 20 სცენარით.",
+          "what_changed": "კარგად გაწერილი თექეთებიდან გადავედით ბუნდოვან, ცოცხალ სისტემებში აგენტების ტესტირებაზე.",
+          "why_it_matters": "გასწავლის, რომ რეალურ ბიზნესში აგენტმა თავად უნდა გამოიკვლიოს პრობლემა და არა უბრალოდ კოდი დაწეროს.",
+          "key_takeaways": [
+            "საუკეთესო მოდელმაც კი მოაგვარა ტასკების მხოლოდ 14%.",
+            "დაფარული შეზღუდვების პოვნა აგენტების მთავარი სისუსტეა.",
+            "წარმატება იზომება მომხმარებლის ბიზნეს მეტრიკით."
+          ],
+          "technical_architecture": [
+            "სიმულირებული გარემო სკრიპტირებული სტეიკჰოლდერებითა და მოდიფიცირებადი სისტემებით."
+          ],
+          "technical_details": [
+            "ქულები იზომება 0-დან 1-მდე ბიზნეს აფლიფტის მიხედვით.",
+            "ჯარიმები ედება ზედმეტ შეტყობინებებსა და მოლოდინის დროს."
+          ],
+          "potential_impact": "ქმნის ახალ სტანდარტს B2B აგენტების ტესტირებისთვის, სადაც ავტომატიზაცია ცვლის forward-deployed ინჟინრებს.",
+          "action_type": "APPLY",
+          "action": "დაამატე შენს მიმდინარე აგენტურ ლოგიკაში კითხვების დასმის ფაზა მომხმარებლის მოთხოვნების დასაზუსტებლად.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value",
+            "Real Business Opportunity"
+          ],
+          "verified_facts": [
+            "FDE-Gym აფასებს აგენტებს 95 რეალურ დელივერის ტასკზე 20 მომხმარებლის სცენარით.",
+            "საუკეთესო კონფიგურაციამ მიაღწია საშუალოდ 0.56 ქულას და მოაგვარა მხოლოდ 14 ტასკი 95-დან.",
+            "არასაკმარისი მოთხოვნებისა და ფაქტების აღმოჩენა მთავარ ბოთლენკს წარმოადგენს."
+          ],
+          "interpretation": "ტრადიციული ბენჩმარკები აგენტებს კარგად გაწერილ თექეთებს აძლევენ, მაგრამ რეალურ ბიზნესში მომხმარებელმა არ იცის რა სურს. ეს ნიშნავს, რომ აგენტმა თავად უნდა დასვას სწორი კითხვები.",
+          "uncertainty": "სკრიპტირებული სტეიკჰოლდერების სიმულაცია ვერ ფარავს ადამიანური ემოციებისა და რეალური კომუნიკაციის სრულ სირთულეს.",
+          "counter_argument": "შესაძლოა FDE-Gym უბრალოდ ზომავს მოდელის პრომპტ-ჰანდლინგის სისუსტეს და არა მის რეალურ საინჟინრო პოტენციალს.",
+          "strategic_assessment": "ისწავლე აგენტებში clarifying questions-ის დაზუსტების ლოგიკის ჩადება. ბიზნესს სწორედ ისეთი აგენტები სჭირდება, რომლებიც არასრული დავალებიდან იწყებენ მუშაობას.",
+          "time_horizon": "mid-term",
+          "what_could_change": "AI აგენტების შეფასება იცვლება სტატიკური ქვიზებიდან ინტერაქტიულ, ბიზნეს-მეტრიკებზე დამყარებულ ტესტებზე.",
+          "risks": [
+            "მომხმარებელთან არასწორი კომუნიკაცია ზრდის ტასკის შესრულების დროს.",
+            "გაურკვეველი შეზღუდვები იწვევს ჰალუცინაციებსა და არასწორ კოდს."
+          ],
+          "non_obvious_opportunity": "შეგიძლია შექმნა მცირე აგენტი, რომელიც ტექნიკურ დავალებას ამოწმებს და მომხმარებელს დამატებით კითხვებს უსვამს დასრულებამდე.",
+          "fit_assessment": "იდეალურად ერგება შენს მიზანს: ააშენო რეალური ბიზნეს აგენტები და არა ტოი დემოები."
+        },
+        {
+          "event_id": "evt-mlexpert-autonomous-ml",
+          "title": "MLExpert: 35B MoE მოდელი ავტონომიური მანქანური სწავლებისა და კვლევისთვის",
+          "category": "AI Research / Agent Architecture",
+          "primary_url": "https://arxiv.org/abs/2610.22344",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 95,
+          "tldr": "MLExpert არის 35B MoE მოდელი, რომელიც ავტონომიურად ატარებს მანქანური სწავლების ექსპერიმენტებს და აღწევს ფრონტიერ მოდელების დონეს.",
+          "what_happened": "წარმოდგენილია MLExpert და Windowed Interaction RL (WIRL) მეთოდი გრძელვადიანი ექსპერიმენტების სამართავად.",
+          "what_changed": "ერთჯერადი კოდის გენერაციიდან გადავედით მრავალსვლიან, თვითშესწორებად ML ექსპერიმენტებზე.",
+          "why_it_matters": "გაჩვენებს, როგორ უნდა მოაწყო აგენტის მიერ ექსპერიმენტების მართვისა და ტრენინგის ციკლი.",
+          "key_takeaways": [
+            "MLExpert აუმჯობესებს ბაზის მოდელის მედალოსნობის მაჩვენებელს MLE-Bench Lite-ზე 72.7%-მდე.",
+            "WIRL მეთოდი ანაწილებს ჯილდოს მრავალსვლიანი ექსპერიმენტის შედეგებზე.",
+            "აღწევს ისეთსავე შედეგებს, როგორიც უფრო დიდ ფრონტიერ მოდელებს აქვთ."
+          ],
+          "technical_architecture": [
+            "35B Mixture-of-Experts არქიტექტურა.",
+            "Kaggle-MLE Factory შესასრულებელი ტასკებისა და ინტერაქციის ჰარნესისთვის."
+          ],
+          "technical_details": [
+            "Windowed Interaction RL (WIRL) აერთიანებს მრავალსვლიან გადაწყვეტილებებს ერთიანი ჯილდოს ქვეშ.",
+            "ასინქრონული კოლექცია და პოლიტიკის კორექცია ტრენინგის დასრულებამდე."
+          ],
+          "potential_impact": "ავტომატიზირებს მონაცემთა მეცნიერისა და ML ინჟინრის რუტინულ ექსპერიმენტულ სამუშაოს.",
+          "action_type": "LEARN",
+          "action": "შეისწავლე როგორ მუშაობს Windowed Interaction RL (WIRL) და სად შეიძლება მისი გამოყენება აგენტის მახსოვრობის ოპტიმიზაციისთვის.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value",
+            "Real Business Opportunity"
+          ],
+          "verified_facts": [
+            "MLExpert არის 35B Mixture-of-Experts აგენტური მოდელი ავტონომიური MLE ოპტიმიზაციისთვის.",
+            "მოდელმა MLE-Bench Lite-ზე საშუალო მედალოსნობის მაჩვენებელი გაზარდა 37.9%-დან 72.7%-მდე.",
+            "იყენებს Windowed Interaction RL (WIRL) მეთოდს მრავალსვლიანი ექსპერიმენტების ჯილდოს განსასაზღვრად."
+          ],
+          "interpretation": "აგენტები აღარ უბრალოდ წერენ კოდს, არამედ ატარებენ გრძელვადიან ექსპერიმენტებს, აანალიზებენ მეტრიკებს და აუმჯობესებენ საკუთარ მოდელებს.",
+          "uncertainty": "გრძელვადიანი ექსპერიმენტები მოითხოვს უზარმაზარ გამოთვლით რესურსებს და უსაფრთხო სანდბოქს გარემოს.",
+          "counter_argument": "Kaggle ტიპის ამოცანებზე ავტონომიური ოპტიმიზაცია არ ნიშნავს რეალური ბიზნეს პრობლემების წარმატებით გადაჭრას.",
+          "strategic_assessment": "გაიგე, როგორ მუშაობს agentic reinforcement learning და ექსპერიმენტების ორკესტრაცია გრძელვადიან ციკლებში.",
+          "time_horizon": "mid-term",
+          "what_could_change": "მანქანური სწავლებისა და მონაცემთა ანალიზის საბაზისო ექსპერიმენტები მთლიანად ავტომატიზდება აგენტების მიერ.",
+          "risks": [
+            "აგენტმა შეიძლება ზედმეტად მოარგოს მოდელი ტესტურ მეტრიკებს (overfitting).",
+            "მაღალი ხარჯები ექსპერიმენტების მრავალსვლიანი ციკლების გამო."
+          ],
+          "non_obvious_opportunity": "შეგიძლია შექმნა მსუბუქი აგენტი, რომელიც უბრალოდ ატარებს ჰიპერპარამეტრების ძიებას და უბრალო ML სკრიპტებს აკონტროლებს.",
+          "fit_assessment": "გაინტერესებს აგენტური არქიტექტურები, ხოლო MLExpert გჩვენებს, როგორ ხდება მრავალსვლიანი ტასკების ოპტიმიზაცია."
+        },
+        {
+          "event_id": "evt-mai-gym-gui-agents",
+          "title": "MAI-Gym: ღია პლატფორმა GUI აგენტების შესაფასებლად და ონლაინ RL ტრენინგისთვის",
+          "category": "AI Research / Agent Architecture",
+          "primary_url": "https://huggingface.co/papers/2610.20939",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 95,
+          "tldr": "MAI-Gym არის ღია პლატფორმა, რომელიც აერთიანებს მობილური და კომპიუტერული GUI აგენტების ევალუაციასა და RL ტრენინგს.",
+          "what_happened": "წარმოდგენილია MAI-Gym, რომელიც აერთიანებს 10 ბენჩმარკს და 20,000 პარალელურ გარემოს.",
+          "what_changed": "ფრაგმენტული GUI ტესტებიდან გადავედით ერთიან, მასშტაბურ ევალუაციისა და ტრენინგის პლატფორმაზე.",
+          "why_it_matters": "გაძლევს შაბლონებს, თუ როგორ მართო აგენტი, რომელიც მუშაობს ოპერაციულ სისტემებსა და აპლიკაციებში.",
+          "key_takeaways": [
+            "MAI-Gym-9B აღწევს სახელმწიფო დონის შედეგებს 10B-ზე პატარა მოდელებისთვის.",
+            "მოვლენები დაფუძნებულია execution-validated ტასკებზე.",
+            "ღია კოდი მოიცავს იმიტირებულ აპებსა და სინთეზის ხელსაწყოებს."
+          ],
+          "technical_architecture": [
+            "საერთო rollout პიპლაინი ტრენინგისა და ევალუაციისთვის.",
+            "კოდზე დამყარებული ტასკების ვერიფიკატორები."
+          ],
+          "technical_details": [
+            "78.4% წარმატება MobileWorld ბენჩმარკზე.",
+            "76.2% წარმატება OSWorld-Verified ბენჩმარკზე."
+          ],
+          "potential_impact": "აჩქარებს ღია კოდის კომპიუტერული აგენტების განვითარებას და ამცირებს დამოკიდებულებას დახურულ ეკოსისტემებზე.",
+          "action_type": "TRACK",
+          "action": "გადახედე MAI-Gym პროექტის GitHub რეპოზიტორიას და შეისწავლე მათი კოდ-ვერიფიკატორების არქიტექტურა.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "MAI-Gym აერთიანებს GUI აგენტების ევალუაციასა და RL ტრენინგს მობილურ და კომპიუტერულ გარემოებში.",
+            "მოდელმა MAI-Gym-9B აჩვენა 78.4% MobileWorld-ზე და 76.2% OSWorld-Verified-ზე.",
+            "პლატფორმა მხარს უჭერს 20,000 პარალელურ გარემოს ინსტანსს."
+          ],
+          "interpretation": "GUI ავტომატიზაცია აღარ არის მხოლოდ კლავიატურისა და მაუსის სიმულაცია; ის მოითხოვს სრულყოფილ ეკოსისტემას და შესრულების ვერიფიკაციას.",
+          "uncertainty": "ასეთი მასშტაბის პარალელური გარემოების გაშვება მოითხოვს დიდ გამოთვლით რესურსებს.",
+          "counter_argument": "მსგავსი იმიტირებული აპლიკაციები შეიძლება სრულად ვერ ასახავდნენ რეალური დესკტოპ გარემოს არაპროგნოზირებადობას.",
+          "strategic_assessment": "გაეცანი MAI-Gym-ის არქიტექტურას, რათა გაიგო, როგორ მუშაობს აგენტი ეკრანის ვიზუალური და პროგრამული ინტერფეისებით.",
+          "time_horizon": "mid-term",
+          "what_could_change": "მობილური და დესკტოპ აპლიკაციების ტესტირება მთლიანად გადადის აგენტურ, ეკრანზე დამყარებულ ავტომატიზაციაზე.",
+          "risks": [
+            "იმიტირებულ გარემოში ნასწავლი პოლიტიკა შეიძლება რეალურ მოწყობილობაზე არ მუშაობდეს.",
+            "მაღალი გამოთვლითი ხარჯები RL ტრენინგის დროს."
+          ],
+          "non_obvious_opportunity": "შეგიძლია გამოიყენო მათი ღია 59 იმიტირებული აპლიკაცია შენივე აგენტების ტესტირებისთვის მცირე ბიუჯეტით.",
+          "fit_assessment": "კარგია დესკტოპ ავტომატიზაციის პრინციპების ასათვისებლად, თუმცა მოითხოვს ძლიერ აპარატურას სრული ტრენინგისთვის."
+        }
+      ],
+      "trends": [
+        "აგენტების შეფასება გადადის სრულფასოვან, ინტერაქტიულ ბიზნეს გარემოზე და არა უბრალოდ სტატიკურ ქვიზებზე.",
+        "GUI და კომპიუტერული ავტომატიზაცია ღია სტეკზე მასშტაბირდება რეალური აპლიკაციების გამოყენებით.",
+        "აგენტური ექსპერიმენტები და ონლაინ RL ხდება სტანდარტი რთული საინჟინრო ტასკების გადასაჭრელად."
+      ]
     }
   ],
   "learning_queue": [
-    "LangGraph-ში State-ის მართვა და მეხსიერების გასუფთავების (Memory Truncation) სტრატეგიები",
-    "Pydantic V2-ის ვალიდატორები და Function Calling სქემების მკაცრი ტიპიზაცია",
-    "AWS Strands Agents SDK-ის საბაზისო პრინციპები და MCP-სთან ინტეგრაცია"
+    "აგენტებში clarification loop-ის (კითხვების დასმის და გაგების ფაზის) პროგრამული იმპლემენტაცია",
+    "პითონში ტასკების ვერიფიკაციისა და ავტომატური ტესტირების პრინციპები აგენტებისთვის"
   ],
-  "last_run": "2026-10-15T14:43:46.124777+00:00",
+  "last_run": "2026-10-16T14:34:38.592655+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -9529,12 +9487,15 @@
     "arxiv:2610.20563",
     "arxiv:2610.19698",
     "arxiv:2610.20576",
-    "arxiv:2610.20572"
+    "arxiv:2610.20572",
+    "arxiv:2610.22350",
+    "arxiv:2610.22344",
+    "arxiv:2610.20939"
   ],
   "last_report_files": {
-    "markdown": "data/reports/2026-10-15/report.md",
-    "json": "data/reports/2026-10-15/report.json",
-    "newsletter": "data/reports/2026-10-15/newsletter.md",
-    "social": "data/reports/2026-10-15/social_posts.txt"
+    "markdown": "data/reports/2026-10-16/report.md",
+    "json": "data/reports/2026-10-16/report.json",
+    "newsletter": "data/reports/2026-10-16/newsletter.md",
+    "social": "data/reports/2026-10-16/social_posts.txt"
   }
 }
