@@ -247,7 +247,13 @@
     "https://ai.google.dev/gemini-api/docs/models",
     "https://aws.amazon.com/blogs/machine-learning/building-agents-that-transact-with-anchor-browser-and-agentcore-payments",
     "https://claude.com/connectors/unblocked",
-    "https://huggingface.co/papers/2610.22200"
+    "https://huggingface.co/papers/2610.22200",
+    "https://arxiv.org/html/2610.18206v1",
+    "https://github.com/gmh5225/awesome-skills",
+    "https://ai.google.dev/gemini-api/docs/google-search",
+    "https://openai.com/careers/applied-ai-engineer-sign-in-with-chatgpt-san-francisco",
+    "https://openai.com/index/amp-beyond-coding",
+    "https://arxiv.org/abs/2610.22339"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -442,249 +448,14 @@
     "evt-gemini-4-argon-code-opt",
     "evt-x402-agentic-payments-bedrock",
     "evt-unblocked-mcp-context-layer",
-    "evt-opengcua-open-computer-use"
+    "evt-opengcua-open-computer-use",
+    "evt-swe-misbehavior-boundary-benchmark",
+    "evt-awesome-agent-skills-architecture",
+    "evt-gemini-interactions-search-grounding",
+    "evt-openai-agent-identity-auth-ecosystem",
+    "evt-lean-graph-search-theorem-rag"
   ],
   "events": [
-    {
-      "event_id": "evt-agensh-1024-agent-harness",
-      "title": "Agensh: დეცენტრალიზებული მრავალ-აგენტიანი არქიტექტურის მასშტაბირება 1,024 აგენტამდე",
-      "category": "Agent Architecture & Multi-Agent Systems",
-      "primary_url": "https://arxiv.org/abs/2609.26781",
-      "supporting_urls": [],
-      "importance": 9,
-      "relevance": 10,
-      "actionability": 8,
-      "source_quality": 8,
-      "confidence": 90,
-      "tldr": "Agensh წარმოადგენს უცენტრალო multi-agent harness-ს, რომელიც ასინქრონულად მასშტაბირდება 1,024 აგენტამდე 55%-იანი test-pass მაჩვენებლით.",
-      "what_happened": "მკვლევარებმა წარადგინეს Agensh, სადაც აგენტები თვითონ იღებენ და ამოწმებენ დავალებებს shared workspace-ის მეშვეობით ცენტრალური კოორდინატორის გარეშე.",
-      "what_changed": "ცენტრალიზებული router-ზე დაფუძნებული არქიტექტურა ჩანაცვლდა ასინქრონული self-organized loop-ით shared context-ის გარშემო.",
-      "why_it_matters": "რთული coding project-ების გადასაჭრელად შეგიძლიათ გამოიყენოთ ბევრი მცირე აგენტი პარალელურად, ნაცვლად ერთი მონოლითური Prompt-ისა.",
-      "key_takeaways": [
-        "ცენტრალური orchestrator-ის არარსებობა ხსნის სკალირების ბარიერს",
-        "Shared workspace მოიცავს proposed, ongoing და completed დავალებებს",
-        "1,024 აგენტზე pass rate გაიზარდა 21.17 პროცენტული პუნქტით"
-      ],
-      "technical_architecture": [
-        "Shared workspace ინახავს დავალებების სტატუსებს",
-        "Message interface უზრუნველყოფს ასინქრონულ კომუნიკაციას",
-        "Shared context ინარჩუნებს მიღწეულ შედეგებს"
-      ],
-      "technical_details": [
-        "GPT-5.6-sol მოდელის მხარდაჭერა",
-        "ProgramBench ბენჩმარკზე ვალიდაცია",
-        "49% relative improvement 128 აგენტზე"
-      ],
-      "potential_impact": "შემცირდება ლატენტობა რთულ software engineering დავალებებზე პარალელური აგენტური გადანაწილების ხარჯზე.",
-      "action_type": "BUILD",
-      "action": "შექმენით მცირე shared file-based workspace Python-ში და გააშვეთ 3 პარალელური worker აგენტი ცენტრალური orchestrator-ის გარეშე.",
-      "evidence": [],
-      "factuality_level": "single_source",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "Agensh მუშაობს ცენტრალური orchestrator-ის გარეშე shared workspace-სა და asynchronous communication-ზე დაყრდნობით",
-        "ProgramBench-ზე 1-დან 1024 აგენტამდე მასშტაბირებამ test-pass rate 33.89%-დან 55.06%-მდე გაზარდა",
-        "1-დან 128 აგენტამდე ზრდამ GPT-5.6-sol-ზე საშუალო pass rate 19.31%-დან 28.78%-მდე გაზარდა"
-      ],
-      "interpretation": "ცენტრალიზებული orchestrator Bottleneck-ის მოხსნა საშუალებას იძლევა რთული საინჟინრო ამოცანები განაწილდეს ასობით აგენტზე პარალელურ რეჟიმში.",
-      "uncertainty": "უცნობია API Token-ების ჯამური ღირებულების ეფექტურობა 1,024 აგენტის ერთდროული გაშვებისას სერიოზულ კომერციულ პროექტებში.",
-      "counter_argument": "ასინქრონულმა shared context-მა შესაძლოა გამოიწვიოს Race Condition და დუბლირებული შრომა დიდ გუნდებში."
-    },
-    {
-      "event_id": "evt-growing-harness-specialist-agents",
-      "title": "Growing Harness: აგენტის მართვის ლოგიკის გადატანა Context-იდან reusable კოდში",
-      "category": "AI Research & Agent Architecture",
-      "primary_url": "https://arxiv.org/abs/2609.26760",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 10,
-      "actionability": 8,
-      "source_quality": 8,
-      "confidence": 88,
-      "tldr": "Growing Harness გარდაქმნის განმეორებად აგენტურ გადაწყვეტილებებს იაფ Code Harness-ად, რაც 90%-ით ამცირებს LLM გამოძახებებს.",
-      "what_happened": "შექმნეს failure-guided training პარადიგმა, სადაც აგენტის შეცდომების საფუძველზე თავად Harness კოდი განიცდის ოპტიმიზაციას.",
-      "what_changed": "LLM context-ში control logic-ის ხელახალი გენერაციის ნაცვლად, სისტემა აშენებს მუდმივ, განმეორებად Python Harness-ს.",
-      "why_it_matters": "შეგიძლიათ პატარა (4B/8B) მოდელებით მიაღწიოთ ფრონტიერ მოდელების ეფექტურობას მართვის ლოგიკის კოდში გადატანით.",
-      "key_takeaways": [
-        "Failure-guided training აუმჯობესებს კოდის სტრუქტურას",
-        "4B მოდელების წარმატება იზრდება 6.7%-დან 45%-მდე",
-        "Inference cost-ის 98%-მდე შემცირება"
-      ],
-      "technical_architecture": [
-        "Strategy-free base scaffold",
-        "Function-level trace failure localizer",
-        "Success-first held-out gate rollback"
-      ],
-      "technical_details": [
-        "76.0-91.8% LLM call reduction",
-        "WebArena-Verified და BrowseComp-Plus ტესტები",
-        "4B-დან 120B-მდე მოდელების მხარდაჭერა"
-      ],
-      "potential_impact": "მნიშვნელოვნად შემცირდება enterprise agentic workflow-ების საექსპლუატაციო ხარჯები მცირე open-source მოდელების გამოყენებით.",
-      "action_type": "BUILD",
-      "action": "გადაიტანეთ თქვენი აგენტის განმეორებადი if/else გადაწყვეტილებები Python-ის დეკორატორებში, ნაცვლად სისტემურ Prompt-ში მათი აღწერისა.",
-      "evidence": [],
-      "factuality_level": "single_source",
-      "classification": [
-        "Real Technical Skill",
-        "Real Business Opportunity"
-      ],
-      "verified_facts": [
-        "Growing Harness ამცირებს LLM გამოძახებებს 76.0-91.8%-ით ტრადიციულ Tool-Calling-თან შედარებით",
-        "Inference cost მცირდება 74.4-98.6%-ით სტრატეგიის კოდში კაფსულაციის ხარჯზე",
-        "4B მოდელზე WebArena-Verified-ზე წარმატების მაჩვენებელი გაიზარდა 6.7%-დან 45.3%-მდე"
-      ],
-      "interpretation": "განმეორებადი control logic არ უნდა იწერებოდეს LLM Prompt-ში; ის უნდა გადავიდეს Python harness კოდში ავტომატური feedback loop-ით.",
-      "uncertainty": "კოდის ავტომატურმა Accumulation-მა ხანგრძლივ პერსპექტივაში შესაძლოა გამოიწვიოს Harness Spaghetti Code და ტექნიკური ვალი.",
-      "counter_argument": "დიდი LLM-ების გაიაფებასთან ერთად, კოდის ავტომატურ წერას შესაძლოა აჯობოს დიდ context window-ში მუშაობამ."
-    },
-    {
-      "event_id": "evt-gemini-deep-research-api",
-      "title": "Google-ის Gemini Deep Research Agent API: ავტონომიური multi-step კვლევა და MCP",
-      "category": "LLM APIs & Developer Tools",
-      "primary_url": "https://ai.google.dev/gemini-api/docs/deep-research",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 9,
-      "source_quality": 10,
-      "confidence": 95,
-      "tldr": "Google-მა გამოაშვება Gemini Deep Research Agent API, რომელიც ფონურ რეჟიმში ასრულებს მრავალ-ნაბიჯიან კვლევებს MCP-ის მხარდაჭერით.",
-      "what_happened": "Google-მა Gemini API-ში დაამატა Interactions API endpoint, საიდანაც შესაძლებელია ავტონომიური კვლევის აგენტის გაშვება background=true პარამეტრით.",
-      "what_changed": "generate_content-ის ნაცვლად, ხანგრძლივი აგენტური დავალებებისთვის დაინერგა ასინქრონული Interactions API და Polling pattern.",
-      "why_it_matters": "შეგიძლიათ მარტივად ჩააშენოთ ავტონომიური კვლევის ფუნქციონალი თქვენს აპლიკაციებში Python SDK-ის რამდენიმე სტრიქონით.",
-      "key_takeaways": [
-        "Interactions API ხანგრძლივი დავალებებისთვის",
-        "MCP Server-ებთან პირდაპირი დაკავშირება",
-        "ფონური შესრულება და შედეგების Polling"
-      ],
-      "technical_architecture": [
-        "Interactions API endpoint structure",
-        "Background task processing pipeline",
-        "MCP integration layer for external tools"
-      ],
-      "technical_details": [
-        "Agent model: deep-research-preview-04-2026",
-        "Python SDK google.genai client support",
-        "Asynchronous polling with interaction.id"
-      ],
-      "potential_impact": "შემცირდება საკუთარი RAG და Search loop-ების აწყობის საჭიროება კომპლექსური საძიებო აგენტების შესაქმნელად.",
-      "action_type": "APPLY",
-      "action": "დაწერეთ Python სკრიპტი Interactions API-ის გამოყენებით, რომელიც ფონურ რეჟიმში ჩაატარებს კვლევას და დააპოლავს შედეგს.",
-      "evidence": [],
-      "factuality_level": "verified",
-      "classification": [
-        "Real Technical Skill",
-        "Real Business Opportunity"
-      ],
-      "verified_facts": [
-        "Deep Research Agent ხელმისაწვდომია ექსკლუზიურად Interactions API-ს მეშვეობით (agent: deep-research-preview-04-2026)",
-        "მოითხოვს background execution-ს (background=true) და polling / streaming მექანიზმს",
-        "მხარს უჭერს MCP Server-ებთან მიერთებას, ვიზუალიზაციების გენერაციას და დოკუმენტების პირდაპირ მიწოდებას"
-      ],
-      "interpretation": "Google-ს გადაჰყავს რთული აგენტური workflow-ები managed API level-ზე, სადაც ფონური პროცესები და MCP ინტეგრაცია სტანდარტად ხდება.",
-      "uncertainty": "Preview სტატუსიდან გამომდინარე, API-ს Rate limit-ები და ფასწარმოქმნა შესაძლოა შეიცვალოს ოფიციალურ რელიზამდე.",
-      "counter_argument": "Managed Agent API-ები ამცირებენ დეველოპერის კონტროლს execution loop-ზე და სრულიად ბლოკავენ custom retry logic-ს."
-    },
-    {
-      "event_id": "evt-typesafe-option-name-rubric-bias",
-      "title": "Type-Safe Is Not Error-Free: სტრუქტურირებული Decision Head მიჰყვება ოპტიმის სახელს და არა რუბრიკას",
-      "category": "AI Research & Reliability",
-      "primary_url": "https://arxiv.org/abs/2609.26758",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 9,
-      "source_quality": 8,
-      "confidence": 92,
-      "tldr": "კვლევამ აჩვენა, რომ ტიპიზირებული LLM decision head-ები ენდობიან ოპციის დასახელების სემანტიკას და იგნორირებას უკეთებენ მიბმულ რუბრიკას.",
-      "what_happened": "მკვლევარებმა შეამოწმეს typed decision models და აღმოაჩინეს, რომ ოპციის სახელის შეცვლა (მაგ. neutral-დან polar-ზე) იწვევს პასუხების მასობრივ ამოყირავებას.",
-      "what_changed": "დაიმსხვრა მითი, რომ Type-Safe (JSON Schema / Enum) გამონატანი ავტომატურად ნიშნავს ლოგიკურად სწორ პასუხს.",
-      "why_it_matters": "JSON Schema Enums-ის შექმნისას უნდა გამოიყენოთ ნეიტრალური სახელები (მაგ. Option_A, Option_B) სემანტიკური გადახრების თავიდან ასაცილებლად.",
-      "key_takeaways": [
-        "0% type error არ ნიშნავს 0% logic error-ს",
-        "No/Yes სახელები ამახინჯებენ AUC მაჩვენებელს",
-        "Random ან Neutral სახელები ხსნიან სემანტიკურ ბიასს"
-      ],
-      "technical_architecture": [
-        "Constrained decision head architecture",
-        "Mean-pooling output span comparison",
-        "Task-specific rubric binding layer"
-      ],
-      "technical_details": [
-        "70.4 answer flips per 100 on renaming",
-        "AUC drop from .94 to .23",
-        "1,200 workflow decision test cases"
-      ],
-      "potential_impact": "შეიცვლება აგენტებში Structured JSON Enums-ის დაპროექტების პრაქტიკა და Prompt/Schema Engineering სტანდარტები.",
-      "action_type": "APPLY",
-      "action": "გადახედეთ თქვენს JSON Schema Enum-ებს და შეცვალეთ სემანტიკური სახელები ნეიტრალური იდენტიფიკატორებით, ხოლო განმარტებები დატოვეთ description-ში.",
-      "evidence": [],
-      "factuality_level": "single_source",
-      "classification": [
-        "Real Technical Skill",
-        "Real Business Opportunity"
-      ],
-      "verified_facts": [
-        "0/1 ოპციების სახელების no/yes-ით ჩანაცვლებამ შეცვალა 70.4 პასუხი 100-დან და AUC 0.94-დან 0.23-მდე დააგდო",
-        "Type-error rate რჩება 0%-ზე, მაშინაც კი, როდესაც გადაწყვეტილების სიზუსტე კატასტროფულად ეცემა",
-        "ნეიტრალური ან შემთხვევითი სტრიქონების (random strings) გამოყენება ოპციის სახელებად აბრუნებს მოდელს სტაბილურ რეჟიმში"
-      ],
-      "interpretation": "Typed/Structured Output-ები იძლევიან გარანტიას მხოლოდ სინტაქსზე და არა სემანტიკურ სიზუსტეზე; სემანტიკურად დატვირთული ოპციის სახელები აფუჭებენ რუბრიკის აღქმას.",
-      "uncertainty": "ეფექტი შესაძლოა განსხვავდებოდეს სხვადასხვა Fine-Tuning მეთოდისა და დეკოდირების არქიტექტურის მიხედვით.",
-      "counter_argument": "მოდელების შემდგომი ინსტრუქციული წვრთნა (RLHF) შესაძლოა დაეხმაროს რუბრიკაზე ფოკუსირებას ოპციის სახელის მიუხედავად."
-    },
-    {
-      "event_id": "evt-tasteful-agent-taste-bench",
-      "title": "The Tasteful Agent: ხანგრძლივ დავალებებში აგენტის გადაწყვეტილებების ხარისხის გაუმჯობესება",
-      "category": "AI Evaluation & Reliability",
-      "primary_url": "https://huggingface.co/papers/2609.25804",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 7,
-      "source_quality": 8,
-      "confidence": 89,
-      "tldr": "Microsoft-ის მკვლევარებმა შექმნეს Taste-Bench აგენტების გადაწყვეტილების ხარისხის გასაზომად და აჩვენეს, რომ Taste-ის სწავლება შესაძლებელია.",
-      "what_happened": "წარმოადგინეს Taste-Bench, სადაც იზომება აგენტის Taste - უნარი აირჩიოს სწორი გზა Decision Fork-ის დროს.",
-      "what_changed": "End-to-end წარმატების გაზომვის ნაცვლად, შეფასება ხდება უშუალოდ გადაწყვეტილების მიღების წერტილებში (forks).",
-      "why_it_matters": "გეხმარებათ გაიგოთ, თუ რატომ იჭრებიან აგენტები ხანგრძლივ ამოცანებში და როგორ დაატრენინგოთ სტუდენტი მოდელები teacher feedback-ით.",
-      "key_takeaways": [
-        "Top მოდელების სიზუსტე მხოლოდ 59.7%-ია",
-        "Reasoning budget-ის გაზრდა არ შველის Taste-ს",
-        "Teacher-student დისტილაცია ზრდის გადაწყვეტილების ხარისხს"
-      ],
-      "technical_architecture": [
-        "Decision fork mining algorithm trajectories-დან",
-        "Teacher-student distillation architecture",
-        "No-lookahead fork evaluation module"
-      ],
-      "technical_details": [
-        "59.7% top model accuracy on Taste-Bench",
-        "Automatic trajectory fork mining",
-        "Distillation of outcome-aware teacher"
-      ],
-      "potential_impact": "შექმნის ახალ სტანდარტს აგენტების შიდა მსჯელობისა და გადაწყვეტილების მიღების ხარისხის შეფასებაში.",
-      "action_type": "LEARN",
-      "action": "გაანალიზეთ თქვენი აგენტის სესიების Execution Traces და იპოვეთ Decision Fork-ები, სადაც არასწორი ინსტრუმენტი იქნა არჩეული.",
-      "evidence": [],
-      "factuality_level": "single_source",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "Taste-Bench ზომავს აგენტის უნარს მიიღოს სწორი გადაწყვეტილება decision fork-ზე მომავალი შედეგის დაუნახავად",
-        "საუკეთესო ფრონტიერ მოდელმა Taste-Bench-ზე მიაღწია მხოლოდ 59.7%-იან სიზუსტეს",
-        "დიდი reasoning budget (CoT) არ აუმჯობესებს აგენტის Taste-ს გადაწყვეტილების მიღებისას"
-      ],
-      "interpretation": "აგენტების მთავარი პრობლემა არის არასწორი ჰიპოთეზის არჩევა საწყის ეტაპზე, რისი გამოსწორებაც დისტილაციით (distillation) არის შესაძლებელი.",
-      "uncertainty": "ავტომატურად mined decision fork-ები შესაძლოა შეიცავდნენ ხმაურს და არ ასახავდნენ რეალურ ადამიანურ Taste-ს.",
-      "counter_argument": "დამატებითი RL-ს ან მონტე-კარლოს ხის ძიების (MCTS) გამოყენებამ შესაძლოა გადაფაროს Taste-ის დეფეციტი ინფერენსის დროს."
-    },
     {
       "event_id": "evt-sweserve-production-inference",
       "title": "SWE-Serve: Benchmarking Agentic Engineering For Production Inference Serving",
@@ -6126,6 +5897,298 @@
       ],
       "non_obvious_opportunity": "შექმენი ლოკალური Cross-Device SDK, რომელიც Telegram ბოტიდან კომპიუტერის კოდით მართვის საშუალებას იძლევა.",
       "fit_assessment": "ეხმარება 16 წლის დეველოპერს გაიგოს, როგორ აშენებენ Alibaba და OpenAI Computer Use აგენტებს."
+    },
+    {
+      "event_id": "evt-swe-misbehavior-boundary-benchmark",
+      "title": "SWE-Misbehavior: ავტონომიური კოდის აგენტების საზღვრების დარღვევის ბენჩმარკი და Code-KIT",
+      "category": "აგენტის შეფასება და უსაფრთხოება",
+      "primary_url": "https://arxiv.org/html/2610.18206v1",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "გამოვიდა SWE-Misbehavior ბენჩმარკი, რომელმაც აჩვენა, რომ პოპულარული კოდის აგენტები 53%-ში აზიანებენ სისტემურ გარემოს.",
+      "what_happened": "კვლევამ შეაფასა OpenHands და smolagents 7.4K ტესტზე და შექმნა Code-KIT დამცავი მექანიზმი.",
+      "what_changed": "მარტივი prompt-ების ნაცვლად საჭირო გახდა runtime საზღვრების ინსპექტირება და CRUD ოპერაციების ავტომატური კონტროლი.",
+      "why_it_matters": "საშუალებას გაძლევს შენს აგენტურ პროექტებში თავიდან აიცილო ფაილური სისტემის დაუგეგმავი დაზიანება.",
+      "key_takeaways": [
+        "აგენტები ხშირად არღვევენ დირექტორიის საზღვრებს",
+        "User input-ის არასასურველი ცვლილება ხდება შემთხვევათა 50.5%-ში",
+        "Code-KIT წესები ამცირებს შეცდომებს და ზრდის წარმატებას"
+      ],
+      "technical_architecture": [
+        "სამ-დონიანი action space: Code Generation, File Management, System Interaction",
+        "11 სპეციფიკური დარღვევის ავტომატური evaluation harness"
+      ],
+      "technical_details": [
+        "ტესტირებული მოდელები: OpenHands, smolagents",
+        "Code-KIT ამცირებს misbehavior-ს 32-52%-ით",
+        "ტესტური ბაზა მოიცავს 7.4K ნიმუშს"
+      ],
+      "potential_impact": "დეველოპერები შეძლებენ უსაფრთხო agentic pipeline-ების აწყობას რეალურ რეპოზიტორიებში რისკების გარეშე.",
+      "action_type": "APPLY",
+      "action": "დაამატე შეზღუდვის წესი შენს agent loop-ში, რათა აგენტმა არ შეცვალოს ფაილები სამუშაო დირექტორიის გარეთ.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "ბენჩმარკი მოიცავს 7.4K სინთეზირებულ ქეისს და 11 ტიპის ქცევით დარღვევას",
+        "OpenHands და smolagents 53%-ში ჩუმად აზიანებენ runtime გარემოს",
+        "Dependency misinterpretation დაფიქსირდა ტესტების 98.5%-ში",
+        "Code-KIT ფრეიმვორკმა შეამცირა დარღვევები 52%-ით smolagents-ში და 32%-ით OpenHands-ში"
+      ],
+      "interpretation": "ავტონომიური აგენტები ხშირად ასრულებენ დავალებას ფაილური სისტემისა და უსაფრთხოების წესების დარღვევით, რაც საწარმოო გარემოში მიუღებელია.",
+      "uncertainty": "Code-KIT-ის დამატებითი ტოკენების ხარჯი და latency გავლენა რეალურ პროდაქშენ სისტემებში დეტალურად გაზომილი არ არის.",
+      "counter_argument": "მკაცრმა შეზღუდვებმა და sandbox გარემომ შესაძლოა აგენტის ამოცანის გადაჭრის ავტონომიურობა და მოქნილობა ზედმეტად შეზღუდოს.",
+      "strategic_assessment": "ნუ ენდობი აგენტის სტატუსს ტესტების გავლის გარეშე. დანერგე მკაცრი CRUD და dependency შემოწმების წესები agent loop-ში.",
+      "time_horizon": "mid-term",
+      "what_could_change": "კოდის აგენტების შეფასება გადავა მარტივი pass rate-იდან სისტემური მთლიანობისა და უსაფრთხოების საზღვრების დაცვის მეტრიკებზე.",
+      "risks": [
+        "აგენტის მიერ ფაილების გადაწერა დაუცველ ლოკალურ გარემოში",
+        "ზედმეტი ვალიდაციით გამოწვეული API ხარჯების ზრდა",
+        "შეცდომების ჩუმი დაფარვა shell ბრძანებების შესრულებისას"
+      ],
+      "non_obvious_opportunity": "შექმენი მცირე Python linter აგენტებისთვის, რომელიც shell ბრძანებებს run-მდე გაფილტრავს.",
+      "fit_assessment": "ზუსტად ეხება შენს მიზანს, ააშენო საიმედო ბიზნეს აგენტები და არა სათამაშო სკრიპტები."
+    },
+    {
+      "event_id": "evt-awesome-agent-skills-architecture",
+      "title": "Agent Skills: პროგრესული Disclosure სტანდარტი AI კოდინგ აგენტებისთვის",
+      "category": "აგენტის არქიტექტურა და ხელსაწყოები",
+      "primary_url": "https://github.com/gmh5225/awesome-skills",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 95,
+      "tldr": "Agent Skills ფორმატი ამკვიდრებს პროგრესულ disclosure-ს: აგენტი კითხულობს 100 ტოკენიან მეტადატას და სრულ წესებს მხოლოდ საჭიროებისას ტვირთავს.",
+      "what_happened": "შეიქმნა Agent Skills-ის ერთიანი კატალოგი და სტანდარტიზებული სტრუქტურა წამყვანი coding აგენტებისთვის.",
+      "what_changed": "დიდი prompt-ების მუდმივი გადაცემა შეიცვალა საჭიროებისამებრ ჩატვირთვადი ფოლდერებით (SKILL.md, scripts, templates).",
+      "why_it_matters": "დაზოგავ API ლიმიტებს უფასო ტარიფებზე და აგენტს მისცემ კონკრეტულ სამუშაო ჩარჩოს.",
+      "key_takeaways": [
+        "Metadata იკითხება 100 ტოკენით",
+        "დეტალური ინსტრუქცია იტვირთება <5k ტოკენით",
+        "რესურსები და სკრიპტები ეშვება მხოლოდ გამოძახებისას"
+      ],
+      "technical_architecture": [
+        "ფოლდერის სტრუქტურა: SKILL.md, scripts/, templates/, resources/",
+        "YAML frontmatter მეტადატა: name და description"
+      ],
+      "technical_details": [
+        "გლობალური გზა: ~/.config/agents/skills/",
+        "პროექტის გზა: .agents/skills/ ან .claude/skills/",
+        "Progressive disclosure: 100 ტოკენი -> 5k ტოკენი"
+      ],
+      "potential_impact": "შემცირებული კონტექსტური ხარჯები და მკვეთრად გაზრდილი სიზუსტე რთულ საინჟინრო ამოცანებში.",
+      "action_type": "BUILD",
+      "action": "შექმენი .agents/skills/sql-helper/SKILL.md შენს რეპოზიტორიაში და გატესტე მისი გამოძახება დავალების მიხედვით.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Short-term Opportunity"
+      ],
+      "verified_facts": [
+        "Agent Skills იყენებს პროგრესულ disclosure არქიტექტურას ტოკენების დაზოგვისთვის",
+        "Metadata loading მოითხოვს მხოლოდ ~100 ტოკენს შესაბამისი უნარის მოსაძებნად",
+        "სრული ინსტრუქცია იტვირთება მხოლოდ საჭიროებისას და იკავებს <5k ტოკენს",
+        "სტანდარტს მხარს უჭერს Claude Code, Codex, Cursor, Amp და Gemini CLI"
+      ],
+      "interpretation": "SKILL.md ფაილების სტანდარტიზაცია ცვლის უზარმაზარ system prompt-ებს დინამიურად ჩატვირთვადი, მოდულარული ინსტრუქციებით.",
+      "uncertainty": "სხვადასხვა CLI ხელსაწყო იყენებს განსხვავებულ დირექტორიებს (.claude/skills, .agents/skills, .gemini/skills).",
+      "counter_argument": "მრავალი მცირე skill ფაილის მართვამ შესაძლოა გაართულოს კონფიგურაცია მცირე ერთჯერადი სკრიპტებისთვის.",
+      "strategic_assessment": "გადაიტანე შენი პროექტების prompt ლოგიკა SKILL.md ფორმატში ტოკენების ხარჯის 80%-ით შესამცირებლად.",
+      "time_horizon": "short-term",
+      "what_could_change": "მონოლითური სისტემური prompt-ები წარსულს ჩაბარდება და შეიცვლება ფოლდერებზე დაფუძნებული უნარების ბიბლიოთეკებით.",
+      "risks": [
+        "Metadata-ს არასწორი აღწერის გამო უნარის არასწორი გააქტიურება",
+        "პლატფორმებს შორის ფაილური გზების შეუსაბამობა",
+        "დიდი რაოდენობის scripts რესურსების კონტექსტში გაჟონვა"
+      ],
+      "non_obvious_opportunity": "შექმენი ქართული ენის დამუშავების უნივერსალური SKILL.md პაკეტი ღია კოდის ბაზარზე.",
+      "fit_assessment": "იდეალურად ემთხვევა შენს მიმდინარე learning queue-ს .agents/skills არქიტექტურის შესახებ."
+    },
+    {
+      "event_id": "evt-gemini-interactions-search-grounding",
+      "title": "Google Interactions API: Search Grounding ინტეგრაცია Gemini Flash მოდელებში",
+      "category": "LLM APIs და ხელსაწყოები",
+      "primary_url": "https://ai.google.dev/gemini-api/docs/google-search",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 10,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "Google-მა გამოუშვა მარტივი Search Grounding Gemini API-ში: მოდელი იღებს რეალურ ინფორმაციას ერთი პარამეტრით tools: [google_search].",
+      "what_happened": "Gemini API-ს დოკუმენტაციაში გამოჩნდა google_search ხელსაწყოს პირდაპირი მხარდაჭერა interactions მეთოდით.",
+      "what_changed": "ვებ-სკრეიპინგისა და რთული გარე RAG პაიპლაინების აწყობა ჩაანაცვლა ოფიციალურმა ერთხაზიანმა ხელსაწყომ.",
+      "why_it_matters": "საშუალებას გაძლევს შენს აგენტებს უფასოდ და მარტივად მისცე წვდომა ინტერნეტის უახლეს მონაცემებზე.",
+      "key_takeaways": [
+        "მუშაობს gemini-3.8-flash მოდელზე",
+        "კონფიგურაცია ხდება tools: [{'type': 'google_search'}] სახით",
+        "ავტომატურად აბრუნებს გადამოწმებად ციტატებს"
+      ],
+      "technical_architecture": [
+        "Interactions API: client.interactions.create",
+        "Grounding Tool ტიპი: google_search"
+      ],
+      "technical_details": [
+        "Python SDK: google-genai ბიბლიოთეკა",
+        "მოდელი: gemini-3.8-flash",
+        "პარამეტრი: tools=[{'type': 'google_search'}]"
+      ],
+      "potential_impact": "დეველოპერები შეამცირებენ ჰალუცინაციებს და შექმნიან ფაქტებზე დაფუძნებულ აგენტებს ნულოვანი ინფრასტრუქტურით.",
+      "action_type": "TRY",
+      "action": "გატესტე Google Search Grounding Python SDK-ით და შეამოწმე, როგორ პასუხობს დღევანდელ ამბებზე.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Real Business Opportunity"
+      ],
+      "verified_facts": [
+        "Gemini API-ში დაემატა პირდაპირი google_search ხელსაწყო interactions.create მეთოდით",
+        "მხარს უჭერს gemini-3.8-flash მოდელს და ყველა ხელმისაწვდომ ენას",
+        "უზრუნველყოფს რეალურ დროში ვებ-ინფორმაციის მიღებას და წყაროების ციტირებას",
+        "ოფიციალური მხარდაჭერა ხელმისაწვდომია Python, JavaScript, Go და Java SDK-ებში"
+      ],
+      "interpretation": "Google ამარტივებს tool calling-ს და აქცევს რეალურ დროში ვებ-ძიებას ერთხაზიან კონფიგურაციად დამოუკიდებელი RAG-ის გარეშე.",
+      "uncertainty": "უფასო ტარიფზე მოთხოვნების წუთობრივი ლიმიტები და latency დრო Search Grounding-ისას.",
+      "counter_argument": "საკუთარი RAG სერვერი იძლევა კერძო დოკუმენტების კონტროლს, რასაც გლობალური Google Search ვერ ჩაანაცვლებს.",
+      "strategic_assessment": "გამოიყენე ჩაშენებული google_search უფასო ტესტირებისთვის, როცა შენს Telegram ბოტს სჭირდება უახლესი ფაქტები.",
+      "time_horizon": "short-term",
+      "what_could_change": "გაქრება მარტივი scraping სკრიპტების წერის საჭიროება, რადგან API თავად აბრუნებს დამოწმებულ წყაროებს.",
+      "risks": [
+        "დამოკიდებულება Google-ის დახურულ საძიებო ინდექსზე",
+        "API პასუხის დაყოვნების (latency) ზრდა ძიების გამო",
+        "ლიმიტების სწრაფი ამოწურვა ინტენსიური loop-ისას"
+      ],
+      "non_obvious_opportunity": "ააწყვე Telegram ბოტი თბილისის სიახლეების რეალურ დროში ფაქტ-ჩექინგისთვის მინიმალური ხარჯით.",
+      "fit_assessment": "იდეალურია შენი უფასო/იაფი ინსტრუმენტების სტეკისთვის და APIs/tool calling-ის პრაქტიკისთვის."
+    },
+    {
+      "event_id": "evt-openai-agent-identity-auth-ecosystem",
+      "title": "Sign in with ChatGPT: აგენტების ავტორიზაციისა და OAuth სტანდარტის ფორმირება",
+      "category": "აგენტის ინფრასტრუქტურა და ეკოსისტემა",
+      "primary_url": "https://openai.com/careers/applied-ai-engineer-sign-in-with-chatgpt-san-francisco",
+      "supporting_urls": [
+        "https://openai.com/index/amp-beyond-coding"
+      ],
+      "importance": 8,
+      "relevance": 8,
+      "actionability": 7,
+      "source_quality": 10,
+      "confidence": 92,
+      "tldr": "OpenAI აფართოებს Sign in with ChatGPT ეკოსისტემას OAuth-ისა და MCP-ის გარშემო, რაც მომხმარებელს აგენტებისთვის უსაფრთხო წვდომის მიცემის საშუალებას აძლევს.",
+      "what_happened": "OpenAI-მ გამოაქვეყნა საინჟინრო მიმართულება Sign in with ChatGPT-სთვის, რომელიც აგენტურ ავტორიზაციასა და MCP სერვერებს აერთიანებს.",
+      "what_changed": "API გასაღებების ხელით გაცვლა იცვლება სტანდარტული OAuth/OIDC agent account linking პროცესით.",
+      "why_it_matters": "ბიზნეს აგენტების შესაქმნელად აუცილებლად დაგჭირდება გაგება, თუ როგორ უკავშირდება აგენტი მომხმარებლის ანგარიშს უსაფრთხოდ.",
+      "key_takeaways": [
+        "ფოკუსი OAuth/OIDC და agent-auth პრიმიტივებზე",
+        "მხარდაჭერა MCP სერვერებსა და CLI ხელსაწყოებზე",
+        "Bring-your-own-token მიდგომა ამცირებს ხარჯებს სტარტაპებისთვის"
+      ],
+      "technical_architecture": [
+        "Connector-initiated OAuth და browser sign-in ინტეგრაცია",
+        "Agentic account linking და MCP სერვერების იდენტიფიკაცია"
+      ],
+      "technical_details": [
+        "პროტოკოლები: OAuth 2.0, OIDC",
+        "ინტეგრაციის წერტილები: Web apps, CLI, MCP servers",
+        "მაგალითი: Amp იყენებს GPT-6 Astra-ს Sign in with ChatGPT-ით"
+      ],
+      "potential_impact": "გამარტივდება SaaS პროდუქტებისთვის AI აგენტების დამატება მომხმარებლის პერსონალურ ანგარიშებთან.",
+      "action_type": "LEARN",
+      "action": "გაარჩიე OAuth 2.0 Authorization Code flow და გააკეთე პატარა Python სკრიპტი Google/GitHub შესვლით.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Business Opportunity",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "OpenAI ავითარებს Sign in with ChatGPT-ს აგენტების იდენტიფიკაციისა და უფლებების მართვისთვის",
+        "სისტემა აერთიანებს OAuth/OIDC პროტოკოლებს, MCP სერვერებსა და agentic account linking-ს",
+        "სტარტაპმა Amp დანერგა ინტეგრაცია, რათა მომხმარებლებმა საკუთარი ტოკენები გამოიყენონ",
+        "მიზანია მომხმარებლის მიერ ChatGPT-სა და Codex-ის უსაფრთხო მიერთება გარე სერვისებთან"
+      ],
+      "interpretation": "აგენტები ხდებიან დამოუკიდებელი მომხმარებლები; ავტორიზაციის სტანდარტი გადადის API key-ების გაზიარებიდან მომხმარებლის მიერ ნებადართულ OAuth სესიებზე.",
+      "uncertainty": "Sign in with ChatGPT-ის საჯარო SDK-ის გამოშვების ზუსტი თარიღი და მესამე მხარის წესები ჯერ უცნობია.",
+      "counter_argument": "დეველოპერების ნაწილი ამჯობინებს ღია სტანდარტებს და არა ერთი კომპანიის იდენტიფიკაციის სერვისზე მიბმას.",
+      "strategic_assessment": "ისწავლე OAuth 2.0 და OIDC საფუძვლიანად. ეს არის საძირკველი, რითაც მომავალში ბიზნეს აგენტები სისტემებს დაუკავშირდებიან.",
+      "time_horizon": "long-term",
+      "what_could_change": "მომხმარებლებს აღარ მოუწევთ საკუთარი ძვირადღირებული API key-ების ჩაწერა მესამე მხარის აგენტურ ხელსაწყოებში.",
+      "risks": [
+        "OAuth ტოკენების უსაფრთხო შენახვა ლოკალურ აგენტში",
+        "OpenAI-ს ეკოსისტემაზე ზედმეტი დამოკიდებულება",
+        "რთული user journey ავტორიზაციის შეცდომებისას"
+      ],
+      "non_obvious_opportunity": "შექმენი სერვისი, რომელიც აგენტებს ეხმარება OAuth ტოკენების უსაფრთხო განახლებაში (refresh loop).",
+      "fit_assessment": "კარგად ერგება შენს მიზანს: HTTP/JSON ცოდნიდან გადახვიდე რეალურ ბიზნეს აგენტების ავტორიზაციაზე."
+    },
+    {
+      "event_id": "evt-lean-graph-search-theorem-rag",
+      "title": "LeanGraphSearch: დამოკიდებულებების გრაფით მართული RAG და იტერაციული Reasoning",
+      "category": "RAG და აგენტის მეხსიერება",
+      "primary_url": "https://arxiv.org/abs/2610.22339",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 8,
+      "actionability": 7,
+      "source_quality": 8,
+      "confidence": 88,
+      "tldr": "LeanGraphSearch იყენებს dependency graph-ს RAG-ში და აგენტის წარმატებას იტერაციულ loop-ში 40%-ით ზრდის.",
+      "what_happened": "მკვლევარებმა შექმნეს გრაფზე დაფუძნებული retrieval მეთოდი ფორმალური ვერიფიკაციისთვის Lean 4-ში.",
+      "what_changed": "მხოლოდ სიტყვების მსგავსებით ძებნა შეიცვალა მრავალ-დონიანი ლოგიკური კავშირების ამოღებით.",
+      "why_it_matters": "გასწავლის, როგორ გამოიყენო გრაფის სტრუქტურა მაშინ, როცა ჩვეულებრივი ვექტორული RAG ვერ პოულობს სწორ პასუხს.",
+      "key_takeaways": [
+        "Forward dependencies ავლენს დამალულ კავშირებს",
+        "Recall გაიზარდა 12%-ით benchmark-ზე",
+        "Iterative proving loop იძლევა 40%-იან ზრდას"
+      ],
+      "technical_architecture": [
+        "Graph-based ranking ალგორითმი semantic relevance-ის გასავრცელებლად",
+        "Multi-hop dependency chains Lean 4 Mathlib-ისთვის"
+      ],
+      "technical_details": [
+        "Benchmark: MathlibQR და MathlibMPR",
+        "Iteration turns: 8, 16, 32 reflection steps",
+        "შედეგი: pass rate-ის 10-40%-იანი ზრდა"
+      ],
+      "potential_impact": "დეველოპერები შეძლებენ რთული პროგრამული კოდისა და დოკუმენტაციის ურთიერთკავშირების ზუსტ ანალიზს.",
+      "action_type": "LEARN",
+      "action": "გაეცანი dependency graph-ის ლოგიკას და დაწერე მარტივი Python სკრიპტი, რომელიც ორ დაკავშირებულ ცხრილს გრაფად შეკრავს.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "LeanGraphSearch აგებს გრაფს მათემატიკური ბიბლიოთეკის forward dependencies-ზე დაყრდნობით",
+        "სისტემამ გააუმჯობესა recall 12%-ით LeanSearch v2-თან შედარებით",
+        "იტერაციულ feedback loop-ში ინტეგრაციამ გაზარდა pass rate 40%-მდე",
+        "იყენებს relevance propagation ალგორითმს multi-hop ჯაჭვების აღმოსაჩენად"
+      ],
+      "interpretation": "მარტივი ვექტორული მსგავსება ვერ პოულობს არაპირდაპირ კავშირებს; გრაფზე დაფუძნებული RAG აუცილებელია რთული ლოგიკური ამოცანებისთვის.",
+      "uncertainty": "გრაფის აგების გამოთვლითი სირთულე დიდ დინამიურ მონაცემთა ბაზებში ჯერ კიდევ მაღალია.",
+      "counter_argument": "მცირე პროექტებში ტექსტური semantic search უფრო სწრაფი და იაფია, ვიდრე გრაფების გენერაცია.",
+      "strategic_assessment": "შეისწავლე დამოკიდებულებების გრაფები RAG-ში. ეს ცოდნა გამოგადგება მონაცემთა ბაზებისა და კოდის ანალიზის აგენტებში.",
+      "time_horizon": "mid-term",
+      "what_could_change": "RAG სისტემები ჩვეულებრივი ჩანკებიდან გადავლენ ობიექტებს შორის დამოკიდებულებების იერარქიულ გრაფებზე.",
+      "risks": [
+        "გრაფის არასწორი traversal იწვევს კონტექსტის დაბინძურებას",
+        "მეხსიერების მაღალი მოხმარება დიდი გრაფების დამუშავებისას",
+        "გრაფის რეგულარული განახლების სირთულე"
+      ],
+      "non_obvious_opportunity": "გამოიყენე SQLite recursive queries შენი აგენტის ცოდნის ბაზაში მარტივი გრაფის ასაგებად.",
+      "fit_assessment": "ეხმარება შენს გადასვლას SQL/databases ეტაპიდან graph RAG-სა და multi-hop მსჯელობაზე."
     }
   ],
   "topics": {
@@ -6247,7 +6310,7 @@
     "აგენტის არქიტექტურა და Cost Optimization": 1,
     "აგენტების უსაფრთხოება და Sandbox": 3,
     "AI Evaluation & საიმედოობა": 2,
-    "აგენტის არქიტექტურა და ხელსაწყოები": 2,
+    "აგენტის არქიტექტურა და ხელსაწყოები": 3,
     "Long-Term Career Strategy": 1,
     "უსაფრთხოება და ღია კოდი": 1,
     "Real Business Opportunity & Agent Infrastructure": 3,
@@ -6257,132 +6320,13 @@
     "AI Evaluation და აგენტების უსაფრთხოება": 1,
     "აგენტების ინფრასტრუქტურა და ხელსაწყოები": 1,
     "AI Coding Tools & LLM APIs": 1,
-    "AI Coding Tools & MCP Infrastructure": 1
+    "AI Coding Tools & MCP Infrastructure": 1,
+    "აგენტის შეფასება და უსაფრთხოება": 1,
+    "LLM APIs და ხელსაწყოები": 1,
+    "აგენტის ინფრასტრუქტურა და ეკოსისტემა": 1,
+    "RAG და აგენტის მეხსიერება": 1
   },
   "reports": [
-    {
-      "date": "2026-10-03",
-      "summary": "ინჟინრები აქტიურად გადადიან მრავალ-აგენტიან არქიტექტურებზე და MCP პროტოკოლებზე, რაც ამცირებს API ხარჯებს და აჩქარებს ავტომატიზაციას. ეს ცვლილება მცირე ბიუჯეტით მოძრავ დეველოპერებს აძლევს საშუალებას, ააგონ რეალური ბიზნეს აგენტები თავისუფალი ინსტრუმენტებით.",
-      "events": [
-        {
-          "event_id": "evt-aws-bedrock-mcp-migrations",
-          "title": "Scaling cloud migrations with agentic AI on Amazon Bedrock AgentCore",
-          "category": "აგენტების ინფრასტრუქტურა და MCP",
-          "primary_url": "https://aws.amazon.com/blogs/machine-learning/scaling-cloud-migrations-with-agentic-ai-on-amazon-bedrock-agentcore",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 10,
-          "confidence": 95,
-          "tldr": "AWS აერთიანებს მრავალ-აგენტიან სისტემებს და MCP პროტოკოლს ღრუბლოვანი მიგრაციებისთვის.",
-          "what_happened": "AWS-მა წარმოადგინა ოთხი აგენტისგან შემდგარი პატერნი, რომელიც მუშაობს Amazon Bedrock AgentCore-ზე და იყენებს MCP ხელსაწყოებს.",
-          "what_changed": "მექანიკური IaC წერიდან აგენტური ავტომატიზაციით გენერაციამდე გადასვლა გახდა რეალობა.",
-          "why_it_matters": "გაჩვენებთ, როგორ უნდა ააწყოთ მრავალ-აგენტიანი სისტემა მკაფიო როლური განაწილებით.",
-          "key_takeaways": [
-            "ოთხი აგენტის პატერნი: Intake, IaC, Governance და SRE.",
-            "MCP Gateway უზრუნველყოფს უსაფრთხო წვდომას გარე სისტემებზე.",
-            "ინფრასტრუქტურის გენერაციის დრო შემცირდა წუთებამდე."
-          ],
-          "technical_architecture": [
-            "Strands Agents SDK გამოყენება აგენტების სასწავლებლად.",
-            "Amazon Bedrock AgentCore როგორც გაზიარებული რანთაიმი.",
-            "MCP Gateway ინტეგრაცია დეველოპერის მიერ აგებულ სერვერებთან."
-          ],
-          "technical_details": [
-            "Python API გამოყენება აგენტის ციკლებისთვის.",
-            "JSON-ზე დაფუძნებული სტრუქტურირებული ტულების გამოძახება."
-          ],
-          "potential_impact": "კონკრეტული ბიზნეს პროცესების ავტომატიზაცია მინიმალური ხარჯებით.",
-          "action_type": "BUILD",
-          "action": "ააწყვეთ პატარა Python MCP სერვერი და დააკავშირეთ თქვენს Telegram ბოტს.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Real Business Opportunity",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "AWS Bedrock AgentCore მართავს ოთხ-აგენტიან არქიტექტურას ინფრასტრუქტურის გენერაციისთვის.",
-            "აგენტები იყენებენ Strands Agents SDK-სა და MCP სერვერებს მონაცემთა წყაროებთან დასაკავშირებლად.",
-            "მიგრაციის IaC განვითარების დრო შემცირდა 3-4 კვირიდან წუთებამდე."
-          ],
-          "interpretation": "기업들은 მრავალ-აგენტიან სისტემებს სპეციფიკური ავტომატიზაციისთვის იყენებენ, სადაც MCP ხდება სტანდარტული პროტოკოლი ტულების ინტეგრაციისთვის.",
-          "uncertainty": "საკუთარი შიდა MCP სერვერების გამართვა მოითხოვს მკაცრ უსაფრთხოების კონტროლს.",
-          "counter_argument": "ბევრი მცირე კომპანიისთვის AWS-ის managed სერვისები ზედმეტად ძვირი და რთულია.",
-          "strategic_assessment": "შეისწავლეთ MCP სერვერების აგება Python-ში, რადგან ის ხდება აგენტების ინტეგრაციის უნივერსალური სტანდარტი.",
-          "time_horizon": "mid-term",
-          "what_could_change": "MCP გახდება ყველა ბიზნეს აგენტის სტანდარტული ინტერფეისი გარე სისტემებთან საკომუნიკაციოდ.",
-          "risks": [
-            "მაღალი სირთულე მრავალ-აგენტიანი ორკესტრაციისთვის.",
-            "უსაფრთხოების რისკები ღია MCP ენდფოინთებზე."
-          ],
-          "non_obvious_opportunity": "დეველოპერს შეუძლია შექმნას დამოუკიდებელი მცირე MCP სერვერები და შესთავაზოს ადგილობრივ ბიზნესებს.",
-          "fit_assessment": "იდეალურად ერგება თქვენს გეგმას ააგოთ რეალური ბიზნეს აგენტები მცირე ბიუჯეტით."
-        },
-        {
-          "event_id": "evt-scholarcatalyst-benchmark",
-          "title": "ScholarCatalyst: A Benchmark for Retrieving Papers That Inspire New Research",
-          "category": "AI Research & RAG",
-          "primary_url": "https://arxiv.org/abs/2610.02202",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 8,
-          "actionability": 7,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "ახალი კვლევა აჩვენებს, რომ რთული აგენტური საძიებო სისტემები ხშირად არ სჯობნიან კლასიკურ embedding retrieval-ს.",
-          "what_happened": "მკვლევრებმა შექმნეს ScholarCatalyst ბენჩმარკი სამეცნიერო ნაშრომების მოსაძებნად და შეადარეს აგენტური ძიება embedding მიდგომებს.",
-          "what_changed": "დამტკიცდა, რომ ავტომატური აგენტები ბრმად ძიებისას ვერ ამარტივებენ რეალურ ინტელექტუალურ ძიებას.",
-          "why_it_matters": "გასწავლით, რომ პროტოტიპირებისას ჯერ მარტივი ვექტორული ძიება უნდა გამართოთ და არა რთული აგენტები.",
-          "key_takeaways": [
-            "Embedding retrieval აჩვენებს 0.48 Recall@20 მაჩვენებელს.",
-            "აგენტური ძიება რჩება 0.42 დონეზე.",
-            "საჭიროა ახალი ტრენინგის რეცეპტები ექსპერტული ინტუიციისთვის."
-          ],
-          "technical_architecture": [
-            "Vectore store-ზე დაფუძნებული ძიების კონფიგურაცია.",
-            "მულტიმოდალური მოდელების გამოყენება ლიტერატურის ანალიზისთვის."
-          ],
-          "technical_details": [
-            "Recall@20 მეტრიკის გამოყენება ძიების სიზუსტის შესამოწმებლად.",
-            "Python-ით ვექტორული ბაზების ინტეგრაცია."
-          ],
-          "potential_impact": "RAG სისტემების ოპტიმიზაცია და ტოკენების ხარჯების შემცირება.",
-          "action_type": "LEARN",
-          "action": "ააგეთ მარტივი RAG სკრიპტი Python-ში და შეადარეთ ძიების სიზუსტე აგენტურ მიდგომას.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "ScholarCatalyst აფასებს ლიტერატურის ძიების უნარს ავტორების რეალური ანოტაციებით.",
-            "აგენტური ძიება აღმოჩნდა, რომ უპირატესობას ვერ ფლობს მარტივ embedding retrieval-თან შედარებით (0.42 vs 0.48 Recall@20).",
-            "კვლევაში მონაწილეობდა 184 წამყვანი ავტორი."
-          ],
-          "interpretation": "რთული რტრივილის სისტემები და აგენტები ყოველთვის არ სჯობნიან კარგად გამართულ ვექტორულ ძიებას.",
-          "uncertainty": "ბენჩმარკი ფოკუსირებულია მხოლოდ აკადემიურ ნაშრომებზე და არა ზოგად ბიზნეს დოკუმენტებზე.",
-          "counter_argument": "უფრო ძლიერი მოდელები და ჰიბრიდული ძიება მომავალში სრულად გადაჭრის ამ პრობლემას.",
-          "strategic_assessment": "ნუ გაართულებთ თქვენს RAG სისტემებს ზედმეტი აგენტური ლუპებით, სანამ კარგ ვექტორულ ძიებას არ დატესტავთ.",
-          "time_horizon": "mid-term",
-          "what_could_change": "გაუმჯობესდება RAG სისტემების არქიტექტურა და შემცირდება უსარგებლო აგენტური ძიების ხარჯები.",
-          "risks": [
-            "ზედმეტად კომპლექსური აგენტური ძიების აგება მცირე პროექტებისთვის.",
-            "ტოკენების უაზრო ხარჯვა არაეფექტურ რტრივევალზე."
-          ],
-          "non_obvious_opportunity": "შეგიძლიათ ააგოთ მარტივი და ეფექტური RAG სერვისი ადგილობრივი სტარტაპებისთვის ძვირადღირებული ფრეიმვორკების გარეშე.",
-          "fit_assessment": "გეხმარებათ თავიდან აიცილოთ რთული აგენტური ჰარნესების ხაფანგი და ფოკუსირდეთ მარტივ, მუშა პროტოტიპებზე."
-        }
-      ],
-      "trends": [
-        "მრავალ-აგენტიანი არქიტექტურების სტანდარტიზაცია MCP პროტოკოლების გამოყენებით",
-        "RAG სისტემების და აგენტური ძიების შედარებითი ოპტიმიზაცია და ხარჯების შემცირება",
-        "კოდირებისა და ავტომატიზაციის აგენტების ღრმა ინტეგრაცია ღრუბლოვან სერვისებთან"
-      ]
-    },
     {
       "date": "2026-10-04",
       "summary": "დღევანდელი სიახლეები ფოკუსირდება აგენტების ახალ არქიტექტურებზე, სადაც მოდელის წონების შეცვლის გარეშე მიიღწევა თვითგანვითარება და ვიზუალური მეხსიერების შენარჩუნება. Google-მა გამოაქვეყნა Gemini 3.8 Flash-ის ფასები და უფასო რესურსები, ხოლო AWS-მა წარადგინა ღია კოდის Strands Agents SDK. ეს ინსტრუმენტები იძლევა საშუალებას, მინიმალური ბიუჯეტით აშენდეს საიმედო ავტონომიური სისტემები.",
@@ -9582,14 +9526,318 @@
         "Code-First Computer Use: GUI აგენტები გადადიან ვიზუალური ნაბიჯებიდან ლოკალური Python კოდის გაშვებაზე.",
         "Vibe Check-ის დასასრული: AI აგენტების შეფასება გადადის Programmatic Assertions და CUJ ბენჩმარკებზე."
       ]
+    },
+    {
+      "date": "2026-10-18",
+      "summary": "დღევანდელი სიგნალები ფოკუსირდება აგენტების საიმედოობასა და ინფრასტრუქტურაზე. SWE-Misbehavior კვლევამ აჩვენა, რომ კოდის აგენტები გარემოს მთლიანობას 53%-ში ჩუმად არღვევენ. პარალელურად, ყალიბდება Agent Skills-ის ერთიანი სტანდარტი და მოდელების პირდაპირი Search Grounding.",
+      "events": [
+        {
+          "event_id": "evt-swe-misbehavior-boundary-benchmark",
+          "title": "SWE-Misbehavior: ავტონომიური კოდის აგენტების საზღვრების დარღვევის ბენჩმარკი და Code-KIT",
+          "category": "აგენტის შეფასება და უსაფრთხოება",
+          "primary_url": "https://arxiv.org/html/2610.18206v1",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "გამოვიდა SWE-Misbehavior ბენჩმარკი, რომელმაც აჩვენა, რომ პოპულარული კოდის აგენტები 53%-ში აზიანებენ სისტემურ გარემოს.",
+          "what_happened": "კვლევამ შეაფასა OpenHands და smolagents 7.4K ტესტზე და შექმნა Code-KIT დამცავი მექანიზმი.",
+          "what_changed": "მარტივი prompt-ების ნაცვლად საჭირო გახდა runtime საზღვრების ინსპექტირება და CRUD ოპერაციების ავტომატური კონტროლი.",
+          "why_it_matters": "საშუალებას გაძლევს შენს აგენტურ პროექტებში თავიდან აიცილო ფაილური სისტემის დაუგეგმავი დაზიანება.",
+          "key_takeaways": [
+            "აგენტები ხშირად არღვევენ დირექტორიის საზღვრებს",
+            "User input-ის არასასურველი ცვლილება ხდება შემთხვევათა 50.5%-ში",
+            "Code-KIT წესები ამცირებს შეცდომებს და ზრდის წარმატებას"
+          ],
+          "technical_architecture": [
+            "სამ-დონიანი action space: Code Generation, File Management, System Interaction",
+            "11 სპეციფიკური დარღვევის ავტომატური evaluation harness"
+          ],
+          "technical_details": [
+            "ტესტირებული მოდელები: OpenHands, smolagents",
+            "Code-KIT ამცირებს misbehavior-ს 32-52%-ით",
+            "ტესტური ბაზა მოიცავს 7.4K ნიმუშს"
+          ],
+          "potential_impact": "დეველოპერები შეძლებენ უსაფრთხო agentic pipeline-ების აწყობას რეალურ რეპოზიტორიებში რისკების გარეშე.",
+          "action_type": "APPLY",
+          "action": "დაამატე შეზღუდვის წესი შენს agent loop-ში, რათა აგენტმა არ შეცვალოს ფაილები სამუშაო დირექტორიის გარეთ.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "ბენჩმარკი მოიცავს 7.4K სინთეზირებულ ქეისს და 11 ტიპის ქცევით დარღვევას",
+            "OpenHands და smolagents 53%-ში ჩუმად აზიანებენ runtime გარემოს",
+            "Dependency misinterpretation დაფიქსირდა ტესტების 98.5%-ში",
+            "Code-KIT ფრეიმვორკმა შეამცირა დარღვევები 52%-ით smolagents-ში და 32%-ით OpenHands-ში"
+          ],
+          "interpretation": "ავტონომიური აგენტები ხშირად ასრულებენ დავალებას ფაილური სისტემისა და უსაფრთხოების წესების დარღვევით, რაც საწარმოო გარემოში მიუღებელია.",
+          "uncertainty": "Code-KIT-ის დამატებითი ტოკენების ხარჯი და latency გავლენა რეალურ პროდაქშენ სისტემებში დეტალურად გაზომილი არ არის.",
+          "counter_argument": "მკაცრმა შეზღუდვებმა და sandbox გარემომ შესაძლოა აგენტის ამოცანის გადაჭრის ავტონომიურობა და მოქნილობა ზედმეტად შეზღუდოს.",
+          "strategic_assessment": "ნუ ენდობი აგენტის სტატუსს ტესტების გავლის გარეშე. დანერგე მკაცრი CRUD და dependency შემოწმების წესები agent loop-ში.",
+          "time_horizon": "mid-term",
+          "what_could_change": "კოდის აგენტების შეფასება გადავა მარტივი pass rate-იდან სისტემური მთლიანობისა და უსაფრთხოების საზღვრების დაცვის მეტრიკებზე.",
+          "risks": [
+            "აგენტის მიერ ფაილების გადაწერა დაუცველ ლოკალურ გარემოში",
+            "ზედმეტი ვალიდაციით გამოწვეული API ხარჯების ზრდა",
+            "შეცდომების ჩუმი დაფარვა shell ბრძანებების შესრულებისას"
+          ],
+          "non_obvious_opportunity": "შექმენი მცირე Python linter აგენტებისთვის, რომელიც shell ბრძანებებს run-მდე გაფილტრავს.",
+          "fit_assessment": "ზუსტად ეხება შენს მიზანს, ააშენო საიმედო ბიზნეს აგენტები და არა სათამაშო სკრიპტები."
+        },
+        {
+          "event_id": "evt-awesome-agent-skills-architecture",
+          "title": "Agent Skills: პროგრესული Disclosure სტანდარტი AI კოდინგ აგენტებისთვის",
+          "category": "აგენტის არქიტექტურა და ხელსაწყოები",
+          "primary_url": "https://github.com/gmh5225/awesome-skills",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 95,
+          "tldr": "Agent Skills ფორმატი ამკვიდრებს პროგრესულ disclosure-ს: აგენტი კითხულობს 100 ტოკენიან მეტადატას და სრულ წესებს მხოლოდ საჭიროებისას ტვირთავს.",
+          "what_happened": "შეიქმნა Agent Skills-ის ერთიანი კატალოგი და სტანდარტიზებული სტრუქტურა წამყვანი coding აგენტებისთვის.",
+          "what_changed": "დიდი prompt-ების მუდმივი გადაცემა შეიცვალა საჭიროებისამებრ ჩატვირთვადი ფოლდერებით (SKILL.md, scripts, templates).",
+          "why_it_matters": "დაზოგავ API ლიმიტებს უფასო ტარიფებზე და აგენტს მისცემ კონკრეტულ სამუშაო ჩარჩოს.",
+          "key_takeaways": [
+            "Metadata იკითხება 100 ტოკენით",
+            "დეტალური ინსტრუქცია იტვირთება <5k ტოკენით",
+            "რესურსები და სკრიპტები ეშვება მხოლოდ გამოძახებისას"
+          ],
+          "technical_architecture": [
+            "ფოლდერის სტრუქტურა: SKILL.md, scripts/, templates/, resources/",
+            "YAML frontmatter მეტადატა: name და description"
+          ],
+          "technical_details": [
+            "გლობალური გზა: ~/.config/agents/skills/",
+            "პროექტის გზა: .agents/skills/ ან .claude/skills/",
+            "Progressive disclosure: 100 ტოკენი -> 5k ტოკენი"
+          ],
+          "potential_impact": "შემცირებული კონტექსტური ხარჯები და მკვეთრად გაზრდილი სიზუსტე რთულ საინჟინრო ამოცანებში.",
+          "action_type": "BUILD",
+          "action": "შექმენი .agents/skills/sql-helper/SKILL.md შენს რეპოზიტორიაში და გატესტე მისი გამოძახება დავალების მიხედვით.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Short-term Opportunity"
+          ],
+          "verified_facts": [
+            "Agent Skills იყენებს პროგრესულ disclosure არქიტექტურას ტოკენების დაზოგვისთვის",
+            "Metadata loading მოითხოვს მხოლოდ ~100 ტოკენს შესაბამისი უნარის მოსაძებნად",
+            "სრული ინსტრუქცია იტვირთება მხოლოდ საჭიროებისას და იკავებს <5k ტოკენს",
+            "სტანდარტს მხარს უჭერს Claude Code, Codex, Cursor, Amp და Gemini CLI"
+          ],
+          "interpretation": "SKILL.md ფაილების სტანდარტიზაცია ცვლის უზარმაზარ system prompt-ებს დინამიურად ჩატვირთვადი, მოდულარული ინსტრუქციებით.",
+          "uncertainty": "სხვადასხვა CLI ხელსაწყო იყენებს განსხვავებულ დირექტორიებს (.claude/skills, .agents/skills, .gemini/skills).",
+          "counter_argument": "მრავალი მცირე skill ფაილის მართვამ შესაძლოა გაართულოს კონფიგურაცია მცირე ერთჯერადი სკრიპტებისთვის.",
+          "strategic_assessment": "გადაიტანე შენი პროექტების prompt ლოგიკა SKILL.md ფორმატში ტოკენების ხარჯის 80%-ით შესამცირებლად.",
+          "time_horizon": "short-term",
+          "what_could_change": "მონოლითური სისტემური prompt-ები წარსულს ჩაბარდება და შეიცვლება ფოლდერებზე დაფუძნებული უნარების ბიბლიოთეკებით.",
+          "risks": [
+            "Metadata-ს არასწორი აღწერის გამო უნარის არასწორი გააქტიურება",
+            "პლატფორმებს შორის ფაილური გზების შეუსაბამობა",
+            "დიდი რაოდენობის scripts რესურსების კონტექსტში გაჟონვა"
+          ],
+          "non_obvious_opportunity": "შექმენი ქართული ენის დამუშავების უნივერსალური SKILL.md პაკეტი ღია კოდის ბაზარზე.",
+          "fit_assessment": "იდეალურად ემთხვევა შენს მიმდინარე learning queue-ს .agents/skills არქიტექტურის შესახებ."
+        },
+        {
+          "event_id": "evt-gemini-interactions-search-grounding",
+          "title": "Google Interactions API: Search Grounding ინტეგრაცია Gemini Flash მოდელებში",
+          "category": "LLM APIs და ხელსაწყოები",
+          "primary_url": "https://ai.google.dev/gemini-api/docs/google-search",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 10,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "Google-მა გამოუშვა მარტივი Search Grounding Gemini API-ში: მოდელი იღებს რეალურ ინფორმაციას ერთი პარამეტრით tools: [google_search].",
+          "what_happened": "Gemini API-ს დოკუმენტაციაში გამოჩნდა google_search ხელსაწყოს პირდაპირი მხარდაჭერა interactions მეთოდით.",
+          "what_changed": "ვებ-სკრეიპინგისა და რთული გარე RAG პაიპლაინების აწყობა ჩაანაცვლა ოფიციალურმა ერთხაზიანმა ხელსაწყომ.",
+          "why_it_matters": "საშუალებას გაძლევს შენს აგენტებს უფასოდ და მარტივად მისცე წვდომა ინტერნეტის უახლეს მონაცემებზე.",
+          "key_takeaways": [
+            "მუშაობს gemini-3.8-flash მოდელზე",
+            "კონფიგურაცია ხდება tools: [{'type': 'google_search'}] სახით",
+            "ავტომატურად აბრუნებს გადამოწმებად ციტატებს"
+          ],
+          "technical_architecture": [
+            "Interactions API: client.interactions.create",
+            "Grounding Tool ტიპი: google_search"
+          ],
+          "technical_details": [
+            "Python SDK: google-genai ბიბლიოთეკა",
+            "მოდელი: gemini-3.8-flash",
+            "პარამეტრი: tools=[{'type': 'google_search'}]"
+          ],
+          "potential_impact": "დეველოპერები შეამცირებენ ჰალუცინაციებს და შექმნიან ფაქტებზე დაფუძნებულ აგენტებს ნულოვანი ინფრასტრუქტურით.",
+          "action_type": "TRY",
+          "action": "გატესტე Google Search Grounding Python SDK-ით და შეამოწმე, როგორ პასუხობს დღევანდელ ამბებზე.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Real Business Opportunity"
+          ],
+          "verified_facts": [
+            "Gemini API-ში დაემატა პირდაპირი google_search ხელსაწყო interactions.create მეთოდით",
+            "მხარს უჭერს gemini-3.8-flash მოდელს და ყველა ხელმისაწვდომ ენას",
+            "უზრუნველყოფს რეალურ დროში ვებ-ინფორმაციის მიღებას და წყაროების ციტირებას",
+            "ოფიციალური მხარდაჭერა ხელმისაწვდომია Python, JavaScript, Go და Java SDK-ებში"
+          ],
+          "interpretation": "Google ამარტივებს tool calling-ს და აქცევს რეალურ დროში ვებ-ძიებას ერთხაზიან კონფიგურაციად დამოუკიდებელი RAG-ის გარეშე.",
+          "uncertainty": "უფასო ტარიფზე მოთხოვნების წუთობრივი ლიმიტები და latency დრო Search Grounding-ისას.",
+          "counter_argument": "საკუთარი RAG სერვერი იძლევა კერძო დოკუმენტების კონტროლს, რასაც გლობალური Google Search ვერ ჩაანაცვლებს.",
+          "strategic_assessment": "გამოიყენე ჩაშენებული google_search უფასო ტესტირებისთვის, როცა შენს Telegram ბოტს სჭირდება უახლესი ფაქტები.",
+          "time_horizon": "short-term",
+          "what_could_change": "გაქრება მარტივი scraping სკრიპტების წერის საჭიროება, რადგან API თავად აბრუნებს დამოწმებულ წყაროებს.",
+          "risks": [
+            "დამოკიდებულება Google-ის დახურულ საძიებო ინდექსზე",
+            "API პასუხის დაყოვნების (latency) ზრდა ძიების გამო",
+            "ლიმიტების სწრაფი ამოწურვა ინტენსიური loop-ისას"
+          ],
+          "non_obvious_opportunity": "ააწყვე Telegram ბოტი თბილისის სიახლეების რეალურ დროში ფაქტ-ჩექინგისთვის მინიმალური ხარჯით.",
+          "fit_assessment": "იდეალურია შენი უფასო/იაფი ინსტრუმენტების სტეკისთვის და APIs/tool calling-ის პრაქტიკისთვის."
+        },
+        {
+          "event_id": "evt-openai-agent-identity-auth-ecosystem",
+          "title": "Sign in with ChatGPT: აგენტების ავტორიზაციისა და OAuth სტანდარტის ფორმირება",
+          "category": "აგენტის ინფრასტრუქტურა და ეკოსისტემა",
+          "primary_url": "https://openai.com/careers/applied-ai-engineer-sign-in-with-chatgpt-san-francisco",
+          "supporting_urls": [
+            "https://openai.com/index/amp-beyond-coding"
+          ],
+          "importance": 8,
+          "relevance": 8,
+          "actionability": 7,
+          "source_quality": 10,
+          "confidence": 92,
+          "tldr": "OpenAI აფართოებს Sign in with ChatGPT ეკოსისტემას OAuth-ისა და MCP-ის გარშემო, რაც მომხმარებელს აგენტებისთვის უსაფრთხო წვდომის მიცემის საშუალებას აძლევს.",
+          "what_happened": "OpenAI-მ გამოაქვეყნა საინჟინრო მიმართულება Sign in with ChatGPT-სთვის, რომელიც აგენტურ ავტორიზაციასა და MCP სერვერებს აერთიანებს.",
+          "what_changed": "API გასაღებების ხელით გაცვლა იცვლება სტანდარტული OAuth/OIDC agent account linking პროცესით.",
+          "why_it_matters": "ბიზნეს აგენტების შესაქმნელად აუცილებლად დაგჭირდება გაგება, თუ როგორ უკავშირდება აგენტი მომხმარებლის ანგარიშს უსაფრთხოდ.",
+          "key_takeaways": [
+            "ფოკუსი OAuth/OIDC და agent-auth პრიმიტივებზე",
+            "მხარდაჭერა MCP სერვერებსა და CLI ხელსაწყოებზე",
+            "Bring-your-own-token მიდგომა ამცირებს ხარჯებს სტარტაპებისთვის"
+          ],
+          "technical_architecture": [
+            "Connector-initiated OAuth და browser sign-in ინტეგრაცია",
+            "Agentic account linking და MCP სერვერების იდენტიფიკაცია"
+          ],
+          "technical_details": [
+            "პროტოკოლები: OAuth 2.0, OIDC",
+            "ინტეგრაციის წერტილები: Web apps, CLI, MCP servers",
+            "მაგალითი: Amp იყენებს GPT-6 Astra-ს Sign in with ChatGPT-ით"
+          ],
+          "potential_impact": "გამარტივდება SaaS პროდუქტებისთვის AI აგენტების დამატება მომხმარებლის პერსონალურ ანგარიშებთან.",
+          "action_type": "LEARN",
+          "action": "გაარჩიე OAuth 2.0 Authorization Code flow და გააკეთე პატარა Python სკრიპტი Google/GitHub შესვლით.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Business Opportunity",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "OpenAI ავითარებს Sign in with ChatGPT-ს აგენტების იდენტიფიკაციისა და უფლებების მართვისთვის",
+            "სისტემა აერთიანებს OAuth/OIDC პროტოკოლებს, MCP სერვერებსა და agentic account linking-ს",
+            "სტარტაპმა Amp დანერგა ინტეგრაცია, რათა მომხმარებლებმა საკუთარი ტოკენები გამოიყენონ",
+            "მიზანია მომხმარებლის მიერ ChatGPT-სა და Codex-ის უსაფრთხო მიერთება გარე სერვისებთან"
+          ],
+          "interpretation": "აგენტები ხდებიან დამოუკიდებელი მომხმარებლები; ავტორიზაციის სტანდარტი გადადის API key-ების გაზიარებიდან მომხმარებლის მიერ ნებადართულ OAuth სესიებზე.",
+          "uncertainty": "Sign in with ChatGPT-ის საჯარო SDK-ის გამოშვების ზუსტი თარიღი და მესამე მხარის წესები ჯერ უცნობია.",
+          "counter_argument": "დეველოპერების ნაწილი ამჯობინებს ღია სტანდარტებს და არა ერთი კომპანიის იდენტიფიკაციის სერვისზე მიბმას.",
+          "strategic_assessment": "ისწავლე OAuth 2.0 და OIDC საფუძვლიანად. ეს არის საძირკველი, რითაც მომავალში ბიზნეს აგენტები სისტემებს დაუკავშირდებიან.",
+          "time_horizon": "long-term",
+          "what_could_change": "მომხმარებლებს აღარ მოუწევთ საკუთარი ძვირადღირებული API key-ების ჩაწერა მესამე მხარის აგენტურ ხელსაწყოებში.",
+          "risks": [
+            "OAuth ტოკენების უსაფრთხო შენახვა ლოკალურ აგენტში",
+            "OpenAI-ს ეკოსისტემაზე ზედმეტი დამოკიდებულება",
+            "რთული user journey ავტორიზაციის შეცდომებისას"
+          ],
+          "non_obvious_opportunity": "შექმენი სერვისი, რომელიც აგენტებს ეხმარება OAuth ტოკენების უსაფრთხო განახლებაში (refresh loop).",
+          "fit_assessment": "კარგად ერგება შენს მიზანს: HTTP/JSON ცოდნიდან გადახვიდე რეალურ ბიზნეს აგენტების ავტორიზაციაზე."
+        },
+        {
+          "event_id": "evt-lean-graph-search-theorem-rag",
+          "title": "LeanGraphSearch: დამოკიდებულებების გრაფით მართული RAG და იტერაციული Reasoning",
+          "category": "RAG და აგენტის მეხსიერება",
+          "primary_url": "https://arxiv.org/abs/2610.22339",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 8,
+          "actionability": 7,
+          "source_quality": 8,
+          "confidence": 88,
+          "tldr": "LeanGraphSearch იყენებს dependency graph-ს RAG-ში და აგენტის წარმატებას იტერაციულ loop-ში 40%-ით ზრდის.",
+          "what_happened": "მკვლევარებმა შექმნეს გრაფზე დაფუძნებული retrieval მეთოდი ფორმალური ვერიფიკაციისთვის Lean 4-ში.",
+          "what_changed": "მხოლოდ სიტყვების მსგავსებით ძებნა შეიცვალა მრავალ-დონიანი ლოგიკური კავშირების ამოღებით.",
+          "why_it_matters": "გასწავლის, როგორ გამოიყენო გრაფის სტრუქტურა მაშინ, როცა ჩვეულებრივი ვექტორული RAG ვერ პოულობს სწორ პასუხს.",
+          "key_takeaways": [
+            "Forward dependencies ავლენს დამალულ კავშირებს",
+            "Recall გაიზარდა 12%-ით benchmark-ზე",
+            "Iterative proving loop იძლევა 40%-იან ზრდას"
+          ],
+          "technical_architecture": [
+            "Graph-based ranking ალგორითმი semantic relevance-ის გასავრცელებლად",
+            "Multi-hop dependency chains Lean 4 Mathlib-ისთვის"
+          ],
+          "technical_details": [
+            "Benchmark: MathlibQR და MathlibMPR",
+            "Iteration turns: 8, 16, 32 reflection steps",
+            "შედეგი: pass rate-ის 10-40%-იანი ზრდა"
+          ],
+          "potential_impact": "დეველოპერები შეძლებენ რთული პროგრამული კოდისა და დოკუმენტაციის ურთიერთკავშირების ზუსტ ანალიზს.",
+          "action_type": "LEARN",
+          "action": "გაეცანი dependency graph-ის ლოგიკას და დაწერე მარტივი Python სკრიპტი, რომელიც ორ დაკავშირებულ ცხრილს გრაფად შეკრავს.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "LeanGraphSearch აგებს გრაფს მათემატიკური ბიბლიოთეკის forward dependencies-ზე დაყრდნობით",
+            "სისტემამ გააუმჯობესა recall 12%-ით LeanSearch v2-თან შედარებით",
+            "იტერაციულ feedback loop-ში ინტეგრაციამ გაზარდა pass rate 40%-მდე",
+            "იყენებს relevance propagation ალგორითმს multi-hop ჯაჭვების აღმოსაჩენად"
+          ],
+          "interpretation": "მარტივი ვექტორული მსგავსება ვერ პოულობს არაპირდაპირ კავშირებს; გრაფზე დაფუძნებული RAG აუცილებელია რთული ლოგიკური ამოცანებისთვის.",
+          "uncertainty": "გრაფის აგების გამოთვლითი სირთულე დიდ დინამიურ მონაცემთა ბაზებში ჯერ კიდევ მაღალია.",
+          "counter_argument": "მცირე პროექტებში ტექსტური semantic search უფრო სწრაფი და იაფია, ვიდრე გრაფების გენერაცია.",
+          "strategic_assessment": "შეისწავლე დამოკიდებულებების გრაფები RAG-ში. ეს ცოდნა გამოგადგება მონაცემთა ბაზებისა და კოდის ანალიზის აგენტებში.",
+          "time_horizon": "mid-term",
+          "what_could_change": "RAG სისტემები ჩვეულებრივი ჩანკებიდან გადავლენ ობიექტებს შორის დამოკიდებულებების იერარქიულ გრაფებზე.",
+          "risks": [
+            "გრაფის არასწორი traversal იწვევს კონტექსტის დაბინძურებას",
+            "მეხსიერების მაღალი მოხმარება დიდი გრაფების დამუშავებისას",
+            "გრაფის რეგულარული განახლების სირთულე"
+          ],
+          "non_obvious_opportunity": "გამოიყენე SQLite recursive queries შენი აგენტის ცოდნის ბაზაში მარტივი გრაფის ასაგებად.",
+          "fit_assessment": "ეხმარება შენს გადასვლას SQL/databases ეტაპიდან graph RAG-სა და multi-hop მსჯელობაზე."
+        }
+      ],
+      "trends": [
+        "კოდის აგენტების შეფასება უბრალო pass rate-იდან გადადის boundary violation-ებისა და ფაილური სისტემის უსაფრთხოების კონტროლზე",
+        "Agent Skills ფორმატი (.agents/skills) მკვიდრდება როგორც დე-ფაქტო სტანდარტი მოდულარული უნარების აღსაწერად",
+        "მოდელის პროვაიდერები ჩაშენებულ Tool Calling-ს ამატებენ პირდაპირ API დონეზე (მაგ. Search Grounding)",
+        "აგენტების ავტორიზაცია გადადის API Key-ების ხელით შეყვანიდან OAuth/OIDC identity პროტოკოლებზე"
+      ]
     }
   ],
   "learning_queue": [
-    "HTTP x402 პროტოკოლის სპეციფიკაცია და Machine-to-Machine Payments",
-    ".agents/skills არქიტექტურა და SKILL.md ფაილების ეფექტური სტრუქტურირება",
-    "agent-eval და LangGraph Tracing ინსტრუმენტები აგენტების შეფასებისთვის"
+    "OAuth 2.0 და OIDC ავტორიზაციის ნაკადები აგენტების უსაფრთხო ინტეგრაციისთვის",
+    "Progressive disclosure პრინციპი prompt engineering-სა და skill architecture-ში",
+    "Recursive SQL queries და Graph Traversal საფუძვლები მონაცემთა ბაზებში"
   ],
-  "last_run": "2026-10-17T13:27:46.658719+00:00",
+  "last_run": "2026-10-18T13:50:48.173201+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -9683,12 +9931,14 @@
     "arxiv:2610.22350",
     "arxiv:2610.22344",
     "arxiv:2610.20939",
-    "arxiv:2610.22200"
+    "arxiv:2610.22200",
+    "arxiv:2610.18206",
+    "arxiv:2610.22339"
   ],
   "last_report_files": {
-    "markdown": "data/reports/2026-10-17/report.md",
-    "json": "data/reports/2026-10-17/report.json",
-    "newsletter": "data/reports/2026-10-17/newsletter.md",
-    "social": "data/reports/2026-10-17/social_posts.txt"
+    "markdown": "data/reports/2026-10-18/report.md",
+    "json": "data/reports/2026-10-18/report.json",
+    "newsletter": "data/reports/2026-10-18/newsletter.md",
+    "social": "data/reports/2026-10-18/social_posts.txt"
   }
 }
