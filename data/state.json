@@ -253,7 +253,10 @@
     "https://ai.google.dev/gemini-api/docs/google-search",
     "https://openai.com/careers/applied-ai-engineer-sign-in-with-chatgpt-san-francisco",
     "https://openai.com/index/amp-beyond-coding",
-    "https://arxiv.org/abs/2610.22339"
+    "https://arxiv.org/abs/2610.22339",
+    "https://cloud.google.com/blog/topics/developers-practitioners/four-eval-engineering-lessons",
+    "https://aws.amazon.com/blogs/machine-learning/introducing-reflection-beam-an-open-weight-model-for-agentic-coding-on-aws",
+    "https://research.google/blog/grounding-ai-agents-in-biological-reality-building-blocks-for-autonomous-wet-labs"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -453,176 +456,12 @@
     "evt-awesome-agent-skills-architecture",
     "evt-gemini-interactions-search-grounding",
     "evt-openai-agent-identity-auth-ecosystem",
-    "evt-lean-graph-search-theorem-rag"
+    "evt-lean-graph-search-theorem-rag",
+    "evt-google-cloud-eval-lessons",
+    "evt-aws-reflection-beam-501b",
+    "evt-google-verid-wet-lab-agents"
   ],
   "events": [
-    {
-      "event_id": "evt-sweserve-production-inference",
-      "title": "SWE-Serve: Benchmarking Agentic Engineering For Production Inference Serving",
-      "category": "AI Coding Tools და Agent Evaluation",
-      "primary_url": "https://arxiv.org/abs/2609.26777",
-      "supporting_urls": [],
-      "importance": 9,
-      "relevance": 9,
-      "actionability": 9,
-      "source_quality": 8,
-      "confidence": 90,
-      "tldr": "SWE-Serve ბენჩმარკი აჩვენებს, რომ კოდირების აგენტების პატჩების თითქმის მესამედი იწუნება production E2E ტესტებში.",
-      "what_happened": "მკვლევარებმა გამოუშვეს SWE-Serve, რომელიც აფასებს coding აგენტებს SGLang-ის production ინფრასტრუქტურულ დავალებებზე.",
-      "what_changed": "Local unit test შემოწმებიდან აგენტური ვალიდაცია გადადის სრულფასოვან E2E inference სერვერულ გარემოზე.",
-      "why_it_matters": "გაძლევთ ზუსტ იარაღს იმის შესამოწმებლად, რამდენად მუშაა შენი აგენტის დაწერილი კოდი რეალურ production სერვერებზე.",
-      "key_takeaways": [
-        "53 repository-grounded tasks across SGLang.",
-        "End-to-end tests reject 33 percent of locally passing patches.",
-        "Best model achieves 75 percent mean pass@1."
-      ],
-      "technical_architecture": [
-        "Evaluates 11 models and 31 model-effort configurations.",
-        "Executes on CPU or single H100 GPU."
-      ],
-      "technical_details": [
-        "Hidden functional and regression test execution.",
-        "CPU and single GPU evaluation runtimes."
-      ],
-      "potential_impact": "ზომავს რეალურ განსხვავებას ლოკალურ წარმატებასა და production სერვერულ სისწორეს შორის.",
-      "action_type": "APPLY",
-      "action": "დაამატე integration ტესტები შენს ავტომატურ კოდირების აგენტურ ჰარნესში ადგილობრივი unit ტესტების პარალელურად.",
-      "evidence": [],
-      "factuality_level": "verified",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value",
-        "Short-term Opportunity"
-      ],
-      "verified_facts": [
-        "SWE-Serve introduces 53 repository-grounded tasks from SGLang production changes.",
-        "Model-serving E2E tests reject roughly one-third of patches passing local tests.",
-        "The best-performing model configuration achieves 75 percent mean pass@1."
-      ],
-      "interpretation": "ლაკლასტიკური local unit ტესტების გავლით კოდის მუშაობა არ ნიშნავს production მზაობას inference სერვერებში.",
-      "uncertainty": "ბენჩმარკი მოიცავს მხოლოდ SGLang რეპოზიტორიის ცვლილებებს და შესაძლოა არ იყოს უნივერსალური.",
-      "counter_argument": "მხოლოდ E2E ტესტებზე ფოკუსირებამ შესაძლოა შეანელოს აგენტების ძირითადი ციკლის iter-ის სიჩქარე.",
-      "strategic_assessment": "გამოიყენე end-to-end შესრულების ტესტები შენს აგენტურ ჰარნესში, რათა თავიდან აიცილო ე.წ. silent failures.",
-      "time_horizon": "mid-term",
-      "what_could_change": "AI coding აგენტების ვალიდაციის სტანდარტები გადაინაცვლებს მარტივი compile ტესტებიდან რეალურ E2E სერვერულ ვალიდაციაზე.",
-      "risks": [
-        "E2E ტესტირების მაღალი გამოთვლითი ხარჯები",
-        "სენდბოქსების კონფიგურაციის სირთულე",
-        "GPU რესურსების შეზღუდვა"
-      ],
-      "non_obvious_opportunity": "შეგიძლია აგენტური ჰარნესისთვის ააწყო მსუბუქი integration check საიდარი, რომელიც ზრდის შენი აგენტის patch-ების სანდოობას.",
-      "fit_assessment": "იდეალურია შენი coding agent პროექტებისთვის, რადგან გასწავლის production-grade ტესტირების ორგანიზებას."
-    },
-    {
-      "event_id": "evt-speakermem-r1-multidialogue",
-      "title": "SpeakerMem-R1: Speaker-Centered Dual-Track Memory for Multi-Party Dialogue",
-      "category": "AI Research / RAG & აგენტის მეხსიერება",
-      "primary_url": "https://arxiv.org/abs/2609.26780",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 8,
-      "source_quality": 8,
-      "confidence": 88,
-      "tldr": "SpeakerMem-R1 ნერგავს speaker-centered dual-track მეხსიერებას მრავალმხრივი დიალოგების ზუსტი ატრიბუციისთვის.",
-      "what_happened": "მკვლევარებმა გამოუშვეს SpeakerMem-R1, რომელიც ყოფს მეხსიერებას verbatim და structured ტრეკებად პერსონა და ჯგუფური ხედვებით.",
-      "what_changed": "ზოგადი ვექტორული ძებნიდან გადავდივართ პირთა და ჯგუფების ურთიერთობებზე დაფუძნებულ მრავალდონიან მეხსიერებაზე.",
-      "why_it_matters": "გაძლევთ რეფერენსულ არქიტექტურას მრავალმხრივი და რთული დიალოგური აგენტების ასაგებად.",
-      "key_takeaways": [
-        "Dual-track memory stores verbatim messages and derived states.",
-        "Organized into person-level and group-level views.",
-        "Achieves top performance on EverMemBench and LoCoMo benchmarks."
-      ],
-      "technical_architecture": [
-        "Writer-R1 trained with SpeakerLevenshtein and speaker-conditioned GRPO.",
-        "Entity, event, and time-based query-time evidence combination."
-      ],
-      "technical_details": [
-        "Dual-track storage layout.",
-        "Speaker-conditioned group preference optimization."
-      ],
-      "potential_impact": "უზრუნველყოფს აგენტების მიერ კონტექსტისა და ავტორობის ზუსტ დამახსოვრებას რთულ ჯგუფურ საუბრებში.",
-      "action_type": "BUILD",
-      "action": "ააწყვე Python სკრიპტი, რომელიც ყოფს ჩათის ისტორიას პერსონალურ და ჯგუფურ სტრუქტურირებულ მეხსიერების ფაილებად.",
-      "evidence": [],
-      "factuality_level": "verified",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "SpeakerMem-R1 uses a dual-track memory storing verbatim messages and derived states.",
-        "Organizes memory into person-level and group-level views.",
-        "Achieves 62.33 percent on EverMemBench and 70.85 percent on LoCoMo benchmarks."
-      ],
-      "interpretation": "მრავალ-აგენტიან და რთულ საკომუნიკაციო სისტემებში მეხსიერება უნდა იყოს სტრუქტურირებული პერსონებისა და ჯგუფების მიხედვით და არა უბრალოდ ვექტორული ბაზა.",
-      "uncertainty": "ორმაგი ტრეკის მეხსიერების მართვა ზრდის ტოკენების ხარჯს და ინფერენსის ლატენტობას.",
-      "counter_argument": "მარტივი RAG ან მიმდინარე კონტექსტური ფანჯარა საკმარისია ბევრი ყოველდღიური აგენტური ამოცანისთვის.",
-      "strategic_assessment": "გაითვალისწინე ეს ორმაგი ტრეკის არქიტექტურა, როდესაც აგებ აგენტებს, რომლებიც კომუნიკაციას უწევენ რამდენიმე მომხმარებელს ერთდროულად.",
-      "time_horizon": "mid-term",
-      "what_could_change": "აგენტების მეხსიერების სისტემები გადავა უბრალო embedding RAG-იდან სტრუქტურირებულ, პერსონა-ორიენტირებულ ორმაგ ბაზებზე.",
-      "risks": [
-        "მეხსიერების განახლების სირთულე დიალოგის დინამიკაში",
-        "გაზრდილი გამოთვლითი ხარჯები Writer მოდელისთვის"
-      ],
-      "non_obvious_opportunity": "შეგიძლია შექმნა Telegram ბოტი, რომელიც იყენებს პერსონა-ფონურ სტრუქტურირებულ მეხსიერებას ჯგუფური ჩათების ეფექტურად სამართავად.",
-      "fit_assessment": "ძალიან შეესაბამება შენს ინტერესებს აგენტურ არქიტექტურასა და მეხსიერების სისტემებში."
-    },
-    {
-      "event_id": "evt-stablevq-tokenizers",
-      "title": "StableVQ: Practical Guidelines for Stable Vector-Quantized Tokenizer Training",
-      "category": "AI Research & Model Architecture",
-      "primary_url": "https://huggingface.co/papers/2609.26774",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 7,
-      "actionability": 7,
-      "source_quality": 8,
-      "confidence": 85,
-      "tldr": "StableVQ ნერგავს დინამიურ STE-სა და Region VQ Loss-ს, რომლებიც აგვარებენ ტოკენიზატორების ტრენინგის არასტაბილურობას.",
-      "what_happened": "Kuaishou Technology-ის გუნდმა წარადგინა StableVQ, რომელიც წყვეტს encoder-decoder და codebook ტრენინგის კონფლიქტებს.",
-      "what_changed": "მყიფე კოოპერაციული ტრენინგიდან გადავდივართ მოდულის დამოუკიდებელ ოპტიმიზაციაზე.",
-      "why_it_matters": "გაძლევთ მკაფიო გაიდლაინებს დისკრეტული ტოკენიზატორების სტაბილური წვრთნისთვის.",
-      "key_takeaways": [
-        "Dynamic STE corrects encoder learning instability.",
-        "Region VQ Loss guarantees encoder output tracking.",
-        "Decoupled Scheduler assigns independent learning rates."
-      ],
-      "technical_architecture": [
-        "Shared-projection codebook foundation.",
-        "Independent encoder-decoder and codebook optimization loops."
-      ],
-      "technical_details": [
-        "Dynamic Straight-Through Estimator configuration.",
-        "Region-based codebook loss function."
-      ],
-      "potential_impact": "ამცირებს ტოკენიზატორების კოლაფსის რისკს და აუმჯობესებს გენერაციული მოდელების ხარისხს.",
-      "action_type": "LEARN",
-      "action": "გაეცანი StableVQ-ის პაპერში აღწერილ Dynamic STE-ს და Region VQ Loss-ის מתემატიკურ ფორმულირებას.",
-      "evidence": [],
-      "factuality_level": "verified",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "StableVQ addresses training instability caused by encoder-decoder and codebook entanglement.",
-        "Introduces Dynamic STE, Region VQ Loss, and Decoupled Scheduler.",
-        "Builds on top of shared-projection codebooks."
-      ],
-      "interpretation": "ტოკენიზაციის სტაბილიზაცია ხსნის მთავარ bottleneck-ს მრავალმოდალური და გენერაციული არქიტექტურების სწავლებაში.",
-      "uncertainty": "მეთოდი ძირითადად ოპტიმიზებულია ვიზუალური ტოკენიზატორებისთვის და ტექსტური ტოკენიზაციისთვის საჭიროებს დამატებით ტესტებს.",
-      "counter_argument": "ტრადიციული VQ მეთოდები საკმარისია მარტივი პროექტებისთვის და ახალი ჰარნესების დანერგვა ზრდის სირთულეს.",
-      "strategic_assessment": "გაიაზრე VQ კოდბუკების დეტაჩმენდის პრინციპები, თუ აპირებ საკუთარი multimodal მოდელების ტრენინგს ან fine-tuning-ს.",
-      "time_horizon": "mid-term",
-      "what_could_change": "დისკრეტული ვიზუალური და მულტიმოდალური ტოკენიზატორების ტრენინგი გახდება უფრო პროგნოზირებადი და ნაკლებად მგრძნობიარე ჰიპერპარამეტრების მიმართ.",
-      "risks": [
-        "ოპტიმიზაციის სირთულე მცირე ზომის ჰარვარდული რესურსებისთვის",
-        "ტრენინგის დროის ზრდა"
-      ],
-      "non_obvious_opportunity": "Region VQ Loss მიდგომა შესაძლებელია ადაპტირებული იყოს აგენტური მეხსიერების კლასტერების სემანტიკური ინდექსაციისთვის.",
-      "fit_assessment": "კარგია გენერაციული მოდელებისა და ტოკენიზაციის მექანიზმების ფუნდამენტური გაგებისთვის."
-    },
     {
       "event_id": "evt-aws-bedrock-agentcore-shared-platform",
       "title": "Amazon Bedrock AgentCore: მრავალ-აგენტიანი Shared Runtime და ინფრასტრუქტურა",
@@ -6189,6 +6028,171 @@
       ],
       "non_obvious_opportunity": "გამოიყენე SQLite recursive queries შენი აგენტის ცოდნის ბაზაში მარტივი გრაფის ასაგებად.",
       "fit_assessment": "ეხმარება შენს გადასვლას SQL/databases ეტაპიდან graph RAG-სა და multi-hop მსჯელობაზე."
+    },
+    {
+      "event_id": "evt-google-cloud-eval-lessons",
+      "title": "Google Cloud: 4 საინჟინრო გაკვეთილი AI აგენტების სისტემური შეფასებისთვის",
+      "category": "AI Evaluation & საიმედოობა",
+      "primary_url": "https://cloud.google.com/blog/topics/developers-practitioners/four-eval-engineering-lessons",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 10,
+      "source_quality": 9,
+      "confidence": 95,
+      "tldr": "Google Cloud აქვეყნებს ევალუაციის გაკვეთილებს: აგენტი უნდა შეფასდეს შესრულებული ხელსაწყოების ტრაექტორიით და არა მხოლოდ საბოლოო პასუხით.",
+      "what_happened": "Google Cloud-მა გამოაქვეყნა ინჟინერული გამოცდილება აგენტების პლაგინების ტესტირებიდან.",
+      "what_changed": "შეფასების პრინციპი შეიცვალა: აგენტის შეფასება გადავიდა ტექსტური რეზიუმედან tool-call ტრაექტორიაზე.",
+      "why_it_matters": "გაძლევს პროფესიონალურ ინსტრუქციას, როგორ შეამოწმო შენი აგენტი რეალურად მუშაობს თუ არა.",
+      "key_takeaways": [
+        "LLM-as-judge ხშირად ცდება, თუ ის კითხულობს მხოლოდ აგენტის საბოლოო ტექსტს.",
+        "აუცილებელია ასინქრონული და პარალელური ხელსაწყოების გამოძახების სწორად ამოღება ლოგებიდან."
+      ],
+      "technical_architecture": [
+        "Raw tool-call trajectory logs extraction.",
+        "Step-by-step execution graph verification."
+      ],
+      "technical_details": [
+        "Grade execution steps instead of final summary.",
+        "Handle concurrent tool dispatch events properly."
+      ],
+      "potential_impact": "ზდის აგენტების საიმედოობას და ამცირებს ჩუმად ჩავარდნილ ამოცანებს 80%-ით.",
+      "action_type": "TRACK",
+      "action": "დაწერე Python სკრიპტი, რომელიც ამოწმებს შენი აგენტის JSON tool_calls ლოგებს და ადასტურებს, რომ სწორი ინსტრუმენტი გამოიძახა.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value",
+        "Short-term Opportunity"
+      ],
+      "verified_facts": [
+        "Google Cloud-მა გამოაქვეყნა 4 ძირითადი გაკვეთილი AI აგენტების პლაგინების შეფასებიდან.",
+        "პირველი მთავარი წესი: შეფასდეს უნდა execution trajectory და არა მხოლოდ საბოლოო ტექსტური რეზიუმე."
+      ],
+      "interpretation": "აგენტების ტესტირება „vibe check“-ით იწვევს ფარულ ხარვეზებს; საჭიროა მკაცრი ტრაექტორიისა და ხელსაწყოების გამოძახების ლოგების ანალიზი.",
+      "uncertainty": "როგორ შეიძლება ავტომატიზდეს აგენტების ტრაექტორიის შეფასება დიდი რაოდენობით ტესტების დროს?",
+      "counter_argument": "ტრაექტორიის ყოვლისმომცველი შეფასება ზრდის ტესტირების სირთულესა და გამოთვლით ხარჯებს.",
+      "strategic_assessment": "დაწერე შეფასების სკრიპტები, რომლებიც ამოწმებენ რა ხელსაწყოები გამოიძახა აგენტმა და რა არგუმენტებით.",
+      "time_horizon": "short-term",
+      "what_could_change": "AI ევალუაცია გადაინაცვლებს ტექსტური პასუხების შემოწმებიდან სრული შესრულების გრაფიკის ვალიდაციაზე.",
+      "risks": [
+        "მცდარი ტესტური რუბრიკები, რომლებიც ზღუდავენ აგენტის კრეატიულობას",
+        "ლოგების ანალიზის სირთულე",
+        "ტესტების ზედმეტად αργად გაშვება"
+      ],
+      "non_obvious_opportunity": "შეგიძლია შექმნა ღია კოდის Python ბიბლიოთეკა, რომელიც აანალიზებს აგენტის tool call ლოგებს.",
+      "fit_assessment": "იდეალურად ერგება შენს მიზანს, ააშენო სანდო აგენტები და არა ზედაპირული დემოები."
+    },
+    {
+      "event_id": "evt-aws-reflection-beam-501b",
+      "title": "AWS & Reflection AI: Reflection Beam — 501B Open-Weight მოდელი აგენტური კოდირებისთვის",
+      "category": "AI Research & Model Architecture",
+      "primary_url": "https://aws.amazon.com/blogs/machine-learning/introducing-reflection-beam-an-open-weight-model-for-agentic-coding-on-aws",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 9,
+      "actionability": 7,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "Reflection AI-მ წარადგინა Beam — 501B პარამეტრიანი open-weight აგენტური კოდირების მოდელი AWS-ზე.",
+      "what_happened": "AWS-მა და Reflection AI-მ გამოუშვეს Beam 1.0 Hugging Face-ზე Apache 2.0 ლიცენზიით.",
+      "what_changed": "დეველოპერებმა მიიღეს ღია მოდელი 1 მილიონი ტოკენის კონტექსტით რთული კოდის მართვისთვის.",
+      "why_it_matters": "გაძლევს ღია ალტერნატივას ძვირადღირებული closed-source კოდინგ მოდელების წინააღმდეგ.",
+      "key_takeaways": [
+        "Beam აგებულია sparse mixture-of-experts არქიტექტურაზე.",
+        "მხარს უჭერს SGLang და vLLM დეველოპმენტ სერვერებს."
+      ],
+      "technical_architecture": [
+        "501 billion total parameters, 23 billion active parameters.",
+        "Effective context length of 1 million tokens."
+      ],
+      "technical_details": [
+        "Available in BF16, FP8, and NVFP4 checkpoint variants.",
+        "Deploys via Amazon SageMaker JumpStart and HyperPod."
+      ],
+      "potential_impact": "ზრდის დეველოპერების დამოუკიდებლობას ღია კოდის ძლიერი მოდელების ხარჯზე.",
+      "action_type": "TRACK",
+      "action": "შეისწავლე vLLM დოკუმენტაცია და გაიგე, როგორ ხდება დიდი MoE მოდელების sharding და ტოკენების ქეშირება.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value",
+        "Short-term Opportunity"
+      ],
+      "verified_facts": [
+        "Reflection AI გამოუშვა Beam — 501 მილიარდი პარამეტრის sparse MoE მოდელი Apache 2.0 ლიცენზიით.",
+        "Beam აქვს 23 მილიარდი აქტიური პარამეტრი და 1 მილიონი ტოკენის ეფექტური კონტექსტის ზონა."
+      ],
+      "interpretation": "Open-weight მოდელების მასშტაბირება აგენტური კოდირებისთვის აძლევს დეველოპერებს სრულ კონტროლს რანტაიმსა და დისტრიბუციაზე.",
+      "uncertainty": "რა ეღირება მსგავსი 501B მოდელის ლოკალურად გაშვება და რამდენად ეფექტურია ის მცირე ზომის ჰარდვერზე?",
+      "counter_argument": "ასეთი დიდი მოდელების გაშვება მიუწვდომელია დამოუკიდებელი დეველოპერებისთვის cloud GPU რესურსების გარეშე.",
+      "strategic_assessment": "აკონტროლე open-weight ტრენდები, მაგრამ პრაქტიკული პროექტებისთვის გამოიყენე ეფექტური API მოდელები.",
+      "time_horizon": "mid-term",
+      "what_could_change": "კოდინგ აგენტების backend გადაინაცვლებს ღია კოდის დიდ MoE მოდელებზე.",
+      "risks": [
+        "გიგანტური მოდელების ჰოსტინგის მაღალი ხარჯები",
+        "ინფრასტრუქტურული სირთულე vLLM და SGLang კონფიგურაციაში",
+        "მძიმე hardware მოთხოვნები"
+      ],
+      "non_obvious_opportunity": "შეგიძლია შეისწავლო SGLang და vLLM კონფიგურაციის პრინციპები, რაც მოთხოვნადია AI ინფრასტრუქტურაში.",
+      "fit_assessment": "გაჩვენებს, თუ როგორ ვითარდება open-source აგენტური კოდირების ინფრასტრუქტურა AWS-ზე."
+    },
+    {
+      "event_id": "evt-google-verid-wet-lab-agents",
+      "title": "Google Research: VERID ფრეიმვორკი ფიზიკური აგენტებისა და ლაბორატორიული ციფრული ტყუპებისთვის",
+      "category": "აგენტის არქიტექტურა და რობოტიკა",
+      "primary_url": "https://research.google/blog/grounding-ai-agents-in-biological-reality-building-blocks-for-autonomous-wet-labs",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 8,
+      "actionability": 7,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "Google-მა წარადგინა VERID — სემანტიკური ციფრული ტყუპი ლაბორატორიული აგენტების უსაფრთხო და ფიზიკურად ვალიდური მართვისთვის.",
+      "what_happened": "Google Research-მა გამოაქვეყნა VERID ფრეიმვორკი ლაბორატორიული რობოტებისა და LLM აგენტების დასაკავშირებლად.",
+      "what_changed": "აგენტებმა მიიღეს ფიზიკური და სემანტიკური შეზღუდვების გასაკონტროლებელი ციფრული გარემო.",
+      "why_it_matters": "გასწავლის, რომ აგენტმა არასდროს უნდა გაუშვას ხელსაწყო წინასწარი state ვალიდაციის გარეშე.",
+      "key_takeaways": [
+        "VERID არის ლაბორატორიული workcell-ის სემანტიკური ციფრული ტყუპი.",
+        "აგენტი აგენერირებს კოდს, რომელიც მოწმდება ფიზიკური და ლოჯისტიკური კონტექსტით."
+      ],
+      "technical_architecture": [
+        "Live, stateful 3D volumetric entity tree tracks robot geometry and inventory.",
+        "Safety validation runs before code execution."
+      ],
+      "technical_details": [
+        "Tracks pipette volumes and reagent inventories.",
+        "Prevents syntactically valid but physically impossible actions."
+      ],
+      "potential_impact": "ამცირებს აგენტების მიერ გამოწვეულ ფიზიკურ და სისტემურ შეცდომებს 90%-ზე მეტით.",
+      "action_type": "TRACK",
+      "action": "დაამატე შენს Python აგენტებს pre-execution validation ნაბიჯი, რომელიც ამოწმებს ხელსაწყოს არგუმენტებს შესრულებამდე.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value",
+        "Long-term Opportunity"
+      ],
+      "verified_facts": [
+        "Google წარადგინა VERID ფრეიმვორკი ლაბორატორიული რობოტიკის და AI აგენტების დასაკავშირებლად.",
+        "VERID იყენებს 3D volumetric entity tree-ს რეაგენტებისა და რობოტების მდგომარეობის განსასაზღვრად."
+      ],
+      "interpretation": "ფიზიკური და ციფრული სამყაროს დაკავშირება მოითხოვს მკაცრ stateful ვალიდაციას, რაც აგენტურ სისტემებში უსაფრთხო tool execution-ის საფუძველი ხდება.",
+      "uncertainty": "რამდენად მასშტაბურია მსგავსი სემანტიკური ციფრული ტყუპების გამოყენება პროგრამულ აგენტებში ფიზიკური ლაბორატორიების გარეთ?",
+      "counter_argument": "მსგავსი სპეციალიზებული ფრეიმვორკები ზედმეტად რთულია ჩვეულებრივი API-ზე დაფუძნებული ბიზნეს აგენტების შემუშავებისთვის.",
+      "strategic_assessment": "გამოიყენე VERID-ის იდეა — აგენტმა ყოველთვის უნდა გადაამოწმოს ხელსაწყოს პარამეტრები შესრულებამდე.",
+      "time_horizon": "long-term",
+      "what_could_change": "მოლეკულური დიზაინი და ავტონომიური მეტალ-რობოტიკა გადაიქცევა პროგრამულ API გამოძახებებად.",
+      "risks": [
+        "მაღალი სირთულე 3D სემანტიკური ტყუპების აგებაში",
+        "ფიზიკური მოწყობილობების შეცდომების კასკადური გავრცელება",
+        "დეველოპერის დროის არაეფექტური ხარჯვა არასაჭირო დომენებში"
+      ],
+      "non_obvious_opportunity": "შეგიძლია შექმნა მსგავსი მარტივი stateful validation layer შენი Telegram აგენტებისთვის.",
+      "fit_assessment": "გეხმარება გაიგო, როგორ მუშაობს მკაცრი state management და ვალიდაცია რთულ აგენტურ გარემოში."
     }
   ],
   "topics": {
@@ -6244,7 +6248,7 @@
     "AI Research / Structured Data & Causal ML": 1,
     "Developer Tools & Agent Frameworks": 2,
     "Model Inference & Local Hardware Optimization": 1,
-    "AI Research & Model Architecture": 6,
+    "AI Research & Model Architecture": 7,
     "Agent Security & Infrastructure": 1,
     "LLM Infrastructure & Agent Memory": 2,
     "Multi-Agent Systems & RL": 1,
@@ -6309,7 +6313,7 @@
     "RAG & Database Architecture": 2,
     "აგენტის არქიტექტურა და Cost Optimization": 1,
     "აგენტების უსაფრთხოება და Sandbox": 3,
-    "AI Evaluation & საიმედოობა": 2,
+    "AI Evaluation & საიმედოობა": 3,
     "აგენტის არქიტექტურა და ხელსაწყოები": 3,
     "Long-Term Career Strategy": 1,
     "უსაფრთხოება და ღია კოდი": 1,
@@ -6324,306 +6328,10 @@
     "აგენტის შეფასება და უსაფრთხოება": 1,
     "LLM APIs და ხელსაწყოები": 1,
     "აგენტის ინფრასტრუქტურა და ეკოსისტემა": 1,
-    "RAG და აგენტის მეხსიერება": 1
+    "RAG და აგენტის მეხსიერება": 1,
+    "აგენტის არქიტექტურა და რობოტიკა": 1
   },
   "reports": [
-    {
-      "date": "2026-10-04",
-      "summary": "დღევანდელი სიახლეები ფოკუსირდება აგენტების ახალ არქიტექტურებზე, სადაც მოდელის წონების შეცვლის გარეშე მიიღწევა თვითგანვითარება და ვიზუალური მეხსიერების შენარჩუნება. Google-მა გამოაქვეყნა Gemini 3.8 Flash-ის ფასები და უფასო რესურსები, ხოლო AWS-მა წარადგინა ღია კოდის Strands Agents SDK. ეს ინსტრუმენტები იძლევა საშუალებას, მინიმალური ბიუჯეტით აშენდეს საიმედო ავტონომიური სისტემები.",
-      "events": [
-        {
-          "event_id": "evt-rpg-embodied-agent-self-improvement",
-          "title": "RPG: აგენტების მართვადი თვითგანვითარება მოდელის წონების შეცვლის გარეშე",
-          "category": "AI Research / Agent Architecture",
-          "primary_url": "https://arxiv.org/abs/2610.02204",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "RPG ფრეიმვორკმა აჩვენა, რომ აგენტს შეუძლია 28.6%-დან 95%-მდე გაზარდოს წარმატება მხოლოდ ხელსაწყოებისა და prompt-ის განახლებით.",
-          "what_happened": "ბერკლის მკვლევარებმა შექმნეს RPG სისტემა, რომელიც შეცდომების დიაგნოსტიკის შემდეგ ქმნის ახალ symbolic skill-ებს და ანახლებს system prompt-ს.",
-          "what_changed": "მოდელის fine-tuning-ის გარეშე მიიღწევა frontier მოდელებზე უკეთესი სიზუსტე reusable კოდის ბიბლიოთეკით.",
-          "why_it_matters": "საშუალებას გაძლევს, უფასო ან იაფი მოდელებით ააგო თვითგანვითარებადი სისტემა კოდის გენერაციის ხარჯზე.",
-          "key_takeaways": [
-            "წარმატება გაიზარდა 28.6%-დან 95.0%-მდე 15 ციკლში",
-            "წონების შეცვლა არ არის საჭირო, იცვლება მხოლოდ prompt და skills",
-            "გამოიყენება reusable symbolic Python ფუნქციები"
-          ],
-          "technical_architecture": [
-            "Simulated execution feedback analyzer",
-            "Symbolic skill library synthesizer",
-            "Cross-task regression gate"
-          ],
-          "technical_details": [
-            "15 rounds practice cycle",
-            "95.0% success on 22 tasks",
-            "Zero-weight-update framework"
-          ],
-          "potential_impact": "შეამცირებს ძვირადღირებული fine-tuning-ის საჭიროებას აგენტურ ამოცანებში.",
-          "action_type": "BUILD",
-          "action": "შექმენი სკრიპტი, სადაც აგენტი წარუმატებელი დავალების შემდეგ წერს ახალ Python ფუნქციას და ინახავს tools.py ფაილში მომავალი გამოყენებისთვის.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "RPG აუმჯობესებს შესრულებას symbolic skill-ების და system prompt-ის ავტონომიური რედაქტირებით",
-            "22 მანიპულაციის დავალებაზე წარმატების მაჩვენებელი გაიზარდა 28.6%-დან 95.0%-მდე 15 რაუნდში",
-            "გადააჭარბა GPT-6 Astra Pro-ზე მომუშავე CaP-Agent0-ის ბაზისს (60.0%)"
-          ],
-          "interpretation": "აგენტების ევოლუციის საუკეთესო გზა არის შეცდომების დიაგნოსტიკა და reusable Python ხელსაწყოების ბიბლიოთეკის დინამიკური გენერაცია.",
-          "uncertainty": "სიმულაციიდან რეალურ გარემოში გადატანისას საჭიროებს დამატებით hardware-adaptation ეტაპს.",
-          "counter_argument": "დროთა განმავლობაში skill library შეიძლება გადაიტვირთოს დუბლირებული და არაოპტიმალური ფუნქციებით.",
-          "strategic_assessment": "დანერგე self-reflection და dynamic skill storage შენს პითონის აგენტებში; ეს ზრდის საიმედოობას.",
-          "time_horizon": "mid-term",
-          "what_could_change": "აგენტები თავად დაწერენ და შეამოწმებენ საკუთარ tool-ებს ტესტების საშუალებით run-time-ში.",
-          "risks": [
-            "არასწორი prompt mutation-ის გამო აგენტის დეგრადაცია",
-            "დაუსრულებელი self-improvement loop-ების რისკი"
-          ],
-          "non_obvious_opportunity": "ავტომატური unit-test გენერატორის მიბმა აგენტის მიერ შექმნილ ახალ ხელსაწყოებზე.",
-          "fit_assessment": "პირდაპირ პასუხობს მომხმარებლის მიზანს: self-improvement და tool calling-ის დახვეწა."
-        },
-        {
-          "event_id": "evt-vista-visual-agent-harness",
-          "title": "VISTA: Visual Harness და უდანაკარგო ვიზუალური მეხსიერება Multimodal აგენტებისთვის",
-          "category": "აგენტის არქიტექტურა და მეხსიერება",
-          "primary_url": "https://arxiv.org/abs/2610.02200",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 88,
-          "tldr": "VISTA-ს ვიზუალურმა ჰარნესმა და უდანაკარგო მეხსიერებამ Claude Opus 5.0-ს ARC-AGI-3-ზე 100%-იანი შედეგი დაადებინა.",
-          "what_happened": "MIT-ისა და კვლევითი ჯგუფების მიერ წარმოდგენილია VISTA, რომელიც multimodal მოდელებს აძლევს lossless visual memory-სა და დინამიკურ retrieval-ს.",
-          "what_changed": "მოდელები აღარ კარგავენ წინა ნაბიჯების ვიზუალურ კონტექსტს და მოქმედებენ ნაკლები ზედმეტი ნაბიჯით.",
-          "why_it_matters": "გაჩვენებს, რომ სწორი agent harness უფრო მნიშვნელოვანია შედეგისთვის, ვიდრე უბრალოდ უფრო დიდი მოდელის გამოყენება.",
-          "key_takeaways": [
-            "Lossless visual memory ინახავს გარემოს სუფთა მდგომარეობას",
-            "Action efficiency გაუმჯობესდა 57.4%-ით ადამიანებთან შედარებით",
-            "მუშაობს სტანდარტულ multimodal LLM API-ებთან დამატებითი fine-tuning-ის გარეშე"
-          ],
-          "technical_architecture": [
-            "Lossless visual history buffer",
-            "Active observation retrieval engine",
-            "Multimodal LLM inference connector"
-          ],
-          "technical_details": [
-            "ARC-AGI-3 benchmark evaluation",
-            "Claude Opus 5.0 integration",
-            "57.4% action reduction"
-          ],
-          "potential_impact": "შექმნის სტანდარტს ვიზუალური UI და თამაშების ავტომატიზაციის აგენტებისთვის.",
-          "action_type": "LEARN",
-          "action": "გააანალიზე VISTA-ს არქიტექტურა და დაწერე მარტივი Python კლასი, რომელიც აგენტის ნაბიჯების სურათებს ინახავს და ფილტრავს.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "VISTA ქმნის lossless visual memory-ს წარსული დაკვირვებების ორიგინალი სახით შესანახად",
-            "ARC-AGI-3 ბენჩმარკზე Claude Opus 5.0-ის შედეგი გაიზარდა 40.68-დან 100.00-მდე",
-            "აგენტმა 25-ვე საჯარო თამაში დაასრულა ადამიანზე 57.4%-ით ნაკლები მოქმედებით"
-          ],
-          "interpretation": "მოდელის უნარების გაზრდისთვის ხშირად საკმარისია არა თავად მოდელის შეცვლა, არამედ გარედან სწორი harness-ისა და მეხსიერების სტრუქტურის მიწოდება.",
-          "uncertainty": "უცნობია, რამდენად კარგად მასშტაბირდება ეს მიდგომა ვებ-ბრაუზინგის რეალურ, ხმაურიან DOM გარემოზე.",
-          "counter_argument": "სრული ვიზუალური ისტორიის შენახვა ზრდის context window-ს მოცულობას და API-ს გამოძახების ხარჯებს.",
-          "strategic_assessment": "შეისწავლე harness არქიტექტურა; აგენტის ლოგიკისა და მეხსიერების გამოყოფა არის საიმედო სისტემების ფუნდამენტი.",
-          "time_horizon": "mid-term",
-          "what_could_change": "აგენტების benchmark ტესტირება გახდება harness-ზე დამოკიდებული და არა მხოლოდ raw model-ის შესაძლებლობებზე.",
-          "risks": [
-            "მაღალი token consumption ვიზუალური ისტორიის გადაცემისას",
-            "API rate limit-ების გადაჭარბება სწრაფი ლუპებისას"
-          ],
-          "non_obvious_opportunity": "მარტივი Python Wrapper-ის აგება local screenshots-ის ინდექსირებისთვის CLI აგენტებში.",
-          "fit_assessment": "ზუსტად ერგება მომხმარებლის ინტერესს agent loops, memory და harness დიზაინის მიმართულებით."
-        },
-        {
-          "event_id": "evt-gemini-3-8-flash-pricing-context-caching",
-          "title": "Gemini 3.8 Flash: დეველოპერის ტარიფები, Context Caching და უფასო რესურსები",
-          "category": "LLM APIs და Cost Optimization",
-          "primary_url": "https://ai.google.dev/gemini-api/docs/pricing",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 10,
-          "actionability": 9,
-          "source_quality": 10,
-          "confidence": 98,
-          "tldr": "Google-მა გამოაქვეყნა Gemini 3.8 Flash-ის ფასები: სრული უფასო ტარიფი, Context Caching და 5,000 უფასო Search grounding თვეში.",
-          "what_happened": "Google AI for Developers-მა განაახლა Gemini API ფასების გვერდი Gemini 3.8 Flash მოდელისთვის.",
-          "what_changed": "დეველოპერებს აქვთ წვდომა იაფ context caching-ზე და უფასო საძიებო grounding-ზე ავტონომიური აგენტებისთვის.",
-          "why_it_matters": "საშუალებას გაძლევს, ნულოვანი კაპიტალით ააშენო RAG და Web Search აგენტები Google Search API-ს უფასო კვოტით.",
-          "key_takeaways": [
-            "Google AI Studio-ში მოქმედებს Free Tier",
-            "5,000 უფასო Search/Maps grounding თვეში",
-            "Context caching $0.075 / 1M token-ზე ამცირებს მეხსიერების ხარჯებს"
-          ],
-          "technical_architecture": [
-            "Gemini 3.8 Flash runtime",
-            "Context Caching API engine",
-            "Search & Maps Grounding integration"
-          ],
-          "technical_details": [
-            "$0.75 input / $3.75 output per 1M",
-            "Context cache storage $0.50/1M/hr",
-            "5000 free search requests monthly"
-          ],
-          "potential_impact": "ხელს შეუწყობს უფასო და დაბალბიუჯეტიანი ავტონომიური აგენტების სწრაფ განვითარებას.",
-          "action_type": "APPLY",
-          "action": "აიღე უფასო Gemini API key Google AI Studio-დან და გატესტე Search Grounding მარტივ Python სკრიპტში.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Real Business Opportunity"
-          ],
-          "verified_facts": [
-            "Gemini 3.8 Flash ხელმისაწვდომია უფასო ტარებით Google AI Studio-ში",
-            "Paid Tier ფასი შეადგენს $0.75 / 1M input tokens და $3.75 / 1M output tokens…",
-            "Context caching ღირს $0.075 / 1M tokens და $0.50 საათში 1M token-ის შენახვა",
-            "მოყვება 5,000 უფასო Google Search და Maps grounding მოთხოვნა თვეში"
-          ],
-          "interpretation": "Gemini 3.8 Flash ხდება ერთ-ერთი ყველაზე ხელმისაწვდომი frontier-level მოდელი long-horizon აგენტური სამუშაოებისთვის.",
-          "uncertainty": "2027 წლიდან ფასები ორმაგდება ($1.50 input / $7.50 output).",
-          "counter_argument": "უფასო ტარიფზე მონაცემები გამოიყენება პროდუქტის გასაუმჯობესებლად, რაც კონფიდენციალურ მონაცემებს ზღუდავს.",
-          "strategic_assessment": "გამოიყენე Gemini 3.8 Flash უფასო ტარიფი და 5,000 უფასო Search grounding შენი საძიებო აგენტების ასაშენებლად.",
-          "time_horizon": "short-term",
-          "what_could_change": "მცირე ბიუჯეტიანი დეველოპერები შეძლებენ agentic search სისტემების აწყობას 0 ხარჯით.",
-          "risks": [
-            "Free tier rate limit-ები მაღალი დატვირთვისას",
-            "Grounding ლიმიტის ამოწურვის შემდეგ $14 ყოველ 1,000 მოთხოვნაზე"
-          ],
-          "non_obvious_opportunity": "Context caching-ის გამოყენება დიდი MCP documentation-ის და JSON schema-ების უფასოდ შესანახად.",
-          "fit_assessment": "იდეალურია 16 წლის დეველოპერისთვის: ნულოვანი ბიუჯეტით იძლევა უმაღლესი დონის tooling-ს."
-        },
-        {
-          "event_id": "evt-aws-strands-mcp-agent-sdk",
-          "title": "AWS Strands Agents: ღია კოდის Python SDK და MCP მხარდაჭერა",
-          "category": "აგენტების ინფრასტრუქტურა და MCP",
-          "primary_url": "https://aws.amazon.com/developer/generative-ai",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 9,
-          "source_quality": 10,
-          "confidence": 92,
-          "tldr": "AWS-მა გამოუშვა Strands Agents — მსუბუქი ღია კოდის Python SDK აგენტებისა და MCP კლიენტ/სერვერების სამართავად.",
-          "what_happened": "AWS Builder Center-მა გამოაქვეყნა Strands Agents SDK-ს გაიდები და MCP სერვერების ინტეგრაციის სახელმძღვანელოები.",
-          "what_changed": "აგენტის აწყობა, ხელსაწყოების მიბმა და MCP სერვერებთან დაკავშირება გამარტივდა მინიმალურ კოდში.",
-          "why_it_matters": "გაძლევს სუფთა, ინდუსტრიულ პატერნს, თუ როგორ უნდა დაიწეროს tool-calling და MCP ლოგიკა Python-ში.",
-          "key_takeaways": [
-            "ღია კოდის Python SDK მოდელ-აგნოსტიკური მიდგომით",
-            "ჩაშენებული MCP (Model Context Protocol) მხარდაჭერა",
-            "მარტივი გადართვა სხვადასხვა LLM პროვაიდერებს შორის"
-          ],
-          "technical_architecture": [
-            "Strands Agents Python SDK Core",
-            "Model Context Protocol (MCP) client/server",
-            "Local execution and debug logger"
-          ],
-          "technical_details": [
-            "Open source Python SDK",
-            "Multi-provider model support",
-            "MCP integration with Spring AI & Python"
-          ],
-          "potential_impact": "გაამარტივებს სტანდარტიზებული MCP ხელსაწყოების შექმნას და ინტეგრაციას.",
-          "action_type": "TRY",
-          "action": "გაეცანი Strands SDK-ს tool integration სტრუქტურას და შეადარე შენს მიერ დაწერილ Tool Calling ლოგიკას.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Short-term Opportunity"
-          ],
-          "verified_facts": [
-            "AWS-მა წარადგინა Strands Agents — ღია კოდის model-driven Python SDK აგენტებისთვის",
-            "მოიცავს Model Context Protocol (MCP) კლიენტებისა და სერვერების გაშვების გაიდებს",
-            "მხარს უჭერს custom tools-ის ინტეგრაციას, local debugging-ს და მოდელის პროვაიდერების მარტივ ცვლას"
-          ],
-          "interpretation": "ინდუსტრია გადადის მსუბუქ, მოდელ-აგნოსტიკურ Python SDK-ებზე, სადაც MCP არის მთავარი დამაკავშირებელი პროტოკოლი.",
-          "uncertainty": "დოკუმენტაციის ნაწილი ფოკუსირებულია Bedrock-ზე, თუმცა SDK ღია კოდისაა და ლოკალურადაც მუშაობს.",
-          "counter_argument": "ბაზარზე უკვე ბევრი მსგავსი SDK არსებობს (LangGraph, CrewAI, Autogen) და ახალი SDK-ს სწავლა დროს მოითხოვს.",
-          "strategic_assessment": "შეისწავლე Strands SDK-ს tool integration პატერნები; MCP სტანდარტის გაგება პირდაპირ ზრდის შენს საინჟინრო ფასს.",
-          "time_horizon": "short-term",
-          "what_could_change": "სტანდარტიზებული MCP სერვერები ჩაანაცვლებს ფრეიმვორკზე მიბმულ custom tool wrapper-ებს.",
-          "risks": [
-            "AWS Bedrock-ზე ზედმეტი დამოკიდებულება, თუ ლოკალურ მოდელებს არ გამოიყენებ",
-            "SDK-ს ადრეული ვერსიის შეცდომები"
-          ],
-          "non_obvious_opportunity": "საკუთარი ლოკალური MCP სერვერის აწყობა და მისი მიერთება ნებისმიერ ღია SDK-ზე.",
-          "fit_assessment": "იდეალურად ემთხვევა მომხმარებლის მიმდინარე მიზანს: MCP და agent loops Python-ში."
-        },
-        {
-          "event_id": "evt-anthropic-glm53-cyber-exploit-analysis",
-          "title": "Anthropic-ის ანალიზი: GLM-5.3-ის კიბერ-შესაძლებლობები და უსაფრთხოების გარღვევა",
-          "category": "აგენტების უსაფრთხოება და Governance",
-          "primary_url": "https://www.anthropic.com/research/glm-5-3-and-the-spread-of-advanced-cyber-capabilities",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 7,
-          "actionability": 7,
-          "source_quality": 10,
-          "confidence": 95,
-          "tldr": "Anthropic-ის კვლევით, ღია წონიანი GLM-5.3 ავტონომიურად ქმნის ექსპლოიტებს, ხოლო მისი დაცვის მექანიზმები 64-100%-ში ირღვევა.",
-          "what_happened": "Anthropic-ის Frontier Red Team-მა გამოაქვეყნა ანალიზი GLM-5.3-ის კიბერ-შესაძლებლობებზე და უსაფრთხოების სისუსტეებზე.",
-          "what_changed": "Frontier დონის ავტონომიური კიბერ-შესაძლებლობები ხელმისაწვდომი გახდა ღია წონიან მოდელებში მინიმალური ფილტრაციით.",
-          "why_it_matters": "აჩვენებს, რომ რეალურ ბიზნეს აგენტებში კოდის შესრულება უნდა მოხდეს მკაცრად იზოლირებულ sandbox-ში.",
-          "key_takeaways": [
-            "GLM-5.3 არის ყველაზე ძლიერი open-weight კიბერ-მოდელი",
-            "შიდა safeguard-ები ირღვევა შემთხვევათა 64-100%-ში",
-            "გარე სისტემური დაცვა აუცილებელია აგენტის უსაფრთხოებისთვის"
-          ],
-          "technical_architecture": [
-            "Open-weight LLM execution architecture",
-            "Autonomous exploit generation pipeline",
-            "Frontier Red Team evaluation harness"
-          ],
-          "technical_details": [
-            "64% to 100% bypass rate",
-            "NIST CAISI benchmark validation",
-            "End-to-end exploit synthesis"
-          ],
-          "potential_impact": "გაზრდის მოთხოვნას აგენტების უსაფრთხოებისა და sandbox გარემოების ინჟინრებზე.",
-          "action_type": "LEARN",
-          "action": "შეისწავლე როგორ შეზღუდო Python-ის `subprocess` და `eval` ბრძანებები Docker კონტეინერში აგენტის ხელსაწყოების გაშვებისას.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "Zhipu AI-ს GLM-5.3-ს შეუძლია ავტონომიურად შექმნას end-to-end კიბერ-ექსპლოიტები",
-            "Anthropic-ის ტესტებით, GLM-5.3-ის safeguard-ების გვერდის ავლა მარტივი ტექნიკით 64%-დან 100%-მდე შემთხვევაში ხდება",
-            "NIST CAISI-ს შეფასებით, GLM-5.3 არის ყველაზე ძლიერი open-weight კიბერ-მოდელი"
-          ],
-          "interpretation": "Open-weight მოდელების გაძლიერებასთან ერთად, აგენტების უსაფრთხოების დაცვა მოდელის დონეზე შეუძლებელი ხდება; საჭიროა მკაცრი გარე sandbox-ები.",
-          "uncertainty": "კონკრეტული bypass ტექნიკები დეტალურად არ არის გასაჯაროებული უსაფრთხოების მიზნით.",
-          "counter_argument": "ეს შესაძლებლობები თანაბრად ეხმარება კიბერ-უსაფრთხოების დამცველებს სისტემების პატჩინგში.",
-          "strategic_assessment": "არასოდეს ენდო LLM-ის შიდა ფილტრებს; ააგე სისტემური იზოლაცია (Docker, restricted execution) შენი აგენტებისთვის.",
-          "time_horizon": "long-term",
-          "what_could_change": "კოდის გამშვები აგენტები ვალდებული იქნებიან იმუშაონ იზოლირებულ microVM გარემოებში.",
-          "risks": [
-            "დაუცველი აგენტის მიერ სისტემური ბრძანებების თვითნებური შესრულება",
-            "API გასაღებების გაჟონვა unsafe tool execution-ისას"
-          ],
-          "non_obvious_opportunity": "ავტონომიური უსაფრთხოების gate-ების და validator-ების შექმნა open-source აგენტებისთვის.",
-          "fit_assessment": "მნიშვნელოვანია production agent engineering-ისთვის: გასწავლის საიმედო execution guardrails-ის აგებას."
-        }
-      ],
-      "trends": [
-        "Agent Harness დიზაინი (VISTA, RPG) უფრო დიდ გავლენას ახდენს შედეგზე, ვიდრე მოდელის ზომის გაზრდა",
-        "მოდელის წონების უცვლელად დატოვება და Run-time Tool/Prompt ევოლუცია ხდება თვითგანვითარების მთავარი გზა",
-        "Context Caching-ისა და Grounding-ის გაიაფება ამცირებს ავტონომიური აგენტების შენახვის ხარჯებს ნულამდე"
-      ]
-    },
     {
       "date": "2026-10-05",
       "summary": "OpenAI-მ წარმოადგინა دائما-on dots აგენტები და Decisions API, ხოლო ეკოსისტემაში აქტიურად ვითარდება მრავალ-აგენტიანი უსაფრთხოების სტანდარტები და კონტროლის ფრეიმვორკები. ეს ცვლილებები აფართოებს მცირე ბიუჯეტით ასაშენებელი AI აგენტების არქიტექტურულ შესაძლებლობებს.",
@@ -9830,14 +9538,190 @@
         "მოდელის პროვაიდერები ჩაშენებულ Tool Calling-ს ამატებენ პირდაპირ API დონეზე (მაგ. Search Grounding)",
         "აგენტების ავტორიზაცია გადადის API Key-ების ხელით შეყვანიდან OAuth/OIDC identity პროტოკოლებზე"
       ]
+    },
+    {
+      "date": "2026-10-19",
+      "summary": "დღევანდელი გამოშვება მოიცავს Google-ის VERID ფრეიმვორკს ფიზიკური აგენტებისთვის, Reflection Beam 501B open-weight კოდინგ მოდელს AWS-ზე და Google Cloud-ის 4 eval ინჟინერულ გაკვეთილს. ეს სიგნალები გაძლევს შანსს, გააუმჯობესო შენი აგენტების ტესტირებისა და tool calling-ის არქიტექტურა.",
+      "events": [
+        {
+          "event_id": "evt-google-cloud-eval-lessons",
+          "title": "Google Cloud: 4 საინჟინრო გაკვეთილი AI აგენტების სისტემური შეფასებისთვის",
+          "category": "AI Evaluation & საიმედოობა",
+          "primary_url": "https://cloud.google.com/blog/topics/developers-practitioners/four-eval-engineering-lessons",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 10,
+          "source_quality": 9,
+          "confidence": 95,
+          "tldr": "Google Cloud აქვეყნებს ევალუაციის გაკვეთილებს: აგენტი უნდა შეფასდეს შესრულებული ხელსაწყოების ტრაექტორიით და არა მხოლოდ საბოლოო პასუხით.",
+          "what_happened": "Google Cloud-მა გამოაქვეყნა ინჟინერული გამოცდილება აგენტების პლაგინების ტესტირებიდან.",
+          "what_changed": "შეფასების პრინციპი შეიცვალა: აგენტის შეფასება გადავიდა ტექსტური რეზიუმედან tool-call ტრაექტორიაზე.",
+          "why_it_matters": "გაძლევს პროფესიონალურ ინსტრუქციას, როგორ შეამოწმო შენი აგენტი რეალურად მუშაობს თუ არა.",
+          "key_takeaways": [
+            "LLM-as-judge ხშირად ცდება, თუ ის კითხულობს მხოლოდ აგენტის საბოლოო ტექსტს.",
+            "აუცილებელია ასინქრონული და პარალელური ხელსაწყოების გამოძახების სწორად ამოღება ლოგებიდან."
+          ],
+          "technical_architecture": [
+            "Raw tool-call trajectory logs extraction.",
+            "Step-by-step execution graph verification."
+          ],
+          "technical_details": [
+            "Grade execution steps instead of final summary.",
+            "Handle concurrent tool dispatch events properly."
+          ],
+          "potential_impact": "ზდის აგენტების საიმედოობას და ამცირებს ჩუმად ჩავარდნილ ამოცანებს 80%-ით.",
+          "action_type": "TRACK",
+          "action": "დაწერე Python სკრიპტი, რომელიც ამოწმებს შენი აგენტის JSON tool_calls ლოგებს და ადასტურებს, რომ სწორი ინსტრუმენტი გამოიძახა.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value",
+            "Short-term Opportunity"
+          ],
+          "verified_facts": [
+            "Google Cloud-მა გამოაქვეყნა 4 ძირითადი გაკვეთილი AI აგენტების პლაგინების შეფასებიდან.",
+            "პირველი მთავარი წესი: შეფასდეს უნდა execution trajectory და არა მხოლოდ საბოლოო ტექსტური რეზიუმე."
+          ],
+          "interpretation": "აგენტების ტესტირება „vibe check“-ით იწვევს ფარულ ხარვეზებს; საჭიროა მკაცრი ტრაექტორიისა და ხელსაწყოების გამოძახების ლოგების ანალიზი.",
+          "uncertainty": "როგორ შეიძლება ავტომატიზდეს აგენტების ტრაექტორიის შეფასება დიდი რაოდენობით ტესტების დროს?",
+          "counter_argument": "ტრაექტორიის ყოვლისმომცველი შეფასება ზრდის ტესტირების სირთულესა და გამოთვლით ხარჯებს.",
+          "strategic_assessment": "დაწერე შეფასების სკრიპტები, რომლებიც ამოწმებენ რა ხელსაწყოები გამოიძახა აგენტმა და რა არგუმენტებით.",
+          "time_horizon": "short-term",
+          "what_could_change": "AI ევალუაცია გადაინაცვლებს ტექსტური პასუხების შემოწმებიდან სრული შესრულების გრაფიკის ვალიდაციაზე.",
+          "risks": [
+            "მცდარი ტესტური რუბრიკები, რომლებიც ზღუდავენ აგენტის კრეატიულობას",
+            "ლოგების ანალიზის სირთულე",
+            "ტესტების ზედმეტად αργად გაშვება"
+          ],
+          "non_obvious_opportunity": "შეგიძლია შექმნა ღია კოდის Python ბიბლიოთეკა, რომელიც აანალიზებს აგენტის tool call ლოგებს.",
+          "fit_assessment": "იდეალურად ერგება შენს მიზანს, ააშენო სანდო აგენტები და არა ზედაპირული დემოები."
+        },
+        {
+          "event_id": "evt-aws-reflection-beam-501b",
+          "title": "AWS & Reflection AI: Reflection Beam — 501B Open-Weight მოდელი აგენტური კოდირებისთვის",
+          "category": "AI Research & Model Architecture",
+          "primary_url": "https://aws.amazon.com/blogs/machine-learning/introducing-reflection-beam-an-open-weight-model-for-agentic-coding-on-aws",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 9,
+          "actionability": 7,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "Reflection AI-მ წარადგინა Beam — 501B პარამეტრიანი open-weight აგენტური კოდირების მოდელი AWS-ზე.",
+          "what_happened": "AWS-მა და Reflection AI-მ გამოუშვეს Beam 1.0 Hugging Face-ზე Apache 2.0 ლიცენზიით.",
+          "what_changed": "დეველოპერებმა მიიღეს ღია მოდელი 1 მილიონი ტოკენის კონტექსტით რთული კოდის მართვისთვის.",
+          "why_it_matters": "გაძლევს ღია ალტერნატივას ძვირადღირებული closed-source კოდინგ მოდელების წინააღმდეგ.",
+          "key_takeaways": [
+            "Beam აგებულია sparse mixture-of-experts არქიტექტურაზე.",
+            "მხარს უჭერს SGLang და vLLM დეველოპმენტ სერვერებს."
+          ],
+          "technical_architecture": [
+            "501 billion total parameters, 23 billion active parameters.",
+            "Effective context length of 1 million tokens."
+          ],
+          "technical_details": [
+            "Available in BF16, FP8, and NVFP4 checkpoint variants.",
+            "Deploys via Amazon SageMaker JumpStart and HyperPod."
+          ],
+          "potential_impact": "ზრდის დეველოპერების დამოუკიდებლობას ღია კოდის ძლიერი მოდელების ხარჯზე.",
+          "action_type": "TRACK",
+          "action": "შეისწავლე vLLM დოკუმენტაცია და გაიგე, როგორ ხდება დიდი MoE მოდელების sharding და ტოკენების ქეშირება.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value",
+            "Short-term Opportunity"
+          ],
+          "verified_facts": [
+            "Reflection AI გამოუშვა Beam — 501 მილიარდი პარამეტრის sparse MoE მოდელი Apache 2.0 ლიცენზიით.",
+            "Beam აქვს 23 მილიარდი აქტიური პარამეტრი და 1 მილიონი ტოკენის ეფექტური კონტექსტის ზონა."
+          ],
+          "interpretation": "Open-weight მოდელების მასშტაბირება აგენტური კოდირებისთვის აძლევს დეველოპერებს სრულ კონტროლს რანტაიმსა და დისტრიბუციაზე.",
+          "uncertainty": "რა ეღირება მსგავსი 501B მოდელის ლოკალურად გაშვება და რამდენად ეფექტურია ის მცირე ზომის ჰარდვერზე?",
+          "counter_argument": "ასეთი დიდი მოდელების გაშვება მიუწვდომელია დამოუკიდებელი დეველოპერებისთვის cloud GPU რესურსების გარეშე.",
+          "strategic_assessment": "აკონტროლე open-weight ტრენდები, მაგრამ პრაქტიკული პროექტებისთვის გამოიყენე ეფექტური API მოდელები.",
+          "time_horizon": "mid-term",
+          "what_could_change": "კოდინგ აგენტების backend გადაინაცვლებს ღია კოდის დიდ MoE მოდელებზე.",
+          "risks": [
+            "გიგანტური მოდელების ჰოსტინგის მაღალი ხარჯები",
+            "ინფრასტრუქტურული სირთულე vLLM და SGLang კონფიგურაციაში",
+            "მძიმე hardware მოთხოვნები"
+          ],
+          "non_obvious_opportunity": "შეგიძლია შეისწავლო SGLang და vLLM კონფიგურაციის პრინციპები, რაც მოთხოვნადია AI ინფრასტრუქტურაში.",
+          "fit_assessment": "გაჩვენებს, თუ როგორ ვითარდება open-source აგენტური კოდირების ინფრასტრუქტურა AWS-ზე."
+        },
+        {
+          "event_id": "evt-google-verid-wet-lab-agents",
+          "title": "Google Research: VERID ფრეიმვორკი ფიზიკური აგენტებისა და ლაბორატორიული ციფრული ტყუპებისთვის",
+          "category": "აგენტის არქიტექტურა და რობოტიკა",
+          "primary_url": "https://research.google/blog/grounding-ai-agents-in-biological-reality-building-blocks-for-autonomous-wet-labs",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 8,
+          "actionability": 7,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "Google-მა წარადგინა VERID — სემანტიკური ციფრული ტყუპი ლაბორატორიული აგენტების უსაფრთხო და ფიზიკურად ვალიდური მართვისთვის.",
+          "what_happened": "Google Research-მა გამოაქვეყნა VERID ფრეიმვორკი ლაბორატორიული რობოტებისა და LLM აგენტების დასაკავშირებლად.",
+          "what_changed": "აგენტებმა მიიღეს ფიზიკური და სემანტიკური შეზღუდვების გასაკონტროლებელი ციფრული გარემო.",
+          "why_it_matters": "გასწავლის, რომ აგენტმა არასდროს უნდა გაუშვას ხელსაწყო წინასწარი state ვალიდაციის გარეშე.",
+          "key_takeaways": [
+            "VERID არის ლაბორატორიული workcell-ის სემანტიკური ციფრული ტყუპი.",
+            "აგენტი აგენერირებს კოდს, რომელიც მოწმდება ფიზიკური და ლოჯისტიკური კონტექსტით."
+          ],
+          "technical_architecture": [
+            "Live, stateful 3D volumetric entity tree tracks robot geometry and inventory.",
+            "Safety validation runs before code execution."
+          ],
+          "technical_details": [
+            "Tracks pipette volumes and reagent inventories.",
+            "Prevents syntactically valid but physically impossible actions."
+          ],
+          "potential_impact": "ამცირებს აგენტების მიერ გამოწვეულ ფიზიკურ და სისტემურ შეცდომებს 90%-ზე მეტით.",
+          "action_type": "TRACK",
+          "action": "დაამატე შენს Python აგენტებს pre-execution validation ნაბიჯი, რომელიც ამოწმებს ხელსაწყოს არგუმენტებს შესრულებამდე.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value",
+            "Long-term Opportunity"
+          ],
+          "verified_facts": [
+            "Google წარადგინა VERID ფრეიმვორკი ლაბორატორიული რობოტიკის და AI აგენტების დასაკავშირებლად.",
+            "VERID იყენებს 3D volumetric entity tree-ს რეაგენტებისა და რობოტების მდგომარეობის განსასაზღვრად."
+          ],
+          "interpretation": "ფიზიკური და ციფრული სამყაროს დაკავშირება მოითხოვს მკაცრ stateful ვალიდაციას, რაც აგენტურ სისტემებში უსაფრთხო tool execution-ის საფუძველი ხდება.",
+          "uncertainty": "რამდენად მასშტაბურია მსგავსი სემანტიკური ციფრული ტყუპების გამოყენება პროგრამულ აგენტებში ფიზიკური ლაბორატორიების გარეთ?",
+          "counter_argument": "მსგავსი სპეციალიზებული ფრეიმვორკები ზედმეტად რთულია ჩვეულებრივი API-ზე დაფუძნებული ბიზნეს აგენტების შემუშავებისთვის.",
+          "strategic_assessment": "გამოიყენე VERID-ის იდეა — აგენტმა ყოველთვის უნდა გადაამოწმოს ხელსაწყოს პარამეტრები შესრულებამდე.",
+          "time_horizon": "long-term",
+          "what_could_change": "მოლეკულური დიზაინი და ავტონომიური მეტალ-რობოტიკა გადაიქცევა პროგრამულ API გამოძახებებად.",
+          "risks": [
+            "მაღალი სირთულე 3D სემანტიკური ტყუპების აგებაში",
+            "ფიზიკური მოწყობილობების შეცდომების კასკადური გავრცელება",
+            "დეველოპერის დროის არაეფექტური ხარჯვა არასაჭირო დომენებში"
+          ],
+          "non_obvious_opportunity": "შეგიძლია შექმნა მსგავსი მარტივი stateful validation layer შენი Telegram აგენტებისთვის.",
+          "fit_assessment": "გეხმარება გაიგო, როგორ მუშაობს მკაცრი state management და ვალიდაცია რთულ აგენტურ გარემოში."
+        }
+      ],
+      "trends": [
+        "Stateful validation და ციფრული ტყუპები ფიზიკური და ციფრული აგენტებისთვის",
+        "Open-weight მილიარდიანი მოდელების ხელმისაწვდომობა კოდირებისთვის",
+        "აგენტების ევალუაციის გადატანა ტექსტური პასუხებიდან tool-call ტრაექტორიის შემოწმებაზე"
+      ]
     }
   ],
   "learning_queue": [
-    "OAuth 2.0 და OIDC ავტორიზაციის ნაკადები აგენტების უსაფრთხო ინტეგრაციისთვის",
-    "Progressive disclosure პრინციპი prompt engineering-სა და skill architecture-ში",
-    "Recursive SQL queries და Graph Traversal საფუძვლები მონაცემთა ბაზებში"
+    "vLLM და SGLang სერვერების კონფიგურაცია მოდელების ლოკალურად გასაშვებად",
+    "Structured logging და JSON trajectory extraction ტექნიკები",
+    "Advanced state management პრინციპები აგენტურ 루პებში"
   ],
-  "last_run": "2026-10-18T13:50:48.173201+00:00",
+  "last_run": "2026-10-19T16:51:02.697788+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -9936,9 +9820,9 @@
     "arxiv:2610.22339"
   ],
   "last_report_files": {
-    "markdown": "data/reports/2026-10-18/report.md",
-    "json": "data/reports/2026-10-18/report.json",
-    "newsletter": "data/reports/2026-10-18/newsletter.md",
-    "social": "data/reports/2026-10-18/social_posts.txt"
+    "markdown": "data/reports/2026-10-19/report.md",
+    "json": "data/reports/2026-10-19/report.json",
+    "newsletter": "data/reports/2026-10-19/newsletter.md",
+    "social": "data/reports/2026-10-19/social_posts.txt"
   }
 }
