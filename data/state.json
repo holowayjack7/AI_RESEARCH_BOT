@@ -267,7 +267,10 @@
     "https://openai.com/index/low-resource-programming-languages",
     "https://arxiv.org/abs/2610.28619",
     "https://cloud.google.com/blog/topics/ai-infrastructure/torchtpu-is-now-open-source-run-native-pytorch-on-tpus",
-    "https://openai.com/index/grupo-boticario"
+    "https://openai.com/index/grupo-boticario",
+    "https://openai.com/index/openai-models-google-cloud",
+    "https://arxiv.org/abs/2610.30113",
+    "https://huggingface.co/papers/2610.29997"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -481,183 +484,12 @@
     "evt-openai-multilangbench-gpt6",
     "evt-arxiv-amtp-adaptive-multi-token",
     "evt-google-torchtpu-open-source",
-    "evt-openai-boticario-enterprise-agents"
+    "evt-openai-boticario-enterprise-agents",
+    "evt-openai-google-cloud-model-garden",
+    "evt-quant-arena-trading-agents",
+    "evt-donic-bimanual-dexterous-control"
   ],
   "events": [
-    {
-      "event_id": "evt-verified-commissioning-external-gate",
-      "title": "მოთხოვნებზე დაფუძნებული Verified Commissioning: 4B ლოკალური მოდელი External Acceptance Gate-ის ქვეშ",
-      "category": "AI Research / Agent Architecture",
-      "primary_url": "https://arxiv.org/abs/2609.30219",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 8,
-      "source_quality": 8,
-      "confidence": 89,
-      "tldr": "ახალმა არქიტექტურამ აჩვენა, რომ 4B მოდელი External Acceptance Gate-ის ქვეშ აღწევს 0% False Release-ს და უარყოფს ყველა ყალბ გეგმას.",
-      "what_happened": "შექმნა პროტოკოლი, სადაც 4B SLM აგენერირებს კანდიდატ გეგმებს, ხოლო Sealed Grammar Gate წყვეტს მათ გაშვებას.",
-      "what_changed": "მანამდე: დიდი მოდელი იღებდა საბოლოო გადაწყვეტილებას -> ახლა: პატარა მოდელი სთავაზობს, გარეგანი კოდი ამოწმებს და უშვებს.",
-      "why_it_matters": "შეგიძლია გამოიყენო უფასო/პატარა LLM-ები პროდაქშენში, თუ გაშვების უფლებას გარეგან Python Parser-ს მისცემ.",
-      "key_takeaways": [
-        "Candidate Generation და Release Authority მკვეთრად უნდა იყოს დაცალკევებული",
-        "4B ლოკალური მოდელი საკმარისია მაღალი ხარისხის გეგმების დასაგენერირებლად",
-        "Deterministic Gate გამორიცხავს ჰალუცინაციებით გამოწვეულ კრიტიკულ შეცდომებს"
-      ],
-      "technical_architecture": [
-        "Frozen 4B Local Model Candidate Generator",
-        "External Acceptance Layer with Sealed Grammar",
-        "Deterministic Parser Release Authority"
-      ],
-      "technical_details": [
-        "4B parameter frozen local model",
-        "144 validation tasks tested",
-        "0 false releases on initial criteria benchmark"
-      ],
-      "potential_impact": "შემცირდება ინფრასტრუქტურის ხარჯები და გაიზრდება აგენტების უსაფრთხოება ინდუსტრიულ ავტომატიზაციაში.",
-      "action_type": "BUILD",
-      "action": "დაწერე Python-ის Lark/Pydantic-ზე დაფუძნებული Acceptance Gate, რომელიც ლოკალური SLM-ის გენერირებულ JSON-ს გაშვებამდე გაფილტრავს.",
-      "evidence": [],
-      "factuality_level": "single_source",
-      "classification": [
-        "Real Technical Skill",
-        "Real Business Opportunity"
-      ],
-      "verified_facts": [
-        "არქიტექტურა აცალკევებს Candidate Generator-ს (4B LLM) და Release Authority-ს (External Gate)",
-        "22 პასუხგაუცემელ დავალებაზე მოდელმა შექმნა ყალბი გეგმები, მაგრამ Gate-მა ყველა (100%) უარყო",
-        "144 ტესტურ ამოცანაზე დაფიქსირდა 0% False Release (Clopper-Pearson Upper Bound 0.0354)"
-      ],
-      "interpretation": "პატარა, უფასო/ლოკალური 4B მოდელები იდეალური Candidate Generator-ები არიან, თუ საბოლოო გადაწყვეტილებას გარეგანი Deterministic Gate იღებს.",
-      "uncertainty": "Grammar-ის და Parser-ის ხელით წერა მოითხოვს დამატებით საინჟინრო დროს ყოველი ახალი დომენისთვის.",
-      "counter_argument": "სისტემა ეყრდნობა მკაცრ გრამატიკას, რაც ამცირებს აგენტის მოქნილობას არასტანდარტულ ენობრივ ინპუტებზე.",
-      "strategic_assessment": "გამოიყენე პატარა უფასო მოდელები (SLM) გენერაციისთვის და ხისტი Python Parser-ები ვალიდაციისთვის.",
-      "time_horizon": "mid-term",
-      "what_could_change": "ძვირადღირებული LLM API-ების წილი შემცირდება და ჩანაცვლდება SLM Generator + Deterministic Acceptance Layer წყვილებით.",
-      "risks": [
-        "მკაცრი გრამატიკის შექმნის სირთულე",
-        "მომხმარებლის არასწორი ინპუტების გაპარვა",
-        "დომენის სპეციფიკური შეზღუდვები"
-      ],
-      "non_obvious_opportunity": "საკუთარი Open-Source Agent Pipeline-ის აგება 4B Qwen/Llama მოდელით და Pydantic Grammar Gate-ით.",
-      "fit_assessment": "იდეალურია შენი შეზღუდული ბიუჯეტისთვის — საშუალებას გაძლევს პატარა ლოკალური მოდელებით მიაღწიო 100% საიმედოობას."
-    },
-    {
-      "event_id": "evt-linear-superposition-llm-thoughts",
-      "title": "Linear Superposition Transformer-ებში: ორი პარალელური ფიქრის შენახვა და Single Forward Pass Decoding",
-      "category": "AI Research / Model Architecture",
-      "primary_url": "https://huggingface.co/papers/2609.29845",
-      "supporting_urls": [],
-      "importance": 7,
-      "relevance": 8,
-      "actionability": 6,
-      "source_quality": 8,
-      "confidence": 88,
-      "tldr": "კვლევამ დაამტკიცა, რომ Transformer-ებს შეუძლიათ ემბედინგების სუპერპოზიციით ორი დამოუკიდებელი აზრი ერთ Forward Pass-ში დაამუშაონ.",
-      "what_happened": "მეცნიერებმა აღმოაჩინეს Superposition Linearity Hypothesis, რაც საშუალებას იძლევა ერთი Forward Pass-ით ორ სხვადასხვა ტექსტს მივყვეთ.",
-      "what_changed": "მანამდე: 2 ალტერნატიული გზა = 2 Forward Pass -> ახლა: Superposition Decoding-ით შესაძლებელია 1 Forward Pass-ში ორივეს მიღება.",
-      "why_it_matters": "მომავალში აგენტებს შეეძლებათ რამდენიმე სცენარის პარალელურად გაანალიზება Compute-ის გაორმაგების გარეშე.",
-      "key_takeaways": [
-        "Transformer-ებში არსებობს ფუნდამენტური წრფივი სუპერპოზიცია",
-        "შესაძლებელია 2 კოჰერენტული გაგრძელების გენერირება ერთ Forward Pass-ში",
-        "მსუბუქი Fine-Tuning აღადგენს Pretraining-ში დაკარგულ წრფივობას"
-      ],
-      "technical_architecture": [
-        "Superposition Linearity Hypothesis",
-        "Guided Disentangled Decoding Procedure",
-        "Embedding Average Next-Token Distribution"
-      ],
-      "technical_details": [
-        "Single forward pass dual generation",
-        "Fisher linear state analysis",
-        "Lightweight fine-tuning restoration"
-      ],
-      "potential_impact": "მკვეთრად შეამცირებს Multi-Agent Simulation და Tree-Search Planning-ის გამოთვლით ხარჯებს.",
-      "action_type": "LEARN",
-      "action": "წაიკითხე სტატიის Abstract და დეკოდირების სექცია Vector Superposition-ის პრინციპების უკეთ გასაგებად.",
-      "evidence": [],
-      "factuality_level": "single_source",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "სხვადასხვა ტექსტური ნაკადების ემბედინგების წრფივი კომბინაცია წარმოქმნის შემდეგი ტოკენის განაწილებების სუპერპოზიციას",
-        "ეს წრფივობა წარმოადგენს Transformer არქიტექტურის შინაგანი თვისებას და არა პრეთრეინინგის შედეგს",
-        "Guided Decoding მეთოდი იძლევა საშუალებას ერთი Forward Pass-იდან დეკოდირდეს ორი კოჰერენტული გაგრძელება"
-      ],
-      "interpretation": "Transformer-ებს შეუძლიათ ფარულ შრეებში ერთდროულად დაამუშაონ ორი ალტერნატიული მსჯელობის ხაზი დამატებითი გამოთვლითი რესურსის გარეშე.",
-      "uncertainty": "ჯერჯერობით გაურკვეველია, რამდენად ინარჩუნებს მოდელი მაღალ სიზუსტეს რთულ ლოგიკურ ამოცანებში Superposition-ისას.",
-      "counter_argument": "Superposition დონე მცირდება Pretraining-ის პროგრესთან ერთად და მოითხოვს Fine-Tuning-ს აღსადგენად.",
-      "strategic_assessment": "ყურადღება მიაქციე Multi-Stream Decoding ტექნიკებს; ეს მომავალში შეამცირებს Tree-of-Thought აგენტების ლატენტობას.",
-      "time_horizon": "long-term",
-      "what_could_change": "Parallel Agent Beam Search და Tree Search გახდება ბევრად ეფექტური Single Forward Pass-ის ხარჯზე.",
-      "risks": [
-        "ტოკენების დეკოდირების ინტერფერენცია",
-        "Fine-tuning-ის აუცილებლობა აღდგენისთვის",
-        "კვლევის ადრეული ეტაპი"
-      ],
-      "non_obvious_opportunity": "აგენტური Speculative Decoding-ის იდეის გამოკვლევა პარალელური Tool Execution გეგმების შესამოწმებლად.",
-      "fit_assessment": "გეხმარება ღრმად გაიგო LLM-ების შიდა მექანიკა და Transformer-ების შეზღუდვები."
-    },
-    {
-      "event_id": "evt-skilder-role-scoped-mcp",
-      "title": "Skilder: Progressive Skill Discovery and Role-Scoped MCP Governance for LLM Agents",
-      "category": "Agent Architecture & Security",
-      "primary_url": "https://arxiv.org/html/2609.28693v1",
-      "supporting_urls": [],
-      "importance": 9,
-      "relevance": 10,
-      "actionability": 9,
-      "source_quality": 8,
-      "confidence": 90,
-      "tldr": "Skilder აკონტროლებს tool calling-ს დინამიური როლებისა და MCP სერვერის მეშვეობით, რაც ხსნის უსაფრთხოებისა და კონტექსტის გადატვირთვის პრობლემას.",
-      "what_happened": "მკვლევარებმა წარმოადგინეს ფრეიმვორკი, რომელიც აგენტებს საშუალებას აძლევს ინსტრუმენტები ეტაპობრივად, როლების მიხედვით აითვისონ.",
-      "what_changed": "ყველა ხელსაწყოს ერთდროულად გადაცემიდან აგენტი გადადის საჭიროებისამებრ როლების დინამიურ აღმოჩენაზე.",
-      "why_it_matters": "შენ შეგიძლია აგო ისეთი აგენტები, რომლებიც არ იბნევიან დიდი ინსტრუმენტების სიებით და არღვევენ წესებს.",
-      "key_takeaways": [
-        "ინსტრუმენტები იფუთება როლებში skill-ებისა და ლიმიტების მიხედვით.",
-        "ერთადერთი MCP სერვერი უზრუნველყოფს დეტერმინისტულ ავტორიზაციას.",
-        "მცირდება კონტექსტის ზომა და იზრდება ტულ-სელექციის სიზუსტე."
-      ],
-      "technical_architecture": [
-        "Single MCP server handles progressive skill discovery.",
-        "Role catalog defines boundaries, tools, and constraints.",
-        "Deterministic authorization layer blocks out-of-scope calls."
-      ],
-      "technical_details": [
-        "Dynamic tool injection based on task requirements.",
-        "Execution guardrails enforced at server boundary."
-      ],
-      "potential_impact": "კორპორატიული კლიენტები მიიღებენ გარანტიას, რომ აგენტი არ გააკეთებს არასავტორიზაციო მოქმედებებს.",
-      "action_type": "BUILD",
-      "action": "აგე მარტივი MCP სერვერი Python-ში, რომელიც ხელსაწყოებს ორ განსხვავებულ როლად ყოფს და მხოლოდ მოთხოვნისას ტვირთავს.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value",
-        "Short-term Opportunity"
-      ],
-      "verified_facts": [
-        "Skilder packages capabilities into roles: skills, tools, instructions, and limits.",
-        "Agents start with a minimal role catalog and learn required roles dynamically via a single…",
-        "Deterministic authorization prevents unauthorized tool calls and parameter violations."
-      ],
-      "interpretation": "ბრტყელი კონტექსტისა და პრომპტზე დაფუძნებული უსაფრთხოების ეპოქა სრულდება; საჭიროა ჰარდვერული ან სტრუქტურული ინსტრუმენტების კონტროლი.",
-      "uncertainty": "როგორ მოერგება ეს მიდგომა ღია კოდის ორკესტრაციის ფრეიმვორკებს, ბოლომდე ნათელი არ არის.",
-      "counter_argument": "დინამიური როლების ძიებამ შეიძლება გაზარდოს აგენტის პასუხის დრო (latency) და ტოკენების ხარჯი.",
-      "strategic_assessment": "შეიმუშავე აგენტური არქიტექტურა, რომელიც ინსტრუმენტებს კატეგორიებად ყოფს და მხოლოდ საჭიროების შემთხვევაში ტვირთავს კონტექსტში.",
-      "time_horizon": "mid-term",
-      "what_could_change": "MCP სერვერები გადაიქცევა ავტორიზაციისა და როლების მართვის უსაფრთხო ცენტრებად.",
-      "risks": [
-        "რთულია როლების სწორი გრანულაციის პოვნა.",
-        "მეტა-აღწერების არასწორმა ინდექსაციამ შეიძლება დაბლოკოს აგენტი.",
-        "დამატებითი ლატენტობა როლების ძიების ფაზაში."
-      ],
-      "non_obvious_opportunity": "შეგიძლია შექმნა და გაყიდო მზა უსაფრთხოების ფილტრები MCP სერვერებისთვის ბიზნეს აგენტების მომხმარებლებისთვის.",
-      "fit_assessment": "იდეალურია შენი მიზნისთვის — ააგო რეალური ბიზნეს აგენტები, რომლებიც უსაფრთხოდ იყენებენ მრავალ API-ს."
-    },
     {
       "event_id": "evt-gpt6-sol-luna-pricing",
       "title": "OpenAI Expands GPT-6 Lineup with Cheaper Sol and Luna Models and Advanced Computer Use",
@@ -6245,6 +6077,176 @@
       ],
       "non_obvious_opportunity": "ადგილობრივ ქართულ ონლაინ მაღაზიებს სჭირდებათ ზუსტად ასეთი Telegram/WhatsApp ბოტი, რომელიც lead-ს გაფილტრავს და Google Sheets/SQL-ში ჩაწერს.",
       "fit_assessment": "პირდაპირ პასუხობს შენს მიზანს: რეალური ბიზნეს აგენტების აგება და არა სათამაშო დემოები."
+    },
+    {
+      "event_id": "evt-openai-google-cloud-model-garden",
+      "title": "OpenAI Models and Codex Agentic Workflows Arrive in Google Cloud Model Garden",
+      "category": "აგენტების ინფრასტრუქტურა და LLM APIs",
+      "primary_url": "https://openai.com/index/openai-models-google-cloud",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "OpenAI-ის ფრონტიერ მოდელები და Codex აგენტები შედიან Google Cloud Model Garden-ში.",
+      "what_happened": "OpenAI-მ და Google Cloud-მა გამოაცხადეს პარტნიორობა მოდელებისა და აგენტური სამუშაო ნაკადების ინტეგრაციის შესახებ.",
+      "what_changed": "იზოლირებული ეკოსისტემებიდან გადავდივართ მოდელების მრავალპლატფორმიან ხელმისაწვდომობაზე.",
+      "why_it_matters": "გაძლევს შანსს შეამოწმო მრავალი მოდელი ერთიან კლ라우დ გარემოში და შეარჩიო იაფი ვარიანტი შენი აგენტებისთვის.",
+      "key_takeaways": [
+        "OpenAI მოდელები ხელმისაწვდომია Google Cloud Model Garden-ში.",
+        "მსხვილ კლიენტებს შეუძლიათ გამოიყენონ GCP ხარჯვის ვალდებულებები.",
+        "ინტეგრაცია მოიცავს Codex აგენტურ სამუშაო ნაკადებს."
+      ],
+      "technical_architecture": [
+        "Google Cloud Model Garden ინტეგრაცია OpenAI API-ებთან.",
+        "GCP ტრანზაქციული ბილინგისა და წვდომის კონტროლის დაკავშირება."
+      ],
+      "technical_details": [
+        "API წვდომა Google Cloud Marketplace-ის გავლით.",
+        "ცენტრალიზებული მონაცემთა მმართველობის გამოყენება."
+      ],
+      "potential_impact": "ამარტივებს enterprise აგენტების განთავსებას და უზრუნველყოფს მოდელების ფართო არჩევანს.",
+      "action_type": "TRACK",
+      "action": "შეისწავლე Google Cloud Model Garden-ის დოკუმენტაცია და შეამოწმე API-ის გამოძხების მეთოდები Python-ით.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Business Opportunity",
+        "Long-Term Career Value",
+        "Short-term Opportunity"
+      ],
+      "verified_facts": [
+        "OpenAI frontier models and Codex agentic workflows are integrating into Google Cloud Model Garden.",
+        "Enterprise customers can use Google Cloud credits to purchase OpenAI models.",
+        "OpenAI models will be available in Google Antigravity and Gemini Agent."
+      ],
+      "interpretation": "ინფრასტრუქტურული ბარიერები იხსნება: დეველოპერები იღებენ თავისუფლებას გამოიყენონ OpenAI-ის აგენტები Google Cloud-ის მონაცემთა მართვის გარემოში.",
+      "uncertainty": "უცნობია როგორი იქნება ზუსტი API ლატენტობა Google Cloud-ის გარემოში ტრანსაქციების დროს.",
+      "counter_argument": "ეს პარტნიორობა ძირითადად მსხვილ კორპორაციებზეა გათვლილი და ნაკლებად ეხება იაფ, ლოკალურ ინსტრუმენტებს.",
+      "strategic_assessment": "გამოიყენე Model Garden-ის საჯარო API დოკუმენტაცია შენს აგენტებში მოდელების შესაცვლელად და ლატენტობის ტესტირებისთვის.",
+      "time_horizon": "mid-term",
+      "what_could_change": "მოდელების პროვაიდერებს შორის კონკურენცია გადადის კლ라우დ ინფრასტრუქტურისა და ბილინგის ინტეგრაციის დონეზე.",
+      "risks": [
+        "API ხარჯების ზრდა",
+        "კლ라우დ პლატფორმაზე დამოკიდებულება",
+        "კონფიგურაციის სირთულე"
+      ],
+      "non_obvious_opportunity": "მცირე დეველოპერებს შეუძლიათ გამოიყენონ არსებული კლ라우დ ბიუჯეტები OpenAI API-ების სატესტოდ.",
+      "fit_assessment": "გვეხმარება გავხადოთ ჩვენი აგენტი მოდელ-აგნოსტიკური, თუმცა ფრთხილად უნდა ვიყოთ ხარჯებთან."
+    },
+    {
+      "event_id": "evt-quant-arena-trading-agents",
+      "title": "Quant-Arena: Benchmarking LLM Agents for End-to-End Quantitative Trading Research",
+      "category": "AI Evaluation & საიმედოობა",
+      "primary_url": "https://arxiv.org/abs/2610.30113",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 7,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "Quant-Arena აფასებს LLM აგენტებს საბაზრო ჰიპოთეზების შექმნისა და ტესტირების იტერაციულ ლუპებში.",
+      "what_happened": "მკვლევრებმა წარადგინეს Quant-Arena, ბენჩმარკი სადაც აგენტები აწყობენ ფინანსურ სიგნალებს ისტორიულ მონაცემებზე.",
+      "what_changed": "თეორიული ქვიზებიდან გადავდივართ მრავალეტაპიან კვლევით ბენჩმარკებზე რეალურ მონაცემებზე.",
+      "why_it_matters": "გაძლევს მაგალითს იმისა, როგორ უნდა შეამოწმო შენი აგენტის მიერ გენერირებული კოდის ხარისხი და ვალიდურობა.",
+      "key_takeaways": [
+        "Quant-Arena აფასებს ეგზეკუტებადი სიგნალების წერას და ისტორიულ ტესტირებას.",
+        "ფრონტიერ მოდელებმა ვერ აჯობეს მარტივ საბაზრო ბაზისს 2024 წელს.",
+        "ბენჩმარკი ღიაა მოდელებისა და აგენტების ჰარნესების გამოსაცდელად."
+      ],
+      "technical_architecture": [
+        "კეშ-ანგარიშის ევალუატორი საბაზრო შეზღუდვებითა და ხარჯებით.",
+        "სიმულირებული ორდერ-ბუქის ბაზაზე ბაზრის გავლენის შეფასება."
+      ],
+      "technical_details": [
+        "ფუნქციების გენერაცია და სტოკ-სქორინგ კოდის შესრულება Python-ში.",
+        "უკუკავშირის მიღება მხოლოდ 2022-2023 წლების მონაცემებიდან."
+      ],
+      "potential_impact": "აუმჯობესებს აგენტების უსაფრთხოებასა და კოდის გენერაციის ხარისხს რთულ, ცვალებად გარემოებებში.",
+      "action_type": "LEARN",
+      "action": "წაიკითხე Quant-Arena-ს ნაშრომის აბსტრაქტი და გააანალიზე როგორ აწყობენ ისინი აგენტურ კვლევით ლუპებს.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value",
+        "Short-term Opportunity"
+      ],
+      "verified_facts": [
+        "Quant-Arena evaluates end-to-end quantitative research on real A-share market data.",
+        "Nine frontier models were evaluated, including GPT-6 Astra.",
+        "No tested model beat the equal-weight market baseline in the sealed 2024 test."
+      ],
+      "interpretation": "აგენტები ჯერ კიდევ ვერ ამარცხებენ მარტივ საბაზრო სტრატეგიებს სრულფასოვან კვლევით ლუპებში, რაც აჩვენებს რთული აგენტური რისკების მნიშვნელობას.",
+      "uncertainty": "გამოყენებული ბაზრის მონაცემები შეზღუდულია და სტრატეგიები შეიძლება არ გენერალიზდებოდეს სხვა ბირჟებზე.",
+      "counter_argument": "ფინანსური ბაზრის სიმულაციები ხშირად არარეალურია და აგენტის შეცდომები ძვირი ჯდება რეალურ გარემოში.",
+      "strategic_assessment": "გამოიყენე ეს ბენჩმარკი როგორც მოდელი შენი საკუთარი აგენტების იტერაციული ლუპების შესაფასებლად და საიმედოობის ასამაღლებლად.",
+      "time_horizon": "mid-term",
+      "what_could_change": "ფინანსური კვლევები სრულად ავტომატიზირდება, მაგრამ მოითხოვს მკაცრ მრავალეტაპიან ტესტირებას.",
+      "risks": [
+        "ზედმეტად ოპტიმისტური ბექსტესტები",
+        "ფინანსური დანაკარგები",
+        "კონტექსტის დაბინძურება"
+      ],
+      "non_obvious_opportunity": "მცირე დეველოპერებს შეუძლიათ გამოიყენონ მსგავსი იტერაციული ლუპები არა ტრეიდინგისთვის, არამედ მონაცემთა ავტომატური ანალიზისთვის.",
+      "fit_assessment": "გასწავლის როგორ აგო იტერაციული კვლევითი აგენტები, რომლებიც უშვებენ და ტესტავენ ჰიპოთეზებს ისტორიულ მონაცემებზე."
+    },
+    {
+      "event_id": "evt-donic-bimanual-dexterous-control",
+      "title": "DONIC: Generalist Dexterous Bimanual Tracking Control from Human Demonstrations",
+      "category": "აგენტის არქიტექტურა და რობოტიკა",
+      "primary_url": "https://huggingface.co/papers/2610.29997",
+      "supporting_urls": [],
+      "importance": 7,
+      "relevance": 6,
+      "actionability": 6,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "DONIC წარმოადგენს ორხელიან რობოტულ ტრეკერს, რომელიც ადამიანის მოძრაობიდან სწავლობს ფაინ-თუნინგის გარეშე.",
+      "what_happened": "მკვლევრებმა წარადგინეს DONIC, პოლიტიკა რომელიც აკონტროლებს ორ ხელს ადამიანის დემონსტრაციების გამოყენებით.",
+      "what_changed": "ერთხელიანი მანიპულაციიდან გადავდივართ ორხელიან, კოორდინირებულ მრავალმოდალურ მართვაზე.",
+      "why_it_matters": "გაჩვენებს როგორ მუშაობს ძლიერი პოლიტიკის ლუპები და რატომ არის მნიშვნელოვანი ქცევითი კლონირება.",
+      "key_takeaways": [
+        "DONIC აკონტროლებს ორ Wuji ხელს და ათვალიერებს ბიმანუალურ რეფერენსებს.",
+        "იყენებს PPO-ს და behavioral cloning-ს უკუკავშირის ლუპში.",
+        "აღწევს 86.79 პროცენტ წარმატებას უცნობ ტრაექტორიებზე."
+      ],
+      "technical_architecture": [
+        "BiHOI მრავალხედიანი მონაცემთა ბაზა (1,575 სექვენსი, 229 ობიექტი).",
+        "Object-centered per-hand reward და Clip-Centered Advantages."
+      ],
+      "technical_details": [
+        "Proximal policy optimization ერთობლივი ტრენინგისთვის.",
+        "ხელის კონტაქტის როლების მიხედვით ზედამხედველობა."
+      ],
+      "potential_impact": "აჩქარებს მულტიმოდალური რობოტული სისტემების დანერგვას ინდუსტრიულ სფეროებში.",
+      "action_type": "TRACK",
+      "action": "გადახედე Hugging Face-ის ნაშრომის გვერდს და გაეცანი BiHOI მონაცემთა ბაზის სტრუქტურას.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "DONIC is a generalist bimanual tracker trained on human-motion data.",
+        "It achieves 86.79 percent success on unseen trajectories of training objects.",
+        "The model uses proximal policy optimization combined with behavioral cloning."
+      ],
+      "interpretation": "ფიზიკური და რობოტული აგენტები სწავლობენ ორხელიან კოორდინაციას ადამიანის დემონსტრაციებიდან ყოველგვარი დამატებითი ფაინ-თუნინგის გარეშე.",
+      "uncertainty": "რეალურ ფიზიკურ რობოტებზე გადატანა მოითხოვს महנגურ კალიბრაციას, რაც ლაბორატორიის მიღმა რთულია.",
+      "counter_argument": "ეს კვლევა სცდება სუფთა პროგრამული აგენტების ფარგლებს და ნაკლებად პრაქტიკულია ახალბედა დეველოპერისთვის დღეს.",
+      "strategic_assessment": "თვალი ადევნე მულტიმოდალური აგენტებისა და ფიზიკური ლუპების განვითარებას, თუმცა ფოკუსი შეინარჩუნე პროგრამულ აგენტებზე.",
+      "time_horizon": "long-term",
+      "what_could_change": "რობოტიკისა და ციფრული აგენტების არქიტექტურა გაერთიანდება ერთიანი მულტიმოდალური პოლიტიკის ქვეშ.",
+      "risks": [
+        "მაღალი გამოთვლითი სირთულე",
+        "აპარატურულ უზრუნველყოფაზე დამოკიდებულება",
+        "რეალურ სამყაროში გენერალიზაციის ბარიერები"
+      ],
+      "non_obvious_opportunity": "პოლიტიკის რეციკლირების მიდგომები შეიძლება გამოყენებულ იქნას პროგრამული აგენტების ტლანქი ციკლების ოპტიმიზაციისთვის.",
+      "fit_assessment": "ძალიან თეორიულია ამ ეტაპზე შენი ყოველდღიური პროექტებისთვის, მაგრამ კარგია არქიტექტურული ჰორიზონტისთვის."
     }
   ],
   "topics": {
@@ -6365,7 +6367,7 @@
     "RAG & Database Architecture": 2,
     "აგენტის არქიტექტურა და Cost Optimization": 1,
     "აგენტების უსაფრთხოება და Sandbox": 3,
-    "AI Evaluation & საიმედოობა": 4,
+    "AI Evaluation & საიმედოობა": 5,
     "აგენტის არქიტექტურა და ხელსაწყოები": 3,
     "Long-Term Career Strategy": 1,
     "უსაფრთხოება და ღია კოდი": 1,
@@ -6381,191 +6383,14 @@
     "LLM APIs და ხელსაწყოები": 1,
     "აგენტის ინფრასტრუქტურა და ეკოსისტემა": 1,
     "RAG და აგენტის მეხსიერება": 1,
-    "აგენტის არქიტექტურა და რობოტიკა": 1,
+    "აგენტის არქიტექტურა და რობოტიკა": 2,
     "Long-Term Career Value": 1,
     "აგენტის არქიტექტურა და ოპტიმიზაცია": 1,
     "Open Source AI & Infrastructure": 1,
-    "Real Business Opportunity & Agent Architecture": 1
+    "Real Business Opportunity & Agent Architecture": 1,
+    "აგენტების ინფრასტრუქტურა და LLM APIs": 1
   },
   "reports": [
-    {
-      "date": "2026-10-07",
-      "summary": "დღევანდელი ბრიფინგი მოიცავს Mistral-ის ახალი ღია მოდელის წინასწარ რელიზს, კოდირების აგენტების ახალ ბენჩმარკს და სტატიკური ანალიზის შექმნის ტექნიკას. ეს სიახლეები პირდაპირ ეხება აგენტურ არქიტექტურებს და პროფესიულ ზრდას.",
-      "events": [
-        {
-          "event_id": "evt-mistral-large-4-preview",
-          "title": "Mistral Large 4 Public Preview",
-          "category": "LLM API & Model Architecture",
-          "primary_url": "https://mistral.ai/news/mistral-large-4",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 9,
-          "actionability": 7,
-          "source_quality": 10,
-          "confidence": 95,
-          "tldr": "Mistral released a public preview of Mistral Large 4, a 1T multimodal model with open weights arriving later this month.",
-          "what_happened": "Mistral AI launched a public API preview of Mistral Large 4, known as le Chonk, trained from scratch in Europe.",
-          "what_changed": "Closed frontier models -> Open-weight multi-modal alternative with strong coding and cyber capabilities.",
-          "why_it_matters": "Provides an alternative to US-based closed models for advanced agentic and coding tasks.",
-          "key_takeaways": [
-            "Features 1 trillion total parameters and 49 billion active parameters.",
-            "Trained on 3800 NVIDIA Grace Blackwell GPUs.",
-            "Open weights drop by the end of the month."
-          ],
-          "technical_architecture": [
-            "Native multimodal architecture with 49B active parameters.",
-            "Trained on European datacenter infrastructure."
-          ],
-          "technical_details": [
-            "1T total parameters",
-            "49B active parameters",
-            "Multilingual across 160+ languages"
-          ],
-          "potential_impact": "Enables local execution of advanced coding and security agent workflows under European data sovereignty.",
-          "action_type": "TRACK",
-          "action": "Test the Mistral Large 4 public preview API on Mistral Studio for multi-step agent logic.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value",
-            "Short-term Opportunity"
-          ],
-          "verified_facts": [
-            "Mistral Large 4 has 1 trillion total parameters with 49 billion active.",
-            "The model is natively multimodal and trained on 3800 NVIDIA Grace Blackwell GPUs.",
-            "Open weights will be released by the end of the month."
-          ],
-          "interpretation": "Open weights for high-capability models give developers local control and reduce reliance on closed API providers.",
-          "uncertainty": "Exact hardware requirements for running the open-weight release locally remain unconfirmed.",
-          "counter_argument": "Large active parameter counts make local deployment expensive for independent developers without cloud clusters.",
-          "strategic_assessment": "Track the upcoming open weights drop for local agent workflows once released.",
-          "time_horizon": "mid-term",
-          "what_could_change": "Autonomous security research and local agent execution will become more accessible without API filtering.",
-          "risks": [
-            "High active parameter count limits local hardware execution.",
-            "Vendor-specific API features may differ from open weights."
-          ],
-          "non_obvious_opportunity": "Multilingual training across 160+ languages creates strong opportunities for localized Georgian AI applications.",
-          "fit_assessment": "Fits your need for open-source foundation models that run without restrictive API pricing."
-        },
-        {
-          "event_id": "evt-checkerbench-static-analysis",
-          "title": "CheckerBench: Can Long-Horizon Agents Synthesize Static-Analysis Checkers?",
-          "category": "AI Evaluation & Agent Reliability",
-          "primary_url": "https://huggingface.co/papers/2610.07557",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "CheckerBench evaluates coding agents on their ability to build working static-analysis checkers from real-world CVEs.",
-          "what_happened": "Researchers introduced CheckerBench, an executable benchmark of 300 tasks for static-analysis checker synthesis.",
-          "what_changed": "Simple patch generation -> Full repository inspection and iterative checker synthesis.",
-          "why_it_matters": "Measures true long-horizon agent reliability and error-correction loops.",
-          "key_takeaways": [
-            "Covers 300 tasks across 5 language ecosystems and 85 CWEs.",
-            "Tests iterative refinement via compilation and analysis feedback.",
-            "Mean Pass@1 is currently 32.30%, highlighting major room for improvement."
-          ],
-          "technical_architecture": [
-            "CheckerLab framework for rebuilding submitted checkers and measuring diagnostic contrast."
-          ],
-          "technical_details": [
-            "300 executable tasks",
-            "167 repositories",
-            "Pass@1 range: 32.30% to 45.33%"
-          ],
-          "potential_impact": "Drives the development of autonomous agents that can write their own verification tools.",
-          "action_type": "LEARN",
-          "action": "Review the CheckerBench GitHub repository to examine how task environments and evaluation harnesses are structured.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "CheckerBench contains 300 tasks derived from 297 CVEs across 167 repositories.",
-            "Mean Pass@1 across 21 model-harness configurations is 32.30%, with the best reaching 45.33%.",
-            "Tasks require agents to interpret defect specifications and refine checkers through compilation feedback."
-          ],
-          "interpretation": "Static analysis synthesis tests whether coding agents can perform rigorous, long-horizon debugging instead of simple patch generation.",
-          "uncertainty": "Task execution environments require specific pinned dependencies which can be complex to set up.",
-          "counter_argument": "Most current coding agents lack the persistence required for multi-file static analysis tool creation.",
-          "strategic_assessment": "Study CheckerBench task structures to learn how to build self-correcting agent loops that use compiler feedback.",
-          "time_horizon": "mid-term",
-          "what_could_change": "Automated vulnerability detection and static checker creation will become standard components of CI/CD pipelines.",
-          "risks": [
-            "Low baseline success rates (32.30% mean Pass@1) show high current fragility.",
-            "Complex setup for multi-language execution environments."
-          ],
-          "non_obvious_opportunity": "Writing custom static analysis checkers is a high-value skill for freelance security automation engineering.",
-          "fit_assessment": "Directly aligns with your focus on agent loops, state, and evaluation."
-        },
-        {
-          "event_id": "evt-alloydb-hybrid-search-rrf",
-          "title": "Simplify AI search with AlloyDB hybrid search and RRF",
-          "category": "RAG & Database Architecture",
-          "primary_url": "https://cloud.google.com/blog/products/databases/simplify-ai-search-with-alloydb-hybrid-search-and-rrf",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 8,
-          "actionability": 8,
-          "source_quality": 9,
-          "confidence": 90,
-          "tldr": "AlloyDB introduced native hybrid search with Reciprocal Rank Fusion, merging vector and full-text search inside SQL functions.",
-          "what_happened": "Google Cloud added native RRF and BM25 indexing to AlloyDB for PostgreSQL to streamline RAG search pipelines.",
-          "what_changed": "Complex multi-step application code for score normalization -> Single high-performance SQL function.",
-          "why_it_matters": "Simplifies RAG infrastructure and improves retrieval relevance without custom middleware.",
-          "key_takeaways": [
-            "Combines vector search and full-text search natively.",
-            "Uses Reciprocal Rank Fusion (RRF) for score merging.",
-            "Includes BM25 and RUM extensions for keyword relevance."
-          ],
-          "technical_architecture": [
-            "Single SQL function executing vector similarity and FTS fusion."
-          ],
-          "technical_details": [
-            "Reciprocal Rank Fusion (RRF)",
-            "BM25 index support",
-            "RUM extension for word positions"
-          ],
-          "potential_impact": "Reduces engineering overhead for building high-precision RAG systems.",
-          "action_type": "LEARN",
-          "action": "Study how Reciprocal Rank Fusion (RRF) combines vector and keyword search scores without manual normalization.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "AlloyDB AI now supports native hybrid search combining vector search and full-text search.",
-            "Reciprocal Rank Fusion (RRF) eliminates complex application-layer score normalization code.",
-            "Includes BM25 index support and RUM extension for low-latency relevance ranking."
-          ],
-          "interpretation": "Moving result fusion directly into the database engine simplifies RAG architecture and eliminates fragile application code.",
-          "uncertainty": "AlloyDB is a managed enterprise cloud service, which may incur costs outside free tiers.",
-          "counter_argument": "Many developers prefer decoupled vector databases and search engines for granular scaling control.",
-          "strategic_assessment": "Learn Reciprocal Rank Fusion (RRF) concepts to implement robust hybrid search in Postgres-based RAG systems.",
-          "time_horizon": "mid-term",
-          "what_could_change": "RAG pipeline architecture will simplify as databases natively handle multi-modal search and ranking.",
-          "risks": [
-            "Vendor lock-in with Google Cloud managed database services.",
-            "Managed database services may exceed zero-budget constraints."
-          ],
-          "non_obvious_opportunity": "Understanding SQL-level RRF gives you an architectural edge when designing fast, low-latency search backends.",
-          "fit_assessment": "Fits your current learning track moving through SQL, databases, and RAG."
-        }
-      ],
-      "trends": [
-        "Native database-level hybrid search is replacing complex application-layer RAG fusion code.",
-        "Evaluation benchmarks are shifting from simple code patches to long-horizon static analysis checker synthesis.",
-        "Open-weight frontier models are providing robust local alternatives to commercial APIs."
-      ]
-    },
     {
       "date": "2026-10-08",
       "summary": "დღევანდელი გამოშვება აანალიზებს AWS-ის ახალ უსაფრთხოების სანდბოქსებს, 3D ობიექტების მეხსიერების კვლევებს და ენობრივ ტექსტურ სენსიტიურობას რობოტიკაში. ეს სიახლეები გვაძლევს პრაქტიკულ, საინჟინრო მიდგომებს აგენტების დასაცავად და ოპტიმიზაციისთვის.",
@@ -10137,14 +9962,194 @@
         "კომპიუტერული ინფრასტრუქტურის დივერსიფიკაცია (PyTorch-ის native მხარდაჭერა TPU-ზე)",
         "მესენჯერებზე (WhatsApp/Telegram) დაფუძნებული მრავალაგენტიანი ბიზნეს სისტემების მასობრივი დანერგვა"
       ]
+    },
+    {
+      "date": "2026-10-22",
+      "summary": "დღევანდელი სიგნალები ფოკუსირებულია OpenAI-სა და Google Cloud-ის ინფრასტრუქტურულ ინტეგრაციებზე, აგენტების პერსისტენტული runtime სერვისებზე და კვანტური ტრეიდინგის ბენჩმარკებზე. შენთვის მთავარი ამოცანაა შეისწავლო აგენტების runtime და მართო tool calling ისე, რომ აირიდო context pollution.",
+      "events": [
+        {
+          "event_id": "evt-openai-google-cloud-model-garden",
+          "title": "OpenAI Models and Codex Agentic Workflows Arrive in Google Cloud Model Garden",
+          "category": "აგენტების ინფრასტრუქტურა და LLM APIs",
+          "primary_url": "https://openai.com/index/openai-models-google-cloud",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "OpenAI-ის ფრონტიერ მოდელები და Codex აგენტები შედიან Google Cloud Model Garden-ში.",
+          "what_happened": "OpenAI-მ და Google Cloud-მა გამოაცხადეს პარტნიორობა მოდელებისა და აგენტური სამუშაო ნაკადების ინტეგრაციის შესახებ.",
+          "what_changed": "იზოლირებული ეკოსისტემებიდან გადავდივართ მოდელების მრავალპლატფორმიან ხელმისაწვდომობაზე.",
+          "why_it_matters": "გაძლევს შანსს შეამოწმო მრავალი მოდელი ერთიან კლ라우დ გარემოში და შეარჩიო იაფი ვარიანტი შენი აგენტებისთვის.",
+          "key_takeaways": [
+            "OpenAI მოდელები ხელმისაწვდომია Google Cloud Model Garden-ში.",
+            "მსხვილ კლიენტებს შეუძლიათ გამოიყენონ GCP ხარჯვის ვალდებულებები.",
+            "ინტეგრაცია მოიცავს Codex აგენტურ სამუშაო ნაკადებს."
+          ],
+          "technical_architecture": [
+            "Google Cloud Model Garden ინტეგრაცია OpenAI API-ებთან.",
+            "GCP ტრანზაქციული ბილინგისა და წვდომის კონტროლის დაკავშირება."
+          ],
+          "technical_details": [
+            "API წვდომა Google Cloud Marketplace-ის გავლით.",
+            "ცენტრალიზებული მონაცემთა მმართველობის გამოყენება."
+          ],
+          "potential_impact": "ამარტივებს enterprise აგენტების განთავსებას და უზრუნველყოფს მოდელების ფართო არჩევანს.",
+          "action_type": "TRACK",
+          "action": "შეისწავლე Google Cloud Model Garden-ის დოკუმენტაცია და შეამოწმე API-ის გამოძხების მეთოდები Python-ით.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Business Opportunity",
+            "Long-Term Career Value",
+            "Short-term Opportunity"
+          ],
+          "verified_facts": [
+            "OpenAI frontier models and Codex agentic workflows are integrating into Google Cloud Model Garden.",
+            "Enterprise customers can use Google Cloud credits to purchase OpenAI models.",
+            "OpenAI models will be available in Google Antigravity and Gemini Agent."
+          ],
+          "interpretation": "ინფრასტრუქტურული ბარიერები იხსნება: დეველოპერები იღებენ თავისუფლებას გამოიყენონ OpenAI-ის აგენტები Google Cloud-ის მონაცემთა მართვის გარემოში.",
+          "uncertainty": "უცნობია როგორი იქნება ზუსტი API ლატენტობა Google Cloud-ის გარემოში ტრანსაქციების დროს.",
+          "counter_argument": "ეს პარტნიორობა ძირითადად მსხვილ კორპორაციებზეა გათვლილი და ნაკლებად ეხება იაფ, ლოკალურ ინსტრუმენტებს.",
+          "strategic_assessment": "გამოიყენე Model Garden-ის საჯარო API დოკუმენტაცია შენს აგენტებში მოდელების შესაცვლელად და ლატენტობის ტესტირებისთვის.",
+          "time_horizon": "mid-term",
+          "what_could_change": "მოდელების პროვაიდერებს შორის კონკურენცია გადადის კლ라우დ ინფრასტრუქტურისა და ბილინგის ინტეგრაციის დონეზე.",
+          "risks": [
+            "API ხარჯების ზრდა",
+            "კლ라우დ პლატფორმაზე დამოკიდებულება",
+            "კონფიგურაციის სირთულე"
+          ],
+          "non_obvious_opportunity": "მცირე დეველოპერებს შეუძლიათ გამოიყენონ არსებული კლ라우დ ბიუჯეტები OpenAI API-ების სატესტოდ.",
+          "fit_assessment": "გვეხმარება გავხადოთ ჩვენი აგენტი მოდელ-აგნოსტიკური, თუმცა ფრთხილად უნდა ვიყოთ ხარჯებთან."
+        },
+        {
+          "event_id": "evt-quant-arena-trading-agents",
+          "title": "Quant-Arena: Benchmarking LLM Agents for End-to-End Quantitative Trading Research",
+          "category": "AI Evaluation & საიმედოობა",
+          "primary_url": "https://arxiv.org/abs/2610.30113",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 7,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "Quant-Arena აფასებს LLM აგენტებს საბაზრო ჰიპოთეზების შექმნისა და ტესტირების იტერაციულ ლუპებში.",
+          "what_happened": "მკვლევრებმა წარადგინეს Quant-Arena, ბენჩმარკი სადაც აგენტები აწყობენ ფინანსურ სიგნალებს ისტორიულ მონაცემებზე.",
+          "what_changed": "თეორიული ქვიზებიდან გადავდივართ მრავალეტაპიან კვლევით ბენჩმარკებზე რეალურ მონაცემებზე.",
+          "why_it_matters": "გაძლევს მაგალითს იმისა, როგორ უნდა შეამოწმო შენი აგენტის მიერ გენერირებული კოდის ხარისხი და ვალიდურობა.",
+          "key_takeaways": [
+            "Quant-Arena აფასებს ეგზეკუტებადი სიგნალების წერას და ისტორიულ ტესტირებას.",
+            "ფრონტიერ მოდელებმა ვერ აჯობეს მარტივ საბაზრო ბაზისს 2024 წელს.",
+            "ბენჩმარკი ღიაა მოდელებისა და აგენტების ჰარნესების გამოსაცდელად."
+          ],
+          "technical_architecture": [
+            "კეშ-ანგარიშის ევალუატორი საბაზრო შეზღუდვებითა და ხარჯებით.",
+            "სიმულირებული ორდერ-ბუქის ბაზაზე ბაზრის გავლენის შეფასება."
+          ],
+          "technical_details": [
+            "ფუნქციების გენერაცია და სტოკ-სქორინგ კოდის შესრულება Python-ში.",
+            "უკუკავშირის მიღება მხოლოდ 2022-2023 წლების მონაცემებიდან."
+          ],
+          "potential_impact": "აუმჯობესებს აგენტების უსაფრთხოებასა და კოდის გენერაციის ხარისხს რთულ, ცვალებად გარემოებებში.",
+          "action_type": "LEARN",
+          "action": "წაიკითხე Quant-Arena-ს ნაშრომის აბსტრაქტი და გააანალიზე როგორ აწყობენ ისინი აგენტურ კვლევით ლუპებს.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value",
+            "Short-term Opportunity"
+          ],
+          "verified_facts": [
+            "Quant-Arena evaluates end-to-end quantitative research on real A-share market data.",
+            "Nine frontier models were evaluated, including GPT-6 Astra.",
+            "No tested model beat the equal-weight market baseline in the sealed 2024 test."
+          ],
+          "interpretation": "აგენტები ჯერ კიდევ ვერ ამარცხებენ მარტივ საბაზრო სტრატეგიებს სრულფასოვან კვლევით ლუპებში, რაც აჩვენებს რთული აგენტური რისკების მნიშვნელობას.",
+          "uncertainty": "გამოყენებული ბაზრის მონაცემები შეზღუდულია და სტრატეგიები შეიძლება არ გენერალიზდებოდეს სხვა ბირჟებზე.",
+          "counter_argument": "ფინანსური ბაზრის სიმულაციები ხშირად არარეალურია და აგენტის შეცდომები ძვირი ჯდება რეალურ გარემოში.",
+          "strategic_assessment": "გამოიყენე ეს ბენჩმარკი როგორც მოდელი შენი საკუთარი აგენტების იტერაციული ლუპების შესაფასებლად და საიმედოობის ასამაღლებლად.",
+          "time_horizon": "mid-term",
+          "what_could_change": "ფინანსური კვლევები სრულად ავტომატიზირდება, მაგრამ მოითხოვს მკაცრ მრავალეტაპიან ტესტირებას.",
+          "risks": [
+            "ზედმეტად ოპტიმისტური ბექსტესტები",
+            "ფინანსური დანაკარგები",
+            "კონტექსტის დაბინძურება"
+          ],
+          "non_obvious_opportunity": "მცირე დეველოპერებს შეუძლიათ გამოიყენონ მსგავსი იტერაციული ლუპები არა ტრეიდინგისთვის, არამედ მონაცემთა ავტომატური ანალიზისთვის.",
+          "fit_assessment": "გასწავლის როგორ აგო იტერაციული კვლევითი აგენტები, რომლებიც უშვებენ და ტესტავენ ჰიპოთეზებს ისტორიულ მონაცემებზე."
+        },
+        {
+          "event_id": "evt-donic-bimanual-dexterous-control",
+          "title": "DONIC: Generalist Dexterous Bimanual Tracking Control from Human Demonstrations",
+          "category": "აგენტის არქიტექტურა და რობოტიკა",
+          "primary_url": "https://huggingface.co/papers/2610.29997",
+          "supporting_urls": [],
+          "importance": 7,
+          "relevance": 6,
+          "actionability": 6,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "DONIC წარმოადგენს ორხელიან რობოტულ ტრეკერს, რომელიც ადამიანის მოძრაობიდან სწავლობს ფაინ-თუნინგის გარეშე.",
+          "what_happened": "მკვლევრებმა წარადგინეს DONIC, პოლიტიკა რომელიც აკონტროლებს ორ ხელს ადამიანის დემონსტრაციების გამოყენებით.",
+          "what_changed": "ერთხელიანი მანიპულაციიდან გადავდივართ ორხელიან, კოორდინირებულ მრავალმოდალურ მართვაზე.",
+          "why_it_matters": "გაჩვენებს როგორ მუშაობს ძლიერი პოლიტიკის ლუპები და რატომ არის მნიშვნელოვანი ქცევითი კლონირება.",
+          "key_takeaways": [
+            "DONIC აკონტროლებს ორ Wuji ხელს და ათვალიერებს ბიმანუალურ რეფერენსებს.",
+            "იყენებს PPO-ს და behavioral cloning-ს უკუკავშირის ლუპში.",
+            "აღწევს 86.79 პროცენტ წარმატებას უცნობ ტრაექტორიებზე."
+          ],
+          "technical_architecture": [
+            "BiHOI მრავალხედიანი მონაცემთა ბაზა (1,575 სექვენსი, 229 ობიექტი).",
+            "Object-centered per-hand reward და Clip-Centered Advantages."
+          ],
+          "technical_details": [
+            "Proximal policy optimization ერთობლივი ტრენინგისთვის.",
+            "ხელის კონტაქტის როლების მიხედვით ზედამხედველობა."
+          ],
+          "potential_impact": "აჩქარებს მულტიმოდალური რობოტული სისტემების დანერგვას ინდუსტრიულ სფეროებში.",
+          "action_type": "TRACK",
+          "action": "გადახედე Hugging Face-ის ნაშრომის გვერდს და გაეცანი BiHOI მონაცემთა ბაზის სტრუქტურას.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "DONIC is a generalist bimanual tracker trained on human-motion data.",
+            "It achieves 86.79 percent success on unseen trajectories of training objects.",
+            "The model uses proximal policy optimization combined with behavioral cloning."
+          ],
+          "interpretation": "ფიზიკური და რობოტული აგენტები სწავლობენ ორხელიან კოორდინაციას ადამიანის დემონსტრაციებიდან ყოველგვარი დამატებითი ფაინ-თუნინგის გარეშე.",
+          "uncertainty": "რეალურ ფიზიკურ რობოტებზე გადატანა მოითხოვს महנגურ კალიბრაციას, რაც ლაბორატორიის მიღმა რთულია.",
+          "counter_argument": "ეს კვლევა სცდება სუფთა პროგრამული აგენტების ფარგლებს და ნაკლებად პრაქტიკულია ახალბედა დეველოპერისთვის დღეს.",
+          "strategic_assessment": "თვალი ადევნე მულტიმოდალური აგენტებისა და ფიზიკური ლუპების განვითარებას, თუმცა ფოკუსი შეინარჩუნე პროგრამულ აგენტებზე.",
+          "time_horizon": "long-term",
+          "what_could_change": "რობოტიკისა და ციფრული აგენტების არქიტექტურა გაერთიანდება ერთიანი მულტიმოდალური პოლიტიკის ქვეშ.",
+          "risks": [
+            "მაღალი გამოთვლითი სირთულე",
+            "აპარატურულ უზრუნველყოფაზე დამოკიდებულება",
+            "რეალურ სამყაროში გენერალიზაციის ბარიერები"
+          ],
+          "non_obvious_opportunity": "პოლიტიკის რეციკლირების მიდგომები შეიძლება გამოყენებულ იქნას პროგრამული აგენტების ტლანქი ციკლების ოპტიმიზაციისთვის.",
+          "fit_assessment": "ძალიან თეორიულია ამ ეტაპზე შენი ყოველდღიური პროექტებისთვის, მაგრამ კარგია არქიტექტურული ჰორიზონტისთვის."
+        }
+      ],
+      "trends": [
+        "OpenAI მოდელების ინტეგრაცია Google Cloud ეკოსისტემაში ქმნის მრავალპლატფორმიან აგენტურ სტანდარტებს.",
+        "აგენტების იტერაციული და კვლევითი ბენჩმარკები (როგორიცაა Quant-Arena) ცვლის სტატიკურ ტესტებს.",
+        "მულტიმოდალური ფიზიკური და რობოტული სისტემები უახლოვდებიან ნულოვანი ფაინ-თუნინგის რეჟიმებს."
+      ]
     }
   ],
   "learning_queue": [
-    "SQLite შიდა სტრუქტურა: ცხრილების შექმნა, ინდექსები და ტრანზაქციები Python-ის `sqlite3` მოდულით",
-    "FastMCP ბიბლიოთეკა: როგორ დარეგისტრირდეს ფუნქცია tool-ად სუფთა დეკორატორებით",
-    "Speculative Decoding-ის მათემატიკური საფუძვლები: რატომ ამცირებს ის დროის დანახარჯს მოდელის ხარისხის დაუკარგავად"
+    "Google Cloud Model Garden-ის API ინტეგრაციის ძირითადი პრინციპები.",
+    "აგენტური ევალუაციის და ფინანსური სტრატეგიების სიმულაციის მეთოდები."
   ],
-  "last_run": "2026-10-21T14:54:52.424391+00:00",
+  "last_run": "2026-10-22T14:54:53.996891+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -10244,12 +10249,14 @@
     "arxiv:2610.26836",
     "arxiv:2610.26847",
     "arxiv:2610.26825",
-    "arxiv:2610.28619"
+    "arxiv:2610.28619",
+    "arxiv:2610.30113",
+    "arxiv:2610.29997"
   ],
   "last_report_files": {
-    "markdown": "data/reports/2026-10-21/report.md",
-    "json": "data/reports/2026-10-21/report.json",
-    "newsletter": "data/reports/2026-10-21/newsletter.md",
-    "social": "data/reports/2026-10-21/social_posts.txt"
+    "markdown": "data/reports/2026-10-22/report.md",
+    "json": "data/reports/2026-10-22/report.json",
+    "newsletter": "data/reports/2026-10-22/newsletter.md",
+    "social": "data/reports/2026-10-22/social_posts.txt"
   }
 }
