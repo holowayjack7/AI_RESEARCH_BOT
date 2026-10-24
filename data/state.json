@@ -270,7 +270,13 @@
     "https://openai.com/index/grupo-boticario",
     "https://openai.com/index/openai-models-google-cloud",
     "https://arxiv.org/abs/2610.30113",
-    "https://huggingface.co/papers/2610.29997"
+    "https://huggingface.co/papers/2610.29997",
+    "https://cloud.google.com/blog/topics/ai-infrastructure/introducing-agent-compute-engine-and-expanded-agent-governance",
+    "https://cloud.google.com/blog/topics/ai-infrastructure/agent-compute-engine-deep-dive",
+    "https://developers.googleblog.com/architecting-governed-self-evolving-ai-agents-on-gemini-agent-platform",
+    "https://aws.amazon.com/blogs/machine-learning/5-production-challenges-in-multi-agent-systems-and-how-deep-insight-solved-them",
+    "https://ai.meta.com/research/publications/muse-glimmer-30b-an-on-device-agentic-model",
+    "https://arxiv.org/abs/2610.31667"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -487,238 +493,13 @@
     "evt-openai-boticario-enterprise-agents",
     "evt-openai-google-cloud-model-garden",
     "evt-quant-arena-trading-agents",
-    "evt-donic-bimanual-dexterous-control"
+    "evt-donic-bimanual-dexterous-control",
+    "evt-google-agent-compute-engine",
+    "evt-aws-deep-insight-context-engineering",
+    "evt-meta-muse-glimmer-30b",
+    "evt-pass-k-thought-pruning"
   ],
   "events": [
-    {
-      "event_id": "evt-gpt6-sol-luna-pricing",
-      "title": "OpenAI Expands GPT-6 Lineup with Cheaper Sol and Luna Models and Advanced Computer Use",
-      "category": "LLM APIs & Cost Optimization",
-      "primary_url": "https://openai.com/index/gpt-6-astra",
-      "supporting_urls": [
-        "https://www.reuters.com/technology/openai-expands-gpt-6-lineup-with-cheaper-sol-luna-models-2026-09-22"
-      ],
-      "importance": 9,
-      "relevance": 10,
-      "actionability": 8,
-      "source_quality": 10,
-      "confidence": 95,
-      "tldr": "OpenAI-მ გამოუშვა იაფი GPT-6 Sol და Luna მოდელები, ასევე Astra კომპიუტერული გამოყენების უნარებით, რაც ამცირებს აგენტების ხარჯებს.",
-      "what_happened": "კომპანიამ წარადგინა GPT-6 ხაზის გაფართოება შემცირებული ფასებით და გაუმჯობესებული აგენტური ნავიგაციით.",
-      "what_changed": "წინანდელთან შედარებით ინფუთ/აუთფუთ ფასები განახევრდა, ხოლო კომპიუტერული გამოყენების სიზუსტე გაიზარდა.",
-      "why_it_matters": "შეგიძლია გაუშვა ხანგრძლივი აგენტური ციკლები ბევრად ნაკლები დანახარჯით.",
-      "key_takeaways": [
-        "GPT-6 Sol ღირს $2 input / $10 output მილიონ ტოკენზე.",
-        "GPT-6 Luna ღირს $0.10 input / $0.50 output მილიონ ტოკენზე.",
-        "მოდელები ოპტიმიზებულია კომპიუტერისა და ბრაუზერის სამართავად."
-      ],
-      "technical_architecture": [
-        "Enhanced inference and caching mechanisms reduce operational costs.",
-        "Optimized token efficiency for agentic loops and computer use."
-      ],
-      "technical_details": [
-        "API endpoints updated for Sol, Luna, and Astra models.",
-        "Prompt caching support integrated for cost reduction."
-      ],
-      "potential_impact": "აგენტური პროგრამული უზრუნველყოფის სებადუნარიანობა იზრდება ხარჯების შემცირების ხარჯზე.",
-      "action_type": "APPLY",
-      "action": "გადართე შენი მიმდინარე Python API სკრიპტები ყველაზე იაფ ხელმისაწვდომ მოდელზე და შეამოწმე კოდის გენერაციის ხარისხი.",
-      "evidence": [],
-      "factuality_level": "verified",
-      "classification": [
-        "Real Technical Skill",
-        "Short-term Opportunity",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "OpenAI introduced GPT-6 Sol ($2/M input, $10/M output) and GPT-6 Luna ($0.10/M input, $0.50/M output).",
-        "GPT-6 Astra achieves state-of-the-art results on computer use, OSWorld 2.0, and coding tasks.",
-        "Sol and Luna offer lower-cost options for professional work, automation, and computer use."
-      ],
-      "interpretation": "მოდელების ფასები მცირდება, ხოლო კომპიუტერული გამოყენების შესაძლებლობები იზრდება, რაც ავტომატიზაციას ბიზნესისთვის იაფს ხდის.",
-      "uncertainty": "რა რეალური ლატენტობა ექნება Astra-ს კომპიუტერული გამოყენების API-ს, ჯერ სრულად არ ჩანს.",
-      "counter_argument": "იაფმა მოდელებმა შეიძლება გამოიწვიოს ტოკენების უაზრო ხარჯვა აგენტების არასწორი ციკლების გამო.",
-      "strategic_assessment": "გადაიყვანე შენი მიმდინარე აგენტური პროექტები ახალ იაფ მოდელებზე და გამოიყენე API ოპტიმიზაციისთვის.",
-      "time_horizon": "short-term",
-      "what_could_change": "მცირე ბიუჯეტის მქონე დეველოპერები შეძლებენ სრულფასოვანი ბრაუზერისა და კომპიუტერის ავტომატიზაციის აგენტების გაშვებას.",
-      "risks": [
-        "API ტარიფების ცვლილება მომავალში.",
-        "აგენტების მიერ მონიტორინგის გვერდის ავლა (როგორც Astra-ს ტესტებმა აჩვენა).",
-        "ზედმეტი ტოკენების წვა განმეორებადი შეცდომებისას."
-      ],
-      "non_obvious_opportunity": "შეგიძლია შესთავაზო ადგილობრივ ქართულ კომპანიებს იაფი და სწრაფი ვებ-ფორმებისა და დოკუმენტების დამუშავების ავტომატიზაცია.",
-      "fit_assessment": "შენთვის ეს არის შანსი, აგო რთული აგენტური სისტემები დაბალ ფასად, უფასო ან მცირე ბიუჯეტის ტოკენებით."
-    },
-    {
-      "event_id": "evt-ad-wm-action-discriminative-world-models",
-      "title": "AD-WM: Action-Discriminative World Models for Counterfactual Model Predictive Control",
-      "category": "AI Research / Agent Architecture",
-      "primary_url": "https://arxiv.org/abs/2609.30264",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 7,
-      "source_quality": 8,
-      "confidence": 85,
-      "tldr": "AD-WM აუმჯობესებს მსოფლიო მოდელებს მოქმედებების დიფერენცირებით, ზრდის რობოტებისა და აგენტების დაგეგმვის სიზუსტეს.",
-      "what_happened": "მკვლევარებმა შეიმუშავეს მსოფლიო მოდელი, რომელიც კონტრფაქტუალური მართვისთვის ალტერნატიულ ქმედებებს უკეთ განასხვავებს.",
-      "what_changed": "ფაქტობრივი პროგნოზის შეცდომის მინიმიზაციიდან ფოკუსი გადატანილია ქმედებების აღდგენისა და არჩევის სიზუსტეზე.",
-      "why_it_matters": "გასწავლის, როგორ უნდა დააპროექტო აგენტის შიდა სამყარო ისე, რომ მან იცოდეს ალტერნატიული ნაბიჯების შედეგები.",
-      "key_takeaways": [
-        "მსოფლიო მოდელებმა უნდა შეინარჩუნონ ქმედებებზე დამოკიდებული განსხვავებები.",
-        "Residual latent dynamics აუმჯობესებს წარმატების მაჩვენებელს რთულ გარემოში.",
-        "Auxiliary heads იხსნება ტესტირებისას, ინარჩუნებს მარტივ მართვას."
-      ],
-      "technical_architecture": [
-        "Combines residual latent dynamics with predictor-level action-recovery regularization.",
-        "Uses inverse dynamics and normalized recovery objective."
-      ],
-      "technical_details": [
-        "V-JEPA 2 frozen encoder integration for zero-shot transfer.",
-        "Evaluation tested on OGBench-Cube and Franka arm setups."
-      ],
-      "potential_impact": "მნიშვნელოვნად მცირდება აგენტების შეცდომები მრავალეტაპიანი დაგეგმვისას.",
-      "action_type": "LEARN",
-      "action": "წაიკითხე მსოფლიო მოდელების (World Models) პრინციპების შესახებ და გაიგე, როგორ იყენებენ აგენტები გარემოს სიმულაციას.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "AD-WM combines residual latent dynamics with predictor-level action-recovery regularization.",
-        "On OGBench-Cube, AD-WM improves hard-start success from 3.7% to 52.0% over LeWM baseline.",
-        "Improves zero-shot transfer on a robotic setup from 42.2% to 71.1% without lab adaptation."
-      ],
-      "interpretation": "მსოფლიო მოდელები (world models) მხოლოდ ფაქტობრივი გადასვლების პროგნოზირებით არ უნდა შემოიფარგლონ; ისინი მკაფიოდ უნდა განასხვავებდნენ ალტერნატიულ მოქმედებებს.",
-      "uncertainty": "მეთოდის ტესტირება ძირითადად რობოტიკულ და სიმულაციურ გარემოებში მოხდა, ტექსტურ აგენტებზე გავლენა შეზღუდულია.",
-      "counter_argument": "დამატებითი დამხმარე ჰედები (auxiliary heads) ზრდის ტრენინგის სირთულეს და გამოთვლით მოთხოვნებს.",
-      "strategic_assessment": "გაიგე მსოფლიო მოდელების პრინციპი, რადგან მომავლის აგენტები გარემოს სიმულაციისთვის სწორედ ამ არქიტექტურას გამოიყენებენ.",
-      "time_horizon": "long-term",
-      "what_could_change": "აგენტები უკეთ დაგეგმავენ ნაბიჯებს ალტერნატიული ქმედებების წინასწარი შეფასებით.",
-      "risks": [
-        "მაღალი მათემატიკური სირთულე დამწყები დეველოპერებისთვის.",
-        "საჭიროებს GPU რესურსებს ლატენტური სივრცის მოდელებისთვის.",
-        "პირდაპირი გამოყენება ტექსტურ აგენტებში მოითხოვს ადაპტაციას."
-      ],
-      "non_obvious_opportunity": "შეგიძლია გამოიყენო მსგავსი კონტრფაქტუალური ლოგიკა გადაწყვეტილების მიმღები აგენტების ტესტირებისთვის.",
-      "fit_assessment": "კარგია არქიტექტურული თვალსაზრისით, თუმცა ამჟამად შენთვის უფრო პრიორიტეტულია MCP და API ინტეგრაცია."
-    },
-    {
-      "event_id": "evt-verispeak-speech-fact-checking",
-      "title": "VeriSpeak: Retrieval-Augmented Fact Verification for Spoken Claims in Audio Language Models",
-      "category": "AI Research / RAG & Evaluation",
-      "primary_url": "https://arxiv.org/abs/2609.30227",
-      "supporting_urls": [],
-      "importance": 7,
-      "relevance": 8,
-      "actionability": 7,
-      "source_quality": 8,
-      "confidence": 85,
-      "tldr": "VeriSpeak ბენჩმარკი აჩვენებს, რომ აუდიო მოდელებს ხმოვანი ფაქტების გადასამოწმებლად სჭირდებათ რეტრივალისა და აზროვნების კომბინაცია.",
-      "what_happened": "მკვლევარებმა გამოუშვეს 3,879 ხმოვანი პრეტენზიის ბენჩმარკი და აჩვენეს, რომ მარტივი რეტრივალი არ კმარა.",
-      "what_changed": "ტექსტური ფაქტ-ჩექინგიდან გადავდივართ ხმოვანი მოდელების უსაფრთხოებისა და გადამოწმების ერაში.",
-      "why_it_matters": "გასწავლის, რომ მულტიმოდალურ აგენტებში ინფორმაციის მოძიება და გადამოწმება ორგანიზებულ მსჯელობას მოითხოვს.",
-      "key_takeaways": [
-        "არსებობს ტექსტ-სპეჩ მოდალური ნაპრალი ფაქტების გადამოწმებისას.",
-        "რეტრივალი და გამოפורმულებული მსჯელობა ზრდის სიზუსტეს 86.1%-მდე.",
-        "ბენჩმარკი საჯაროდ ხელმისაწვდომია Hugging Face-ზე."
-      ],
-      "technical_architecture": [
-        "Large Audio Language Models (LALMs) paired with retrieval modules.",
-        "Thinking-tuned reasoning engine for claim-evidence comparison."
-      ],
-      "technical_details": [
-        "Dataset hosted on Hugging Face with 3,879 spoken claims.",
-        "Evaluated across temporal, geographical, and relational dimensions."
-      ],
-      "potential_impact": "ხმოვანი AI სისტემები გახდება უფრო სანდო და დაცული დეზინფორმაციისგან.",
-      "action_type": "TRACK",
-      "action": "გადახედე VeriSpeak დეტასეტს Hugging Face-ზე და შეისწავლე, როგორ ამუშავებენ აგენტები აუდიო მტკიცებებს.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "VeriSpeak benchmark contains 3,879 spoken claims across temporal, geographical, and relational facts.",
-        "LALMs that verify written claims reliably often fail on the same claims when spoken due…",
-        "Retrieval combined with explicit reasoning (thinking-tuned LALM) reaches 86.1% accuracy."
-      ],
-      "interpretation": "აუდიო მოდელებს სჭირდებათ მკაფიო მსჯელობის ეტაპები (reasoning) და რეტრივალის ინტეგრაცია, რათა ხმოვან ინფორმაციაში ფაქტები სწორად გადაამოწმონ.",
-      "uncertainty": "ქართული ენის აუდიო რეტრივალისა და ფაქტების გადამოწმების სიზუსტე უცნობია და დამატებით კვლევას მოითხოვს.",
-      "counter_argument": "ხმოვანი მონაცემების დამუშავება აგენტებში ზედმეტად ძვირი და ნელია რეალურ დროში გამოსაყენებლად.",
-      "strategic_assessment": "გაითვალისწინე, რომ აუდიო აგენტების აგებისას უბრალო რეტრივალი არასაკმარისია; საჭიროა სტრუქტურირებული მიზეზ-შედეგობრივი მსჯელობა.",
-      "time_horizon": "mid-term",
-      "what_could_change": "ხმოვანი ასისტენტები და აგენტები შეძლებენ პოდკასტებისა და სიტყვების რეალურ დროში ფაქტობრივ გადამოწმებას.",
-      "risks": [
-        "ტექსტ-აუდიო მოდალური ნაპრალი იწვევს გაგების შეცდომებს.",
-        "გამოთვლითი სირთულე ხმოვანი მოდელების მართვისას."
-      ],
-      "non_obvious_opportunity": "შეგიძლია აგო ქართული აუდიო მედიის მონიტორინგისა და ფაქტ-ჩექინგის მარტივი პროტოტიპი თავისუფალი API-ებით.",
-      "fit_assessment": "კარგი მაგალითია იმისა, თუ როგორ იქმნება ახალი ბენჩმარკები და რატომ სჭირდება აგენტებს grounded reasoning."
-    },
-    {
-      "event_id": "evt-anthropic-claude-opus-55",
-      "title": "Anthropic Announces Claude Opus 5.5 with Lower Costs and Faster Cache Reads",
-      "category": "LLM API & Agent Infrastructure",
-      "primary_url": "https://www.anthropic.com/claude-opus-5-5",
-      "supporting_urls": [
-        "https://www.anthropic.com/research/yes-claude-can-do-nine-loops"
-      ],
-      "importance": 9,
-      "relevance": 10,
-      "actionability": 8,
-      "source_quality": 10,
-      "confidence": 95,
-      "tldr": "Claude Opus 5.5 შემცირებული ფასებით და სწრაფი cache reads მხარდაჭერით ამცირებს აგენტური სისტემების ხარჯებს.",
-      "what_happened": "Anthropic-მა წარადგინა Claude Opus 5.5, რომელიც მოითხოვს 40 პროცენტით ნაკლებ გამოთვლით რესურსს.",
-      "what_changed": "ძვირი აგენტური ციკლებიდან გადავდივართ უფრო იაფ და სწრაფ API მოდელებზე.",
-      "why_it_matters": "შეგიძლიათ აგენტებს მისცეთ მეტი ინსტრუქცია და კონტექსტი მინიმალური ხარჯებით.",
-      "key_takeaways": [
-        "Cache reads ფასი შემცირდა 0.20 დოლარამდე მილიონ ტოკენზე.",
-        "გენერაციის სიჩქარე გაიზარდა 30 პროცენტით.",
-        "უმჯობესდება რთული კოდის მიგრაციისა და შესწორების ხარისხი."
-      ],
-      "technical_architecture": [
-        "Input tokens: 4 dollars per million",
-        "Output tokens: 20 dollars per million",
-        "Cache reads: 0.20 dollars per million"
-      ],
-      "technical_details": [
-        "API optimization via prompt caching",
-        "Enhanced behavioral audit alignment suite"
-      ],
-      "potential_impact": "მცირე სტარტაპებსა და ინდივიდუალურ დეველოპერებს ეძლევათ ძლიერი მოდელების გამოყენების შანსი დაბალ ფასად.",
-      "action_type": "APPLY",
-      "action": "გადააწყვეთ თქვენი მიმდინარე აგენტის API გამოძახებები Claude Opus 5.5 ქეშირებულ დამუშავებაზე.",
-      "evidence": [],
-      "factuality_level": "verified",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value",
-        "Short-term Opportunity"
-      ],
-      "verified_facts": [
-        "Claude Opus 5.5 costs 40 percent less to run than Opus 5.",
-        "Cache read tokens cost 0.20 dollars per million tokens, 60 percent less than Opus 5.",
-        "Output generation is over 30 percent faster than Opus 5."
-      ],
-      "interpretation": "ინფრასტრუქტურული ხარჯების შემცირება აგენტურ სისტემებში მუდმივი ლუპების შესრულებას ბევრად უფრო ხელმისაწვდომს ხდის მცირე დეველოპერებისთვის.",
-      "uncertainty": "როგორ იმუშავებს რეალურ production დატვირთვაზე ეს ფასები გრძელვადიან პერსპექტივაში, ჯერ ბოლომდე გამოცდილი არ არის.",
-      "counter_argument": "ფასების შემცირება შეიძლება კომპენსირებული იყოს უფრო რთული დავალებებით, რომლებიც ისევ გაზრდის ტოკენების საერთო მოხმარებას.",
-      "strategic_assessment": "გამოიყენეთ ახალი მოდელის cache reads ფუნქცია აგენტების მეხსიერებისა და ისტორიის ოპტიმიზაციისთვის API გამოძახებებში.",
-      "time_horizon": "mid-term",
-      "what_could_change": "აგენტების დაფუძნება ხანგრძლივ ციკლებზე გახდება სტანდარტული პრაქტიკა API ხარჯების ვარდნის გამო.",
-      "risks": [
-        "API პროვაიდერების პოლიტიკის ცვლილება",
-        "ტექნიკური დამოკიდებულება ერთ ეკოსისტემაზე"
-      ],
-      "non_obvious_opportunity": "მცირე ბიუჯეტის გუნდებს აქვთ შანსი აკონტროლონ ხარჯები ძვირი ტოკენების ქეშირებით.",
-      "fit_assessment": "იდეალურია 16 წლის დეველოპერისთვის, რომელიც ცდილობს მცირე ბიუჯეტით შექმნას გრძელვადიანი აგენტები."
-    },
     {
       "event_id": "evt-jenkins-ai-agent-plugin",
       "title": "Jenkins AI Agent Plugin Adds Native Support for Coding Agents and Approval Gates",
@@ -6247,6 +6028,241 @@
       ],
       "non_obvious_opportunity": "პოლიტიკის რეციკლირების მიდგომები შეიძლება გამოყენებულ იქნას პროგრამული აგენტების ტლანქი ციკლების ოპტიმიზაციისთვის.",
       "fit_assessment": "ძალიან თეორიულია ამ ეტაპზე შენი ყოველდღიური პროექტებისთვის, მაგრამ კარგია არქიტექტურული ჰორიზონტისთვის."
+    },
+    {
+      "event_id": "evt-google-agent-compute-engine",
+      "title": "Google Cloud: Agent Compute Engine და Project Chrysalis თვითგანვითარებადი აგენტებისთვის",
+      "category": "აგენტების ინფრასტრუქტურა და Sandbox",
+      "primary_url": "https://cloud.google.com/blog/topics/ai-infrastructure/introducing-agent-compute-engine-and-expanded-agent-governance",
+      "supporting_urls": [
+        "https://cloud.google.com/blog/topics/ai-infrastructure/agent-compute-engine-deep-dive",
+        "https://developers.googleblog.com/architecting-governed-self-evolving-ai-agents-on-gemini-agent-platform"
+      ],
+      "importance": 9,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 9,
+      "confidence": 92,
+      "tldr": "Google-მა გამოუშვა microVM-ზე დაფუძნებული Agent Compute Engine, რომელიც აგენტის კოდის გაშვებას და model reasoning-ს აცალკევებს.",
+      "what_happened": "Google-მა წარადგინა Agent Compute Engine microVM იზოლაციით და Project Chrysalis კრიპტოგრაფიულად მართული თვითგანვითარებადი აგენტებისთვის.",
+      "what_changed": "აგენტები აღარ მუშაობენ ერთიან პროცესში; model harness მართავს გადაწყვეტილებებს, ხოლო იზოლირებული microVM ასრულებს კოდს.",
+      "why_it_matters": "შენს პროექტებში tool calling და bash ბრძანებები უნდა გაუშვა უსაფრთხო კონტეინერში, რათა აირიდო სისტემური დაზიანება.",
+      "key_takeaways": [
+        "MicroVM პაუზდება LLM thinking დროს რესურსების დასაზოგად",
+        "Zero credentials პრინციპი sandbox გარემოში ზრდის უსაფრთხოებას",
+        "Binary Authorization ბლოკავს გადაუმოწმებელი კოდის გაშვებას"
+      ],
+      "technical_architecture": [
+        "Titanium IPU და microVM იზოლაცია",
+        "Harness და Sandbox ორდონიანი დაყოფა",
+        "OPA Policy Controller უსაფრთხოების წესებისთვის"
+      ],
+      "technical_details": [
+        "Copy-on-write memory sharing",
+        "Fast checkpoint restore",
+        "Dual-Custody HITL sign-off"
+      ],
+      "potential_impact": "ორგანიზაციები შეძლებენ ათასობით აგენტის უსაფრთხო გაშვებას სერვერების გადატვირთვისა და უსაფრთხოების რისკების გარეშე.",
+      "action_type": "BUILD",
+      "action": "ააწყვე Python სკრიპტი, რომელიც LLM-ის მიერ დაგენერირებულ კოდს უსაფრთხო ლოკალურ Docker კონტეინერში გაუშვებს და შედეგს დააბრუნებს.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "Agent Compute Engine იყენებს microVM-ებს copy-on-write მეხსიერების გაზიარებით აგენტების იზოლაციისთვის",
+        "Thinking ფაზაში microVM პაუზდება fast checkpoint and restore მექანიზმით",
+        "Project Chrysalis-მა Black Friday სიმულაციაში mitigation დრო 45 წუთიდან 1.8 წამამდე შეამცირა"
+      ],
+      "interpretation": "აგენტების გაშვება მარტივი სკრიპტებიდან გადადის იზოლირებულ sandbox microVM-ებზე, სადაც კოდის შესრულება და LLM reasoning ერთმანეთისგან მკაცრად იყოფა.",
+      "uncertainty": "Agent Compute Engine ჯერ მხოლოდ preview რეჟიმშია და მისი ფასები მცირე დეველოპერებისთვის უცნობია.",
+      "counter_argument": "დამოუკიდებელ დეველოპერს შეუძლია მსგავსი იზოლაცია მიიღოს უფასო Docker კონტეინერებით ან ლოკალური sandbox გარემოთი ზედმეტი ხარჯის გარეშე.",
+      "strategic_assessment": "გაყავი შენი აგენტები harness (ტვინი) და sandbox (ხელები) ნაწილებად. გამოიყენე იზოლირებული გარემო shell და tool ოპერაციებისთვის.",
+      "time_horizon": "mid-term",
+      "what_could_change": "კომპანიები აკრძალავენ აგენტების პირდაპირ გაშვებას სერვერებზე და მოითხოვენ მკაცრად იზოლირებულ microVM sandbox ინფრასტრუქტურას.",
+      "risks": [
+        "microVM-ების მართვის კომპლექსურობა",
+        "ღრუბლოვანი სერვისების ფარული ხარჯები",
+        "დამოკიდებულება კონკრეტულ cloud vendor-ზე"
+      ],
+      "non_obvious_opportunity": "შექმენი მცირე ბიზნესებისთვის უსაფრთხო, ლოკალური sandbox გარემო Docker-ზე Python tool execution-ისთვის.",
+      "fit_assessment": "იდეალურია პორტფოლიოსთვის, რათა აჩვენო, რომ გესმის აგენტის უსაფრთხო იზოლაცია და production სტანდარტები."
+    },
+    {
+      "event_id": "evt-aws-deep-insight-context-engineering",
+      "title": "AWS Deep Insight: Context Engineering და Multi-Agent სისტემების 5 გამოწვევა",
+      "category": "აგენტის არქიტექტურა და საიმედოობა",
+      "primary_url": "https://aws.amazon.com/blogs/machine-learning/5-production-challenges-in-multi-agent-systems-and-how-deep-insight-solved-them",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 9,
+      "source_quality": 10,
+      "confidence": 94,
+      "tldr": "AWS-მა წარმოადგინა Deep Insight არქიტექტურა, სადაც 7 სპეციალიზებული აგენტი Context Engineering-ით წყვეტს production პრობლემებს.",
+      "what_happened": "AWS Solutions Architecture გუნდმა გამოაქვეყნა production multi-agent სისტემის Deep Insight-ის ანალიზი და გამოწვევები.",
+      "what_changed": "ერთიანი Prompt Engineering ჩანაცვლდა Context Engineering-ით: structured note-taking და მკაცრი როლური ვალიდაცია.",
+      "why_it_matters": "გასწავლის რეალურ ბიზნეს ლოგიკას: როგორ აიძულო აგენტი, რომ არ გამოტოვოს ვალიდაციის ეტაპი მონაცემების დამუშავებისას.",
+      "key_takeaways": [
+        "მხოლოდ ინსტრუქცია არ კმარა; საჭიროა კოგნიტური არქიტექტურა",
+        "Validator აგენტი აუცილებელია ჰალუცინაციების დასაჭერად",
+        "Structured note-taking ინარჩუნებს სუფთა კონტექსტს"
+      ],
+      "technical_architecture": [
+        "იერარქია: Coordinator, Planner, Supervisor, Coder, Validator, Reporter, Tracker",
+        "Strands Agents SDK და Amazon Bedrock AgentCore",
+        "AWS Fargate და Application Load Balancer ინფრასტრუქტურა"
+      ],
+      "technical_details": [
+        "Structured note-taking",
+        "Human-in-the-loop triggers",
+        "Automated docx report generation"
+      ],
+      "potential_impact": "მონაცემთა ანალიზის გუნდები ავტომატურად მიიღებენ გადამოწმებულ, ციტირებულ რეპორტებს შეცდომების მინიმალური რისკით.",
+      "action_type": "BUILD",
+      "action": "ააგე Python-ში მინიმალური 2-აგენტიანი სისტემა (Coder + Validator), სადაც Validator ამოწმებს Coder-ის მიერ დაწერილ SQL-ს გაშვებამდე.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "Deep Insight იყენებს სპეციალიზებული აგენტების იერარქიას: Coordinator, Planner, Supervisor, Coder, Validator, Reporter, Tracker",
+        "აგენტები იყენებენ structured note-taking და human-in-the-loop ტექნიკებს კონტექსტის მართვისთვის",
+        "სისტემა ავტომატურად ამუშავებს CSV ფაილებს და აგენერირებს ციტირებულ .docx რეპორტებს"
+      ],
+      "interpretation": "უბრალო prompt engineering ვეღარ უზრუნველყოფს საიმედოობას; გადამწყვეტი ხდება Context Engineering და აგენტების როლური იერარქია.",
+      "uncertainty": "სტატიის პირველი ნაწილი აღწერს გამოწვევებს; კონკრეტული კოდის იმპლემენტაცია ნაწილობრივ გადანაწილებულია შემდეგ პოსტებზე.",
+      "counter_argument": "მრავალაგენტიანი იერარქია ზრდის latency-ს და ტოკენების ხარჯს მარტივ ამოცანებთან შედარებით.",
+      "strategic_assessment": "შეწყვიტე მონოლითური პრომპტების წერა. დაყავი შენი ბიზნეს ლოგიკა Planner, Coder და Validator როლებად.",
+      "time_horizon": "short-term",
+      "what_could_change": "კომპანიები უარს იტყვიან ერთიან ჩატბოტებზე და გადავლენ მრავალდონიან ვალიდაციის აგენტურ გრაფებზე.",
+      "risks": [
+        "ტოკენების გადახარჯვა აგენტებს შორის მიმოწერაში",
+        "ციკლური ჩიხები Coordinator-სა და Supervisor-ს შორის",
+        "კომპლექსური debug პროცესი შეცდომისას"
+      ],
+      "non_obvious_opportunity": "შესთავაზე კომპანიებს მონაცემთა ანალიზის პატარა მრავალაგენტიანი სისტემა, სადაც Validator ამოწმებს გამოთვლების სისწორეს.",
+      "fit_assessment": "პირდაპირ პასუხობს შენს მიზანს: გასწავლის როგორ გადახვიდე toy demo-დან production multi-agent არქიტექტურაზე."
+    },
+    {
+      "event_id": "evt-meta-muse-glimmer-30b",
+      "title": "Meta Muse Glimmer 30B: ღია მოდელი ლოკალური მოწყობილობებისთვის და Tool Use-ისთვის",
+      "category": "Open Source AI & Model Architecture",
+      "primary_url": "https://ai.meta.com/research/publications/muse-glimmer-30b-an-on-device-agentic-model",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "Meta-მ გამოუშვა Apache 2.0 ლიცენზიით Muse Glimmer 30B, რომელიც გათვლილია ლოკალურ GPU-ზე multi-step tool use-ისთვის.",
+      "what_happened": "Meta-მ წარადგინა Muse Glimmer 30B, სპეციალურად ავტონომიური აგენტური ამოცანებისთვის შექმნილი ღია მულტიმოდალური მოდელი.",
+      "what_changed": "აქამდე მძლავრი tool use მოითხოვდა ღრუბლოვან API-ებს; ახლა 4-bit 30B მოდელი იმავეს აკეთებს ერთ GPU-ზე.",
+      "why_it_matters": "შეგიძლია დატესტო შენი MCP ხელსაწყოები და აგენტური ციკლები სრულიად უფასოდ, საკრედიტო ბარათისა და API ლიმიტების გარეშე.",
+      "key_takeaways": [
+        "Apache 2.0 ლიცენზია იძლევა კომერციული გამოყენების უფლებას",
+        "ტექსტისა და სურათების მიღება ერთიან perception ენკოდერში",
+        "ჩაშენებული failure recovery მექანიზმი შეცდომების გამოსასწორებლად"
+      ],
+      "technical_architecture": [
+        "30B პარამეტრიანი causal LLM + perception encoder",
+        "4-bit precision კვანტიზაცია ერთ GPU-ზე სამუშაოდ",
+        "SOTA შედეგი Gemma4-31B და Qwen3.6-27B მოდელებთან შედარებით"
+      ],
+      "technical_details": [
+        "Apache 2.0 open source license",
+        "Multi-step reasoning and planning",
+        "Native tool calling support"
+      ],
+      "potential_impact": "დეველოპერები შეძლებენ სრულფასოვანი ბიზნეს აგენტების შექმნას გარე API-ებზე დამოკიდებულების გარეშე.",
+      "action_type": "TRY",
+      "action": "ჩამოტვირთე მოდელის 4-bit ვერსია Hugging Face-დან და შეამოწმე მარტივი JSON tool calling ციკლი Ollama-ს ან vLLM-ის მეშვეობით.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Real Business Opportunity"
+      ],
+      "verified_facts": [
+        "30B პარამეტრიანი causal language model ვიზუალური perception ენკოდერით",
+        "ოპტიმიზებულია 4-bit კვანტიზაციაზე ერთ სამომხმარებლო GPU-ზე გასაშვებად",
+        "გამოშვებულია სრულად ღია Apache 2.0 ლიცენზიით",
+        "აჯობა Gemma4-31B-სა და Qwen3.6-27B-ს tool use და multi-step planning ტესტებში"
+      ],
+      "interpretation": "30B კლასის მოდელები უკვე საკმარისად ჭკვიანია რთული tool calling-ისთვის ლოკალურ აპარატურაზე, API ხარჯების გარეშე.",
+      "uncertainty": "კონკრეტული მინიმალური VRAM მოთხოვნა 4-bit რეჟიმში სტატიის ტექსტში პირდაპირ მითითებული არ არის.",
+      "counter_argument": "16 წლის დეველოპერს შესაძლოა არ ჰქონდეს 16GB+ VRAM ვიდეობარათი 30B მოდელის ლოკალურად გასაშვებად.",
+      "strategic_assessment": "გამოიყენე Muse Glimmer 30B როგორც ლოკალური ალტერნატივა ფასიანი API-ების ნაცვლად agent loop ტესტირებისას.",
+      "time_horizon": "mid-term",
+      "what_could_change": "მცირე ბიზნესები აირჩევენ ლოკალურ 30B მოდელებს მონაცემთა კონფიდენციალურობისა და ნულოვანი API გადასახადების გამო.",
+      "risks": [
+        "ტექნიკის შეზღუდული VRAM რესურსი",
+        "4-bit კვანტიზაციისას სიზუსტის შესაძლო დაკარგვა",
+        "დაბალი თრუფუთი სუსტ GPU-ზე"
+      ],
+      "non_obvious_opportunity": "შესთავაზე ადგილობრივ კომპანიებს ლოკალური აგენტი, რომელიც მუშაობს შიდა ქსელში ინტერნეტის და API გადასახადების გარეშე.",
+      "fit_assessment": "იდეალურია ბიუჯეტური განვითარებისთვის: გაძლევს საშუალებას ისწავლო agent loop უფასოდ საკუთარ გარემოში."
+    },
+    {
+      "event_id": "evt-pass-k-thought-pruning",
+      "title": "Direct Pass@k Optimization: ტესტ-ტაიმ მსჯელობისა და ტოკენების ოპტიმიზაცია",
+      "category": "AI Research & Model Architecture",
+      "primary_url": "https://arxiv.org/abs/2610.31667",
+      "supporting_urls": [],
+      "importance": 7,
+      "relevance": 8,
+      "actionability": 7,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "ახალი კვლევა Pass@k ოპტიმიზაციით ადრეულ ეტაპზე ფილტრავს მცდარ მსჯელობებს, რაც ზოგავს ინფერენსის დროსა და რესურსებს.",
+      "what_happened": "მკვლევარებმა შექმნეს ალგორითმი, რომელიც reasoning მოდელების ტესტირებისას ნაადრევად ჭრის უპერსპექტივო ტრაექტორიებს.",
+      "what_changed": "ხარისხისა და მრავალფეროვნების ცალ-ცალკე შეფასების ნაცვლად, Pass@k პირდაპირ პოულობს საუკეთესო კანდიდატთა აუზს.",
+      "why_it_matters": "შეზღუდული ბიუჯეტის პირობებში ტოკენების დაზოგვა კრიტიკულია. ეს პრინციპი გასწავლის, როგორ შეაჩერო აგენტის უშედეგო ციკლი დროულად.",
+      "key_takeaways": [
+        "მოკლე პრეფიქსის შეფასება ზოგავს დარჩენილ გამოთვლას",
+        "ბალანსი ხარისხსა და გადაწყვეტის მრავალფეროვნებას შორის",
+        "დადასტურებულია 8 open-weight მოდელზე"
+      ],
+      "technical_architecture": [
+        "Direct pass@k optimization algorithm",
+        "Exploration vs exploitation მათემატიკური ბალანსი",
+        "Prefix-based thought pruning pipeline"
+      ],
+      "technical_details": [
+        "Open-weight model evaluation",
+        "Candidate pool selection",
+        "Token generation reduction"
+      ],
+      "potential_impact": "Reasoning მოდელების გამოძახება გახდება ორჯერ უფრო იაფი და სწრაფი რთული ამოცანების გადაჭრისას.",
+      "action_type": "LEARN",
+      "action": "წაიკითხე ნაშრომის აბსტრაქტი და ჩაინიშნე, როგორ შეგიძლია შენს agent loop-ში ადრეული stop condition-ების ჩაშენება.",
+      "evidence": [],
+      "factuality_level": "single_source",
+      "classification": [
+        "Real Technical Skill"
+      ],
+      "verified_facts": [
+        "ახალი მეთოდი პირდაპირ აოპტიმიზებს pass@k მეტრიკას candidate solution-ების pruning-ისას",
+        "აბალანსებს ხარისხსა და მრავალფეროვნებას (diversity) მოკლე prefix-ის გენერირების შემდეგ",
+        "გამოცდილია რვა open-weight მსჯელობის მოდელზე და აჯობა არსებულ მეთოდებს"
+      ],
+      "interpretation": "Reasoning მოდელების test-time scaling ხდება ბევრად უფრო იაფი, როდესაც არასწორ აზრებს ადრეულ ეტაპზე ვფილტრავთ.",
+      "uncertainty": "კვლევა ფოკუსირებულია მათემატიკურ და ლოგიკურ ტესტებზე; ზოგად ბიზნეს აგენტებზე გავლენა ჯერ შესამოწმებელია.",
+      "counter_argument": "Early pruning-მა შესაძლოა შემთხვევით წაშალოს არასტანდარტული, მაგრამ სწორი გადაწყვეტის გზა.",
+      "strategic_assessment": "გამოიყენე ადრეული შემოწმება შენს აგენტურ ციკლებში. ნუ დაელოდები გრძელი პასუხის დასრულებას, თუ პირველი ნაბიჯი მცდარია.",
+      "time_horizon": "mid-term",
+      "what_could_change": "LLM ინფერენსის პროვაიდერები ჩააშენებენ thought pruning-ს API დონეზე, რაც შეამცირებს reasoning ტოკენების საფასურს.",
+      "risks": [
+        "ზედმეტად აგრესიული pruning-ის რისკი",
+        "დამატებითი საზომი ფუნქციის გამოთვლითი დანახარჯი",
+        "რთული იმპლემენტაცია სტანდარტულ API-ებზე"
+      ],
+      "non_obvious_opportunity": "დაწერე Python wrapper, რომელიც ამოწმებს აგენტის პირველ ორ ნაბიჯს და აჩერებს გენერაციას შეცდომის შემთხვევაში.",
+      "fit_assessment": "გეხმარება გაიგო Test-time compute და როგორ დაზოგო ფული reasoning მოდელების გამოყენებისას."
     }
   ],
   "topics": {
@@ -6302,7 +6318,7 @@
     "AI Research / Structured Data & Causal ML": 1,
     "Developer Tools & Agent Frameworks": 2,
     "Model Inference & Local Hardware Optimization": 1,
-    "AI Research & Model Architecture": 8,
+    "AI Research & Model Architecture": 9,
     "Agent Security & Infrastructure": 1,
     "LLM Infrastructure & Agent Memory": 2,
     "Multi-Agent Systems & RL": 1,
@@ -6388,190 +6404,12 @@
     "აგენტის არქიტექტურა და ოპტიმიზაცია": 1,
     "Open Source AI & Infrastructure": 1,
     "Real Business Opportunity & Agent Architecture": 1,
-    "აგენტების ინფრასტრუქტურა და LLM APIs": 1
+    "აგენტების ინფრასტრუქტურა და LLM APIs": 1,
+    "აგენტების ინფრასტრუქტურა და Sandbox": 1,
+    "აგენტის არქიტექტურა და საიმედოობა": 1,
+    "Open Source AI & Model Architecture": 1
   },
   "reports": [
-    {
-      "date": "2026-10-08",
-      "summary": "დღევანდელი გამოშვება აანალიზებს AWS-ის ახალ უსაფრთხოების სანდბოქსებს, 3D ობიექტების მეხსიერების კვლევებს და ენობრივ ტექსტურ სენსიტიურობას რობოტიკაში. ეს სიახლეები გვაძლევს პრაქტიკულ, საინჟინრო მიდგომებს აგენტების დასაცავად და ოპტიმიზაციისთვის.",
-      "events": [
-        {
-          "event_id": "evt-strands-box-aws",
-          "title": "AWS Strands Box: AI Agent Sandboxes with OS-Level Isolation and Dogwood Policy Engine",
-          "category": "აგენტების ინფრასტრუქტურა და უსაფრთხოება",
-          "primary_url": "https://aws.amazon.com/blogs/opensource/introducing-strands-box-ai-agent-sandboxes-powered-by-dogwood",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 10,
-          "actionability": 9,
-          "source_quality": 10,
-          "confidence": 95,
-          "tldr": "AWS-მა წარადგინა Strands Box, რომელიც აერთიანებს ოპერაციული სისტემის იზოლაციას და წესების ძრავას აგენტების უსაფრთხოებისთვის.",
-          "what_happened": "AWS-მა გამოუშვა Strands Box დეველოპერულ პრევიუში, რომელიც იყენებს Dogwood პოლიტიკის ძრავას.",
-          "what_changed": "შიშველი აგენტებიდან ('YOLO mode') გადავდივართ მკაცრად מართულ, პოლიტიკაზე დამყარებულ შესრულებაზე.",
-          "why_it_matters": "გაძლევთ მექანიზმს, აკონტროლოთ თქვენი აგენტების მიერ გაშვებული Python და Shell ბრძანებები.",
-          "key_takeaways": [
-            "Strands Box იყენებს macOS Seatbelt ტიპის OS იზოლაციას.",
-            "არეგულირებს ქსელურ წვდომას და ფაილების მოდიფიკაციას.",
-            "არ საჭიროებს აგენტის მიერ ლიმიტების დამახსოვრებას."
-          ],
-          "technical_architecture": [
-            "Containment layer uses macOS Seatbelt for hard boundaries.",
-            "Dogwood Local Engine evaluates allow/deny policies.",
-            "Enforcement points cover network egress, Python, Shell, and MCP brokers."
-          ],
-          "technical_details": [
-            "Licensed under Apache 2.0 open-source license.",
-            "Applies limits like max 3 Slack posts per 10 minutes."
-          ],
-          "potential_impact": "ამცირებს აგენტების მიერ მგრძნობიარე სისტემების დაზიანების რისკს 90%-ით.",
-          "action_type": "TRY",
-          "action": "გადახედეთ Strands Box-ის დოკუმენტაციას და გამოსცადეთ როგორ იზოლირდება Shell ბრძანებები Python სკრიპტებში.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value",
-            "Short-term Opportunity"
-          ],
-          "verified_facts": [
-            "Strands Box launched in developer preview under Apache 2.0 license.",
-            "Combines OS-level isolation like macOS Seatbelt with Dogwood policy engine.",
-            "Enforces allow or deny decisions across Python, Shell interpreters, and MCP servers."
-          ],
-          "interpretation": "ავტონომიური აგენტების უსაფრთხოება მოითხოვს მკაცრ მართვას API დონეზე, რათა თავიდან ავიცილოთ საშიში ბრძანებები.",
-          "uncertainty": "წარმოებაში გამოყენებისას შესაძლოა წარმოიქმნას ლატენტურობის ზრდა პოლიტიკის შემოწმების გამო.",
-          "counter_argument": "მკაცრი პოლიტიკის ჩარჩოები ზღუდავს აგენტების ავტონომიას და მათ შემოქმედებით პრობლემების გადაჭრას.",
-          "strategic_assessment": "შეისწავლეთ კონტეინერების იზოლაცია და აგენტების ხელსაწყოების კონტროლი, რათა ააგოთ უსაფრთხო სისტემები.",
-          "time_horizon": "mid-term",
-          "what_could_change": "აგენტების განთავსება საწარმოო გარემოში გახდება სტანდარტიზებული და უსაფრთხო.",
-          "risks": [
-            "კონფიგურაციის სირთულე",
-            "პოლიტიკის წესების მართვის ხარჯი",
-            "შესაძლო შესრულების შეფერხება"
-          ],
-          "non_obvious_opportunity": "დეველოპერებს შეუძლიათ შექმნან ღია კოდის ალტერნატივები მსგავსი პოლიტიკის ძრავებისთვის.",
-          "fit_assessment": "იდეალურია თქვენთვის, რადგან ავითარებთ უსაფრთხო აგენტურ 루პებს და MCP ხელსაწყოებს."
-        },
-        {
-          "event_id": "evt-rephrase-vla-sensitivity",
-          "title": "Rephrase Before You Act: Mitigating Language Sensitivity in Vision-Language-Action Models",
-          "category": "AI Research / Agent Architecture",
-          "primary_url": "https://arxiv.org/abs/2610.10526",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "VLA მოდელები ძალზე სენსიტიურია ინსტრუქციის ფორმულირებაზე; წინასწარი გადაწერა წესების მიხედვით ზრდის წარმატებას 27%-ით.",
-          "what_happened": "მკვლევარებმა აჩვენეს, რომ ერთსიტყვიანმა ცვლილებამ შესაძლოა აგენტის წარმატება 100%-დან 2%-მდე დაწიოს.",
-          "what_changed": "შემოთავაზებულია ავტომატური წესებით ინსტრუქციის გადაწერა მოდელის გაშვებამდე.",
-          "why_it_matters": "გაძლევთ ტექნიკას, როგორ გახადოთ თქვენი აგენტი მედეგი მომხმარებლის უცნაური ბრძანებების მიმართ.",
-          "key_takeaways": [
-            "pi_0.5 მოდელის წარმატება ეცემა ფრაზის შეცვლისას 61 პუნქტით.",
-            "დიდი ენობრივი მოდელი ადგენს 10-20 გადაწერის წესს ტრენინგის მონაცემებიდან.",
-            "მეთოდი არ საჭიროებს მოდელის წონების ხელახლა სწავლებას."
-          ],
-          "technical_architecture": [
-            "LLM distills training task variations into 10-20 rephrasing rules.",
-            "Incoming instructions are rewritten once under these rules before execution."
-          ],
-          "technical_details": [
-            "Tested across adversarial, VLM-generated, and human-generated phrasings.",
-            "Improves frozen pi_0 by 16 to 27% relative on 12 held-out tasks."
-          ],
-          "potential_impact": "უზრუნველყოფს აგენტების სტაბილურ მუშაობას არაპროგნოზირებად მომხმარებლებთან ურთიერთობისას.",
-          "action_type": "APPLY",
-          "action": "დაამატეთ მცირე პრომპტ-ნორმალიზაციის ფენა თქვენი აგენტის მთავარ 루პში, რომელიც მომხმარებლის ბრძანებას ასწორებს სტანდარტულ ფორმატში.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "Vision-language-action models (VLAs) show extreme sensitivity to instruction phrasing.",
-            "Rewriting instructions with distilled rules improves frozen pi_0 by 16 to 27% relative.",
-            "Method requires zero retraining and applies zero-shot to unseen tasks."
-          ],
-          "interpretation": "მოდელების ინსტრუქციებისადმი მგრძნობელობა მოითხოვს წინასწარ პრომპტების ნორმალიზებას ან გადაწერას აგენტურ სისტემებში.",
-          "uncertainty": "დამატებითი გადაწერის ნაბიჯი ზრდის ლატენტურობას და ტოკენების ხარჯს.",
-          "counter_argument": "უკეთესი ფაინ-თუნინგი და მრავალფეროვანი დატასეტი გამორიცხავს ინსტრუქციის გადაწერის საჭიროებას.",
-          "strategic_assessment": "გამოიყენეთ პრომპტების ნორმალიზების ფენა თქვენს აგენტებში, რათა აიცილოთ მომხმარებლის ენობრივი ცვალებადობით გამოწვეული შეცდომები.",
-          "time_horizon": "mid-term",
-          "what_could_change": "აგენტები გახდებიან უფრო მდგრადები ცუდი ან არასწორი პრომპტების მიმართ.",
-          "risks": [
-            "დამატებითი გამოთვლითი ნაბიჯი",
-            "ትርგმნის დროს აზრის დაკარგვა",
-            "დეველოპერის დამატებითი კონფიგურაცია"
-          ],
-          "non_obvious_opportunity": "შეგიძლიათ შექმნათ მცირე მიკრო-სერვისი, რომელიც მომხმარებლის ნებისმიერ ბრძანებას არეგულირებს სტანდარტულ წესებამდე.",
-          "fit_assessment": "გეხმარებათ ააგოთ მყარი პრომპტ-ინჟინერიის პრაქტიკა თქვენი აგენტების საზღვრებზე."
-        },
-        {
-          "event_id": "evt-ledger-3d-object-memory",
-          "title": "Ledger: Persistent 3D Object Memory from Egocentric Videos for Embodied Assistants",
-          "category": "AI Research / Agent Architecture",
-          "primary_url": "https://arxiv.org/abs/2610.10538",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 7,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "Ledger აყალიბებს მუდმივ 3D ობიექტების მეხსიერებას ეგოცენტრული ვიდეოებიდან, რაც აუმჯობესებს აგენტების სივრცულ დასკვნებს.",
-          "what_happened": "მკვლევარებმა წარადგინეს Ledger, რომელიც აერთიანებს ობიექტების მდებარეობას და ისტორიას ვიდეო ნაკადებიდან.",
-          "what_changed": "წარმოდგენილია სისტემა, რომელიც ინახავს ობიექტებს ხედვის არის გასვლის მერეც.",
-          "why_it_matters": "აუმჯობესებს აგენტების უნარს, უპასუხონ სივრცულ კითხვებს ვიდეო არქივის თავიდან ნახვის გარეშე.",
-          "key_takeaways": [
-            "Ledger ზრდის HD-EPIC სიზუსტეს 42.6%-მდე.",
-            "კლასტერირებს ობიექტების დაკვირვებებს დასვენების წერტილების მიხედვით.",
-            "ამცირებს ლოკალიზაციის ხმაურის ეფექტს გამეორებული მტკიცებულებებით."
-          ],
-          "technical_architecture": [
-            "Combines object locations, histories, and contextual descriptions.",
-            "Clustering observations by resting locations to reduce noise."
-          ],
-          "technical_details": [
-            "Achieves 0.99 m median error on Ego4D objects.",
-            "Uses short descriptions for surface details and contents."
-          ],
-          "potential_impact": "ქმნის საფუძველს ჭკვიანი სახლის და რობოტიკის ასისტენტებისთვის, რომლებიც ზუსტად იმახსოვრებენ გარემოს.",
-          "action_type": "LEARN",
-          "action": "შეისწავლეთ როგორ ხდება აგენტის გრძელვადიანი მეხსიერების სტრუქტურირება SQLite ბაზებში.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "Ledger combines object locations, histories, and contextual descriptions.",
-            "Raises HD-EPIC accuracy from 29.7% to 42.6% and UCS-Bench from 33.8% to 38.5%.",
-            "Localizes Ego4D objects with a 0.99 m median error."
-          ],
-          "interpretation": "გრძელვადიანი მეხსიერება ვიდეო და სენსორული მონაცემებიდან არის მომავალი თაობის აგენტების საფუძველი.",
-          "uncertainty": "მონაცემთა დამუშავების მაღალი გამოთვლითი მოთხოვნები ართულებს მის რეალურ დროში მუშაობას მოწყობილობებზე.",
-          "counter_argument": "ტექსტური და სტრუქტურირებული ბაზის მეხსიერება უფრო იაფი და ეფექტურია, ვიდრე 3D ვიზუალური მეხსიერება.",
-          "strategic_assessment": "გაიგეთ როგორ ინახავს აგენტი მდგომარეობას სივრცეში, რათა უკეთ დააპროექტოთ თქვენი აგენტების მეხსიერების მოდულები.",
-          "time_horizon": "long-term",
-          "what_could_change": "AI აგენტები შეძლებენ ფიზიკურ გარემოში ადამიანების მსგავსად ორიენტაციას და ნივთების ძებნას.",
-          "risks": [
-            "მაღალი გამოთვლითი სირთულე",
-            "ლოკალიზაციის ხმაური",
-            "მეხსიერების ბაზის ზომის ზრდა"
-          ],
-          "non_obvious_opportunity": "შეგიძლიათ ააგოთ მსუბუქი 2D მეხსიერების ჰარნესი ვებ აგენტებისთვის ამ პრინციპების გამოყენებით.",
-          "fit_assessment": "გეხმარებათ გაიგოთ აგენტების მდგომარეობის შენახვის (state management) პრინციპები კომპლექსურ გარემოში."
-        }
-      ],
-      "trends": [
-        "აგენტების უსაფრთხოება და იზოლაცია იღებს ღია კოდის ინფრასტრუქტურულ გადაწყვეტილებებს (Strands Box).",
-        "მულტიმოდალური მეხსიერება და სივრცული წარმოდგენები ხდება რობოტიკისა და აგენტების მთავარი კვლევის საგანი.",
-        "პრომპტების სენსიტიურობის მართვა ხდება ავტომატური წესებით და წინა-დამუშავების ფენებით."
-      ]
-    },
     {
       "date": "2026-10-09",
       "summary": "დღევანდელი ანალიზი ფოკუსირდება აგენტების ხარჯების 65%-ით შემცირებაზე მოდელების როუტინგით და რეალურ სისტემებში აგენტების იზოლაციის გარღვევის გაკვეთილებზე. მსხვილი ლაბორატორიების ინციდენტები ადასტურებს, რომ Sandbox-ის გარეშე აგენტის გაშვება კრიტიკული შეცდომაა. ღია კოდის ახალი RL ინფრასტრუქტურა კი გაძლევს საშუალებას, მინიმალური ბიუჯეტით შეისწავლო აგენტის თვითგანვითარების ციკლები.",
@@ -10143,13 +9981,260 @@
         "აგენტების იტერაციული და კვლევითი ბენჩმარკები (როგორიცაა Quant-Arena) ცვლის სტატიკურ ტესტებს.",
         "მულტიმოდალური ფიზიკური და რობოტული სისტემები უახლოვდებიან ნულოვანი ფაინ-თუნინგის რეჟიმებს."
       ]
+    },
+    {
+      "date": "2026-10-24",
+      "summary": "Google-მა წარადგინა Agent Compute Engine და Project Chrysalis თვითგანვითარებადი microVM ინფრასტრუქტურისთვის. Meta-მ გამოუშვა Muse Glimmer 30B ლოკალური მოწყობილობებისთვის, ხოლო AWS-მა Deep Insight-ით აჩვენა Context Engineering-ის გადაწყვეტები production multi-agent სისტემებში. ეს სიგნალები ცვლის აგენტების იაფ ლოკალურ დეველოპმენტსა და უსაფრთხოების სტანდარტებს.",
+      "events": [
+        {
+          "event_id": "evt-google-agent-compute-engine",
+          "title": "Google Cloud: Agent Compute Engine და Project Chrysalis თვითგანვითარებადი აგენტებისთვის",
+          "category": "აგენტების ინფრასტრუქტურა და Sandbox",
+          "primary_url": "https://cloud.google.com/blog/topics/ai-infrastructure/introducing-agent-compute-engine-and-expanded-agent-governance",
+          "supporting_urls": [
+            "https://cloud.google.com/blog/topics/ai-infrastructure/agent-compute-engine-deep-dive",
+            "https://developers.googleblog.com/architecting-governed-self-evolving-ai-agents-on-gemini-agent-platform"
+          ],
+          "importance": 9,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 9,
+          "confidence": 92,
+          "tldr": "Google-მა გამოუშვა microVM-ზე დაფუძნებული Agent Compute Engine, რომელიც აგენტის კოდის გაშვებას და model reasoning-ს აცალკევებს.",
+          "what_happened": "Google-მა წარადგინა Agent Compute Engine microVM იზოლაციით და Project Chrysalis კრიპტოგრაფიულად მართული თვითგანვითარებადი აგენტებისთვის.",
+          "what_changed": "აგენტები აღარ მუშაობენ ერთიან პროცესში; model harness მართავს გადაწყვეტილებებს, ხოლო იზოლირებული microVM ასრულებს კოდს.",
+          "why_it_matters": "შენს პროექტებში tool calling და bash ბრძანებები უნდა გაუშვა უსაფრთხო კონტეინერში, რათა აირიდო სისტემური დაზიანება.",
+          "key_takeaways": [
+            "MicroVM პაუზდება LLM thinking დროს რესურსების დასაზოგად",
+            "Zero credentials პრინციპი sandbox გარემოში ზრდის უსაფრთხოებას",
+            "Binary Authorization ბლოკავს გადაუმოწმებელი კოდის გაშვებას"
+          ],
+          "technical_architecture": [
+            "Titanium IPU და microVM იზოლაცია",
+            "Harness და Sandbox ორდონიანი დაყოფა",
+            "OPA Policy Controller უსაფრთხოების წესებისთვის"
+          ],
+          "technical_details": [
+            "Copy-on-write memory sharing",
+            "Fast checkpoint restore",
+            "Dual-Custody HITL sign-off"
+          ],
+          "potential_impact": "ორგანიზაციები შეძლებენ ათასობით აგენტის უსაფრთხო გაშვებას სერვერების გადატვირთვისა და უსაფრთხოების რისკების გარეშე.",
+          "action_type": "BUILD",
+          "action": "ააწყვე Python სკრიპტი, რომელიც LLM-ის მიერ დაგენერირებულ კოდს უსაფრთხო ლოკალურ Docker კონტეინერში გაუშვებს და შედეგს დააბრუნებს.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "Agent Compute Engine იყენებს microVM-ებს copy-on-write მეხსიერების გაზიარებით აგენტების იზოლაციისთვის",
+            "Thinking ფაზაში microVM პაუზდება fast checkpoint and restore მექანიზმით",
+            "Project Chrysalis-მა Black Friday სიმულაციაში mitigation დრო 45 წუთიდან 1.8 წამამდე შეამცირა"
+          ],
+          "interpretation": "აგენტების გაშვება მარტივი სკრიპტებიდან გადადის იზოლირებულ sandbox microVM-ებზე, სადაც კოდის შესრულება და LLM reasoning ერთმანეთისგან მკაცრად იყოფა.",
+          "uncertainty": "Agent Compute Engine ჯერ მხოლოდ preview რეჟიმშია და მისი ფასები მცირე დეველოპერებისთვის უცნობია.",
+          "counter_argument": "დამოუკიდებელ დეველოპერს შეუძლია მსგავსი იზოლაცია მიიღოს უფასო Docker კონტეინერებით ან ლოკალური sandbox გარემოთი ზედმეტი ხარჯის გარეშე.",
+          "strategic_assessment": "გაყავი შენი აგენტები harness (ტვინი) და sandbox (ხელები) ნაწილებად. გამოიყენე იზოლირებული გარემო shell და tool ოპერაციებისთვის.",
+          "time_horizon": "mid-term",
+          "what_could_change": "კომპანიები აკრძალავენ აგენტების პირდაპირ გაშვებას სერვერებზე და მოითხოვენ მკაცრად იზოლირებულ microVM sandbox ინფრასტრუქტურას.",
+          "risks": [
+            "microVM-ების მართვის კომპლექსურობა",
+            "ღრუბლოვანი სერვისების ფარული ხარჯები",
+            "დამოკიდებულება კონკრეტულ cloud vendor-ზე"
+          ],
+          "non_obvious_opportunity": "შექმენი მცირე ბიზნესებისთვის უსაფრთხო, ლოკალური sandbox გარემო Docker-ზე Python tool execution-ისთვის.",
+          "fit_assessment": "იდეალურია პორტფოლიოსთვის, რათა აჩვენო, რომ გესმის აგენტის უსაფრთხო იზოლაცია და production სტანდარტები."
+        },
+        {
+          "event_id": "evt-aws-deep-insight-context-engineering",
+          "title": "AWS Deep Insight: Context Engineering და Multi-Agent სისტემების 5 გამოწვევა",
+          "category": "აგენტის არქიტექტურა და საიმედოობა",
+          "primary_url": "https://aws.amazon.com/blogs/machine-learning/5-production-challenges-in-multi-agent-systems-and-how-deep-insight-solved-them",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 9,
+          "source_quality": 10,
+          "confidence": 94,
+          "tldr": "AWS-მა წარმოადგინა Deep Insight არქიტექტურა, სადაც 7 სპეციალიზებული აგენტი Context Engineering-ით წყვეტს production პრობლემებს.",
+          "what_happened": "AWS Solutions Architecture გუნდმა გამოაქვეყნა production multi-agent სისტემის Deep Insight-ის ანალიზი და გამოწვევები.",
+          "what_changed": "ერთიანი Prompt Engineering ჩანაცვლდა Context Engineering-ით: structured note-taking და მკაცრი როლური ვალიდაცია.",
+          "why_it_matters": "გასწავლის რეალურ ბიზნეს ლოგიკას: როგორ აიძულო აგენტი, რომ არ გამოტოვოს ვალიდაციის ეტაპი მონაცემების დამუშავებისას.",
+          "key_takeaways": [
+            "მხოლოდ ინსტრუქცია არ კმარა; საჭიროა კოგნიტური არქიტექტურა",
+            "Validator აგენტი აუცილებელია ჰალუცინაციების დასაჭერად",
+            "Structured note-taking ინარჩუნებს სუფთა კონტექსტს"
+          ],
+          "technical_architecture": [
+            "იერარქია: Coordinator, Planner, Supervisor, Coder, Validator, Reporter, Tracker",
+            "Strands Agents SDK და Amazon Bedrock AgentCore",
+            "AWS Fargate და Application Load Balancer ინფრასტრუქტურა"
+          ],
+          "technical_details": [
+            "Structured note-taking",
+            "Human-in-the-loop triggers",
+            "Automated docx report generation"
+          ],
+          "potential_impact": "მონაცემთა ანალიზის გუნდები ავტომატურად მიიღებენ გადამოწმებულ, ციტირებულ რეპორტებს შეცდომების მინიმალური რისკით.",
+          "action_type": "BUILD",
+          "action": "ააგე Python-ში მინიმალური 2-აგენტიანი სისტემა (Coder + Validator), სადაც Validator ამოწმებს Coder-ის მიერ დაწერილ SQL-ს გაშვებამდე.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "Deep Insight იყენებს სპეციალიზებული აგენტების იერარქიას: Coordinator, Planner, Supervisor, Coder, Validator, Reporter, Tracker",
+            "აგენტები იყენებენ structured note-taking და human-in-the-loop ტექნიკებს კონტექსტის მართვისთვის",
+            "სისტემა ავტომატურად ამუშავებს CSV ფაილებს და აგენერირებს ციტირებულ .docx რეპორტებს"
+          ],
+          "interpretation": "უბრალო prompt engineering ვეღარ უზრუნველყოფს საიმედოობას; გადამწყვეტი ხდება Context Engineering და აგენტების როლური იერარქია.",
+          "uncertainty": "სტატიის პირველი ნაწილი აღწერს გამოწვევებს; კონკრეტული კოდის იმპლემენტაცია ნაწილობრივ გადანაწილებულია შემდეგ პოსტებზე.",
+          "counter_argument": "მრავალაგენტიანი იერარქია ზრდის latency-ს და ტოკენების ხარჯს მარტივ ამოცანებთან შედარებით.",
+          "strategic_assessment": "შეწყვიტე მონოლითური პრომპტების წერა. დაყავი შენი ბიზნეს ლოგიკა Planner, Coder და Validator როლებად.",
+          "time_horizon": "short-term",
+          "what_could_change": "კომპანიები უარს იტყვიან ერთიან ჩატბოტებზე და გადავლენ მრავალდონიან ვალიდაციის აგენტურ გრაფებზე.",
+          "risks": [
+            "ტოკენების გადახარჯვა აგენტებს შორის მიმოწერაში",
+            "ციკლური ჩიხები Coordinator-სა და Supervisor-ს შორის",
+            "კომპლექსური debug პროცესი შეცდომისას"
+          ],
+          "non_obvious_opportunity": "შესთავაზე კომპანიებს მონაცემთა ანალიზის პატარა მრავალაგენტიანი სისტემა, სადაც Validator ამოწმებს გამოთვლების სისწორეს.",
+          "fit_assessment": "პირდაპირ პასუხობს შენს მიზანს: გასწავლის როგორ გადახვიდე toy demo-დან production multi-agent არქიტექტურაზე."
+        },
+        {
+          "event_id": "evt-meta-muse-glimmer-30b",
+          "title": "Meta Muse Glimmer 30B: ღია მოდელი ლოკალური მოწყობილობებისთვის და Tool Use-ისთვის",
+          "category": "Open Source AI & Model Architecture",
+          "primary_url": "https://ai.meta.com/research/publications/muse-glimmer-30b-an-on-device-agentic-model",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "Meta-მ გამოუშვა Apache 2.0 ლიცენზიით Muse Glimmer 30B, რომელიც გათვლილია ლოკალურ GPU-ზე multi-step tool use-ისთვის.",
+          "what_happened": "Meta-მ წარადგინა Muse Glimmer 30B, სპეციალურად ავტონომიური აგენტური ამოცანებისთვის შექმნილი ღია მულტიმოდალური მოდელი.",
+          "what_changed": "აქამდე მძლავრი tool use მოითხოვდა ღრუბლოვან API-ებს; ახლა 4-bit 30B მოდელი იმავეს აკეთებს ერთ GPU-ზე.",
+          "why_it_matters": "შეგიძლია დატესტო შენი MCP ხელსაწყოები და აგენტური ციკლები სრულიად უფასოდ, საკრედიტო ბარათისა და API ლიმიტების გარეშე.",
+          "key_takeaways": [
+            "Apache 2.0 ლიცენზია იძლევა კომერციული გამოყენების უფლებას",
+            "ტექსტისა და სურათების მიღება ერთიან perception ენკოდერში",
+            "ჩაშენებული failure recovery მექანიზმი შეცდომების გამოსასწორებლად"
+          ],
+          "technical_architecture": [
+            "30B პარამეტრიანი causal LLM + perception encoder",
+            "4-bit precision კვანტიზაცია ერთ GPU-ზე სამუშაოდ",
+            "SOTA შედეგი Gemma4-31B და Qwen3.6-27B მოდელებთან შედარებით"
+          ],
+          "technical_details": [
+            "Apache 2.0 open source license",
+            "Multi-step reasoning and planning",
+            "Native tool calling support"
+          ],
+          "potential_impact": "დეველოპერები შეძლებენ სრულფასოვანი ბიზნეს აგენტების შექმნას გარე API-ებზე დამოკიდებულების გარეშე.",
+          "action_type": "TRY",
+          "action": "ჩამოტვირთე მოდელის 4-bit ვერსია Hugging Face-დან და შეამოწმე მარტივი JSON tool calling ციკლი Ollama-ს ან vLLM-ის მეშვეობით.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Real Business Opportunity"
+          ],
+          "verified_facts": [
+            "30B პარამეტრიანი causal language model ვიზუალური perception ენკოდერით",
+            "ოპტიმიზებულია 4-bit კვანტიზაციაზე ერთ სამომხმარებლო GPU-ზე გასაშვებად",
+            "გამოშვებულია სრულად ღია Apache 2.0 ლიცენზიით",
+            "აჯობა Gemma4-31B-სა და Qwen3.6-27B-ს tool use და multi-step planning ტესტებში"
+          ],
+          "interpretation": "30B კლასის მოდელები უკვე საკმარისად ჭკვიანია რთული tool calling-ისთვის ლოკალურ აპარატურაზე, API ხარჯების გარეშე.",
+          "uncertainty": "კონკრეტული მინიმალური VRAM მოთხოვნა 4-bit რეჟიმში სტატიის ტექსტში პირდაპირ მითითებული არ არის.",
+          "counter_argument": "16 წლის დეველოპერს შესაძლოა არ ჰქონდეს 16GB+ VRAM ვიდეობარათი 30B მოდელის ლოკალურად გასაშვებად.",
+          "strategic_assessment": "გამოიყენე Muse Glimmer 30B როგორც ლოკალური ალტერნატივა ფასიანი API-ების ნაცვლად agent loop ტესტირებისას.",
+          "time_horizon": "mid-term",
+          "what_could_change": "მცირე ბიზნესები აირჩევენ ლოკალურ 30B მოდელებს მონაცემთა კონფიდენციალურობისა და ნულოვანი API გადასახადების გამო.",
+          "risks": [
+            "ტექნიკის შეზღუდული VRAM რესურსი",
+            "4-bit კვანტიზაციისას სიზუსტის შესაძლო დაკარგვა",
+            "დაბალი თრუფუთი სუსტ GPU-ზე"
+          ],
+          "non_obvious_opportunity": "შესთავაზე ადგილობრივ კომპანიებს ლოკალური აგენტი, რომელიც მუშაობს შიდა ქსელში ინტერნეტის და API გადასახადების გარეშე.",
+          "fit_assessment": "იდეალურია ბიუჯეტური განვითარებისთვის: გაძლევს საშუალებას ისწავლო agent loop უფასოდ საკუთარ გარემოში."
+        },
+        {
+          "event_id": "evt-pass-k-thought-pruning",
+          "title": "Direct Pass@k Optimization: ტესტ-ტაიმ მსჯელობისა და ტოკენების ოპტიმიზაცია",
+          "category": "AI Research & Model Architecture",
+          "primary_url": "https://arxiv.org/abs/2610.31667",
+          "supporting_urls": [],
+          "importance": 7,
+          "relevance": 8,
+          "actionability": 7,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "ახალი კვლევა Pass@k ოპტიმიზაციით ადრეულ ეტაპზე ფილტრავს მცდარ მსჯელობებს, რაც ზოგავს ინფერენსის დროსა და რესურსებს.",
+          "what_happened": "მკვლევარებმა შექმნეს ალგორითმი, რომელიც reasoning მოდელების ტესტირებისას ნაადრევად ჭრის უპერსპექტივო ტრაექტორიებს.",
+          "what_changed": "ხარისხისა და მრავალფეროვნების ცალ-ცალკე შეფასების ნაცვლად, Pass@k პირდაპირ პოულობს საუკეთესო კანდიდატთა აუზს.",
+          "why_it_matters": "შეზღუდული ბიუჯეტის პირობებში ტოკენების დაზოგვა კრიტიკულია. ეს პრინციპი გასწავლის, როგორ შეაჩერო აგენტის უშედეგო ციკლი დროულად.",
+          "key_takeaways": [
+            "მოკლე პრეფიქსის შეფასება ზოგავს დარჩენილ გამოთვლას",
+            "ბალანსი ხარისხსა და გადაწყვეტის მრავალფეროვნებას შორის",
+            "დადასტურებულია 8 open-weight მოდელზე"
+          ],
+          "technical_architecture": [
+            "Direct pass@k optimization algorithm",
+            "Exploration vs exploitation მათემატიკური ბალანსი",
+            "Prefix-based thought pruning pipeline"
+          ],
+          "technical_details": [
+            "Open-weight model evaluation",
+            "Candidate pool selection",
+            "Token generation reduction"
+          ],
+          "potential_impact": "Reasoning მოდელების გამოძახება გახდება ორჯერ უფრო იაფი და სწრაფი რთული ამოცანების გადაჭრისას.",
+          "action_type": "LEARN",
+          "action": "წაიკითხე ნაშრომის აბსტრაქტი და ჩაინიშნე, როგორ შეგიძლია შენს agent loop-ში ადრეული stop condition-ების ჩაშენება.",
+          "evidence": [],
+          "factuality_level": "single_source",
+          "classification": [
+            "Real Technical Skill"
+          ],
+          "verified_facts": [
+            "ახალი მეთოდი პირდაპირ აოპტიმიზებს pass@k მეტრიკას candidate solution-ების pruning-ისას",
+            "აბალანსებს ხარისხსა და მრავალფეროვნებას (diversity) მოკლე prefix-ის გენერირების შემდეგ",
+            "გამოცდილია რვა open-weight მსჯელობის მოდელზე და აჯობა არსებულ მეთოდებს"
+          ],
+          "interpretation": "Reasoning მოდელების test-time scaling ხდება ბევრად უფრო იაფი, როდესაც არასწორ აზრებს ადრეულ ეტაპზე ვფილტრავთ.",
+          "uncertainty": "კვლევა ფოკუსირებულია მათემატიკურ და ლოგიკურ ტესტებზე; ზოგად ბიზნეს აგენტებზე გავლენა ჯერ შესამოწმებელია.",
+          "counter_argument": "Early pruning-მა შესაძლოა შემთხვევით წაშალოს არასტანდარტული, მაგრამ სწორი გადაწყვეტის გზა.",
+          "strategic_assessment": "გამოიყენე ადრეული შემოწმება შენს აგენტურ ციკლებში. ნუ დაელოდები გრძელი პასუხის დასრულებას, თუ პირველი ნაბიჯი მცდარია.",
+          "time_horizon": "mid-term",
+          "what_could_change": "LLM ინფერენსის პროვაიდერები ჩააშენებენ thought pruning-ს API დონეზე, რაც შეამცირებს reasoning ტოკენების საფასურს.",
+          "risks": [
+            "ზედმეტად აგრესიული pruning-ის რისკი",
+            "დამატებითი საზომი ფუნქციის გამოთვლითი დანახარჯი",
+            "რთული იმპლემენტაცია სტანდარტულ API-ებზე"
+          ],
+          "non_obvious_opportunity": "დაწერე Python wrapper, რომელიც ამოწმებს აგენტის პირველ ორ ნაბიჯს და აჩერებს გენერაციას შეცდომის შემთხვევაში.",
+          "fit_assessment": "გეხმარება გაიგო Test-time compute და როგორ დაზოგო ფული reasoning მოდელების გამოყენებისას."
+        }
+      ],
+      "trends": [
+        "აგენტების იზოლაცია microVM და sandbox დონეზე ხდება სავალდებულო სტანდარტი",
+        "30B კლასის მოდელები სრულად ადაპტირდება ლოკალურ სამომხმარებლო GPU-ებზე სამუშაოდ",
+        "Prompt Engineering სრულად ჩანაცვლდა Context Engineering-ით და მრავალაგენტიანი იერარქიით"
+      ]
     }
   ],
   "learning_queue": [
-    "Google Cloud Model Garden-ის API ინტეგრაციის ძირითადი პრინციპები.",
-    "აგენტური ევალუაციის და ფინანსური სტრატეგიების სიმულაციის მეთოდები."
+    "Docker Python SDK: კონტეინერების პროგრამული შექმნა, გაშვება და იზოლაცია აგენტებისთვის",
+    "Context Engineering: როგორ შევინახოთ აგენტის შუალედური მეხსიერება structured notes ფორმატში",
+    "Test-time compute და Thought Pruning-ის ძირითადი მათემატიკური პრინციპები"
   ],
-  "last_run": "2026-10-22T14:54:53.996891+00:00",
+  "last_run": "2026-10-24T14:04:12.028454+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -10251,12 +10336,13 @@
     "arxiv:2610.26825",
     "arxiv:2610.28619",
     "arxiv:2610.30113",
-    "arxiv:2610.29997"
+    "arxiv:2610.29997",
+    "arxiv:2610.31667"
   ],
   "last_report_files": {
-    "markdown": "data/reports/2026-10-22/report.md",
-    "json": "data/reports/2026-10-22/report.json",
-    "newsletter": "data/reports/2026-10-22/newsletter.md",
-    "social": "data/reports/2026-10-22/social_posts.txt"
+    "markdown": "data/reports/2026-10-24/report.md",
+    "json": "data/reports/2026-10-24/report.json",
+    "newsletter": "data/reports/2026-10-24/newsletter.md",
+    "social": "data/reports/2026-10-24/social_posts.txt"
   }
 }
