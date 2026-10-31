@@ -310,7 +310,12 @@
     "https://aws.amazon.com/blogs/awsforsap/how-toyota-built-basispilot-an-ai-assisted-sap-operations-platform-on-aws",
     "https://arxiv.org/abs/2610.40619",
     "https://huggingface.co/papers/2610.38568",
-    "https://huggingface.co/papers/2610.38342"
+    "https://huggingface.co/papers/2610.38342",
+    "https://huggingface.co/papers/2610.39302",
+    "https://huggingface.co/papers/2610.39301",
+    "https://arxiv.org/abs/2610.40649",
+    "https://arxiv.org/abs/2610.40641",
+    "https://arxiv.org/abs/2610.40611"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -560,286 +565,14 @@
     "evt-toyota-basispilot-aws-bedrock",
     "evt-strata-art-temporal-clinical-hypotheses",
     "evt-a-rsi-zero-data-self-improvement",
-    "evt-investors-last-exam-financial-agents"
+    "evt-investors-last-exam-financial-agents",
+    "evt-jepa-platonic-representation-2610-39302",
+    "evt-youtu-parsing-omni-2610-39301",
+    "evt-logit-psv-neural-thickets-2610-40649",
+    "evt-wxcrop-agricultural-agent-2610-40641",
+    "evt-joint-gating-memory-hint-2610-40611"
   ],
   "events": [
-    {
-      "event_id": "evt-base-models-reasoning-cues",
-      "title": "Base Models Can Reason By Taking a Cue From Training Data",
-      "category": "AI Research / Model Architecture",
-      "primary_url": "https://arxiv.org/abs/2610.06851",
-      "supporting_urls": [],
-      "importance": 9,
-      "relevance": 9,
-      "actionability": 9,
-      "source_quality": 8,
-      "confidence": 90,
-      "tldr": "სპეციალური საწყისი ტოკენების (cues) გამოყენებით ბაზისური მოდელები აჩვენებენ რაზნინგის მაღალ სიზუსტეს ძვირადღირებული RL-ის გარეშე.",
-      "what_happened": "მკვლევარებმა აჩვენეს, რომ ტოკენების ფიქსირებული დასაწყისი ზრდის ბაზისური მოდელების მათემატიკურ და კოდირების სიზუსტეს.",
-      "what_changed": "ადანტური RL ტრენინგის ნაცვლად, საწყისი ტოკენების კორექციით ვიღებთ მსგავს სიზუსტეს.",
-      "why_it_matters": "ზოგავს უზარმაზარ გამოთვლით რესურსებს და ფულს ღია კოდის მოდელებთან მუშაობისას.",
-      "key_takeaways": [
-        "სტარტური ტოკენები ააქტიურებენ ბაზისური მოდელის მსჯელობას.",
-        "მაგალითად, '..\\n\\nOkay' ზრდის OLMO-ს სიზუსტეს 42%-დან 78%-მდე.",
-        "მეთოდი არ საჭიროებს დამატებით მოდელის წონების ფაინ-თუნინგს."
-      ],
-      "technical_architecture": [
-        "Base transformer models without RL post-training",
-        "Causal data interventions on hidden states"
-      ],
-      "technical_details": [
-        "Starting token cues injection",
-        "MATH-500 and Qwen3-14B evaluation setups"
-      ],
-      "potential_impact": "აძლევს საშუალებას ინჟინრებს მიიღონ მაღალი ხარისხის რაზნინგი უფასო ან იაფი ბაზისური მოდელებიდან.",
-      "action_type": "TRY",
-      "action": "გატესტეთ ღია კოდის ბაზისური მოდელი Python-ში სპეციალური საწყისი ტოკენებით და გაზომეთ პასუხის ხარისხი.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value",
-        "Real Business Opportunity"
-      ],
-      "verified_facts": [
-        "Fixing starting token cues makes base model performance competitive with RL-trained counterparts.",
-        "The cue '..\\n\\nOkay' raises Olmo-3-7B MATH-500 accuracy from 42% to 78%."
-      ],
-      "interpretation": "ბაზისური მოდელების სწორი პრეფიქსებით ინიციალიზაცია ხსნის ძვირადღირებული RL ტრენინგის გარეშე მსჯელობის უნარს.",
-      "uncertainty": "სპეციფიკური ტოკენების ქცევა განსხვავებულ არქიტექტურებსა და დომენებში ბოლომდე პროგნოზირებადი არ არის.",
-      "counter_argument": "ეს არის მხოლოდ ზედაპირული ასოციაციების გააქტიურება და არა ღრმა მართული მსჯელობა.",
-      "strategic_assessment": "გამოიყენეთ მორგებული პრეფიქსული ტოკენები ღია კოდის ბაზისური მოდელების გამოსაყენებლად დამატებითი ხარჯების გარეშე.",
-      "time_horizon": "mid-term",
-      "what_could_change": "მცირე ბიუჯეტის დეველოპერები შეძლებენ ბაზისური მოდელების რაზნინგის ოპტიმიზაციას ძვირადღირებული ფაინ-თუნინგის გარეშე.",
-      "risks": [
-        "არასტაბილური პასუხები არასწორი პრეფიქსის დროს",
-        "დომენთშორისი გადატანის სირთულე"
-      ],
-      "non_obvious_opportunity": "შეგიძლიათ ააგოთ ღია კოდის API კლუბი, რომელიც იყენებს პრეფიქსულ ოპტიმიზაციას და ყიდის იაფ ინფერენსს.",
-      "fit_assessment": "გაძლევთ მძლავრ ინსტრუმენტს იმუშაოთ მცირე ზომის ღია მოდელებთან შეზღუდული ბიუჯეტით."
-    },
-    {
-      "event_id": "evt-editable-flowchart-relayout",
-      "title": "One Figure, Every Canvas: Editable Flowchart Relayout via Agentic Pipeline",
-      "category": "AI Research / Agent Architecture",
-      "primary_url": "https://arxiv.org/abs/2610.06852",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 8,
-      "source_quality": 8,
-      "confidence": 85,
-      "tldr": "აგენტური პიპლაპი Parse, Style და Layout ეტაპებით გარქმნის რასტრულ დიაგრამებს რედაქტირებად mxGraph XML ფორმატში.",
-      "what_happened": "მკვლევარებმა წარმოადგინეს აგენტური სისტემა, რომელიც ადაპტირებს ფლოუჩარტებს სხვადასხვა ასპექტ-რაციოზე კავშირების დარღვევის გარეშე.",
-      "what_changed": "სურათის უბრალო დაჭიმვის ან დამახინჯების მაგივრად ვიღებთ სტრუქტურულად ზუსტ, რედაქტირებად ფაილებს.",
-      "why_it_matters": "გვიჩვენებს, როგორ მუშაობს Main-Critic აგენტური არქიტექტურა ვიზუალურ დომენში.",
-      "key_takeaways": [
-        "იყენებს Parse, Style და Layout ფაზებს.",
-        "მთავარი აგენტი მუშაობს VLM კრიტიკოსთან ერთად.",
-        "გამოსავალში აგენტი აგენერირებს mxGraph XML ფაილებს."
-      ],
-      "technical_architecture": [
-        "Agentic pipeline with Parse, Style, and Layout stages",
-        "VLM visual feedback paired with deterministic constraint checks"
-      ],
-      "technical_details": [
-        "mxGraph XML output format",
-        "Evaluated on 100 flowcharts using Gemini 3.1 Pro"
-      ],
-      "potential_impact": "ზოგავს საათობით მექანიკურ დიზაინის სამუშაოს ტექნიკური დოკუმენტაციის მომზადებისას.",
-      "action_type": "BUILD",
-      "action": "ააწყვეთ მცირე Python სკრიპტი, რომელიც უშვებს ორაგენტიან (Main-Critic) ციკლს JSON კონფიგურაციების შესამოწმებლად.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Technical Skill",
-        "Real Business Opportunity",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "The method parses, styles, and lays out flowcharts into editable mxGraph XML formats.",
-        "It achieves 68.6% Content Fidelity compared to 11.2-41.4% for prior work on a 100 flowchart…"
-      ],
-      "interpretation": "მულტიმოდალური აგენტებისა და კრიტიკოსების კომბინაცია წყვეტს სტრუქტურული დიაგრამების ავტომატური რედაქტირების პრობლემას.",
-      "uncertainty": "კომპლექსური ბლოკ-სქემების გარდაქმნის სიზუსტე ძალზე პატარა მოდელებზე არ არის დადასტურებული.",
-      "counter_argument": "ტრადიციული გრაფიკული რედაქტორები და სკრიპტები უფრო სწრაფად აკეთებენ იმავეს.",
-      "strategic_assessment": "შექმენით ავტომატური დიაგრამების გადამყვანი აგენტი, როგორც ფრილანს სერვისი ან SaaS პროდუქტი.",
-      "time_horizon": "mid-term",
-      "what_could_change": "დიაგრამებისა და ტექნიკური ნახაზების ადაპტაცია სხვადასხვა ფორმატებზე სრულად ავტომატიზირდება.",
-      "risks": [
-        "ვიზუალური კავშირების გაწყვეტა რელაუტის დროს",
-        "VLM კრიტიკოსების მაღალი ლატენტობა"
-      ],
-      "non_obvious_opportunity": "შეგიძლიათ შესთავაზოთ ეს ავტომატიზაცია კონსულტანტებს, რომლებიც მუდმივად ცვლიან პრეზენტაციების ფორმატებს.",
-      "fit_assessment": "გამოგადგებათ აგენტური პიპლაინებისა და Critic-Main ციკლების პრაქტიკული ტესტირებისთვის."
-    },
-    {
-      "event_id": "evt-mistral-large-4-preview",
-      "title": "Mistral Large 4 Public Preview",
-      "category": "LLM API & Model Architecture",
-      "primary_url": "https://mistral.ai/news/mistral-large-4",
-      "supporting_urls": [],
-      "importance": 9,
-      "relevance": 9,
-      "actionability": 7,
-      "source_quality": 10,
-      "confidence": 95,
-      "tldr": "Mistral released a public preview of Mistral Large 4, a 1T multimodal model with open weights arriving later this month.",
-      "what_happened": "Mistral AI launched a public API preview of Mistral Large 4, known as le Chonk, trained from scratch in Europe.",
-      "what_changed": "Closed frontier models -> Open-weight multi-modal alternative with strong coding and cyber capabilities.",
-      "why_it_matters": "Provides an alternative to US-based closed models for advanced agentic and coding tasks.",
-      "key_takeaways": [
-        "Features 1 trillion total parameters and 49 billion active parameters.",
-        "Trained on 3800 NVIDIA Grace Blackwell GPUs.",
-        "Open weights drop by the end of the month."
-      ],
-      "technical_architecture": [
-        "Native multimodal architecture with 49B active parameters.",
-        "Trained on European datacenter infrastructure."
-      ],
-      "technical_details": [
-        "1T total parameters",
-        "49B active parameters",
-        "Multilingual across 160+ languages"
-      ],
-      "potential_impact": "Enables local execution of advanced coding and security agent workflows under European data sovereignty.",
-      "action_type": "TRACK",
-      "action": "Test the Mistral Large 4 public preview API on Mistral Studio for multi-step agent logic.",
-      "evidence": [],
-      "factuality_level": "verified",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value",
-        "Short-term Opportunity"
-      ],
-      "verified_facts": [
-        "Mistral Large 4 has 1 trillion total parameters with 49 billion active.",
-        "The model is natively multimodal and trained on 3800 NVIDIA Grace Blackwell GPUs.",
-        "Open weights will be released by the end of the month."
-      ],
-      "interpretation": "Open weights for high-capability models give developers local control and reduce reliance on closed API providers.",
-      "uncertainty": "Exact hardware requirements for running the open-weight release locally remain unconfirmed.",
-      "counter_argument": "Large active parameter counts make local deployment expensive for independent developers without cloud clusters.",
-      "strategic_assessment": "Track the upcoming open weights drop for local agent workflows once released.",
-      "time_horizon": "mid-term",
-      "what_could_change": "Autonomous security research and local agent execution will become more accessible without API filtering.",
-      "risks": [
-        "High active parameter count limits local hardware execution.",
-        "Vendor-specific API features may differ from open weights."
-      ],
-      "non_obvious_opportunity": "Multilingual training across 160+ languages creates strong opportunities for localized Georgian AI applications.",
-      "fit_assessment": "Fits your need for open-source foundation models that run without restrictive API pricing."
-    },
-    {
-      "event_id": "evt-checkerbench-static-analysis",
-      "title": "CheckerBench: Can Long-Horizon Agents Synthesize Static-Analysis Checkers?",
-      "category": "AI Evaluation & Agent Reliability",
-      "primary_url": "https://huggingface.co/papers/2610.07557",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 8,
-      "source_quality": 8,
-      "confidence": 90,
-      "tldr": "CheckerBench evaluates coding agents on their ability to build working static-analysis checkers from real-world CVEs.",
-      "what_happened": "Researchers introduced CheckerBench, an executable benchmark of 300 tasks for static-analysis checker synthesis.",
-      "what_changed": "Simple patch generation -> Full repository inspection and iterative checker synthesis.",
-      "why_it_matters": "Measures true long-horizon agent reliability and error-correction loops.",
-      "key_takeaways": [
-        "Covers 300 tasks across 5 language ecosystems and 85 CWEs.",
-        "Tests iterative refinement via compilation and analysis feedback.",
-        "Mean Pass@1 is currently 32.30%, highlighting major room for improvement."
-      ],
-      "technical_architecture": [
-        "CheckerLab framework for rebuilding submitted checkers and measuring diagnostic contrast."
-      ],
-      "technical_details": [
-        "300 executable tasks",
-        "167 repositories",
-        "Pass@1 range: 32.30% to 45.33%"
-      ],
-      "potential_impact": "Drives the development of autonomous agents that can write their own verification tools.",
-      "action_type": "LEARN",
-      "action": "Review the CheckerBench GitHub repository to examine how task environments and evaluation harnesses are structured.",
-      "evidence": [],
-      "factuality_level": "verified",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "CheckerBench contains 300 tasks derived from 297 CVEs across 167 repositories.",
-        "Mean Pass@1 across 21 model-harness configurations is 32.30%, with the best reaching 45.33%.",
-        "Tasks require agents to interpret defect specifications and refine checkers through compilation feedback."
-      ],
-      "interpretation": "Static analysis synthesis tests whether coding agents can perform rigorous, long-horizon debugging instead of simple patch generation.",
-      "uncertainty": "Task execution environments require specific pinned dependencies which can be complex to set up.",
-      "counter_argument": "Most current coding agents lack the persistence required for multi-file static analysis tool creation.",
-      "strategic_assessment": "Study CheckerBench task structures to learn how to build self-correcting agent loops that use compiler feedback.",
-      "time_horizon": "mid-term",
-      "what_could_change": "Automated vulnerability detection and static checker creation will become standard components of CI/CD pipelines.",
-      "risks": [
-        "Low baseline success rates (32.30% mean Pass@1) show high current fragility.",
-        "Complex setup for multi-language execution environments."
-      ],
-      "non_obvious_opportunity": "Writing custom static analysis checkers is a high-value skill for freelance security automation engineering.",
-      "fit_assessment": "Directly aligns with your focus on agent loops, state, and evaluation."
-    },
-    {
-      "event_id": "evt-alloydb-hybrid-search-rrf",
-      "title": "Simplify AI search with AlloyDB hybrid search and RRF",
-      "category": "RAG & Database Architecture",
-      "primary_url": "https://cloud.google.com/blog/products/databases/simplify-ai-search-with-alloydb-hybrid-search-and-rrf",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 8,
-      "actionability": 8,
-      "source_quality": 9,
-      "confidence": 90,
-      "tldr": "AlloyDB introduced native hybrid search with Reciprocal Rank Fusion, merging vector and full-text search inside SQL functions.",
-      "what_happened": "Google Cloud added native RRF and BM25 indexing to AlloyDB for PostgreSQL to streamline RAG search pipelines.",
-      "what_changed": "Complex multi-step application code for score normalization -> Single high-performance SQL function.",
-      "why_it_matters": "Simplifies RAG infrastructure and improves retrieval relevance without custom middleware.",
-      "key_takeaways": [
-        "Combines vector search and full-text search natively.",
-        "Uses Reciprocal Rank Fusion (RRF) for score merging.",
-        "Includes BM25 and RUM extensions for keyword relevance."
-      ],
-      "technical_architecture": [
-        "Single SQL function executing vector similarity and FTS fusion."
-      ],
-      "technical_details": [
-        "Reciprocal Rank Fusion (RRF)",
-        "BM25 index support",
-        "RUM extension for word positions"
-      ],
-      "potential_impact": "Reduces engineering overhead for building high-precision RAG systems.",
-      "action_type": "LEARN",
-      "action": "Study how Reciprocal Rank Fusion (RRF) combines vector and keyword search scores without manual normalization.",
-      "evidence": [],
-      "factuality_level": "verified",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "AlloyDB AI now supports native hybrid search combining vector search and full-text search.",
-        "Reciprocal Rank Fusion (RRF) eliminates complex application-layer score normalization code.",
-        "Includes BM25 index support and RUM extension for low-latency relevance ranking."
-      ],
-      "interpretation": "Moving result fusion directly into the database engine simplifies RAG architecture and eliminates fragile application code.",
-      "uncertainty": "AlloyDB is a managed enterprise cloud service, which may incur costs outside free tiers.",
-      "counter_argument": "Many developers prefer decoupled vector databases and search engines for granular scaling control.",
-      "strategic_assessment": "Learn Reciprocal Rank Fusion (RRF) concepts to implement robust hybrid search in Postgres-based RAG systems.",
-      "time_horizon": "mid-term",
-      "what_could_change": "RAG pipeline architecture will simplify as databases natively handle multi-modal search and ranking.",
-      "risks": [
-        "Vendor lock-in with Google Cloud managed database services.",
-        "Managed database services may exceed zero-budget constraints."
-      ],
-      "non_obvious_opportunity": "Understanding SQL-level RRF gives you an architectural edge when designing fast, low-latency search backends.",
-      "fit_assessment": "Fits your current learning track moving through SQL, databases, and RAG."
-    },
     {
       "event_id": "evt-strands-box-aws",
       "title": "AWS Strands Box: AI Agent Sandboxes with OS-Level Isolation and Dogwood Policy Engine",
@@ -6340,6 +6073,276 @@
       ],
       "non_obvious_opportunity": "საქართველოში ბუღალტრული დოკუმენტების და შემოსავლების ანალიზის აგენტი, რომელიც აჩვენებს ციფრების წყაროს და არა სპეკულაციურ პროგნოზს.",
       "fit_assessment": "გაჩვენებს აგენტების რეალურ საზღვრებს: შეჯამება ადვილია, გადაწყვეტილების მიღება — რთული."
+    },
+    {
+      "event_id": "evt-jepa-platonic-representation-2610-39302",
+      "title": "JEPAs-ის მულტიმოდალური ალინმენტი: 109M მოდელი სჯობნის 72B LLM-ებს",
+      "category": "AI Research / Model Architecture",
+      "primary_url": "https://huggingface.co/papers/2610.39302",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 95,
+      "tldr": "Yann LeCun-ის გუნდმა დაამტკიცა, რომ 109M JEPA მოდელი სჯობნის 72B LLM-ებს მულტიმოდალურ ალინმენტში 42-ჯერ ნაკლები ტრენინგ მონაცემით.",
+      "what_happened": "მკვლევარებმა დაამტკიცეს Platonic Representation Theorem და აჩვენეს JEPA-ს ეფექტურობა next-token prediction-ის წინააღმდეგ.",
+      "what_changed": "მულტიმოდალური ვექტორული სივრცის შესაქმნელად გიგანტური LLM-ების ტრენინგი აღარ არის აუცილებელი.",
+      "why_it_matters": "შეგიძლია შექმნა მაღალეფექტური cross-modal RAG და მეხსიერების არქიტექტურა მინიმალური ინფრასტრუქტურული ხარჯით.",
+      "key_takeaways": [
+        "109M JEPA აჭარბებს Qwen2.5-72B-ს PRH ბენჩმარკზე (.184 vs .154)",
+        "42-ჯერ ნაკლები მონაცემია საჭირო იდენტური ალინმენტის მისაღწევად",
+        "ერთადერთი როტაცია საკმარისია ცალკე გაწვრთნილი ენკოდერების შესაერთებლად"
+      ],
+      "technical_architecture": [
+        "Joint-Embedding Predictive Architecture (JEPA)",
+        "109M parameter text JEPA aligned with DINOv2 / CLIP"
+      ],
+      "technical_details": [
+        "CIDEr 0.838 COCO-ზე",
+        "64% top-5 ImageNet-100 pair-free benchmark"
+      ],
+      "potential_impact": "მკვეთრად ამცირებს მულტიმოდალური AI სისტემების შექმნისა და ჰოსტინგის ხარჯებს.",
+      "action_type": "LEARN",
+      "action": "გაეცანი JEPA-ს არქიტექტურას Hugging Face-ზე და გამოსცადე 109M ენკოდერი ლოკალურ RAG პაიპლაინში.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "109M JEPA მოდელი პლატონური წარმოდგენის ბენჩმარკზე ამარცხებს Qwen2.5-72B და Llama-3-70B მოდელებს",
+        "Good views წყვილები საჭიროებენ 42-ჯერ ნაკლებ ტრენინგ ნიმუშს next-token prediction-თან შედარებით"
+      ],
+      "interpretation": "Next-token prediction არ არის ეფექტური გზა მულტიმოდალური ალინმენტისთვის. JEPA-ს Joint-Embedding სტრუქტურა იძლევა უმაღლეს წარმოდგენას მცირე პარამეტრებით.",
+      "uncertainty": "ექსპერიმენტები ჩატარებულია ძირითადად გამოსახულება-ტექსტის წყვილებზე; რთულ იერარქიულ მსჯელობაზე გავლენა ჯერ კიდევ შესასწავლია.",
+      "counter_argument": "Next-token LLM-ებს აქვთ უკეთესი zero-shot ტექსტური გენერაციის უნარი, რაც JEPA-ს ცალკე დეკოდერის გარეშე არ გააჩნია.",
+      "strategic_assessment": "გამოიყენე JEPA ემბედინგები RAG და cross-modal search სისტემებში დიდი LLM-ების ძვირადღირებული API-ების ჩასანაცვლებლად.",
+      "time_horizon": "long-term",
+      "what_could_change": "მულტიმოდალური აგენტების მეხსიერება გახდება 40-ჯერ იაფი, რადგან დიდი LLM-ების ნაცვლად მცირე JEPA ემბედინგებს გამოიყენებენ.",
+      "risks": [
+        "JEPA მოითხოვს სპეციფიკურ positive view მონაცემთა წყვილებს",
+        "ტექსტის გენერაციისთვის მაინც საჭიროა ცალკე დეკოდერი"
+      ],
+      "non_obvious_opportunity": "შეგიძლია ააგო ძალიან იაფი cross-modal საძიებო სისტემა ლოკალურ 100M მოდელზე დაყრდნობით.",
+      "fit_assessment": "იდეალურია შენთვის: იძლევა საშუალებას მცირე კომპიუტერული რესურსით მიაღწიო 70B+ მოდელების ალინმენტის დონეს."
+    },
+    {
+      "event_id": "evt-youtu-parsing-omni-2610-39301",
+      "title": "Youtu-Parsing-Omni: 5B მოდელი მულტიმოდალური დოკუმენტების სტრუქტურირებულ JSON-ში გადასაყვანად",
+      "category": "აგენტების არქიტექტურა და ინფრასტრუქტურა",
+      "primary_url": "https://huggingface.co/papers/2610.39301",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 92,
+      "tldr": "Tencent-მა გამოაშვება 5B Youtu-Parsing-Omni, რომელიც დოკუმენტებს, აუდიოსა და ვიდეოს ერთიან სტრუქტურირებულ JSON-ად გარდაქმნის.",
+      "what_happened": "შეიქმნა ერთიანი OmniSchema და 5B ენკოდერი OSAD ონ-პოლისი დისტილაციით omni-modal პარსინგისთვის.",
+      "what_changed": "მულტიმოდალური მონაცემების დამუშავებას აღარ სჭირდება 4-5 სხვადასხვა API-ს და ბიბლიოთეკის კომბინაცია.",
+      "why_it_matters": "შენს აგენტებს შეუძლიათ ნებისმიერი მედია ფაილიდან დაუყოვნებლივ ამოიღონ დამოწმებული JSON სტრუქტურა.",
+      "key_takeaways": [
+        "ერთადერთი ენკოდერი და სქემა ტექსტის, აუდიოსა და ვიდეოსთვის",
+        "SOTA OmniDocBench v1.6 (96.96) და Chart Parsing (95.02)",
+        "ღია წონები და კოდი ხელმისაწვდომია"
+      ],
+      "technical_architecture": [
+        "Youtu-Omni-Encoder initialized from pre-trained LM",
+        "OmniSchema-Aware On-Policy Distillation (OSAD)"
+      ],
+      "technical_details": [
+        "5B parameter count",
+        "Grounded spatiotemporal JSON outputs"
+      ],
+      "potential_impact": "ზოგავს დეველოპმენტის დროს მულტიმოდალური RAG და Data Extraction აგენტების აგებისას.",
+      "action_type": "TRY",
+      "action": "ჩამოტვირთე მოდელის რეპოზიტორია GitHub-იდან და გატესტე რთული PDF ინვოისისა და აუდიო ფაილის JSON-ად გარდაქმნა.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Real Business Opportunity"
+      ],
+      "verified_facts": [
+        "5B პარამეტრიანი ერთიანი მოდელი გადაიყვანს დოკუმენტებს, სურათებს, აუდიოსა და ვიდეოს სტრუქტურირებულ JSON ჩანაწერებში",
+        "მიაღწია SOTA შედეგს OmniDocBench v1.6-ზე (96.96 Overall) და ლიდერობს open-weight მოდელებში OmniParsingBench-ზე (75.08 Avg)"
+      ],
+      "interpretation": "აგენტებისთვის აღარ არის საჭირო ცალ-ცალკე OCR, აუდიო ტრანსკრიფციისა და ვიდეო ანალიზის ინსტრუმენტების გაერთიანება; ერთი OmniSchema ამუშავებს ყველაფერს.",
+      "uncertainty": "5B მოდელის real-time inference latency დაბალი რესურსების GPU-ზე საჭიროებს დამატებით ტესტირებას.",
+      "counter_argument": "სპეციალიზებული ვიწრო მოდელები (მაგ. სუფთა Whisper აუდიოსთვის) ცალკეულ ამოცანებზე შეიძლება ოდნავ სწრაფი ან იაფი იყოს.",
+      "strategic_assessment": "გამოიყენე Omni-parsing სქემა ბიზნეს პროცესების ავტომატიზაციისთვის, სადაც შემავალი მონაცემები შერეული ფორმატისაა.",
+      "time_horizon": "mid-term",
+      "what_could_change": "მრავალკომპონენტიანი ETL პაიპლაინები ჩანაცვლდება ერთიანი omni-modal parser მოდელებით.",
+      "risks": [
+        "5B მოდელის გაშვება მოითხოვს მინიმუმ 12GB VRAM-ს local inference-ისას",
+        "დიდ ვიდეო ფაილებზე context window-ს გადავსება"
+      ],
+      "non_obvious_opportunity": "შეგიძლია შექმნა ავტომატიზებული სერვისი ადგილობრივი ბიზნესებისთვის, რომელიც ინვოისებსა და აუდიო ჩანაწერებს ერთიან ბაზაში გადაიყვანს.",
+      "fit_assessment": "ძალიან პრაქტიკულია: იდეალური ბაზისია Telegram ბოტების არქიტექტურისთვის, რომლებიც მრავალფეროვან ფაილებს იღებენ."
+    },
+    {
+      "event_id": "evt-logit-psv-neural-thickets-2610-40649",
+      "title": "Logit PSV: LLM-ის მსჯელობის გაუმჯობესება ლოგიტების მცირე ცვლილებითა და კენჭისყრით",
+      "category": "აგენტის არქიტექტურა და ოპტიმიზაცია",
+      "primary_url": "https://arxiv.org/abs/2610.40649",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "ახალმა კვლევამ აჩვენა, რომ LLM-ის მსჯელობის გასაუმჯობესებლად საკმარისია გამოსავალ ლოგიტებზე მცირე ხმაურის დამატება და კენჭისყრა.",
+      "what_happened": "მკვლევარებმა უარყვეს წონების რთული პერტურბაციის აუცილებლობა და წარადგინეს Perturb-Select-Vote (PSV).",
+      "what_changed": "მოდელის შიდა წონების შეცვლის ნაცვლად, იგივე ეფექტი მიიღწევა გამოსავალ შრეზე მარტივი ოპერაციით.",
+      "why_it_matters": "შეგიძლია გაზარდო ლოკალური მოდელების სიზუსტე მსჯელობით დავალებებზე ტრენინგის გარეშე.",
+      "key_takeaways": [
+        "Logit PSV უტოლდება ან აჭარბებს full-weight perturbations-ს",
+        "მუშაობს სრულიად გაყინულ (frozen) მოდელებზე",
+        "ინტეგრირდება Self-Consistency და Verifier-guided პატერნებთან"
+      ],
+      "technical_architecture": [
+        "Perturb-Select-Vote (PSV) inference framework",
+        "Logit-level noise injection without fine-tuning"
+      ],
+      "technical_details": [
+        "Zero weight updates required",
+        "Applicable to language and vision models"
+      ],
+      "potential_impact": "ამცირებს აგენტების შეცდომებს ლოგიკურ მსჯელობაში უფასო/იაფი მოდელების გამოყენებისას.",
+      "action_type": "BUILD",
+      "action": "დაწერე Python ფუნქცია Ollama/vLLM-ისთვის, რომელიც ლოგიტების/ტემპერატურის ცვლილებით აკეთებს 3 პასუხის გენერაციას და Majority Voting-ს.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "გამოსავალი logit-ების შემთხვევითი ცვლილება (Perturb-Select-Vote) იძლევა იგივე ან უკეთეს შედეგს, ვიდრე წონების სრული პერტურბაცია Neural…",
+        "მეთოდი მუშაობს სრულიად გაყინულ (frozen) მოდელებზე ყოველგვარი დამატებითი ტრენინგის გარეშე"
+      ],
+      "interpretation": "რთული წონითი ანსამბლებისა და Gaussian perturbations-ის ნაცვლად, ინფერენსის დროს ლოგიტების მარტივი მოდიფიკაცია და Majority Voting საკმარისია მსჯელობის ხარისხის ასაწევად.",
+      "uncertainty": "მოითხოვს მრავალჯერად გენერაციას (sampling/voting), რაც ზრდის API ან ინფერენს ტოკენების რაოდენობას.",
+      "counter_argument": "თუ API არ გაძლევს raw logits-ზე წვდომას, მოგიწევს temperature/top_p პარამეტრების ვარიაციით ჩანაცვლება.",
+      "strategic_assessment": "გამოიყენე Logit PSV ან პრაქტიკული Logit/Temperature Sampling + Voting აგენტის გადაწყვეტილების მიღებისას რთულ ლოგიკურ ბიჯებზე.",
+      "time_horizon": "short-term",
+      "what_could_change": "Inference-time reasoning ტექნიკები გახდება ბევრად უფრო მარტივი და იაფი დამატებითი fine-tuning-ის გარეშე.",
+      "risks": [
+        "API პროვაიდერების უმეტესობა პირდაპირ logit perturbation-ს არ გიხსნის",
+        "დამატებითი გენერაციები ზრდის latency-ს"
+      ],
+      "non_obvious_opportunity": "შეგიძლია დაწერო მცირე Python Wrapper open-source ლოკალური მოდელებისთვის (Ollama/vLLM), რომელიც ავტომატურად გააუმჯობესებს პასუხებს PSV-ით.",
+      "fit_assessment": "ზუსტად ჯდება შენს კვლევაში: იაფი inference-time ოპტიმიზაცია, რომელიც არ მოითხოვს GPU-ების კლასტერს ტრენინგისთვის."
+    },
+    {
+      "event_id": "evt-wxcrop-agricultural-agent-2610-40641",
+      "title": "WxCrop: მიზეზ-შედეგობრივ ანალიზზე დაფუძნებული აგენტი აგროსექტორში ზარალის პროგნოზირებისთვის",
+      "category": "Real Business Opportunity & Agent Architecture",
+      "primary_url": "https://arxiv.org/abs/2610.40641",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 92,
+      "tldr": "შეიქმნა WxCrop აგენტი, რომელიც ამინდის პროგნოზსა და სადაზღვევო მონაცემებს აერთიანებს მოსავლის ზარალის 98%-იანი სიზუსტით დასათვლელად.",
+      "what_happened": "მკვლევარებმა შექმნეს პირველი აგენტი, რომელიც Causal Analysis-ით ითვლის აგრო-ზარალს და იძლევა დასაბუთებულ ციტირებას.",
+      "what_changed": "ზოგადი ჩატბოტების ნაცვლად შეიქმნა კონკრეტული სექტორული აგენტი, რომელიც იძლევა ზუსტ ფინანსურ შეფასებას.",
+      "why_it_matters": "გვიჩვენებს რეალური ბიზნეს-აგენტების არქიტექტურას: ინსტრუმენტები + მიზეზ-შედეგობრივი ლოგიკა + კალიბრირებული მოდელები.",
+      "key_takeaways": [
+        "98% AUC ციკლონების დაფიქსირებაში",
+        "ისტორიული ზარალი აღდგენილია 2%-იან ცდომილებაში",
+        "თითოეული ციფრი გამყარებულია წყაროთი"
+      ],
+      "technical_architecture": [
+        "Agentic causal framework with physical weather indices",
+        "Loss model calibrated on insurance claim datasets"
+      ],
+      "technical_details": [
+        "0.98 AUC detection rate",
+        "Rank correlation 0.63 on county rankings"
+      ],
+      "potential_impact": "ზუსტი შაბლონია B2B აგენტების შესაქმნელად ფინანსურ და აგრო სექტორში.",
+      "action_type": "BUILD",
+      "action": "ააგე მცირე Python აგენტი, რომელიც ღია API-დან (მაგ. Open-Meteo) იღებს ამინდის მონაცემებს და Causal rules-ით ითვლის რისკის ქულას.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Business Opportunity",
+        "Real Technical Skill"
+      ],
+      "verified_facts": [
+        "WxCrop აგენტი იყენებს ფიზიკურად ინტერპრეტირებად ამინდის ინდექსებს და მიზეზ-შედეგობრივ (causal) ანალიზს მოსავლის ზარალის დათვლისთვის",
+        "ქარიშხლის ინდექსი ადგენს ციკლონის დღეებს 0.98 AUC-ით, ხოლო ისტორიულ ზარალს აღადგენს 2%-იან ცდომილებაში"
+      ],
+      "interpretation": "რეალური ბიზნეს-აგენტები წარმატებას აღწევენ არა უბრალოდ LLM prompt-ებით, არამედ დომენური ფორმულების, causal analysis-ისა და მონაცემთა ბაზების მყარი ინტეგრაციით.",
+      "uncertainty": "სისტემა კალიბრირებულია ფლორიდის სადაზღვევო ჩანაწერებზე; სხვა რეგიონებისთვის საჭიროებს ადგილობრივ მონაცემთა ბაზებს.",
+      "counter_argument": "ტრადიციული სტატისტიკური მოდელები აგენტური გარსის გარეშეც აკეთებენ მსგავს გამოთვლებს, თუმცა აგენტი უზრუნველყოფს ბუნებრივ ინტერფეისს.",
+      "strategic_assessment": "შექმენი ბიზნეს-აგენტები, რომლებიც აერთიანებენ API ინდექსებს, მიზეზ-შედეგობრივ ლოგიკასა და ციტირებად წყაროებს.",
+      "time_horizon": "mid-term",
+      "what_could_change": "დაზღვევისა და სოფლის მეურნეობის ანალიტიკა სრულად გადავა ავტონომიურ, წყაროებზე დაფუძნებულ AI აგენტებზე.",
+      "risks": [
+        "საჯარო მონაცემთა ბაზების არასტაბილურობა ან ნაკლებობა",
+        "დომენური ფორმულების არასწორი ინტერპრეტაცია LLM-ის მიერ"
+      ],
+      "non_obvious_opportunity": "საქართველოს აგრო/ტურიზმის სექტორში შეგიძლიათ შექმნათ მსგავსი აგენტი ამინდისა და მოსავლიანობის რეგიონული მონაცემების საფუძველზე.",
+      "fit_assessment": "შესანიშნავი ქეისია იმის სასწავლად, თუ როგორ უნდა აიგოს რეალური ღირებულების მქონე B2B აგენტი დემო-სურათების გარეშე."
+    },
+    {
+      "event_id": "evt-joint-gating-memory-hint-2610-40611",
+      "title": "1B Single-Decoder არქიტექტურა: პროაქტიული Gating და მეხსიერებაზე დაფუძნებული Hint გენერაცია",
+      "category": "აგენტის არქიტექტურა და მეხსიერება",
+      "primary_url": "https://arxiv.org/abs/2610.40611",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 88,
+      "tldr": "კვლევამ აჩვენა, რომ 1B პარამეტრიან ერთ მოდელს შეუძლია პროაქტიული gating და მეხსიერების მუშაობა 1.76-ჯერ უფრო სწრაფად.",
+      "what_happened": "შექმნა გაერთიანებული 1B დეკოდერი, რომელიც შუალედური შრიდან წყვეტს ასისტენტის ჩართვას და იმავე pass-ში აგენერირებს პასუხს.",
+      "what_changed": "გაუქმდა საჭიროება ორ ცალკე მოდელზე (Gating Classifier + Generator Pipeline).",
+      "why_it_matters": "ამცირებს სერვერის/API ხარჯებს და პასუხის დაყოვნებას პროაქტიულ AI ასისტენტებში.",
+      "key_takeaways": [
+        "1.31x-1.76x სისწრაფე ორმოდელიან სისტემასთან შედარებით",
+        "მეხსიერების პროფილი არის მთავარი ფაქტორი hint-ის ხარისხში",
+        "შუალედური შრიდან exit უთანაბრდება ცალკე გეითს"
+      ],
+      "technical_architecture": [
+        "Single 1B decoder with intermediate layer gating",
+        "Joint gating and memory-grounded hint generation in one pass"
+      ],
+      "technical_details": [
+        "1B parameter budget",
+        "1.31-1.76x speedup on wall-clock time"
+      ],
+      "potential_impact": "ზოგავს რესურსებს პროაქტიული და პერსონალური AI ასისტენტების დეველოპმენტში.",
+      "action_type": "LEARN",
+      "action": "გადახედე ნაშრომის არქიტექტურას და გამოსცადე Intermediate Layer Feature Extraction შენს Python პაიპლაინში.",
+      "evidence": [],
+      "factuality_level": "single_source",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "ერთ 1B დეკოდერს შეუძლია ერთდროულად შეასრულოს ჩარევის გადაწყვეტილება (gating) და მეხსიერებაზე დაფუძნებული რჩევის გენერაცია",
+        "ორმოდელიან პაიპლაინებთან შედარებით მიიღწევა 1.31-1.76-ჯერ სწრაფი wall-clock time"
+      ],
+      "interpretation": "პროაქტიული აგენტებისთვის ცალკე Gating Model (უნდა დაეხმაროს თუ არა) და Generator Model აღარ არის საჭირო; ერთი კომპაქტური მოდელი ორივეს აკეთებს ერთ პროცესში.",
+      "uncertainty": "ადამიანურ შეფასებაში 1B მოდელი ჯერ კიდევ ჩამორჩება 8B გენერატორებს რთულ კონტექსტებში.",
+      "counter_argument": "თუ რეალურ დროში რეაგირება არ არის კრიტიკული, უფრო დიდი 8B მოდელის ცალკე გამოძახება იძლევა ოდნავ უკეთეს შინაარსს.",
+      "strategic_assessment": "გამოიყენე Single-Pass Gating+Generation არქიტექტურა დაბალი Latency-ს მქონე Telegram ბოტებსა და ასისტენტებში.",
+      "time_horizon": "mid-term",
+      "what_could_change": "მრავალეტაპიანი აგენტური პაიპლაინები შეიცვლება ერთიანი მრავალგამოსავლიანი (early exit/intermediate gating) მცირე მოდელებით.",
+      "risks": [
+        "მეხსიერების პროფილის არარსებობა იწვევს სიზუსტის 24.7 პუნქტიან ვარდნას",
+        "1B მოდელის შეზღუდული ენობრივი შესაძლებლობები"
+      ],
+      "non_obvious_opportunity": "შეგიძლია ააგო პროაქტიული Telegram ასისტენტი, რომელიც ჯგუფურ ჩატში მხოლოდ მაშინ ჩაერთვება, როდესაც რეალურად საჭიროა.",
+      "fit_assessment": "ზუსტად შეესაბამება შენს მიზანს: კომპაქტური, იაფი და რეალურ დროში მომუშავე აგენტის არქიტექტურა."
     }
   ],
   "topics": {
@@ -6437,7 +6440,7 @@
     "AI Research & NLP": 1,
     "LLM API / Agent Infrastructure": 1,
     "AI Research / Agent Reliability": 2,
-    "AI Research / Model Architecture": 4,
+    "AI Research / Model Architecture": 5,
     "Agent Architecture & Security": 1,
     "LLM APIs & Cost Optimization": 1,
     "AI Research / RAG & Evaluation": 1,
@@ -6451,7 +6454,7 @@
     "აგენტების ინფრასტრუქტურა და უსაფრთხოება": 2,
     "": 1,
     "AI Research & RAG": 1,
-    "აგენტის არქიტექტურა და მეხსიერება": 4,
+    "აგენტის არქიტექტურა და მეხსიერება": 5,
     "LLM APIs და Cost Optimization": 2,
     "აგენტების უსაფრთხოება და Governance": 1,
     "Agent Architecture & APIs": 1,
@@ -6478,195 +6481,19 @@
     "RAG და აგენტის მეხსიერება": 3,
     "აგენტის არქიტექტურა და რობოტიკა": 2,
     "Long-Term Career Value": 1,
-    "აგენტის არქიტექტურა და ოპტიმიზაცია": 4,
+    "აგენტის არქიტექტურა და ოპტიმიზაცია": 5,
     "Open Source AI & Infrastructure": 1,
-    "Real Business Opportunity & Agent Architecture": 3,
+    "Real Business Opportunity & Agent Architecture": 4,
     "აგენტების ინფრასტრუქტურა და LLM APIs": 1,
     "აგენტების ინფრასტრუქტურა და Sandbox": 1,
     "აგენტის არქიტექტურა და საიმედოობა": 1,
     "Open Source AI & Model Architecture": 1,
     "აგენტის არქიტექტურა და ინფრასტრუქტურა": 2,
     "აგენტის არქიტექტურა და წარმოება": 1,
-    "AI Research / Self-Improvement": 1
+    "AI Research / Self-Improvement": 1,
+    "აგენტების არქიტექტურა და ინფრასტრუქტურა": 1
   },
   "reports": [
-    {
-      "date": "2026-10-16",
-      "summary": "დღევანდელი გამოშვება აანალიზებს ახალ კვლევებს, რომლებიც აგენტების რეალურ მიწოდებას, GUI ავტომატიზაციას და მანქანური სწავლების თვითგანვითარებას ეხება. ეს სიგნალები გვიჩვენებს, რომ ტოპ- მოდელების ტესტირება გადადის თეორიული ქვიზებიდან სრულფასოვან საინჟინრო გარემოზე. შენთვის მთავარი მიზანია შეისწავლო ეს არქიტექტურები და აკონტროლო აგენტების შესრულება ლოკალურ, უფასო სტეკზე.",
-      "events": [
-        {
-          "event_id": "evt-fde-gym-delivery-benchmark",
-          "title": "FDE-Gym: რეალური მომხმარებლის მიწოდებისა და გაურკვეველი მოთხოვნების ბენჩმარკი აგენტებისთვის",
-          "category": "AI Evaluation & Agent Reliability",
-          "primary_url": "https://huggingface.co/papers/2610.22350",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 10,
-          "actionability": 9,
-          "source_quality": 8,
-          "confidence": 95,
-          "tldr": "FDE-Gym ტესტავს აგენტებს რეალურ მიწოდების ტასკებზე და აჩვენებს, რომ მოდელები უჭირთ დაფარული მოთხოვნების აღმოჩენა.",
-          "what_happened": "გამოვიდა FDE-Gym ბენჩმარკი 95 რეალური დელივერის ტასკით და 20 სცენარით.",
-          "what_changed": "კარგად გაწერილი თექეთებიდან გადავედით ბუნდოვან, ცოცხალ სისტემებში აგენტების ტესტირებაზე.",
-          "why_it_matters": "გასწავლის, რომ რეალურ ბიზნესში აგენტმა თავად უნდა გამოიკვლიოს პრობლემა და არა უბრალოდ კოდი დაწეროს.",
-          "key_takeaways": [
-            "საუკეთესო მოდელმაც კი მოაგვარა ტასკების მხოლოდ 14%.",
-            "დაფარული შეზღუდვების პოვნა აგენტების მთავარი სისუსტეა.",
-            "წარმატება იზომება მომხმარებლის ბიზნეს მეტრიკით."
-          ],
-          "technical_architecture": [
-            "სიმულირებული გარემო სკრიპტირებული სტეიკჰოლდერებითა და მოდიფიცირებადი სისტემებით."
-          ],
-          "technical_details": [
-            "ქულები იზომება 0-დან 1-მდე ბიზნეს აფლიფტის მიხედვით.",
-            "ჯარიმები ედება ზედმეტ შეტყობინებებსა და მოლოდინის დროს."
-          ],
-          "potential_impact": "ქმნის ახალ სტანდარტს B2B აგენტების ტესტირებისთვის, სადაც ავტომატიზაცია ცვლის forward-deployed ინჟინრებს.",
-          "action_type": "APPLY",
-          "action": "დაამატე შენს მიმდინარე აგენტურ ლოგიკაში კითხვების დასმის ფაზა მომხმარებლის მოთხოვნების დასაზუსტებლად.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value",
-            "Real Business Opportunity"
-          ],
-          "verified_facts": [
-            "FDE-Gym აფასებს აგენტებს 95 რეალურ დელივერის ტასკზე 20 მომხმარებლის სცენარით.",
-            "საუკეთესო კონფიგურაციამ მიაღწია საშუალოდ 0.56 ქულას და მოაგვარა მხოლოდ 14 ტასკი 95-დან.",
-            "არასაკმარისი მოთხოვნებისა და ფაქტების აღმოჩენა მთავარ ბოთლენკს წარმოადგენს."
-          ],
-          "interpretation": "ტრადიციული ბენჩმარკები აგენტებს კარგად გაწერილ თექეთებს აძლევენ, მაგრამ რეალურ ბიზნესში მომხმარებელმა არ იცის რა სურს. ეს ნიშნავს, რომ აგენტმა თავად უნდა დასვას სწორი კითხვები.",
-          "uncertainty": "სკრიპტირებული სტეიკჰოლდერების სიმულაცია ვერ ფარავს ადამიანური ემოციებისა და რეალური კომუნიკაციის სრულ სირთულეს.",
-          "counter_argument": "შესაძლოა FDE-Gym უბრალოდ ზომავს მოდელის პრომპტ-ჰანდლინგის სისუსტეს და არა მის რეალურ საინჟინრო პოტენციალს.",
-          "strategic_assessment": "ისწავლე აგენტებში clarifying questions-ის დაზუსტების ლოგიკის ჩადება. ბიზნესს სწორედ ისეთი აგენტები სჭირდება, რომლებიც არასრული დავალებიდან იწყებენ მუშაობას.",
-          "time_horizon": "mid-term",
-          "what_could_change": "AI აგენტების შეფასება იცვლება სტატიკური ქვიზებიდან ინტერაქტიულ, ბიზნეს-მეტრიკებზე დამყარებულ ტესტებზე.",
-          "risks": [
-            "მომხმარებელთან არასწორი კომუნიკაცია ზრდის ტასკის შესრულების დროს.",
-            "გაურკვეველი შეზღუდვები იწვევს ჰალუცინაციებსა და არასწორ კოდს."
-          ],
-          "non_obvious_opportunity": "შეგიძლია შექმნა მცირე აგენტი, რომელიც ტექნიკურ დავალებას ამოწმებს და მომხმარებელს დამატებით კითხვებს უსვამს დასრულებამდე.",
-          "fit_assessment": "იდეალურად ერგება შენს მიზანს: ააშენო რეალური ბიზნეს აგენტები და არა ტოი დემოები."
-        },
-        {
-          "event_id": "evt-mlexpert-autonomous-ml",
-          "title": "MLExpert: 35B MoE მოდელი ავტონომიური მანქანური სწავლებისა და კვლევისთვის",
-          "category": "AI Research / Agent Architecture",
-          "primary_url": "https://arxiv.org/abs/2610.22344",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 95,
-          "tldr": "MLExpert არის 35B MoE მოდელი, რომელიც ავტონომიურად ატარებს მანქანური სწავლების ექსპერიმენტებს და აღწევს ფრონტიერ მოდელების დონეს.",
-          "what_happened": "წარმოდგენილია MLExpert და Windowed Interaction RL (WIRL) მეთოდი გრძელვადიანი ექსპერიმენტების სამართავად.",
-          "what_changed": "ერთჯერადი კოდის გენერაციიდან გადავედით მრავალსვლიან, თვითშესწორებად ML ექსპერიმენტებზე.",
-          "why_it_matters": "გაჩვენებს, როგორ უნდა მოაწყო აგენტის მიერ ექსპერიმენტების მართვისა და ტრენინგის ციკლი.",
-          "key_takeaways": [
-            "MLExpert აუმჯობესებს ბაზის მოდელის მედალოსნობის მაჩვენებელს MLE-Bench Lite-ზე 72.7%-მდე.",
-            "WIRL მეთოდი ანაწილებს ჯილდოს მრავალსვლიანი ექსპერიმენტის შედეგებზე.",
-            "აღწევს ისეთსავე შედეგებს, როგორიც უფრო დიდ ფრონტიერ მოდელებს აქვთ."
-          ],
-          "technical_architecture": [
-            "35B Mixture-of-Experts არქიტექტურა.",
-            "Kaggle-MLE Factory შესასრულებელი ტასკებისა და ინტერაქციის ჰარნესისთვის."
-          ],
-          "technical_details": [
-            "Windowed Interaction RL (WIRL) აერთიანებს მრავალსვლიან გადაწყვეტილებებს ერთიანი ჯილდოს ქვეშ.",
-            "ასინქრონული კოლექცია და პოლიტიკის კორექცია ტრენინგის დასრულებამდე."
-          ],
-          "potential_impact": "ავტომატიზირებს მონაცემთა მეცნიერისა და ML ინჟინრის რუტინულ ექსპერიმენტულ სამუშაოს.",
-          "action_type": "LEARN",
-          "action": "შეისწავლე როგორ მუშაობს Windowed Interaction RL (WIRL) და სად შეიძლება მისი გამოყენება აგენტის მახსოვრობის ოპტიმიზაციისთვის.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value",
-            "Real Business Opportunity"
-          ],
-          "verified_facts": [
-            "MLExpert არის 35B Mixture-of-Experts აგენტური მოდელი ავტონომიური MLE ოპტიმიზაციისთვის.",
-            "მოდელმა MLE-Bench Lite-ზე საშუალო მედალოსნობის მაჩვენებელი გაზარდა 37.9%-დან 72.7%-მდე.",
-            "იყენებს Windowed Interaction RL (WIRL) მეთოდს მრავალსვლიანი ექსპერიმენტების ჯილდოს განსასაზღვრად."
-          ],
-          "interpretation": "აგენტები აღარ უბრალოდ წერენ კოდს, არამედ ატარებენ გრძელვადიან ექსპერიმენტებს, აანალიზებენ მეტრიკებს და აუმჯობესებენ საკუთარ მოდელებს.",
-          "uncertainty": "გრძელვადიანი ექსპერიმენტები მოითხოვს უზარმაზარ გამოთვლით რესურსებს და უსაფრთხო სანდბოქს გარემოს.",
-          "counter_argument": "Kaggle ტიპის ამოცანებზე ავტონომიური ოპტიმიზაცია არ ნიშნავს რეალური ბიზნეს პრობლემების წარმატებით გადაჭრას.",
-          "strategic_assessment": "გაიგე, როგორ მუშაობს agentic reinforcement learning და ექსპერიმენტების ორკესტრაცია გრძელვადიან ციკლებში.",
-          "time_horizon": "mid-term",
-          "what_could_change": "მანქანური სწავლებისა და მონაცემთა ანალიზის საბაზისო ექსპერიმენტები მთლიანად ავტომატიზდება აგენტების მიერ.",
-          "risks": [
-            "აგენტმა შეიძლება ზედმეტად მოარგოს მოდელი ტესტურ მეტრიკებს (overfitting).",
-            "მაღალი ხარჯები ექსპერიმენტების მრავალსვლიანი ციკლების გამო."
-          ],
-          "non_obvious_opportunity": "შეგიძლია შექმნა მსუბუქი აგენტი, რომელიც უბრალოდ ატარებს ჰიპერპარამეტრების ძიებას და უბრალო ML სკრიპტებს აკონტროლებს.",
-          "fit_assessment": "გაინტერესებს აგენტური არქიტექტურები, ხოლო MLExpert გჩვენებს, როგორ ხდება მრავალსვლიანი ტასკების ოპტიმიზაცია."
-        },
-        {
-          "event_id": "evt-mai-gym-gui-agents",
-          "title": "MAI-Gym: ღია პლატფორმა GUI აგენტების შესაფასებლად და ონლაინ RL ტრენინგისთვის",
-          "category": "AI Research / Agent Architecture",
-          "primary_url": "https://huggingface.co/papers/2610.20939",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 95,
-          "tldr": "MAI-Gym არის ღია პლატფორმა, რომელიც აერთიანებს მობილური და კომპიუტერული GUI აგენტების ევალუაციასა და RL ტრენინგს.",
-          "what_happened": "წარმოდგენილია MAI-Gym, რომელიც აერთიანებს 10 ბენჩმარკს და 20,000 პარალელურ გარემოს.",
-          "what_changed": "ფრაგმენტული GUI ტესტებიდან გადავედით ერთიან, მასშტაბურ ევალუაციისა და ტრენინგის პლატფორმაზე.",
-          "why_it_matters": "გაძლევს შაბლონებს, თუ როგორ მართო აგენტი, რომელიც მუშაობს ოპერაციულ სისტემებსა და აპლიკაციებში.",
-          "key_takeaways": [
-            "MAI-Gym-9B აღწევს სახელმწიფო დონის შედეგებს 10B-ზე პატარა მოდელებისთვის.",
-            "მოვლენები დაფუძნებულია execution-validated ტასკებზე.",
-            "ღია კოდი მოიცავს იმიტირებულ აპებსა და სინთეზის ხელსაწყოებს."
-          ],
-          "technical_architecture": [
-            "საერთო rollout პიპლაინი ტრენინგისა და ევალუაციისთვის.",
-            "კოდზე დამყარებული ტასკების ვერიფიკატორები."
-          ],
-          "technical_details": [
-            "78.4% წარმატება MobileWorld ბენჩმარკზე.",
-            "76.2% წარმატება OSWorld-Verified ბენჩმარკზე."
-          ],
-          "potential_impact": "აჩქარებს ღია კოდის კომპიუტერული აგენტების განვითარებას და ამცირებს დამოკიდებულებას დახურულ ეკოსისტემებზე.",
-          "action_type": "TRACK",
-          "action": "გადახედე MAI-Gym პროექტის GitHub რეპოზიტორიას და შეისწავლე მათი კოდ-ვერიფიკატორების არქიტექტურა.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "MAI-Gym აერთიანებს GUI აგენტების ევალუაციასა და RL ტრენინგს მობილურ და კომპიუტერულ გარემოებში.",
-            "მოდელმა MAI-Gym-9B აჩვენა 78.4% MobileWorld-ზე და 76.2% OSWorld-Verified-ზე.",
-            "პლატფორმა მხარს უჭერს 20,000 პარალელურ გარემოს ინსტანსს."
-          ],
-          "interpretation": "GUI ავტომატიზაცია აღარ არის მხოლოდ კლავიატურისა და მაუსის სიმულაცია; ის მოითხოვს სრულყოფილ ეკოსისტემას და შესრულების ვერიფიკაციას.",
-          "uncertainty": "ასეთი მასშტაბის პარალელური გარემოების გაშვება მოითხოვს დიდ გამოთვლით რესურსებს.",
-          "counter_argument": "მსგავსი იმიტირებული აპლიკაციები შეიძლება სრულად ვერ ასახავდნენ რეალური დესკტოპ გარემოს არაპროგნოზირებადობას.",
-          "strategic_assessment": "გაეცანი MAI-Gym-ის არქიტექტურას, რათა გაიგო, როგორ მუშაობს აგენტი ეკრანის ვიზუალური და პროგრამული ინტერფეისებით.",
-          "time_horizon": "mid-term",
-          "what_could_change": "მობილური და დესკტოპ აპლიკაციების ტესტირება მთლიანად გადადის აგენტურ, ეკრანზე დამყარებულ ავტომატიზაციაზე.",
-          "risks": [
-            "იმიტირებულ გარემოში ნასწავლი პოლიტიკა შეიძლება რეალურ მოწყობილობაზე არ მუშაობდეს.",
-            "მაღალი გამოთვლითი ხარჯები RL ტრენინგის დროს."
-          ],
-          "non_obvious_opportunity": "შეგიძლია გამოიყენო მათი ღია 59 იმიტირებული აპლიკაცია შენივე აგენტების ტესტირებისთვის მცირე ბიუჯეტით.",
-          "fit_assessment": "კარგია დესკტოპ ავტომატიზაციის პრინციპების ასათვისებლად, თუმცა მოითხოვს ძლიერ აპარატურას სრული ტრენინგისთვის."
-        }
-      ],
-      "trends": [
-        "აგენტების შეფასება გადადის სრულფასოვან, ინტერაქტიულ ბიზნეს გარემოზე და არა უბრალოდ სტატიკურ ქვიზებზე.",
-        "GUI და კომპიუტერული ავტომატიზაცია ღია სტეკზე მასშტაბირდება რეალური აპლიკაციების გამოყენებით.",
-        "აგენტური ექსპერიმენტები და ონლაინ RL ხდება სტანდარტი რთული საინჟინრო ტასკების გადასაჭრელად."
-      ]
-    },
     {
       "date": "2026-10-17",
       "summary": "დღევანდელი რელიზები ფოკუსირდება აგენტების ავტონომიურ ფუნქციონირებასა და შეფასებაზე. Gemini 4 Argon-მა აჩვენა 200,000 სტრიქონიანი კოდის ბაზის ავტონომიური ოპტიმიზაცია .agents/skills წესებით. AWS-მა წარადგინა x402 პროტოკოლი აგენტების მიერ ფასიანი API-ების დამოუკიდებელი ყიდვისთვის, ხოლო OpenGCUA-მ გახსნა Open-Source CUA სტეკი.",
@@ -10289,14 +10116,296 @@
         "მკაცრი დამოწმების (Verification) მოთხოვნა: LLM-as-a-judge-ის ჩანაცვლება პროგრამული დამოწმებითა და სტატისტიკური ტესტებით (A-RSI, STRATA)",
         "Human-in-the-loop და Approval Boundaries საწარმოო აგენტებში: სრული ავტონომიის უარყოფა დაცული workflow-ების სასარგებლოდ (Toyota BasisPilot)"
       ]
+    },
+    {
+      "date": "2026-10-31",
+      "summary": "დღევანდელი კვლევები ფოკუსირებულია აგენტების ეფექტურობასა და მცირე მოდელების ოპტიმიზაციაზე. JEPA არქიტექტურა 42-ჯერ ნაკლები რესურსით ამყარებს მულტიმოდალურ ალინმენტს, ხოლო 1B დეკოდერები და Logit PSV მეთოდი ამცირებენ inference latency-ს და ინფრასტრუქტურულ ხარჯებს. ეს ტექნოლოგიები საშუალებას გაძლევს ააგო მაღალი სიზუსტის ბიზნეს-აგენტები უფასო და დაბალბიუჯეტიანი რესურსებით.",
+      "events": [
+        {
+          "event_id": "evt-jepa-platonic-representation-2610-39302",
+          "title": "JEPAs-ის მულტიმოდალური ალინმენტი: 109M მოდელი სჯობნის 72B LLM-ებს",
+          "category": "AI Research / Model Architecture",
+          "primary_url": "https://huggingface.co/papers/2610.39302",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 95,
+          "tldr": "Yann LeCun-ის გუნდმა დაამტკიცა, რომ 109M JEPA მოდელი სჯობნის 72B LLM-ებს მულტიმოდალურ ალინმენტში 42-ჯერ ნაკლები ტრენინგ მონაცემით.",
+          "what_happened": "მკვლევარებმა დაამტკიცეს Platonic Representation Theorem და აჩვენეს JEPA-ს ეფექტურობა next-token prediction-ის წინააღმდეგ.",
+          "what_changed": "მულტიმოდალური ვექტორული სივრცის შესაქმნელად გიგანტური LLM-ების ტრენინგი აღარ არის აუცილებელი.",
+          "why_it_matters": "შეგიძლია შექმნა მაღალეფექტური cross-modal RAG და მეხსიერების არქიტექტურა მინიმალური ინფრასტრუქტურული ხარჯით.",
+          "key_takeaways": [
+            "109M JEPA აჭარბებს Qwen2.5-72B-ს PRH ბენჩმარკზე (.184 vs .154)",
+            "42-ჯერ ნაკლები მონაცემია საჭირო იდენტური ალინმენტის მისაღწევად",
+            "ერთადერთი როტაცია საკმარისია ცალკე გაწვრთნილი ენკოდერების შესაერთებლად"
+          ],
+          "technical_architecture": [
+            "Joint-Embedding Predictive Architecture (JEPA)",
+            "109M parameter text JEPA aligned with DINOv2 / CLIP"
+          ],
+          "technical_details": [
+            "CIDEr 0.838 COCO-ზე",
+            "64% top-5 ImageNet-100 pair-free benchmark"
+          ],
+          "potential_impact": "მკვეთრად ამცირებს მულტიმოდალური AI სისტემების შექმნისა და ჰოსტინგის ხარჯებს.",
+          "action_type": "LEARN",
+          "action": "გაეცანი JEPA-ს არქიტექტურას Hugging Face-ზე და გამოსცადე 109M ენკოდერი ლოკალურ RAG პაიპლაინში.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "109M JEPA მოდელი პლატონური წარმოდგენის ბენჩმარკზე ამარცხებს Qwen2.5-72B და Llama-3-70B მოდელებს",
+            "Good views წყვილები საჭიროებენ 42-ჯერ ნაკლებ ტრენინგ ნიმუშს next-token prediction-თან შედარებით"
+          ],
+          "interpretation": "Next-token prediction არ არის ეფექტური გზა მულტიმოდალური ალინმენტისთვის. JEPA-ს Joint-Embedding სტრუქტურა იძლევა უმაღლეს წარმოდგენას მცირე პარამეტრებით.",
+          "uncertainty": "ექსპერიმენტები ჩატარებულია ძირითადად გამოსახულება-ტექსტის წყვილებზე; რთულ იერარქიულ მსჯელობაზე გავლენა ჯერ კიდევ შესასწავლია.",
+          "counter_argument": "Next-token LLM-ებს აქვთ უკეთესი zero-shot ტექსტური გენერაციის უნარი, რაც JEPA-ს ცალკე დეკოდერის გარეშე არ გააჩნია.",
+          "strategic_assessment": "გამოიყენე JEPA ემბედინგები RAG და cross-modal search სისტემებში დიდი LLM-ების ძვირადღირებული API-ების ჩასანაცვლებლად.",
+          "time_horizon": "long-term",
+          "what_could_change": "მულტიმოდალური აგენტების მეხსიერება გახდება 40-ჯერ იაფი, რადგან დიდი LLM-ების ნაცვლად მცირე JEPA ემბედინგებს გამოიყენებენ.",
+          "risks": [
+            "JEPA მოითხოვს სპეციფიკურ positive view მონაცემთა წყვილებს",
+            "ტექსტის გენერაციისთვის მაინც საჭიროა ცალკე დეკოდერი"
+          ],
+          "non_obvious_opportunity": "შეგიძლია ააგო ძალიან იაფი cross-modal საძიებო სისტემა ლოკალურ 100M მოდელზე დაყრდნობით.",
+          "fit_assessment": "იდეალურია შენთვის: იძლევა საშუალებას მცირე კომპიუტერული რესურსით მიაღწიო 70B+ მოდელების ალინმენტის დონეს."
+        },
+        {
+          "event_id": "evt-youtu-parsing-omni-2610-39301",
+          "title": "Youtu-Parsing-Omni: 5B მოდელი მულტიმოდალური დოკუმენტების სტრუქტურირებულ JSON-ში გადასაყვანად",
+          "category": "აგენტების არქიტექტურა და ინფრასტრუქტურა",
+          "primary_url": "https://huggingface.co/papers/2610.39301",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 92,
+          "tldr": "Tencent-მა გამოაშვება 5B Youtu-Parsing-Omni, რომელიც დოკუმენტებს, აუდიოსა და ვიდეოს ერთიან სტრუქტურირებულ JSON-ად გარდაქმნის.",
+          "what_happened": "შეიქმნა ერთიანი OmniSchema და 5B ენკოდერი OSAD ონ-პოლისი დისტილაციით omni-modal პარსინგისთვის.",
+          "what_changed": "მულტიმოდალური მონაცემების დამუშავებას აღარ სჭირდება 4-5 სხვადასხვა API-ს და ბიბლიოთეკის კომბინაცია.",
+          "why_it_matters": "შენს აგენტებს შეუძლიათ ნებისმიერი მედია ფაილიდან დაუყოვნებლივ ამოიღონ დამოწმებული JSON სტრუქტურა.",
+          "key_takeaways": [
+            "ერთადერთი ენკოდერი და სქემა ტექსტის, აუდიოსა და ვიდეოსთვის",
+            "SOTA OmniDocBench v1.6 (96.96) და Chart Parsing (95.02)",
+            "ღია წონები და კოდი ხელმისაწვდომია"
+          ],
+          "technical_architecture": [
+            "Youtu-Omni-Encoder initialized from pre-trained LM",
+            "OmniSchema-Aware On-Policy Distillation (OSAD)"
+          ],
+          "technical_details": [
+            "5B parameter count",
+            "Grounded spatiotemporal JSON outputs"
+          ],
+          "potential_impact": "ზოგავს დეველოპმენტის დროს მულტიმოდალური RAG და Data Extraction აგენტების აგებისას.",
+          "action_type": "TRY",
+          "action": "ჩამოტვირთე მოდელის რეპოზიტორია GitHub-იდან და გატესტე რთული PDF ინვოისისა და აუდიო ფაილის JSON-ად გარდაქმნა.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Real Business Opportunity"
+          ],
+          "verified_facts": [
+            "5B პარამეტრიანი ერთიანი მოდელი გადაიყვანს დოკუმენტებს, სურათებს, აუდიოსა და ვიდეოს სტრუქტურირებულ JSON ჩანაწერებში",
+            "მიაღწია SOTA შედეგს OmniDocBench v1.6-ზე (96.96 Overall) და ლიდერობს open-weight მოდელებში OmniParsingBench-ზე (75.08 Avg)"
+          ],
+          "interpretation": "აგენტებისთვის აღარ არის საჭირო ცალ-ცალკე OCR, აუდიო ტრანსკრიფციისა და ვიდეო ანალიზის ინსტრუმენტების გაერთიანება; ერთი OmniSchema ამუშავებს ყველაფერს.",
+          "uncertainty": "5B მოდელის real-time inference latency დაბალი რესურსების GPU-ზე საჭიროებს დამატებით ტესტირებას.",
+          "counter_argument": "სპეციალიზებული ვიწრო მოდელები (მაგ. სუფთა Whisper აუდიოსთვის) ცალკეულ ამოცანებზე შეიძლება ოდნავ სწრაფი ან იაფი იყოს.",
+          "strategic_assessment": "გამოიყენე Omni-parsing სქემა ბიზნეს პროცესების ავტომატიზაციისთვის, სადაც შემავალი მონაცემები შერეული ფორმატისაა.",
+          "time_horizon": "mid-term",
+          "what_could_change": "მრავალკომპონენტიანი ETL პაიპლაინები ჩანაცვლდება ერთიანი omni-modal parser მოდელებით.",
+          "risks": [
+            "5B მოდელის გაშვება მოითხოვს მინიმუმ 12GB VRAM-ს local inference-ისას",
+            "დიდ ვიდეო ფაილებზე context window-ს გადავსება"
+          ],
+          "non_obvious_opportunity": "შეგიძლია შექმნა ავტომატიზებული სერვისი ადგილობრივი ბიზნესებისთვის, რომელიც ინვოისებსა და აუდიო ჩანაწერებს ერთიან ბაზაში გადაიყვანს.",
+          "fit_assessment": "ძალიან პრაქტიკულია: იდეალური ბაზისია Telegram ბოტების არქიტექტურისთვის, რომლებიც მრავალფეროვან ფაილებს იღებენ."
+        },
+        {
+          "event_id": "evt-logit-psv-neural-thickets-2610-40649",
+          "title": "Logit PSV: LLM-ის მსჯელობის გაუმჯობესება ლოგიტების მცირე ცვლილებითა და კენჭისყრით",
+          "category": "აგენტის არქიტექტურა და ოპტიმიზაცია",
+          "primary_url": "https://arxiv.org/abs/2610.40649",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "ახალმა კვლევამ აჩვენა, რომ LLM-ის მსჯელობის გასაუმჯობესებლად საკმარისია გამოსავალ ლოგიტებზე მცირე ხმაურის დამატება და კენჭისყრა.",
+          "what_happened": "მკვლევარებმა უარყვეს წონების რთული პერტურბაციის აუცილებლობა და წარადგინეს Perturb-Select-Vote (PSV).",
+          "what_changed": "მოდელის შიდა წონების შეცვლის ნაცვლად, იგივე ეფექტი მიიღწევა გამოსავალ შრეზე მარტივი ოპერაციით.",
+          "why_it_matters": "შეგიძლია გაზარდო ლოკალური მოდელების სიზუსტე მსჯელობით დავალებებზე ტრენინგის გარეშე.",
+          "key_takeaways": [
+            "Logit PSV უტოლდება ან აჭარბებს full-weight perturbations-ს",
+            "მუშაობს სრულიად გაყინულ (frozen) მოდელებზე",
+            "ინტეგრირდება Self-Consistency და Verifier-guided პატერნებთან"
+          ],
+          "technical_architecture": [
+            "Perturb-Select-Vote (PSV) inference framework",
+            "Logit-level noise injection without fine-tuning"
+          ],
+          "technical_details": [
+            "Zero weight updates required",
+            "Applicable to language and vision models"
+          ],
+          "potential_impact": "ამცირებს აგენტების შეცდომებს ლოგიკურ მსჯელობაში უფასო/იაფი მოდელების გამოყენებისას.",
+          "action_type": "BUILD",
+          "action": "დაწერე Python ფუნქცია Ollama/vLLM-ისთვის, რომელიც ლოგიტების/ტემპერატურის ცვლილებით აკეთებს 3 პასუხის გენერაციას და Majority Voting-ს.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "გამოსავალი logit-ების შემთხვევითი ცვლილება (Perturb-Select-Vote) იძლევა იგივე ან უკეთეს შედეგს, ვიდრე წონების სრული პერტურბაცია Neural…",
+            "მეთოდი მუშაობს სრულიად გაყინულ (frozen) მოდელებზე ყოველგვარი დამატებითი ტრენინგის გარეშე"
+          ],
+          "interpretation": "რთული წონითი ანსამბლებისა და Gaussian perturbations-ის ნაცვლად, ინფერენსის დროს ლოგიტების მარტივი მოდიფიკაცია და Majority Voting საკმარისია მსჯელობის ხარისხის ასაწევად.",
+          "uncertainty": "მოითხოვს მრავალჯერად გენერაციას (sampling/voting), რაც ზრდის API ან ინფერენს ტოკენების რაოდენობას.",
+          "counter_argument": "თუ API არ გაძლევს raw logits-ზე წვდომას, მოგიწევს temperature/top_p პარამეტრების ვარიაციით ჩანაცვლება.",
+          "strategic_assessment": "გამოიყენე Logit PSV ან პრაქტიკული Logit/Temperature Sampling + Voting აგენტის გადაწყვეტილების მიღებისას რთულ ლოგიკურ ბიჯებზე.",
+          "time_horizon": "short-term",
+          "what_could_change": "Inference-time reasoning ტექნიკები გახდება ბევრად უფრო მარტივი და იაფი დამატებითი fine-tuning-ის გარეშე.",
+          "risks": [
+            "API პროვაიდერების უმეტესობა პირდაპირ logit perturbation-ს არ გიხსნის",
+            "დამატებითი გენერაციები ზრდის latency-ს"
+          ],
+          "non_obvious_opportunity": "შეგიძლია დაწერო მცირე Python Wrapper open-source ლოკალური მოდელებისთვის (Ollama/vLLM), რომელიც ავტომატურად გააუმჯობესებს პასუხებს PSV-ით.",
+          "fit_assessment": "ზუსტად ჯდება შენს კვლევაში: იაფი inference-time ოპტიმიზაცია, რომელიც არ მოითხოვს GPU-ების კლასტერს ტრენინგისთვის."
+        },
+        {
+          "event_id": "evt-wxcrop-agricultural-agent-2610-40641",
+          "title": "WxCrop: მიზეზ-შედეგობრივ ანალიზზე დაფუძნებული აგენტი აგროსექტორში ზარალის პროგნოზირებისთვის",
+          "category": "Real Business Opportunity & Agent Architecture",
+          "primary_url": "https://arxiv.org/abs/2610.40641",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 92,
+          "tldr": "შეიქმნა WxCrop აგენტი, რომელიც ამინდის პროგნოზსა და სადაზღვევო მონაცემებს აერთიანებს მოსავლის ზარალის 98%-იანი სიზუსტით დასათვლელად.",
+          "what_happened": "მკვლევარებმა შექმნეს პირველი აგენტი, რომელიც Causal Analysis-ით ითვლის აგრო-ზარალს და იძლევა დასაბუთებულ ციტირებას.",
+          "what_changed": "ზოგადი ჩატბოტების ნაცვლად შეიქმნა კონკრეტული სექტორული აგენტი, რომელიც იძლევა ზუსტ ფინანსურ შეფასებას.",
+          "why_it_matters": "გვიჩვენებს რეალური ბიზნეს-აგენტების არქიტექტურას: ინსტრუმენტები + მიზეზ-შედეგობრივი ლოგიკა + კალიბრირებული მოდელები.",
+          "key_takeaways": [
+            "98% AUC ციკლონების დაფიქსირებაში",
+            "ისტორიული ზარალი აღდგენილია 2%-იან ცდომილებაში",
+            "თითოეული ციფრი გამყარებულია წყაროთი"
+          ],
+          "technical_architecture": [
+            "Agentic causal framework with physical weather indices",
+            "Loss model calibrated on insurance claim datasets"
+          ],
+          "technical_details": [
+            "0.98 AUC detection rate",
+            "Rank correlation 0.63 on county rankings"
+          ],
+          "potential_impact": "ზუსტი შაბლონია B2B აგენტების შესაქმნელად ფინანსურ და აგრო სექტორში.",
+          "action_type": "BUILD",
+          "action": "ააგე მცირე Python აგენტი, რომელიც ღია API-დან (მაგ. Open-Meteo) იღებს ამინდის მონაცემებს და Causal rules-ით ითვლის რისკის ქულას.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Business Opportunity",
+            "Real Technical Skill"
+          ],
+          "verified_facts": [
+            "WxCrop აგენტი იყენებს ფიზიკურად ინტერპრეტირებად ამინდის ინდექსებს და მიზეზ-შედეგობრივ (causal) ანალიზს მოსავლის ზარალის დათვლისთვის",
+            "ქარიშხლის ინდექსი ადგენს ციკლონის დღეებს 0.98 AUC-ით, ხოლო ისტორიულ ზარალს აღადგენს 2%-იან ცდომილებაში"
+          ],
+          "interpretation": "რეალური ბიზნეს-აგენტები წარმატებას აღწევენ არა უბრალოდ LLM prompt-ებით, არამედ დომენური ფორმულების, causal analysis-ისა და მონაცემთა ბაზების მყარი ინტეგრაციით.",
+          "uncertainty": "სისტემა კალიბრირებულია ფლორიდის სადაზღვევო ჩანაწერებზე; სხვა რეგიონებისთვის საჭიროებს ადგილობრივ მონაცემთა ბაზებს.",
+          "counter_argument": "ტრადიციული სტატისტიკური მოდელები აგენტური გარსის გარეშეც აკეთებენ მსგავს გამოთვლებს, თუმცა აგენტი უზრუნველყოფს ბუნებრივ ინტერფეისს.",
+          "strategic_assessment": "შექმენი ბიზნეს-აგენტები, რომლებიც აერთიანებენ API ინდექსებს, მიზეზ-შედეგობრივ ლოგიკასა და ციტირებად წყაროებს.",
+          "time_horizon": "mid-term",
+          "what_could_change": "დაზღვევისა და სოფლის მეურნეობის ანალიტიკა სრულად გადავა ავტონომიურ, წყაროებზე დაფუძნებულ AI აგენტებზე.",
+          "risks": [
+            "საჯარო მონაცემთა ბაზების არასტაბილურობა ან ნაკლებობა",
+            "დომენური ფორმულების არასწორი ინტერპრეტაცია LLM-ის მიერ"
+          ],
+          "non_obvious_opportunity": "საქართველოს აგრო/ტურიზმის სექტორში შეგიძლიათ შექმნათ მსგავსი აგენტი ამინდისა და მოსავლიანობის რეგიონული მონაცემების საფუძველზე.",
+          "fit_assessment": "შესანიშნავი ქეისია იმის სასწავლად, თუ როგორ უნდა აიგოს რეალური ღირებულების მქონე B2B აგენტი დემო-სურათების გარეშე."
+        },
+        {
+          "event_id": "evt-joint-gating-memory-hint-2610-40611",
+          "title": "1B Single-Decoder არქიტექტურა: პროაქტიული Gating და მეხსიერებაზე დაფუძნებული Hint გენერაცია",
+          "category": "აგენტის არქიტექტურა და მეხსიერება",
+          "primary_url": "https://arxiv.org/abs/2610.40611",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 88,
+          "tldr": "კვლევამ აჩვენა, რომ 1B პარამეტრიან ერთ მოდელს შეუძლია პროაქტიული gating და მეხსიერების მუშაობა 1.76-ჯერ უფრო სწრაფად.",
+          "what_happened": "შექმნა გაერთიანებული 1B დეკოდერი, რომელიც შუალედური შრიდან წყვეტს ასისტენტის ჩართვას და იმავე pass-ში აგენერირებს პასუხს.",
+          "what_changed": "გაუქმდა საჭიროება ორ ცალკე მოდელზე (Gating Classifier + Generator Pipeline).",
+          "why_it_matters": "ამცირებს სერვერის/API ხარჯებს და პასუხის დაყოვნებას პროაქტიულ AI ასისტენტებში.",
+          "key_takeaways": [
+            "1.31x-1.76x სისწრაფე ორმოდელიან სისტემასთან შედარებით",
+            "მეხსიერების პროფილი არის მთავარი ფაქტორი hint-ის ხარისხში",
+            "შუალედური შრიდან exit უთანაბრდება ცალკე გეითს"
+          ],
+          "technical_architecture": [
+            "Single 1B decoder with intermediate layer gating",
+            "Joint gating and memory-grounded hint generation in one pass"
+          ],
+          "technical_details": [
+            "1B parameter budget",
+            "1.31-1.76x speedup on wall-clock time"
+          ],
+          "potential_impact": "ზოგავს რესურსებს პროაქტიული და პერსონალური AI ასისტენტების დეველოპმენტში.",
+          "action_type": "LEARN",
+          "action": "გადახედე ნაშრომის არქიტექტურას და გამოსცადე Intermediate Layer Feature Extraction შენს Python პაიპლაინში.",
+          "evidence": [],
+          "factuality_level": "single_source",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "ერთ 1B დეკოდერს შეუძლია ერთდროულად შეასრულოს ჩარევის გადაწყვეტილება (gating) და მეხსიერებაზე დაფუძნებული რჩევის გენერაცია",
+            "ორმოდელიან პაიპლაინებთან შედარებით მიიღწევა 1.31-1.76-ჯერ სწრაფი wall-clock time"
+          ],
+          "interpretation": "პროაქტიული აგენტებისთვის ცალკე Gating Model (უნდა დაეხმაროს თუ არა) და Generator Model აღარ არის საჭირო; ერთი კომპაქტური მოდელი ორივეს აკეთებს ერთ პროცესში.",
+          "uncertainty": "ადამიანურ შეფასებაში 1B მოდელი ჯერ კიდევ ჩამორჩება 8B გენერატორებს რთულ კონტექსტებში.",
+          "counter_argument": "თუ რეალურ დროში რეაგირება არ არის კრიტიკული, უფრო დიდი 8B მოდელის ცალკე გამოძახება იძლევა ოდნავ უკეთეს შინაარსს.",
+          "strategic_assessment": "გამოიყენე Single-Pass Gating+Generation არქიტექტურა დაბალი Latency-ს მქონე Telegram ბოტებსა და ასისტენტებში.",
+          "time_horizon": "mid-term",
+          "what_could_change": "მრავალეტაპიანი აგენტური პაიპლაინები შეიცვლება ერთიანი მრავალგამოსავლიანი (early exit/intermediate gating) მცირე მოდელებით.",
+          "risks": [
+            "მეხსიერების პროფილის არარსებობა იწვევს სიზუსტის 24.7 პუნქტიან ვარდნას",
+            "1B მოდელის შეზღუდული ენობრივი შესაძლებლობები"
+          ],
+          "non_obvious_opportunity": "შეგიძლია ააგო პროაქტიული Telegram ასისტენტი, რომელიც ჯგუფურ ჩატში მხოლოდ მაშინ ჩაერთვება, როდესაც რეალურად საჭიროა.",
+          "fit_assessment": "ზუსტად შეესაბამება შენს მიზანს: კომპაქტური, იაფი და რეალურ დროში მომუშავე აგენტის არქიტექტურა."
+        }
+      ],
+      "trends": [
+        "JEPA და Joint-Embedding არქიტექტურების უპირატესობა Next-Token Prediction-ზე მულტიმოდალურ ალინმენტში",
+        "Omni-modal სტრუქტურირებული პარსინგი (ერთი ენკოდერი და ერთი JSON სქემა ყველა მედია ტიპისთვის)",
+        "Inference-time reasoning ოპტიმიზაცია გაყინულ მოდელებზე (Logit PSV / Perturb-Select-Vote)",
+        "პროაქტიული აგენტების არქიტექტურის გამარტივება (Single Decoder Gating & Generation)"
+      ]
     }
   ],
   "learning_queue": [
-    "Shared prefill და KV cache მართვა Hugging Face Transformers-ში Glance-ის ტიპის არქიტექტურისთვის",
-    "Human-in-the-loop პატერნების აწყობა ასინქრონულ Python კოდში (asyncio + Telegram Bot API)",
-    "სტატისტიკური ვალიდაციის საფუძვლები მონაცემთა ანალიზის აგენტებისთვის"
+    "JEPA (Joint-Embedding Predictive Architecture) და მათემატიკური განსხვავება Generative Next-Token-სა და Embedding Alignment-ს შორის",
+    "vLLM და Ollama-ს შიდა არქიტექტურა: logit processing, sampling strategies და multiple candidate generation",
+    "Structured Outputs და JsonSchema ვალიდაცია Pydantic v2-ის მეშვეობით აგენტურ workflow-ებში"
   ],
-  "last_run": "2026-10-30T16:48:06.839849+00:00",
+  "last_run": "2026-10-31T15:39:36.050183+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -10413,12 +10522,17 @@
     "arxiv:2610.40454",
     "arxiv:2610.40619",
     "arxiv:2610.38568",
-    "arxiv:2610.38342"
+    "arxiv:2610.38342",
+    "arxiv:2610.39302",
+    "arxiv:2610.39301",
+    "arxiv:2610.40649",
+    "arxiv:2610.40641",
+    "arxiv:2610.40611"
   ],
   "last_report_files": {
-    "markdown": "data/reports/2026-10-30/report.md",
-    "json": "data/reports/2026-10-30/report.json",
-    "newsletter": "data/reports/2026-10-30/newsletter.md",
-    "social": "data/reports/2026-10-30/social_posts.txt"
+    "markdown": "data/reports/2026-10-31/report.md",
+    "json": "data/reports/2026-10-31/report.json",
+    "newsletter": "data/reports/2026-10-31/newsletter.md",
+    "social": "data/reports/2026-10-31/social_posts.txt"
   }
 }
