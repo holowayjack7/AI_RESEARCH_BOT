@@ -328,7 +328,9 @@
     "https://arxiv.org/html/2610.39620v1",
     "https://aws.amazon.com/blogs/aws/aws-weekly-roundup-gpt-6-1-terra-on-bedrock-step-functions-as-agent-tools-and-more-november-2-2026",
     "https://ai.google.dev/gemini-api/docs/whats-new-gemini-3.5",
-    "https://arxiv.org/abs/2611.03634"
+    "https://arxiv.org/abs/2611.03634",
+    "https://huggingface.co/papers/2611.04814",
+    "https://arxiv.org/abs/2611.05345"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -595,124 +597,11 @@
     "evt-autonomous-research-agent-fujimura",
     "evt-aws-step-functions-mcp-gateway",
     "evt-gemini-35-flash-thought-preservation",
-    "evt-webharbor-evolving-gui-agents"
+    "evt-webharbor-evolving-gui-agents",
+    "evt-tencent-loco-reasoning-compression",
+    "evt-adversarial-speculative-reasoning"
   ],
   "events": [
-    {
-      "event_id": "evt-anthropic-cyber-mission-oss-scanner",
-      "title": "Anthropic Cyber Mission: უფასო OSS Scanner ღია კოდის რეპოზიტორიებისთვის",
-      "category": "უსაფრთხოება და ღია კოდი",
-      "primary_url": "https://www.anthropic.com/news/anthropic-cyber-mission",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 8,
-      "actionability": 8,
-      "source_quality": 10,
-      "confidence": 95,
-      "tldr": "Anthropic-მა წარადგინა OSS Scanner, რომელიც ღია კოდის პროექტებს უფასო უსაფრთხოების შემოწმებას სთავაზობს.",
-      "what_happened": "Anthropic-მა წამოიწყო Cyber Mission ღია პროგრამული უზრუნველყოფის დასაცავად frontier მოდელების მეშვეობით.",
-      "what_changed": "ძვირადღირებული უსაფრთხოების აუდიტი ხდება უფასოდ ხელმისაწვდომი შერჩეული ღია კოდის პროექტებისთვის.",
-      "why_it_matters": "შეგიძლია შენი GitHub პროექტები აქციო ინდუსტრიული სტანდარტის უსაფრთხო კოდის ნიმუშად.",
-      "key_takeaways": [
-        "OSS Scanner უფასოა ღია კოდის შემქმნელებისთვის.",
-        "იყენებს Anthropic-ის წამყვან მოდელებს დაუცველობების საპოვნელად.",
-        "ეხმარება დეველოპერებს პატჩების ავტომატურ მომზადებაში.",
-        "კრიტიკული ინფრასტრუქტურის დასაცავად ჩაეშვა CIDP."
-      ],
-      "technical_architecture": [
-        "Automated vulnerability detection pipeline frontier მოდელებზე.",
-        "Patch verification framework კოდის მთლიანობის დასაცავად."
-      ],
-      "technical_details": [
-        "Program name: OSS Scanner",
-        "Target: Open-source software",
-        "Cost: Free for OSS"
-      ],
-      "potential_impact": "მკვეთრად გაზრდის ღია კოდის ბიბლიოთეკების მდგრადობას კიბერშეტევების მიმართ.",
-      "action_type": "TRACK",
-      "action": "თვალი ადევნე OSS Scanner-ის დოკუმენტაციას და მოამზადე შენი GitHub რეპოზიტორია სკანირების ინტეგრაციისთვის.",
-      "evidence": [],
-      "factuality_level": "verified",
-      "classification": [
-        "Real Technical Skill",
-        "Short-term Opportunity"
-      ],
-      "verified_facts": [
-        "Anthropic-მა გაუშვა ინიციატივა OSS Scanner ღია კოდის პროექტების დასაცავად.",
-        "ფრონტიერ მოდელები უფასოდ დაასკანირებენ ღია კოდის კოდბაზებს უსაფრთხოების ხარვეზებზე.",
-        "პროგრამა აფართოებს Project Glasswing-ისა და Cyber Verification-ის გამოცდილებას.",
-        "კრიტიკული ინფრასტრუქტურისთვის შეიქმნა ცალკე CIDP პროგრამა."
-      ],
-      "interpretation": "დამოუკიდებელი დეველოპერებისთვის ჩნდება შანსი, საკუთარი ღია კოდის რეპოზიტორიები უფასოდ შეამოწმონ უმაღლესი დონის მოდელით.",
-      "uncertainty": "კონკრეტული წესები, თუ რა კრიტერიუმით შეირჩევა GitHub რეპოზიტორიები სკანირებისთვის, ჯერ დეტალიზდება.",
-      "counter_argument": "ავტომატური სკანერები ხშირად აგენერირებენ false positive გაფრთხილებებს, რომელთა გარჩევას დრო სჭირდება.",
-      "strategic_assessment": "გამოიყენე შანსი შენი ღია კოდის GitHub რეპოზიტორიების ხარისხის ასამაღლებლად: ეს შენს პორტფოლიოს სანდოობას შესძენს.",
-      "time_horizon": "short-term",
-      "what_could_change": "ღია კოდის ბიბლიოთეკების უსაფრთხოების აუდიტი გახდება სრულად ავტომატიზებული AI აგენტების მიერ.",
-      "risks": [
-        "დაუცველი კოდის საჯაროდ ექსპოზიცია პატჩის შექმნამდე.",
-        "რესურსების შეზღუდვა მცირე ზომის პროექტებისთვის."
-      ],
-      "non_obvious_opportunity": "შექმენი მინი GitHub Action, რომელიც commit-ის დროს static analysis-ს აკეთებს და მოდელს ამოწმებინებს კოდს.",
-      "fit_assessment": "იდეალურია შენი პროექტებისთვის GitHub-ზე: გაძლევს საშუალებას ისწავლო secure coding უფასო ინსტრუმენტებით."
-    },
-    {
-      "event_id": "evt-mempalace-local-ai-memory",
-      "title": "MemPalace: უფასო ლოკალური AI მეხსიერების სისტემა ნულოვანი API ხარჯით",
-      "category": "AI Research / RAG & აგენტის მეხსიერება",
-      "primary_url": "https://github.com/mempalace/mempalace",
-      "supporting_urls": [],
-      "importance": 9,
-      "relevance": 10,
-      "actionability": 9,
-      "source_quality": 8,
-      "confidence": 95,
-      "tldr": "MemPalace არის ღია კოდის AI მეხსიერების სისტემა, რომელიც 96.6% Recall-ს აღწევს ლოკალურად ChromaDB-სა და MCP-ს გამოყენებით.",
-      "what_happened": "mempalace რეპოზიტორიამ წარმოადგინა ლოკალური AI memory architecture, რომელიც ტექსტს არ ასუმარებს და ინახავს verbatim სტრუქტურაში.",
-      "what_changed": "ძვირადღირებული LLM extraction/summarization-ის ნაცვლად გამოიყენება verbatim ლოკალური ინდექსაცია სკოპირებული ძებნით.",
-      "why_it_matters": "შეგიძლია აგენტებს მისცე მუდმივი მეხსიერება (persistence) ნულოვანი ფინანსური დანახარჯით.",
-      "key_takeaways": [
-        "96.6% R@5 LongMemEval ბენჩმარკზე API Call-ების გარეშე",
-        "სტრუქტურირებული დაყოფა: Wings, Rooms, Drawers",
-        "მხარდაჭერილია MCP პროტოკოლი და Python SDK"
-      ],
-      "technical_architecture": [
-        "ChromaDB local vector store backend",
-        "Pluggable backend layer via base.py",
-        "MCP skills integration layer"
-      ],
-      "technical_details": [
-        "npx skills add MemPalace/mempalace",
-        "pip install mempalace",
-        "verbatim raw text indexing"
-      ],
-      "potential_impact": "მაღალი სიზუსტის პრივატული მეხსიერების აგენტები პერსონალურ მოწყობილობებსა და ლოკალურ სერვერებზე.",
-      "action_type": "BUILD",
-      "action": "ინტეგრირება გაუკეთე MemPalace-ს შენს Python Telegram ბოტში, чтобы მიიღო მუდმივი კონტექსტი უფასოდ.",
-      "evidence": [],
-      "factuality_level": "verified",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "MemPalace აღწევს 96.6% Recall@5 მაჩვენებელს LongMemEval ბენჩმარკზე ნულოვანი API call-ით",
-        "ინახავს ტექსტს ვერბატიმულად სტრუქტურირებულ იერარქიაში (wings, rooms, drawers)",
-        "default ბექენდად იყენებს ChromaDB-ს და სრულად ინტეგრირდება MCP პროტოკოლთან"
-      ],
-      "interpretation": "LLM-ის მიერ ტექსტის სუმარიზაცია ხშირად კარგავს მნიშვნელოვან დეტალებს. verbatim storage + structured index უკეთესია აგენტის გრძელვადიანი მეხსიერებისთვის.",
-      "uncertainty": "დიდი მოცულობის ტექსტურ ბაზებზე ChromaDB ლოკალური ძებნის სიჩქარე შესაძლოა შემცირდეს.",
-      "counter_argument": "დინამიური სუმარიზაცია და LLM-based graph extraction უფრო მოქნილია, ვიდრე უბრალო verbatim ტექსტის შენახვა.",
-      "strategic_assessment": "გამოიყენე MemPalace შენს Telegram ბოტებსა და აგენტებში უფასო, ლოკალური Long-term Memory შრის დასამატებლად.",
-      "time_horizon": "mid-term",
-      "what_could_change": "აგენტები შეძლებენ თვეების მანძილზე დაგროვილი დიალოგების დამახსოვრებას API-ის ხარჯის გაზრდის გარეშე.",
-      "risks": [
-        "ლოკალური დისკის მეხსიერების ზრდა",
-        "ChromaDB-ს სკალირების შეზღუდვები"
-      ],
-      "non_obvious_opportunity": "შეგიძლია შექმნა Telegram ბოტი-ასისტენტი Georgian SMB-ებისთვის, რომელიც კლიენტების ისტორიას სრულიად უფასოდ და პრივატულად შეინახავს.",
-      "fit_assessment": "საუკეთესო ინსტრუმენტი 16 წლის დეველოპერისთვის: 0 API cost, პრივატული ლოკალური მეხსიერება და მარტივი Python SDK."
-    },
     {
       "event_id": "evt-rag-rat-mcp-repo-intelligence",
       "title": "rag-rat: ლოკალური MCP სერვერი და რეპოზიტორიის მეხსიერების გრაფი აგენტებისთვის",
@@ -6346,6 +6235,118 @@
       ],
       "non_obvious_opportunity": "შეგიძლია შექმნა შენი პატარა დოკერიზებული ვებ აპლიკაცია და გაწვრთნა მარტივი Playwright აგენტი მონაცემების მოსაგროვებლად.",
       "fit_assessment": "ძალიან კარგია აგენტების ევოლუციისა და ევალუაციის პატერნების შესასწავლად."
+    },
+    {
+      "event_id": "evt-tencent-loco-reasoning-compression",
+      "title": "LoCo: Local Preference Learning for Reasoning Compression",
+      "category": "AI Research / Agent Architecture",
+      "primary_url": "https://huggingface.co/papers/2611.04814",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 95,
+      "tldr": "LoCo მეთოდი ამცირებს reasoning ტოკენებს 40%-ით მათემატიკასა და კოდირებაში მსჯელობის დინამიკური შეჩერებით.",
+      "what_happened": "Tencent-ის მკვლევარებმა გამოაქვეყნეს LoCo, რომელიც იყენებს local preference learning-ს reasoning compression-ისთვის.",
+      "what_changed": "მთლიანი reasoning ტაექტორიის უცვლელად შენახვიდან გადავედით მდგომარეობაზე დაფუძნებულ პრეფერენციულ ტუნინგზე.",
+      "why_it_matters": "გაძლევს საშუალებას შეამცირო API ხარჯები და აგენტების პასუხის დრო (latency) ტოკენების ეკონომიით.",
+      "key_takeaways": [
+        "Reduces math completion length by up to 45.4%.",
+        "Reduces code completion length by up to 36.3%.",
+        "Uses DPO on self-generated state-conditioned preference pairs."
+      ],
+      "technical_architecture": [
+        "State-conditioned preference pairs with DPO optimization.",
+        "Local decision mechanism for overthinking state detection."
+      ],
+      "technical_details": [
+        "Trained on math traces and transfers to code tasks.",
+        "Releases code and model weights via Hugging Face."
+      ],
+      "potential_impact": "მკვეთრად ზრდის აგენტური სისტემების ხარჯ-ეფექტურობას და ამცირებს გამოთვლით დატვირთვას.",
+      "action_type": "LEARN",
+      "action": "გადახედე Hugging Face-ზე LoCo პროექტის რეპოზიტორიას და შეისწავლე როგორ მუშაობს DPO state-conditioned წყვილებზე.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value",
+        "Short-term Opportunity"
+      ],
+      "verified_facts": [
+        "LoCo uses local preference learning to teach reasoning models when to stop deliberating.",
+        "It reduces completion length by 41.7% to 45.4% on math and 23.4% to 36.3% on…",
+        "Trained entirely on self-generated mathematical traces with DPO."
+      ],
+      "interpretation": "მოდელები ხშირად აგრძელებენ ფიქრს მას შემდეგაც, რაც საკმარისი ინფორმაცია აქვთ, რაც ზრდის ლატენტობას და ხარჯებს.",
+      "uncertainty": "არ არის ბოლომდე ნათელი, რამდენად ზიანდება რთული მრავალეტაპიანი ლოგიკა ძალიან აგრესიული შეჩერებისას.",
+      "counter_argument": "ადრეული შეჩერებამ შეიძლება გამოტოვოს კრიტიკული თვითშემოწმების ფაზა რთულ ამოცანებში.",
+      "strategic_assessment": "შეისწავლე preference optimization და DPO მეთოდები — ეს გამოგადგება აგენტების ლატენტობისა და API ხარჯების შესამცირებლად.",
+      "time_horizon": "mid-term",
+      "what_could_change": "LLM API-ების გამოყენების ხარჯები მკვეთრად შემცირდება, რაც აგენტურ ამოცანებს უფრო ეკონომიურს გახდის.",
+      "risks": [
+        "Model might stop verification too early on tricky edge cases.",
+        "Requires access to reasoning model logits or open weights."
+      ],
+      "non_obvious_opportunity": "მცირე ღია მოდელების ტუნინგი LoCo მიდგომით საშუალებას გაძლევს ააგო ლოკალური, სწრაფი აგენტური რანთაიმი.",
+      "fit_assessment": "იდეალურია შენთვის, რადგან გაძლევს ინსტრუმენტს უფასო ღია მოდელების ოპტიმიზაციისთვის მცირე რესურსებით."
+    },
+    {
+      "event_id": "evt-adversarial-speculative-reasoning",
+      "title": "Adversarial Speculative Reasoning Improves Long Horizon Agents",
+      "category": "აგენტის არქიტექტურა და ოპტიმიზაცია",
+      "primary_url": "https://arxiv.org/abs/2611.05345",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "Draft მოდელის მიზანმიმართული adversarial ტრეინინგი აუმჯობესებს გრძელვადიანი აგენტების სიზუსტეს შეცდომების დაგროვების თავიდან აცილებით.",
+      "what_happened": "მკვლევარებმა აჩვენეს, რომ speculative decoding-ის დროს ნუმერაციული ხმაური აგენტებს აცდენს სწორი ტრაექტორიიდან 30 ნაბიჯის შემდეგ.",
+      "what_changed": "Draft მოდელი იწვრთნება adversarial preference-ზე, რათა კრიტიკული მსჯელობის წერტილებში ზუსტად გადართოს ტარტგეტ მოდელზე.",
+      "why_it_matters": "გაძლევს მექანიზმს აგენტების სტაბილურობის გასაუმჯობესებლად მრავალეტაპიან ამოცანებში.",
+      "key_takeaways": [
+        "Numerical noise in verification windows changes long-horizon agent outputs.",
+        "Training draft models to be rejected at critical points forces target model precision.",
+        "Raises end-to-end success rate on complex coding benchmarks."
+      ],
+      "technical_architecture": [
+        "Draft-target model decoupling at critical decision points.",
+        "Adversarial preference training on 0.06% to 0.28% of parameters."
+      ],
+      "technical_details": [
+        "Verification restarts when draft and target part ways.",
+        "Tested on complex agentic coding benchmarks."
+      ],
+      "potential_impact": "მნიშვნელოვნად ამცირებს აგენტების გაჭედვისა და ჰალუცინაციის ალბათობას მრავალეტაპიან შესრულებაში.",
+      "action_type": "LEARN",
+      "action": "გაეცანი speculative decoding-ის ძირითად პრინციპებს და სცადე მისი კონცეფციის რეალიზება პითონში ორ მოდელს შორის.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value",
+        "Short-term Opportunity"
+      ],
+      "verified_facts": [
+        "Numerical noise grows within verification windows in standard speculative decoding.",
+        "Training draft models to favor adversarial preference improves long-horizon agent accuracy.",
+        "Only 0.06% to 0.28% of hosted parameters are trained."
+      ],
+      "interpretation": "სპეკულაციური დეკოდირება არ არის მხოლოდ სისტემური ოპტიმიზაცია; ის ცვლის აგენტის მსჯელობის ტრაექტორიას გრძელვადიან ამოცანებში.",
+      "uncertainty": "მეთოდი მოითხოვს სპეციალურ წრთობის პირობებს draft და target მოდელების იდეალური სინქრონიზაციისთვის.",
+      "counter_argument": "დამატებითი ტრეინინგი draft მოდელისთვის ამძიმებს ინფრასტრუქტურულ სირთულეს.",
+      "strategic_assessment": "ისწავლე speculative decoding და draft-target არქიტექტურის პრინციპები, რადგან ეს განსაზღვრავს სწრაფ და საიმედო აგენტურ 루პებს.",
+      "time_horizon": "mid-term",
+      "what_could_change": "გრძელვადიანი აგენტური ამოცანები გახდება უფრო სტაბილური და ნაკლებად მიდრეკილი შეცდომების დაგროვებისკენ.",
+      "risks": [
+        "Complex training pipeline for draft models.",
+        "Overhead in managing adversarial preference datasets."
+      ],
+      "non_obvious_opportunity": "შეგიძლია გამოიყენო მცირე ღია მოდელი როგორც adversarial draft მოდელი შენს ლოკალურ აგენტურ სკრიპტებში.",
+      "fit_assessment": "კარგად ერგება შენს ინტერესს აგენტური ლოუპებისა და საიმედოობის მიმართულებით."
     }
   ],
   "topics": {
@@ -6419,7 +6420,7 @@
     "AI Coding Tools / Agent Architecture": 2,
     "LLM API / Agent Frameworks": 1,
     "AI Research / LLM Infrastructure": 1,
-    "AI Research / Agent Architecture": 20,
+    "AI Research / Agent Architecture": 21,
     "AI Research / Agent Memory": 1,
     "AI Research / RAG & Embeddings": 1,
     "AI Evaluation / Agent Reliability": 1,
@@ -6484,7 +6485,7 @@
     "RAG და აგენტის მეხსიერება": 3,
     "აგენტის არქიტექტურა და რობოტიკა": 2,
     "Long-Term Career Value": 2,
-    "აგენტის არქიტექტურა და ოპტიმიზაცია": 5,
+    "აგენტის არქიტექტურა და ოპტიმიზაცია": 6,
     "Open Source AI & Infrastructure": 1,
     "Real Business Opportunity & Agent Architecture": 5,
     "აგენტების ინფრასტრუქტურა და LLM APIs": 1,
@@ -6499,376 +6500,6 @@
     "აგენტის არქიტექტურა და უსაფრთხოება": 1
   },
   "reports": [
-    {
-      "date": "2026-10-20",
-      "summary": "Anthropic-ის შიდა მონაცემებით აგენტური სამუშაო საათები ადამიანისას 6-ჯერ აღემატება, რაც ჯუნიორ დეველოპერების მოთხოვნას ცვლის. Third Moment-ის და არქივის ახალი კვლევები აჩვენებს, რომ Context Pollution და Tool Output-ის არასწორი RAG აგენტის სიზუსტეს მკვეთრად აგდებს. Google-მა კი ADK-ში MCP და Agent2Agent პროტოკოლების სრული მხარდაჭერა დაამატა.",
-      "events": [
-        {
-          "event_id": "evt-anthropic-workplace-agent-study",
-          "title": "Anthropic-ის შიდა კვლევა: აგენტის სამუშაო საათებმა თანამშრომლებს 6:1 გადაასწრო",
-          "category": "Long-Term Career Value",
-          "primary_url": "https://www.anthropic.com/research/employment-at-anthropic",
-          "supporting_urls": [
-            "https://www.anthropic.com/research/employment-at-anthropic"
-          ],
-          "importance": 9,
-          "relevance": 10,
-          "actionability": 7,
-          "source_quality": 10,
-          "confidence": 95,
-          "tldr": "Anthropic-ში აგენტები ადამიანებზე 6-ჯერ მეტს მუშაობენ, რამაც junior დეველოპერების აყვანა შეამცირა და აქცენტი ავტონომიურობაზე გადაიტანა.",
-          "what_happened": "Anthropic-მა გამოაქვეყნა ემპირიული კვლევა, სადაც აჩვენა აგენტების მასიური ინტეგრაცია და სამუშაო როლების ტრანსფორმაცია.",
-          "what_changed": "ინჟინრის როლი კოდის წერიდან გადავიდა აგენტების მონიტორინგზე, სისტემურ ხილვადობაზე (meta-work) და გადაწყვეტილების მიღებაზე.",
-          "why_it_matters": "შენი პორტფოლიო უნდა აჩვენებდეს არა 'დაწერილ კოდს', არამედ ავტონომიურად მოქმედ სისტემებს, შემოწმების მექანიზმებით.",
-          "key_takeaways": [
-            "Junior პოზიციებზე მოთხოვნა მცირდება AI-ს მაღალი პროდუქტიულობის გამო.",
-            "ადამიანის ყურადღება მთავარი ბოთლისყელია აგენტების შედეგების გადასამოწმებლად.",
-            "ფასდება არა ენის ცოდნა, არამედ judgment და აგენტების ორკესტრაცია."
-          ],
-          "technical_architecture": [
-            "სამუშაო გარემო: Slack-ინტეგრირებული Claude აგენტები.",
-            "პროპორცია: 6 აგენტური სამუშაო საათი 1 ადამიანურ საათზე.",
-            "მონიტორინგი: შიდა early warning სისტემა სამუშაო პროცესებისთვის."
-          ],
-          "technical_details": [
-            "მეტრიკა: გაზრდილი კოდის მოცულობა თითო ინჟინერზე.",
-            "დროის ხარჯი: აგენტის აუთფუთის წაკითხვა კვირის ნახევარს მოითხოვს.",
-            "ინტერვიუები: 17 სიღრმისეული თანამშრომლური გამოკითხვა."
-          ],
-          "potential_impact": "დეველოპერები, რომლებიც აგენტების მართვის ინსტრუმენტებს შექმნიან, დაიკავებენ წამყვან პოზიციებს ახალ საინჟინრო ეკოსისტემაში.",
-          "action_type": "LEARN",
-          "action": "დაწერე პატარა Python სკრიპტი, რომელიც LLM-ის დაგენერირებულ კოდს ავტომატურად გაატარებს linter-სა და pytest-ში.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Long-Term Career Value",
-            "Real Business Opportunity"
-          ],
-          "verified_facts": [
-            "აგენტების მიერ ნამუშევარი საათები თანამშრომლების საათებს 6:1 შეფარდებით აღემატება.",
-            "კომპანიაში ჯუნიორ ტექნიკური პოზიციების დაქირავების წილი შემცირდა.",
-            "ჰაირინგ მენეჯერები უპირატესობას ანიჭებენ ავტონომიურობასა და საინჟინრო გადაწყვეტილების მიღების უნარს."
-          ],
-          "interpretation": "კოდის სინტაქსის ცოდნა კარგავს საბაზრო ფასს; მთავარი ხდება სისტემის არქიტექტურული ხედვა, შემოწმება და აგენტების მართვა.",
-          "uncertainty": "კვლევა ასახავს მხოლოდ Anthropic-ის შიდა სამუშაო გარემოს და არა მთლიან გლობალურ IT ბაზარს.",
-          "counter_argument": "სტარტაპებსა და legacy კომპანიებში ჯერ კიდევ სჭირდებათ კლასიკური junior ინჟინრები საბაზისო კოდის დასაწერად.",
-          "strategic_assessment": "ნუ ისწავლი კოდირებას როგორც უბრალო მბეჭდავი; ისწავლე აგენტების დავალებების მონიტორინგი, სისტემური ტესტირება და არქიტექტურა.",
-          "time_horizon": "long-term",
-          "what_could_change": "კომპანიები შეწყვეტენ junior coders აყვანას და მოითხოვენ სპეციალისტებს, რომლებსაც აგენტების არმიის მართვა შეუძლიათ.",
-          "risks": [
-            "დამწყები დეველოპერები ვერ აგროვებენ გამოცდილებას.",
-            "ადამიანის ყურადღება ხდება მთავარი შემაფერხებელი ბოთლისყელი.",
-            "ზედაპირული ცოდნა იწვევს აგენტების შეცდომების გამოტოვებას."
-          ],
-          "non_obvious_opportunity": "შექმენი აგენტების აუდიტის ღია ხელსაწყო, რომელიც დეველოპერს აჩვენებს, რა შეცვალა აგენტმა კოდში სანამ commit გაკეთდება.",
-          "fit_assessment": "16 წლის ასაკში ეს შენი უდიდესი უპირატესობაა: პირდაპირ დაიწყე აგენტების არქიტექტორად სწავლა."
-        },
-        {
-          "event_id": "evt-third-moment-agent-optimization",
-          "title": "Third Moment Research: 10,000 აგენტის 48-საათიანი გაშვება და Context Pollution-ის ოპტიმიზაცია",
-          "category": "აგენტის არქიტექტურა და ოპტიმიზაცია",
-          "primary_url": "https://openai.com/index/third-moment-research",
-          "supporting_urls": [
-            "https://openai.com/index/third-moment-research"
-          ],
-          "importance": 9,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 10,
-          "confidence": 95,
-          "tldr": "Third Moment-მა 10,000 აგენტის 48-საათიან სისტემაში context pollution აღმოფხვრა, რითაც ტესტირების დრო 97%-ით შეამცირა.",
-          "what_happened": "კომპანიამ გამოავლინა, რომ აგენტები polling-ით ფლანგავდნენ ტოკენებს და memory-packing-ით backtest-ის დრო წუთებამდე შეამცირა.",
-          "what_changed": "აგენტები აღარ ელიან პროცესს context window-ში; მონაცემები იკრიბება გარედან და მიეწოდება მხოლოდ დასრულებული რეზულტატი.",
-          "why_it_matters": "სასკოლო ბიუჯეტით მუშაობისას უფასო API ტოკენები არ უნდა დახარჯო სტატუსის შემოწმებაზე; უნდა ისწავლო ასინქრონული არქიტექტურა.",
-          "key_takeaways": [
-            "Polling აბინძურებს context window-ს და აგდებს აგენტის სიზუსტეს.",
-            "Memory-packing და კეშირება ტოკენების ბიუჯეტს მნიშვნელოვნად ზოგავს.",
-            "Codex წარმატებით გამოიყენება აგენტის საკუთარი კოდის ბაზის პროფაილინგისთვის."
-          ],
-          "technical_architecture": [
-            "მოდელები: GPT-6 Astra, GPT-6 Sol და Codex.",
-            "გარემო: 10,000 concurrent agents 36-48 საათიანი სესიებით.",
-            "უსაფრთხოება: Daybreak პლატფორმა აგენტების გარემოს შესამოწმებლად."
-          ],
-          "technical_details": [
-            "Backtest დრო: 3 საათიდან 3-5 წუთამდე.",
-            "ოპტიმიზაცია: caching და memory-packing ტექნიკა.",
-            "ტრანზაქციები: ტრილიონი ტოკენი ერთ სამუშაო დღეში."
-          ],
-          "potential_impact": "ინჟინრები, რომლებიც Context Hygiene-ს იცავენ, 90%-ით ნაკლებ API ხარჯს გასწევენ გრძელვადიან დავალებებზე.",
-          "action_type": "APPLY",
-          "action": "შეცვალე შენი აგენტის loop-ში sleep/poll ლოგიკა webhook callback-ით, რათა ტოკენები ცარიელ ლოდინში არ დაიხარჯოს.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "Third Moment ერთდროულად უშვებს 10,000 ავტონომიურ აგენტს 36-დან 48 საათამდე სესიებით.",
-            "Codex-ით ჩატარებულმა ანალიზმა backtest-ის დრო 3 საათიდან 3-5 წუთამდე შეამცირა.",
-            "სტატუსის პერიოდული შემოწმება (polling) აბინძურებდა context window-ს და ფლანგავდა ტოკენებს."
-          ],
-          "interpretation": "აგენტურ ლუპებში მთავარი პრობლემა მოდელის სისუსტე კი არა, ცუდად აწყობილი ხელსაწყოების გამო ტოკენების გაფლანგვა და კონტექსტის დაბინძურებაა.",
-          "uncertainty": "უცნობია კომპანიის მიერ გამოყენებული სინთეზური სცენარების გენერაციის ზუსტი პრომპტები და გარემოს არქიტექტურა.",
-          "counter_argument": "ფინანსური სიმულაციები უნიკალური დომენია მკაფიო მეტრიკებით და ეს ოპტიმიზაცია შეიძლება პირდაპირ არ მოერგოს ჩვეულებრივ ბიზნეს აგენტებს.",
-          "strategic_assessment": "შეწყვიტე აგენტისთვის გრძელი პროცესების polling-ით ლოდინის უფლების მიცემა. გამოიყენე webhook ან callback მექანიზმი ტოკენების დაზოგვისთვის.",
-          "time_horizon": "mid-term",
-          "what_could_change": "ავტონომიური სისტემები გადავლენ ასინქრონულ event-driven არქიტექტურაზე, რაც context-ში სტატუს-ჩექების წერას სრულად გამორიცხავს.",
-          "risks": [
-            "API ტოკენების ხარჯი უმართავი ხდება.",
-            "დაბინძურებული კონტექსტი აგენტს მიზანს აკარგვინებს.",
-            "არასწორი კეშირება იწვევს მოძველებულ მონაცემებს."
-          ],
-          "non_obvious_opportunity": "მცირე ბიზნესებისთვის შექმენი background task monitoring აგენტი, რომელიც შედეგს Telegram-ში აგზავნის და ტოკენებს არ წვავს.",
-          "fit_assessment": "იდეალურია შენთვის: გასწავლის, როგორ ააგო იაფი, გრძელვადიანი აგენტური ლუპები მინიმალური ტოკენების ხარჯვით."
-        },
-        {
-          "event_id": "evt-google-adk-mcp-a2a",
-          "title": "Google Cloud ADK: MCP და Agent2Agent პროტოკოლების მხარდაჭერა 5 ენაზე",
-          "category": "აგენტების ინფრასტრუქტურა და MCP",
-          "primary_url": "https://cloud.google.com/blog/topics/developers-practitioners/one-agent-development-kit-five-languages",
-          "supporting_urls": [
-            "https://cloud.google.com/blog/topics/developers-practitioners/one-agent-development-kit-five-languages"
-          ],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 9,
-          "source_quality": 9,
-          "confidence": 92,
-          "tldr": "Google-მა გამოუშვა ADK 5 ენისთვის MCP და A2A პროტოკოლების ჩაშენებული მხარდაჭერით და ლოკალური Android აგენტების შესაძლებლობით.",
-          "what_happened": "Google-მა გააფართოვა Agent Development Kit და დაამატა ღია პროტოკოლები cross-language აგენტური კომუნიკაციისთვის.",
-          "what_changed": "აგენტების ხელსაწყოები აღარ იწერება ცალკეული ენის ექსკლუზიურ ფორმატში; MCP და A2A აერთიანებს Python, Go და TS ეკოსისტემებს.",
-          "why_it_matters": "შენ მიერ დაწერილი ერთი Python MCP ხელსაწყო ახლა პირდაპირ თავსებადია გლობალურ კორპორატიულ სისტემებთან.",
-          "key_takeaways": [
-            "ADK მხარს უჭერს Python, Go, TypeScript, Java და Kotlin ენებს.",
-            "MCP ჩაშენებულია თითოეულ ენაში, რაც ხელსაწყოების გაზიარებას ამარტივებს.",
-            "Agent2Agent (A2A) უზრუნველყოფს HTTP კომუნიკაციას დამოუკიდებელ აგენტებს შორის."
-          ],
-          "technical_architecture": [
-            "პროტოკოლები: Model Context Protocol (MCP) და Agent2Agent (A2A).",
-            "Android Runtime: LiteRT-LM tool calling-ისთვის, ML Kit (Gemini Nano) ტექსტისთვის.",
-            "ლოკალური მდგომარეობა: Room და AppSearch ბაზები Android-ზე."
-          ],
-          "technical_details": [
-            "დეკორატორები: @Tool და @Param ტიპების მკაცრი ვალიდაციით compile-time-ში.",
-            "კომპილაცია: Zero runtime reflection R8 shrinker-ის მხარდაჭერით.",
-            "ინტეგრაცია: Spring AI bridge და ADK 2.0 გრაფების სამუშაო პროცესი."
-          ],
-          "potential_impact": "დეველოპერები შეძლებენ მრავალენოვანი multi-agent სისტემების აწყობას სტანდარტიზებული HTTP ინტერფეისით.",
-          "action_type": "BUILD",
-          "action": "დააინსტალირე ოფიციალური MCP SDK Python-ში და შექმენი ერთი ფუნქცია, რომელიც კითხულობს ადგილობრივ ფაილს.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Technical Skill",
-            "Real Business Opportunity"
-          ],
-          "verified_facts": [
-            "Google Agent Development Kit (ADK) გამოვიდა ხუთი ენისთვის: Python, Go, TypeScript, Java და Kotlin.",
-            "ყველა ვერსიაში ინტეგრირებულია Model Context Protocol (MCP) კლიენტი.",
-            "დამატებულია Agent2Agent (A2A) სტანდარტი აგენტების HTTP-ით ურთიერთობისთვის.",
-            "Kotlin ვერსია მუშაობს Android-ზე ლოკალურად LiteRT-LM და Gemini Nano ინტეგრაციით."
-          ],
-          "interpretation": "MCP ხდება ინდუსტრიული უნივერსალური სტანდარტი ხელსაწყოებისთვის, ხოლო A2A ქმნის multi-agent კომუნიკაციის საერთო ენას.",
-          "uncertainty": "უცნობია, რამდენად სწრაფად მიიღებს ღია ოფენსორს კომიუნითი Google-ის ADK-ს LangGraph-ისა და CrewAI-ს ფონზე.",
-          "counter_argument": "Google-ის SDK-ები ხშირად რთულია და მიბმულია Google Cloud-ის ფასიან სერვისებზე.",
-          "strategic_assessment": "გამოიყენე MCP შენი ხელსაწყოების ასაგებად; ეს უზრუნველყოფს, რომ შენი კოდი იმუშავებს ნებისმიერ ფრეიმვორკში გადაწერის გარეშე.",
-          "time_horizon": "mid-term",
-          "what_could_change": "სხვადასხვა ენაზე დაწერილ აგენტებს შეეძლებათ პირდაპირ HTTP-ით დაუძახონ ერთმანეთს A2A პროტოკოლით.",
-          "risks": [
-            "სტანდარტების ფრაგმენტაცია დიდ გიგანტებს შორის.",
-            "ლოკალური მობილური აგენტების აპარატურული შეზღუდვები.",
-            "სერვერული runtime-ების სირთულე დამწყებთათვის."
-          ],
-          "non_obvious_opportunity": "ააგე მარტივი Python MCP სერვერი ლოკალური SQLite მონაცემთა ბაზისთვის, რომელსაც ნებისმიერი ADK აგენტი გამოიყენებს.",
-          "fit_assessment": "იდეალურად ებმის შენს მიმდინარე ეტაპს: MCP და tool calling შენი სწავლის გეგმის ცენტრალური ნაწილია."
-        },
-        {
-          "event_id": "evt-agent-retrieval-evidence-substitution",
-          "title": "Evidence Substitution: რატომ კარგავენ აგენტები სიზუსტეს Tool-ის შედეგების RAG-ით ძიებისას",
-          "category": "AI Evaluation & საიმედოობა",
-          "primary_url": "https://arxiv.org/abs/2610.26836",
-          "supporting_urls": [
-            "https://arxiv.org/abs/2610.26836"
-          ],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 9,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "ხელსაწყოს შედეგების ფაილიდან RAG-ით ამოღება აგენტებში იწვევს Evidence Substitution შეცდომას და სიზუსტის მკვეთრ ვარდნას.",
-          "what_happened": "მკვლევრებმა 11,007 სიმულაციაზე შეისწავლეს, როგორ ცდება LLM, როდესაც ხელსაწყოს პასუხს გარე ინდექსიდან კითხულობს.",
-          "what_changed": "გამოვლინდა, რომ აგენტები ითვლიან სწორად, მაგრამ საბოლოო პასუხს იღებენ არა ოფიციალური რეპორტიდან, არამედ მეორადი ფაილებიდან.",
-          "why_it_matters": "როცა ბიზნეს აგენტს SQL-ის ან API-ის პასუხს აძლევ, არ დამალო ის vector search-ის მიღმა, თუ შეგიძლია პირდაპირ აჩვენო.",
-          "key_takeaways": [
-            "Retrieval-მა GPT მოდელებს 11.3 ქულამდე დააკარგვინა სიზუსტეში.",
-            "Inlining (შედეგის პირდაპირ კონტექსტში დატოვება) საუკეთესო გამოსავალია ზომიერ მონაცემებზე.",
-            "ფაილის მკაფიო დასახელება აღადგენს დაკარგული სიზუსტის დიდ ნაწილს."
-          ],
-          "technical_architecture": [
-            "სატესტო გარემო: PHREEQC გეოქიმიური სიმულატორი (846.8k სიმბოლოიანი რეპორტები).",
-            "ტესტები: 158 execution-verified ამოცანა.",
-            "შედარებული მოდელები: GPT-5 ოჯახი vs Claude 4.6 სერია."
-          ],
-          "technical_details": [
-            "ზარების რაოდენობა: 11,007 ლოგირებული simulator call.",
-            "სიზუსტის დელტა: -11.3 ქულა GPT-5.1-ზე retrieval-ის დროს.",
-            "გაუმჯობესება: +7.9 ქულა explicit artifact naming-ით."
-          ],
-          "potential_impact": "Agent harness-ების დეველოპერები თავიდან აიცილებენ ჩუმ ჰალუცინაციებს ინსტრუმენტების აუთფუთის სწორი მენეჯმენტით.",
-          "action_type": "APPLY",
-          "action": "შეამოწმე შენი აგენტის პრომპტი და დარწმუნდი, რომ tool output-ის ფაილის სახელი აგენტს გადაეცემა მკაფიოდ, უნიკალური ID-ით.",
-          "evidence": [],
-          "factuality_level": "single_source",
-          "classification": [
-            "Real Technical Skill"
-          ],
-          "verified_facts": [
-            "ხელსაწყოს დიდი შედეგების RAG-ით ამოღებისას GPT-5.1-მა და GPT-5.2-მა 11.3 და 7.9 სიზუსტის ქულა დაკარგეს.",
-            "Claude Opus 4.6-მა და Sonnet 4.6-მა ინდექსირებული ძიებისას სიზუსტის ვარდნა არ აჩვენეს.",
-            "ავტორიტეტული ფაილის სახელის პირდაპირ მითითებამ სიზუსტე 6.3-7.9 ქულით გაზარდა."
-          ],
-          "interpretation": "როცა აგენტს აიძულებ ხელსაწყოს შედეგი ფაილიდან დამოუკიდებლად ამოიღოს, ის ხშირად საკუთარ შუალედურ ვარაუდს ეყრდნობა რეალური მონაცემის ნაცვლად.",
-          "uncertainty": "კვლევა ჩატარდა სამეცნიერო სიმულატორ PHREEQC-ზე და შეიძლება განსხვავდებოდეს მარტივ JSON API პასუხებზე.",
-          "counter_argument": "გრძელი პასუხების პირდაპირ context window-ში ჩასმა ზრდის ხარჯს და იწვევს მოდელის ყურადღების გაფანტვას.",
-          "strategic_assessment": "თუ tool output ეტევა context-ში, ჩააწოდე პირდაპირ. თუ ფაილში ინახავ, prompt-ში მკაფიოდ მიუთითე ზუსტი ფაილის სახელი.",
-          "time_horizon": "short-term",
-          "what_could_change": "აგენტების ფრეიმვორკები შეწყვეტენ ბრმა vector retrieval-ს ხელსაწყოების შედეგებზე და გადავლენ explicit artifact referencing-ზე.",
-          "risks": [
-            "აგენტი პასუხობს არასწორი შუალედური გამოთვლით.",
-            "დამალული შეცდომები, რომლებსაც eval-ები ძნელად იჭერს.",
-            "კონტექსტის ზომის არასწორი მართვა."
-          ],
-          "non_obvious_opportunity": "შექმენი მსუბუქი Python ბიბლიოთეკა, რომელიც ამოწმებს, აგენტის პასუხი ემთხვევა თუ არა Tool-ის რეალურ raw output-ს.",
-          "fit_assessment": "კრიტიკულია შენი RAG და tool calling პროექტებისთვის: გასწავლის, სად უშვებენ შეცდომას რეალური აგენტები."
-        },
-        {
-          "event_id": "evt-weact-dynamic-lora-switching",
-          "title": "WeAct: LoRA წონების დინამიური გადართვა აგენტის Action-ის სახით",
-          "category": "AI Research & Model Architecture",
-          "primary_url": "https://arxiv.org/abs/2610.26847",
-          "supporting_urls": [
-            "https://arxiv.org/abs/2610.26847"
-          ],
-          "importance": 8,
-          "relevance": 8,
-          "actionability": 7,
-          "source_quality": 8,
-          "confidence": 89,
-          "tldr": "WeAct-მა აგენტის action space-ში LoRA წონების გადართვა ჩასვა, რითაც რთულ კვლევით ამოცანებში სიზუსტე 27.5%-ით გაზარდა.",
-          "what_happened": "შეიქმნა სისტემა, სადაც აგენტი tool calling-ის მსგავსად თავად ირჩევს, რომელი სპეციალიზებული LoRA ადაპტერი გაააქტიუროს.",
-          "what_changed": "ფიქსირებული პარამეტრების ნაცვლად, მოდელი ადაპტირდება ამოცანის მიმდინარე ეტაპზე (მაგ. კოდის წერა vs ტექსტის ანალიზი).",
-          "why_it_matters": "ეს აჩვენებს, რომ აგენტის 'ხელსაწყო' შეიძლება იყოს არა მხოლოდ გარე API, არამედ მოდელის შიდა პარამეტრების შეცვლაც.",
-          "key_takeaways": [
-            "Internal Action-ები იყენებს სტანდარტულ tool-calling ინტერფეისს.",
-            "Catastrophic forgetting თავიდან აცილებულია გაყინული backbone მოდელით.",
-            "მოდულარული ადაპტაცია საშუალებას იძლევა ცალკეული უნარების დამოუკიდებლად განახლების."
-          ],
-          "technical_architecture": [
-            "ბაზისური მოდელი: Qwen3-32B გაყინული backbone-ით.",
-            "ადაპტერები: დამოუკიდებელი capability-specific LoRA ბლოკები.",
-            "ინტერფეისი: მოდელის native tool calling მექანიზმი."
-          ],
-          "technical_details": [
-            "სიზუსტის ზრდა: +6.2% full fine-tuning-თან შედარებით.",
-            "შედარება LoRA-merging-თან: +27.5% სიზუსტის უპირატესობა.",
-            "ბენჩმარკი: 8 deep-research სატესტო ნაკრები."
-          ],
-          "potential_impact": "შემცირდება ძვირადღირებული მოდელების ხელახალი დატრენინგების საჭიროება სპეციალიზებული აგენტური ამოცანებისთვის.",
-          "action_type": "LEARN",
-          "action": "წაიკითხე WeAct-ის აბსტრაქტი და გაიაზრე, როგორ შეიძლება გამოიყენო tool calling მოდელის ქცევის შესაცვლელად.",
-          "evidence": [],
-          "factuality_level": "single_source",
-          "classification": [
-            "Real Technical Skill"
-          ],
-          "verified_facts": [
-            "WeAct ამატებს LoRA ადაპტერების არჩევას აგენტის action space-ში native tool-calling ინტერფეისით.",
-            "Qwen3-32B მოდელზე WeAct-მა სიზუსტე 6.2%-ით გაზარდა full fine-tuning-თან შედარებით ნაკლები გამოთვლითი რესურსით.",
-            "სტატიკურ LoRA-merging მეთოდებთან შედარებით სიზუსტის ზრდამ 27.5% შეადგინა."
-          ],
-          "interpretation": "ერთი გიგანტური მოდელის ნაცვლად, აგენტს შეუძლია runtime-ში გამოიძახოს სპეციალიზებული ადაპტერები კოდისთვის, ძიებისთვის ან წერისთვის.",
-          "uncertainty": "წონების დინამიურ გადართვას სჭირდება GPU ინფრასტრუქტურის მხარდაჭერა და შეიძლება გაზარდოს latency.",
-          "counter_argument": "სხვადასხვა დავალებისთვის ცალკეული მცირე მოდელების გამოძახება API-ით ხშირად უფრო მარტივია, ვიდრე წონების მანიპულაცია.",
-          "strategic_assessment": "გაიაზრე მოდულარული აგენტის პრინციპი: ერთ უნივერსალურ სისტემას სჯობს ვიწრო, კონკრეტულ ამოცანაზე მომართული ხელსაწყოები.",
-          "time_horizon": "mid-term",
-          "what_could_change": "აგენტები შეძლებენ ახალი უნარების შესწავლას ძველი ცოდნის დავიწყების (catastrophic forgetting) გარეშე, მხოლოდ ახალი LoRA-ს მიბმით.",
-          "risks": [
-            "GPU მეხსიერების მენეჯმენტის სირთულე.",
-            "ადაპტერის გადართვის დაყოვნება.",
-            "შეცდომა ადაპტერის შერჩევის დროს."
-          ],
-          "non_obvious_opportunity": "სცადე multi-agent სისტემაში თითოეულ აგენტს მისცე მკაფიოდ განსხვავებული სისტემური პრომპტი, როგორც მსუბუქი ალტერნატივა LoRA-სი.",
-          "fit_assessment": "გეხმარება აგენტის loop-ის და action space-ის გააზრებაში: აგენტს შეუძლია მართოს არა მხოლოდ გარე სამყარო, არამედ საკუთარი თავი."
-        },
-        {
-          "event_id": "evt-memt1-memory-native-architecture",
-          "title": "MemT-1.0: მეხსიერების ჩაშენება მოდელის გამოთვლაში 66-ჯერ ნაკლები KV Cache-ით",
-          "category": "აგენტის არქიტექტურა და მეხსიერება",
-          "primary_url": "https://huggingface.co/papers/2610.26825",
-          "supporting_urls": [
-            "https://huggingface.co/papers/2610.26825"
-          ],
-          "importance": 8,
-          "relevance": 8,
-          "actionability": 7,
-          "source_quality": 8,
-          "confidence": 88,
-          "tldr": "MemT-1.0-მა წარადგინა მეხსიერების ჩაშენებული არქიტექტურა, რომელმაც KV Cache 66-ჯერ შეამცირა და სიჩქარე გააორმაგა.",
-          "what_happened": "მკვლევრებმა შექმნეს მოდელი, რომელიც ინფორმაციას იმახსოვრებს გამოთვლით პროცესში და არა გარე ვექტორულ ბაზაში.",
-          "what_changed": "128K ტოკენის ისტორიის შენახვა აღარ მოითხოვს გიგანტურ მეხსიერებას; სისტემა ინარჩუნებს გამოცდილებას კომპაქტურ ფორმატში.",
-          "why_it_matters": "აგენტების მეხსიერება ყველაზე ძვირი კომპონენტია; ასეთი არქიტექტურები გრძელვადიან აგენტებს ბევრად იაფს გახდის.",
-          "key_takeaways": [
-            "Gated DeltaNet-2 უზრუნველყოფს სტაბილურ token-level მეხსიერების განახლებას.",
-            "KV Cache-ის მოცულობა 66-ჯერ მცირდება 128K სიგრძეზე.",
-            "აგენტური ამოცანების წარმატება იზრდება პროცედურული მეხსიერების შინაგანი ათვისებით."
-          ],
-          "technical_architecture": [
-            "არქიტექტურა: Gated DeltaNet-2 და Mixture-of-Storage.",
-            "ტრენინგი: 34 მილიარდი ტოკენი continuous pre-training და post-training ეტაპზე.",
-            "ვარიანტები: MemT-1.0-Nano და MemT-1.0-Flash."
-          ],
-          "technical_details": [
-            "ინფერენსის აჩქარება: 1.86x 128K ტოკენის ისტორიაზე.",
-            "შენახვის ეკონომია: 66-ჯერ ნაკლები მოცულობა KV ქეშთან შედარებით.",
-            "დომენი: Procedural experience retention აგენტურ ამოცანებში."
-          ],
-          "potential_impact": "ხანგრძლივი დიალოგისა და კვლევითი აგენტების გაშვება შესაძლებელი გახდება შეზღუდული მეხსიერების მქონე სერვერებზე.",
-          "action_type": "TRACK",
-          "action": "შეინახე MemT-1.0-ის HuggingFace გვერდი და თვალი ადევნე მის llama.cpp ან Ollama პორტირებას ლოკალური ტესტირებისთვის.",
-          "evidence": [],
-          "factuality_level": "single_source",
-          "classification": [
-            "Real Technical Skill"
-          ],
-          "verified_facts": [
-            "MemT-1.0 იყენებს Gated DeltaNet-2 არქიტექტურას და Mixture-of-Storage მექანიზმს.",
-            "128K კონტექსტზე MemT-1.0-Nano აღწევს 1.86x აჩქარებას ინფერენსის დროს.",
-            "მუდმივი შენახვის მოცულობა (storage) შემცირდა 66-ჯერ სრულ KV ქეშთან შედარებით.",
-            "მოდელების ოჯახი მოიცავს MemT-1.0-Nano და MemT-1.0-Flash ვერსიებს."
-          ],
-          "interpretation": "მომავლის აგენტური მეხსიერება გადაინაცვლებს გარე ვექტორული ბაზებიდან თავად მოდელის შიდა პარამეტრულ მდგომარეობაში.",
-          "uncertainty": "უცნობია, რამდენად მარტივი იქნება ამ მოდელების გაშვება consumer-grade GPU-ებზე უფასო რესურსებით.",
-          "counter_argument": "ტრადიციული RAG ჯერ კიდევ უფრო იაფია და მარტივი სამართავია, რადგან არ მოითხოვს სპეციალურ მოდელურ წონებს.",
-          "strategic_assessment": "აკონტროლე memory-native მოდელები, მაგრამ პრაქტიკაში ჯერ ფოკუსირდი გარე სტრუქტურირებულ მეხსიერებაზე (SQLite + JSON).",
-          "time_horizon": "long-term",
-          "what_could_change": "მოდელები შეძლებენ ულიმიტო ისტორიის დამახსოვრებას RAM-ის გადავსებისა და ძვირადღირებული KV cache-ის გარეშე.",
-          "risks": [
-            "მოდელის წონების ჩაკეტვა სპეციფიკურ არქიტექტურაზე.",
-            "წინა გამოცდილების წაშლის ან რედაქტირების სირთულე.",
-            "მწირი მხარდაჭერა სტანდარტულ inference სერვერებში."
-          ],
-          "non_obvious_opportunity": "გამოიყენე ამ კვლევის დასკვნები იმის გასაგებად, თუ რატომ ჯობია მეხსიერების კომპაქტური შეჯამება მთლიანი ჩათის შენახვას.",
-          "fit_assessment": "გაძლევს ღრმა თეორიულ ხედვას აგენტის მდგომარეობისა და მეხსიერების ევოლუციაზე, რაც RAG-ის შემდეგი ეტაპია."
-        }
-      ],
-      "trends": [
-        "Context Hygiene და Token Optimization ხდება გრძელვადიანი აგენტების მთავარი საინჟინრო გამოწვევა.",
-        "Open Standard პროტოკოლები (MCP, Agent2Agent) ანაცვლებს დახურულ ერთენოვან ფრეიმვორკებს.",
-        "ჯუნიორ დეველოპმენტი გარდაიქმნება აგენტების ორკესტრაციად, ტესტირებად და შეცდომების აუდიტად."
-      ]
-    },
     {
       "date": "2026-10-21",
       "summary": "AWS-მა წარმოადგინა MCP ხელსაწყოების დაცვის არქიტექტურა X.509 კრიპტოგრაფიული იდენტობით. OpenAI-მ გამოაქვეყნა GPT-6 სერიის შედეგები MultiLangBench-ზე, სადაც SQLite-ის ნულიდან აწყობა შემოწმდა. Google-მა და Meta-მ TorchTPU სრულად გახსნეს open source-ად, რაც PyTorch-ის TPU-ზე გაშვებას ამარტივებს.",
@@ -10325,13 +9956,136 @@
         "მსჯელობის მოდელების (Reasoning Models) გაძლიერება კონტექსტის შენარჩუნებით მულტი-ტურნ დიალოგებში.",
         "სტაბილური, დოკერიზებული გარემოებების შექმნა აგენტების უსაფრთხო და განმეორებადი ტესტირებისთვის."
       ]
+    },
+    {
+      "date": "2026-11-04",
+      "summary": "დღევანდელი კვლევები ფოკუსირებულია აგენტების მსჯელობის ოპტიმიზაციაზე, მცირე მოდელების ტუანინგზე და საარბიტრაჟო პრეფერენციებზე. Tencent-ის LoCo მეთოდი ამცირებს reasoning ტოკენებს 40%-ით, ხოლო adversarial speculative reasoning მეთოდი აუმჯობესებს long-horizon აგენტების საიმედოობას.",
+      "events": [
+        {
+          "event_id": "evt-tencent-loco-reasoning-compression",
+          "title": "LoCo: Local Preference Learning for Reasoning Compression",
+          "category": "AI Research / Agent Architecture",
+          "primary_url": "https://huggingface.co/papers/2611.04814",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 95,
+          "tldr": "LoCo მეთოდი ამცირებს reasoning ტოკენებს 40%-ით მათემატიკასა და კოდირებაში მსჯელობის დინამიკური შეჩერებით.",
+          "what_happened": "Tencent-ის მკვლევარებმა გამოაქვეყნეს LoCo, რომელიც იყენებს local preference learning-ს reasoning compression-ისთვის.",
+          "what_changed": "მთლიანი reasoning ტაექტორიის უცვლელად შენახვიდან გადავედით მდგომარეობაზე დაფუძნებულ პრეფერენციულ ტუნინგზე.",
+          "why_it_matters": "გაძლევს საშუალებას შეამცირო API ხარჯები და აგენტების პასუხის დრო (latency) ტოკენების ეკონომიით.",
+          "key_takeaways": [
+            "Reduces math completion length by up to 45.4%.",
+            "Reduces code completion length by up to 36.3%.",
+            "Uses DPO on self-generated state-conditioned preference pairs."
+          ],
+          "technical_architecture": [
+            "State-conditioned preference pairs with DPO optimization.",
+            "Local decision mechanism for overthinking state detection."
+          ],
+          "technical_details": [
+            "Trained on math traces and transfers to code tasks.",
+            "Releases code and model weights via Hugging Face."
+          ],
+          "potential_impact": "მკვეთრად ზრდის აგენტური სისტემების ხარჯ-ეფექტურობას და ამცირებს გამოთვლით დატვირთვას.",
+          "action_type": "LEARN",
+          "action": "გადახედე Hugging Face-ზე LoCo პროექტის რეპოზიტორიას და შეისწავლე როგორ მუშაობს DPO state-conditioned წყვილებზე.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value",
+            "Short-term Opportunity"
+          ],
+          "verified_facts": [
+            "LoCo uses local preference learning to teach reasoning models when to stop deliberating.",
+            "It reduces completion length by 41.7% to 45.4% on math and 23.4% to 36.3% on…",
+            "Trained entirely on self-generated mathematical traces with DPO."
+          ],
+          "interpretation": "მოდელები ხშირად აგრძელებენ ფიქრს მას შემდეგაც, რაც საკმარისი ინფორმაცია აქვთ, რაც ზრდის ლატენტობას და ხარჯებს.",
+          "uncertainty": "არ არის ბოლომდე ნათელი, რამდენად ზიანდება რთული მრავალეტაპიანი ლოგიკა ძალიან აგრესიული შეჩერებისას.",
+          "counter_argument": "ადრეული შეჩერებამ შეიძლება გამოტოვოს კრიტიკული თვითშემოწმების ფაზა რთულ ამოცანებში.",
+          "strategic_assessment": "შეისწავლე preference optimization და DPO მეთოდები — ეს გამოგადგება აგენტების ლატენტობისა და API ხარჯების შესამცირებლად.",
+          "time_horizon": "mid-term",
+          "what_could_change": "LLM API-ების გამოყენების ხარჯები მკვეთრად შემცირდება, რაც აგენტურ ამოცანებს უფრო ეკონომიურს გახდის.",
+          "risks": [
+            "Model might stop verification too early on tricky edge cases.",
+            "Requires access to reasoning model logits or open weights."
+          ],
+          "non_obvious_opportunity": "მცირე ღია მოდელების ტუნინგი LoCo მიდგომით საშუალებას გაძლევს ააგო ლოკალური, სწრაფი აგენტური რანთაიმი.",
+          "fit_assessment": "იდეალურია შენთვის, რადგან გაძლევს ინსტრუმენტს უფასო ღია მოდელების ოპტიმიზაციისთვის მცირე რესურსებით."
+        },
+        {
+          "event_id": "evt-adversarial-speculative-reasoning",
+          "title": "Adversarial Speculative Reasoning Improves Long Horizon Agents",
+          "category": "აგენტის არქიტექტურა და ოპტიმიზაცია",
+          "primary_url": "https://arxiv.org/abs/2611.05345",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "Draft მოდელის მიზანმიმართული adversarial ტრეინინგი აუმჯობესებს გრძელვადიანი აგენტების სიზუსტეს შეცდომების დაგროვების თავიდან აცილებით.",
+          "what_happened": "მკვლევარებმა აჩვენეს, რომ speculative decoding-ის დროს ნუმერაციული ხმაური აგენტებს აცდენს სწორი ტრაექტორიიდან 30 ნაბიჯის შემდეგ.",
+          "what_changed": "Draft მოდელი იწვრთნება adversarial preference-ზე, რათა კრიტიკული მსჯელობის წერტილებში ზუსტად გადართოს ტარტგეტ მოდელზე.",
+          "why_it_matters": "გაძლევს მექანიზმს აგენტების სტაბილურობის გასაუმჯობესებლად მრავალეტაპიან ამოცანებში.",
+          "key_takeaways": [
+            "Numerical noise in verification windows changes long-horizon agent outputs.",
+            "Training draft models to be rejected at critical points forces target model precision.",
+            "Raises end-to-end success rate on complex coding benchmarks."
+          ],
+          "technical_architecture": [
+            "Draft-target model decoupling at critical decision points.",
+            "Adversarial preference training on 0.06% to 0.28% of parameters."
+          ],
+          "technical_details": [
+            "Verification restarts when draft and target part ways.",
+            "Tested on complex agentic coding benchmarks."
+          ],
+          "potential_impact": "მნიშვნელოვნად ამცირებს აგენტების გაჭედვისა და ჰალუცინაციის ალბათობას მრავალეტაპიან შესრულებაში.",
+          "action_type": "LEARN",
+          "action": "გაეცანი speculative decoding-ის ძირითად პრინციპებს და სცადე მისი კონცეფციის რეალიზება პითონში ორ მოდელს შორის.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value",
+            "Short-term Opportunity"
+          ],
+          "verified_facts": [
+            "Numerical noise grows within verification windows in standard speculative decoding.",
+            "Training draft models to favor adversarial preference improves long-horizon agent accuracy.",
+            "Only 0.06% to 0.28% of hosted parameters are trained."
+          ],
+          "interpretation": "სპეკულაციური დეკოდირება არ არის მხოლოდ სისტემური ოპტიმიზაცია; ის ცვლის აგენტის მსჯელობის ტრაექტორიას გრძელვადიან ამოცანებში.",
+          "uncertainty": "მეთოდი მოითხოვს სპეციალურ წრთობის პირობებს draft და target მოდელების იდეალური სინქრონიზაციისთვის.",
+          "counter_argument": "დამატებითი ტრეინინგი draft მოდელისთვის ამძიმებს ინფრასტრუქტურულ სირთულეს.",
+          "strategic_assessment": "ისწავლე speculative decoding და draft-target არქიტექტურის პრინციპები, რადგან ეს განსაზღვრავს სწრაფ და საიმედო აგენტურ 루პებს.",
+          "time_horizon": "mid-term",
+          "what_could_change": "გრძელვადიანი აგენტური ამოცანები გახდება უფრო სტაბილური და ნაკლებად მიდრეკილი შეცდომების დაგროვებისკენ.",
+          "risks": [
+            "Complex training pipeline for draft models.",
+            "Overhead in managing adversarial preference datasets."
+          ],
+          "non_obvious_opportunity": "შეგიძლია გამოიყენო მცირე ღია მოდელი როგორც adversarial draft მოდელი შენს ლოკალურ აგენტურ სკრიპტებში.",
+          "fit_assessment": "კარგად ერგება შენს ინტერესს აგენტური ლოუპებისა და საიმედოობის მიმართულებით."
+        }
+      ],
+      "trends": [
+        "Reasoning compression through state-conditioned preference learning",
+        "Adversarial optimization of draft models for agent reliability",
+        "Cost reduction and token efficiency in long-horizon agent loops"
+      ]
     }
   ],
   "learning_queue": [
-    "MCP (Model Context Protocol) SDK Python-ისთვის — ისწავლე საკუთარი MCP Tools და Server-ის წერა",
-    "PostgreSQL Row Level Security (RLS) აგენტების იზოლირებული წვდომებისთვის"
+    "DPO (Direct Preference Optimization) პრინციპები Python-ში",
+    "Speculative decoding არქიტექტურა და inference ოპტიმიზაცია"
   ],
-  "last_run": "2026-11-03T17:38:50.719024+00:00",
+  "last_run": "2026-11-04T17:48:45.786922+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -10457,12 +10211,14 @@
     "arxiv:2610.36221",
     "arxiv:2610.40627",
     "arxiv:2610.39620",
-    "arxiv:2611.03634"
+    "arxiv:2611.03634",
+    "arxiv:2611.04814",
+    "arxiv:2611.05345"
   ],
   "last_report_files": {
-    "markdown": "data/reports/2026-11-03/report.md",
-    "json": "data/reports/2026-11-03/report.json",
-    "newsletter": "data/reports/2026-11-03/newsletter.md",
-    "social": "data/reports/2026-11-03/social_posts.txt"
+    "markdown": "data/reports/2026-11-04/report.md",
+    "json": "data/reports/2026-11-04/report.json",
+    "newsletter": "data/reports/2026-11-04/newsletter.md",
+    "social": "data/reports/2026-11-04/social_posts.txt"
   }
 }
