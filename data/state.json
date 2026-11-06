@@ -330,7 +330,14 @@
     "https://ai.google.dev/gemini-api/docs/whats-new-gemini-3.5",
     "https://arxiv.org/abs/2611.03634",
     "https://huggingface.co/papers/2611.04814",
-    "https://arxiv.org/abs/2611.05345"
+    "https://arxiv.org/abs/2611.05345",
+    "https://cloud.google.com/blog/products/containers-kubernetes/open-infrastructure-for-autonomous-agents-comes-to-cncf",
+    "https://openai.com/index/a-thousand-fewer-paths-to-root",
+    "https://openai.com/index/introducing-gpt-6-cyber",
+    "https://aws.amazon.com/blogs/mt/extending-aws-devops-agent-with-skills-model-context-protocol-mcp-servers-custom-agents-and-connectors",
+    "https://openai.com/index/merge-builds-with-openai",
+    "https://cloud.google.com/blog/products/ai-machine-learning/introducing-physical-engineerings-last-exam-for-agents",
+    "https://www.anthropic.com/research/provable-inference"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -599,355 +606,15 @@
     "evt-gemini-35-flash-thought-preservation",
     "evt-webharbor-evolving-gui-agents",
     "evt-tencent-loco-reasoning-compression",
-    "evt-adversarial-speculative-reasoning"
+    "evt-adversarial-speculative-reasoning",
+    "evt-cncf-agent-substrate-gvisor",
+    "evt-openai-autonomous-cyber-pipeline",
+    "evt-aws-devops-agent-mcp-skills",
+    "evt-merge-agent-handler-mcp-benchmark",
+    "evt-google-ple-benchmark-archipelago",
+    "evt-anthropic-provable-inference-flashprove"
   ],
   "events": [
-    {
-      "event_id": "evt-rag-rat-mcp-repo-intelligence",
-      "title": "rag-rat: ლოკალური MCP სერვერი და რეპოზიტორიის მეხსიერების გრაფი აგენტებისთვის",
-      "category": "აგენტების ინფრასტრუქტურა და MCP",
-      "primary_url": "https://github.com/cq27-dev/rag-rat",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 10,
-      "actionability": 9,
-      "source_quality": 8,
-      "confidence": 95,
-      "tldr": "გამოვიდა rag-rat — ლოკალური MCP სერვერი, რომელიც აგენტებს აძლევს კოდის გრაფს, Git ისტორიას და შენახულ მეხსიერებას provenance-ით.",
-      "what_happened": "cq27-dev-მა გამოაქვეყნა rag-rat — ლოკალური SQLite-ზე დაფუძნებული MCP ინდექსერი coding harness-ებისთვის.",
-      "what_changed": "უბრალო grep/read ინსტრუმენტების ნაცვლად, აგენტს ახლა აქვს source-anchored decision memory და code call-graph.",
-      "why_it_matters": "შეგიძლია აგენტს მისცე სრული კონტექსტი და ისტორიული მეხსიერება ძვირადღირებული Vector Cloud API-ების გარეშე.",
-      "key_takeaways": [
-        "მუშაობს ლოკალურად SQLite-ზე და არ სჭირდება გარეგანი API",
-        "პასუხობს provenance-ით და confidence score-ებით",
-        "ინახავს Decision და Invariant ტიპის მეხსიერებას"
-      ],
-      "technical_architecture": [
-        "SQLite local database index",
-        "MCP server protocol integration",
-        "SCIP oracle static analysis graph"
-      ],
-      "technical_details": [
-        "cargo build backend",
-        "rag-rat.toml configuration",
-        "ctrl+alt+r visual lens overlay"
-      ],
-      "potential_impact": "შემცირებული ტოკენების დანახარჯი და უფრო ზუსტი რეფაქტორინგი რთულ Open Source პროექტებში.",
-      "action_type": "BUILD",
-      "action": "დააყენე rag-rat შენს ლოკალურ რეპოზიტორიაზე და გამოსცადე MCP სერვერი Claude Code-თან ან Cursor-თან ერთად.",
-      "evidence": [],
-      "factuality_level": "verified",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "rag-rat ინახავს მონაცემებს ლოკალურ SQLite ბაზაში source-anchored provenance-ით",
-        "სისტემა უზრუნველყოფს symbol lookup, code graph და git/GitHub history ინდექსაციას MCP პროტოკოლით",
-        "ყველა პასუხი შეიცავს confidence label-ებს და coverage warning-ებს"
-      ],
-      "interpretation": "კოდირების აგენტებს სჭირდებათ არამხოლოდ grep, არამედ არქიტექტურული კონტექსტი და გადაწყვეტილებების მეხსიერება, რაც ამცირებს შეცდომებს რეფაქტორინგისას.",
-      "uncertainty": "დიდ რეპოზიტორიებზე SQLite ინდექსაციის latency და SCIP oracle-ის კონფიგურაციის სირთულე ჯერ კიდევ შესამოწმებელია.",
-      "counter_argument": "სტანდარტულ IDE ინდექსერებსა და Vector DB-ებს შეუძლიათ მსგავსი შედეგის მოცემა უფრო მარტივი არქიტექტურით.",
-      "strategic_assessment": "გამოიყენე rag-rat როგორც სანიმუშო არქიტექტურა საკუთარ პროექტებში source-anchored agent memory-ს ასაგებად უფასოდ.",
-      "time_horizon": "mid-term",
-      "what_could_change": "აგენტები შეძლებენ წინა სესიების გადაწყვეტილებების შენარჩუნებას რეფაქტორინგის დროს, რაც შეამცირებს სემანტიკურ რეგრესიებს.",
-      "risks": [
-        "დიდ ბაზებზე ინდექსაციის დროის ზრდა",
-        "SQLite ბაზის ზომის სწრაფი გაზრდა"
-      ],
-      "non_obvious_opportunity": "შეგიძლია შექმნა custom MCP ინსტრუმენტი, რომელიც კლიენტის legacy კოდიდან ბიზნეს-წესების გრაფს ავტომატურად ააწყობს.",
-      "fit_assessment": "იდეალურად ერგება 16 წლის დეველოპერს: ლოკალური, უფასო Open Source ინსტრუმენტია Python/SQLite ბაზაზე."
-    },
-    {
-      "event_id": "evt-phrbench-post-hallucination-reasoning",
-      "title": "PHRBench: მრავალ-ეტაპიანი აგენტების ქცევის ანალიზი ჰალუცინირებული კონტექსტის დროს",
-      "category": "AI Evaluation & Agent Reliability",
-      "primary_url": "https://arxiv.org/html/2610.10455v1",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 8,
-      "source_quality": 8,
-      "confidence": 90,
-      "tldr": "PHRBench კვლევამ აჩვენა, რომ LLM-ები იშვიათად ასწორებენ კონტექსტში მოხვედრილ ჰალუცინაციებს და საჭიროებენ დამატებით belief updates მექანიზმებს.",
-      "what_happened": "მკვლევარებმა წარადგინეს PHRBench 18 მოდელის შესაფასებლად post-hallucination reasoning სცენარებში.",
-      "what_changed": "დადასტურდა, რომ მოდელები ძირითადად ეგუებიან შეცდომებს (compliance), ვიდრე შეასწორებენ მათ (heuristic correction).",
-      "why_it_matters": "ბიზნეს აგენტების აგებისას არ უნდა ეყრდნო მხოლოდ LLM-ის შიდა მსჯელობას შეცდომების აღმოსაჩენად.",
-      "key_takeaways": [
-        "ჰალუცინაცია კონტექსტში ვრცელდება შემდგომ ნაბიჯებზე",
-        "წარმატებული აღდგენა მოითხოვს დინამიურ belief update-ებს",
-        "0.847 AUROC პრედიქტორი პროგნოზირებს აღდგენის შანსს"
-      ],
-      "technical_architecture": [
-        "Post-Hallucination Reasoning Framework",
-        "Trajectory evaluation via Compliance vs Avoidance",
-        "Lightweight recovery predictor model"
-      ],
-      "technical_details": [
-        "4820 controlled evaluation instances",
-        "0.847 AUROC score for predictor",
-        "18 LLMs evaluated across 4 domains"
-      ],
-      "potential_impact": "უფრო საიმედო არქიტექტურული შაბლონები ავტონომიური multi-step აგენტების პროდუქტივში გასაშვებად.",
-      "action_type": "LEARN",
-      "action": "დაამატე explicit JSON validation step შენს აგენტის loop-ში, რომ თავიდან აიცილო შეცდომების გავრცელება კონტექსტში.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "PHRBench აფასებს 18 LLM-ის ქცევას 4,820 კონტროლირებად ტესტზე, როცა კონტექსტში არასწორი (hallucinated) ინფორმაციაა",
-        "წარმატებული თვითშესწორება (successful recovery) იშვიათია და მოითხოვს ხშირ belief update-ებს reasoning trajectory-ის გასწვრივ",
-        "მსუბუქმა პრედიქტორმა (lightweight predictor) მიაღწია 0.847 AUROC-ს იმის საპროგნოზოდ, შეძლებს თუ არა მოდელი შეცდომის გამოსწორებას"
-      ],
-      "interpretation": "თუ აგენტის წინა ნაბიჯმა ჰალუცინაცია წარმოქმნა, შემდგომი LLM ნაბიჯები უბრალოდ იმეორებენ შეცდომას (compliance), თუ არ არსებობს სპეციალური პრომპტინგი ან verifier.",
-      "uncertainty": "კვლევა ძირითადად ფოკუსირებულია ტექსტურ მსჯელობაზე და ნაკლებად მოიცავს real-world tool-execution feedback loops-ს.",
-      "counter_argument": "გარე ინსტრუმენტების (კოდის გაშვება, SQL ვალიდაცია) შედეგები ავტომატურად ამსხვრევს ჰალუცინაციებს, რაც ამცირებს შიდა reasoning-ზე დამოკიდებულებას.",
-      "strategic_assessment": "აგენტურ არქიტექტურაში ჩასვი დამოუკიდებელი Verification Step ყოველი ნაბიჯის შემდეგ, ნაცვლად იმისა, რომ LLM-ის თვითშესწორებას ენდო.",
-      "time_horizon": "long-term",
-      "what_could_change": "მრავალ-ეტაპიანი აგენტების დიზაინში სტანდარტი გახდება explicit error-detection/probing მექანიზმები.",
-      "risks": [
-        "დამატებითი LLM call-ების ხარჯი verification-ისთვის",
-        "False positive განგაშები ვალიდაციისას"
-      ],
-      "non_obvious_opportunity": "შეგიძლია შექმნა მსუბუქი Python guardrail-ბიბლიოთეკა, რომელიც აგენტიდან გამავალ JSON payload-ებს ამოწმებს სანამ შემდგომ step-ს მიაწვდის.",
-      "fit_assessment": "კრიტიკული ცოდნა აგენტების საიმედოობისთვის: აჩვენებს, თუ რატომ ფუჭდება multi-step agent loops და როგორ ავიცილოთ ეს."
-    },
-    {
-      "event_id": "evt-agent-to-business-open-standard",
-      "title": "Agent-to-Business Standard: ინდუსტრიული ღია სტანდარტი აგენტების ვებ-ავტორიზაციისთვის",
-      "category": "Real Business Opportunity & Agent Infrastructure",
-      "primary_url": "https://techcrunch.com/2026/10/06/the-next-hurdle-for-ai-agents-getting-websites-to-let-them-in",
-      "supporting_urls": [
-        "https://techcrunch.com/2026/10/07/metas-muse-launches-on-ipad-just-a-month-after-its-mobile-debut"
-      ],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 7,
-      "source_quality": 7,
-      "confidence": 85,
-      "tldr": "Meta, Stripe და Walmart ქმნიან ღია სტანდარტს აგენტებსა და ბიზნესებს შორის კომუნიკაციისთვის anti-bot ბლოკირებების გვერდის ავლით.",
-      "what_happened": "მსხვილმა კომპანიებმა დაიწყეს მუშაობა ღია პროტოკოლზე, რომელიც აგენტებს საშუალებას მისცემს ლეგიტიმურად გაიარონ იდენტიფიკაცია ვებ-საიტებზე.",
-      "what_changed": "UI-based scraping-ის დაბლოკვის ფონზე ინდუსტრია გადადის structured Agent-to-Business API სტანდარტზე.",
-      "why_it_matters": "რეალური ბიზნეს აგენტების შესაქმნელად საჭიროა API-first და MCP არქიტექტურა, და არა მხოლოდ ბრაუზერის ავტომატიზაცია.",
-      "key_takeaways": [
-        "Stripe, Meta და Walmart ქმნიან ახალ პროტოკოლს",
-        "Anti-bot სისტემები ბლოკავენ ბრაუზერულ აგენტებს",
-        "ფოკუსი გადადის Agent-to-Agent ტრანზაქციებზე"
-      ],
-      "technical_architecture": [
-        "Agent-to-Business authentication protocol",
-        "Structured connector API integration",
-        "OAuth/Token based agent identity"
-      ],
-      "technical_details": [
-        "Meta Muse connector architecture",
-        "Stripe agentic payment protocol",
-        "Open standard RFC proposal"
-      ],
-      "potential_impact": "ახალი ეპოქა e-commerce-ში, სადაც აგენტები უსაფრთხოდ ყიდულობენ მომსახურებას მომხმარებლის სახელით.",
-      "action_type": "TRACK",
-      "action": "ადევნე თვალი Stripe-ისა და Meta-ს Agent-to-Business API ინიციატივებს და გამოიყენე Webhook/API მიდგომა პროექტებში.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Business Opportunity",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "Meta, Walmart, Stripe, Sierra და Decagon იწყებენ მუშაობას Agent-to-Business ღია სტანდარტზე",
-        "Amazon-მა და სხვა Retailer-ებმა დაიწყეს მომხმარებლის AI აგენტების (მაგ. Meta Muse) დაბლოკვა anti-bot სისტემებით",
-        "ახალი პროტოკოლი მიზნად ისახავს ლეგიტიმური AI აგენტების განასხვავებას მავნე ბოტებისგან commerce ტრანზაქციებისას"
-      ],
-      "interpretation": "Browser automation (Playwright/Puppeteer) ვებ-საიტებზე ბლოკადებს აწყდება. მომავალი ბიზნეს აგენტები იმუშავებენ პირდაპირ Agent-to-Business პროტოკოლებითა და API Connectors-ით.",
-      "uncertainty": "სტანდარტის საბოლოო მიღებას და საყოველთაო დანერგვას შესაძლოა წლები დასჭირდეს.",
-      "counter_argument": "ვებ-საიტები ამჯობინებენ საკუთარ დახურულ API-ებს, ვიდრე საერთო ღია სტანდარტის მხარდაჭერას.",
-      "strategic_assessment": "ნუ ააგებ ბიზნესს მხოლოდ fragile browser scraping-ზე; ისწავლე API connectors და MCP server integration-ის გამოყენება.",
-      "time_horizon": "mid-term",
-      "what_could_change": "ვებ-საიტები დაამატებენ agent-friendly endpoints-ებს, რაც ჩაანაცვლებს ტრადიციულ UI scraping-ს.",
-      "risks": [
-        "ტრადიციული scraping ინსტრუმენტების გათიშვა",
-        "ახალი ავტორიზაციის პროტოკოლების სირთულე"
-      ],
-      "non_obvious_opportunity": "შეგიძლია Georgian e-commerce საიტებს შესთავაზო მარტივი MCP/Agent API შრე, რომ AI ასისტენტებმა შეძლონ მათი პროდუქტების წაკითხვა.",
-      "fit_assessment": "მნიშვნელოვანია ბიზნეს აგენტების სტრატეგიისთვის: აჩვენებს, სად მიდის რეალური agentic e-commerce."
-    },
-    {
-      "event_id": "evt-paad-2-engineering-driven-ai",
-      "title": "PAAD 2.0: საინჟინრო დისციპლინისა და კოდის ხარისხის Skill-ების ფრეიმვორკი აგენტებისთვის",
-      "category": "AI Coding Tools & Agent Workflows",
-      "primary_url": "https://github.com/ovid/paad",
-      "supporting_urls": [],
-      "importance": 7,
-      "relevance": 9,
-      "actionability": 9,
-      "source_quality": 8,
-      "confidence": 90,
-      "tldr": "PAAD 2.0-მა გამოაშვება საინჟინრო დისციპლინის skill-ების ნაკრები, რომელიც აიძულებს აგენტებს დაიცვან TDD, არქიტექტურა და OWASP უსაფრთხოება.",
-      "what_happened": "Ovid-მა განახლა PAAD ფრეიმვორკი, რომელიც აგენტურ ინსტრუმენტებს ამატებს TDD-ს, pushback-ს და არქიტექტურულ სკანირებას.",
-      "what_changed": "აგენტი აღარ წერს უბრალო კოდს; ის გადის spec alignment-ს, architecture review-ს და ტესტებს სანამ merge მოხდება.",
-      "why_it_matters": "საშუალებას გაძლევს შექმნა წარმოებისთვის მზადყოფნაში მყოფი (production-grade) კოდი აგენტების ასისტენტირებით.",
-      "key_takeaways": [
-        "70+ აგენტის მხარდაჭერა npx skills-ის მეშვეობით",
-        "TDD guardrail-ები და /vibe სესიების მართვა",
-        "OWASP უსაფრთხოებისა და არქიტექტურის ავტოსკანირება"
-      ],
-      "technical_architecture": [
-        "Multi-agent skill pipeline",
-        "CLI plugin system via npx skills",
-        "Configuration driven rule engine"
-      ],
-      "technical_details": [
-        "npx skills@latest add Ovid/paad",
-        "/agentic-architecture path scanning",
-        "/pushback specification verification"
-      ],
-      "potential_impact": "მაღალი ხარისხის, ტესტებით დაფარული კოდი AI აგენტებისგან მინიმალური ტექნიკური ვალით.",
-      "action_type": "TRY",
-      "action": "დააყენე PAAD skill-ები npx-ით შენს სავარჯიშო Python პროექტში და გაატარე /agentic-review.",
-      "evidence": [],
-      "factuality_level": "verified",
-      "classification": [
-        "Real Technical Skill",
-        "Short-term Opportunity"
-      ],
-      "verified_facts": [
-        "გამოვიდა PAAD 2.0.0, რომელიც ამატებს კონფიგურაციის ფაილებს და უსაფრთხოების რეპორტების იზოლაციას",
-        "მოიცავს მზა skill-ებს: /pushback, /alignment, /agentic-review, /agentic-architecture და TDD guardrail-ებს",
-        "თავსებადია 70+ აგენტურ სისტემასთან (Claude Code, Cursor, Codex CLI) npx skills-ის საშუალებით"
-      ],
-      "interpretation": "vibe coding-ის ნაცვლად, პროფესიონალური AI ინჟინერია მოითხოვს მკაცრ არქიტექტურულ Pushback-ს და TDD-ს აგენტის მუშაობის პროცესში.",
-      "uncertainty": "მრავალი დისციპლინური skill-ის ჩართვამ შესაძლოა გაზარდოს ტოკენების მოხმარება და შეანელოს განვითარების ტემპი.",
-      "counter_argument": "მცირე პროექტებისთვის ასეთი მკაცრი არქიტექტურული მიმოხილვა შესაძლოა ზედმეტი ბიუროკრატია იყოს.",
-      "strategic_assessment": "გამოიყენე PAAD-ის პრინციპები (TDD, Architecture pushback), რომ შენი პორტფოლიოს კოდი გამოიყურებოდეს როგორც Senior Engineer-ის ნამუშევარი.",
-      "time_horizon": "short-term",
-      "what_could_change": "დეველოპერები გადავლენ უბრალო კოდის გენერაციიდან აგენტების საინჟინრო მართვაზე (Engineering-driven AI).",
-      "risks": [
-        "მაღალი ტოკენების დანახარჯი ხშირი review-ების გამო",
-        "კონფიგურაციის სირთულე მცირე პროექტებში"
-      ],
-      "non_obvious_opportunity": "შეგიძლია შექმნა custom prompt-skills ნაკრები ქართული ბიზნესების სპეციფიკური ტექნიკური მოთხოვნებისთვის.",
-      "fit_assessment": "ეხმარება 16 წლის დეველოპერს, აჩვენოს უფროსი ინჟინრის დონის სადისციპლინო პრაქტიკა თავის GitHub რეპოზიტორიებში."
-    },
-    {
-      "event_id": "evt-code-rag-local-mcp-postgres",
-      "title": "Code-RAG: ლოკალური PostgreSQL + Ollama RAG სერვერი MCP აგენტებისთვის",
-      "category": "RAG & Database Architecture",
-      "primary_url": "https://github.com/blakemcbride/Code-RAG",
-      "supporting_urls": [],
-      "importance": 7,
-      "relevance": 9,
-      "actionability": 8,
-      "source_quality": 8,
-      "confidence": 90,
-      "tldr": "Code-RAG არის ლოკალური PostgreSQL 17 + pgvector სერვერი, რომელიც აგენტებს აძლევს სემანტიკურ ძებნას კოდის ბაზებში MCP-ით.",
-      "what_happened": "blakemcbride-მა გამოაქვეყნა Code-RAG — ლოკალური MCP სერვერი, რომელიც იყენებს Ollama-ს ემბედინგებს და Postgres vector search-ს.",
-      "what_changed": "კოდის ფაილების მთლიანად context window-ში ჩატვირთვის ნაცვლად, აგენტი იღებს ზუსტ ჩანკებს HNSW ინდექსიდან.",
-      "why_it_matters": "საშუალებას გაძლევს შეისწავლო რეალური, Production-ready PostgreSQL RAG არქიტექტურა უფასოდ.",
-      "key_takeaways": [
-        "PostgreSQL 17 + pgvector (HNSW) ბაზა",
-        "Ollama nomic-embed-text ლოკალური ემბედინგები",
-        "Symbol-aware chunking 15+ დაპროგრამების ენისთვის"
-      ],
-      "technical_architecture": [
-        "PostgreSQL 17 schema-per-project isolation",
-        "pgvector HNSW index cosine similarity",
-        "Ollama embedding API pipeline"
-      ],
-      "technical_details": [
-        "nomic-embed-text:v1.5 embeddings",
-        "MCP server protocol via Kiss framework",
-        "Cron sweep index updating"
-      ],
-      "potential_impact": "იაფი და უსაფრთხო კოდის RAG სისტემები ლოკალურ დეველოპმენტ სერვერებზე.",
-      "action_type": "BUILD",
-      "action": "გააშევე Docker-ით PostgreSQL + pgvector ლოკალურად და ააგე მინიმალური Python სკრიპტი HNSW ინდექსით ტექსტის საძიებლად.",
-      "evidence": [],
-      "factuality_level": "verified",
-      "classification": [
-        "Real Technical Skill",
-        "Short-term Opportunity"
-      ],
-      "verified_facts": [
-        "Code-RAG იყენებს PostgreSQL 17 + pgvector (HNSW) და ლოკალურ Ollama-ს (nomic-embed-text) ემბედინგებისთვის",
-        "უზრუნველყოფს სემანტიკურ ძებნას 15+ ენისთვის (Python, Rust, Go, TS) სიმბოლოების გათვალისწინებით (symbol-aware chunking)",
-        "მუშაობს როგორც სუფთა MCP სერვერი multi-project isolation-ით (ერთი schema თითო პროექტზე)"
-      ],
-      "interpretation": "ლოკალური PostgreSQL + pgvector არის ყველაზე საიმედო და იაფი Production Stack RAG-ისთვის, რაც სცდება უბრალო Chroma/FAISS დემოებს.",
-      "uncertainty": "Ollama-ს მეშვეობით დიდი კოდის ბაზების პირველადი ინდექსაცია GPU-ს გარეშე შესაძლოა ნელი იყოს.",
-      "counter_argument": "მხოლოდ ემბედინგებზე დაფუძნებული ძებნა კოდში ხშირად ჩამოუვარდება AST-ზე დაფუძნებულ ზუსტ deterministic search-ს.",
-      "strategic_assessment": "ისწავლე PostgreSQL + pgvector-ის მართვა SQL დონეზე — ეს არის ყველაზე მოთხოვნადი უნარი Enterprise RAG სისტემებში.",
-      "time_horizon": "mid-term",
-      "what_could_change": "PostgreSQL გახდება ცენტრალური ბაზა არამხოლოდ ტრანზაქციებისთვის, არამედ აგენტების ვექტორული და ჰიბრიდული ძებნისთვის.",
-      "risks": [
-        "PostgreSQL 17-ისა და pgvector-ის გამართვის საჭიროება",
-        "ლოკალური GPU-ს არარსებობისას ნელი ინდექსაცია"
-      ],
-      "non_obvious_opportunity": "შეგიძლია შესთავაზო ადგილობრივ კომპანიებს PostgreSQL-ზე დაფუძნებული პრივატული დოკუმენტების RAG, სადაც მონაცემები არ ტოვებს სერვერს.",
-      "fit_assessment": "ზუსტად პასუხობს მომხმარებლის სასწავლო გეგმას: SQL/Databases -> RAG -> MCP ლოკალურ ინფრასტრუქტურაზე."
-    },
-    {
-      "event_id": "evt-meta-muse-wonder-active-memory",
-      "title": "Meta Muse Wonder: Frontier მოდელი Active Memory არქიტექტურით და MemoryBench ლიდერობით",
-      "category": "აგენტის არქიტექტურა და მეხსიერება",
-      "primary_url": "https://techcrunch.com/2026/10/12/meta-releases-its-first-frontier-model-muse-wonder",
-      "supporting_urls": [],
-      "importance": 9,
-      "relevance": 9,
-      "actionability": 7,
-      "source_quality": 7,
-      "confidence": 88,
-      "tldr": "Meta-მ გამოუშვა Muse Wonder frontier მოდელი გაუმჯობესებული active memory მექანიზმით, რომელიც აგენტებს ხანგრძლივი კონტექსტის შენარჩუნებაში ეხმარება.",
-      "what_happened": "Meta Superintelligence Lab-მა გამოუშვა Muse Wonder და Wonder Full, რომლებმაც MemoryBench ტესტში წამყვანი შედეგები აჩვენეს.",
-      "what_changed": "მანამდე Meta მხოლოდ მსუბუქ Muse Spark მოდელს სთავაზობდა დეველოპერებს, ახლა კი სრულფასოვან frontier დონეზე გადავიდა.",
-      "why_it_matters": "Active memory აჩვენებს, თუ როგორ უნდა შეინახოს ბიზნეს აგენტმა მომხმარებლის ისტორია კვირების განმავლობაში ჰალუცინაციების გარეშე.",
-      "key_takeaways": [
-        "Muse Wonder ფასდება $4 და $20 1M ტოკენზე",
-        "MemoryBench ბენჩმარკზე გადაასწრო წამყვან კონკურენტებს",
-        "Wonder Full მხოლოდ Muse Code გამოწერით ვრცელდება"
-      ],
-      "technical_architecture": [
-        "Multi-modal transformer აქტიური მეხსიერების არქიტექტურით",
-        "ინტეგრაცია Muse agent framework-თან",
-        "ტრენინგი Prometheus supercomputer კლასტერზე"
-      ],
-      "technical_details": [
-        "Model API ფასი: $4 input, $20 output",
-        "ტესტირებული ბენჩმარკი: MemoryBench",
-        "კონკურენტული ექვივალენტი: GPT-6 Astra, Opus 5.5"
-      ],
-      "potential_impact": "კომპანიები შეძლებენ მრავალთვიანი სამუშაო პროცესების აგენტებზე გადაცემას მეხსიერების დაკარგვის გარეშე.",
-      "action_type": "LEARN",
-      "action": "გააანალიზე MemoryBench-ის ტესტირების სტრუქტურა და დაწერე მარტივი Python სკრიპტი საკუთარი აგენტის მეხსიერების სიზუსტის შესაფასებლად.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "Meta Superintelligence Lab-მა გამოუშვა Muse Wonder და Wonder Full",
-        "API ტარიფია $4 ინპუტზე და $20 აუტპუტზე 1M ტოკენზე",
-        "Wonder-მა MemoryBench ბენჩმარკზე გადაუსწრო Fable 5.1-ს, Opus 5.5-სა და Astra-ს",
-        "მოდელი ნავარჯიშებია ოჰაიოს Prometheus დატაცენტრში"
-      ],
-      "interpretation": "Meta პირველად უტოლდება frontier ლაბორატორიებს და ფოკუსირდება active memory სისტემაზე, რაც აგენტებს საშუალებას აძლევს თვეების განმავლობაში შეინარჩუნონ კონტექსტი.",
-      "uncertainty": "უცნობია კონკრეტული შიდა არქიტექტურა, რითაც მიიღწევა active memory: იყენებენ RAG-ს, state-space მოდელებს თუ სპეციალურ attention მექანიზმს.",
-      "counter_argument": "1M ტოკენზე $4/$20 მაღალი ფასია დამოუკიდებელი დეველოპერისთვის, ამიტომ ლოკალური მეხსიერების მართვა ჯერ კიდევ უფრო ეკონომიურია.",
-      "strategic_assessment": "შეისწავლე MemoryBench ტესტების მეთოდოლოგია საკუთარ აგენტებში ხანგრძლივი მეხსიერების შესამოწმებლად. არ გადახვიდე ძვირადღირებულ API-ზე, სანამ მარტივი RAG და key-value მეხსიერება საკმარისია.",
-      "time_horizon": "mid-term",
-      "what_could_change": "აგენტების მეხსიერების ხელით ინჟინერია ჩანაცვლდება მოდელში ჩაშენებული active memory სისტემებით, რაც შეამცირებს გარე ვექტორული ბაზების როლს.",
-      "risks": [
-        "მაღალი API ხარჯი მცირე ბიუჯეტის მქონე პროექტებისთვის",
-        "დამოკიდებულება პროპრიეტარულ დახურულ მეხსიერების ფორმატზე",
-        "Wonder Full მოდელის ხელმისაწვდომობის შეზღუდვა მხოლოდ გამოწერით"
-      ],
-      "non_obvious_opportunity": "საკუთარ აგენტში MemoryBench-ის მსგავსი ტესტების დანერგვა კლიენტებისთვის სანდოության დასამტკიცებლად.",
-      "fit_assessment": "მეხსიერების არქიტექტურა პირდაპირ ემთხვევა მკითხველის გეგმას, თუმცა გამოყენება უნდა მოხდეს უფასო ევალუაციის პრინციპებით."
-    },
     {
       "event_id": "evt-openai-math-lean-verification",
       "title": "OpenAI Frontier Math: ფორმალური Lean ვერიფიკაცია და 3-საათიანი Reasoning Loops",
@@ -6347,6 +6014,361 @@
       ],
       "non_obvious_opportunity": "შეგიძლია გამოიყენო მცირე ღია მოდელი როგორც adversarial draft მოდელი შენს ლოკალურ აგენტურ სკრიპტებში.",
       "fit_assessment": "კარგად ერგება შენს ინტერესს აგენტური ლოუპებისა და საიმედოობის მიმართულებით."
+    },
+    {
+      "event_id": "evt-cncf-agent-substrate-gvisor",
+      "title": "CNCF Sandbox: Google-მა Agent Substrate 1.0, gVisor და OpenRL ღია ინფრასტრუქტურას გადასცა",
+      "category": "აგენტების ინფრასტრუქტურა და Open Source",
+      "primary_url": "https://cloud.google.com/blog/products/containers-kubernetes/open-infrastructure-for-autonomous-agents-comes-to-cncf",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 9,
+      "confidence": 95,
+      "tldr": "Google-მა CNCF-ს გადასცა Agent Substrate და gVisor, რაც აგენტებს 500ms-ში აღადგენს და კოდის უსაფრთხო იზოლაციას უზრუნველყოფს.",
+      "what_happened": "Agent Substrate 1.0 და gVisor გახდნენ CNCF Sandbox პროექტები GKE GA მხარდაჭერით.",
+      "what_changed": "Before: აგენტების Idle state აკავებდა ძვირადღირებულ RAM/CPU-ს. After: 10x სიმჭიდროვე Snapshotted Resume-ით.",
+      "why_it_matters": "გაძლევს არქიტექტურულ შაბლონს, თუ როგორ აშენდება 2026+ წლებში Production Agent Execution Sandboxes.",
+      "key_takeaways": [
+        "Substrate snapshots idle agents in under 500ms",
+        "gVisor isolates unreviewed AI code at container density",
+        "CNCF sandbox guarantees open-source ecosystem standard"
+      ],
+      "technical_architecture": [
+        "Userspace Linux Kernel isolation via gVisor",
+        "Substrate state snapshotting engine for Kubernetes",
+        "OpenRL for distributed reinforcement learning post-training"
+      ],
+      "technical_details": [
+        "Restore latency under 500ms",
+        "10x container packing density",
+        "GA status on Google Kubernetes Engine"
+      ],
+      "potential_impact": "მნიშვნელოვნად ამცირებს Cloud Hosting ხარჯებს აგენტური პლატფორმებისთვის და ზრდის Sandbox უსაფრთხოებას.",
+      "action_type": "LEARN",
+      "action": "გამოიკვლიე gVisor-ის დოკუმენტაცია და გატესტე Python code execution-ის იზოლაცია ადგილობრივ Linux/Docker გარემოში.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value",
+        "Long-term Opportunity"
+      ],
+      "verified_facts": [
+        "Agent Substrate 1.0 reached GA on GKE and joined CNCF Sandbox",
+        "Agent Substrate snapshots idle agents to storage and restores them in under 500ms",
+        "gVisor isolates untrusted generated code in a lightweight userspace application kernel",
+        "Increases container density by 10x by decoupling idle state from compute"
+      ],
+      "interpretation": "აგენტების გაშვება სტანდარტულ Docker კონტეინერებში ძვირი და უსაფრთხოების რისკია. Substrate და gVisor ამყარებენ სტანდარტს უსაფრთხო, მაღალი სიმჭიდროვის Agent Runtime-ისთვის.",
+      "uncertainty": "CNCF Sandbox სტადიიდან Incubation-მდე გადასვლის ზუსტი დროის ჩარჩო არ არის მითითებული.",
+      "counter_argument": "მცირე პროექტებისთვის GKE და Kubernetes ინფრასტრუქტურა ზედმეტად რთულია და Docker/gVisor standalone საკმარისია.",
+      "strategic_assessment": "გამოიყენე gVisor პატერნი შენს უფასო/დაბალბიუჯეტიან Serverless გარემოში უცხო AI კოდის უსაფრთხო იზოლაციისთვის.",
+      "time_horizon": "long-term",
+      "what_could_change": "ყველა Production Agent Platform გადავა Snapshotted State და Userspace Kernel იზოლაციაზე.",
+      "risks": [
+        "Kubernetes clusters მოითხოვს მაღალ ფიქსირებულ ხარჯს",
+        "Snapshotted state Restore latency შეიძლება გაიზარდოს დიდი Memory Context-ისას"
+      ],
+      "non_obvious_opportunity": "შექმენი მცირე Python Wrapper gVisor-ისთვის, რომელიც Telegram Bot-იდან მოსულ AI კოდს უფასო VPS-ზე იზოლირებულად გაუშვებს.",
+      "fit_assessment": "იდეალურად ერგება შენს მიზანს: ისწავლო, როგორ გაუშვა Agent Code Execution უსაფრთხოდ ნულოვანი ხარჯით."
+    },
+    {
+      "event_id": "evt-openai-autonomous-cyber-pipeline",
+      "title": "OpenAI Autonomous Cyber Pipeline: 948 LPE ექსპლოიტი Linux Kernel-ში GPT-6 Cyber-ით",
+      "category": "აგენტის არქიტექტურა და უსაფრთხოება",
+      "primary_url": "https://openai.com/index/a-thousand-fewer-paths-to-root",
+      "supporting_urls": [
+        "https://openai.com/index/introducing-gpt-6-cyber"
+      ],
+      "importance": 9,
+      "relevance": 8,
+      "actionability": 7,
+      "source_quality": 10,
+      "confidence": 92,
+      "tldr": "OpenAI-მ შექმნა ავტონომიური კიბერუსაფრთხოების პაიპლაინი, რომელმაც Linux-ში 948 ექსპლოიტი იპოვა და დაალაგა $1,279 ხარჯით თითოზე.",
+      "what_happened": "OpenAI-მ წარადგინა GPT-6 Cyber და ავტონომიური Vulnerability Discovery & Patching Pipeline.",
+      "what_changed": "Before: ხელით უსაფრთხოების კვლევა. After: სრულად ავტომატიზებული PoC და Patch გენერაცია API პაიპლაინით.",
+      "why_it_matters": "აჩვენებს, როგორ უნდა სტრუქტურირდეს რთული multi-step აგენტური ციკლები რეალურ ინჟინერიაში.",
+      "key_takeaways": [
+        "Autonomous pipeline generated 948 working Linux LPE exploits",
+        "ExploitGym accuracy rose to 48.5% with strict alignment boundaries",
+        "Patch execution cost averaged $1,279 per validated vulnerability"
+      ],
+      "technical_architecture": [
+        "Static code analysis module feeding dynamic sandbox isolation",
+        "Automated Proof-of-Concept exploit generator loop",
+        "Candidate patch generator with human-in-the-loop review"
+      ],
+      "technical_details": [
+        "2,308 candidate findings analyzed",
+        "1,724 vulnerabilities dynamically reproduced",
+        "100% scope boundary compliance with prompt"
+      ],
+      "potential_impact": "ცვლის უსაფრთხოების ინჟინერიას: კომპანიები გადავლენ უწყვეტ ავტონომიურ Patching პაიპლაინებზე.",
+      "action_type": "BUILD",
+      "action": "დაწერე Python სკრიპტი, რომელიც GitHub Webhook-ით იღებს კოდს, უშვებს Bandit/Safety სკანერს და LLM API-ით გენერირებს Fix PR-ს.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Real Business Opportunity",
+        "Short-term Opportunity"
+      ],
+      "verified_facts": [
+        "Pipeline identified 2,308 candidate findings and generated 948 working LPE exploits in Linux",
+        "Total run cost was $1,213,430 in API credits, or $1,279 per working LPE exploit",
+        "GPT-6 Cyber scored 48.5% on ExploitGym benchmark up from 32.1% in GPT-5.6",
+        "Alignment evals showed 99.93% out-of-scope avoidance without prompt, 100% with deployment prompt"
+      ],
+      "interpretation": "უსაფრთხოების აუდიტი გადავიდა ხელით ძებნიდან ავტონომიურ პაიპლაინებზე: Static Scan -> Dynamic Repro -> PoC Generation -> Patch Development.",
+      "uncertainty": "$1.2M API ხარჯი აჩვენებს, რომ ასეთი მასშტაბური ავტონომიური ციკლები ჯერჯერობით ძვირია.",
+      "counter_argument": "მაღალი API ხარჯი ($1,279/exploit) მიანიშნებს, რომ რეალური ბიზნესებისთვის ეს ჯერ მხოლოდ კრიტიკულ ინფრასტრუქტურაზეა ეკონომიკურად გამართლებული.",
+      "strategic_assessment": "ააგე მცირე ავტომატიზებული Vulnerability Triage Agent შენი საკუთარი GitHub Repositories-ის CI/CD პაიპლაინში.",
+      "time_horizon": "mid-term",
+      "what_could_change": "Software Security Audits სრულად გადავა Continuous Agentic Vulnerability Discovery პაიპლაინებზე.",
+      "risks": [
+        "მაღალი API ხარჯები მრავალჯერადი მსჯელობის ციკლებისას",
+        "False positive findings-ის ფილტრაციის სირთულე"
+      ],
+      "non_obvious_opportunity": "შექმენი დაბალბიუჯეტიანი Bug Bounty Triage Bot Telegram-ში, რომელიც Open-Source Python პაკეტების PR-ებს უსაფრთხოებაზე ამოწმებს.",
+      "fit_assessment": "გაძლევს მკაფიო არქიტექტურულ პატერნს: Scan -> Repro -> Proof-of-Concept -> Patch."
+    },
+    {
+      "event_id": "evt-aws-devops-agent-mcp-skills",
+      "title": "AWS DevOps Agent: გაფართოება Custom Skills და MCP Server-ების მეშვეობით",
+      "category": "აგენტების ინფრასტრუქტურა და MCP",
+      "primary_url": "https://aws.amazon.com/blogs/mt/extending-aws-devops-agent-with-skills-model-context-protocol-mcp-servers-custom-agents-and-connectors",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "AWS-მა გამოაქვეყნა DevOps Agent-ის გაფართოების არქიტექტურა MCP სერვერებით და open-source repository building block-ებით.",
+      "what_happened": "AWS-მა გახსნა `aws/tools-for-devops-agent` რეპოზიტორი დოკუმენტირებული MCP Tools და Custom Skills არქიტექტურით.",
+      "what_changed": "Before: აგენტი ეყრდნობოდა მხოლოდ ზოგად ცოდნას. After: ინჟინრები ამატებენ კონკრეტულ Runbook-ებს MCP-ის მეშვეობით.",
+      "why_it_matters": "გაჩვენებს, როგორ გადააქციო ხელით შესასრულებელი ინსტრუქციები (SOP) AI აგენტის MCP ინსტრუმენტებად.",
+      "key_takeaways": [
+        "AWS standardizes agent extensions via Model Context Protocol",
+        "Open-source repository provides clear skill authoring loop",
+        "Combines runbook context with CloudWatch/CloudTrail telemetry"
+      ],
+      "technical_architecture": [
+        "Model Context Protocol (MCP) server endpoints for operational tools",
+        "Custom Skill manifest structure for guided investigation",
+        "Connector layer bridging AWS APIs and agent context"
+      ],
+      "technical_details": [
+        "Repository: aws/tools-for-devops-agent",
+        "Supports ECS and EKS operational reviews",
+        "Guided investigation flow via custom SOP definitions"
+      ],
+      "potential_impact": "ამცირებს P1 ინციდენტების Triage დროის 60%-მდე საწარმოო DevOps გუნდებში.",
+      "action_type": "BUILD",
+      "action": "შექმენი Python-ზე დაფუძნებული MCP Server, რომელიც ამოწმებს შენი Telegram Bot-ის Server Status-ს და ლოგებს აწვდის LLM-ს.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Real Business Opportunity",
+        "Short-term Opportunity"
+      ],
+      "verified_facts": [
+        "AWS released aws/tools-for-devops-agent open-source repository",
+        "Extends DevOps Agent using Custom Skills, MCP Servers, and Connectors",
+        "Addresses human knowledge gaps: Runbooks, Correlation Patterns, and Escalation SOPs",
+        "Demonstrated with EKS Operations Review reusable building block"
+      ],
+      "interpretation": "generic LLM მსჯელობა საკმარისი არ არის ინციდენტების დებაგინგისთვის; საჭიროა MCP Server-ებით და Skills-ით Runbook-ების დეტერმინისტული მიწოდება.",
+      "uncertainty": "aws/tools-for-devops-agent არის Sample Code და მოითხოვს IAM permissions-ის დამატებით კონფიგურაციას.",
+      "counter_argument": "AWS-ზე მიბმული ინსტრუმენტები ნაკლებად მოქნილია Multi-cloud ან local open-source აგენტურ სისტემებთან შედარებით.",
+      "strategic_assessment": "შექმენი საკუთარი MCP Server, რომელიც აგენტს აწვდის შენი აპლიკაციის დებაგინგის runbook-ებს და API status-ებს.",
+      "time_horizon": "short-term",
+      "what_could_change": "DevOps ინციდენტების Triage სრულად გადავა MCP-ზე დაფუძნებულ Guided Agent Workflows-ზე.",
+      "risks": [
+        "არასწორი IAM ნებართვები MCP სერვერზე",
+        "Runbook-ების მოძველება, თუ დოკუმენტაცია ავტომატურად არ ახლდება"
+      ],
+      "non_obvious_opportunity": "ააგე მცირე საწარმოო DevOps Helper Telegram Bot, რომელიც MCP-ით უკავშირდება GitHub Actions-ს და ლოგების დებაგინგს აკეთებს.",
+      "fit_assessment": "სრულად ემთხვევა შენს სწავლის რიგს: MCP Servers, Tool Calling, და Telegram Delivery Channel."
+    },
+    {
+      "event_id": "evt-merge-agent-handler-mcp-benchmark",
+      "title": "Merge Agent Handler: 99.9% Tool Call წარმატების მაჩვენებელი საწარმოო არქიტექტურაში",
+      "category": "Real Business Opportunity & Agent Architecture",
+      "primary_url": "https://openai.com/index/merge-builds-with-openai",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 9,
+      "source_quality": 10,
+      "confidence": 90,
+      "tldr": "Merge-მა აჩვენა, რომ საწარმოო აგენტებს სჭირდებათ Agent Handler შრე, რათა Tool Calling-ის საიმედოობა 60%-დან 99.9%-მდე გაზარდონ.",
+      "what_happened": "Merge-მა გამოაქვეყნა საწარმოო მონაცემები, სადაც მათი Agent Handler 99.9%-იან Tool Call წარმატებას აღწევს.",
+      "what_changed": "Before: საჯარო MCP სერვერები 40%-ში ფუჭდებოდა. After: Validation Proxy და Gateway ინფრასტრუქტურა უზრუნველყოფს 99.9% საიმედოობას.",
+      "why_it_matters": "სანდო ბიზნეს-აგენტის შესაქმნელად აუცილებელია Error Recovery და Strict Schema Enforcement.",
+      "key_takeaways": [
+        "Tool call reliability gap: 99.9% managed vs 60% public MCP",
+        "Merge Gateway provides model routing and API cost controls",
+        "Pre-PR code review loops automate integration testing"
+      ],
+      "technical_architecture": [
+        "Merge Agent Handler middleware for schema enforcement",
+        "Merge Gateway routing layer for model selection and cost caps",
+        "Merge Unified API mapping heterogeneous business data"
+      ],
+      "technical_details": [
+        "99.9% tool execution success SLA",
+        "Built-in support for GPT-6 Astra reasoning",
+        "Automated PR review plugin integration"
+      ],
+      "potential_impact": "გაძლევს კონკურენტულ უპირატესობას: კლიენტებს შესთავაზო 99%+ სანდოობის AI ინტეგრაციები.",
+      "action_type": "BUILD",
+      "action": "დაამატე Pydantic-ზე დაფუძნებული Tool Argument Validation და Retry Loop შენს Python LLM API Tool Calling სკრიპტში.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Real Business Opportunity",
+        "Short-term Opportunity"
+      ],
+      "verified_facts": [
+        "Merge Agent Handler achieves 99.9% tool call success rate compared to 60% average for public…",
+        "Merge uses GPT-6 Astra and Codex for cross-repository code reviews and automated workflows",
+        "Built Merge Gateway for model routing and cost controls across workforce tools"
+      ],
+      "interpretation": "საჯარო MCP სერვერების 60%-იანი საიმედოობა მიუღებელია ბიზნესისთვის; 99.9%-ის მიღწევა მოითხოვს Schema Validation და Error Handoff შრეს.",
+      "uncertainty": "99.9%-იანი Benchmark მიღწეულია Merge-ის შიდა Gateway არქიტექტურით და დეტალური საჯარო methodology არ არის სრულად ღია.",
+      "counter_argument": "Merge არის proprietary platform, შესაბამისად open-source დეველოპერებს მოუწევთ საკუთარი Validation Proxy-ს აგება.",
+      "strategic_assessment": "ნუ ენდობი ნედლ MCP responses-ს: ყოველთვის ჩასვი Schema Validation და Retry Loop შენს Python Agent Loop-ში.",
+      "time_horizon": "short-term",
+      "what_could_change": "ყველა Production Agent Framework დაამატებს Strict Tool Validation Proxy შრეს API Call-ების ირგვლივ.",
+      "risks": [
+        "Public MCP სერვერების დაბალი საიმედოობა (60% success rate)",
+        "API Rate limits და Schema mismatch tool calling-ის დროს"
+      ],
+      "non_obvious_opportunity": "შექმენი ღია Lightweight Python Wrapper (Validation Proxy), რომელიც საჯარო MCP სერვერების პასუხებს ვალიდაციას უკეთებს და 99%+ Reliability-ს უზრუნველყოფს.",
+      "fit_assessment": "ზუსტად პასუხობს შენს მიზანს: ააგო რეალური საწარმოო ბიზნეს-აგენტები და არა უბრალო სათამაშო დემოები."
+    },
+    {
+      "event_id": "evt-google-ple-benchmark-archipelago",
+      "title": "Google Cloud & Mercor: Physical-Engineering's Last Exam (PLE) ბენჩმარკი აგენტებისთვის",
+      "category": "AI Evaluation & საიმედოობა",
+      "primary_url": "https://cloud.google.com/blog/products/ai-machine-learning/introducing-physical-engineerings-last-exam-for-agents",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 8,
+      "actionability": 7,
+      "source_quality": 9,
+      "confidence": 90,
+      "tldr": "Google-მა და Mercor-მა წარადგინეს PLE ბენჩმარკი 85 კომპლექსური ამოცანით, რომლებიც კონტეინერიზებულ multi-file გარემოში გაედინება.",
+      "what_happened": "Google-მა გამოაქვეყნა PLE ბენჩმარკი ინჟინერიის 4 სფეროში აგენტების long-horizon შესაძლებლობების შესამოწმებლად.",
+      "what_changed": "Before: ტექსტბუქური Q&A ტესტები. After: 61 ფაილიანი კონტეინერიზებული პროექტების ავტონომიური დამუშავება.",
+      "why_it_matters": "აჩვენებს, თუ როგორ უნდა შეამოწმო შენი აგენტები რეალურ სამუშაო გარემოსთან მიახლოებულ პირობებში.",
+      "key_takeaways": [
+        "85 long-horizon engineering tasks across 4 disciplines",
+        "Runs in containerized Mercor Archipelago environment",
+        "Average 61 files per task including CAD, BIM, and PDFs"
+      ],
+      "technical_architecture": [
+        "Mercor Archipelago containerized evaluation environment",
+        "Multi-file document context parser (PDF, CAD, BIM, Code)",
+        "Automated rubric grader for production-ready deliverables"
+      ],
+      "technical_details": [
+        "5,170 total files across benchmark",
+        "29 open public tasks released at ple-bench.com",
+        "Evaluates mechanical, electrical, civil, structural engineering"
+      ],
+      "potential_impact": "ზნის აგენტური შეფასების (Agent Evaluation) სტანდარტს რეალურ საწარმოო დავალებებზე.",
+      "action_type": "LEARN",
+      "action": "გამოიკვლიე ple-bench.com და ნახე, როგორ არის სტრუქტურირებული მრავალფაილიანი Evaluation გარემო.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value",
+        "Mid-term Opportunity"
+      ],
+      "verified_facts": [
+        "Google & Mercor launched Physical-Engineering's Last Exam (PLE) with 85 long-horizon tasks",
+        "Tasks run in Mercor Archipelago containerized environment with an average of 61 files per task",
+        "Covers mechanical (30), electrical (27), civil (18), and structural (10) engineering disciplines",
+        "Evaluates code compliance, cost-effectiveness, and production-ready deliverables"
+      ],
+      "interpretation": "აკადემიური Q&A ბენჩმარკები ამომწურავია; ახალი სტანდარტია მრავალფაილიანი კონტეინერიზებული პროექტების (Long-horizon tasks) გადაჭრა.",
+      "uncertainty": "29 საჯარო ამოცანა ხელმისაწვდომია, თუმცა სრული 85 ამოცანიდან ნაწილი დახურულია Leaderboard-ის გადამოწმებისთვის.",
+      "counter_argument": "ფიზიკური ინჟინერია მოითხოვს ლიცენზირებული ინჟინრის პასუხისმგებლობას, შესაბამისად აგენტები მხოლოდ დამხმარე ინსტრუმენტად დარჩებიან.",
+      "strategic_assessment": "ისწავლე აგენტების შეფასება არა მარტივი პ롬პტებით, არამედ მრავალფაილიან სენდბოქს გარემოში (Containerized Evals).",
+      "time_horizon": "mid-term",
+      "what_could_change": "AI Evaluation სრულად გადავა რეალური სამუშაო გარემოების კონტეინერიზებულ სიმულაციებზე (Archipelago-style environments).",
+      "risks": [
+        "Long-horizon tasks მოითხოვს მრავალ Context window turn-ს, რაც ზრდის API ხარჯს",
+        "ფაილების მაღალი რაოდენობა (61 file/task) ტვირთავს RAG/Retrieval-ს"
+      ],
+      "non_obvious_opportunity": "შექმენი მცირე Open-Source Evaluation Harness შენი ბიზნეს-აგენტებისთვის, რომელიც ამოწმებს აპლიკაციის მრავალფაილიან პაიპლაინებს.",
+      "fit_assessment": "გეხმარება აგენტების შეფასების (Evaluation) უნარის განვითარებაში, რაც შენი Skill Matrix-ის კრიტიკული ნაწილია."
+    },
+    {
+      "event_id": "evt-anthropic-provable-inference-flashprove",
+      "title": "Anthropic FlashProve: provable inference zkSNARKs-ით LLM-ების ტოკენების ვერიფიკაციისთვის",
+      "category": "AI Research / Agent Architecture",
+      "primary_url": "https://www.anthropic.com/research/provable-inference",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 7,
+      "actionability": 6,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "Anthropic-მა წარადგინა FlashProve, რომელიც zkSNARKs კრიპტოგრაფიით ამტკიცებს, რომ LLM პასუხი კონკრეტული მოდელისგან მოვიდა.",
+      "what_happened": "Anthropic-მა გამოაქვეყნა FlashProve სისტემა 400B მოდელებისთვის zkSNARK Inference Proofs-ის შესაქმნელად.",
+      "what_changed": "Before: შეუძლებელი იყო API-ს მიერ მოდელის ჩანაცვლების დადგენა. After: კრიპტოგრაფიული მტკიცებულება 110 tokens/sec სიჩქარით H100-ზე.",
+      "why_it_matters": "აყალიბებს AI უსაფრთხოებისა და მოდელების ვერიფიკაციის მომავალ სტანდარტს.",
+      "key_takeaways": [
+        "Cryptographic proof of model execution via zkSNARKs",
+        "110 tokens/second proof speed on 400B MoE model",
+        "Audited using Lean formal verification language"
+      ],
+      "technical_architecture": [
+        "FlashProve zkSNARK proof construction framework",
+        "Integer arithmetic prefill execution graph",
+        "Lean language auditable security specification"
+      ],
+      "technical_details": [
+        "19 MB proof size per 1,024 tokens",
+        "70-95x compute ratio relative to vLLM execution",
+        "Tested on Llama 4 Maverick 400B MoE"
+      ],
+      "potential_impact": "საძირკველს უყრის AI Compliance-ს და აცილებს Model Swapping თაღლითობას API პროვაიდერებში.",
+      "action_type": "TRACK",
+      "action": "წაიკითხე Anthropic-ის ბლოგი Provable Inference-ზე და შეინახე კონცეფცია AI Compliance არქიტექტურისთვის.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value",
+        "Long-term Opportunity"
+      ],
+      "verified_facts": [
+        "Anthropic developed FlashProve using zkSNARKs for cryptographic proof of inference",
+        "Llama 4 Maverick (400B MoE, 4-bit quantized) generates proofs at 110 tokens/sec on a single…",
+        "Proof size is ~19 MB per 1,024-token request using integer arithmetic in prefill",
+        "Formal security guarantees audited with Lean verification language statements"
+      ],
+      "interpretation": "Provable Inference საშუალებას იძლევა კრიპტოგრაფიულად დადასტურდეს, რომ პასუხი ნამდვილად კონკრეტულმა მოდელმა დააგენერირა და არა უფრო იაფმა substitute მოდელმა.",
+      "uncertainty": "Proof generation დრო 70-95x-ით მეტია ვიდრე ჩვეულებრივი vLLM inference, რაც ზღუდავს რეალურ დროში მასობრივ გამოყენებას.",
+      "counter_argument": "უმეტეს ბიზნეს აპლიკაციებს არ სჭირდება კრიპტოგრაფიული მტკიცებულება; სტანდარტული API TLS/HTTPS ვერიფიკაცია საკმარისია.",
+      "strategic_assessment": "გაიაზრე Provable Inference-ის პრინციპები, რადგან 3-5 წელში ეს გახდება AI Compliance-ის ფუნდამენტური მოთხოვნა.",
+      "time_horizon": "long-term",
+      "what_could_change": "AI API Routing და Enterprise Compliance მოითხოვს Cryptographic Proof of Inference-ს ყოველ ტოკენზე.",
+      "risks": [
+        "70-95x compute overhead proof generation-ის დროს",
+        "19MB proof size თითოეულ 1K token-ზე ქმნის Network Bandwidth ტვირთს"
+      ],
+      "non_obvious_opportunity": "შექმენი სერვისი, რომელიც ამოწმებს მოდელის API Provider-ების Integrity-ს და ადასტურებს, რომ მომხმარებელი არ იღებს Downgraded Model-ს.",
+      "fit_assessment": "ღრმა ტექნიკური ფუნდამენტი 3-10 წლიანი პერსპექტივისთვის, თუმცა დღეს დაბალი პრიორიტეტი აქვს პროტოტიპირებაში."
     }
   ],
   "topics": {
@@ -6420,7 +6442,7 @@
     "AI Coding Tools / Agent Architecture": 2,
     "LLM API / Agent Frameworks": 1,
     "AI Research / LLM Infrastructure": 1,
-    "AI Research / Agent Architecture": 21,
+    "AI Research / Agent Architecture": 22,
     "AI Research / Agent Memory": 1,
     "AI Research / RAG & Embeddings": 1,
     "AI Evaluation / Agent Reliability": 1,
@@ -6454,7 +6476,7 @@
     "AI Research & Agent Optimization": 1,
     "AI Research & Agent Infrastructure": 1,
     "AI Coding Tools და Agent Architecture": 1,
-    "აგენტების ინფრასტრუქტურა და MCP": 12,
+    "აგენტების ინფრასტრუქტურა და MCP": 13,
     "აგენტების ინფრასტრუქტურა და უსაფრთხოება": 2,
     "": 1,
     "AI Research & RAG": 1,
@@ -6467,7 +6489,7 @@
     "RAG & Database Architecture": 2,
     "აგენტის არქიტექტურა და Cost Optimization": 1,
     "აგენტების უსაფრთხოება და Sandbox": 3,
-    "AI Evaluation & საიმედოობა": 13,
+    "AI Evaluation & საიმედოობა": 14,
     "აგენტის არქიტექტურა და ხელსაწყოები": 4,
     "Long-Term Career Strategy": 1,
     "უსაფრთხოება და ღია კოდი": 1,
@@ -6487,7 +6509,7 @@
     "Long-Term Career Value": 2,
     "აგენტის არქიტექტურა და ოპტიმიზაცია": 6,
     "Open Source AI & Infrastructure": 1,
-    "Real Business Opportunity & Agent Architecture": 5,
+    "Real Business Opportunity & Agent Architecture": 6,
     "აგენტების ინფრასტრუქტურა და LLM APIs": 1,
     "აგენტების ინფრასტრუქტურა და Sandbox": 1,
     "აგენტის არქიტექტურა და საიმედოობა": 1,
@@ -6497,310 +6519,10 @@
     "AI Research / Self-Improvement": 1,
     "აგენტების არქიტექტურა და ინფრასტრუქტურა": 1,
     "აგენტის არქიტექტურა და Open Source": 2,
-    "აგენტის არქიტექტურა და უსაფრთხოება": 1
+    "აგენტის არქიტექტურა და უსაფრთხოება": 2,
+    "აგენტების ინფრასტრუქტურა და Open Source": 1
   },
   "reports": [
-    {
-      "date": "2026-10-21",
-      "summary": "AWS-მა წარმოადგინა MCP ხელსაწყოების დაცვის არქიტექტურა X.509 კრიპტოგრაფიული იდენტობით. OpenAI-მ გამოაქვეყნა GPT-6 სერიის შედეგები MultiLangBench-ზე, სადაც SQLite-ის ნულიდან აწყობა შემოწმდა. Google-მა და Meta-მ TorchTPU სრულად გახსნეს open source-ად, რაც PyTorch-ის TPU-ზე გაშვებას ამარტივებს.",
-      "events": [
-        {
-          "event_id": "evt-aws-mcp-x509-agent-identity",
-          "title": "AWS & Keyfactor: AI აგენტებისა და MCP სერვერების დაცვა X.509 PKI იდენტობით",
-          "category": "აგენტების ინფრასტრუქტურა და MCP",
-          "primary_url": "https://aws.amazon.com/blogs/machine-learning/securing-ai-agent-identity-with-x-509-pki-on-aws",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 10,
-          "actionability": 8,
-          "source_quality": 10,
-          "confidence": 95,
-          "tldr": "AWS-მა აჩვენა, რომ MCP-ს აკლია აუთენტიფიკაცია და შემოგვთავაზა X.509 სერტიფიკატებით აგენტის ხელმოწერის არქიტექტურა.",
-          "what_happened": "AWS-მა გამოაქვეყნა არქიტექტურა, სადაც აგენტები მონაცემთა ბაზებს და MCP ხელსაწყოებს X.509 ციფრული ხელმოწერით უკავშირდებიან.",
-          "what_changed": "მარტივი API key-ების გაზიარება ჩანაცვლდა signed request envelope-ებით და დელეგირების ტოკენებით.",
-          "why_it_matters": "საშუალებას გაძლევს ააგო ისეთი MCP სერვერი, რომელსაც ენტერპრაიზ უსაფრთხოების მოთხოვნების გამო არ დაბლოკავენ.",
-          "key_takeaways": [
-            "MCP არ შეიცავს ჩაშენებულ auth მექანიზმს",
-            "Signed envelopes ადასტურებს, რომ ზარი კონკრეტულმა აგენტმა განახორციელა",
-            "RFC 8693 ტოკენები ზღუდავს წვდომის არეალს გაჟონვისას"
-          ],
-          "technical_architecture": [
-            "Keyfactor EJBCA PKI პლატფორმა CA სერვერისთვის",
-            "AWS Bedrock და Strands Agents SDK",
-            "RFC 8693 audience-scoped ტოკენები და OCSP ვალიდაცია"
-          ],
-          "technical_details": [
-            "X.509 proof-of-possession ხელმოწერა თითოეულ call-ზე",
-            "REST API ავტომატიზაცია EJBCA-ს მეშვეობით",
-            "მონაცემთა ბაზა როგორც MCP protected resource"
-          ],
-          "potential_impact": "აგენტების დაცული ინტეგრაცია საბანკო და კორპორატიულ ბაზებთან მონაცემთა გაჟონვის რისკის გარეშე.",
-          "action_type": "LEARN",
-          "action": "გაეცანი AWS-ის რეპოზიტორიას და გააანალიზე, როგორ ამოწმებს MCP სერვერი ხელმოწერილ request envelope-ს Python-ში.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "MCP პროტოკოლს არ გააჩნია ჩაშენებული აუთენტიფიკაციის სტანდარტი",
-            "რეფერენს არქიტექტურა იყენებს Keyfactor EJBCA-ს და AWS Strands Agents SDK-ს",
-            "სისტემა იყენებს RFC 8693 ტოკენებს და OCSP რეალურ დროში ვალიდაციას",
-            "დამცავი პატერნი მუშაობს ნებისმიერ MCP-თავსებად tool server-ზე"
-          ],
-          "interpretation": "კომპანიები უბრალო API key-ების გადაცემიდან გადადიან კრიპტოგრაფიულ Zero-Trust იდენტობაზე, რადგან MCP სერვერები დაუცველია impersonation შეტევებისგან.",
-          "uncertainty": "EJBCA Enterprise-ის ინტეგრაციის რეალური სირთულე მცირე ზომის ლოკალურ პროექტებში.",
-          "counter_argument": "მცირე პროექტებისთვის X.509 PKI ზედმეტად მძიმეა და მარტივი mTLS ან HMAC საკმარისია.",
-          "strategic_assessment": "შეისწავლე MCP სერვერების იდენტობის პრობლემა; ბიზნეს აგენტის გაყიდვისას უსაფრთხოების ეს არგუმენტი მთავარი კონკურენტული უპირატესობაა.",
-          "time_horizon": "mid-term",
-          "what_could_change": "ყველა სერიოზული MCP სერვერი მოითხოვს კრიპტოგრაფიულ handshakes, რაც სტატიკურ API გასაღებებს სრულად ჩაანაცვლებს.",
-          "risks": [
-            "EJBCA-ს სერტიფიკატების მართვის მაღალი ინფრასტრუქტურული ხარჯი",
-            "ლატენტურობის ზრდა ყოველ tool call-ზე OCSP შემოწმების გამო"
-          ],
-          "non_obvious_opportunity": "შექმენი გამარტივებული Python middleware, რომელიც ამოწმებს agent signature-ს ადგილობრივ FastMCP სერვერზე.",
-          "fit_assessment": "პირდაპირ ეხება შენს მიმდინარე ეტაპს: tool calling-ის და MCP-ის საიმედოობას."
-        },
-        {
-          "event_id": "evt-openai-multilangbench-gpt6",
-          "title": "OpenAI: MultiLangBench ბენჩმარკი და GPT-6 სერიის შესაძლებლობები კოდის მიგრაციაში",
-          "category": "AI Coding Tools & LLM APIs",
-          "primary_url": "https://openai.com/index/low-resource-programming-languages",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 9,
-          "actionability": 7,
-          "source_quality": 10,
-          "confidence": 92,
-          "tldr": "OpenAI-მ წარადგინა GPT-6 სერია და MultiLangBench, სადაც მოდელები SQLite-ის ძრავს 20 ენაზე ნულიდან აგებენ.",
-          "what_happened": "OpenAI-მ გამოაქვეყნა კვლევა დაბალრესურსულ ენებსა და კოდის მიგრაციაზე, სადაც GPT-6 Astra-მ 87.4% სიზუსტე აჩვენა.",
-          "what_changed": "ტესტირება გადავიდა მარტივი LeetCode ამოცანებიდან სრულფასოვანი SQLite-თავსებადი მონაცემთა ბაზის იმპლემენტაციაზე.",
-          "why_it_matters": "გეხმარება გააცნობიერო, რომ მომავლის აგენტური ინჟინერია მოითხოვს სისტემური დონის პროგრამირების და მონაცემთა ბაზების ცოდნას.",
-          "key_takeaways": [
-            "MultiLangBench ამოწმებს მონაცემთა ბაზის აგებას ნულიდან",
-            "GPT-6 Luna ამცირებს API ხარჯს 78%-ით",
-            "COBOL მიგრაციის სიზუსტე გაიზარდა 5.4%-დან 97.9%-მდე"
-          ],
-          "technical_architecture": [
-            "MultiLangBench 20 ენის მხარდაჭერით",
-            "SQLite თავსებადი არქიტექტურული ვალიდაცია",
-            "High reasoning effort რეჟიმი GPT-6.1 Sol-ში"
-          ],
-          "technical_details": [
-            "87.4% pass rate GPT-6 Astra-ზე",
-            "78% API cost reduction GPT-6 Luna-ზე",
-            "97.9% accuracy COBOL ტრანსლაციაში"
-          ],
-          "potential_impact": "დეველოპერები შეძლებენ რთული legacy სისტემების უსაფრთხო მოდერნიზაციას მინიმალურ ფასად.",
-          "action_type": "LEARN",
-          "action": "გაარჩიე SQLite-ის ძირითადი კომპონენტები (B-Tree, Pager, Parser) და გაიაზრე, რა ლოგიკის დაწერას სთხოვენ მოდელებს.",
-          "evidence": [],
-          "factuality_level": "single_source",
-          "classification": [
-            "Real Technical Skill",
-            "Real Business Opportunity"
-          ],
-          "verified_facts": [
-            "MultiLangBench ამოწმებს SQLite ძრავის ნულიდან აწყობას 20 პროგრამირების ენაზე",
-            "GPT-6 Astra აღწევს 87.4% pass rate-ს MultiLangBench-ზე GPT-5.6 Sol-ის 26.8%-ის წინააღმდეგ",
-            "GPT-6 Luna აჩვენებს 40.3%-ს დაახლოებით 78%-ით ნაკლები API ხარჯით",
-            "GPT-6.1 Sol COBOL-ის მიგრაციის ტესტზე აღწევს 97.9% სიზუსტეს მაღალი reasoning effort-ის დროს"
-          ],
-          "interpretation": "მოდელების კოდირების ევოლუცია გადავიდა ცალკეული ფუნქციებიდან მთლიანი სისტემური პროექტების (როგორიცაა მონაცემთა ბაზის ძრავი) ნულიდან შექმნაზე.",
-          "uncertainty": "GPT-6 მოდელების საჯარო API ხელმისაწვდომობის თარიღი ფართო დეველოპერებისთვის.",
-          "counter_argument": "სინთეტიკური ბენჩმარკები ხშირად ვერ ასახავს რეალურ legacy კოდში არსებულ გაურკვეველ ბიზნეს ლოგიკას.",
-          "strategic_assessment": "ფოკუსირდი SQLite-ის და მონაცემთა ბაზის შიდა არქიტექტურის გაგებაზე; აგენტების შესაძლებლობების შეფასება ამ დონეზე გადადის.",
-          "time_horizon": "mid-term",
-          "what_could_change": "ძველი საბანკო და ინდუსტრიული კოდის (COBOL, Fortran) მიგრაცია გახდება იაფი და ავტომატიზებული პროცესი.",
-          "risks": [
-            "Legacy სისტემების მიგრაციისას დაუდოკუმენტირებელი ლოგიკის დაკარგვა",
-            "მაღალი reasoning რეჟიმის ფასი დიდ კოდურ ბაზებზე"
-          ],
-          "non_obvious_opportunity": "შექმენი სატესტო გარემო, სადაც პატარა LLM-ს ავალებ SQLite-ის მინიმალური B-Tree ინდექსის იმპლემენტაციას Python-ში.",
-          "fit_assessment": "იდეალურია შენი SQL/database სწავლის ეტაპისთვის, რადგან ხედავ როგორ აფასებენ frontier მოდელებს."
-        },
-        {
-          "event_id": "evt-arxiv-amtp-adaptive-multi-token",
-          "title": "AMTP: ადაპტური Multi-Token Prediction ინფერენსის 4.1-ჯერ დასაჩქარებლად",
-          "category": "AI Research / Model Architecture",
-          "primary_url": "https://arxiv.org/abs/2610.28619",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 88,
-          "tldr": "ახალი მეთოდი AMTP დინამიურად არჩევს წინასწარ გამოსათვლელი ტოკენების რაოდენობას და LLM-ის ინფერენსს 4.1-ჯერ აჩქარებს.",
-          "what_happened": "მკვლევარებმა წარმოადგინეს AMTP, მსუბუქი კონტროლერი, რომელიც ტოკენების მიღების ალბათობით ოპტიმიზაციას უკეთებს დეკოდირებას.",
-          "what_changed": "ფიქსირებული speculation ფანჯრის ნაცვლად, სისტემა რეალურ დროში სწავლობს, რამდენ ტოკენს ენდოს კონტექსტის მიხედვით.",
-          "why_it_matters": "აგენტის loop-ში სწრაფი პასუხი ნიშნავს ნაკლებ მოლოდინს tool-ების გამოძახებებს შორის.",
-          "key_takeaways": [
-            "AMTP ზრდის ინფერენსის სიჩქარეს 4.1x-მდე მოდელის გადამზადების გარეშე",
-            "მუშაობს Llama-3.1-8B და Qwen3-4B მოდელებთან",
-            "იყენებს ონლაინ სწავლებას ვერიფიკაციის შედეგებიდან"
-          ],
-          "technical_architecture": [
-            "Multi-token prediction (MTP) არქიტექტურა",
-            "Acceptance survival ალბათური მოდელი",
-            "Online gradient descent კონტროლერი"
-          ],
-          "technical_details": [
-            "4.1x დეკოდირების აჩქარება GSM8K-ზე",
-            "10%-მდე გამტარუნარიანობის ზრდა ფიქსირებულ ფანჯარასთან შედარებით",
-            "Sublinear regret ალგორითმული გარანტია"
-          ],
-          "potential_impact": "ლოკალური აგენტების და CLI ხელსაწყოების რეაქციის დროის მკვეთრი შემცირება.",
-          "action_type": "LEARN",
-          "action": "წაიკითხე AMTP-ის აბსტრაქტი და გაარკვიე, როგორ მუშაობს speculative decoding-ის ვერიფიკაციის ეტაპი.",
-          "evidence": [],
-          "factuality_level": "single_source",
-          "classification": [
-            "Real Technical Skill"
-          ],
-          "verified_facts": [
-            "AMTP ირჩევს speculation horizon-ს ონლაინ კონტროლის ალგორითმით გადამზადების გარეშე",
-            "Llama-3.1-8B-Instruct და Qwen3-4B მოდელებზე მიღწეულია 4.1x-მდე აჩქარება AIME 2025-ზე და GSM8K-ზე",
-            "კონტროლერი იყენებს acceptance survival ალბათობას ტოკენების სიჩქარის მაქსიმიზაციისთვის",
-            "ონლაინ გრადიენტული დაშვებით regret რჩება ქვეხაზოვანი (sublinear)"
-          ],
-          "interpretation": "აგენტების მრავალეტაპიან loop-ებში მთავარი შემაფერხებელი ტოკენების გენერაციის ლატენტურობაა; ადაპტური დრაფტინგი ამ პრობლემას დამატებითი ხარჯის გარეშე წყვეტს.",
-          "uncertainty": "რამდენად ადვილად ინტეგრირდება AMTP არსებულ ლოკალურ ინფერენს ძრავებში (მაგ. Ollama, llama.cpp).",
-          "counter_argument": "ძალიან რთულ ლოგიკურ ამოცანებზე speculation ხშირად უარყოფილია, რაც რეალურ მოგებას ამცირებს.",
-          "strategic_assessment": "გაიაზრე Speculative Decoding-ის და Multi-Token Prediction-ის პრინციპი; ეს დაგეხმარება ლოკალური აგენტების რეაქციის დროის შემცირებაში.",
-          "time_horizon": "short-term",
-          "what_could_change": "მცირე ლოკალური მოდელები (8B/4B) იმუშავებენ 4-ჯერ უფრო სწრაფად, რაც რეალურ დროში აგენტურ კომუნიკაციას შესაძლებელს გახდის.",
-          "risks": [
-            "დამატებითი მეხსიერების მოხმარება მრავალი speculative head-ის შენახვისას",
-            "ვერიფიკაციის ჩავარდნისას გამოთვლითი რესურსის ფუჭი ხარჯვა"
-          ],
-          "non_obvious_opportunity": "სცადე მცირე ზომის Qwen მოდელის გაშვება speculative decoding-ით ლოკალურ სკრიპტში და გაზომე tokens/sec.",
-          "fit_assessment": "უშუალოდ გეხმარება უფასო/დაბალრესურსიან გარემოში აგენტის ლატენტურობის შემცირებაში."
-        },
-        {
-          "event_id": "evt-google-torchtpu-open-source",
-          "title": "Google Cloud: TorchTPU გახდა Open Source PyTorch-ის TPU-ზე გასაშვებად",
-          "category": "Open Source AI & Infrastructure",
-          "primary_url": "https://cloud.google.com/blog/topics/ai-infrastructure/torchtpu-is-now-open-source-run-native-pytorch-on-tpus",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 8,
-          "actionability": 7,
-          "source_quality": 9,
-          "confidence": 95,
-          "tldr": "Google-მა და Meta-მ TorchTPU გახსნეს, რაც PyTorch-ის TPU-ზე გაშვებას ისეთივე მარტივს ხდის, როგორც GPU-ზე.",
-          "what_happened": "PyTorch Conference 2026-ზე გამოცხადდა TorchTPU-ს ღია კოდი GitHub-ზე და Hugging Face v5 ინტეგრაცია.",
-          "what_changed": "ადრე რთული XLA კონფიგურაციები ჩანაცვლდა მშობლიური PyTorch API-ით და device_map='tpu'-ით.",
-          "why_it_matters": "საშუალებას მოგცემს უფასო/იაფი ღრუბლოვანი TPU რესურსები გამოიყენო საკუთარი აგენტების მოდელების გასაშვებად.",
-          "key_takeaways": [
-            "TorchTPU ხელმისაწვდომია GitHub-ზე open-source ლიცენზიით",
-            "Transformers v5-ში დაემატა device_map='tpu'",
-            "vLLM და SGLang მხარს უჭერენ TorchTPU სტეკს"
-          ],
-          "technical_architecture": [
-            "TorchTPU native PyTorch stack",
-            "torch.compile და XLA ბექენდის შერწყმა",
-            "Transformers v5 და Diffusers ინტეგრაცია"
-          ],
-          "technical_details": [
-            "device_map='tpu' ერთი ხაზით ინფერენსისთვის",
-            "Eager mode მხარდაჭერა მარტივი debugging-ისთვის",
-            "Tensor parallelism მხარდაჭერა გენერაციულ მოდელებში"
-          ],
-          "potential_impact": "ღია მოდელების სერვინგის ხარჯების შემცირება და ტექნოლოგიური დამოუკიდებლობა ერთი ჩიპების მწარმოებლისგან.",
-          "action_type": "TRACK",
-          "action": "შეამოწმე TorchTPU-ს GitHub რეპოზიტორია და ნახე, როგორ უერთდება vLLM ბექენდი TPU-ს.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "TorchTPU ღია სახით გამოქვეყნდა GitHub-ზე Google-ისა და Meta-ს მიერ",
-            "Hugging Face Transformers v5-ში TPU-ს მხარდაჭერა ჩაშენებულია device_map='tpu'-ით",
-            "ინტეგრირებულია vLLM, SGLang, torch.compile და Ray ფრეიმვორკებთან",
-            "მხარს უჭერს eager mode-ს დებაგინგისთვის და torch.compile-ს ოპტიმიზაციისთვის"
-          ],
-          "interpretation": "NVIDIA CUDA-ს მონოპოლია ღია კოდის ინფერენსსა და ტრენინგში სუსტდება; Google TPU ხდება სტანდარტული ალტერნატივა PyTorch-ში.",
-          "uncertainty": "უფასო Colab/Kaggle TPU გარემოებში TorchTPU-ს სრული მხარდაჭერის ვადები.",
-          "counter_argument": "ადგილობრივ დეველოპმენტში ინჟინრების უმეტესობა ისევ მომხმარებლის GPU-ებზე და llama.cpp-ზე დარჩება.",
-          "strategic_assessment": "აკონტროლე TorchTPU-ს ინტეგრაცია vLLM-ში; ეს მოგცემს იაფი ან უფასო Cloud TPU-ების გამოყენების შანსს ინფერენსისთვის.",
-          "time_horizon": "mid-term",
-          "what_could_change": "Open-weight მოდელების ჰოსტინგის ხარჯი მკვეთრად შემცირდება Cloud TPU-ების კონკურენციის ხარჯზე.",
-          "risks": [
-            "Cloud TPU-ების საათობრივი ფასები მცირე ექსპერიმენტებისთვის",
-            "დამატებითი სირთულე torch.compile-ის TPU გრაფიკებთან თავსებადობაში"
-          ],
-          "non_obvious_opportunity": "გამოიყენე Kaggle-ის უფასო TPU კვოტა open-source მოდელების vLLM/TorchTPU ინფერენსის დასატესტად.",
-          "fit_assessment": "გაძლევს ცოდნას მოდელების გაშვების ინფრასტრუქტურაზე CUDA-ს მიღმა, რაც იაფ გამოთვლებს გაგიადვილებს."
-        },
-        {
-          "event_id": "evt-openai-boticario-enterprise-agents",
-          "title": "Grupo Boticário: 30+ ბიზნეს აგენტის პროდუქციული სისტემა WhatsApp-ზე 80% ავტონომიით",
-          "category": "Real Business Opportunity & Agent Architecture",
-          "primary_url": "https://openai.com/index/grupo-boticario",
-          "supporting_urls": [],
-          "importance": 7,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 10,
-          "confidence": 95,
-          "tldr": "Grupo Boticário-მ გაუშვა 30+ AI აგენტი, რომლებიც WhatsApp-ზე მომხმარებელთა მოთხოვნების 80%-ს ადამიანის გარეშე აგვარებენ.",
-          "what_happened": "OpenAI-მ გამოაქვეყნა ენტერპრაიზ ქეისი, სადაც კომპანიამ შექმნა საკუთარი აგენტური პლატფორმა 30+ აგენტით.",
-          "what_changed": "უბრალო FAQ ბოტები ჩანაცვლდა ინტეგრირებული აგენტებით, რომლებიც პირდაპირ ცვლიან მონაცემებს ERP და CRM სისტემებში.",
-          "why_it_matters": "აჩვენებს რეალურ არქიტექტურას, რომელშიც ბიზნესი რეალურ ფულს იხდის: ოპერაციული ხარჯის შემცირება და lead qualification.",
-          "key_takeaways": [
-            "80% ოპერაციული მოთხოვნების სრული ავტონომიური გადაწყვეტა",
-            "90% შემოსული ლიდების ავტომატური კვალიფიკაცია",
-            "30-ზე მეტი ურთიერთდაკავშირებული აგენტი ერთ პლატფორმაზე"
-          ],
-          "technical_architecture": [
-            "Proprietary multi-agent platform",
-            "WhatsApp Enterprise API და მობილური ჩატის ინტეგრაცია",
-            "ცენტრალიზებული CRM/ERP ორკესტრაცია"
-          ],
-          "technical_details": [
-            "30+ სპეციალიზებული აგენტი მომხმარებლის გზაზე",
-            "100% შეტყობინებების დაფარვა ორ არხში",
-            "OpenAI API ინტეგრაცია გადაწყვეტილებების მისაღებად"
-          ],
-          "potential_impact": "მცირე და საშუალო ბიზნესების გაყიდვების გუნდის პროდუქტიულობის გაორმაგება რუტინული კითხვების მოხსნით.",
-          "action_type": "BUILD",
-          "action": "ააგე Telegram ბოტი Python-ში, რომელიც მომხმარებლის მოთხოვნას აკვალიფიცირებს და შედეგს ლოკალურ SQLite ბაზაში ინახავს.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Business Opportunity",
-            "Real Technical Skill"
-          ],
-          "verified_facts": [
-            "Grupo Boticário-მ შექმნა საკუთარი აგენტური პლატფორმა 30-ზე მეტი სპეციალიზებული აგენტით",
-            "სისტემა ავტონომიურად წყვეტს რესელერების ოპერაციული მოთხოვნების 80%-ს",
-            "2025 წლის ნოემბრიდან 100% იფარება appchat-სა და WhatsApp Enterprise-ში",
-            "პირდაპირი გაყიდვების ლიდების 90% კვალიფიცირდება AI-ის მიერ"
-          ],
-          "interpretation": "მონოლითური ჩატბოტების დრო დასრულდა; რეალური ბიზნეს ღირებულება იქმნება ვიწრო როლების მქონე მრავალაგენტიანი (30+ agents) ქსელით.",
-          "uncertainty": "კონკრეტული orchestration ფრეიმვორკი, რომელსაც შიდა პლატფორმა იყენებს.",
-          "counter_argument": "დიდი ენტერპრაიზის ქეისი რთულად გადმოიტანება მცირე ლოკალურ ბიზნესში ინფრასტრუქტურის ხარჯის გამო.",
-          "strategic_assessment": "შექმენი მცირე ბიზნესისთვის მორგებული 2-აგენტიანი სისტემა Telegram-ზე (ერთი კვალიფიკაციისთვის, მეორე შეკვეთის ბაზაში ჩასაწერად).",
-          "time_horizon": "short-term",
-          "what_could_change": "მომხმარებელთა მომსახურების და გაყიდვების პირველი ხაზი სრულად გადავა სპეციალიზებულ მესენჯერ-აგენტებზე.",
-          "risks": [
-            "მესენჯერის API-ების (WhatsApp/Telegram) ლიმიტები და ტარიფები",
-            "აგენტების მიერ არასწორი ფასდაკლების ან პირობის დაპირება მომხმარებლისთვის"
-          ],
-          "non_obvious_opportunity": "ადგილობრივ ქართულ ონლაინ მაღაზიებს სჭირდებათ ზუსტად ასეთი Telegram/WhatsApp ბოტი, რომელიც lead-ს გაფილტრავს და Google Sheets/SQL-ში ჩაწერს.",
-          "fit_assessment": "პირდაპირ პასუხობს შენს მიზანს: რეალური ბიზნეს აგენტების აგება და არა სათამაშო დემოები."
-        }
-      ],
-      "trends": [
-        "MCP-ის სტანდარტიზაცია და კრიპტოგრაფიული უსაფრთხოების (X.509 PKI) ინტეგრაცია",
-        "მოდელების შეფასების გადასვლა მარტივი ტესტებიდან მთლიანი სისტემების (SQLite ძრავის) ნულიდან შექმნაზე",
-        "კომპიუტერული ინფრასტრუქტურის დივერსიფიკაცია (PyTorch-ის native მხარდაჭერა TPU-ზე)",
-        "მესენჯერებზე (WhatsApp/Telegram) დაფუძნებული მრავალაგენტიანი ბიზნეს სისტემების მასობრივი დანერგვა"
-      ]
-    },
     {
       "date": "2026-10-22",
       "summary": "დღევანდელი სიგნალები ფოკუსირებულია OpenAI-სა და Google Cloud-ის ინფრასტრუქტურულ ინტეგრაციებზე, აგენტების პერსისტენტული runtime სერვისებზე და კვანტური ტრეიდინგის ბენჩმარკებზე. შენთვის მთავარი ამოცანაა შეისწავლო აგენტების runtime და მართო tool calling ისე, რომ აირიდო context pollution.",
@@ -10079,13 +9801,381 @@
         "Adversarial optimization of draft models for agent reliability",
         "Cost reduction and token efficiency in long-horizon agent loops"
       ]
+    },
+    {
+      "date": "2026-11-06",
+      "summary": "დღევანდელი ანალიზი ფოკუსირებულია CNCF-ის მიერ მიღებულ აგენტურ ინფრასტრუქტურაზე (Agent Substrate & gVisor), OpenAI-ის ავტონომიურ უსაფრთხოების პაიპლაინებსა და Anthropic-ის FlashProve პროტოკოლზე. შენთვის მთავარი ამოცანაა აგენტების უსაფრთხო Sandboxing-ის და MCP ინსტრუმენტების საიმედოობის (Tool Call Reliability) დანერგვა შენს Telegram და API პროექტებში.",
+      "events": [
+        {
+          "event_id": "evt-cncf-agent-substrate-gvisor",
+          "title": "CNCF Sandbox: Google-მა Agent Substrate 1.0, gVisor და OpenRL ღია ინფრასტრუქტურას გადასცა",
+          "category": "აგენტების ინფრასტრუქტურა და Open Source",
+          "primary_url": "https://cloud.google.com/blog/products/containers-kubernetes/open-infrastructure-for-autonomous-agents-comes-to-cncf",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 9,
+          "confidence": 95,
+          "tldr": "Google-მა CNCF-ს გადასცა Agent Substrate და gVisor, რაც აგენტებს 500ms-ში აღადგენს და კოდის უსაფრთხო იზოლაციას უზრუნველყოფს.",
+          "what_happened": "Agent Substrate 1.0 და gVisor გახდნენ CNCF Sandbox პროექტები GKE GA მხარდაჭერით.",
+          "what_changed": "Before: აგენტების Idle state აკავებდა ძვირადღირებულ RAM/CPU-ს. After: 10x სიმჭიდროვე Snapshotted Resume-ით.",
+          "why_it_matters": "გაძლევს არქიტექტურულ შაბლონს, თუ როგორ აშენდება 2026+ წლებში Production Agent Execution Sandboxes.",
+          "key_takeaways": [
+            "Substrate snapshots idle agents in under 500ms",
+            "gVisor isolates unreviewed AI code at container density",
+            "CNCF sandbox guarantees open-source ecosystem standard"
+          ],
+          "technical_architecture": [
+            "Userspace Linux Kernel isolation via gVisor",
+            "Substrate state snapshotting engine for Kubernetes",
+            "OpenRL for distributed reinforcement learning post-training"
+          ],
+          "technical_details": [
+            "Restore latency under 500ms",
+            "10x container packing density",
+            "GA status on Google Kubernetes Engine"
+          ],
+          "potential_impact": "მნიშვნელოვნად ამცირებს Cloud Hosting ხარჯებს აგენტური პლატფორმებისთვის და ზრდის Sandbox უსაფრთხოებას.",
+          "action_type": "LEARN",
+          "action": "გამოიკვლიე gVisor-ის დოკუმენტაცია და გატესტე Python code execution-ის იზოლაცია ადგილობრივ Linux/Docker გარემოში.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value",
+            "Long-term Opportunity"
+          ],
+          "verified_facts": [
+            "Agent Substrate 1.0 reached GA on GKE and joined CNCF Sandbox",
+            "Agent Substrate snapshots idle agents to storage and restores them in under 500ms",
+            "gVisor isolates untrusted generated code in a lightweight userspace application kernel",
+            "Increases container density by 10x by decoupling idle state from compute"
+          ],
+          "interpretation": "აგენტების გაშვება სტანდარტულ Docker კონტეინერებში ძვირი და უსაფრთხოების რისკია. Substrate და gVisor ამყარებენ სტანდარტს უსაფრთხო, მაღალი სიმჭიდროვის Agent Runtime-ისთვის.",
+          "uncertainty": "CNCF Sandbox სტადიიდან Incubation-მდე გადასვლის ზუსტი დროის ჩარჩო არ არის მითითებული.",
+          "counter_argument": "მცირე პროექტებისთვის GKE და Kubernetes ინფრასტრუქტურა ზედმეტად რთულია და Docker/gVisor standalone საკმარისია.",
+          "strategic_assessment": "გამოიყენე gVisor პატერნი შენს უფასო/დაბალბიუჯეტიან Serverless გარემოში უცხო AI კოდის უსაფრთხო იზოლაციისთვის.",
+          "time_horizon": "long-term",
+          "what_could_change": "ყველა Production Agent Platform გადავა Snapshotted State და Userspace Kernel იზოლაციაზე.",
+          "risks": [
+            "Kubernetes clusters მოითხოვს მაღალ ფიქსირებულ ხარჯს",
+            "Snapshotted state Restore latency შეიძლება გაიზარდოს დიდი Memory Context-ისას"
+          ],
+          "non_obvious_opportunity": "შექმენი მცირე Python Wrapper gVisor-ისთვის, რომელიც Telegram Bot-იდან მოსულ AI კოდს უფასო VPS-ზე იზოლირებულად გაუშვებს.",
+          "fit_assessment": "იდეალურად ერგება შენს მიზანს: ისწავლო, როგორ გაუშვა Agent Code Execution უსაფრთხოდ ნულოვანი ხარჯით."
+        },
+        {
+          "event_id": "evt-openai-autonomous-cyber-pipeline",
+          "title": "OpenAI Autonomous Cyber Pipeline: 948 LPE ექსპლოიტი Linux Kernel-ში GPT-6 Cyber-ით",
+          "category": "აგენტის არქიტექტურა და უსაფრთხოება",
+          "primary_url": "https://openai.com/index/a-thousand-fewer-paths-to-root",
+          "supporting_urls": [
+            "https://openai.com/index/introducing-gpt-6-cyber"
+          ],
+          "importance": 9,
+          "relevance": 8,
+          "actionability": 7,
+          "source_quality": 10,
+          "confidence": 92,
+          "tldr": "OpenAI-მ შექმნა ავტონომიური კიბერუსაფრთხოების პაიპლაინი, რომელმაც Linux-ში 948 ექსპლოიტი იპოვა და დაალაგა $1,279 ხარჯით თითოზე.",
+          "what_happened": "OpenAI-მ წარადგინა GPT-6 Cyber და ავტონომიური Vulnerability Discovery & Patching Pipeline.",
+          "what_changed": "Before: ხელით უსაფრთხოების კვლევა. After: სრულად ავტომატიზებული PoC და Patch გენერაცია API პაიპლაინით.",
+          "why_it_matters": "აჩვენებს, როგორ უნდა სტრუქტურირდეს რთული multi-step აგენტური ციკლები რეალურ ინჟინერიაში.",
+          "key_takeaways": [
+            "Autonomous pipeline generated 948 working Linux LPE exploits",
+            "ExploitGym accuracy rose to 48.5% with strict alignment boundaries",
+            "Patch execution cost averaged $1,279 per validated vulnerability"
+          ],
+          "technical_architecture": [
+            "Static code analysis module feeding dynamic sandbox isolation",
+            "Automated Proof-of-Concept exploit generator loop",
+            "Candidate patch generator with human-in-the-loop review"
+          ],
+          "technical_details": [
+            "2,308 candidate findings analyzed",
+            "1,724 vulnerabilities dynamically reproduced",
+            "100% scope boundary compliance with prompt"
+          ],
+          "potential_impact": "ცვლის უსაფრთხოების ინჟინერიას: კომპანიები გადავლენ უწყვეტ ავტონომიურ Patching პაიპლაინებზე.",
+          "action_type": "BUILD",
+          "action": "დაწერე Python სკრიპტი, რომელიც GitHub Webhook-ით იღებს კოდს, უშვებს Bandit/Safety სკანერს და LLM API-ით გენერირებს Fix PR-ს.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Real Business Opportunity",
+            "Short-term Opportunity"
+          ],
+          "verified_facts": [
+            "Pipeline identified 2,308 candidate findings and generated 948 working LPE exploits in Linux",
+            "Total run cost was $1,213,430 in API credits, or $1,279 per working LPE exploit",
+            "GPT-6 Cyber scored 48.5% on ExploitGym benchmark up from 32.1% in GPT-5.6",
+            "Alignment evals showed 99.93% out-of-scope avoidance without prompt, 100% with deployment prompt"
+          ],
+          "interpretation": "უსაფრთხოების აუდიტი გადავიდა ხელით ძებნიდან ავტონომიურ პაიპლაინებზე: Static Scan -> Dynamic Repro -> PoC Generation -> Patch Development.",
+          "uncertainty": "$1.2M API ხარჯი აჩვენებს, რომ ასეთი მასშტაბური ავტონომიური ციკლები ჯერჯერობით ძვირია.",
+          "counter_argument": "მაღალი API ხარჯი ($1,279/exploit) მიანიშნებს, რომ რეალური ბიზნესებისთვის ეს ჯერ მხოლოდ კრიტიკულ ინფრასტრუქტურაზეა ეკონომიკურად გამართლებული.",
+          "strategic_assessment": "ააგე მცირე ავტომატიზებული Vulnerability Triage Agent შენი საკუთარი GitHub Repositories-ის CI/CD პაიპლაინში.",
+          "time_horizon": "mid-term",
+          "what_could_change": "Software Security Audits სრულად გადავა Continuous Agentic Vulnerability Discovery პაიპლაინებზე.",
+          "risks": [
+            "მაღალი API ხარჯები მრავალჯერადი მსჯელობის ციკლებისას",
+            "False positive findings-ის ფილტრაციის სირთულე"
+          ],
+          "non_obvious_opportunity": "შექმენი დაბალბიუჯეტიანი Bug Bounty Triage Bot Telegram-ში, რომელიც Open-Source Python პაკეტების PR-ებს უსაფრთხოებაზე ამოწმებს.",
+          "fit_assessment": "გაძლევს მკაფიო არქიტექტურულ პატერნს: Scan -> Repro -> Proof-of-Concept -> Patch."
+        },
+        {
+          "event_id": "evt-aws-devops-agent-mcp-skills",
+          "title": "AWS DevOps Agent: გაფართოება Custom Skills და MCP Server-ების მეშვეობით",
+          "category": "აგენტების ინფრასტრუქტურა და MCP",
+          "primary_url": "https://aws.amazon.com/blogs/mt/extending-aws-devops-agent-with-skills-model-context-protocol-mcp-servers-custom-agents-and-connectors",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "AWS-მა გამოაქვეყნა DevOps Agent-ის გაფართოების არქიტექტურა MCP სერვერებით და open-source repository building block-ებით.",
+          "what_happened": "AWS-მა გახსნა `aws/tools-for-devops-agent` რეპოზიტორი დოკუმენტირებული MCP Tools და Custom Skills არქიტექტურით.",
+          "what_changed": "Before: აგენტი ეყრდნობოდა მხოლოდ ზოგად ცოდნას. After: ინჟინრები ამატებენ კონკრეტულ Runbook-ებს MCP-ის მეშვეობით.",
+          "why_it_matters": "გაჩვენებს, როგორ გადააქციო ხელით შესასრულებელი ინსტრუქციები (SOP) AI აგენტის MCP ინსტრუმენტებად.",
+          "key_takeaways": [
+            "AWS standardizes agent extensions via Model Context Protocol",
+            "Open-source repository provides clear skill authoring loop",
+            "Combines runbook context with CloudWatch/CloudTrail telemetry"
+          ],
+          "technical_architecture": [
+            "Model Context Protocol (MCP) server endpoints for operational tools",
+            "Custom Skill manifest structure for guided investigation",
+            "Connector layer bridging AWS APIs and agent context"
+          ],
+          "technical_details": [
+            "Repository: aws/tools-for-devops-agent",
+            "Supports ECS and EKS operational reviews",
+            "Guided investigation flow via custom SOP definitions"
+          ],
+          "potential_impact": "ამცირებს P1 ინციდენტების Triage დროის 60%-მდე საწარმოო DevOps გუნდებში.",
+          "action_type": "BUILD",
+          "action": "შექმენი Python-ზე დაფუძნებული MCP Server, რომელიც ამოწმებს შენი Telegram Bot-ის Server Status-ს და ლოგებს აწვდის LLM-ს.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Real Business Opportunity",
+            "Short-term Opportunity"
+          ],
+          "verified_facts": [
+            "AWS released aws/tools-for-devops-agent open-source repository",
+            "Extends DevOps Agent using Custom Skills, MCP Servers, and Connectors",
+            "Addresses human knowledge gaps: Runbooks, Correlation Patterns, and Escalation SOPs",
+            "Demonstrated with EKS Operations Review reusable building block"
+          ],
+          "interpretation": "generic LLM მსჯელობა საკმარისი არ არის ინციდენტების დებაგინგისთვის; საჭიროა MCP Server-ებით და Skills-ით Runbook-ების დეტერმინისტული მიწოდება.",
+          "uncertainty": "aws/tools-for-devops-agent არის Sample Code და მოითხოვს IAM permissions-ის დამატებით კონფიგურაციას.",
+          "counter_argument": "AWS-ზე მიბმული ინსტრუმენტები ნაკლებად მოქნილია Multi-cloud ან local open-source აგენტურ სისტემებთან შედარებით.",
+          "strategic_assessment": "შექმენი საკუთარი MCP Server, რომელიც აგენტს აწვდის შენი აპლიკაციის დებაგინგის runbook-ებს და API status-ებს.",
+          "time_horizon": "short-term",
+          "what_could_change": "DevOps ინციდენტების Triage სრულად გადავა MCP-ზე დაფუძნებულ Guided Agent Workflows-ზე.",
+          "risks": [
+            "არასწორი IAM ნებართვები MCP სერვერზე",
+            "Runbook-ების მოძველება, თუ დოკუმენტაცია ავტომატურად არ ახლდება"
+          ],
+          "non_obvious_opportunity": "ააგე მცირე საწარმოო DevOps Helper Telegram Bot, რომელიც MCP-ით უკავშირდება GitHub Actions-ს და ლოგების დებაგინგს აკეთებს.",
+          "fit_assessment": "სრულად ემთხვევა შენს სწავლის რიგს: MCP Servers, Tool Calling, და Telegram Delivery Channel."
+        },
+        {
+          "event_id": "evt-merge-agent-handler-mcp-benchmark",
+          "title": "Merge Agent Handler: 99.9% Tool Call წარმატების მაჩვენებელი საწარმოო არქიტექტურაში",
+          "category": "Real Business Opportunity & Agent Architecture",
+          "primary_url": "https://openai.com/index/merge-builds-with-openai",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 9,
+          "source_quality": 10,
+          "confidence": 90,
+          "tldr": "Merge-მა აჩვენა, რომ საწარმოო აგენტებს სჭირდებათ Agent Handler შრე, რათა Tool Calling-ის საიმედოობა 60%-დან 99.9%-მდე გაზარდონ.",
+          "what_happened": "Merge-მა გამოაქვეყნა საწარმოო მონაცემები, სადაც მათი Agent Handler 99.9%-იან Tool Call წარმატებას აღწევს.",
+          "what_changed": "Before: საჯარო MCP სერვერები 40%-ში ფუჭდებოდა. After: Validation Proxy და Gateway ინფრასტრუქტურა უზრუნველყოფს 99.9% საიმედოობას.",
+          "why_it_matters": "სანდო ბიზნეს-აგენტის შესაქმნელად აუცილებელია Error Recovery და Strict Schema Enforcement.",
+          "key_takeaways": [
+            "Tool call reliability gap: 99.9% managed vs 60% public MCP",
+            "Merge Gateway provides model routing and API cost controls",
+            "Pre-PR code review loops automate integration testing"
+          ],
+          "technical_architecture": [
+            "Merge Agent Handler middleware for schema enforcement",
+            "Merge Gateway routing layer for model selection and cost caps",
+            "Merge Unified API mapping heterogeneous business data"
+          ],
+          "technical_details": [
+            "99.9% tool execution success SLA",
+            "Built-in support for GPT-6 Astra reasoning",
+            "Automated PR review plugin integration"
+          ],
+          "potential_impact": "გაძლევს კონკურენტულ უპირატესობას: კლიენტებს შესთავაზო 99%+ სანდოობის AI ინტეგრაციები.",
+          "action_type": "BUILD",
+          "action": "დაამატე Pydantic-ზე დაფუძნებული Tool Argument Validation და Retry Loop შენს Python LLM API Tool Calling სკრიპტში.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Real Business Opportunity",
+            "Short-term Opportunity"
+          ],
+          "verified_facts": [
+            "Merge Agent Handler achieves 99.9% tool call success rate compared to 60% average for public…",
+            "Merge uses GPT-6 Astra and Codex for cross-repository code reviews and automated workflows",
+            "Built Merge Gateway for model routing and cost controls across workforce tools"
+          ],
+          "interpretation": "საჯარო MCP სერვერების 60%-იანი საიმედოობა მიუღებელია ბიზნესისთვის; 99.9%-ის მიღწევა მოითხოვს Schema Validation და Error Handoff შრეს.",
+          "uncertainty": "99.9%-იანი Benchmark მიღწეულია Merge-ის შიდა Gateway არქიტექტურით და დეტალური საჯარო methodology არ არის სრულად ღია.",
+          "counter_argument": "Merge არის proprietary platform, შესაბამისად open-source დეველოპერებს მოუწევთ საკუთარი Validation Proxy-ს აგება.",
+          "strategic_assessment": "ნუ ენდობი ნედლ MCP responses-ს: ყოველთვის ჩასვი Schema Validation და Retry Loop შენს Python Agent Loop-ში.",
+          "time_horizon": "short-term",
+          "what_could_change": "ყველა Production Agent Framework დაამატებს Strict Tool Validation Proxy შრეს API Call-ების ირგვლივ.",
+          "risks": [
+            "Public MCP სერვერების დაბალი საიმედოობა (60% success rate)",
+            "API Rate limits და Schema mismatch tool calling-ის დროს"
+          ],
+          "non_obvious_opportunity": "შექმენი ღია Lightweight Python Wrapper (Validation Proxy), რომელიც საჯარო MCP სერვერების პასუხებს ვალიდაციას უკეთებს და 99%+ Reliability-ს უზრუნველყოფს.",
+          "fit_assessment": "ზუსტად პასუხობს შენს მიზანს: ააგო რეალური საწარმოო ბიზნეს-აგენტები და არა უბრალო სათამაშო დემოები."
+        },
+        {
+          "event_id": "evt-google-ple-benchmark-archipelago",
+          "title": "Google Cloud & Mercor: Physical-Engineering's Last Exam (PLE) ბენჩმარკი აგენტებისთვის",
+          "category": "AI Evaluation & საიმედოობა",
+          "primary_url": "https://cloud.google.com/blog/products/ai-machine-learning/introducing-physical-engineerings-last-exam-for-agents",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 8,
+          "actionability": 7,
+          "source_quality": 9,
+          "confidence": 90,
+          "tldr": "Google-მა და Mercor-მა წარადგინეს PLE ბენჩმარკი 85 კომპლექსური ამოცანით, რომლებიც კონტეინერიზებულ multi-file გარემოში გაედინება.",
+          "what_happened": "Google-მა გამოაქვეყნა PLE ბენჩმარკი ინჟინერიის 4 სფეროში აგენტების long-horizon შესაძლებლობების შესამოწმებლად.",
+          "what_changed": "Before: ტექსტბუქური Q&A ტესტები. After: 61 ფაილიანი კონტეინერიზებული პროექტების ავტონომიური დამუშავება.",
+          "why_it_matters": "აჩვენებს, თუ როგორ უნდა შეამოწმო შენი აგენტები რეალურ სამუშაო გარემოსთან მიახლოებულ პირობებში.",
+          "key_takeaways": [
+            "85 long-horizon engineering tasks across 4 disciplines",
+            "Runs in containerized Mercor Archipelago environment",
+            "Average 61 files per task including CAD, BIM, and PDFs"
+          ],
+          "technical_architecture": [
+            "Mercor Archipelago containerized evaluation environment",
+            "Multi-file document context parser (PDF, CAD, BIM, Code)",
+            "Automated rubric grader for production-ready deliverables"
+          ],
+          "technical_details": [
+            "5,170 total files across benchmark",
+            "29 open public tasks released at ple-bench.com",
+            "Evaluates mechanical, electrical, civil, structural engineering"
+          ],
+          "potential_impact": "ზნის აგენტური შეფასების (Agent Evaluation) სტანდარტს რეალურ საწარმოო დავალებებზე.",
+          "action_type": "LEARN",
+          "action": "გამოიკვლიე ple-bench.com და ნახე, როგორ არის სტრუქტურირებული მრავალფაილიანი Evaluation გარემო.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value",
+            "Mid-term Opportunity"
+          ],
+          "verified_facts": [
+            "Google & Mercor launched Physical-Engineering's Last Exam (PLE) with 85 long-horizon tasks",
+            "Tasks run in Mercor Archipelago containerized environment with an average of 61 files per task",
+            "Covers mechanical (30), electrical (27), civil (18), and structural (10) engineering disciplines",
+            "Evaluates code compliance, cost-effectiveness, and production-ready deliverables"
+          ],
+          "interpretation": "აკადემიური Q&A ბენჩმარკები ამომწურავია; ახალი სტანდარტია მრავალფაილიანი კონტეინერიზებული პროექტების (Long-horizon tasks) გადაჭრა.",
+          "uncertainty": "29 საჯარო ამოცანა ხელმისაწვდომია, თუმცა სრული 85 ამოცანიდან ნაწილი დახურულია Leaderboard-ის გადამოწმებისთვის.",
+          "counter_argument": "ფიზიკური ინჟინერია მოითხოვს ლიცენზირებული ინჟინრის პასუხისმგებლობას, შესაბამისად აგენტები მხოლოდ დამხმარე ინსტრუმენტად დარჩებიან.",
+          "strategic_assessment": "ისწავლე აგენტების შეფასება არა მარტივი პ롬პტებით, არამედ მრავალფაილიან სენდბოქს გარემოში (Containerized Evals).",
+          "time_horizon": "mid-term",
+          "what_could_change": "AI Evaluation სრულად გადავა რეალური სამუშაო გარემოების კონტეინერიზებულ სიმულაციებზე (Archipelago-style environments).",
+          "risks": [
+            "Long-horizon tasks მოითხოვს მრავალ Context window turn-ს, რაც ზრდის API ხარჯს",
+            "ფაილების მაღალი რაოდენობა (61 file/task) ტვირთავს RAG/Retrieval-ს"
+          ],
+          "non_obvious_opportunity": "შექმენი მცირე Open-Source Evaluation Harness შენი ბიზნეს-აგენტებისთვის, რომელიც ამოწმებს აპლიკაციის მრავალფაილიან პაიპლაინებს.",
+          "fit_assessment": "გეხმარება აგენტების შეფასების (Evaluation) უნარის განვითარებაში, რაც შენი Skill Matrix-ის კრიტიკული ნაწილია."
+        },
+        {
+          "event_id": "evt-anthropic-provable-inference-flashprove",
+          "title": "Anthropic FlashProve: provable inference zkSNARKs-ით LLM-ების ტოკენების ვერიფიკაციისთვის",
+          "category": "AI Research / Agent Architecture",
+          "primary_url": "https://www.anthropic.com/research/provable-inference",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 7,
+          "actionability": 6,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "Anthropic-მა წარადგინა FlashProve, რომელიც zkSNARKs კრიპტოგრაფიით ამტკიცებს, რომ LLM პასუხი კონკრეტული მოდელისგან მოვიდა.",
+          "what_happened": "Anthropic-მა გამოაქვეყნა FlashProve სისტემა 400B მოდელებისთვის zkSNARK Inference Proofs-ის შესაქმნელად.",
+          "what_changed": "Before: შეუძლებელი იყო API-ს მიერ მოდელის ჩანაცვლების დადგენა. After: კრიპტოგრაფიული მტკიცებულება 110 tokens/sec სიჩქარით H100-ზე.",
+          "why_it_matters": "აყალიბებს AI უსაფრთხოებისა და მოდელების ვერიფიკაციის მომავალ სტანდარტს.",
+          "key_takeaways": [
+            "Cryptographic proof of model execution via zkSNARKs",
+            "110 tokens/second proof speed on 400B MoE model",
+            "Audited using Lean formal verification language"
+          ],
+          "technical_architecture": [
+            "FlashProve zkSNARK proof construction framework",
+            "Integer arithmetic prefill execution graph",
+            "Lean language auditable security specification"
+          ],
+          "technical_details": [
+            "19 MB proof size per 1,024 tokens",
+            "70-95x compute ratio relative to vLLM execution",
+            "Tested on Llama 4 Maverick 400B MoE"
+          ],
+          "potential_impact": "საძირკველს უყრის AI Compliance-ს და აცილებს Model Swapping თაღლითობას API პროვაიდერებში.",
+          "action_type": "TRACK",
+          "action": "წაიკითხე Anthropic-ის ბლოგი Provable Inference-ზე და შეინახე კონცეფცია AI Compliance არქიტექტურისთვის.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value",
+            "Long-term Opportunity"
+          ],
+          "verified_facts": [
+            "Anthropic developed FlashProve using zkSNARKs for cryptographic proof of inference",
+            "Llama 4 Maverick (400B MoE, 4-bit quantized) generates proofs at 110 tokens/sec on a single…",
+            "Proof size is ~19 MB per 1,024-token request using integer arithmetic in prefill",
+            "Formal security guarantees audited with Lean verification language statements"
+          ],
+          "interpretation": "Provable Inference საშუალებას იძლევა კრიპტოგრაფიულად დადასტურდეს, რომ პასუხი ნამდვილად კონკრეტულმა მოდელმა დააგენერირა და არა უფრო იაფმა substitute მოდელმა.",
+          "uncertainty": "Proof generation დრო 70-95x-ით მეტია ვიდრე ჩვეულებრივი vLLM inference, რაც ზღუდავს რეალურ დროში მასობრივ გამოყენებას.",
+          "counter_argument": "უმეტეს ბიზნეს აპლიკაციებს არ სჭირდება კრიპტოგრაფიული მტკიცებულება; სტანდარტული API TLS/HTTPS ვერიფიკაცია საკმარისია.",
+          "strategic_assessment": "გაიაზრე Provable Inference-ის პრინციპები, რადგან 3-5 წელში ეს გახდება AI Compliance-ის ფუნდამენტური მოთხოვნა.",
+          "time_horizon": "long-term",
+          "what_could_change": "AI API Routing და Enterprise Compliance მოითხოვს Cryptographic Proof of Inference-ს ყოველ ტოკენზე.",
+          "risks": [
+            "70-95x compute overhead proof generation-ის დროს",
+            "19MB proof size თითოეულ 1K token-ზე ქმნის Network Bandwidth ტვირთს"
+          ],
+          "non_obvious_opportunity": "შექმენი სერვისი, რომელიც ამოწმებს მოდელის API Provider-ების Integrity-ს და ადასტურებს, რომ მომხმარებელი არ იღებს Downgraded Model-ს.",
+          "fit_assessment": "ღრმა ტექნიკური ფუნდამენტი 3-10 წლიანი პერსპექტივისთვის, თუმცა დღეს დაბალი პრიორიტეტი აქვს პროტოტიპირებაში."
+        }
+      ],
+      "trends": [
+        "აგენტური ინფრასტრუქტურის სტანდარტიზაცია CNCF-ში (Agent Substrate & gVisor)",
+        "MCP პროტოკოლის გავრცელება საწარმოო ინსტრუმენტებში (AWS DevOps, Merge, Google Maps)",
+        "ავტონომიური უსაფრთხოების პაიპლაინები და PoC/Patch ავტომატური გენერაცია",
+        "აგენტების შეფასების (Evals) გადასვლა Q&A-დან კონტეინერიზებულ Long-Horizon environments-ზე"
+      ]
     }
   ],
   "learning_queue": [
-    "DPO (Direct Preference Optimization) პრინციპები Python-ში",
-    "Speculative decoding არქიტექტურა და inference ოპტიმიზაცია"
+    "Pydantic V2 და JSON Schema Validation პატერნები Python-ში MCP Tool Calling-ისთვის",
+    "gVisor standalone კლიენტის გამოყენება Docker გარემოში კოდის იზოლაციისთვის",
+    "Agent Evaluation Harness-ის აგება Pytest-ით მრავალფაილიანი კონტექსტის გასატესტად"
   ],
-  "last_run": "2026-11-04T17:48:45.786922+00:00",
+  "last_run": "2026-11-06T17:09:49.412087+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -10216,9 +10306,9 @@
     "arxiv:2611.05345"
   ],
   "last_report_files": {
-    "markdown": "data/reports/2026-11-04/report.md",
-    "json": "data/reports/2026-11-04/report.json",
-    "newsletter": "data/reports/2026-11-04/newsletter.md",
-    "social": "data/reports/2026-11-04/social_posts.txt"
+    "markdown": "data/reports/2026-11-06/report.md",
+    "json": "data/reports/2026-11-06/report.json",
+    "newsletter": "data/reports/2026-11-06/newsletter.md",
+    "social": "data/reports/2026-11-06/social_posts.txt"
   }
 }
