@@ -337,7 +337,12 @@
     "https://aws.amazon.com/blogs/mt/extending-aws-devops-agent-with-skills-model-context-protocol-mcp-servers-custom-agents-and-connectors",
     "https://openai.com/index/merge-builds-with-openai",
     "https://cloud.google.com/blog/products/ai-machine-learning/introducing-physical-engineerings-last-exam-for-agents",
-    "https://www.anthropic.com/research/provable-inference"
+    "https://www.anthropic.com/research/provable-inference",
+    "https://aws.amazon.com/blogs/machine-learning/serverless-mcp-server-for-ai-agent-data-lake-access-on-amazon-ecs-fargate",
+    "https://www.microsoft.com/en-us/security/blog/2026/11/05/threat-actors-use-agentic-ai-tooling-to-find-and-abuse-exposed-secrets",
+    "https://www.microsoft.com/en-us/security/blog/2026/11/06/artex-abuse-expands-as-cybercriminals-target-financial-sector",
+    "https://arxiv.org/abs/2611.08483",
+    "https://cloud.google.com/blog/products/identity-security/helping-you-build-and-defend-at-machine-speed-in-the-agentic-era"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -612,248 +617,13 @@
     "evt-aws-devops-agent-mcp-skills",
     "evt-merge-agent-handler-mcp-benchmark",
     "evt-google-ple-benchmark-archipelago",
-    "evt-anthropic-provable-inference-flashprove"
+    "evt-anthropic-provable-inference-flashprove",
+    "evt-aws-serverless-mcp-data-lake",
+    "evt-artex-agentic-secret-abuse",
+    "evt-swarm-evolve-latent-agent-swarms",
+    "evt-google-codemender-sandbox-defense"
   ],
   "events": [
-    {
-      "event_id": "evt-openai-math-lean-verification",
-      "title": "OpenAI Frontier Math: ფორმალური Lean ვერიფიკაცია და 3-საათიანი Reasoning Loops",
-      "category": "AI Research & Evaluation",
-      "primary_url": "https://openai.com/index/sharing-ai-progress-in-mathematics",
-      "supporting_urls": [
-        "https://www.theverge.com/ai-artificial-intelligence/1005004/openai-math-release-github",
-        "https://www.engadget.com/2279815/openai-just-posted-hundreds-more-results-on-major-math-problems"
-      ],
-      "importance": 9,
-      "relevance": 8,
-      "actionability": 7,
-      "source_quality": 10,
-      "confidence": 95,
-      "tldr": "OpenAI-მ გამოუშვა ასობით მათემატიკური შედეგი Lean-ში გადამოწმებული კოდით, რაც ხანგრძლივი reasoning ციკლების ეფექტურობას ადასტურებს.",
-      "what_happened": "OpenAI-მ გამოაქვეყნა 722 ნაშრომი GitHub-ზე, სადაც რთული პრობლემების გადაწყვეტა Lean ენაზე ფორმალიზებული მტკიცებულებებით დასტურდება.",
-      "what_changed": "მანამდე LLM-ის მსჯელობა მხოლოდ ტექსტურ დონეზე მოწმდებოდა, ახლა კი კომპიუტერული კომპილატორი (Lean) ადასტურებს შედეგს.",
-      "why_it_matters": "გასწავლის, რომ აგენტის შედეგის შემოწმება ყოველთვის უნდა ხდებოდეს დეტერმინისტული ხელსაწყოთი და არა მეორე LLM პრომპტით.",
-      "key_takeaways": [
-        "722 ნაშრომი და ასობით გადაწყვეტილი ამოცანა GitHub-ზე",
-        "Lean ფორმალიზაცია კომპიუტერით შემოწმებად მტკიცებულებას იძლევა",
-        "საშუალოდ დაიხარჯა 3 საათის ექვივალენტი reasoning compute"
-      ],
-      "technical_architecture": [
-        "Long-horizon reasoning agent loop",
-        "Lean proof assistant ინტეგრაცია როგორც გარემო",
-        "Automated theorem proving ვალიდაციის პაიპლაინი"
-      ],
-      "technical_details": [
-        "ინსტრუმენტი: Lean theorem prover",
-        "გამოთვლითი დრო: ~3 hours ChatGPT Pro",
-        "შედეგების პაკეტი: 372 result families"
-      ],
-      "potential_impact": "პროგრამული სისტემების აგენტური განვითარება მიიღებს მათემატიკურად დამტკიცებულ უსაფრთხოებას და ნულოვან ლოგიკურ ხარვეზებს.",
-      "action_type": "APPLY",
-      "action": "დაამატე Pydantic და subprocess-ით mypy შემოწმება შენს Python agent loop-ში, რათა აგენტის გენერირებული კოდი გაშვებამდე შემოწმდეს.",
-      "evidence": [],
-      "factuality_level": "verified",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "OpenAI-მ GitHub-ზე გამოაქვეყნა 722 მანუსკრიპტი და 372 მათემატიკური შედეგი",
-        "მტკიცებულებების ნაწილი ფორმალიზებულია Lean პროგრამირების ენაზე",
-        "თითოეულ შედეგზე საშუალო compute იყო 3 საათი ChatGPT Pro thinking დრო",
-        "კონსულტაცია გაიარა Institute for Advanced Study-ის AGMAI ჯგუფთან"
-      ],
-      "interpretation": "Reasoning აგენტების მომავალი ეყრდნობა ფორმალურ ენებს (როგორიცაა Lean), სადაც კოდის სისწორე მოწმდება კომპილატორით და არა ბუნებრივი ენით.",
-      "uncertainty": "OpenAI-ს არ გაუსაჯაროებია გამოყენებული ზუსტი პრომპტები და მოდელის წონები დამოუკიდებელი რეპლიკაციისთვის.",
-      "counter_argument": "Lean-ის მსგავსი ფორმალური სისტემები სპეციფიკურია და რთულად ერგება სტანდარტულ ბიზნეს ლოგიკას ან გაურკვეველ მონაცემებს.",
-      "strategic_assessment": "აგენტის სანდოობის გასაზრდელად გამოიყენე მკაცრი კოდური ვალიდატორები (Python linter, type checker, formal asserts) ნაცვლად LLM-ის თვითშეფასებისა.",
-      "time_horizon": "long-term",
-      "what_could_change": "პროგრამული უზრუნველყოფის ტესტირება გადავა სრულ ფორმალურ ვერიფიკაციაზე, სადაც აგენტის მიერ დაწერილ კოდს მათემატიკური სიზუსტით ამოწმებენ.",
-      "risks": [
-        "ფორმალური ენების მაღალი სირთულე და სწავლის ბარიერი",
-        "მაღალი compute ხარჯი გრძელ reasoning ციკლებზე",
-        "შედეგების სრული გადამოწმების გაჭიანურება აკადემიურ წრეებში"
-      ],
-      "non_obvious_opportunity": "საკუთარ პითონის აგენტში Pydantic-ის და mypy-ს გამოყენება როგორც მინი-ფორმალური ვერიფიკატორი tool calling-ის დროს.",
-      "fit_assessment": "ზუსტად აჩვენებს, რატომ არის კოდის ვალიდაცია და ევალუაცია უმნიშვნელოვანესი უნარი დამოუკიდებელი ინჟინრისთვის."
-    },
-    {
-      "event_id": "evt-ecc-v2-agent-efficiency-framework",
-      "title": "ECC v2.0.0-rc.1: აგენტების მეხსიერების ჰუკები, Session Persistence და Evals ღია სისტემაში",
-      "category": "აგენტის არქიტექტურა და ხელსაწყოები",
-      "primary_url": "https://github.com/affaan-m/ECC/blob/main/docs/ru/README.md",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 10,
-      "actionability": 9,
-      "source_quality": 8,
-      "confidence": 92,
-      "tldr": "გამოვიდა ECC v2.0.0-rc.1 — ღია სისტემა აგენტებისთვის, რომელიც ამატებს მეხსიერების ჰუკებს, უწყვეტ სწავლებასა და pass@k შეფასებებს.",
-      "what_happened": "GitHub-ზე გამოქვეყნდა ECC v2.0.0-rc.1 განახლება, რომელიც შეიცავს 50 აგენტს, 185 უნარს, Hermes ოპერატორსა და მეხსიერების ჰუკებს.",
-      "what_changed": "ადრე აგენტების კონფიგურაციები გაფანტული იყო; ახლა ის ერთიან ჩარჩოდ იქცა, რომელიც ავტომატურად ინახავს მეხსიერებას სესიებს შორის.",
-      "why_it_matters": "საშუალებას გაძლევს ნახო, როგორ აწყობენ გამოცდილი ინჟინრები sub-agent orchestration-ს და checkpoint verification-ს რეალურ პროდუქტებში.",
-      "key_takeaways": [
-        "140K+ ვარსკვლავი და Anthropic ჰაკათონის გამარჯვებული ბაზა",
-        "მეხსიერების ავტომატური შენახვა და ჩატვირთვა ჰუკებით",
-        "pass@k მეტრიკები და უწყვეტი evals ციკლები"
-      ],
-      "technical_architecture": [
-        "Multi-agent orchestration sub-agent იტერაციით",
-        "Event-driven hooks მეხსიერების persistence-ისთვის",
-        "Git worktrees და კასკადური პარალელიზაცია"
-      ],
-      "technical_details": [
-        "კომპონენტები: 50 agents, 185 skills",
-        "თავსებადობა: Claude Code, Cursor, Codex",
-        "ინტერფეისი: Tkinter dashboard GUI"
-      ],
-      "potential_impact": "დეველოპერები შეამცირებენ ტოკენების ხარჯს 40-60%-ით სწორი მეხსიერების კომპაქტიზაციისა და პრომპტების მართვის ხარჯზე.",
-      "action_type": "BUILD",
-      "action": "გახსენი ECC-ის რეპოზიტორია, ამოიღე მეხსიერების ჰუკის (memory hook) ლოგიკა და ჩასვი შენს Telegram ბოტის Python არქიტექტურაში.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Technical Skill",
-        "Real Business Opportunity"
-      ],
-      "verified_facts": [
-        "ECC v2.0.0-rc.1 მოიცავს 50 აგენტს, 185 უნარს (skills) და MCP კონფიგურაციებს",
-        "სისტემა მხარს უჭერს Claude Code, Codex, Cursor და Gemini გარემოებს",
-        "ინტეგრირებულია სესიებს შორის მეხსიერების ავტომატური ჰუკები და pass@k მეტრიკები",
-        "რეპოზიტორიას აქვს 140K-ზე მეტი ვარსკვლავი GitHub-ზე"
-      ],
-      "interpretation": "ECC აჩვენებს, თუ როგორ გარდაიქმნება პრომპტების კრებული სრულფასოვან საოპერაციო სისტემად აგენტებისთვის, სადაც მეხსიერება და უნარები მოდულარულია.",
-      "uncertainty": "დოკუმენტაციის ნაწილი ჯერ კიდევ rc.1 ფაზაშია და ზოგიერთი ბრძანება legacy რეჟიმში მუშაობს.",
-      "counter_argument": "185 უნარის და 50 აგენტის მართვამ შეიძლება შექმნას ზედმეტი სირთულე მარტივი ამოცანების შესრულებისას.",
-      "strategic_assessment": "შეისწავლე ECC-ის მეხსიერების ჰუკების არქიტექტურა. გამოიყენე ეს სტრუქტურა შენს პითონის აგენტში სესიებს შორის კონტექსტის შესანარჩუნებლად.",
-      "time_horizon": "short-term",
-      "what_could_change": "დეველოპერები შეწყვეტენ აგენტების ნულიდან წერას და გამოიყენებენ სტანდარტიზებულ OS-ის მსგავს შრეებს მეხსიერებისა და ხელსაწყოებისთვის.",
-      "risks": [
-        "კონფიგურაციის სირთულე დამწყები მომხმარებლისთვის",
-        "ტოკენების გადახარჯვა ზედმეტი სუბ-აგენტების ჩართვისას",
-        "ხშირი განახლებები release candidate სტადიაზე"
-      ],
-      "non_obvious_opportunity": "ECC-ის უნარების (skills) სტრუქტურის გადატანა საკუთარ FastMCP სერვერზე ლოკალური ავტომატიზაციისთვის.",
-      "fit_assessment": "იდეალურია 16 წლის დეველოპერისთვის: ღია კოდია, მუშაობს უფასო ინსტრუმენტებთან და ასწავლის პროფესიულ არქიტექტურას."
-    },
-    {
-      "event_id": "evt-comma-autonomous-messaging-agent",
-      "title": "Comma: ღია კოდის ავტონომიური აგენტი Telegram ინტეგრაციითა და თვითშემოწმებით",
-      "category": "Real Business Opportunity & Open Source",
-      "primary_url": "https://techcrunch.com/2026/10/10/all-the-ai-agents-that-can-live-in-your-text-messages",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 9,
-      "source_quality": 7,
-      "confidence": 85,
-      "tldr": "TechCrunch-მა გააშუქა Comma — ღია კოდის აგენტი, რომელიც მუშაობს Telegram-ში, ინარჩუნებს მეხსიერებას და ამოწმებს საკუთარ შედეგებს.",
-      "what_happened": "გამოქვეყნდა მესენჯერ-აგენტების ანალიზი, სადაც Comma გამოირჩევა როგორც ღია კოდის, თვითშემმოწმებელი სისტემა Telegram მხარდაჭერით.",
-      "what_changed": "მარტივი ჩათბოტების ნაცვლად, Telegram-ში გამოჩნდნენ სრულფასოვანი აგენტები, რომლებსაც აქვთ წვდომა ფაილებთან და ბრაუზერთან.",
-      "why_it_matters": "ადასტურებს შენს მიერ არჩეული გზის სისწორეს: Telegram არის ყველაზე ეფექტური არხი დამოუკიდებელი აგენტების დასანერგად.",
-      "key_takeaways": [
-        "ღია კოდი და უფასო საწყისი გამოყენება",
-        "მხარდაჭერა Telegram, Signal და კომპიუტერულ ფაილებზე",
-        "ავტონომიური თვითშემოწმება (self-checking) დასრულებამდე"
-      ],
-      "technical_architecture": [
-        "Cross-platform agent bridge (Telegram/Browser/OS)",
-        "Persistent state store საუბრებს შორის",
-        "Action verification loop შედეგის ვალიდაციისთვის"
-      ],
-      "technical_details": [
-        "პლატფორმები: Telegram, Signal, Browser",
-        "ლიცენზია: Open-source",
-        "შესაძლებლობა: Proactive notifications, file management"
-      ],
-      "potential_impact": "დეველოპერები შეძლებენ სრულფასოვანი პერსონალური ასისტენტის გაშვებას საკუთარ სერვერზე მესამე მხარის გარეშე.",
-      "action_type": "TRY",
-      "action": "მოძებნე Comma-ს ღია კოდი, გააანალიზე როგორ აკავშირებს Telegram-ის ბიბლიოთეკას აგენტის loop-თან და დატესტე ლოკალურად.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Business Opportunity",
-        "Real Technical Skill"
-      ],
-      "verified_facts": [
-        "Comma არის ღია კოდის სისტემა და უფასოა დასაწყებად",
-        "მუშაობს ბრაუზერში, კომპიუტერზე და მესენჯერებში: Telegram, Signal, WeChat",
-        "აგენტი ამოწმებს საკუთარ შესრულებულ სამუშაოს დასრულებამდე",
-        "ინარჩუნებს მეხსიერებას მოწყობილობებსა და საუბრებს შორის"
-      ],
-      "interpretation": "მესენჯერ-ინტერფეისი (განსაკუთრებით Telegram) ხდება მთავარი წერტილი AI აგენტებისთვის, რაც მომხმარებელს ათავისუფლებს ახალი აპლიკაციების ჩამოტვირთვისგან.",
-      "uncertainty": "უცნობია Comma-ს ლოკალური ინსტალაციის სისტემური მოთხოვნები და რამდენად მოითხოვს ფასიან API გასაღებებს სრული ფუნქციონალისთვის.",
-      "counter_argument": "მესენჯერებში გაშვებული აგენტები შეზღუდულია ტექსტური და ფაილური ფორმატით, რაც ართულებს რთულ ვიზუალურ ანალიტიკას.",
-      "strategic_assessment": "შესანიშნავი შაბლონია შენი პორტფოლიოსთვის: ააგე Telegram-ზე დაფუძნებული ბიზნეს აგენტი, რომელიც Comma-ს მსგავსად ამოწმებს საკუთარ სამუშაოს.",
-      "time_horizon": "short-term",
-      "what_could_change": "მცირე ბიზნესები უარს იტყვიან ძვირადღირებულ SaaS პანელებზე და გადავლენ Telegram/Signal ბოტებზე, რომლებიც აკონტროლებენ ბაზებსა და შეკვეთებს.",
-      "risks": [
-        "მესენჯერის API შეზღუდვები და ლიმიტები (rate limits)",
-        "უსაფრთხოების რისკები მოწყობილობის ფაილებთან წვდომისას",
-        "მომხმარებლის მონაცემების კონფიდენციალურობა ჩათში"
-      ],
-      "non_obvious_opportunity": "ადგილობრივი ქართული მცირე ბიზნესებისთვის Telegram-ზე მომუშავე ავტონომიური ასისტენტის შეთავაზება, რომელიც ამოწმებს მარაგებს PostgreSQL-ში.",
-      "fit_assessment": "იდეალური თანხვედრა: მკითხველი იყენებს Telegram-ს, სწავლობს Python/SQL-ს და აშენებს რეალურ ბიზნეს აგენტებს."
-    },
-    {
-      "event_id": "evt-typesafe-jev-decision-transformer",
-      "title": "TypeSafe AI Jev: არატექსტური Transformer და ალბათური გადაწყვეტილებები ავტომატიზაციაში",
-      "category": "AI Research & Model Architecture",
-      "primary_url": "https://techcrunch.com/2026/10/09/the-maker-of-non-text-ai-model-jev-valued-at-7-5b-just-weeks-after-launch",
-      "supporting_urls": [],
-      "importance": 7,
-      "relevance": 7,
-      "actionability": 6,
-      "source_quality": 7,
-      "confidence": 80,
-      "tldr": "TypeSafe AI-მ წარადგინა Jev — ტრანსფორმერი, რომელიც ტექსტის ნაცვლად პირდაპირ კალიბრირებულ გადაწყვეტილებებს აგენერირებს დაბალი latency-ით.",
-      "what_happened": "სტარტაპმა TypeSafe AI გამოუშვა Jev, მოდელი რომელიც ბიზნეს ავტომატიზაციისთვის ალბათობებს ითვლის ტექსტური ტოკენების გარეშე.",
-      "what_changed": "მანამდე აგენტები იყენებდნენ LLM-ებს JSON-ის დასაგენერირებლად; Jev გამორიცხავს ტექსტურ შრეს და პირდაპირ იღებს გადაწყვეტილებას.",
-      "why_it_matters": "გეხმარება გაიაზრო, რომ რეალურ ბიზნეს აგენტში მთავარია ზუსტი გადაწყვეტილება (routing, branching) და არა ტექსტური ჩათი.",
-      "key_takeaways": [
-        "არატექსტური transformer არქიტექტურა",
-        "გამოიმუშავებს calibrated decisions ტოკენების ნაცვლად",
-        "მიზნად ისახავს ულტრა-სწრაფ ავტომატიზაციას"
-      ],
-      "technical_architecture": [
-        "Non-autoregressive decision transformer",
-        "Probability calibration შრე",
-        "Low-latency inference ძრავი"
-      ],
-      "technical_details": [
-        "არქიტექტურა: Transformer-based classifier",
-        "გამომავალი: Calibrated decision probabilities",
-        "სამიზნე: Fortune 500 automation"
-      ],
-      "potential_impact": "შეამცირებს აგენტური პაიპლაინების ინფერენსის დროსა და ენერგომოხმარებას კომპიუტერულ ავტომატიზაციაში.",
-      "action_type": "LEARN",
-      "action": "შეისწავლე Pydantic-ით logit_bias ან enum შეზღუდვები OpenAI/Anthropic API-ში, რათა აგენტმა მხოლოდ წინასწარ განსაზღვრული გადაწყვეტილება მიიღოს.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "TypeSafe AI-მ მოიზიდა $870 მილიონი $7.5 მილიარდიან შეფასებაზე",
-        "Jev მოდელი დაფუძნებულია transformer არქიტექტურაზე, მაგრამ არ არის LLM",
-        "მოდელი არ აგენერირებს ტექსტს; ის გასცემს კალიბრირებულ ალბათობებსა და გადაწყვეტილებებს",
-        "დამფუძნებლები არიან OpenAI-სა და Meta-ს ყოფილი მკვლევრები"
-      ],
-      "interpretation": "ბიზნეს პროცესების ავტომატიზაციაში ტექსტური გენერაცია ხშირად ზედმეტი რესურსია. გადაწყვეტილების მიღებისას საჭიროა მხოლოდ კალიბრირებული რიცხვითი შედეგი.",
-      "uncertainty": "მოდელი დახურულია, არ არსებობს საჯარო benchmark მონაცემები და ტექნიკური დოკუმენტაცია ფართო აუდიტორიისთვის.",
-      "counter_argument": "სტანდარტული structured outputs (JSON schema) თანამედროვე იაფ LLM-ებზე (მაგ. Haiku ან Flash) იგივე ამოცანას წარმატებით წყვეტს.",
-      "strategic_assessment": "აკონტროლე non-text transformer მიდგომა. შენს პროექტებში გადაწყვეტილების მისაღებად გამოიყენე structured outputs და არა თავისუფალი ტექსტი.",
-      "time_horizon": "mid-term",
-      "what_could_change": "აგენტური მარშრუტიზაცია (routing) და კლასიფიკაცია გათავისუფლდება ტექსტური ტოკენებისგან, რაც შეამცირებს latency-ს 10-ჯერ.",
-      "risks": [
-        "დახურული ეკოსისტემა მაღალი კორპორატიული ფასებით",
-        "შეზღუდული მოქნილობა ტექსტური კონტექსტის არარსებობის გამო",
-        "საწყის ეტაპზე ენთერპრაიზზე ორიენტირებული წვდომა"
-      ],
-      "non_obvious_opportunity": "საკუთარ აგენტებში Structured Outputs-ის (Pydantic) გამოყენებით ტექსტური გენერაციის მინიმუმამდე დაყვანა ხარჯების დასაზოგად.",
-      "fit_assessment": "კარგი თეორიული გაკვეთილია: აგენტს სჭირდება გადაწყვეტილება და მოქმედება, და არა გრძელი ესეები."
-    },
     {
       "event_id": "evt-interactions-api-gemini-argon",
       "title": "Google-მა გამოუშვა Interactions API და ძლიერი Gemini 4 Argon მოდელი",
@@ -6369,6 +6139,238 @@
       ],
       "non_obvious_opportunity": "შექმენი სერვისი, რომელიც ამოწმებს მოდელის API Provider-ების Integrity-ს და ადასტურებს, რომ მომხმარებელი არ იღებს Downgraded Model-ს.",
       "fit_assessment": "ღრმა ტექნიკური ფუნდამენტი 3-10 წლიანი პერსპექტივისთვის, თუმცა დღეს დაბალი პრიორიტეტი აქვს პროტოტიპირებაში."
+    },
+    {
+      "event_id": "evt-aws-serverless-mcp-data-lake",
+      "title": "Serverless MCP Server: Metadata-Driven არქიტექტურა AI აგენტების მონაცემთა ბაზებთან დასაკავშირებლად",
+      "category": "აგენტების ინფრასტრუქტურა და MCP",
+      "primary_url": "https://aws.amazon.com/blogs/machine-learning/serverless-mcp-server-for-ai-agent-data-lake-access-on-amazon-ecs-fargate",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 9,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "AWS-მა წარადგინა Serverless MCP არქიტექტურა, სადაც ახალი ბაზების ინტეგრაცია ხდება JSON მეტამონაცემებით, ყოველ ცხრილზე ახალი Python/SQL კოდის წერის გარეშე.",
+      "what_happened": "AWS-ის ინჟინრებმა გამოაქვეყნეს MCP სერვერის არქიტექტურა, რომელიც ავტომატურად პოულობს JSON მეტამონაცემებს და აგენტებს სთავაზობს უსაფრთხო წვდომას მონაცემებზე.",
+      "what_changed": "ადრე: ყოველ ახალ ცხრილზე იწერებოდა ახალი Tool code, SQL logic და Connection handler -> ახლა: ემატება მხოლოდ JSON metadata ფაილი pipeline sync-ის დროს.",
+      "why_it_matters": "შენს ბიზნეს აგენტებში ეს პატერნი დაგიზოგავს ასობით სტრიქონ განმეორებად კოდს და გახდის შენს MCP სერვერს მარტივად მასშტაბირებადს.",
+      "key_takeaways": [
+        "Metadata-driven approach აუქმებს per-dataset ინტეგრაციის კოდს",
+        "ცენტრალიზებული Permission enforcement MCP შრეზე უზრუნველყოფს აუდიტს",
+        "любой MCP-თავსებად კლიენტს შეუძლია გამოიყენოს იგივე უნიფიცირებული ინსტრუმენტები"
+      ],
+      "technical_architecture": [
+        "Client layer -> MCP Server Gateway Layer -> Dynamic Tool Discovery Engine",
+        "Metadata Repository (JSON schemas with table metrics & join rules)",
+        "Central Authorization & Audit Middleware inside MCP Server"
+      ],
+      "technical_details": [
+        "JSON metadata format definition for DB tables",
+        "FastMCP dynamic tool registration pattern",
+        "Parameterized SQL generation pipeline"
+      ],
+      "potential_impact": "შემცირდება ბიზნეს-მონაცემთა ბაზების აგენტებთან მიერთების დრო და უსაფრთხოების რისკები.",
+      "action_type": "BUILD",
+      "action": "შექმენი მცირე Python სკრიპტი FastMCP-ით, რომელიც ადგილობრივი SQLite ბაზის ცხრილების JSON სქემას წაიკითხავს და დინამიურ MCP ინსტრუმენტად აქცევს.",
+      "evidence": [],
+      "factuality_level": "single_source",
+      "classification": [
+        "Real Technical Skill",
+        "Real Business Opportunity"
+      ],
+      "verified_facts": [
+        "AWS-მა შექმნა ცენტრალიზებული MCP სერვერი ECS Fargate-ზე მონაცემთა ბაზებთან უსაფრთხო წვდომისთვის",
+        "ახალი მონაცემთა ნაკრების დამატება ხდება მხოლოდ JSON metadata ფაილის დამატებით, კოდის ცვლილების გარეშე",
+        "წვდომის კონტროლი და აუდიტი ცენტრალიზებულია უშუალოდ MCP სერვერის შრეზე",
+        "აუქმებს თითოეულ აგენტში SQL გენერაციის და Connection handling-ის დუბლირებას"
+      ],
+      "interpretation": "აგენტების არქიტექტურაში გადამწყვეტია დინამიური Metadata Engine. ნაცვლად იმისა, რომ თითოეული DB ცხრილისთვის ხელით წერო MCP Tool, სერვერმა JSON მეტამონაცემებიდან ავტომატურად უნდა შექმნას Schema Context.",
+      "uncertainty": "AWS-ის კონკრეტული სერვერლეს ინფრასტრუქტურა ძვირია; თუმცა არქიტექტურული პატერნი მარტივად პორტირებადია FastMCP-ზე და Python-ზე.",
+      "counter_argument": "მეტამონაცემებზე დაფუძნებულმა დინამიურმა SQL გენერაციამ შესაძლოა გამოწვიოს შეცდომები რთულ მრავალცხრილიან JOIN ოპერაციებში.",
+      "strategic_assessment": "ნუ დაწერ ინდივიდუალურ ინსტრუმენტებს ყოველი SQL ცხრილისთვის. გამოიყენე ერთი MCP სერვერი, რომელიც JSON სქემებიდან დინამიურად აგენერირებს Tool-ებს.",
+      "time_horizon": "short-term",
+      "what_could_change": "მონაცემთა ბაზების ინტეგრაციის დრო მრავალდღიანი ინჟინერიიდან შემცირდება 5-წუთიან JSON ფაილის განახლებამდე.",
+      "risks": [
+        "SQL Injection-ის რისკი დინამიური მოთხოვნების გენერირებისას",
+        "არასწორი Metadata-ს შემთხვევაში LLM-ის მიერ არასწორი JOIN-ების შექმნა"
+      ],
+      "non_obvious_opportunity": "შეგიძლია შექმნო open-source Python პაკეტი, რომელიც SQLite/PostgreSQL სქემებიდან ავტომატურად აგენერირებს MCP-თავსებად JSON მეტამონაცემებს.",
+      "fit_assessment": "ზუსტად ერგება შენს მიმდინარე ეტაპს (SQL -> MCP -> Agent Loops). გაძლევს საწარმოო არქიტექტურის აგების უნარს უფასო ინსტრუმენტებით."
+    },
+    {
+      "event_id": "evt-artex-agentic-secret-abuse",
+      "title": "ARTEX აგენტური შეტევები: AI აგენტები GitHub Secret-ებს და Cloud Key-ებს 5 წუთში იპარავენ",
+      "category": "აგენტის არქიტექტურა და უსაფრთხოება",
+      "primary_url": "https://www.microsoft.com/en-us/security/blog/2026/11/05/threat-actors-use-agentic-ai-tooling-to-find-and-abuse-exposed-secrets",
+      "supporting_urls": [
+        "https://www.microsoft.com/en-us/security/blog/2026/11/06/artex-abuse-expands-as-cybercriminals-target-financial-sector"
+      ],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 9,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "Microsoft-მა დააფიქსირა ARTEX აგენტური შეტევები, სადაც AI აგენტები GitHub-იდან გაჟონილ API გასაღებებს იყენებენ და 5 წუთში ახორციელებენ ღრუბლოვან შეტევებს.",
+      "what_happened": "Microsoft Threat Intelligence-მა გამოავლინა, რომ ჰაკერები იყენებენ ARTEX აგენტებს GitHub-ის სკანირების, ავტორიზაციის გასაღებების მიტაცებისა და ბაზების დაცლისთვის.",
+      "what_changed": "ადრე: ადამიანებს სჭირდებოდათ საათები გაჟონილი გასაღების გამოსაყენებლად -> ახლა: AI აგენტი 5 წუთში ავტონომიურად ახორციელებს სრულ შეტევას.",
+      "why_it_matters": "შენს GitHub პროექტებში თუნდაც ერთი ტესტური `.env` ფაილის გაპარვამ შეიძლება მყისიერად დაგიბლოკოს API ანგარიშები.",
+      "key_takeaways": [
+        "ARTEX აგენტები ასრულებენ reconnaissance, exploit და data exfiltration ეტაპებს ადამიანის ჩარევის გარეშე",
+        "5 წუთია საჭირო GitHub scan-იდან Key Vault-ის გაძარცვამდე",
+        "საჭიროა დროული სკანირება და API გასაღებების როტაცია"
+      ],
+      "technical_architecture": [
+        "Automated secret scanning pipeline -> Identity Abuse engine -> Exfiltration loop",
+        "SSRF & Web Shell persistence triggers executed via curl/netcat by AI agents"
+      ],
+      "technical_details": [
+        "GitHub public commit scanning latency: <5 mins",
+        "Automated Azure Key Vault exfiltration vectors",
+        "Storm-3358 threat group tactics"
+      ],
+      "potential_impact": "გაიზრდება მოთხოვნა აგენტური უსაფრთხოებისა და API Key-ების უსაფრთხო მართვის ავტომატიზებულ ინსტრუმენტებზე.",
+      "action_type": "APPLY",
+      "action": "გადაამოწმე შენი ყველა საჯარო GitHub რეპოზიტორია `.env` ფაილებზე და ჩართე `git-secrets` ან GitHub Secret Scanning შენს პროექტებში.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "ჰაკერები იყენებენ ავტონომიურ აგენტურ ჩარჩოს ARTEX-ს GitHub-ზე ღია API გასაღებების მოსაძებნად",
+        "დაფიქსირდა შემთხვევა, სადაც AI აგენტმა სკანირებიდან Azure Key Vault-ის მონაცემების ექსფილტრაციამდე 5 წუთში მიაღწია",
+        "შეტევები მოიცავს SSRF-ის, web shell-ების და ავტომატური API enumeration/database dumping-ის გამოყენებას",
+        "Storm-3358 ჯგუფი აქტიურად იყენებს აგენტებს საფინანსო სექტორის წინააღმდეგ"
+      ],
+      "interpretation": "ავტონომიური შეტევითი აგენტები (offensive AI agents) უკვე მუშაობენ მანქანურ სიჩქარეზე. GitHub Actions-ში ან Telegram ბოტებში შემთხვევით დატოვებული API გასაღები წამებში აღმოჩენადი და ბოროტად გამოყენებადია.",
+      "uncertainty": "შეტევების ზუსტი მასშტაბი მცირე პროექტებზე ჯერ დაბალია, თუმცა ავტომატიზებული ბოტები სკანირებენ მთელ საჯარო GitHub-ს.",
+      "counter_argument": "ტრადიციული სკანერებიც (GitGuardian, Trufflehog) სწრაფები იყვნენ, მაგრამ ARTEX-ის მსგავს აგენტებს შეუძლიათ ნაპოვნი გასაღების ტიპის გაგება და Follow-on შეტევის დამოუკიდებლად დაგეგმვა.",
+      "strategic_assessment": "არასოდეს ჩაწირო API გასაღებები, `.env` ფაილები ან სერვის პაროლები საჯარო GitHub რეპოზიტორიებში. გამოიყენე GitHub Secrets და Environment Variables.",
+      "time_horizon": "short-term",
+      "what_could_change": "უსაფრთხოების აუდიტი გადავა სრულიად ავტონომიურ აგენტურ რეჟიმში; API Key-ების გაჟონვის შედეგები გახდება მყისიერად კატასტროფული.",
+      "risks": [
+        "API Key-ის გაჟონვით გამოწვეული ფინანსური ზარალი (OpenAI/Anthropic ბილინგის ლიმიტების გადაჭარბება)",
+        "მონაცემთა ბაზების სრული გაჟონვა უსაფრთხოების არასაკმარისი შემოწმების გამო"
+      ],
+      "non_obvious_opportunity": "შეგიძლია ააგო უსაფრთხოების წინასწარი CI/CD GitHub Action, რომელიც commit-მდე სკანირებს კოდს და ამოწმებს აგენტურ წვდომებს.",
+      "fit_assessment": "კრიტიკულად მნიშვნელოვანია შენი GitHub Actions და Telegram პროექტებისთვის, სადაც უფასო API გასაღებებს იყენებ."
+    },
+    {
+      "event_id": "evt-swarm-evolve-latent-agent-swarms",
+      "title": "SwarmEvolve: Latent Agent Swarms და KV Cache გაზიარება სწრაფი კოდის ოპტიმიზაციისთვის",
+      "category": "აგენტის არქიტექტურა და ოპტიმიზაცია",
+      "primary_url": "https://arxiv.org/abs/2611.08483",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 85,
+      "tldr": "SwarmEvolve საშუალებას აძლევს აგენტებს იურთიერთონ latent space-ში KV cache-ის გაზიარებით. ეს 3-8 წუთში აღწევს იმ შედეგს, რასაც ტექსტური CoT 60 წუთში ახერხებდა.",
+      "what_happened": "მკვლევარებმა წარადგინეს SwarmEvolve, სადაც Qwen3 8B მოდელზე მომუშავე აგენტები ტექსტის გენერირების გარეშე, latent vector-ების დონეზე ცვლიან ცოდნას.",
+      "what_changed": "მრავალაგენტური სისტემები ადრე ათასობით ტექსტურ ტოკენს ხარჯავდნენ კომუნიკაციაში -> ახლა აგენტები პირდაპირ KV cache-ს გადასცემენ Summarizer აგენტს.",
+      "why_it_matters": "შენთვის ეს ნიშნავს იაფი მოდელებით რთული საძიებო და ოპტიმიზაციის ამოცანების 10-ჯერ სწრაფად ამოხსნას.",
+      "key_takeaways": [
+        "KV cache-ის გაზიარება აუქმებს ტექსტის დეკოდირების overhead-ს",
+        "Novelty filter იცავს აგენტების პოპულაციას დუბლირებისგან hidden state მანძილების გაზომვით",
+        "Qwen3 8B-მ აჯობა frontier მოდელებს 21 მათემატიკურ და პროგრამულ ტესტში"
+      ],
+      "technical_architecture": [
+        "vLLM / Open-source LLM backend direct hidden-state extraction-ით",
+        "Vector-based novelty filter cosine/euclidean მანძილებით hidden state-ებზე",
+        "Latent Crossover Summarizer აგენტი გაერთიანებული KV cache inputs-ით"
+      ],
+      "technical_details": [
+        "Latent state vector similarity measurement",
+        "KV cache concatenation and injection",
+        "Qwen3 8B active parameters"
+      ],
+      "potential_impact": "შემცირდება მულტი-აგენტური გამოთვლების ხარჯი და latency 85%-ით კოდის გენერაციისა და არქიტექტურული ძიების პროექტებში.",
+      "action_type": "LEARN",
+      "action": "გადახედე SwarmEvolve-ის სტატიას და შეამოწმე vLLM-ის KV cache retention API-ები Python-ში მცირე მოდელების ეფექტური მართვისთვის.",
+      "evidence": [],
+      "factuality_level": "single_source",
+      "classification": [
+        "Real Technical Skill",
+        "Real Business Opportunity"
+      ],
+      "verified_facts": [
+        "SwarmEvolve იყენებს ასობით დაბალბიუჯეტიან აგენტს რაუნდში Qwen3 8B მოდელზე",
+        "აგენტები ურთიერთობენ ფარულ ვექტორულ სივრცეში (latent space) KV cache-ის გაზიარებით",
+        "პროგრამული search-ის დრო შემცირდა 60 წუთიდან 3-8 წუთამდე",
+        "Novelty filter ზომავს მანძილებს აგენტების hidden state ვექტორებს შორის"
+      ],
+      "interpretation": "ტექსტური Chain of Thought დეკოდირების გვერდის ავლით და KV cache-ების შერწყმით, მცირე open-source მოდელებს შეუძლიათ აჯობონ ძვირადღირებულ frontier მოდელებს რთულ ამოცანებში.",
+      "uncertainty": "მეთოდი შემოწმებულია მათემატიკურ და პროგრამულ ოპტიმიზაციაზე; უცნობია ეფექტურობა ზოგად ბიზნეს-აგენტებში.",
+      "counter_argument": "Latent space-ში კომუნიკაცია მოითხოვს მოდელის შიდა შრეებზე პირდაპირ წვდომას, რაც დახურულ API-ებზე (OpenAI, Anthropic) შეუძლებელია.",
+      "strategic_assessment": "გამოიყენე open-source 8B მოდელები ადგილობრივად ან vLLM-ით, როდესაც გჭირდება მრავალი პარალელური აგენტის იაფად და სწრაფად ამუშავება.",
+      "time_horizon": "mid-term",
+      "what_could_change": "მულტი-აგენტური სისტემების API ხარჯი მკვეთრად შემცირდება, რადგან ტექსტური ტოკენების გენერირება latent state-ის გაზიარებით ჩანაცვლდება.",
+      "risks": [
+        "მოითხოვს open-weights მოდელების self-hosting ინფრასტრუქტურას",
+        "მაღალი GPU მეხსიერების ხარჯი დიდი KV cache-ების შენახვისას"
+      ],
+      "non_obvious_opportunity": "შეგიძლია შექმნა იაფი Python სკრიპტი, რომელიც vLLM-ის მეშვეობით რამდენიმე მცირე მოდელის latent state-ს გააერთიანებს კოდის ავტომატური ოპტიმიზაციისთვის.",
+      "fit_assessment": "იდეალურია დაბალი ბიუჯეტის პირობებში: საშუალებას გაძლევს 8B მოდელებით მიაღწიო მაღალ სიზუსტეს API ტოკენების ხარჯვის გარეშე."
+    },
+    {
+      "event_id": "evt-google-codemender-sandbox-defense",
+      "title": "Google CodeMender: აგენტების უსაფრთხოება OS Sandbox-ით და Human-in-the-Loop კონტროლით",
+      "category": "აგენტის არქიტექტურა და უსაფრთხოება",
+      "primary_url": "https://cloud.google.com/blog/products/identity-security/helping-you-build-and-defend-at-machine-speed-in-the-agentic-era",
+      "supporting_urls": [],
+      "importance": 7,
+      "relevance": 8,
+      "actionability": 8,
+      "source_quality": 9,
+      "confidence": 90,
+      "tldr": "Google-მა წარადგინა CodeMender, რომელიც კოდის შემოწმებასა და პაჩინგს ახორციელებს იზოლირებულ Sandbox-ში და მოითხოვს ადამიანის დასტურს კრიტიკულ ოპერაციებზე.",
+      "what_happened": "Google Cloud-მა გამოაქვეყნა CodeMender-ის ახალი შესაძლებლობები: უსაფრთხო OS Sandbox-ის იზოლაცია და Human-in-the-loop კონტროლი კოდის ავტონომიური შეკეთებისას.",
+      "what_changed": "ადრე: აგენტები პირდაპირ სამუშაო გარემოში აშვებდნენ ტესტებს -> ახლა: ყველა ექსპლოიტის სიმულაცია და პაჩინგი ხდება იზოლირებულ VM/Sandbox გარემოში.",
+      "why_it_matters": "გასწავლის სწორ არქიტექტურულ პატერნს: აგენტს მიეცი მოქმედების სრული თავისუფლება Sandbox-ში, მაგრამ მოსთხოვე დასტური real-world ცვლილებებზე.",
+      "key_takeaways": [
+        "CodeMender იყენებს Gemini 4 Argon-ს 0-day მოწყვლადობების აღმოსაჩენად",
+        "OS-level sandbox იცავს ძირითად ინფრასტრუქტურას აგენტის შეცდომებისგან",
+        "Human-in-the-loop აუცილებელია local write და execution ბრძანებებზე"
+      ],
+      "technical_architecture": [
+        "IDE Guardrail -> Agent Reasoning -> OS/VM Sandbox Execution -> Human-in-the-loop Gate -> Git Commit",
+        "Diff-only scanning engine for cost and speed optimization"
+      ],
+      "technical_details": [
+        "Gemini 4 Argon defensive model",
+        "OS-level sandbox / Container isolation",
+        "Diff-based selective repo scan"
+      ],
+      "potential_impact": "დაამკვიდრებს უსაფრთხო აგენტური დეველოპმენტის სტანდარტს საწარმოო გარემოში.",
+      "action_type": "TRY",
+      "action": "დაამატე მარტივი `input()` ან Telegram inline button-ის დასტური შენს Python აგენტის სკრიპტში, სანამ აგენტი ფაილურ სისტემაში ცვლილებებს შეიტანს.",
+      "evidence": [],
+      "factuality_level": "single_source",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "Google-მა გაავრცელა CodeMender — ავტონომიური კოდის უსაფრთხოების აგენტი Gemini 4 Argon-ის ბაზაზე",
+        "CodeMender ახდენს მოწყვლადობების სიმულაციას იზოლირებულ OS-level sandbox-ში ან VM-ში",
+        "დამატებულია Human-in-the-loop შემოწმებები ლოკალური ფაილების ჩაწერისა და ბრძანებების შესრულებისას",
+        "მხარს უჭერს მოქნილ სკანირებას: კონკრეტული საქაღალდის, მთლიანი რეპოზიტორიის ან მხოლოდ შეცვლილი ფაილების დონეზე"
+      ],
+      "interpretation": "ავტონომიურ აგენტებს არ უნდა მიეცეთ პირდაპირი წვდომა ძირითად OS-თან ან production ბაზებთან. იზოლირებული Sandbox და Human-in-the-loop დასტური აუცილებელი პატერნია.",
+      "uncertainty": "CodeMender ჯერ preview რეჟიმშია და Gemini 4 Argon-ზე წვდომას მოითხოვს.",
+      "counter_argument": "Human-in-the-loop შემოწმებებმა შეიძლება შეანელონ ავტონომიური აგენტების მუშაობის სიჩქარე, თუმცა უსაფრთხოების რისკს მინიმუმამდე ამცირებენ.",
+      "strategic_assessment": "როდესაც აშენებ აგენტს, რომელიც ასრულებს Python/Shell კოდს, ყოველთვის გამოიყენე Docker/gVisor იზოლაცია და კრიტიკულ ბრძანებებზე მოითხოვე Telegram-ში ადამიანის დასტური.",
+      "time_horizon": "mid-term",
+      "what_could_change": "პროგრამული უზრუნველყოფის დებაგინგი და Patching გახდება ავტონომიური, მაგრამ მხოლოდ მკაცრად სენდბოქსირებულ გარემოებებში.",
+      "risks": [
+        "არასაკმარისად იზოლირებულმა Sandbox-მა შეიძლება დაუშვას აგენტის მიერ სისტემური ბრძანებების გაპარვა",
+        "მაღალი Compute ხარჯები ყოველ ცვლილებაზე სრული VM სიმულაციის გაშვებისას"
+      ],
+      "non_obvious_opportunity": "შეგიძლია შექმნა Telegram ბოტი, სადაც აგენტი კოდს გააშვებს Docker Sandbox-ში და მხოლოდ შენი Telegram ღილაკზე დაჭერის ('Approve') შემდეგ შეასრულებს Commit-ს.",
+      "fit_assessment": "ძალიან პრაქტიკულია შენი Telegram+Python აგენტების არქიტექტურისთვის უსაფრთხოების ფენის დასამატებლად."
     }
   ],
   "topics": {
@@ -6476,7 +6478,7 @@
     "AI Research & Agent Optimization": 1,
     "AI Research & Agent Infrastructure": 1,
     "AI Coding Tools და Agent Architecture": 1,
-    "აგენტების ინფრასტრუქტურა და MCP": 13,
+    "აგენტების ინფრასტრუქტურა და MCP": 14,
     "აგენტების ინფრასტრუქტურა და უსაფრთხოება": 2,
     "": 1,
     "AI Research & RAG": 1,
@@ -6507,7 +6509,7 @@
     "RAG და აგენტის მეხსიერება": 3,
     "აგენტის არქიტექტურა და რობოტიკა": 2,
     "Long-Term Career Value": 2,
-    "აგენტის არქიტექტურა და ოპტიმიზაცია": 6,
+    "აგენტის არქიტექტურა და ოპტიმიზაცია": 7,
     "Open Source AI & Infrastructure": 1,
     "Real Business Opportunity & Agent Architecture": 6,
     "აგენტების ინფრასტრუქტურა და LLM APIs": 1,
@@ -6519,191 +6521,10 @@
     "AI Research / Self-Improvement": 1,
     "აგენტების არქიტექტურა და ინფრასტრუქტურა": 1,
     "აგენტის არქიტექტურა და Open Source": 2,
-    "აგენტის არქიტექტურა და უსაფრთხოება": 2,
+    "აგენტის არქიტექტურა და უსაფრთხოება": 4,
     "აგენტების ინფრასტრუქტურა და Open Source": 1
   },
   "reports": [
-    {
-      "date": "2026-10-22",
-      "summary": "დღევანდელი სიგნალები ფოკუსირებულია OpenAI-სა და Google Cloud-ის ინფრასტრუქტურულ ინტეგრაციებზე, აგენტების პერსისტენტული runtime სერვისებზე და კვანტური ტრეიდინგის ბენჩმარკებზე. შენთვის მთავარი ამოცანაა შეისწავლო აგენტების runtime და მართო tool calling ისე, რომ აირიდო context pollution.",
-      "events": [
-        {
-          "event_id": "evt-openai-google-cloud-model-garden",
-          "title": "OpenAI Models and Codex Agentic Workflows Arrive in Google Cloud Model Garden",
-          "category": "აგენტების ინფრასტრუქტურა და LLM APIs",
-          "primary_url": "https://openai.com/index/openai-models-google-cloud",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 10,
-          "confidence": 95,
-          "tldr": "OpenAI-ის ფრონტიერ მოდელები და Codex აგენტები შედიან Google Cloud Model Garden-ში.",
-          "what_happened": "OpenAI-მ და Google Cloud-მა გამოაცხადეს პარტნიორობა მოდელებისა და აგენტური სამუშაო ნაკადების ინტეგრაციის შესახებ.",
-          "what_changed": "იზოლირებული ეკოსისტემებიდან გადავდივართ მოდელების მრავალპლატფორმიან ხელმისაწვდომობაზე.",
-          "why_it_matters": "გაძლევს შანსს შეამოწმო მრავალი მოდელი ერთიან კლ라우დ გარემოში და შეარჩიო იაფი ვარიანტი შენი აგენტებისთვის.",
-          "key_takeaways": [
-            "OpenAI მოდელები ხელმისაწვდომია Google Cloud Model Garden-ში.",
-            "მსხვილ კლიენტებს შეუძლიათ გამოიყენონ GCP ხარჯვის ვალდებულებები.",
-            "ინტეგრაცია მოიცავს Codex აგენტურ სამუშაო ნაკადებს."
-          ],
-          "technical_architecture": [
-            "Google Cloud Model Garden ინტეგრაცია OpenAI API-ებთან.",
-            "GCP ტრანზაქციული ბილინგისა და წვდომის კონტროლის დაკავშირება."
-          ],
-          "technical_details": [
-            "API წვდომა Google Cloud Marketplace-ის გავლით.",
-            "ცენტრალიზებული მონაცემთა მმართველობის გამოყენება."
-          ],
-          "potential_impact": "ამარტივებს enterprise აგენტების განთავსებას და უზრუნველყოფს მოდელების ფართო არჩევანს.",
-          "action_type": "TRACK",
-          "action": "შეისწავლე Google Cloud Model Garden-ის დოკუმენტაცია და შეამოწმე API-ის გამოძხების მეთოდები Python-ით.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Business Opportunity",
-            "Long-Term Career Value",
-            "Short-term Opportunity"
-          ],
-          "verified_facts": [
-            "OpenAI frontier models and Codex agentic workflows are integrating into Google Cloud Model Garden.",
-            "Enterprise customers can use Google Cloud credits to purchase OpenAI models.",
-            "OpenAI models will be available in Google Antigravity and Gemini Agent."
-          ],
-          "interpretation": "ინფრასტრუქტურული ბარიერები იხსნება: დეველოპერები იღებენ თავისუფლებას გამოიყენონ OpenAI-ის აგენტები Google Cloud-ის მონაცემთა მართვის გარემოში.",
-          "uncertainty": "უცნობია როგორი იქნება ზუსტი API ლატენტობა Google Cloud-ის გარემოში ტრანსაქციების დროს.",
-          "counter_argument": "ეს პარტნიორობა ძირითადად მსხვილ კორპორაციებზეა გათვლილი და ნაკლებად ეხება იაფ, ლოკალურ ინსტრუმენტებს.",
-          "strategic_assessment": "გამოიყენე Model Garden-ის საჯარო API დოკუმენტაცია შენს აგენტებში მოდელების შესაცვლელად და ლატენტობის ტესტირებისთვის.",
-          "time_horizon": "mid-term",
-          "what_could_change": "მოდელების პროვაიდერებს შორის კონკურენცია გადადის კლ라우დ ინფრასტრუქტურისა და ბილინგის ინტეგრაციის დონეზე.",
-          "risks": [
-            "API ხარჯების ზრდა",
-            "კლ라우დ პლატფორმაზე დამოკიდებულება",
-            "კონფიგურაციის სირთულე"
-          ],
-          "non_obvious_opportunity": "მცირე დეველოპერებს შეუძლიათ გამოიყენონ არსებული კლ라우დ ბიუჯეტები OpenAI API-ების სატესტოდ.",
-          "fit_assessment": "გვეხმარება გავხადოთ ჩვენი აგენტი მოდელ-აგნოსტიკური, თუმცა ფრთხილად უნდა ვიყოთ ხარჯებთან."
-        },
-        {
-          "event_id": "evt-quant-arena-trading-agents",
-          "title": "Quant-Arena: Benchmarking LLM Agents for End-to-End Quantitative Trading Research",
-          "category": "AI Evaluation & საიმედოობა",
-          "primary_url": "https://arxiv.org/abs/2610.30113",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 7,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "Quant-Arena აფასებს LLM აგენტებს საბაზრო ჰიპოთეზების შექმნისა და ტესტირების იტერაციულ ლუპებში.",
-          "what_happened": "მკვლევრებმა წარადგინეს Quant-Arena, ბენჩმარკი სადაც აგენტები აწყობენ ფინანსურ სიგნალებს ისტორიულ მონაცემებზე.",
-          "what_changed": "თეორიული ქვიზებიდან გადავდივართ მრავალეტაპიან კვლევით ბენჩმარკებზე რეალურ მონაცემებზე.",
-          "why_it_matters": "გაძლევს მაგალითს იმისა, როგორ უნდა შეამოწმო შენი აგენტის მიერ გენერირებული კოდის ხარისხი და ვალიდურობა.",
-          "key_takeaways": [
-            "Quant-Arena აფასებს ეგზეკუტებადი სიგნალების წერას და ისტორიულ ტესტირებას.",
-            "ფრონტიერ მოდელებმა ვერ აჯობეს მარტივ საბაზრო ბაზისს 2024 წელს.",
-            "ბენჩმარკი ღიაა მოდელებისა და აგენტების ჰარნესების გამოსაცდელად."
-          ],
-          "technical_architecture": [
-            "კეშ-ანგარიშის ევალუატორი საბაზრო შეზღუდვებითა და ხარჯებით.",
-            "სიმულირებული ორდერ-ბუქის ბაზაზე ბაზრის გავლენის შეფასება."
-          ],
-          "technical_details": [
-            "ფუნქციების გენერაცია და სტოკ-სქორინგ კოდის შესრულება Python-ში.",
-            "უკუკავშირის მიღება მხოლოდ 2022-2023 წლების მონაცემებიდან."
-          ],
-          "potential_impact": "აუმჯობესებს აგენტების უსაფრთხოებასა და კოდის გენერაციის ხარისხს რთულ, ცვალებად გარემოებებში.",
-          "action_type": "LEARN",
-          "action": "წაიკითხე Quant-Arena-ს ნაშრომის აბსტრაქტი და გააანალიზე როგორ აწყობენ ისინი აგენტურ კვლევით ლუპებს.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value",
-            "Short-term Opportunity"
-          ],
-          "verified_facts": [
-            "Quant-Arena evaluates end-to-end quantitative research on real A-share market data.",
-            "Nine frontier models were evaluated, including GPT-6 Astra.",
-            "No tested model beat the equal-weight market baseline in the sealed 2024 test."
-          ],
-          "interpretation": "აგენტები ჯერ კიდევ ვერ ამარცხებენ მარტივ საბაზრო სტრატეგიებს სრულფასოვან კვლევით ლუპებში, რაც აჩვენებს რთული აგენტური რისკების მნიშვნელობას.",
-          "uncertainty": "გამოყენებული ბაზრის მონაცემები შეზღუდულია და სტრატეგიები შეიძლება არ გენერალიზდებოდეს სხვა ბირჟებზე.",
-          "counter_argument": "ფინანსური ბაზრის სიმულაციები ხშირად არარეალურია და აგენტის შეცდომები ძვირი ჯდება რეალურ გარემოში.",
-          "strategic_assessment": "გამოიყენე ეს ბენჩმარკი როგორც მოდელი შენი საკუთარი აგენტების იტერაციული ლუპების შესაფასებლად და საიმედოობის ასამაღლებლად.",
-          "time_horizon": "mid-term",
-          "what_could_change": "ფინანსური კვლევები სრულად ავტომატიზირდება, მაგრამ მოითხოვს მკაცრ მრავალეტაპიან ტესტირებას.",
-          "risks": [
-            "ზედმეტად ოპტიმისტური ბექსტესტები",
-            "ფინანსური დანაკარგები",
-            "კონტექსტის დაბინძურება"
-          ],
-          "non_obvious_opportunity": "მცირე დეველოპერებს შეუძლიათ გამოიყენონ მსგავსი იტერაციული ლუპები არა ტრეიდინგისთვის, არამედ მონაცემთა ავტომატური ანალიზისთვის.",
-          "fit_assessment": "გასწავლის როგორ აგო იტერაციული კვლევითი აგენტები, რომლებიც უშვებენ და ტესტავენ ჰიპოთეზებს ისტორიულ მონაცემებზე."
-        },
-        {
-          "event_id": "evt-donic-bimanual-dexterous-control",
-          "title": "DONIC: Generalist Dexterous Bimanual Tracking Control from Human Demonstrations",
-          "category": "აგენტის არქიტექტურა და რობოტიკა",
-          "primary_url": "https://huggingface.co/papers/2610.29997",
-          "supporting_urls": [],
-          "importance": 7,
-          "relevance": 6,
-          "actionability": 6,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "DONIC წარმოადგენს ორხელიან რობოტულ ტრეკერს, რომელიც ადამიანის მოძრაობიდან სწავლობს ფაინ-თუნინგის გარეშე.",
-          "what_happened": "მკვლევრებმა წარადგინეს DONIC, პოლიტიკა რომელიც აკონტროლებს ორ ხელს ადამიანის დემონსტრაციების გამოყენებით.",
-          "what_changed": "ერთხელიანი მანიპულაციიდან გადავდივართ ორხელიან, კოორდინირებულ მრავალმოდალურ მართვაზე.",
-          "why_it_matters": "გაჩვენებს როგორ მუშაობს ძლიერი პოლიტიკის ლუპები და რატომ არის მნიშვნელოვანი ქცევითი კლონირება.",
-          "key_takeaways": [
-            "DONIC აკონტროლებს ორ Wuji ხელს და ათვალიერებს ბიმანუალურ რეფერენსებს.",
-            "იყენებს PPO-ს და behavioral cloning-ს უკუკავშირის ლუპში.",
-            "აღწევს 86.79 პროცენტ წარმატებას უცნობ ტრაექტორიებზე."
-          ],
-          "technical_architecture": [
-            "BiHOI მრავალხედიანი მონაცემთა ბაზა (1,575 სექვენსი, 229 ობიექტი).",
-            "Object-centered per-hand reward და Clip-Centered Advantages."
-          ],
-          "technical_details": [
-            "Proximal policy optimization ერთობლივი ტრენინგისთვის.",
-            "ხელის კონტაქტის როლების მიხედვით ზედამხედველობა."
-          ],
-          "potential_impact": "აჩქარებს მულტიმოდალური რობოტული სისტემების დანერგვას ინდუსტრიულ სფეროებში.",
-          "action_type": "TRACK",
-          "action": "გადახედე Hugging Face-ის ნაშრომის გვერდს და გაეცანი BiHOI მონაცემთა ბაზის სტრუქტურას.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "DONIC is a generalist bimanual tracker trained on human-motion data.",
-            "It achieves 86.79 percent success on unseen trajectories of training objects.",
-            "The model uses proximal policy optimization combined with behavioral cloning."
-          ],
-          "interpretation": "ფიზიკური და რობოტული აგენტები სწავლობენ ორხელიან კოორდინაციას ადამიანის დემონსტრაციებიდან ყოველგვარი დამატებითი ფაინ-თუნინგის გარეშე.",
-          "uncertainty": "რეალურ ფიზიკურ რობოტებზე გადატანა მოითხოვს महנגურ კალიბრაციას, რაც ლაბორატორიის მიღმა რთულია.",
-          "counter_argument": "ეს კვლევა სცდება სუფთა პროგრამული აგენტების ფარგლებს და ნაკლებად პრაქტიკულია ახალბედა დეველოპერისთვის დღეს.",
-          "strategic_assessment": "თვალი ადევნე მულტიმოდალური აგენტებისა და ფიზიკური ლუპების განვითარებას, თუმცა ფოკუსი შეინარჩუნე პროგრამულ აგენტებზე.",
-          "time_horizon": "long-term",
-          "what_could_change": "რობოტიკისა და ციფრული აგენტების არქიტექტურა გაერთიანდება ერთიანი მულტიმოდალური პოლიტიკის ქვეშ.",
-          "risks": [
-            "მაღალი გამოთვლითი სირთულე",
-            "აპარატურულ უზრუნველყოფაზე დამოკიდებულება",
-            "რეალურ სამყაროში გენერალიზაციის ბარიერები"
-          ],
-          "non_obvious_opportunity": "პოლიტიკის რეციკლირების მიდგომები შეიძლება გამოყენებულ იქნას პროგრამული აგენტების ტლანქი ციკლების ოპტიმიზაციისთვის.",
-          "fit_assessment": "ძალიან თეორიულია ამ ეტაპზე შენი ყოველდღიური პროექტებისთვის, მაგრამ კარგია არქიტექტურული ჰორიზონტისთვის."
-        }
-      ],
-      "trends": [
-        "OpenAI მოდელების ინტეგრაცია Google Cloud ეკოსისტემაში ქმნის მრავალპლატფორმიან აგენტურ სტანდარტებს.",
-        "აგენტების იტერაციული და კვლევითი ბენჩმარკები (როგორიცაა Quant-Arena) ცვლის სტატიკურ ტესტებს.",
-        "მულტიმოდალური ფიზიკური და რობოტული სისტემები უახლოვდებიან ნულოვანი ფაინ-თუნინგის რეჟიმებს."
-      ]
-    },
     {
       "date": "2026-10-24",
       "summary": "Google-მა წარადგინა Agent Compute Engine და Project Chrysalis თვითგანვითარებადი microVM ინფრასტრუქტურისთვის. Meta-მ გამოუშვა Muse Glimmer 30B ლოკალური მოწყობილობებისთვის, ხოლო AWS-მა Deep Insight-ით აჩვენა Context Engineering-ის გადაწყვეტები production multi-agent სისტემებში. ეს სიგნალები ცვლის აგენტების იაფ ლოკალურ დეველოპმენტსა და უსაფრთხოების სტანდარტებს.",
@@ -10168,14 +9989,258 @@
         "ავტონომიური უსაფრთხოების პაიპლაინები და PoC/Patch ავტომატური გენერაცია",
         "აგენტების შეფასების (Evals) გადასვლა Q&A-დან კონტეინერიზებულ Long-Horizon environments-ზე"
       ]
+    },
+    {
+      "date": "2026-11-07",
+      "summary": "დღევანდელი ანალიზი ფოკუსირებულია დაბალხარჯიან მულტი-აგენტურ არქიტექტურებზე, MCP სერვერების მეტამონაცემებით მართვასა და აგენტურ უსაფრთხოებაზე. SwarmEvolve ამცირებს CoT ტექსტურ ხარჯებს KV cache-ის გაზიარებით, ხოლო AWS-ის მეტამონაცემებზე დაფუძნებული MCP პატერნი აუქმებს ყოველ ცხრილზე ცალკე API კოდის წერის საჭიროებას. ARTEX შეტევები კი გვიჩვენებს, რატომ არის კრიტიკული API Key-ების დაცვა GitHub ავტომატიზაციებში.",
+      "events": [
+        {
+          "event_id": "evt-aws-serverless-mcp-data-lake",
+          "title": "Serverless MCP Server: Metadata-Driven არქიტექტურა AI აგენტების მონაცემთა ბაზებთან დასაკავშირებლად",
+          "category": "აგენტების ინფრასტრუქტურა და MCP",
+          "primary_url": "https://aws.amazon.com/blogs/machine-learning/serverless-mcp-server-for-ai-agent-data-lake-access-on-amazon-ecs-fargate",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 9,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "AWS-მა წარადგინა Serverless MCP არქიტექტურა, სადაც ახალი ბაზების ინტეგრაცია ხდება JSON მეტამონაცემებით, ყოველ ცხრილზე ახალი Python/SQL კოდის წერის გარეშე.",
+          "what_happened": "AWS-ის ინჟინრებმა გამოაქვეყნეს MCP სერვერის არქიტექტურა, რომელიც ავტომატურად პოულობს JSON მეტამონაცემებს და აგენტებს სთავაზობს უსაფრთხო წვდომას მონაცემებზე.",
+          "what_changed": "ადრე: ყოველ ახალ ცხრილზე იწერებოდა ახალი Tool code, SQL logic და Connection handler -> ახლა: ემატება მხოლოდ JSON metadata ფაილი pipeline sync-ის დროს.",
+          "why_it_matters": "შენს ბიზნეს აგენტებში ეს პატერნი დაგიზოგავს ასობით სტრიქონ განმეორებად კოდს და გახდის შენს MCP სერვერს მარტივად მასშტაბირებადს.",
+          "key_takeaways": [
+            "Metadata-driven approach აუქმებს per-dataset ინტეგრაციის კოდს",
+            "ცენტრალიზებული Permission enforcement MCP შრეზე უზრუნველყოფს აუდიტს",
+            "любой MCP-თავსებად კლიენტს შეუძლია გამოიყენოს იგივე უნიფიცირებული ინსტრუმენტები"
+          ],
+          "technical_architecture": [
+            "Client layer -> MCP Server Gateway Layer -> Dynamic Tool Discovery Engine",
+            "Metadata Repository (JSON schemas with table metrics & join rules)",
+            "Central Authorization & Audit Middleware inside MCP Server"
+          ],
+          "technical_details": [
+            "JSON metadata format definition for DB tables",
+            "FastMCP dynamic tool registration pattern",
+            "Parameterized SQL generation pipeline"
+          ],
+          "potential_impact": "შემცირდება ბიზნეს-მონაცემთა ბაზების აგენტებთან მიერთების დრო და უსაფრთხოების რისკები.",
+          "action_type": "BUILD",
+          "action": "შექმენი მცირე Python სკრიპტი FastMCP-ით, რომელიც ადგილობრივი SQLite ბაზის ცხრილების JSON სქემას წაიკითხავს და დინამიურ MCP ინსტრუმენტად აქცევს.",
+          "evidence": [],
+          "factuality_level": "single_source",
+          "classification": [
+            "Real Technical Skill",
+            "Real Business Opportunity"
+          ],
+          "verified_facts": [
+            "AWS-მა შექმნა ცენტრალიზებული MCP სერვერი ECS Fargate-ზე მონაცემთა ბაზებთან უსაფრთხო წვდომისთვის",
+            "ახალი მონაცემთა ნაკრების დამატება ხდება მხოლოდ JSON metadata ფაილის დამატებით, კოდის ცვლილების გარეშე",
+            "წვდომის კონტროლი და აუდიტი ცენტრალიზებულია უშუალოდ MCP სერვერის შრეზე",
+            "აუქმებს თითოეულ აგენტში SQL გენერაციის და Connection handling-ის დუბლირებას"
+          ],
+          "interpretation": "აგენტების არქიტექტურაში გადამწყვეტია დინამიური Metadata Engine. ნაცვლად იმისა, რომ თითოეული DB ცხრილისთვის ხელით წერო MCP Tool, სერვერმა JSON მეტამონაცემებიდან ავტომატურად უნდა შექმნას Schema Context.",
+          "uncertainty": "AWS-ის კონკრეტული სერვერლეს ინფრასტრუქტურა ძვირია; თუმცა არქიტექტურული პატერნი მარტივად პორტირებადია FastMCP-ზე და Python-ზე.",
+          "counter_argument": "მეტამონაცემებზე დაფუძნებულმა დინამიურმა SQL გენერაციამ შესაძლოა გამოწვიოს შეცდომები რთულ მრავალცხრილიან JOIN ოპერაციებში.",
+          "strategic_assessment": "ნუ დაწერ ინდივიდუალურ ინსტრუმენტებს ყოველი SQL ცხრილისთვის. გამოიყენე ერთი MCP სერვერი, რომელიც JSON სქემებიდან დინამიურად აგენერირებს Tool-ებს.",
+          "time_horizon": "short-term",
+          "what_could_change": "მონაცემთა ბაზების ინტეგრაციის დრო მრავალდღიანი ინჟინერიიდან შემცირდება 5-წუთიან JSON ფაილის განახლებამდე.",
+          "risks": [
+            "SQL Injection-ის რისკი დინამიური მოთხოვნების გენერირებისას",
+            "არასწორი Metadata-ს შემთხვევაში LLM-ის მიერ არასწორი JOIN-ების შექმნა"
+          ],
+          "non_obvious_opportunity": "შეგიძლია შექმნო open-source Python პაკეტი, რომელიც SQLite/PostgreSQL სქემებიდან ავტომატურად აგენერირებს MCP-თავსებად JSON მეტამონაცემებს.",
+          "fit_assessment": "ზუსტად ერგება შენს მიმდინარე ეტაპს (SQL -> MCP -> Agent Loops). გაძლევს საწარმოო არქიტექტურის აგების უნარს უფასო ინსტრუმენტებით."
+        },
+        {
+          "event_id": "evt-artex-agentic-secret-abuse",
+          "title": "ARTEX აგენტური შეტევები: AI აგენტები GitHub Secret-ებს და Cloud Key-ებს 5 წუთში იპარავენ",
+          "category": "აგენტის არქიტექტურა და უსაფრთხოება",
+          "primary_url": "https://www.microsoft.com/en-us/security/blog/2026/11/05/threat-actors-use-agentic-ai-tooling-to-find-and-abuse-exposed-secrets",
+          "supporting_urls": [
+            "https://www.microsoft.com/en-us/security/blog/2026/11/06/artex-abuse-expands-as-cybercriminals-target-financial-sector"
+          ],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 9,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "Microsoft-მა დააფიქსირა ARTEX აგენტური შეტევები, სადაც AI აგენტები GitHub-იდან გაჟონილ API გასაღებებს იყენებენ და 5 წუთში ახორციელებენ ღრუბლოვან შეტევებს.",
+          "what_happened": "Microsoft Threat Intelligence-მა გამოავლინა, რომ ჰაკერები იყენებენ ARTEX აგენტებს GitHub-ის სკანირების, ავტორიზაციის გასაღებების მიტაცებისა და ბაზების დაცლისთვის.",
+          "what_changed": "ადრე: ადამიანებს სჭირდებოდათ საათები გაჟონილი გასაღების გამოსაყენებლად -> ახლა: AI აგენტი 5 წუთში ავტონომიურად ახორციელებს სრულ შეტევას.",
+          "why_it_matters": "შენს GitHub პროექტებში თუნდაც ერთი ტესტური `.env` ფაილის გაპარვამ შეიძლება მყისიერად დაგიბლოკოს API ანგარიშები.",
+          "key_takeaways": [
+            "ARTEX აგენტები ასრულებენ reconnaissance, exploit და data exfiltration ეტაპებს ადამიანის ჩარევის გარეშე",
+            "5 წუთია საჭირო GitHub scan-იდან Key Vault-ის გაძარცვამდე",
+            "საჭიროა დროული სკანირება და API გასაღებების როტაცია"
+          ],
+          "technical_architecture": [
+            "Automated secret scanning pipeline -> Identity Abuse engine -> Exfiltration loop",
+            "SSRF & Web Shell persistence triggers executed via curl/netcat by AI agents"
+          ],
+          "technical_details": [
+            "GitHub public commit scanning latency: <5 mins",
+            "Automated Azure Key Vault exfiltration vectors",
+            "Storm-3358 threat group tactics"
+          ],
+          "potential_impact": "გაიზრდება მოთხოვნა აგენტური უსაფრთხოებისა და API Key-ების უსაფრთხო მართვის ავტომატიზებულ ინსტრუმენტებზე.",
+          "action_type": "APPLY",
+          "action": "გადაამოწმე შენი ყველა საჯარო GitHub რეპოზიტორია `.env` ფაილებზე და ჩართე `git-secrets` ან GitHub Secret Scanning შენს პროექტებში.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "ჰაკერები იყენებენ ავტონომიურ აგენტურ ჩარჩოს ARTEX-ს GitHub-ზე ღია API გასაღებების მოსაძებნად",
+            "დაფიქსირდა შემთხვევა, სადაც AI აგენტმა სკანირებიდან Azure Key Vault-ის მონაცემების ექსფილტრაციამდე 5 წუთში მიაღწია",
+            "შეტევები მოიცავს SSRF-ის, web shell-ების და ავტომატური API enumeration/database dumping-ის გამოყენებას",
+            "Storm-3358 ჯგუფი აქტიურად იყენებს აგენტებს საფინანსო სექტორის წინააღმდეგ"
+          ],
+          "interpretation": "ავტონომიური შეტევითი აგენტები (offensive AI agents) უკვე მუშაობენ მანქანურ სიჩქარეზე. GitHub Actions-ში ან Telegram ბოტებში შემთხვევით დატოვებული API გასაღები წამებში აღმოჩენადი და ბოროტად გამოყენებადია.",
+          "uncertainty": "შეტევების ზუსტი მასშტაბი მცირე პროექტებზე ჯერ დაბალია, თუმცა ავტომატიზებული ბოტები სკანირებენ მთელ საჯარო GitHub-ს.",
+          "counter_argument": "ტრადიციული სკანერებიც (GitGuardian, Trufflehog) სწრაფები იყვნენ, მაგრამ ARTEX-ის მსგავს აგენტებს შეუძლიათ ნაპოვნი გასაღების ტიპის გაგება და Follow-on შეტევის დამოუკიდებლად დაგეგმვა.",
+          "strategic_assessment": "არასოდეს ჩაწირო API გასაღებები, `.env` ფაილები ან სერვის პაროლები საჯარო GitHub რეპოზიტორიებში. გამოიყენე GitHub Secrets და Environment Variables.",
+          "time_horizon": "short-term",
+          "what_could_change": "უსაფრთხოების აუდიტი გადავა სრულიად ავტონომიურ აგენტურ რეჟიმში; API Key-ების გაჟონვის შედეგები გახდება მყისიერად კატასტროფული.",
+          "risks": [
+            "API Key-ის გაჟონვით გამოწვეული ფინანსური ზარალი (OpenAI/Anthropic ბილინგის ლიმიტების გადაჭარბება)",
+            "მონაცემთა ბაზების სრული გაჟონვა უსაფრთხოების არასაკმარისი შემოწმების გამო"
+          ],
+          "non_obvious_opportunity": "შეგიძლია ააგო უსაფრთხოების წინასწარი CI/CD GitHub Action, რომელიც commit-მდე სკანირებს კოდს და ამოწმებს აგენტურ წვდომებს.",
+          "fit_assessment": "კრიტიკულად მნიშვნელოვანია შენი GitHub Actions და Telegram პროექტებისთვის, სადაც უფასო API გასაღებებს იყენებ."
+        },
+        {
+          "event_id": "evt-swarm-evolve-latent-agent-swarms",
+          "title": "SwarmEvolve: Latent Agent Swarms და KV Cache გაზიარება სწრაფი კოდის ოპტიმიზაციისთვის",
+          "category": "აგენტის არქიტექტურა და ოპტიმიზაცია",
+          "primary_url": "https://arxiv.org/abs/2611.08483",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 85,
+          "tldr": "SwarmEvolve საშუალებას აძლევს აგენტებს იურთიერთონ latent space-ში KV cache-ის გაზიარებით. ეს 3-8 წუთში აღწევს იმ შედეგს, რასაც ტექსტური CoT 60 წუთში ახერხებდა.",
+          "what_happened": "მკვლევარებმა წარადგინეს SwarmEvolve, სადაც Qwen3 8B მოდელზე მომუშავე აგენტები ტექსტის გენერირების გარეშე, latent vector-ების დონეზე ცვლიან ცოდნას.",
+          "what_changed": "მრავალაგენტური სისტემები ადრე ათასობით ტექსტურ ტოკენს ხარჯავდნენ კომუნიკაციაში -> ახლა აგენტები პირდაპირ KV cache-ს გადასცემენ Summarizer აგენტს.",
+          "why_it_matters": "შენთვის ეს ნიშნავს იაფი მოდელებით რთული საძიებო და ოპტიმიზაციის ამოცანების 10-ჯერ სწრაფად ამოხსნას.",
+          "key_takeaways": [
+            "KV cache-ის გაზიარება აუქმებს ტექსტის დეკოდირების overhead-ს",
+            "Novelty filter იცავს აგენტების პოპულაციას დუბლირებისგან hidden state მანძილების გაზომვით",
+            "Qwen3 8B-მ აჯობა frontier მოდელებს 21 მათემატიკურ და პროგრამულ ტესტში"
+          ],
+          "technical_architecture": [
+            "vLLM / Open-source LLM backend direct hidden-state extraction-ით",
+            "Vector-based novelty filter cosine/euclidean მანძილებით hidden state-ებზე",
+            "Latent Crossover Summarizer აგენტი გაერთიანებული KV cache inputs-ით"
+          ],
+          "technical_details": [
+            "Latent state vector similarity measurement",
+            "KV cache concatenation and injection",
+            "Qwen3 8B active parameters"
+          ],
+          "potential_impact": "შემცირდება მულტი-აგენტური გამოთვლების ხარჯი და latency 85%-ით კოდის გენერაციისა და არქიტექტურული ძიების პროექტებში.",
+          "action_type": "LEARN",
+          "action": "გადახედე SwarmEvolve-ის სტატიას და შეამოწმე vLLM-ის KV cache retention API-ები Python-ში მცირე მოდელების ეფექტური მართვისთვის.",
+          "evidence": [],
+          "factuality_level": "single_source",
+          "classification": [
+            "Real Technical Skill",
+            "Real Business Opportunity"
+          ],
+          "verified_facts": [
+            "SwarmEvolve იყენებს ასობით დაბალბიუჯეტიან აგენტს რაუნდში Qwen3 8B მოდელზე",
+            "აგენტები ურთიერთობენ ფარულ ვექტორულ სივრცეში (latent space) KV cache-ის გაზიარებით",
+            "პროგრამული search-ის დრო შემცირდა 60 წუთიდან 3-8 წუთამდე",
+            "Novelty filter ზომავს მანძილებს აგენტების hidden state ვექტორებს შორის"
+          ],
+          "interpretation": "ტექსტური Chain of Thought დეკოდირების გვერდის ავლით და KV cache-ების შერწყმით, მცირე open-source მოდელებს შეუძლიათ აჯობონ ძვირადღირებულ frontier მოდელებს რთულ ამოცანებში.",
+          "uncertainty": "მეთოდი შემოწმებულია მათემატიკურ და პროგრამულ ოპტიმიზაციაზე; უცნობია ეფექტურობა ზოგად ბიზნეს-აგენტებში.",
+          "counter_argument": "Latent space-ში კომუნიკაცია მოითხოვს მოდელის შიდა შრეებზე პირდაპირ წვდომას, რაც დახურულ API-ებზე (OpenAI, Anthropic) შეუძლებელია.",
+          "strategic_assessment": "გამოიყენე open-source 8B მოდელები ადგილობრივად ან vLLM-ით, როდესაც გჭირდება მრავალი პარალელური აგენტის იაფად და სწრაფად ამუშავება.",
+          "time_horizon": "mid-term",
+          "what_could_change": "მულტი-აგენტური სისტემების API ხარჯი მკვეთრად შემცირდება, რადგან ტექსტური ტოკენების გენერირება latent state-ის გაზიარებით ჩანაცვლდება.",
+          "risks": [
+            "მოითხოვს open-weights მოდელების self-hosting ინფრასტრუქტურას",
+            "მაღალი GPU მეხსიერების ხარჯი დიდი KV cache-ების შენახვისას"
+          ],
+          "non_obvious_opportunity": "შეგიძლია შექმნა იაფი Python სკრიპტი, რომელიც vLLM-ის მეშვეობით რამდენიმე მცირე მოდელის latent state-ს გააერთიანებს კოდის ავტომატური ოპტიმიზაციისთვის.",
+          "fit_assessment": "იდეალურია დაბალი ბიუჯეტის პირობებში: საშუალებას გაძლევს 8B მოდელებით მიაღწიო მაღალ სიზუსტეს API ტოკენების ხარჯვის გარეშე."
+        },
+        {
+          "event_id": "evt-google-codemender-sandbox-defense",
+          "title": "Google CodeMender: აგენტების უსაფრთხოება OS Sandbox-ით და Human-in-the-Loop კონტროლით",
+          "category": "აგენტის არქიტექტურა და უსაფრთხოება",
+          "primary_url": "https://cloud.google.com/blog/products/identity-security/helping-you-build-and-defend-at-machine-speed-in-the-agentic-era",
+          "supporting_urls": [],
+          "importance": 7,
+          "relevance": 8,
+          "actionability": 8,
+          "source_quality": 9,
+          "confidence": 90,
+          "tldr": "Google-მა წარადგინა CodeMender, რომელიც კოდის შემოწმებასა და პაჩინგს ახორციელებს იზოლირებულ Sandbox-ში და მოითხოვს ადამიანის დასტურს კრიტიკულ ოპერაციებზე.",
+          "what_happened": "Google Cloud-მა გამოაქვეყნა CodeMender-ის ახალი შესაძლებლობები: უსაფრთხო OS Sandbox-ის იზოლაცია და Human-in-the-loop კონტროლი კოდის ავტონომიური შეკეთებისას.",
+          "what_changed": "ადრე: აგენტები პირდაპირ სამუშაო გარემოში აშვებდნენ ტესტებს -> ახლა: ყველა ექსპლოიტის სიმულაცია და პაჩინგი ხდება იზოლირებულ VM/Sandbox გარემოში.",
+          "why_it_matters": "გასწავლის სწორ არქიტექტურულ პატერნს: აგენტს მიეცი მოქმედების სრული თავისუფლება Sandbox-ში, მაგრამ მოსთხოვე დასტური real-world ცვლილებებზე.",
+          "key_takeaways": [
+            "CodeMender იყენებს Gemini 4 Argon-ს 0-day მოწყვლადობების აღმოსაჩენად",
+            "OS-level sandbox იცავს ძირითად ინფრასტრუქტურას აგენტის შეცდომებისგან",
+            "Human-in-the-loop აუცილებელია local write და execution ბრძანებებზე"
+          ],
+          "technical_architecture": [
+            "IDE Guardrail -> Agent Reasoning -> OS/VM Sandbox Execution -> Human-in-the-loop Gate -> Git Commit",
+            "Diff-only scanning engine for cost and speed optimization"
+          ],
+          "technical_details": [
+            "Gemini 4 Argon defensive model",
+            "OS-level sandbox / Container isolation",
+            "Diff-based selective repo scan"
+          ],
+          "potential_impact": "დაამკვიდრებს უსაფრთხო აგენტური დეველოპმენტის სტანდარტს საწარმოო გარემოში.",
+          "action_type": "TRY",
+          "action": "დაამატე მარტივი `input()` ან Telegram inline button-ის დასტური შენს Python აგენტის სკრიპტში, სანამ აგენტი ფაილურ სისტემაში ცვლილებებს შეიტანს.",
+          "evidence": [],
+          "factuality_level": "single_source",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "Google-მა გაავრცელა CodeMender — ავტონომიური კოდის უსაფრთხოების აგენტი Gemini 4 Argon-ის ბაზაზე",
+            "CodeMender ახდენს მოწყვლადობების სიმულაციას იზოლირებულ OS-level sandbox-ში ან VM-ში",
+            "დამატებულია Human-in-the-loop შემოწმებები ლოკალური ფაილების ჩაწერისა და ბრძანებების შესრულებისას",
+            "მხარს უჭერს მოქნილ სკანირებას: კონკრეტული საქაღალდის, მთლიანი რეპოზიტორიის ან მხოლოდ შეცვლილი ფაილების დონეზე"
+          ],
+          "interpretation": "ავტონომიურ აგენტებს არ უნდა მიეცეთ პირდაპირი წვდომა ძირითად OS-თან ან production ბაზებთან. იზოლირებული Sandbox და Human-in-the-loop დასტური აუცილებელი პატერნია.",
+          "uncertainty": "CodeMender ჯერ preview რეჟიმშია და Gemini 4 Argon-ზე წვდომას მოითხოვს.",
+          "counter_argument": "Human-in-the-loop შემოწმებებმა შეიძლება შეანელონ ავტონომიური აგენტების მუშაობის სიჩქარე, თუმცა უსაფრთხოების რისკს მინიმუმამდე ამცირებენ.",
+          "strategic_assessment": "როდესაც აშენებ აგენტს, რომელიც ასრულებს Python/Shell კოდს, ყოველთვის გამოიყენე Docker/gVisor იზოლაცია და კრიტიკულ ბრძანებებზე მოითხოვე Telegram-ში ადამიანის დასტური.",
+          "time_horizon": "mid-term",
+          "what_could_change": "პროგრამული უზრუნველყოფის დებაგინგი და Patching გახდება ავტონომიური, მაგრამ მხოლოდ მკაცრად სენდბოქსირებულ გარემოებებში.",
+          "risks": [
+            "არასაკმარისად იზოლირებულმა Sandbox-მა შეიძლება დაუშვას აგენტის მიერ სისტემური ბრძანებების გაპარვა",
+            "მაღალი Compute ხარჯები ყოველ ცვლილებაზე სრული VM სიმულაციის გაშვებისას"
+          ],
+          "non_obvious_opportunity": "შეგიძლია შექმნა Telegram ბოტი, სადაც აგენტი კოდს გააშვებს Docker Sandbox-ში და მხოლოდ შენი Telegram ღილაკზე დაჭერის ('Approve') შემდეგ შეასრულებს Commit-ს.",
+          "fit_assessment": "ძალიან პრაქტიკულია შენი Telegram+Python აგენტების არქიტექტურისთვის უსაფრთხოების ფენის დასამატებლად."
+        }
+      ],
+      "trends": [
+        "Latent-space agent communication (KV cache sharing) ტექსტური ტოკენების ხარჯის შესამცირებლად",
+        "Metadata-driven MCP servers დინამიური მონაცემთა ბაზების ინტეგრაციისთვის",
+        "Offensive AI აგენტების მიერ GitHub-ზე გაჟონილი Secret-ების მყისიერი გამოყენება",
+        "OS-level Sandboxing და Human-in-the-loop გეითები აგენტების უსაფრთხოებისთვის"
+      ]
     }
   ],
   "learning_queue": [
-    "Pydantic V2 და JSON Schema Validation პატერნები Python-ში MCP Tool Calling-ისთვის",
-    "gVisor standalone კლიენტის გამოყენება Docker გარემოში კოდის იზოლაციისთვის",
-    "Agent Evaluation Harness-ის აგება Pytest-ით მრავალფაილიანი კონტექსტის გასატესტად"
+    "FastMCP დინამიური Tool Registration პატერნები Python-ში",
+    "vLLM-ის KV Cache management და Hidden State წვდომა local LLM-ებში",
+    "Docker Python SDK-ს გამოყენება აგენტის მიერ გენერირებული კოდის სენდბოქსში გასაშვებად"
   ],
-  "last_run": "2026-11-06T17:09:49.412087+00:00",
+  "last_run": "2026-11-07T16:06:23.128653+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -10303,12 +10368,13 @@
     "arxiv:2610.39620",
     "arxiv:2611.03634",
     "arxiv:2611.04814",
-    "arxiv:2611.05345"
+    "arxiv:2611.05345",
+    "arxiv:2611.08483"
   ],
   "last_report_files": {
-    "markdown": "data/reports/2026-11-06/report.md",
-    "json": "data/reports/2026-11-06/report.json",
-    "newsletter": "data/reports/2026-11-06/newsletter.md",
-    "social": "data/reports/2026-11-06/social_posts.txt"
+    "markdown": "data/reports/2026-11-07/report.md",
+    "json": "data/reports/2026-11-07/report.json",
+    "newsletter": "data/reports/2026-11-07/newsletter.md",
+    "social": "data/reports/2026-11-07/social_posts.txt"
   }
 }
