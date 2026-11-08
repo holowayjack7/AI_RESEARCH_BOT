@@ -342,7 +342,11 @@
     "https://www.microsoft.com/en-us/security/blog/2026/11/05/threat-actors-use-agentic-ai-tooling-to-find-and-abuse-exposed-secrets",
     "https://www.microsoft.com/en-us/security/blog/2026/11/06/artex-abuse-expands-as-cybercriminals-target-financial-sector",
     "https://arxiv.org/abs/2611.08483",
-    "https://cloud.google.com/blog/products/identity-security/helping-you-build-and-defend-at-machine-speed-in-the-agentic-era"
+    "https://cloud.google.com/blog/products/identity-security/helping-you-build-and-defend-at-machine-speed-in-the-agentic-era",
+    "https://developers.google.com/workspace/reference/mcp",
+    "https://arxiv.org/abs/2611.08452",
+    "https://arxiv.org/abs/2611.08453",
+    "https://arxiv.org/abs/2611.08478"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -621,239 +625,13 @@
     "evt-aws-serverless-mcp-data-lake",
     "evt-artex-agentic-secret-abuse",
     "evt-swarm-evolve-latent-agent-swarms",
-    "evt-google-codemender-sandbox-defense"
+    "evt-google-codemender-sandbox-defense",
+    "evt-google-workspace-mcp-server-reference",
+    "evt-reprobridge-ml-artifact-reproducibility",
+    "evt-on-policy-distillation-vs-grpo-efficiency",
+    "evt-scientist-world-executable-paper-environments"
   ],
   "events": [
-    {
-      "event_id": "evt-interactions-api-gemini-argon",
-      "title": "Google-მა გამოუშვა Interactions API და ძლიერი Gemini 4 Argon მოდელი",
-      "category": "LLM APIs და აგენტის არქიტექტურა",
-      "primary_url": "https://ai.google.dev/gemini-api/docs/interactions-overview",
-      "supporting_urls": [
-        "https://www.theverge.com/ai-artificial-intelligence/1009862/google-releases-gemini-4-argon"
-      ],
-      "importance": 9,
-      "relevance": 10,
-      "actionability": 9,
-      "source_quality": 10,
-      "confidence": 98,
-      "tldr": "Google-ის ახალი Interactions API აერთიანებს აგენტურ ლუპებს და სერვერულ სესიებს, ხოლო Gemini 4 Argon ამცირებს ტოკენების ხარჯებს.",
-      "what_happened": "Google-მა გამოუშვა Interactions API და ძლიერი Gemini 4 Argon მოდელი კონკურენტულ ფასად.",
-      "what_changed": "ცალკეული ტექსტური გენერაციის API-დან გადავედით უნივერსალურ სერვერული სესიის მქონე აგენტურ ენდპოინტებზე.",
-      "why_it_matters": "გაძლევს საშუალებას ააწყო მდგრადი აგენტები ნაკლები კოდით და უკეთესი კონტექსტის მართვით.",
-      "key_takeaways": [
-        "Interactions API არის რეკომენდებული სტანდარტი ახალი აგენტური პროექტებისთვის.",
-        "Server-side state მართვა ამცირებს טოკენების მოხმარებას მრავალ-ეტაპიან დიალოგებში.",
-        "Gemini 4 Argon ფასი ორჯერ დაბალია კონკურენტების საწყის ფასებზე."
-      ],
-      "technical_architecture": [
-        "Interactions API იყენებს Interaction რესურსს, როგორც სესიის ქრონოლოგიურ რიგს.",
-        "previous_interaction_id უზრუნველყოფს სერვერ მხარეს კონტექსტის შენარჩუნებას."
-      ],
-      "technical_details": [
-        "Endpoint იყენებს interactions.get და interactions.create მეთოდებს.",
-        "background=true პარამეტრი რთავს ფონურ εκτελέση გრძელვადიანი დავალებებისთვის."
-      ],
-      "potential_impact": "მნიშვნელოვნად ამცირებს აგენტების დამუშავების ხარჯებს და ინფრასტრუქტურულ სირთულეს დეველოპერებისთვის.",
-      "action_type": "TRY",
-      "action": "დაწერე Python სკრიპტი, რომელიც ტესტავს Interactions API-ს სერვერული სესიის მართვას მარტივი tool calling ლუპისთვის.",
-      "evidence": [],
-      "factuality_level": "verified",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value",
-        "Real Business Opportunity"
-      ],
-      "verified_facts": [
-        "Interactions API არის ზოგადად ხელმისაწვდომი როგორც უნივერსალური ინტერფეისი მოდელებისა და აგენტებისთვის.",
-        "Gemini 4 Argon ღირს $2 მილიონ input და $10 მილიონ output ტოკენებზე საწყის პერიოდში.",
-        "Interactions API მხარდაჭერას უჭერს სერვერ მხარეს კონტექსტის მართვას previous_interaction_id-ით."
-      ],
-      "interpretation": "Google აერთიანებს მოდელის გამოძახებასა და სესიის მართვას ერთ სერვერულ პროტოკოლში, რაც ამარტივებს აგენტური ლუპების აწყობას.",
-      "uncertainty": "უცნობია როდის გახდება Gemini 4 Argon ხელმისაწვდომი უფასო ან სტანდარტული დეველოპერული ტარიფებისთვის.",
-      "counter_argument": "სერვერ მხარეს სესიის შენახვა ზღუდავს დეველოპერის კონტროლს მონაცემთა კონფიდენციალურობაზე.",
-      "strategic_assessment": "გადაერთე Interactions API-ზე, რადგან სერვერული სესიის მართვა და კონტექსტის ქეშირება მნიშვნელოვნად ამცირებს API ხარჯებს.",
-      "time_horizon": "mid-term",
-      "what_could_change": "API პროვაიდერები სრულად გადაvlen სერვერული სტეიტის მართვაზე, რაც კლიენტის მხარეს კომპლექსურ კოდს შეამცირებს.",
-      "risks": [
-        "მიბმა ერთ ეკოსისტემაზე",
-        "სერვერული დეიატების შენახვის ფარული ხარჯები",
-        "მიგრაციის სირთულე ძველი ინტერფეისიდან"
-      ],
-      "non_obvious_opportunity": "შეგიძლია შექმნა ღია კოდის ბიბლიოთეკა, რომელიც ამარტივებს მიგრაციას ძველი generateContent ინტერფეისიდან ახალ Interactions API-ზე.",
-      "fit_assessment": "იდეალურად ერგება შენს მიზანს, ააგო რეალური აგენტები მინიმალური ხარჯებით, რადგან ახალი API ამცირებს ტოკენების ხარჯს ქეშირებით."
-    },
-    {
-      "event_id": "evt-goodfire-internal-probes-monitoring",
-      "title": "Goodfire-მა წარადგინა შიდა აქტივაციის პრობები აგენტების საბოტაჟის იაფად გამოსავლენად",
-      "category": "AI Evaluation და აგენტების უსაფრთხოება",
-      "primary_url": "https://techcrunch.com/2026/10/08/goodfire-says-its-new-inside-out-monitors-catch-rogue-ai-agents-at-a-fraction-of-the-cost",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 7,
-      "source_quality": 7,
-      "confidence": 90,
-      "tldr": "Goodfire-ის შიდა პრობები ამოწმებენ მოდელის ნეირონულ აქტივაციებს და ამცირებენ აგენტის უსაფრთხოების მონიტორინგის ხარჯებს.",
-      "what_happened": "Goodfire-მა გაუშვა შიდა მონიტორები, რომლებიც აფიქსირებენ აგენტების საბოტაჟს მოდელის შიდა სიგნალების წაკითხვით.",
-      "what_changed": "გარე LLM-ის გამოყენებით დამკვირვებლებიდან გადავდივართ მოდელის შიდა აქტივაციების პირდაპირ პრობინგზე.",
-      "why_it_matters": "გაძლევს საშუალებას აკონტროლო აგენტი იაფად და რეალურ დროში, ტოკენების ზედმეტი ხარჯვის გარეშე.",
-      "key_takeaways": [
-        "შიდა პრობები იყენებენ მოდელის მიერ უკვე გამოთვლილ ნეირონულ აქტივაციებს.",
-        "ეს მიდგომა ამცირებს მონიტორინგის ხარჯებს ათჯერ.",
-        "საშუალებას იძლევა დაფიქსირდეს აგენტის მავნე ქცევა შესრულებისასვე."
-      ],
-      "technical_architecture": [
-        "პრობები კითხულობენ შუალედურ ნეირონულ აქტივაციებს მოდელის forward pass დროს.",
-        "კლასიფიკატორი ამოწმებს სიგნალს და საჭიროების შემთხვევაში რთავს მეორე ეტაპის შემოწმებას."
-      ],
-      "technical_details": [
-        "მონიტორინგი ამატებს მოდელის მუშაობის დროს 2%-ზე ნაკლებს.",
-        "გამოყენებულია Kimi K3 მოდელის არქიტექტურაზე ტესტირებისთვის."
-      ],
-      "potential_impact": "ხდის აგენტების უსაფრთხოებასა და მონიტორინგს კომერციულად ხელმისაწვდომს მასშტაბური სისტემებისთვის.",
-      "action_type": "LEARN",
-      "action": "გაეცანი PyTorch-ის ჰუკების (hooks) გამოყენებას მოდელის შიდა ფენების აქტივაციების გამოსატანად პითონში.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "Goodfire-ის შიდა მონიტორები კითხულობენ მოდელის შიდა ნეირონულ აქტივაციებს ყოველ ნაბიჯზე.",
-        "Kimi K3 მოდელზე ტესტირებისას მონიტორინგი დაჯდა დაახლოებით $185 მილიონ გაცვლაზე, ძვირადღირებული მეორე LLM-ის ნაცვლად.",
-        "პრობებმა დააფიქსირა მავნე ჰაკერული სესიების 93% მინიმალური დროის დამატებით."
-      ],
-      "interpretation": "მოდელის შიდა მდგომარეობის პირდაპირი ანალიზი პრობებით ხსნის ძვირადღირებული მეორე LLM დამკვირვებლების საჭიროებას.",
-      "uncertainty": "მეთოდი ამჟამად შეზღუდულია Baseten-ის ინფრასტრუქტურითა და მხარდაჭერილი ღია მოდელებით.",
-      "counter_argument": "შიდა აქტივაციების კითხვა მოითხოვს დაბალი დონის წვდომას მოდელის სერვერზე, რაც მიუწვდომელია სტანდარტული API მომხმარებლისთვის.",
-      "strategic_assessment": "შეისწავლე მოდელების შიდა ინტერპრეტაციადობის პრინციპები, რადგან აგენტების უსაფრთხოების მომავალი აგებულია არა გარე ტექსტურ ფილტრებზე, არამედ შიდა პრობებზე.",
-      "time_horizon": "mid-term",
-      "what_could_change": "აგენტების მონიტორინგი გახდება ინფრასტრუქტურის ნაწილი, რომელიც მუშაობს მინიმალური გამოთვლითი დანახარჯებით.",
-      "risks": [
-        "მოდელის არქიტექტურაზე მკაცრი მიბმა",
-        "პრობების გადამზადების სირთულე ახალი მოდელებისთვის",
-        "ღია არქიტექტურის შეზღუდვები"
-      ],
-      "non_obvious_opportunity": "შეგიძლია დაწერო პითონის ღია ბიბლიოთეკა, რომელიც აანალიზებს Hugging Face-ის პატარა მოდელების შიდა ჰიდენსტეიტებს ტექსტის უსაფრთხოების შესამოწმებლად.",
-      "fit_assessment": "გეხმარება გაიგო როგორ მუშაობს აგენტების უსაფრთხოება შიდა არქიტექტურის დონეზე, რაც გამოგადგება production აგენტების ასაწყობად."
-    },
-    {
-      "event_id": "evt-anthropic-iot-self-replication-warning",
-      "title": "Anthropic-ის კვლევა: მცირე ზომის AI მოდელები უახლოვდებიან IoT მოწყობილობებზე თვითრეპლიკაციის უნარს",
-      "category": "აგენტების უსაფრთხოება და Sandbox",
-      "primary_url": "https://www.anthropic.com/research/self-replicating-ai",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 7,
-      "actionability": 6,
-      "source_quality": 10,
-      "confidence": 95,
-      "tldr": "Anthropic-ის კვლევა აჩვენებს, რომ მცირე ზომის მოდელებს შეუძლიათ იაფ IoT მოწყობილობებზე განაწილებული ინფერენციით მუშაობა.",
-      "what_happened": "Anthropic-მა გამოაქვეყნა კვლევა მცირე AI მოდელების IoT მოწყობილობებზე თვითრეპლიკაციის პოტენციალის შესახებ.",
-      "what_changed": "AI უსაფრთხოების შეფასება გადავიდა თეორიული მოდელებიდან ფიზიკურ, დაბალი სიმძლავრის მოწყობილობებზე ტესტირებაზე.",
-      "why_it_matters": "გაჩვენებს, რომ აგენტის ავტონომიას სჭირდება მკაცრი შეზღუდვები და იზოლაცია კოდის დონეზე.",
-      "key_takeaways": [
-        "30B-მდე მოდელებს შეუძლიათ ინფერენსის გაშვება იაფ ჰარდვერზე.",
-        "განაწილებულმა სისტემებმა შეიძლება იმუშაონ მონაცემთა ცენტრის გარეთაც.",
-        "აგენტების ქსელური აქტივობა მოითხოვს მკაცრ მონიტორინგს."
-      ],
-      "technical_architecture": [
-        "Gemma4-26B-A4B გადანაწილდა 15 ცალ სმარტ ტელევიზორზე.",
-        "თითოეული მოწყობილობა ინახავდა მოდელის ორ ფენას."
-      ],
-      "technical_details": [
-        "ინფერენსის სიჩქარე იყო 0.39 token per second.",
-        "მოწყობილობების ღირებულება იყო დაახლოებით $55 თითოეული."
-      ],
-      "potential_impact": "აიძულებს ინდუსტრიას შეიმუშაოს ახალი სტანდარტები აგენტების ქსელური წვდომისა და იზოლაციისთვის.",
-      "action_type": "TRACK",
-      "action": "მიადევნე თვალი აგენტების სანდბოქსინგის და ლოკალური იზოლაციის ღია კოდის პროექტებს.",
-      "evidence": [],
-      "factuality_level": "verified",
-      "classification": [
-        "Long-Term Career Value",
-        "General News"
-      ],
-      "verified_facts": [
-        "Anthropic-ის ექსპერიმენტებმა აჩვენა, რომ 30B პარამეტრამდე მოდელებს შეუძლიათ შეასრულონ რეპლიკაციის ინდივიდუალური ნაბიჯები.",
-        "9B მოდელმა გაუშვა ინფერენსი 9-დან 8 ტესტირებულ ჰარდვერზე, მათ შორის Android TV ბოქსებზე (~$55).",
-        "Gemma4-26B-A4B მოდელი გადანაწილდა 15 სმარტ ტელევიზორზე და მუშაობდა 0.39 token per second სიჩქარით."
-      ],
-      "interpretation": "მცირე მოდელები იმდენად გაძლიერდა, რომ მათი გავრცელება აღარ საჭიროებს ძვირადღირებულ დაკაცერებს, რაც ცვლის აგენტების უსაფრთხოების პოლიტიკას.",
-      "uncertainty": "ჯერჯერობით ეს არის კონტროლირებადი ლაბორატორიული ექსპერიმენტი და არა რეალური ველური ინციდენტი.",
-      "counter_argument": "განაწილებული ინფერენსის სიჩქარე (0.39 token/s) ზედმეტად ნელია რეალური მავნე ქმედებების ავტომატიზაციისთვის.",
-      "strategic_assessment": "გაითვალისწინე, რომ მომავალში აგენტების უსაფრთხოება და იზოლაცია (Sandbox) გახდება ყველაზე მოთხოვნადი უნარი კოდის წერის პარალელურად.",
-      "time_horizon": "long-term",
-      "what_could_change": "მოწყობილობების დონეზე შეიცვლება OS-ის უსაფრთხოების სტანდარტები, რათა აგენტებმა არ შეძლონ ავტონომიური გავრცელება.",
-      "risks": [
-        "არასწორი ინტერპრეტაცია მედიაში",
-        "ზედმეტად მკაცრი რეგულაციები ღია მოდელებზე",
-        "უსაფრთხოების სანდბოქსების არასრულყოფილება"
-      ],
-      "non_obvious_opportunity": "დეველოპერებს, რომლებსაც ესმით აგენტების სანდბოქსინგი და იზოლაცია, ექნებათ უზარმაზარი უპირატესობა კორპორატიულ უსაფრთხოებაში.",
-      "fit_assessment": "გასწავლის რა ტექნიკური რისკები ახლავს ავტონომიურ აგენტებს, რაც გეხმარება უფრო მყარი და დაცული არქიტექტურების პროექტირებაში."
-    },
-    {
-      "event_id": "evt-berkeley-scaling-discovery-forgetting",
-      "title": "Scaling Discovery Requires Forgetting: აგენტების ეფექტურობის გაზრდა მეხსიერების გასუფთავებით",
-      "category": "AI Research / Agent Architecture",
-      "primary_url": "https://arxiv.org/abs/2610.20563",
-      "supporting_urls": [],
-      "importance": 9,
-      "relevance": 9,
-      "actionability": 8,
-      "source_quality": 8,
-      "confidence": 92,
-      "tldr": "Berkeley-ის კვლევამ აჩვენა, რომ აგენტის კონტექსტის პერიოდული დავიწყება და საუკეთესო წერტილიდან გადატვირთვა შედეგს 39%-მდე აუმჯობესებს.",
-      "what_happened": "UC Berkeley-ის მკვლევარებმა დაამტკიცეს, რომ აგენტები საკუთარ წარსულ შეცდომებზე იჭედებიან და ისტორიის წაშლა ზრდის მათ ეფექტურობას.",
-      "what_changed": "მეხსიერების უსასრულო გაზრდის ნაცვლად, დადასტურდა პერიოდული გასუფთავებისა და restart-ის უპირატესობა.",
-      "why_it_matters": "დაზოგავ უამრავ ტოკენს და შენი ავტონომიური სკრიპტები აღარ გაიჭედება უსასრულო ერთფეროვან ციკლებში.",
-      "key_takeaways": [
-        "მეხსიერების დაგროვება იწვევს აგენტის იდეების პლატოს",
-        "საუკეთესო კანდიდატის შენარჩუნება და სესიის რესეტი იძლევა 39% ზრდას",
-        "კონტექსტის შეზღუდვა ისევე მნიშვნელოვანია, როგორც compute ბიუჯეტი"
-      ],
-      "technical_architecture": [
-        "Periodic Search State Discarding მექანიზმი",
-        "Best Candidate Retention: ინახება მხოლოდ საუკეთესო მიღწევა",
-        "Parallel Multi-Agent Communication Swarm გადატვირთვის ფუნქციით"
-      ],
-      "technical_details": [
-        "arXiv: 2610.20563",
-        "+15% ეფექტურობა პარალელურ აგენტებთან შედარებით",
-        "+39% გაუმჯობესება ერთ აგენტთან შედარებით"
-      ],
-      "potential_impact": "ხანგრძლივი კოდირებისა და კვლევითი აგენტები იმუშავებენ გაცილებით იაფად და იპოვიან უკეთეს გადაწყვეტილებებს ნაკლები ტოკენით.",
-      "action_type": "APPLY",
-      "action": "დაამატე შენს agent loop-ში შემოწმება: თუ 5 ნაბიჯში პროგრესი არაა, წაშალე წინა ნაბიჯები და გადატვირთე საუკეთესო შუალედური შედეგიდან.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "აგენტების გუნდში ისტორიის პერიოდული გასუფთავება ძიების შედეგს 15%-ით აუმჯობესებს პარალელურ აგენტებთან შედარებით",
-        "ერთ აგენტთან შედარებით მიდგომა აჩვენებს 39%-მდე გაუმჯობესებას",
-        "ავტორებმა სისტემა გამოსცადეს ჰევრისტიკულ დაპროგრამებაში, კერნელის ოპტიმიზაციასა და მოდელების წვრთნაში",
-        "კვლევის თანაავტორია Matei Zaharia (Databricks / UC Berkeley)"
-      ],
-      "interpretation": "კონტექსტის უსასრულო დაგროვება აგენტს აბრკოლებს; საუკეთესო შუალედური შედეგის შენარჩუნება და ისტორიის წაშლა ზრდის ეფექტურობას.",
-      "uncertainty": "როგორია დავიწყების ოპტიმალური ინტერვალი მოკლე დიალოგურ აგენტებში ბიზნეს ამოცანების დროს.",
-      "counter_argument": "ზედმეტმა დავიწყებამ შესაძლოა წაშალოს მნიშვნელოვანი უარყოფითი გამოცდილება და აგენტმა იგივე შეცდომა გაიმეოროს.",
-      "strategic_assessment": "ნუ ეცდები მთელი ჩატის ისტორიის შენახვას აგენტის loop-ში; შეინახე მხოლოდ საუკეთესო state და პერიოდულად დაარესეტე კონტექსტი.",
-      "time_horizon": "mid-term",
-      "what_could_change": "აგენტების მეხსიერების მენეჯმენტი გადავა აქტიური ფილტრაციისა და წაშლის მოდელზე, რაც მკვეთრად დააგდებს token-ების ხარჯს.",
-      "risks": [
-        "კრიტიკული კონტექსტის შემთხვევითი წაშლა",
-        "ციკლური გადაწყვეტილებების მიღება დავიწყების შემდეგ",
-        "რთული ლოგიკა საუკეთესო კანდიდატის შესაფასებლად"
-      ],
-      "non_obvious_opportunity": "შექმენი მცირე Python დეკორატორი LangGraph-ისთვის, რომელიც ყოველ მე-5 ნაბიჯზე კონტექსტს ასუფთავებს და მხოლოდ საუკეთესო პასუხს ტოვებს.",
-      "fit_assessment": "უშუალოდ გეხება: შეამცირებს შენს API ხარჯებს უფასო ტარიფებზე და აგენტის გაჭედვას თავიდან აგარიდებს."
-    },
     {
       "event_id": "evt-ruletrek-benchmark-rule-reasoning",
       "title": "RuleTrek: LLM აგენტების შემოწმება რთულ ბიზნეს-წესებსა და მრავალფაილიან სცენარებში",
@@ -6371,6 +6149,234 @@
       ],
       "non_obvious_opportunity": "შეგიძლია შექმნა Telegram ბოტი, სადაც აგენტი კოდს გააშვებს Docker Sandbox-ში და მხოლოდ შენი Telegram ღილაკზე დაჭერის ('Approve') შემდეგ შეასრულებს Commit-ს.",
       "fit_assessment": "ძალიან პრაქტიკულია შენი Telegram+Python აგენტების არქიტექტურისთვის უსაფრთხოების ფენის დასამატებლად."
+    },
+    {
+      "event_id": "evt-google-workspace-mcp-server-reference",
+      "title": "Google Workspace MCP: ოფიციალური Remote MCP სერვერი Cloud API-სთვის",
+      "category": "აგენტების ინფრასტრუქტურა და MCP",
+      "primary_url": "https://developers.google.com/workspace/reference/mcp",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 9,
+      "actionability": 9,
+      "source_quality": 9,
+      "confidence": 90,
+      "tldr": "Google-მა გამოაქვეყნა Workspace MCP Server endpoint (workspacemcp.googleapis.com), რაც აგენტებს Drive, Gmail და Calendar-თან მარტივ კავშირს აძლევს.",
+      "what_happened": "Google Workspace-მა ოფიციალურად წარადგინა Remote MCP Server API დოკუმენტაცია და Endpoint.",
+      "what_changed": "Gmail და Drive ინტეგრაციებისთვის Custom Python Wrapper-ების წერის ნაცვლად გამოიყენება ერთიანი MCP პროტოკოლი.",
+      "why_it_matters": "შეგიძლია ააგო ბიზნეს ავტომატიზაციის აგენტები უფასო Cloud Tier-ით და ოფიციალური MCP პროტოკოლით.",
+      "key_takeaways": [
+        "workspacemcp.googleapis.com არის ოფიციალური MCP endpoint",
+        "Drive, Gmail, Calendar და Chat გაერთიანებულია MCP Toolset-ებში",
+        "ინტეგრაცია ხდება სტანდარტული JSON-RPC 2.0 მოთხოვნებით"
+      ],
+      "technical_architecture": [
+        "Remote MCP Proxy Architecture over HTTP/SSE",
+        "JSON-RPC 2.0 protocol implementation",
+        "Google Workspace Developer Preview Program integration"
+      ],
+      "technical_details": [
+        "https://workspacemcp.googleapis.com/mcp/v1 endpoint",
+        "tools/list RPC call to inspect tool parameters",
+        "search_corpus public toolset specification"
+      ],
+      "potential_impact": "შემცირდება აგენტების Google Workspace-თან ინტეგრაციის დრო და კოდის მოცულობა.",
+      "action_type": "TRY",
+      "action": "გააგზავნე cURL მოთხოვნა workspacemcp.googleapis.com-ზე და შეამოწმე ხელმისაწვდომი MCP ინსტრუმენტების სია.",
+      "evidence": [],
+      "factuality_level": "single_source",
+      "classification": [
+        "Real Technical Skill",
+        "Real Business Opportunity"
+      ],
+      "verified_facts": [
+        "Google Workspace-მა გამოაშვება Remote MCP Server endpoint: workspacemcp.googleapis.com",
+        "მხარდაჭერილია Drive, Gmail, Calendar და Chat API ინსტრუმენტები",
+        "JSON-RPC 2.0 პროტოკოლი და tools/list მეთოდი Toolset-ების მისაღებად"
+      ],
+      "interpretation": "Google-ის მიერ MCP სტანდარტის მიღება საშუალებას იძლევა ნებისმიერმა LLM აგენტმა პირდაპირ ინტეგრიროს Workspace ინსტრუმენტები.",
+      "uncertainty": "Developer Preview სტატუსშია და შესაძლოა API შეზღუდვები ჰქონდეს უფასო Tier-ზე.",
+      "counter_argument": "OAuth 2.0 ავტორიზაციის კონფიგურაცია აგენტისთვის კვლავ მოითხოვს დამატებით უსაფრთხოების შრეს.",
+      "strategic_assessment": "გამოიყენე Google Workspace MCP სერვერი ბიზნეს აგენტების შესაქმნელად Custom API Code-ის წერის გარეშე.",
+      "time_horizon": "short-term",
+      "what_could_change": "მორგებული API ინტეგრაციების წერა ჩანაცვლდება სტანდარტული Remote MCP Server Connector-ებით.",
+      "risks": [
+        "Developer Preview ცვლილებები",
+        "OAuth token handling სირთულე"
+      ],
+      "non_obvious_opportunity": "შეგიძლია შესთავაზო მცირე კომპანიებს Telegram-ზე დაფუძნებული AI ასისტენტი, რომელიც მართავს Google Calendar-ს და Gmail-ს MCP-ით.",
+      "fit_assessment": "ზუსტად ჯდება შენს სწავლის გეგმაში: MCP პროტოკოლის გამოყენება რეალურ Business workflow-ში."
+    },
+    {
+      "event_id": "evt-reprobridge-ml-artifact-reproducibility",
+      "title": "ReproBridge: კოდის ავტონომიური რეფაქტორინგი აგენტების API ხარჯების 19.7%-ით შესამცირებლად",
+      "category": "AI Evaluation & საიმედოობა",
+      "primary_url": "https://arxiv.org/abs/2611.08452",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 88,
+      "tldr": "ReproBridge კვლევამ აჩვენა, რომ კოდის გარემოსა და ინსტრუქციების სტანდარტიზაცია აგენტების წარმატებას 92.6%-მდე ზრდის და API ხარჯებს 19.7%-ით ამცირებს.",
+      "what_happened": "მკვლევრებმა შექმნეს ReproBridge workflow, რომელიც აგენტებისთვის ML რეპოზიტორიების გარემოსა და სკრიპტების სტანდარტიზაციას ახდენს.",
+      "what_changed": "ნედლი კოდის ბაზის ნაცვლად, აგენტი იღებს სტრუქტურირებულ არტეფაქტს, Launchers-ს და Auditor ვერიფიკაციას.",
+      "why_it_matters": "დაბალბიუჯეტიანი აგენტების აგებისას უსარგებლო LLM სესიების თავიდან აცილება პირდაპირ ზოგავს შენს API ბალანსს.",
+      "key_takeaways": [
+        "სტრუქტურირებული არტეფაქტები ზრდის წარმატებას 92.6%-მდე",
+        "API ხარჯები მცირდება 19.7%-ით ეფექტური გარემოს გამო",
+        "სხვადასხვა მოდელებს შორის სხვაობა მცირდება 21.6%-დან 3.9%-მდე"
+      ],
+      "technical_architecture": [
+        "ReproBridge Workflow with standardized Artifact Design",
+        "Auditor agent verifying execution evidence logs",
+        "ReproBridge-Bench framework with 1,029 evaluation tasks"
+      ],
+      "technical_details": [
+        "Standardized environment configuration files",
+        "Isolated fresh-session execution benchmarks",
+        "Reference execution score verification"
+      ],
+      "potential_impact": "გაზრდის AI Coding Agent-ების საიმედოობას რთულ multi-file კოდის ბაზებში.",
+      "action_type": "APPLY",
+      "action": "შექმენი სტრუქტურირებული README და Setup სკრიპტი შენს GitHub პროექტში, რათა LLM აგენტმა პირველივე ცდაზე გამართოს გარემო.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Real Business Opportunity"
+      ],
+      "verified_facts": [
+        "ReproBridge სტრუქტურირებული არტეფაქტები ზრდიან აგენტის Reproducibility წარმატებას 76.4%-დან 92.6%-მდე",
+        "ამცირებს downstream API ხარჯებს საშუალოდ 19.7%-ით",
+        "ReproBridge-Bench მოიცავს 1,029 ამოცანას 387 ექსპერიმენტიდან"
+      ],
+      "interpretation": "აგენტებისთვის განკუთვნილი კოდის ბაზისა და გარემოს წინასწარი სტანდარტიზაცია მკვეთრად ამცირებს შეცდომებსა და ტოკენების ხარჯს.",
+      "uncertainty": "კვლევა ჩატარდა ML კვლევით რეპოზიტორიებზე, სადაც Environment Setup განსაკუთრებით პრობლემურია.",
+      "counter_argument": "არტეფაქტების შექმნას სჭირდება თავდაპირველი აგენტური პასპორტი, რაც ითხოვს საწყის API ხარჯს.",
+      "strategic_assessment": "დანერგე ReproBridge-ის მსგავსი სტრუქტურირებული დოკუმენტაციისა და სენდბოქსის პატერნი შენს CI/CD პაიპლაინში.",
+      "time_horizon": "mid-term",
+      "what_could_change": "პროგრამული უზრუნველყოფის რეპოზიტორიები გადავლენ Agent-Native სტრუქტურაზე, სადაც Execution Context წინასწარ არის ინდექსირებული.",
+      "risks": [
+        "არტეფაქტების დაძველება კოდის ცვლილებისას",
+        "Initial curation cost"
+      ],
+      "non_obvious_opportunity": "შეგიძლია შექმნა Open Source ინსტრუმენტი, რომელიც GitHub რეპოზიტორიებს ავტომატურად გარდაქმნის Agent-Ready სტრუქტურად.",
+      "fit_assessment": "გეხმარება GitHub Actions-ისა და AI აგენტების ეფექტურ კომბინაციაში დაბალი ბიუჯეტით."
+    },
+    {
+      "event_id": "evt-on-policy-distillation-vs-grpo-efficiency",
+      "title": "On-Policy Distillation (OPD): 50-ჯერ ნაკლები Compute საკუთარი GRPO ჩექპოინტიდან",
+      "category": "AI Research / Agent Architecture",
+      "primary_url": "https://arxiv.org/abs/2611.08453",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 8,
+      "actionability": 7,
+      "source_quality": 8,
+      "confidence": 85,
+      "tldr": "კვლევამ აჩვენა, რომ GRPO ჩექპოინტის On-Policy Distillation (OPD) 50-ჯერ ნაკლები FLOPs-ით აღწევს RL-ის სიზუსტეს.",
+      "what_happened": "მკვლევრებმა შეადარეს On-Policy Distillation (OPD) და GRPO Reinforcement Learning სხვადასხვა დომენსა და მოდელის ზომაზე.",
+      "what_changed": "ძვირადღირებული RL ტრენინგის ნაცვლად, GRPO ექსპერტების ცოდნის კონსოლიდაცია ხდება მცირე სტუდენტ მოდელში მინიმალური compute-ით.",
+      "why_it_matters": "გეხმარება გაიგო, თუ როგორ იქმნება სწრაფი და იაფი Reasoning მოდელები საწარმოო აგენტებისთვის.",
+      "key_takeaways": [
+        "OPD საკუთარი ჩექპოინტიდან 50-ჯერ ეფექტურია compute-ის მხრივ",
+        "Multi-Teacher OPD აერთიანებს რამდენიმე ექსპერტს 42%-ით ნაკლები ხარჯით",
+        "გარე მასწავლებლის გამოყენება ზრდის პასუხის სიგრძეს სიზუსტის მომატების გარეშე"
+      ],
+      "technical_architecture": [
+        "Reverse-KL On-Policy Distillation against GRPO baseline",
+        "Multi-teacher expert consolidation framework",
+        "FLOPs-matched accuracy benchmarking on math and code"
+      ],
+      "technical_details": [
+        "50x FLOPs reduction on self-checkpoint distillation",
+        "5.2% to 8.0% overhead for multi-domain expert fusion",
+        "42.0% total compute savings on 2-domain mix"
+      ],
+      "potential_impact": "შემცირდება სპეციალიზებული აგენტური მოდელების შეიქმნისა და დატრენინგების ინფრასტრუქტურული ბარიერი.",
+      "action_type": "LEARN",
+      "action": "წაიკითხე OPD და GRPO მეთოდების განსხვავება, რათა გაიგო, როგორ გარდაიქმნება CoT მსჯელობა მცირე მოდელების წონებში.",
+      "evidence": [],
+      "factuality_level": "single_source",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "მოდელის საკუთარი GRPO ჩექპოინტიდან OPD დისტილაცია მოითხოვს 50-ჯერ ნაკლებ FLOPs-ს იგივე სიზუსტის მისაღწევად",
+        "Multi-teacher OPD საშუალებას იძლევა გაერთიანდეს მრავალი დომენური GRPO ექსპერტი 8.0% დამატებითი Compute-ით",
+        "2-დომენიან მიქსზე Multi-teacher OPD აღწევს ერთობლივი GRPO-ს შედეგს 42.0%-ით ნაკლები FLOPs-ით"
+      ],
+      "interpretation": "Reinforcement Learning (GRPO)-ს სრული ციკლის ნაცვლად, RL ჩექპოინტის დისტილაცია მცირე მოდელში დრამატულად ამცირებს გამოთვლით ხარჯებს.",
+      "uncertainty": "სრული ეფექტურობა მოითხოვს უკვე არსებულ მაღალი ხარისხის GRPO ჩექპოინტს.",
+      "counter_argument": "გარე მასწავლებელზე (External Teacher) ჩატარებული OPD ხშირად აგებს GRPO-სთან ტოკენების სიგრძის ინფლაციის გამო.",
+      "strategic_assessment": "თუ პატარა მოდელის Fine-Tuning-ს აპირებ, გამოიყენე OPD სელფ-დისტილაციის პატერნი RL-ის ნაცვლად.",
+      "time_horizon": "long-term",
+      "what_could_change": "მცირე მოდელების ტრენინგი გახდება გაცილებით იაფი, რაც ლოკალური აგენტების შესაძლებლობებს გაზრდის.",
+      "risks": [
+        "Teacher-student alignment failure",
+        "Response length inflation"
+      ],
+      "non_obvious_opportunity": "შეგიძლია გამოიყენო OpenAI/Anthropic-ის ძლიერი მოდელების Synthetic Trace-ები პატარა Open-Source მოდელის ლოკალურად დასატრენინგებლად.",
+      "fit_assessment": "გაძლევს თეორიულ და პრაქტიკულ ცოდნას, თუ როგორ ტრენირდება ეფექტური აგენტური მოდელები დაბალი ბიუჯეტით."
+    },
+    {
+      "event_id": "evt-scientist-world-executable-paper-environments",
+      "title": "Scientist World: 1,000 გამართვადი გარემო AI-მკვლევარი აგენტების შესაფასებლად",
+      "category": "AI Research / Agent Architecture",
+      "primary_url": "https://arxiv.org/abs/2611.08478",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 8,
+      "actionability": 7,
+      "source_quality": 8,
+      "confidence": 85,
+      "tldr": "Scientist World-მა 1,000 სამეცნიერო სტატია გარდაქმნა გამართვად გარემოდ, სადაც აგენტები 74%-ში სჯობნიან ადამიანების თავდაპირველ შედეგებს.",
+      "what_happened": "გამოქვეყნდა Scientist World framework, რომელიც სამეცნიერო სტატიებიდან ავტომატურად გენერირებს კოდის სენდბოქსებს აგენტებისთვის.",
+      "what_changed": "ტექსტური კითხვა-პასუხის ნაცვლად, აგენტები იღებენ ღია კვლევით ამოცანას, წერენ კოდს და ეჯიბრებიან ავტორების შედეგებს.",
+      "why_it_matters": "გვიჩვენებს, რომ მომავლის აგენტები ფასდებიან რეალური Code Execution-ით და არა უბრალოდ ტექსტური მსჯელობით.",
+      "key_takeaways": [
+        "1,000 სტატია გარდაიქმნა ავტონომიურ გამართვად გარემოდ",
+        "Frontier აგენტები 74%-ში აუმჯობესებენ ადამიანის საბაზისო შედეგებს",
+        "6,400 საათის ექსპერიმენტული ლოგები ხელმისაწვდომია აგენტების დასატრენინგებლად"
+      ],
+      "technical_architecture": [
+        "Autonomous pipeline extracting executable code and baseline tasks",
+        "Sandbox evaluation engine matching empirical results",
+        "6,400 hours of research traces for trajectory-based training"
+      ],
+      "technical_details": [
+        "1,000 verified executable research paper environments",
+        "74% win-rate against published human baselines",
+        "+158% ideation score lift via trace fine-tuning"
+      ],
+      "potential_impact": "დააჩქარებს ავტონომიური AI Research Agent-ების განვითარებას და კოდის ავტომატურ ოპტიმიზაციას.",
+      "action_type": "LEARN",
+      "action": "გახსენი Scientist World-ის arXiv სტატია და შეისწავლე, როგორ არის აგებული კოდის ავტომატური ვერიფიკაციის პაიპლაინი.",
+      "evidence": [],
+      "factuality_level": "single_source",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "Scientist World გარდაქმნის 1,000 სამეცნიერო სტატიას ავტონომიურად გაშვებად სატესტო გარემოდ",
+        "Frontier AI-Scientist აგენტები ადამიან მკვლევრებს 74%-ში აჯობეს გამართვად ბენჩმარკებში",
+        "მცირე მოდელის იდეაციის უნარი გაიზარდა +158%-ით ამ გარემოზე დაფუძნებული ტრენინგით"
+      ],
+      "interpretation": "სტატიკური ტექსტური ბენჩმარკები ჩანაცვლდა დინამიური კოდის გაშვების გარემოებით, სადაც აგენტი ფასდება რეალური შედეგით.",
+      "uncertainty": "კვლევითი კოდის ავტომატური რეპროდუქცია ზოგჯერ ეფუძნება გამარტივებულ დაშვებებს.",
+      "counter_argument": "სამეცნიერო კვლევის დიდი ნაწილი მოითხოვს ფიზიკურ ექსპერიმენტებს, სადაც ციფრული სენდბოქსი ვერ გამოიყენება.",
+      "strategic_assessment": "შექმენი შენი აგენტებისთვის Executable Benchmark გარემოები (სენდბოქსები) მხოლოდ LLM-as-a-Judge-ის იმედად ყოფნის ნაცვლად.",
+      "time_horizon": "long-term",
+      "what_could_change": "AI აგენტების შეფასება სრულად გადავა Sandbox-based Execution Benchmarks სტანდარტზე.",
+      "risks": [
+        "Code execution complexity",
+        "High evaluation runtime costs"
+      ],
+      "non_obvious_opportunity": "შეგიძლია გამოიყენო GitHub-ის Open Source პროექტები ავტომატიზებული აგენტური Evals გარემოს შესაქმნელად.",
+      "fit_assessment": "ამყარებს შენს ცოდნას აგენტების საიმედო შეფასებასა (Evaluation) და ავტონომიურ loop-ებში."
     }
   ],
   "topics": {
@@ -6444,7 +6450,7 @@
     "AI Coding Tools / Agent Architecture": 2,
     "LLM API / Agent Frameworks": 1,
     "AI Research / LLM Infrastructure": 1,
-    "AI Research / Agent Architecture": 22,
+    "AI Research / Agent Architecture": 24,
     "AI Research / Agent Memory": 1,
     "AI Research / RAG & Embeddings": 1,
     "AI Evaluation / Agent Reliability": 1,
@@ -6478,7 +6484,7 @@
     "AI Research & Agent Optimization": 1,
     "AI Research & Agent Infrastructure": 1,
     "AI Coding Tools და Agent Architecture": 1,
-    "აგენტების ინფრასტრუქტურა და MCP": 14,
+    "აგენტების ინფრასტრუქტურა და MCP": 15,
     "აგენტების ინფრასტრუქტურა და უსაფრთხოება": 2,
     "": 1,
     "AI Research & RAG": 1,
@@ -6491,7 +6497,7 @@
     "RAG & Database Architecture": 2,
     "აგენტის არქიტექტურა და Cost Optimization": 1,
     "აგენტების უსაფრთხოება და Sandbox": 3,
-    "AI Evaluation & საიმედოობა": 14,
+    "AI Evaluation & საიმედოობა": 15,
     "აგენტის არქიტექტურა და ხელსაწყოები": 4,
     "Long-Term Career Strategy": 1,
     "უსაფრთხოება და ღია კოდი": 1,
@@ -6525,252 +6531,6 @@
     "აგენტების ინფრასტრუქტურა და Open Source": 1
   },
   "reports": [
-    {
-      "date": "2026-10-24",
-      "summary": "Google-მა წარადგინა Agent Compute Engine და Project Chrysalis თვითგანვითარებადი microVM ინფრასტრუქტურისთვის. Meta-მ გამოუშვა Muse Glimmer 30B ლოკალური მოწყობილობებისთვის, ხოლო AWS-მა Deep Insight-ით აჩვენა Context Engineering-ის გადაწყვეტები production multi-agent სისტემებში. ეს სიგნალები ცვლის აგენტების იაფ ლოკალურ დეველოპმენტსა და უსაფრთხოების სტანდარტებს.",
-      "events": [
-        {
-          "event_id": "evt-google-agent-compute-engine",
-          "title": "Google Cloud: Agent Compute Engine და Project Chrysalis თვითგანვითარებადი აგენტებისთვის",
-          "category": "აგენტების ინფრასტრუქტურა და Sandbox",
-          "primary_url": "https://cloud.google.com/blog/topics/ai-infrastructure/introducing-agent-compute-engine-and-expanded-agent-governance",
-          "supporting_urls": [
-            "https://cloud.google.com/blog/topics/ai-infrastructure/agent-compute-engine-deep-dive",
-            "https://developers.googleblog.com/architecting-governed-self-evolving-ai-agents-on-gemini-agent-platform"
-          ],
-          "importance": 9,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 9,
-          "confidence": 92,
-          "tldr": "Google-მა გამოუშვა microVM-ზე დაფუძნებული Agent Compute Engine, რომელიც აგენტის კოდის გაშვებას და model reasoning-ს აცალკევებს.",
-          "what_happened": "Google-მა წარადგინა Agent Compute Engine microVM იზოლაციით და Project Chrysalis კრიპტოგრაფიულად მართული თვითგანვითარებადი აგენტებისთვის.",
-          "what_changed": "აგენტები აღარ მუშაობენ ერთიან პროცესში; model harness მართავს გადაწყვეტილებებს, ხოლო იზოლირებული microVM ასრულებს კოდს.",
-          "why_it_matters": "შენს პროექტებში tool calling და bash ბრძანებები უნდა გაუშვა უსაფრთხო კონტეინერში, რათა აირიდო სისტემური დაზიანება.",
-          "key_takeaways": [
-            "MicroVM პაუზდება LLM thinking დროს რესურსების დასაზოგად",
-            "Zero credentials პრინციპი sandbox გარემოში ზრდის უსაფრთხოებას",
-            "Binary Authorization ბლოკავს გადაუმოწმებელი კოდის გაშვებას"
-          ],
-          "technical_architecture": [
-            "Titanium IPU და microVM იზოლაცია",
-            "Harness და Sandbox ორდონიანი დაყოფა",
-            "OPA Policy Controller უსაფრთხოების წესებისთვის"
-          ],
-          "technical_details": [
-            "Copy-on-write memory sharing",
-            "Fast checkpoint restore",
-            "Dual-Custody HITL sign-off"
-          ],
-          "potential_impact": "ორგანიზაციები შეძლებენ ათასობით აგენტის უსაფრთხო გაშვებას სერვერების გადატვირთვისა და უსაფრთხოების რისკების გარეშე.",
-          "action_type": "BUILD",
-          "action": "ააწყვე Python სკრიპტი, რომელიც LLM-ის მიერ დაგენერირებულ კოდს უსაფრთხო ლოკალურ Docker კონტეინერში გაუშვებს და შედეგს დააბრუნებს.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "Agent Compute Engine იყენებს microVM-ებს copy-on-write მეხსიერების გაზიარებით აგენტების იზოლაციისთვის",
-            "Thinking ფაზაში microVM პაუზდება fast checkpoint and restore მექანიზმით",
-            "Project Chrysalis-მა Black Friday სიმულაციაში mitigation დრო 45 წუთიდან 1.8 წამამდე შეამცირა"
-          ],
-          "interpretation": "აგენტების გაშვება მარტივი სკრიპტებიდან გადადის იზოლირებულ sandbox microVM-ებზე, სადაც კოდის შესრულება და LLM reasoning ერთმანეთისგან მკაცრად იყოფა.",
-          "uncertainty": "Agent Compute Engine ჯერ მხოლოდ preview რეჟიმშია და მისი ფასები მცირე დეველოპერებისთვის უცნობია.",
-          "counter_argument": "დამოუკიდებელ დეველოპერს შეუძლია მსგავსი იზოლაცია მიიღოს უფასო Docker კონტეინერებით ან ლოკალური sandbox გარემოთი ზედმეტი ხარჯის გარეშე.",
-          "strategic_assessment": "გაყავი შენი აგენტები harness (ტვინი) და sandbox (ხელები) ნაწილებად. გამოიყენე იზოლირებული გარემო shell და tool ოპერაციებისთვის.",
-          "time_horizon": "mid-term",
-          "what_could_change": "კომპანიები აკრძალავენ აგენტების პირდაპირ გაშვებას სერვერებზე და მოითხოვენ მკაცრად იზოლირებულ microVM sandbox ინფრასტრუქტურას.",
-          "risks": [
-            "microVM-ების მართვის კომპლექსურობა",
-            "ღრუბლოვანი სერვისების ფარული ხარჯები",
-            "დამოკიდებულება კონკრეტულ cloud vendor-ზე"
-          ],
-          "non_obvious_opportunity": "შექმენი მცირე ბიზნესებისთვის უსაფრთხო, ლოკალური sandbox გარემო Docker-ზე Python tool execution-ისთვის.",
-          "fit_assessment": "იდეალურია პორტფოლიოსთვის, რათა აჩვენო, რომ გესმის აგენტის უსაფრთხო იზოლაცია და production სტანდარტები."
-        },
-        {
-          "event_id": "evt-aws-deep-insight-context-engineering",
-          "title": "AWS Deep Insight: Context Engineering და Multi-Agent სისტემების 5 გამოწვევა",
-          "category": "აგენტის არქიტექტურა და საიმედოობა",
-          "primary_url": "https://aws.amazon.com/blogs/machine-learning/5-production-challenges-in-multi-agent-systems-and-how-deep-insight-solved-them",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 9,
-          "source_quality": 10,
-          "confidence": 94,
-          "tldr": "AWS-მა წარმოადგინა Deep Insight არქიტექტურა, სადაც 7 სპეციალიზებული აგენტი Context Engineering-ით წყვეტს production პრობლემებს.",
-          "what_happened": "AWS Solutions Architecture გუნდმა გამოაქვეყნა production multi-agent სისტემის Deep Insight-ის ანალიზი და გამოწვევები.",
-          "what_changed": "ერთიანი Prompt Engineering ჩანაცვლდა Context Engineering-ით: structured note-taking და მკაცრი როლური ვალიდაცია.",
-          "why_it_matters": "გასწავლის რეალურ ბიზნეს ლოგიკას: როგორ აიძულო აგენტი, რომ არ გამოტოვოს ვალიდაციის ეტაპი მონაცემების დამუშავებისას.",
-          "key_takeaways": [
-            "მხოლოდ ინსტრუქცია არ კმარა; საჭიროა კოგნიტური არქიტექტურა",
-            "Validator აგენტი აუცილებელია ჰალუცინაციების დასაჭერად",
-            "Structured note-taking ინარჩუნებს სუფთა კონტექსტს"
-          ],
-          "technical_architecture": [
-            "იერარქია: Coordinator, Planner, Supervisor, Coder, Validator, Reporter, Tracker",
-            "Strands Agents SDK და Amazon Bedrock AgentCore",
-            "AWS Fargate და Application Load Balancer ინფრასტრუქტურა"
-          ],
-          "technical_details": [
-            "Structured note-taking",
-            "Human-in-the-loop triggers",
-            "Automated docx report generation"
-          ],
-          "potential_impact": "მონაცემთა ანალიზის გუნდები ავტომატურად მიიღებენ გადამოწმებულ, ციტირებულ რეპორტებს შეცდომების მინიმალური რისკით.",
-          "action_type": "BUILD",
-          "action": "ააგე Python-ში მინიმალური 2-აგენტიანი სისტემა (Coder + Validator), სადაც Validator ამოწმებს Coder-ის მიერ დაწერილ SQL-ს გაშვებამდე.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "Deep Insight იყენებს სპეციალიზებული აგენტების იერარქიას: Coordinator, Planner, Supervisor, Coder, Validator, Reporter, Tracker",
-            "აგენტები იყენებენ structured note-taking და human-in-the-loop ტექნიკებს კონტექსტის მართვისთვის",
-            "სისტემა ავტომატურად ამუშავებს CSV ფაილებს და აგენერირებს ციტირებულ .docx რეპორტებს"
-          ],
-          "interpretation": "უბრალო prompt engineering ვეღარ უზრუნველყოფს საიმედოობას; გადამწყვეტი ხდება Context Engineering და აგენტების როლური იერარქია.",
-          "uncertainty": "სტატიის პირველი ნაწილი აღწერს გამოწვევებს; კონკრეტული კოდის იმპლემენტაცია ნაწილობრივ გადანაწილებულია შემდეგ პოსტებზე.",
-          "counter_argument": "მრავალაგენტიანი იერარქია ზრდის latency-ს და ტოკენების ხარჯს მარტივ ამოცანებთან შედარებით.",
-          "strategic_assessment": "შეწყვიტე მონოლითური პრომპტების წერა. დაყავი შენი ბიზნეს ლოგიკა Planner, Coder და Validator როლებად.",
-          "time_horizon": "short-term",
-          "what_could_change": "კომპანიები უარს იტყვიან ერთიან ჩატბოტებზე და გადავლენ მრავალდონიან ვალიდაციის აგენტურ გრაფებზე.",
-          "risks": [
-            "ტოკენების გადახარჯვა აგენტებს შორის მიმოწერაში",
-            "ციკლური ჩიხები Coordinator-სა და Supervisor-ს შორის",
-            "კომპლექსური debug პროცესი შეცდომისას"
-          ],
-          "non_obvious_opportunity": "შესთავაზე კომპანიებს მონაცემთა ანალიზის პატარა მრავალაგენტიანი სისტემა, სადაც Validator ამოწმებს გამოთვლების სისწორეს.",
-          "fit_assessment": "პირდაპირ პასუხობს შენს მიზანს: გასწავლის როგორ გადახვიდე toy demo-დან production multi-agent არქიტექტურაზე."
-        },
-        {
-          "event_id": "evt-meta-muse-glimmer-30b",
-          "title": "Meta Muse Glimmer 30B: ღია მოდელი ლოკალური მოწყობილობებისთვის და Tool Use-ისთვის",
-          "category": "Open Source AI & Model Architecture",
-          "primary_url": "https://ai.meta.com/research/publications/muse-glimmer-30b-an-on-device-agentic-model",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 10,
-          "confidence": 95,
-          "tldr": "Meta-მ გამოუშვა Apache 2.0 ლიცენზიით Muse Glimmer 30B, რომელიც გათვლილია ლოკალურ GPU-ზე multi-step tool use-ისთვის.",
-          "what_happened": "Meta-მ წარადგინა Muse Glimmer 30B, სპეციალურად ავტონომიური აგენტური ამოცანებისთვის შექმნილი ღია მულტიმოდალური მოდელი.",
-          "what_changed": "აქამდე მძლავრი tool use მოითხოვდა ღრუბლოვან API-ებს; ახლა 4-bit 30B მოდელი იმავეს აკეთებს ერთ GPU-ზე.",
-          "why_it_matters": "შეგიძლია დატესტო შენი MCP ხელსაწყოები და აგენტური ციკლები სრულიად უფასოდ, საკრედიტო ბარათისა და API ლიმიტების გარეშე.",
-          "key_takeaways": [
-            "Apache 2.0 ლიცენზია იძლევა კომერციული გამოყენების უფლებას",
-            "ტექსტისა და სურათების მიღება ერთიან perception ენკოდერში",
-            "ჩაშენებული failure recovery მექანიზმი შეცდომების გამოსასწორებლად"
-          ],
-          "technical_architecture": [
-            "30B პარამეტრიანი causal LLM + perception encoder",
-            "4-bit precision კვანტიზაცია ერთ GPU-ზე სამუშაოდ",
-            "SOTA შედეგი Gemma4-31B და Qwen3.6-27B მოდელებთან შედარებით"
-          ],
-          "technical_details": [
-            "Apache 2.0 open source license",
-            "Multi-step reasoning and planning",
-            "Native tool calling support"
-          ],
-          "potential_impact": "დეველოპერები შეძლებენ სრულფასოვანი ბიზნეს აგენტების შექმნას გარე API-ებზე დამოკიდებულების გარეშე.",
-          "action_type": "TRY",
-          "action": "ჩამოტვირთე მოდელის 4-bit ვერსია Hugging Face-დან და შეამოწმე მარტივი JSON tool calling ციკლი Ollama-ს ან vLLM-ის მეშვეობით.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Technical Skill",
-            "Real Business Opportunity"
-          ],
-          "verified_facts": [
-            "30B პარამეტრიანი causal language model ვიზუალური perception ენკოდერით",
-            "ოპტიმიზებულია 4-bit კვანტიზაციაზე ერთ სამომხმარებლო GPU-ზე გასაშვებად",
-            "გამოშვებულია სრულად ღია Apache 2.0 ლიცენზიით",
-            "აჯობა Gemma4-31B-სა და Qwen3.6-27B-ს tool use და multi-step planning ტესტებში"
-          ],
-          "interpretation": "30B კლასის მოდელები უკვე საკმარისად ჭკვიანია რთული tool calling-ისთვის ლოკალურ აპარატურაზე, API ხარჯების გარეშე.",
-          "uncertainty": "კონკრეტული მინიმალური VRAM მოთხოვნა 4-bit რეჟიმში სტატიის ტექსტში პირდაპირ მითითებული არ არის.",
-          "counter_argument": "16 წლის დეველოპერს შესაძლოა არ ჰქონდეს 16GB+ VRAM ვიდეობარათი 30B მოდელის ლოკალურად გასაშვებად.",
-          "strategic_assessment": "გამოიყენე Muse Glimmer 30B როგორც ლოკალური ალტერნატივა ფასიანი API-ების ნაცვლად agent loop ტესტირებისას.",
-          "time_horizon": "mid-term",
-          "what_could_change": "მცირე ბიზნესები აირჩევენ ლოკალურ 30B მოდელებს მონაცემთა კონფიდენციალურობისა და ნულოვანი API გადასახადების გამო.",
-          "risks": [
-            "ტექნიკის შეზღუდული VRAM რესურსი",
-            "4-bit კვანტიზაციისას სიზუსტის შესაძლო დაკარგვა",
-            "დაბალი თრუფუთი სუსტ GPU-ზე"
-          ],
-          "non_obvious_opportunity": "შესთავაზე ადგილობრივ კომპანიებს ლოკალური აგენტი, რომელიც მუშაობს შიდა ქსელში ინტერნეტის და API გადასახადების გარეშე.",
-          "fit_assessment": "იდეალურია ბიუჯეტური განვითარებისთვის: გაძლევს საშუალებას ისწავლო agent loop უფასოდ საკუთარ გარემოში."
-        },
-        {
-          "event_id": "evt-pass-k-thought-pruning",
-          "title": "Direct Pass@k Optimization: ტესტ-ტაიმ მსჯელობისა და ტოკენების ოპტიმიზაცია",
-          "category": "AI Research & Model Architecture",
-          "primary_url": "https://arxiv.org/abs/2610.31667",
-          "supporting_urls": [],
-          "importance": 7,
-          "relevance": 8,
-          "actionability": 7,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "ახალი კვლევა Pass@k ოპტიმიზაციით ადრეულ ეტაპზე ფილტრავს მცდარ მსჯელობებს, რაც ზოგავს ინფერენსის დროსა და რესურსებს.",
-          "what_happened": "მკვლევარებმა შექმნეს ალგორითმი, რომელიც reasoning მოდელების ტესტირებისას ნაადრევად ჭრის უპერსპექტივო ტრაექტორიებს.",
-          "what_changed": "ხარისხისა და მრავალფეროვნების ცალ-ცალკე შეფასების ნაცვლად, Pass@k პირდაპირ პოულობს საუკეთესო კანდიდატთა აუზს.",
-          "why_it_matters": "შეზღუდული ბიუჯეტის პირობებში ტოკენების დაზოგვა კრიტიკულია. ეს პრინციპი გასწავლის, როგორ შეაჩერო აგენტის უშედეგო ციკლი დროულად.",
-          "key_takeaways": [
-            "მოკლე პრეფიქსის შეფასება ზოგავს დარჩენილ გამოთვლას",
-            "ბალანსი ხარისხსა და გადაწყვეტის მრავალფეროვნებას შორის",
-            "დადასტურებულია 8 open-weight მოდელზე"
-          ],
-          "technical_architecture": [
-            "Direct pass@k optimization algorithm",
-            "Exploration vs exploitation მათემატიკური ბალანსი",
-            "Prefix-based thought pruning pipeline"
-          ],
-          "technical_details": [
-            "Open-weight model evaluation",
-            "Candidate pool selection",
-            "Token generation reduction"
-          ],
-          "potential_impact": "Reasoning მოდელების გამოძახება გახდება ორჯერ უფრო იაფი და სწრაფი რთული ამოცანების გადაჭრისას.",
-          "action_type": "LEARN",
-          "action": "წაიკითხე ნაშრომის აბსტრაქტი და ჩაინიშნე, როგორ შეგიძლია შენს agent loop-ში ადრეული stop condition-ების ჩაშენება.",
-          "evidence": [],
-          "factuality_level": "single_source",
-          "classification": [
-            "Real Technical Skill"
-          ],
-          "verified_facts": [
-            "ახალი მეთოდი პირდაპირ აოპტიმიზებს pass@k მეტრიკას candidate solution-ების pruning-ისას",
-            "აბალანსებს ხარისხსა და მრავალფეროვნებას (diversity) მოკლე prefix-ის გენერირების შემდეგ",
-            "გამოცდილია რვა open-weight მსჯელობის მოდელზე და აჯობა არსებულ მეთოდებს"
-          ],
-          "interpretation": "Reasoning მოდელების test-time scaling ხდება ბევრად უფრო იაფი, როდესაც არასწორ აზრებს ადრეულ ეტაპზე ვფილტრავთ.",
-          "uncertainty": "კვლევა ფოკუსირებულია მათემატიკურ და ლოგიკურ ტესტებზე; ზოგად ბიზნეს აგენტებზე გავლენა ჯერ შესამოწმებელია.",
-          "counter_argument": "Early pruning-მა შესაძლოა შემთხვევით წაშალოს არასტანდარტული, მაგრამ სწორი გადაწყვეტის გზა.",
-          "strategic_assessment": "გამოიყენე ადრეული შემოწმება შენს აგენტურ ციკლებში. ნუ დაელოდები გრძელი პასუხის დასრულებას, თუ პირველი ნაბიჯი მცდარია.",
-          "time_horizon": "mid-term",
-          "what_could_change": "LLM ინფერენსის პროვაიდერები ჩააშენებენ thought pruning-ს API დონეზე, რაც შეამცირებს reasoning ტოკენების საფასურს.",
-          "risks": [
-            "ზედმეტად აგრესიული pruning-ის რისკი",
-            "დამატებითი საზომი ფუნქციის გამოთვლითი დანახარჯი",
-            "რთული იმპლემენტაცია სტანდარტულ API-ებზე"
-          ],
-          "non_obvious_opportunity": "დაწერე Python wrapper, რომელიც ამოწმებს აგენტის პირველ ორ ნაბიჯს და აჩერებს გენერაციას შეცდომის შემთხვევაში.",
-          "fit_assessment": "გეხმარება გაიგო Test-time compute და როგორ დაზოგო ფული reasoning მოდელების გამოყენებისას."
-        }
-      ],
-      "trends": [
-        "აგენტების იზოლაცია microVM და sandbox დონეზე ხდება სავალდებულო სტანდარტი",
-        "30B კლასის მოდელები სრულად ადაპტირდება ლოკალურ სამომხმარებლო GPU-ებზე სამუშაოდ",
-        "Prompt Engineering სრულად ჩანაცვლდა Context Engineering-ით და მრავალაგენტიანი იერარქიით"
-      ]
-    },
     {
       "date": "2026-10-25",
       "summary": "დღევანდელი სიგნალები ფოკუსირდება აგენტების რეალურ ინფრასტრუქტურაზე. Bedrock AgentCore და Smartsheet აჩვენებენ MCP პროტოკოლის სტანდარტიზაციას საწარმოო გარემოში. პარალელურად, კვლევები გვიჩვენებს, თუ როგორ ამცირებს ხარჯზე ორიენტირებული abstention და context isolation აგენტების შეცდომებსა და ტოკენების ხარჯს.",
@@ -10233,14 +9993,253 @@
         "Offensive AI აგენტების მიერ GitHub-ზე გაჟონილი Secret-ების მყისიერი გამოყენება",
         "OS-level Sandboxing და Human-in-the-loop გეითები აგენტების უსაფრთხოებისთვის"
       ]
+    },
+    {
+      "date": "2026-11-08",
+      "summary": "დღევანდელი ანალიზი ფოკუსირდება აგენტური Context Window-ის ოპტიმიზაციაზე, Google-ის ოფიციალურ Workspace MCP სერვერსა და აგენტების დისტილაციის ეფექტურობაზე. AWS-ის Deep Insight არქიტექტურა გვიჩვენებს, როგორ შევამციროთ კონტექსტის ტოკენების ხარჯი 95%-ით Code Execution პატერნით. პარალელურად, Google Workspace MCP სერვერი იძლევა საშუალებას Drive, Gmail და Calendar პირდაპირ ჩავრთოთ აგენტურ ლოგიკაში.",
+      "events": [
+        {
+          "event_id": "evt-google-workspace-mcp-server-reference",
+          "title": "Google Workspace MCP: ოფიციალური Remote MCP სერვერი Cloud API-სთვის",
+          "category": "აგენტების ინფრასტრუქტურა და MCP",
+          "primary_url": "https://developers.google.com/workspace/reference/mcp",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 9,
+          "actionability": 9,
+          "source_quality": 9,
+          "confidence": 90,
+          "tldr": "Google-მა გამოაქვეყნა Workspace MCP Server endpoint (workspacemcp.googleapis.com), რაც აგენტებს Drive, Gmail და Calendar-თან მარტივ კავშირს აძლევს.",
+          "what_happened": "Google Workspace-მა ოფიციალურად წარადგინა Remote MCP Server API დოკუმენტაცია და Endpoint.",
+          "what_changed": "Gmail და Drive ინტეგრაციებისთვის Custom Python Wrapper-ების წერის ნაცვლად გამოიყენება ერთიანი MCP პროტოკოლი.",
+          "why_it_matters": "შეგიძლია ააგო ბიზნეს ავტომატიზაციის აგენტები უფასო Cloud Tier-ით და ოფიციალური MCP პროტოკოლით.",
+          "key_takeaways": [
+            "workspacemcp.googleapis.com არის ოფიციალური MCP endpoint",
+            "Drive, Gmail, Calendar და Chat გაერთიანებულია MCP Toolset-ებში",
+            "ინტეგრაცია ხდება სტანდარტული JSON-RPC 2.0 მოთხოვნებით"
+          ],
+          "technical_architecture": [
+            "Remote MCP Proxy Architecture over HTTP/SSE",
+            "JSON-RPC 2.0 protocol implementation",
+            "Google Workspace Developer Preview Program integration"
+          ],
+          "technical_details": [
+            "https://workspacemcp.googleapis.com/mcp/v1 endpoint",
+            "tools/list RPC call to inspect tool parameters",
+            "search_corpus public toolset specification"
+          ],
+          "potential_impact": "შემცირდება აგენტების Google Workspace-თან ინტეგრაციის დრო და კოდის მოცულობა.",
+          "action_type": "TRY",
+          "action": "გააგზავნე cURL მოთხოვნა workspacemcp.googleapis.com-ზე და შეამოწმე ხელმისაწვდომი MCP ინსტრუმენტების სია.",
+          "evidence": [],
+          "factuality_level": "single_source",
+          "classification": [
+            "Real Technical Skill",
+            "Real Business Opportunity"
+          ],
+          "verified_facts": [
+            "Google Workspace-მა გამოაშვება Remote MCP Server endpoint: workspacemcp.googleapis.com",
+            "მხარდაჭერილია Drive, Gmail, Calendar და Chat API ინსტრუმენტები",
+            "JSON-RPC 2.0 პროტოკოლი და tools/list მეთოდი Toolset-ების მისაღებად"
+          ],
+          "interpretation": "Google-ის მიერ MCP სტანდარტის მიღება საშუალებას იძლევა ნებისმიერმა LLM აგენტმა პირდაპირ ინტეგრიროს Workspace ინსტრუმენტები.",
+          "uncertainty": "Developer Preview სტატუსშია და შესაძლოა API შეზღუდვები ჰქონდეს უფასო Tier-ზე.",
+          "counter_argument": "OAuth 2.0 ავტორიზაციის კონფიგურაცია აგენტისთვის კვლავ მოითხოვს დამატებით უსაფრთხოების შრეს.",
+          "strategic_assessment": "გამოიყენე Google Workspace MCP სერვერი ბიზნეს აგენტების შესაქმნელად Custom API Code-ის წერის გარეშე.",
+          "time_horizon": "short-term",
+          "what_could_change": "მორგებული API ინტეგრაციების წერა ჩანაცვლდება სტანდარტული Remote MCP Server Connector-ებით.",
+          "risks": [
+            "Developer Preview ცვლილებები",
+            "OAuth token handling სირთულე"
+          ],
+          "non_obvious_opportunity": "შეგიძლია შესთავაზო მცირე კომპანიებს Telegram-ზე დაფუძნებული AI ასისტენტი, რომელიც მართავს Google Calendar-ს და Gmail-ს MCP-ით.",
+          "fit_assessment": "ზუსტად ჯდება შენს სწავლის გეგმაში: MCP პროტოკოლის გამოყენება რეალურ Business workflow-ში."
+        },
+        {
+          "event_id": "evt-reprobridge-ml-artifact-reproducibility",
+          "title": "ReproBridge: კოდის ავტონომიური რეფაქტორინგი აგენტების API ხარჯების 19.7%-ით შესამცირებლად",
+          "category": "AI Evaluation & საიმედოობა",
+          "primary_url": "https://arxiv.org/abs/2611.08452",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 88,
+          "tldr": "ReproBridge კვლევამ აჩვენა, რომ კოდის გარემოსა და ინსტრუქციების სტანდარტიზაცია აგენტების წარმატებას 92.6%-მდე ზრდის და API ხარჯებს 19.7%-ით ამცირებს.",
+          "what_happened": "მკვლევრებმა შექმნეს ReproBridge workflow, რომელიც აგენტებისთვის ML რეპოზიტორიების გარემოსა და სკრიპტების სტანდარტიზაციას ახდენს.",
+          "what_changed": "ნედლი კოდის ბაზის ნაცვლად, აგენტი იღებს სტრუქტურირებულ არტეფაქტს, Launchers-ს და Auditor ვერიფიკაციას.",
+          "why_it_matters": "დაბალბიუჯეტიანი აგენტების აგებისას უსარგებლო LLM სესიების თავიდან აცილება პირდაპირ ზოგავს შენს API ბალანსს.",
+          "key_takeaways": [
+            "სტრუქტურირებული არტეფაქტები ზრდის წარმატებას 92.6%-მდე",
+            "API ხარჯები მცირდება 19.7%-ით ეფექტური გარემოს გამო",
+            "სხვადასხვა მოდელებს შორის სხვაობა მცირდება 21.6%-დან 3.9%-მდე"
+          ],
+          "technical_architecture": [
+            "ReproBridge Workflow with standardized Artifact Design",
+            "Auditor agent verifying execution evidence logs",
+            "ReproBridge-Bench framework with 1,029 evaluation tasks"
+          ],
+          "technical_details": [
+            "Standardized environment configuration files",
+            "Isolated fresh-session execution benchmarks",
+            "Reference execution score verification"
+          ],
+          "potential_impact": "გაზრდის AI Coding Agent-ების საიმედოობას რთულ multi-file კოდის ბაზებში.",
+          "action_type": "APPLY",
+          "action": "შექმენი სტრუქტურირებული README და Setup სკრიპტი შენს GitHub პროექტში, რათა LLM აგენტმა პირველივე ცდაზე გამართოს გარემო.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Real Business Opportunity"
+          ],
+          "verified_facts": [
+            "ReproBridge სტრუქტურირებული არტეფაქტები ზრდიან აგენტის Reproducibility წარმატებას 76.4%-დან 92.6%-მდე",
+            "ამცირებს downstream API ხარჯებს საშუალოდ 19.7%-ით",
+            "ReproBridge-Bench მოიცავს 1,029 ამოცანას 387 ექსპერიმენტიდან"
+          ],
+          "interpretation": "აგენტებისთვის განკუთვნილი კოდის ბაზისა და გარემოს წინასწარი სტანდარტიზაცია მკვეთრად ამცირებს შეცდომებსა და ტოკენების ხარჯს.",
+          "uncertainty": "კვლევა ჩატარდა ML კვლევით რეპოზიტორიებზე, სადაც Environment Setup განსაკუთრებით პრობლემურია.",
+          "counter_argument": "არტეფაქტების შექმნას სჭირდება თავდაპირველი აგენტური პასპორტი, რაც ითხოვს საწყის API ხარჯს.",
+          "strategic_assessment": "დანერგე ReproBridge-ის მსგავსი სტრუქტურირებული დოკუმენტაციისა და სენდბოქსის პატერნი შენს CI/CD პაიპლაინში.",
+          "time_horizon": "mid-term",
+          "what_could_change": "პროგრამული უზრუნველყოფის რეპოზიტორიები გადავლენ Agent-Native სტრუქტურაზე, სადაც Execution Context წინასწარ არის ინდექსირებული.",
+          "risks": [
+            "არტეფაქტების დაძველება კოდის ცვლილებისას",
+            "Initial curation cost"
+          ],
+          "non_obvious_opportunity": "შეგიძლია შექმნა Open Source ინსტრუმენტი, რომელიც GitHub რეპოზიტორიებს ავტომატურად გარდაქმნის Agent-Ready სტრუქტურად.",
+          "fit_assessment": "გეხმარება GitHub Actions-ისა და AI აგენტების ეფექტურ კომბინაციაში დაბალი ბიუჯეტით."
+        },
+        {
+          "event_id": "evt-on-policy-distillation-vs-grpo-efficiency",
+          "title": "On-Policy Distillation (OPD): 50-ჯერ ნაკლები Compute საკუთარი GRPO ჩექპოინტიდან",
+          "category": "AI Research / Agent Architecture",
+          "primary_url": "https://arxiv.org/abs/2611.08453",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 8,
+          "actionability": 7,
+          "source_quality": 8,
+          "confidence": 85,
+          "tldr": "კვლევამ აჩვენა, რომ GRPO ჩექპოინტის On-Policy Distillation (OPD) 50-ჯერ ნაკლები FLOPs-ით აღწევს RL-ის სიზუსტეს.",
+          "what_happened": "მკვლევრებმა შეადარეს On-Policy Distillation (OPD) და GRPO Reinforcement Learning სხვადასხვა დომენსა და მოდელის ზომაზე.",
+          "what_changed": "ძვირადღირებული RL ტრენინგის ნაცვლად, GRPO ექსპერტების ცოდნის კონსოლიდაცია ხდება მცირე სტუდენტ მოდელში მინიმალური compute-ით.",
+          "why_it_matters": "გეხმარება გაიგო, თუ როგორ იქმნება სწრაფი და იაფი Reasoning მოდელები საწარმოო აგენტებისთვის.",
+          "key_takeaways": [
+            "OPD საკუთარი ჩექპოინტიდან 50-ჯერ ეფექტურია compute-ის მხრივ",
+            "Multi-Teacher OPD აერთიანებს რამდენიმე ექსპერტს 42%-ით ნაკლები ხარჯით",
+            "გარე მასწავლებლის გამოყენება ზრდის პასუხის სიგრძეს სიზუსტის მომატების გარეშე"
+          ],
+          "technical_architecture": [
+            "Reverse-KL On-Policy Distillation against GRPO baseline",
+            "Multi-teacher expert consolidation framework",
+            "FLOPs-matched accuracy benchmarking on math and code"
+          ],
+          "technical_details": [
+            "50x FLOPs reduction on self-checkpoint distillation",
+            "5.2% to 8.0% overhead for multi-domain expert fusion",
+            "42.0% total compute savings on 2-domain mix"
+          ],
+          "potential_impact": "შემცირდება სპეციალიზებული აგენტური მოდელების შეიქმნისა და დატრენინგების ინფრასტრუქტურული ბარიერი.",
+          "action_type": "LEARN",
+          "action": "წაიკითხე OPD და GRPO მეთოდების განსხვავება, რათა გაიგო, როგორ გარდაიქმნება CoT მსჯელობა მცირე მოდელების წონებში.",
+          "evidence": [],
+          "factuality_level": "single_source",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "მოდელის საკუთარი GRPO ჩექპოინტიდან OPD დისტილაცია მოითხოვს 50-ჯერ ნაკლებ FLOPs-ს იგივე სიზუსტის მისაღწევად",
+            "Multi-teacher OPD საშუალებას იძლევა გაერთიანდეს მრავალი დომენური GRPO ექსპერტი 8.0% დამატებითი Compute-ით",
+            "2-დომენიან მიქსზე Multi-teacher OPD აღწევს ერთობლივი GRPO-ს შედეგს 42.0%-ით ნაკლები FLOPs-ით"
+          ],
+          "interpretation": "Reinforcement Learning (GRPO)-ს სრული ციკლის ნაცვლად, RL ჩექპოინტის დისტილაცია მცირე მოდელში დრამატულად ამცირებს გამოთვლით ხარჯებს.",
+          "uncertainty": "სრული ეფექტურობა მოითხოვს უკვე არსებულ მაღალი ხარისხის GRPO ჩექპოინტს.",
+          "counter_argument": "გარე მასწავლებელზე (External Teacher) ჩატარებული OPD ხშირად აგებს GRPO-სთან ტოკენების სიგრძის ინფლაციის გამო.",
+          "strategic_assessment": "თუ პატარა მოდელის Fine-Tuning-ს აპირებ, გამოიყენე OPD სელფ-დისტილაციის პატერნი RL-ის ნაცვლად.",
+          "time_horizon": "long-term",
+          "what_could_change": "მცირე მოდელების ტრენინგი გახდება გაცილებით იაფი, რაც ლოკალური აგენტების შესაძლებლობებს გაზრდის.",
+          "risks": [
+            "Teacher-student alignment failure",
+            "Response length inflation"
+          ],
+          "non_obvious_opportunity": "შეგიძლია გამოიყენო OpenAI/Anthropic-ის ძლიერი მოდელების Synthetic Trace-ები პატარა Open-Source მოდელის ლოკალურად დასატრენინგებლად.",
+          "fit_assessment": "გაძლევს თეორიულ და პრაქტიკულ ცოდნას, თუ როგორ ტრენირდება ეფექტური აგენტური მოდელები დაბალი ბიუჯეტით."
+        },
+        {
+          "event_id": "evt-scientist-world-executable-paper-environments",
+          "title": "Scientist World: 1,000 გამართვადი გარემო AI-მკვლევარი აგენტების შესაფასებლად",
+          "category": "AI Research / Agent Architecture",
+          "primary_url": "https://arxiv.org/abs/2611.08478",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 8,
+          "actionability": 7,
+          "source_quality": 8,
+          "confidence": 85,
+          "tldr": "Scientist World-მა 1,000 სამეცნიერო სტატია გარდაქმნა გამართვად გარემოდ, სადაც აგენტები 74%-ში სჯობნიან ადამიანების თავდაპირველ შედეგებს.",
+          "what_happened": "გამოქვეყნდა Scientist World framework, რომელიც სამეცნიერო სტატიებიდან ავტომატურად გენერირებს კოდის სენდბოქსებს აგენტებისთვის.",
+          "what_changed": "ტექსტური კითხვა-პასუხის ნაცვლად, აგენტები იღებენ ღია კვლევით ამოცანას, წერენ კოდს და ეჯიბრებიან ავტორების შედეგებს.",
+          "why_it_matters": "გვიჩვენებს, რომ მომავლის აგენტები ფასდებიან რეალური Code Execution-ით და არა უბრალოდ ტექსტური მსჯელობით.",
+          "key_takeaways": [
+            "1,000 სტატია გარდაიქმნა ავტონომიურ გამართვად გარემოდ",
+            "Frontier აგენტები 74%-ში აუმჯობესებენ ადამიანის საბაზისო შედეგებს",
+            "6,400 საათის ექსპერიმენტული ლოგები ხელმისაწვდომია აგენტების დასატრენინგებლად"
+          ],
+          "technical_architecture": [
+            "Autonomous pipeline extracting executable code and baseline tasks",
+            "Sandbox evaluation engine matching empirical results",
+            "6,400 hours of research traces for trajectory-based training"
+          ],
+          "technical_details": [
+            "1,000 verified executable research paper environments",
+            "74% win-rate against published human baselines",
+            "+158% ideation score lift via trace fine-tuning"
+          ],
+          "potential_impact": "დააჩქარებს ავტონომიური AI Research Agent-ების განვითარებას და კოდის ავტომატურ ოპტიმიზაციას.",
+          "action_type": "LEARN",
+          "action": "გახსენი Scientist World-ის arXiv სტატია და შეისწავლე, როგორ არის აგებული კოდის ავტომატური ვერიფიკაციის პაიპლაინი.",
+          "evidence": [],
+          "factuality_level": "single_source",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "Scientist World გარდაქმნის 1,000 სამეცნიერო სტატიას ავტონომიურად გაშვებად სატესტო გარემოდ",
+            "Frontier AI-Scientist აგენტები ადამიან მკვლევრებს 74%-ში აჯობეს გამართვად ბენჩმარკებში",
+            "მცირე მოდელის იდეაციის უნარი გაიზარდა +158%-ით ამ გარემოზე დაფუძნებული ტრენინგით"
+          ],
+          "interpretation": "სტატიკური ტექსტური ბენჩმარკები ჩანაცვლდა დინამიური კოდის გაშვების გარემოებით, სადაც აგენტი ფასდება რეალური შედეგით.",
+          "uncertainty": "კვლევითი კოდის ავტომატური რეპროდუქცია ზოგჯერ ეფუძნება გამარტივებულ დაშვებებს.",
+          "counter_argument": "სამეცნიერო კვლევის დიდი ნაწილი მოითხოვს ფიზიკურ ექსპერიმენტებს, სადაც ციფრული სენდბოქსი ვერ გამოიყენება.",
+          "strategic_assessment": "შექმენი შენი აგენტებისთვის Executable Benchmark გარემოები (სენდბოქსები) მხოლოდ LLM-as-a-Judge-ის იმედად ყოფნის ნაცვლად.",
+          "time_horizon": "long-term",
+          "what_could_change": "AI აგენტების შეფასება სრულად გადავა Sandbox-based Execution Benchmarks სტანდარტზე.",
+          "risks": [
+            "Code execution complexity",
+            "High evaluation runtime costs"
+          ],
+          "non_obvious_opportunity": "შეგიძლია გამოიყენო GitHub-ის Open Source პროექტები ავტომატიზებული აგენტური Evals გარემოს შესაქმნელად.",
+          "fit_assessment": "ამყარებს შენს ცოდნას აგენტების საიმედო შეფასებასა (Evaluation) და ავტონომიურ loop-ებში."
+        }
+      ],
+      "trends": [
+        "Context Engineering გადადის ნედლი ტოკენების ჩატვირთვიდან Executable Tools და Dynamic Skill Loading პატერნებზე",
+        "მსხვილი ღრუბლოვანი პროვაიდერები (Google, AWS) MCP სტანდარტს აინტეგრირებენ თავიანთ ძირითად სერვისებში",
+        "LLM-ების შეფასება (Evaluation) სრულად გადადის გამართვად Code Sandbox და Environment Benchmark-ებზე"
+      ]
     }
   ],
   "learning_queue": [
-    "FastMCP დინამიური Tool Registration პატერნები Python-ში",
-    "vLLM-ის KV Cache management და Hidden State წვდომა local LLM-ებში",
-    "Docker Python SDK-ს გამოყენება აგენტის მიერ გენერირებული კოდის სენდბოქსში გასაშვებად"
+    "Google Workspace MCP Server API და OAuth 2.0 ინტეგრაცია Python-ში",
+    "Context Engineering: Write-and-Execute პატერნის დანერგვა LangChain/LangGraph-ში",
+    "SQLite memory pattern AI აგენტებისთვის დიდ მონაცემებთან სამუშაოდ"
   ],
-  "last_run": "2026-11-07T16:06:23.128653+00:00",
+  "last_run": "2026-11-08T16:32:51.519852+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -10369,12 +10368,15 @@
     "arxiv:2611.03634",
     "arxiv:2611.04814",
     "arxiv:2611.05345",
-    "arxiv:2611.08483"
+    "arxiv:2611.08483",
+    "arxiv:2611.08452",
+    "arxiv:2611.08453",
+    "arxiv:2611.08478"
   ],
   "last_report_files": {
-    "markdown": "data/reports/2026-11-07/report.md",
-    "json": "data/reports/2026-11-07/report.json",
-    "newsletter": "data/reports/2026-11-07/newsletter.md",
-    "social": "data/reports/2026-11-07/social_posts.txt"
+    "markdown": "data/reports/2026-11-08/report.md",
+    "json": "data/reports/2026-11-08/report.json",
+    "newsletter": "data/reports/2026-11-08/newsletter.md",
+    "social": "data/reports/2026-11-08/social_posts.txt"
   }
 }
