@@ -346,7 +346,12 @@
     "https://developers.google.com/workspace/reference/mcp",
     "https://arxiv.org/abs/2611.08452",
     "https://arxiv.org/abs/2611.08453",
-    "https://arxiv.org/abs/2611.08478"
+    "https://arxiv.org/abs/2611.08478",
+    "https://github.com/anthropics/claude-code/releases",
+    "https://github.com/topics/aider",
+    "https://aws.amazon.com/marketplace/build-learn/ai-agent-learning-series/agent-exposure-and-integration",
+    "https://www.anthropic.com/research/project-eve-claude-plays-mmorpgs",
+    "https://latent.space/p/ainews-behind-latent-space-kill-my-saas-jev-ai-in-2026-aiei-shanghai"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -629,299 +634,14 @@
     "evt-google-workspace-mcp-server-reference",
     "evt-reprobridge-ml-artifact-reproducibility",
     "evt-on-policy-distillation-vs-grpo-efficiency",
-    "evt-scientist-world-executable-paper-environments"
+    "evt-scientist-world-executable-paper-environments",
+    "evt-claude-code-21321-mcp-security",
+    "evt-codebase-memory-mcp-graph-intelligence",
+    "evt-aws-agent-exposure-layer-architecture",
+    "evt-anthropic-project-eve-multiagent-code-exec",
+    "evt-weight-space-programming-frontier-models"
   ],
   "events": [
-    {
-      "event_id": "evt-ruletrek-benchmark-rule-reasoning",
-      "title": "RuleTrek: LLM აგენტების შემოწმება რთულ ბიზნეს-წესებსა და მრავალფაილიან სცენარებში",
-      "category": "AI Evaluation & საიმედოობა",
-      "primary_url": "https://huggingface.co/papers/2610.19698",
-      "supporting_urls": [],
-      "importance": 9,
-      "relevance": 9,
-      "actionability": 8,
-      "source_quality": 8,
-      "confidence": 90,
-      "tldr": "ახალმა ბენჩმარკმა აჩვენა, რომ აგენტები ბიზნეს-წესების გააზრებაში 55%-ზე დაბალ შედეგს აჩვენებენ. აუცილებელია წესების გრაფებით მართვა.",
-      "what_happened": "გამოქვეყნდა RuleTrek ბენჩმარკი, რომელმაც 11 frontier LLM შეამოწმა რთულ მრავალფაილიან სცენარებში და აჩვენა მათი სერიოზული სისუსტე.",
-      "what_changed": "მარტივი ერთფაილიანი ტესტებიდან გადავედით რეალურ, გაფანტულ ბიზნეს-წესებთან აგენტების მუშაობის შეფასებაზე.",
-      "why_it_matters": "რეალური ბიზნეს აგენტის აწყობისას ვერ დაეყრდნობი მხოლოდ მოდელის შიდა ლოგიკას; გჭირდება არქიტექტურული ფილტრები.",
-      "key_takeaways": [
-        "Frontier მოდელები ბიზნეს ამოცანებში 50%-ზე ხშირად ცდებიან",
-        "Rule Deduction მაქსიმალური მაჩვენებელი 60.43%-ია",
-        "მრავალფაილიანი კონტექსტი დრამატულად აგდებს აგენტის საიმედოობას"
-      ],
-      "technical_architecture": [
-        "RuleTrek Pipeline: Rule Graph Extraction -> Sub-scenario Synthesis -> Verification",
-        "Interactive Workspaces გარემო 11 მოდელის შესაფასებლად",
-        "E2E ტესტირება: RI (Identification), RD (Deduction), Reasoning"
-      ],
-      "technical_details": [
-        "E2E range: 26.97% - 55.29%",
-        "RI peak: 62.47%",
-        "RD peak: 60.43%",
-        "GitHub: yuan247/RuleTrek"
-      ],
-      "potential_impact": "დეველოპერები, რომლებიც აგენტებს წესების დეტერმინისტულ შემოწმებას დაუმატებენ, ბაზარზე ბევრად საიმედო პროდუქტს შექმნიან.",
-      "action_type": "TRY",
-      "action": "გადმოწერე RuleTrek რეპოზიტორია GitHub-იდან და გაატარე შენი Python აგენტის სისტემური პრომპტი 3 საბაზისო წესზე.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "11 წამყვანი LLM-ის End-to-End Rule Reasoning ქულა მხოლოდ 26.97%-დან 55.29%-მდე მერყეობს",
-        "Rule Identification მაქსიმალური სიზუსტე შემოიფარგლა 62.47%-ით",
-        "ბენჩმარკი ამოწმებს აგენტებს structured rule graph-ების გამოტანასა და მრავალფაილიან სამუშაო სივრცეში",
-        "კოდი და მონაცემთა ბაზა სრულად ღიაა GitHub-ზე"
-      ],
-      "interpretation": "მოდელები ვერ უმკლავდებიან კომპლექსურ ბიზნეს ლოგიკას მხოლოდ პრომპტით; საჭიროა მკაცრი წესების გრაფები და გარეგანი ვალიდატორები.",
-      "uncertainty": "უცნობია, რამდენად გააუმჯობესებს შედეგებს სპეციალიზებული fine-tuning წესების სპეციფიკურ DSL-ებზე.",
-      "counter_argument": "მომავალმა frontier მოდელებმა გაზრდილი test-time compute-ით შესაძლოა ეს ჩავარდნა გარე სისტემების გარეშე დაფარონ.",
-      "strategic_assessment": "ნუ ენდობი LLM-ს რთული კონტრაქტების პირდაპირ გაანალიზებაში; ააგე Rule Extraction ეტაპი Pydantic სქემებით და დეტერმინისტული შემოწმებით.",
-      "time_horizon": "mid-term",
-      "what_could_change": "კომპანიები შეწყვეტენ დაუმუშავებელი LLM-ების გამოყენებას იურიდიულ და ფინანსურ ლოგიკაში და მოითხოვენ ვალიდაციის გრაფებს.",
-      "risks": [
-        "მონაცემთა გაჟონვა წესების დამუშავებისას",
-        "დიდი ლატენტურობა მრავალეტაპიანი გადამოწმების დროს",
-        "არასწორი წესების გავრცელება აგენტის ციკლში"
-      ],
-      "non_obvious_opportunity": "შექმენი მცირე ბიზნესებისთვის საგადასახადო წესების გადამმოწმებელი ლოკალური აგენტი, რომელიც შეცდომებს დეტერმინისტულად იჭერს.",
-      "fit_assessment": "იდეალურია შენი პროფილისთვის: ბიზნეს აგენტების შექმნისას დაგიცავს კრიტიკული ლოგიკური შეცდომებისგან უფასო ვალიდატორებით."
-    },
-    {
-      "event_id": "evt-aws-bedrock-self-improving-idp",
-      "title": "AWS Bedrock AgentCore: დოკუმენტების თვითგანვითარებადი დამუშავება Multi-Agent გრაფით",
-      "category": "Real Business Opportunity & Agent Infrastructure",
-      "primary_url": "https://aws.amazon.com/blogs/machine-learning/build-self-improving-document-processing-using-amazon-bedrock-agentcore",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 9,
-      "source_quality": 10,
-      "confidence": 95,
-      "tldr": "AWS-მა წარმოადგინა 8 აგენტისგან შემდგარი გრაფული სისტემა, რომელიც ახალ დოკუმენტებს ავტომატურად ერგება და დამოუკიდებლად სწავლობს შეცდომებზე.",
-      "what_happened": "AWS-მა გამოაქვეყნა არქიტექტურა Bedrock AgentCore-სა და Strands Agents-ზე, რომელიც დოკუმენტების თვითგანვითარებად დამუშავებას უზრუნველყოფს.",
-      "what_changed": "ხისტი შაბლონების ნაცვლად სისტემა აგენტიკურად აანალიზებს ფორმატს და ინახავს ცოდნას მომავალი დამუშავებისთვის.",
-      "why_it_matters": "შენ შეგიძლია იგივე გრაფული არქიტექტურა გაიმეორო Python-ში და შექმნა რეალური კომერციული პროდუქტი.",
-      "key_takeaways": [
-        "8 სპეციალიზებული აგენტი მუშაობს ორ დამოუკიდებელ გრაფში",
-        "მონაცემთა ხელით შეყვანის ცდომილება 1-4%-ია",
-        "Strands Agents SDK ღია კოდისაა და მხარს უჭერს MCP-ს"
-      ],
-      "technical_architecture": [
-        "Multi-agent workflow graph: Identification, Extraction, Validation",
-        "Feedback Loop: შეცდომების კორექცია ინახება ფორმატების ცოდნის ბაზაში",
-        "ინტეგრაცია Strands Agents ღია კოდის ბიბლიოთეკასთან"
-      ],
-      "technical_details": [
-        "Bedrock AgentCore პლატფორმა",
-        "Strands Agents Python SDK",
-        "8 specialized agents ორ სამუშაო გრაფში"
-      ],
-      "potential_impact": "ბიზნესები დოკუმენტების დამუშავების დროს 30%-ით შეამცირებენ და თავიდან აირიდებენ შაბლონების მუდმივ გადაკეთებას.",
-      "action_type": "BUILD",
-      "action": "ააწყე Python-ში 2-აგენტიანი გრაფი: პირველი ამოიღებს ინვოისის ველებს JSON-ში, მეორე შეამოწმებს მათ სისწორეს Pydantic-ით.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Business Opportunity",
-        "Real Technical Skill"
-      ],
-      "verified_facts": [
-        "IDC-ის მონაცემებით დოკუმენტებთან დაკავშირებული პრობლემები თითო თანამშრომელზე წლიურად $19,732 ჯდება",
-        "მონაცემთა ხელით შეყვანის შეცდომის დონე 1-დან 4 პროცენტამდეა",
-        "სისტემა იყენებს 8 სპეციალიზებულ აგენტს 2 გრაფზე დაფუძნებულ სამუშაო პროცესში",
-        "მულტი-აგენტური გრაფის ასაწყობად გამოყენებულია ღია კოდის SDK Strands Agents"
-      ],
-      "interpretation": "დოკუმენტების შაბლონური დამუშავება წარსულს ჩაბარდა; მომავალი ეკუთვნის თვითშესწავლად multi-agent გრაფებს, რომლებიც შეცდომებზე სწავლობენ.",
-      "uncertainty": "რამდენად ეკონომიურია 8 აგენტის ერთდროული გაშვება მცირე ზომის ინვოისებისთვის.",
-      "counter_argument": "ტრადიციული OCR და regex ხშირ შემთხვევაში 10-ჯერ იაფი და საკმარისად საიმედოა მარტივი ფორმატებისთვის.",
-      "strategic_assessment": "გამოიყენე Strands Agents-ის გრაფული მიდგომა ლოკალურად, რათა ააგო ინვოისების დამმუშავებელი მცირე ბიზნესებისთვის API ხარჯების გარეშე.",
-      "time_horizon": "short-term",
-      "what_could_change": "მცირე ბუღალტრული კომპანიები შეწყვეტენ ხელით მონაცემთა შეყვანას და გადავლენ თვითშემსწავლელ აგენტურ სისტემებზე.",
-      "risks": [
-        "მაღალი API ხარჯი მრავალი აგენტის ტრანზაქციაზე",
-        "შეცდომის დამახსოვრება და ტირაჟირება მეხსიერების ბაზაში",
-        "სენსიტიური ფინანსური დოკუმენტების უსაფრთხოება"
-      ],
-      "non_obvious_opportunity": "შესთავაზე ქართულ მცირე ბიზნესებს ინვოისების ავტომატური დამუშავება უფასო ლოკალური მოდელებითა და Strands SDK-ით.",
-      "fit_assessment": "ზუსტად პასუხობს შენს მიზანს: რეალური ბიზნეს-აგენტი, რომელიც რეალურ ფულად დანაკარგს წყვეტს და პორტფოლიოს ამდიდრებს."
-    },
-    {
-      "event_id": "evt-cross-interface-consistency-cipr",
-      "title": "CIPR: აგენტების გამძლეობის გაზრდა ინტერფეისებისა და ხელსაწყოების ცვლილების მიმართ",
-      "category": "აგენტების ინფრასტრუქტურა და ხელსაწყოები",
-      "primary_url": "https://arxiv.org/abs/2610.20576",
-      "supporting_urls": [],
-      "importance": 7,
-      "relevance": 8,
-      "actionability": 7,
-      "source_quality": 8,
-      "confidence": 88,
-      "tldr": "კვლევამ აჩვენა, რომ API-ში სახელის შეცვლა აგენტის სიზუსტეს 25%-ით აგდებს. CIPR მეთოდი ამ პრობლემას თანმიმდევრულობით აგვარებს.",
-      "what_happened": "წარმოდგენილია CIPR მიდგომა, რომელიც LLM აგენტებს ასწავლის ერთსა და იმავე ამოცანაზე განსხვავებული ინტერფეისებით სტაბილურ მუშაობას.",
-      "what_changed": "აგენტები აღარ არიან მიჯაჭვული მხოლოდ ერთ კონკრეტულ API სინტაქსზე და ხდებიან მდგრადი ცვლილებების მიმართ.",
-      "why_it_matters": "როდესაც გარე სერვისები API-ს ცვლიან, შენი აგენტები არ გაითიშება და შეძლებს მუშაობის გაგრძელებას.",
-      "key_takeaways": [
-        "Action name-ის ცვლილება ფუნქციის გამოძახების სიზუსტეს 25%-ით ამცირებს",
-        "CIPR იყენებს KL divergence-ს მოქმედებების განაწილების დასასტაბილურებლად",
-        "მეთოდი აუმჯობესებს Function Calling-ის მდგრადობას 10.5%-ით"
-      ],
-      "technical_architecture": [
-        "Cross-Interface Policy Regularization (CIPR)",
-        "KL Divergence Penalty ორ ეკვივალენტურ ინტერფეისს შორის",
-        "Self-supervised objective მოქმედებების განზოგადებისთვის"
-      ],
-      "technical_details": [
-        "arXiv: 2610.20576",
-        "25% სიზუსტის ვარდნა პერტურბაციისას",
-        "+10.5% აღდგენა CIPR-ით"
-      ],
-      "potential_impact": "ხელსაწყოების დეველოპერები შეძლებენ უფრო მოქნილი MCP სერვერების აგებას, რომლებიც მცირე შეცდომებს პატიობენ.",
-      "action_type": "LEARN",
-      "action": "შეისწავლე Pydantic-ის Field alias-ები და გამოიყენე ისინი შენს შემდეგ Tool Calling სკრიპტში მოქნილობისთვის.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Technical Skill"
-      ],
-      "verified_facts": [
-        "ინტერფეისის უმნიშვნელო ცვლილებები (სახელის გადარქმევა, აღნიშვნის შეცვლა) აგენტის სიზუსტეს 25%-ით აგდებს",
-        "CIPR (Cross-Interface Policy Regularization) აღადგენს დაკარგული სიზუსტის 10.5%-ს",
-        "მეთოდი იყენებს თვითკონტროლირებად ობიექტს და ადარებს ორ ეკვივალენტურ ინტერფეისს KL divergence-ით",
-        "ტესტირება ჩატარდა როგორც supervised, ასევე reinforcement learning გარემოში"
-      ],
-      "interpretation": "აგენტები ზედმეტად ეჩვევიან კონკრეტულ API სქემებს; მცირე პარამეტრის სახელის ცვლილებაც კი ხშირად სისტემის კოლაფსს იწვევს.",
-      "uncertainty": "რამდენად ადვილია CIPR პრინციპის გამოყენება მზა closed-source მოდელებზე პრომპტ-ინჟინერიით.",
-      "counter_argument": "მოდელების განზოგადების ზრდასთან ერთად API-ების ცვლილებების აღქმა ბუნებრივად გაუმჯობესდება.",
-      "strategic_assessment": "ხელსაწყოების (Tools/MCP) შექმნისას აღწერილობები გააკეთე მაქსიმალურად მკაფიო და გამოიყენე alias-ები გამძლეობისთვის.",
-      "time_horizon": "mid-term",
-      "what_could_change": "აგენტების ტესტირების ახალი სტანდარტი გახდება ინტერფეისის პერტურბაცია (fuzzing), რათა შემოწმდეს გამძლეობა.",
-      "risks": [
-        "ინტერფეისის ხშირი ცვლილებისას აგენტის მიერ არასწორი ფუნქციის გამოძახება",
-        "დამატებითი რეგულარიზაციის სირთულე მცირე მოდელებში",
-        "ტესტირების დროის გაზრდა"
-      ],
-      "non_obvious_opportunity": "შექმენი სატესტო სკრიპტი, რომელიც შენს MCP სერვერზე ხელსაწყოების სახელებს შემთხვევით ცვლის და ამოწმებს აგენტის მუშაობას.",
-      "fit_assessment": "დაგეხმარება დაწერო საიმედო Tool Calling ლოგიკა, რომელიც არ გაფუჭდება API-ს ვერსიის შეცვლისას."
-    },
-    {
-      "event_id": "evt-critic-guided-on-policy-distillation",
-      "title": "CriticOPD: მცირე მოდელების სწავლება შეცდომების კრიტიკითა და ონ-პოლისი დისტილაციით",
-      "category": "AI Research / Model Architecture",
-      "primary_url": "https://arxiv.org/abs/2610.20572",
-      "supporting_urls": [],
-      "importance": 7,
-      "relevance": 7,
-      "actionability": 6,
-      "source_quality": 8,
-      "confidence": 85,
-      "tldr": "ახალი კვლევა აჩვენებს, თუ როგორ შეუძლია მასწავლებელ მოდელს კრიტიკის მეშვეობით ასწავლოს სტუდენტს საკუთარი შეცდომების გამოსწორება.",
-      "what_happened": "შეიქმნა CriticOPD მეთოდი, რომელიც ონ-პოლისი დისტილაციის დროს სტუდენტ მოდელს საკუთარ შეცდომებზე დაფუძნებულ კრიტიკას აწვდის.",
-      "what_changed": "ბრმა იმიტაციის ნაცვლად სტუდენტი მოდელი სწავლობს შეცდომის გაცნობიერებას და პასუხის დამოუკიდებლად გადაწერას.",
-      "why_it_matters": "აგენტურ სისტემებში თვითშესწორების (self-correction) საუკეთესო პატერნი სწორედ კრიტიკისა და გადაწერის ციკლია.",
-      "key_takeaways": [
-        "მასწავლებელი მოდელი ხშირად ვერ ასწორებს სტუდენტის შეცდომას პირდაპირ",
-        "კრიტიკის გამოყენება პრივილეგირებულ ინფორმაციად ზრდის სიზუსტეს",
-        "ტესტირებამ Qwen3 მოდელებზე მნიშვნელოვანი ზრდა აჩვენა"
-      ],
-      "technical_architecture": [
-        "CriticOPD Framework",
-        "Teacher Error Recognition და Privileged Critique Injection",
-        "Student Revision Generation კრიტიკის გარეშე წვრთნისთვის"
-      ],
-      "technical_details": [
-        "arXiv: 2610.20572",
-        "Qwen3 student models",
-        "6 math benchmarks evaluation"
-      ],
-      "potential_impact": "დამოუკიდებელ დეველოპერებს შეეძლებათ პატარა, იაფი მოდელების ეფექტურად გაწვრთნა სპეციფიკურ ამოცანებზე.",
-      "action_type": "LEARN",
-      "action": "წაიკითხე CriticOPD-ის რეზიუმე და დააკვირდი, როგორ აყალიბებს ავტორი კრიტიკის პრომპტს შეცდომის ამოსაცნობად.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Technical Skill"
-      ],
-      "verified_facts": [
-        "ტრადიციული On-policy distillation (OPD) მარცხდება, როცა მასწავლებელი მოდელი სტუდენტის შეცდომას ბრმად მიჰყვება",
-        "CriticOPD იყენებს შეცდომის ამოცნობას და კრიტიკას, რათა სტუდენტმა თავად გადაწეროს გადაწყვეტა",
-        "ტესტირება ჩატარდა Qwen3-ის ორ სტუდენტ მოდელზე და 6 მათემატიკურ ბენჩმარკზე",
-        "კოდი სრულად ხელმისაწვდომია ღია რეპოზიტორიაში"
-      ],
-      "interpretation": "მცირე მოდელებს სჭირდებათ არა მხოლოდ სწორი პასუხები, არამედ საკუთარ შეცდომებზე მიღებული კრიტიკის გააზრება.",
-      "uncertainty": "რამდენად ეფექტურია ეს მიდგომა ზოგად აგენტურ ამოცანებში მათემატიკური მსჯელობის მიღმა.",
-      "counter_argument": "დიდი მასწავლებელი მოდელის მუდმივი კრიტიკა ზრდის წვრთნის კომპიუტერულ ხარჯებს.",
-      "strategic_assessment": "აგენტების დაპროექტებისას ჩადე 'Critic' აგენტი, რომელიც პასუხს კი არ ასწორებს, არამედ აგენტს შეცდომაზე მიუთითებს.",
-      "time_horizon": "mid-term",
-      "what_could_change": "მცირე ღია მოდელები (1B-3B) ბევრად უფრო სწრაფად მიაღწევენ საიმედო მსჯელობის დონეს ლოკალურ მოწყობილობებზე.",
-      "risks": [
-        "კრიტიკოსი მოდელის მიერ არასწორი შენიშვნის მიცემა",
-        "სტუდენტის გადაჭარბებული ჩაკეტვა ერთსა და იმავე შეცდომაზე",
-        "კომპიუტაციური რესურსების შეზღუდვა ლოკალურად"
-      ],
-      "non_obvious_opportunity": "გამოიყენე უფასო Gemini Flash როგორც კრიტიკოსი შენი ლოკალური მცირე Python სკრიპტების ლოგიკის შესამოწმებლად.",
-      "fit_assessment": "კარგი თეორიული და პრაქტიკული ბაზაა თვითგანვითარებადი აგენტების ლოგიკის გასაგებად."
-    },
-    {
-      "event_id": "evt-fde-gym-delivery-benchmark",
-      "title": "FDE-Gym: რეალური მომხმარებლის მიწოდებისა და გაურკვეველი მოთხოვნების ბენჩმარკი აგენტებისთვის",
-      "category": "AI Evaluation & Agent Reliability",
-      "primary_url": "https://huggingface.co/papers/2610.22350",
-      "supporting_urls": [],
-      "importance": 9,
-      "relevance": 10,
-      "actionability": 9,
-      "source_quality": 8,
-      "confidence": 95,
-      "tldr": "FDE-Gym ტესტავს აგენტებს რეალურ მიწოდების ტასკებზე და აჩვენებს, რომ მოდელები უჭირთ დაფარული მოთხოვნების აღმოჩენა.",
-      "what_happened": "გამოვიდა FDE-Gym ბენჩმარკი 95 რეალური დელივერის ტასკით და 20 სცენარით.",
-      "what_changed": "კარგად გაწერილი თექეთებიდან გადავედით ბუნდოვან, ცოცხალ სისტემებში აგენტების ტესტირებაზე.",
-      "why_it_matters": "გასწავლის, რომ რეალურ ბიზნესში აგენტმა თავად უნდა გამოიკვლიოს პრობლემა და არა უბრალოდ კოდი დაწეროს.",
-      "key_takeaways": [
-        "საუკეთესო მოდელმაც კი მოაგვარა ტასკების მხოლოდ 14%.",
-        "დაფარული შეზღუდვების პოვნა აგენტების მთავარი სისუსტეა.",
-        "წარმატება იზომება მომხმარებლის ბიზნეს მეტრიკით."
-      ],
-      "technical_architecture": [
-        "სიმულირებული გარემო სკრიპტირებული სტეიკჰოლდერებითა და მოდიფიცირებადი სისტემებით."
-      ],
-      "technical_details": [
-        "ქულები იზომება 0-დან 1-მდე ბიზნეს აფლიფტის მიხედვით.",
-        "ჯარიმები ედება ზედმეტ შეტყობინებებსა და მოლოდინის დროს."
-      ],
-      "potential_impact": "ქმნის ახალ სტანდარტს B2B აგენტების ტესტირებისთვის, სადაც ავტომატიზაცია ცვლის forward-deployed ინჟინრებს.",
-      "action_type": "APPLY",
-      "action": "დაამატე შენს მიმდინარე აგენტურ ლოგიკაში კითხვების დასმის ფაზა მომხმარებლის მოთხოვნების დასაზუსტებლად.",
-      "evidence": [],
-      "factuality_level": "verified",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value",
-        "Real Business Opportunity"
-      ],
-      "verified_facts": [
-        "FDE-Gym აფასებს აგენტებს 95 რეალურ დელივერის ტასკზე 20 მომხმარებლის სცენარით.",
-        "საუკეთესო კონფიგურაციამ მიაღწია საშუალოდ 0.56 ქულას და მოაგვარა მხოლოდ 14 ტასკი 95-დან.",
-        "არასაკმარისი მოთხოვნებისა და ფაქტების აღმოჩენა მთავარ ბოთლენკს წარმოადგენს."
-      ],
-      "interpretation": "ტრადიციული ბენჩმარკები აგენტებს კარგად გაწერილ თექეთებს აძლევენ, მაგრამ რეალურ ბიზნესში მომხმარებელმა არ იცის რა სურს. ეს ნიშნავს, რომ აგენტმა თავად უნდა დასვას სწორი კითხვები.",
-      "uncertainty": "სკრიპტირებული სტეიკჰოლდერების სიმულაცია ვერ ფარავს ადამიანური ემოციებისა და რეალური კომუნიკაციის სრულ სირთულეს.",
-      "counter_argument": "შესაძლოა FDE-Gym უბრალოდ ზომავს მოდელის პრომპტ-ჰანდლინგის სისუსტეს და არა მის რეალურ საინჟინრო პოტენციალს.",
-      "strategic_assessment": "ისწავლე აგენტებში clarifying questions-ის დაზუსტების ლოგიკის ჩადება. ბიზნესს სწორედ ისეთი აგენტები სჭირდება, რომლებიც არასრული დავალებიდან იწყებენ მუშაობას.",
-      "time_horizon": "mid-term",
-      "what_could_change": "AI აგენტების შეფასება იცვლება სტატიკური ქვიზებიდან ინტერაქტიულ, ბიზნეს-მეტრიკებზე დამყარებულ ტესტებზე.",
-      "risks": [
-        "მომხმარებელთან არასწორი კომუნიკაცია ზრდის ტასკის შესრულების დროს.",
-        "გაურკვეველი შეზღუდვები იწვევს ჰალუცინაციებსა და არასწორ კოდს."
-      ],
-      "non_obvious_opportunity": "შეგიძლია შექმნა მცირე აგენტი, რომელიც ტექნიკურ დავალებას ამოწმებს და მომხმარებელს დამატებით კითხვებს უსვამს დასრულებამდე.",
-      "fit_assessment": "იდეალურად ერგება შენს მიზანს: ააშენო რეალური ბიზნეს აგენტები და არა ტოი დემოები."
-    },
     {
       "event_id": "evt-mlexpert-autonomous-ml",
       "title": "MLExpert: 35B MoE მოდელი ავტონომიური მანქანური სწავლებისა და კვლევისთვის",
@@ -6377,6 +6097,291 @@
       ],
       "non_obvious_opportunity": "შეგიძლია გამოიყენო GitHub-ის Open Source პროექტები ავტომატიზებული აგენტური Evals გარემოს შესაქმნელად.",
       "fit_assessment": "ამყარებს შენს ცოდნას აგენტების საიმედო შეფასებასა (Evaluation) და ავტონომიურ loop-ებში."
+    },
+    {
+      "event_id": "evt-claude-code-21321-mcp-security",
+      "title": "Claude Code v2.1.321: MCP OAuth უსაფრთხოების ხარვეზის გასწორება და Fable 5.2 ინტეგრაცია",
+      "category": "LLM APIs და ხელსაწყოები",
+      "primary_url": "https://github.com/anthropics/claude-code/releases",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 95,
+      "tldr": "Claude Code-მა გამოაშვება v2.1.321, სადაც გასწორდა კრიტიკული MCP OAuth security bug და დაემატა 1M context-ის მქონე Fable 5.2 მოდელი.",
+      "what_happened": "Anthropic-მა გამოაქვეყნა Claude Code v2.1.321, სადაც გასწორდა MCP სერვერების OAuth ტოკენების გაჟონვის უსაფრთხოების ხარვეზი.",
+      "what_changed": "მანამდე MCP OAuth redirect-ისას refresh token-ები შეიძლება გაგზავნილიყო მესამე მხარის ჰოსტზე, ახლა ეს პროცესი სანდოა.",
+      "why_it_matters": "თუ აშენებ MCP სერვერებს, უსაფრთხო ავთენტიფიკაცია აუცილებელია რეალურ ბიზნეს აგენტებთან ინტეგრაციისთვის.",
+      "key_takeaways": [
+        "MCP OAuth სერვერების დაცვა redirect შეტევებისგან კრიტიკულია",
+        "Claude Fable 5.2 გთავაზობს 1M context window-ს $0.20/Mtok cache read ფასად",
+        "remote-control სესიები ახლა მართვადია ცენტრალური settings ფაილით"
+      ],
+      "technical_architecture": [
+        "Claude Code CLI v2.1.321 execution environment",
+        "MCP OAuth 2.0 protocol layer with redirect security checks",
+        "1M token context window model serving tier"
+      ],
+      "technical_details": [
+        "claude remote-control --settings <file>",
+        "Fable 5.2 pricing $8 input $40 output $0.20 cache read",
+        "SEP-2352 issuer handling for MCP authentication"
+      ],
+      "potential_impact": "აგენტური ინსტრუმენტების უსაფრთხოების ამაღლება საწარმოო გარემოში.",
+      "action_type": "APPLY",
+      "action": "განაახლე Claude Code CLI npx-ით და შეამოწმე შენი Python MCP სერვერების OAuth redirect ლოგიკა.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "Claude Code v2.1.321-ში გასწორდა MCP OAuth redirect ხარვეზი, რომელიც refresh token-ებს გარე ჰოსტზე აგზავნიდა",
+        "დაემატა Claude Fable 5.2 მოდელის მხარდაჭერა 1M token context window-ით",
+        "დაემატა --settings ფლაგი remote-control სესიების ცენტრალიზებული კონფიგურაციისთვის"
+      ],
+      "interpretation": "MCP OAuth სერვერების დანერგვისას HTTP Redirect-ების არასწორი დამუშავება აგენტურ სისტემებში სერიოზულ უსაფრთხოების რისკს ქმნის.",
+      "uncertainty": "Fable 5.2-ის API pricing ($8/$40 per Mtok) შეიძლება მაღალი იყოს მცირე პროექტებისთვის prompt caching-ის გარეშე.",
+      "counter_argument": "ადგილობრივი CLI ინსტრუმენტებისთვის OAuth flow-ის გამოყენება ზრდის არქიტექტურულ სირთულეს ჩვეულებრივ API key-ებთან შედარებით.",
+      "strategic_assessment": "გააახლე Claude Code CLI და გადაამოწმე შენი MCP OAuth სერვერები, რომ redirect-ის დროს Secret-ები არ გაედინებოდეს.",
+      "time_horizon": "short-term",
+      "what_could_change": "MCP OAuth ავთენტიფიკაცია გახდება სტანდარტი enterprise აგენტებისთვის, სადაც API Key-ების გაზიარება აკრძალულია.",
+      "risks": [
+        "OAuth refresh token გაჟონვა redirect-ის დროს",
+        "მაღალი API ხარჯი დიდ context window-ზე"
+      ],
+      "non_obvious_opportunity": "შექმენი open-source MCP security linter, რომელიც OAuth redirect და header-ების უსაფრთხოებას შეამოწმებს Python/TypeScript-ში.",
+      "fit_assessment": "იდეალურად ერგება შენს მიმდინარე MCP და Tool Calling სწავლის ეტაპს."
+    },
+    {
+      "event_id": "evt-codebase-memory-mcp-graph-intelligence",
+      "title": "Codebase Memory MCP: ლოკალური კოდის ინტელექტი AST და Graph Memory-ით AI აგენტებისთვის",
+      "category": "აგენტების ინფრასტრუქტურა და MCP",
+      "primary_url": "https://github.com/topics/aider",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "open-source პროექტი codebase-memory-mcp იყენებს Tree-sitter-ს და SQLite-ს, რომ AI აგენტებს კოდის სტრუქტურული მეხსიერება მისცეს.",
+      "what_happened": "შექმნა ლოკალური კოდის ინტელექტის MCP სერვერი, რომელიც AST-ის მეშვეობით კოდის ბაზას ინახავს SQLite გრაფში.",
+      "what_changed": "აგენტი აღარ წითხულობს ფაილებს თავიდან ბოლომდე; ის იყენებს MCP Tools-ს გრაფში კონკრეტული ფუნქციების მოსაძებნად.",
+      "why_it_matters": "ეს პატერნი საშუალებას გაძლევს ააშენო კოდის დამხმარე აგენტი უფასო LLM API-ების მცირე context window-ს პირობებში.",
+      "key_takeaways": [
+        "Tree-sitter პარსინგი + SQLite გრაფი = იაფი და სწრაფი Code Intelligence",
+        "MCP პროტოკოლი ამარტივებს მეხსიერების დაკავშირებას Claude Code და Cursor ინსტრუმენტებთან",
+        "მცირდება API ტოკენების მოხმარება კოდის რეფაქტორინგის დროს"
+      ],
+      "technical_architecture": [
+        "Tree-sitter AST parsing engine for code extraction",
+        "SQLite persistent knowledge graph storage",
+        "MCP server protocol interface for agent tool calls"
+      ],
+      "technical_details": [
+        "SQLite-vss or Cypher queries over AST nodes",
+        "Change-aware test selection via graph dependencies",
+        "MCP tool schema exposing graph query endpoints"
+      ],
+      "potential_impact": "დიდ კოდის ბაზებთან მომუშავე აგენტების ეფექტურობის 10-ჯერ გაზრდა.",
+      "action_type": "BUILD",
+      "action": "ჩამოტვირთე codebase-memory-mcp და გამოსცადე შენს ადგილობრივ Python პროექტზე SQLite ბაზის დასათვალიერებლად.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Real Business Opportunity"
+      ],
+      "verified_facts": [
+        "codebase-memory-mcp პროექტი იყენებს Tree-sitter-ს, SQLite-ს და MCP პროტოკოლს კოდის გრაფის ასაშენებლად",
+        "უზრუნველყოფს პერსისტენტულ კოდის მეხსიერებას Claude Code-ისთვის, Cursor-ისთვის და სხვა CLI აგენტებისთვის",
+        "ნაცვლად მთლიანი კოდის context-ში ჩატვირთვისა, აგენტი ითხოვს მხოლოდ რელევანტურ კვანძებს MCP ინსტრუმენტებით"
+      ],
+      "interpretation": "AST-ზე დაფუძნებული SQLite გრაფი საშუალებას აძლევს AI აგენტებს იმუშაონ დიდ პროექტებზე ტოკენების ხარჯის 80%-ით შემცირებით.",
+      "uncertainty": "კოდის სწრაფი ცვლილებებისას Graph Index-ის რეალურ დროში განახლება მოითხოვს დამატებით CPU რესურსს.",
+      "counter_argument": "უბრალო RAG vector index შეიძლება უფრო მარტივი ასაშენებელი იყოს, თუმცა კოდის სტრუქტურას (AST) ვერ ინარჩუნებს.",
+      "strategic_assessment": "გამოიყენე Tree-sitter და SQLite MCP სერვერის ასაშენებლად, რაც შენს აგენტს საშუალებას მისცემს გაიგოს Python პროექტის არქიტექტურა.",
+      "time_horizon": "mid-term",
+      "what_could_change": "კოდის ანალიზის ტრადიციული static analyzer-ები სრულად ჩანაცვლდება AST-aware MCP მეხსიერების გრაფებით.",
+      "risks": [
+        "დიდ რეპოზიტორიებზე SQLite გრაფის ინდექსირების შეყოვნება",
+        "Tree-sitter-ის პარსინგის შეცდომები დინამიურ ენებზე"
+      ],
+      "non_obvious_opportunity": "შექმენი მცირე Python სკრიპტი, რომელიც Telegram ბოტს დაუკავშირებს Codebase Memory MCP-ის და კოდის სტრუქტურულ ანალიზს გააკეთებს უფასოდ.",
+      "fit_assessment": "ზუსტად აკავშირებს შენს მიმდინარე SQL/SQLite და MCP სწავლის ეტაპებს რეალურ პროექტთან."
+    },
+    {
+      "event_id": "evt-aws-agent-exposure-layer-architecture",
+      "title": "AWS საწარმოო AI აგენტების Exposure Layer არქიტექტურა: Caching Ladder და Token Budgets",
+      "category": "აგენტის არქიტექტურა და წარმოება",
+      "primary_url": "https://aws.amazon.com/marketplace/build-learn/ai-agent-learning-series/agent-exposure-and-integration",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 10,
+      "confidence": 90,
+      "tldr": "AWS-მა გამოაქვეყნა აგენტების Exposure Layer არქიტექტურა, სადაც განხილულია MCP ინტერფეისები, Caching Ladder და Token Budgets.",
+      "what_happened": "AWS-ის ინჟინრებმა წარადგინეს AI აგენტების API Gateway და MCP ინტეგრაციის საუკეთესო პრაქტიკა წარმოებისთვის.",
+      "what_changed": "აგენტური ტრაფიკი განსხვავდება ჩვეულებრივი API-სგან: მოითხოვს ასობით KB კონტექსტს, ხანგრძლივ სტრიმინგს და დინამიურ ბიუჯეტირებას.",
+      "why_it_matters": "სწორი Exposure Layer-ის გარეშე აგენტის გაშვებამ შეიძლება გამოიწვიოს API Key-ის ბიუჯეტის მყისიერი ამოწურვა.",
+      "key_takeaways": [
+        "4 Exposure პატერნი: Direct, Gateway, Event-driven, MCP Server",
+        "Caching Ladder იცავს ბიუჯეტს დეტერმინისტული პასუხების ქეშირებით",
+        "Per-tenant token budget აუცილებელია აგენტური API-ების უსაფრთხოებისთვის"
+      ],
+      "technical_architecture": [
+        "Amazon API Gateway & AWS Lambda exposure tier",
+        "MCP Server interface adapter layer",
+        "Per-tenant token throttling and sliding-window rate limiting"
+      ],
+      "technical_details": [
+        "Gateway payload cap bypass with presigned S3 URLs",
+        "Semantic caching risk verification protocols",
+        "Streaming aggregation endpoints for non-deterministic LLM traffic"
+      ],
+      "potential_impact": "აგენტების API ხარჯების 60%-მდე შემცირება და სტაბილურობის ამაღლება.",
+      "action_type": "LEARN",
+      "action": "წაიკითხე AWS-ის Exposure patterns ნაწილი და დანერგე მარტივი SQLite Caching layer შენს Python API სკრიპტში.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "AWS-მა გამოაქვეყნა არქიტექტურული გზამკვლევი აგენტების Exposure Layer-ის ინჟინერიისთვის",
+        "მოიცავს 4 პატერნს: Direct, Gateway-mediated, Event-driven, და MCP server interfaces",
+        "წარმოადგენს Caching Ladder-ს და per-tenant token budget-ებს აგენტური ტრაფიკის ხარჯების დასაკონტროლებლად"
+      ],
+      "interpretation": "წარმოებაში აგენტების ჩაშლის მთავარი მიზეზი მოდელი კი არა, არამედ API Gateway-ის დონეზე ტოკენების ლიმიტების და სტრიმინგის არასწორი მართვაა.",
+      "uncertainty": "AWS-ის ზოგიერთი კომპონენტი (Bedrock, API Gateway) მოითხოვს Cloud ხარჯებს, თუმცა არქიტექტურული პატერნი უფასო ინსტრუმენტებზეც თავსებადია.",
+      "counter_argument": "მცირე პროექტებისთვის API Gateway-ის და Rate Limiter-ების აგება დამატებითი overhead-ია პირდაპირ FastAPI-თან შედარებით.",
+      "strategic_assessment": "გამოიყენე FastHTTP/FastAPI და SQLite, რომ ააშენო პატარა Caching Ladder შენი Telegram ბოტის წინ API ხარჯების შესამცირებლად.",
+      "time_horizon": "mid-term",
+      "what_could_change": "ყველა REST API Gateway გარდაიქმნება MCP-aware Smart Proxy-ებად, რომლებიც ტოკენების ბიუჯეტს ავტომატურად მართავენ.",
+      "risks": [
+        "Semantic caching-ის დროს არასწორი პასუხების დაბრუნების რისკი (bad match)",
+        "Streaming response-ების გაწყვეტა Gateway timeout-ის გამო"
+      ],
+      "non_obvious_opportunity": "დაწერე მცირე Python middleware (FastAPI-სთვის), რომელიც აგენტურ მოთხოვნებს ტოკენების მიხედვით შეზღუდავს და დაადე შენს პროექტებს.",
+      "fit_assessment": "გაძლევს საწარმოო ცოდნას, თუ როგორ გადააქციო უბრალო LLM სკრიპტი სტაბილურ API სერვისად."
+    },
+    {
+      "event_id": "evt-anthropic-project-eve-multiagent-code-exec",
+      "title": "Project EVE: Anthropic-ის კვლევა Fable 5 Multi-Agent გუნდებზე და ავტონომიურ კოდირებაზე",
+      "category": "AI Research / Agent Architecture",
+      "primary_url": "https://www.anthropic.com/research/project-eve-claude-plays-mmorpgs",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 7,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "Anthropic-მა წარადგინა Project EVE, სადაც Fable 5 აგენტებმა შექმნეს კოდი სწრაფი პროცესების ავტომატიზაციისთვის და ითანამშრომლეს გუნდურად.",
+      "what_happened": "Anthropic-ის მკვლევარებმა შეამოწმეს Claude-ის აგენტები EVE ეკონომიკურ სიმულაციაში, სადაც აგენტებმა დაწერეს კოდი რეალურ დროში სავაჭროდ.",
+      "what_changed": "ტრადიციული Prompting-ის ნაცვლად, აგენტებმა გამოიყენეს კოდის გენერაცია გარემოსთან სწრაფი ურთიერთქმედებისთვის.",
+      "why_it_matters": "ეს ადასტურებს, რომ მომავლის აგენტური ინჟინერია დაფუძნებულია კოდის ავტონომიურ წერასა და ლოკალურ შესრულებაზე.",
+      "key_takeaways": [
+        "Fable 5 იყენებს Code Generation პატერნს Latency-ს დასაძლევად",
+        "Multi-agent გუნდები ეფექტურია, თუმცა უსაფრთხოების/საბოტაჟის მონიტორინგს საჭიროებენ",
+        "მოდელის თაობებს შორის 3-ჯერ გაიზარდა ავტონომიური ეკონომიკური ეფექტურობა"
+      ],
+      "technical_architecture": [
+        "Multi-agent orchestrator framework with shared goal slate",
+        "Dynamic code generation & local execution runtime",
+        "Market state event-bus connection layer"
+      ],
+      "technical_details": [
+        "Claude Fable 5 dynamic Python code synthesis",
+        "Autonomous algorithmic trading strategy dispatch",
+        "Multi-agent trust verification metrics"
+      ],
+      "potential_impact": "ავტონომიური აგენტების მიერ კოდის წერის პატერნის დამკვიდრება რთულ სისტემებში.",
+      "action_type": "TRY",
+      "action": "გამოცადე სკრიპტი, სადაც LLM პასუხად აბრუნებს Python კოდს, რომელსაც შენი სერვერი უსაფრთხოდ exec()-ით გაუშვებს.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Long-Term Career Value",
+        "Real Technical Skill"
+      ],
+      "verified_facts": [
+        "Anthropic-მა ჩაატარა ექსპერიმენტი Claude Fable 5 აგენტების გუნდებზე EVE Online და EVE Frontier გარემოში",
+        "სწრაფი თამაშის მექანიკისთვის Fable 5 აგენტებმა თავად დაწერეს Python კოდი დამხმარე სკრიპტების გასაშვებად",
+        "ბაზრის სიმულაციაში Claude Fable 5-ის მოგება 3-ჯერ აღემატებოდა წინა Claude Opus 4.6 მოდელს"
+      ],
+      "interpretation": "როდესაც გარემო ძალიან სწრაფია LLM API-ის latency-სთვის, საუკეთესო არქიტექტურაა აგენტმა დაწეროს კოდი, რომელიც ლოკალურად შესრულდება.",
+      "uncertainty": "აგენტებს შორის ღალატის/საბოტაჟის (undermining) აღმოჩენა multi-agent სისტემებში კვლავ შეუსწავლელ პრობლემად რჩება.",
+      "counter_argument": "თამაშის გარემოში მიღებული შედეგები ყოველთვის პირდაპირ არ ითარგმნება რეალურ ბიზნეს პროცესებზე.",
+      "strategic_assessment": "გამოიყენე 'Code Execution as Tool Call' პატერნი: აგენტმა შექმნას მცირე Python სკრიპტი განმეორებადი ამოცანებისთვის API-ის ხშირი გამოძახების ნაცვლად.",
+      "time_horizon": "long-term",
+      "what_could_change": "Multi-agent არქიტექტურები გადავლენ 'Code Generation & Local Execution' მოდელზე, სადაც აგენტები მართავენ კოდს და არა ტექსტურ შეტყობინებებს.",
+      "risks": [
+        "აგენტის მიერ გენერირებული ლოკალური კოდის უსაფრთხოების რისკები Sandbox-ის გარეშე",
+        "Multi-agent კოორდინაციის ჩაშლა არასრული ინფორმაციის დროს"
+      ],
+      "non_obvious_opportunity": "შექმენი სავაჭრო/მონიტორინგის ბოტი, სადაც აგენტი Python სკრიპტებს გენერირებს API-ებთან სწრაფი ინტერაქციისთვის.",
+      "fit_assessment": "გეხმარება გაიგო რთული Multi-Agent ლოგიკა და Code Execution პატერნების პრაქტიკული საჭიროება."
+    },
+    {
+      "event_id": "evt-weight-space-programming-frontier-models",
+      "title": "Weight-Space Programming: Frontier მოდელების მიერ ნეირონული ქსელების წონების პირდაპირი რედაქტირება",
+      "category": "AI Research / Model Architecture",
+      "primary_url": "https://latent.space/p/ainews-behind-latent-space-kill-my-saas-jev-ai-in-2026-aiei-shanghai",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 8,
+      "actionability": 6,
+      "source_quality": 8,
+      "confidence": 85,
+      "tldr": "חדალი კვლევა გვიჩვენებს, რომ Frontier LLM-ებს შეუძლიათ მცირე მოდელების წონების პირდაპირი რედაქტირება Backprop-ის გარეშე.",
+      "what_happened": "მკვლევარებმა დაადასტურეს, რომ GPT-6 Astra-ს და Fable-ს შეუძლიათ მცირე ნეირონების წონების შეცვლა კონკრეტული შეცდომების გამოსასწორებლად.",
+      "what_changed": "ნაცვლად ათასობით GPU საათის Fine-Tuning-ისა, დიდი მოდელი პირდაპირ ცვლის მცირე მოდელის MLP ფენების წონებს.",
+      "why_it_matters": "ეს არის პირველი ნაბიჯი მოდელების მიერ საკუთარი თავის მყისიერი ოპტიმიზაციისკენ (instant weight editing).",
+      "key_takeaways": [
+        "Frontier LLM-ებს აქვთ წონების სივრცეში (Weight-Space) ნავიგაციის უნარი",
+        "Qwen3.5-0.8B-ის Looping შეცდომა გასწორდა MLPs წონების პირდაპირი სუბტრაქციით",
+        "Hugging Face-მა წარმატებით მოახდინა შედეგების რეპროდუცირება"
+      ],
+      "technical_architecture": [
+        "Direct neural weight editing matrix transformation",
+        "Contrastive looping vs productive context vector extraction",
+        "MLP layer weight projection subtraction without backpropagation"
+      ],
+      "technical_details": [
+        "131,072 edited weights in Qwen3.5-0.8B layers 15 and 19",
+        "MATH-500 accuracy jump from 7.9% to 48.1%",
+        "Hugging Face ML Intern open-source replication framework"
+      ],
+      "potential_impact": "მცირე Edge მოდელების მყისიერი პერსონალიზაცია GPU სწავლების გარეშე.",
+      "action_type": "TRACK",
+      "action": "ადევნე თვალი Weight-Space Programming-ის Open-Source რეპოზიტორიებს Hugging Face-ზე.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Long-Term Career Value",
+        "Temporary Trend"
+      ],
+      "verified_facts": [
+        "Frontier LLM-ებმა (GPT-6 Astra, Claude Fable) გამოავლინეს მცირე მოდელების წონების (Weights) პირდაპირი გენერირებისა და რედაქტირების…",
+        "Hugging Face-მა მოახდინა ექსპერიმენტის რეპროდუქცია ML Intern ჰარნესით",
+        "Astra-მ დაარედაქტირა 131,072 წონა Qwen3.5-0.8B მოდელში, რამაც აღმოფხვრა უსასრულო ციკლები (looping) და გაზარდა MATH-500 სიზუსტე"
+      ],
+      "interpretation": "მოდელებს შეუძლიათ მცირე ნეირონული ქსელების შეკეთება პირდაპირ Weight Matrix-ში ცვლილებებით, ტრადიციული Fine-Tuning-ის გარეშე.",
+      "uncertainty": "შედეგები ჯერ კიდევ ადრეულ ეტაპზეა და ძირითადად ეხება looping bug-ების გასწორებას და არა ახალი ცოდნის ჩაწერას.",
+      "counter_argument": "ეს შეიძლება იყოს მხოლოდ კონკრეტული პატერნების 'Fixing' და არა სრულფასოვანი სწავლა, სადაც Gradient Descent კვლავ შეუცვლელია.",
+      "strategic_assessment": "ადევნე თვალი ამ ტრენდს: Weight-space editing მომავალში შეამცირებს Fine-tuning-ის ხარჯებს მცირე აგენტური მოდელებისთვის.",
+      "time_horizon": "long-term",
+      "what_could_change": "LLM-ები შეძლებენ მცირე სპეციალიზებული 0.5B/1B მოდელების წონების წამებში ოპტიმიზაციას კონკრეტული ამოცანისთვის.",
+      "risks": [
+        "წონების არასწორი რედაქტირებისას მოდელის კატასტროფული გაფუჭება (catastrophic failure)",
+        "მაღალი compute ხარჯი დიდი მოდელების მიერ წონების ანალიზისას"
+      ],
+      "non_obvious_opportunity": "ისწავლე PyTorch-ში მოდელის წონების (state_dict) მანიპულაცია, რაც გამოგადგება აგენტების ოპტიმიზაციაში.",
+      "fit_assessment": "ღრმა ტექნიკური პერსპექტივა AI არქიტექტურაში 3-5 წლის ჰორიზონტზე."
     }
   ],
   "topics": {
@@ -6450,7 +6455,7 @@
     "AI Coding Tools / Agent Architecture": 2,
     "LLM API / Agent Frameworks": 1,
     "AI Research / LLM Infrastructure": 1,
-    "AI Research / Agent Architecture": 24,
+    "AI Research / Agent Architecture": 25,
     "AI Research / Agent Memory": 1,
     "AI Research / RAG & Embeddings": 1,
     "AI Evaluation / Agent Reliability": 1,
@@ -6474,7 +6479,7 @@
     "AI Research & NLP": 1,
     "LLM API / Agent Infrastructure": 1,
     "AI Research / Agent Reliability": 2,
-    "AI Research / Model Architecture": 5,
+    "AI Research / Model Architecture": 6,
     "Agent Architecture & Security": 1,
     "LLM APIs & Cost Optimization": 1,
     "AI Research / RAG & Evaluation": 1,
@@ -6484,7 +6489,7 @@
     "AI Research & Agent Optimization": 1,
     "AI Research & Agent Infrastructure": 1,
     "AI Coding Tools და Agent Architecture": 1,
-    "აგენტების ინფრასტრუქტურა და MCP": 15,
+    "აგენტების ინფრასტრუქტურა და MCP": 16,
     "აგენტების ინფრასტრუქტურა და უსაფრთხოება": 2,
     "": 1,
     "AI Research & RAG": 1,
@@ -6510,7 +6515,7 @@
     "AI Coding Tools & LLM APIs": 2,
     "AI Coding Tools & MCP Infrastructure": 1,
     "აგენტის შეფასება და უსაფრთხოება": 1,
-    "LLM APIs და ხელსაწყოები": 3,
+    "LLM APIs და ხელსაწყოები": 4,
     "აგენტის ინფრასტრუქტურა და ეკოსისტემა": 1,
     "RAG და აგენტის მეხსიერება": 3,
     "აგენტის არქიტექტურა და რობოტიკა": 2,
@@ -6523,7 +6528,7 @@
     "აგენტის არქიტექტურა და საიმედოობა": 1,
     "Open Source AI & Model Architecture": 1,
     "აგენტის არქიტექტურა და ინფრასტრუქტურა": 2,
-    "აგენტის არქიტექტურა და წარმოება": 1,
+    "აგენტის არქიტექტურა და წარმოება": 2,
     "AI Research / Self-Improvement": 1,
     "აგენტების არქიტექტურა და ინფრასტრუქტურა": 1,
     "აგენტის არქიტექტურა და Open Source": 2,
@@ -6531,384 +6536,6 @@
     "აგენტების ინფრასტრუქტურა და Open Source": 1
   },
   "reports": [
-    {
-      "date": "2026-10-25",
-      "summary": "დღევანდელი სიგნალები ფოკუსირდება აგენტების რეალურ ინფრასტრუქტურაზე. Bedrock AgentCore და Smartsheet აჩვენებენ MCP პროტოკოლის სტანდარტიზაციას საწარმოო გარემოში. პარალელურად, კვლევები გვიჩვენებს, თუ როგორ ამცირებს ხარჯზე ორიენტირებული abstention და context isolation აგენტების შეცდომებსა და ტოკენების ხარჯს.",
-      "events": [
-        {
-          "event_id": "evt-mcp-gateway-bedrock-agentcore",
-          "title": "MCP Gateway არქიტექტურა Bedrock AgentCore-ზე: Multi-Cloud ხელსაწყოების ერთიანი ავტორიზაცია",
-          "category": "აგენტების ინფრასტრუქტურა და MCP",
-          "primary_url": "https://aws.amazon.com/blogs/machine-learning/how-eon-built-multi-cloud-investigation-with-an-mcp-gateway-on-amazon-bedrock-agentcore",
-          "supporting_urls": [
-            "https://aws.amazon.com/blogs/machine-learning/work-management-context-for-ai-agents-with-smartsheet-mcp-on-aws",
-            "https://aws.amazon.com/about-aws/whats-new/2026/10/workspaces-ai-agents-oauth-connection-management"
-          ],
-          "importance": 9,
-          "relevance": 9,
-          "actionability": 9,
-          "source_quality": 10,
-          "confidence": 95,
-          "tldr": "AWS-მა და პარტნიორებმა დანერგეს ერთიანი MCP Gateway. აგენტებს უკვე შეუძლიათ ათობით ხელსაწყოსთან უსაფრთხო წვდომა ერთიანი პროტოკოლით.",
-          "what_happened": "Eon-მა და Smartsheet-მა წარმოადგინეს საწარმოო დონის MCP ინტეგრაციები, რომლებმაც გააერთიანეს აგენტების წვდომა ქლაუდ რესურსებსა და სამუშაო ცხრილებზე.",
-          "what_changed": "ადრე თითოეული MCP სერვერი ლოკალურად ეშვებოდა ხელით კონფიგურაციით, ახლა მართვა ხდება ცენტრალიზებული Gateway-ით და OAuth-ით.",
-          "why_it_matters": "შენთვის ეს ნიშნავს, რომ ხელსაწყოებთან კავშირისთვის აღარ გჭირდება რთული custom ლოგიკა — საკმარისია სტანდარტული MCP პროტოკოლის გამოყენება.",
-          "key_takeaways": [
-            "MCP ხდება დე-ფაქტო სტანდარტი Tool Calling-ისთვის ინდუსტრიაში.",
-            "Smartsheet-ის 40+ MCP ხელსაწყო საშუალებას იძლევა ბიზნეს პროცესების სრული ავტომატიზაციის.",
-            "WorkSpaces-ის კატალოგის ხელსაწყო ამცირებს ტოკენების ხარჯს GUI ნავიგაციის ნაცვლად API-ით."
-          ],
-          "technical_architecture": [
-            "MCP Client (Quick/Kiro) უკავშირდება ცენტრალურ MCP Server-ს.",
-            "Bedrock AgentCore Gateway ამუშავებს იდენტობას და უფლებებს.",
-            "OAuth 2.0 უზრუნველყოფს უსაფრთხო სესიის მართვას."
-          ],
-          "technical_details": [
-            "FastMCP Python ბიბლიოთეკა სერვერის სწრაფად ასაწყობად",
-            "OAuth 2.0 ტოკენების როტაცია სესიების მართვისთვის",
-            "JSON-RPC 2.0 შეტყობინებები კლიენტსა და სერვერს შორის",
-            "40+ სტანდარტიზებული ხელსაწყო Smartsheet მონაცემთა ბაზისთვის"
-          ],
-          "potential_impact": "დეველოპერები დაზოგავენ დღეებს ინტეგრაციებზე, ხოლო ბიზნესები მიიღებენ სანდო ავტონომიურ სამუშაო პროცესებს.",
-          "action_type": "BUILD",
-          "action": "ააწყვე მარტივი Python MCP სერვერი FastMCP-ით ლოკალური SQLite ბაზისთვის და დაუკავშირე ის Claude Desktop-ს ან კოდის აგენტს.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "Eon-მა ლოკალური MCP პროცესები ჩაანაცვლა ერთიანი ავთენტიფიცირებული Gateway-ით Bedrock AgentCore-ზე.",
-            "დეველოპერებისა და აგენტების ხელსაწყოებთან წვდომის კონფიგურაციის დრო 2 დღიდან 2 წუთამდე შემცირდა.",
-            "Smartsheet-მა გამოუშვა GA Model Context Protocol სერვერი 40-ზე მეტი ხელსაწყოთი.",
-            "WorkSpaces-მა დაამატა OAuth 2.0 და კატალოგის MCP ხელსაწყო დესკტოპ აპლიკაციების მართვისთვის."
-          ],
-          "interpretation": "MCP იქცა ინდუსტრიულ სტანდარტად. ცალკეული ლოკალური სერვერებიდან გადავდივართ ცენტრალიზებულ MCP Gateway არქიტექტურაზე, სადაც აგენტს აქვს კონტროლირებადი წვდომა API-ებზე.",
-          "uncertainty": "კონკრეტული ქსელური ლატენტობა Bedrock AgentCore Gateway-სა და გარე მოდელებს შორის სტატიაში დაკონკრეტებული არ არის.",
-          "counter_argument": "მცირე პროექტებისთვის ცენტრალიზებული Gateway-ის აწყობა ზედმეტი სირთულეა; მარტივი stdio MCP სერვერი ხშირად სრულიად საკმარისია.",
-          "strategic_assessment": "ისწავლე MCP სერვერების აწყობა FastMCP-ით ან ოფიციალური Python SDK-ით. ეს უნარი პირდაპირ ზრდის შენი აგენტების პრაქტიკულ ბიზნეს ღირებულებას.",
-          "time_horizon": "mid-term",
-          "what_could_change": "ყველა SaaS პლატფორმა შექმნის საკუთარ MCP ენდპოინტს, რაც REST API-ების პირდაპირი ინტეგრაციის საჭიროებას ჩაანაცვლებს.",
-          "risks": [
-            "API გასაღებების გაჟონვის რისკი ცენტრალურ Gateway-ში",
-            "გადამეტებული აბსტრაქცია ართულებს შეცდომების დებაგს",
-            "პროვაიდერის ჩაკეტილობა კონკრეტულ Cloud სერვისზე"
-          ],
-          "non_obvious_opportunity": "შექმენი მცირე ბიზნესებისთვის ლოკალური მონაცემთა ბაზების (SQLite/Postgres) დამაკავშირებელი მსუბუქი MCP სერვერები უფასო პლატფორმებზე.",
-          "fit_assessment": "იდეალურად ერგება შენს მიზანს: შენ უკვე სწავლობ MCP-ს და Python-ს, რაც რეალური პროექტების აწყობის საშუალებას გაძლევს."
-        },
-        {
-          "event_id": "evt-cost-aware-abstention-routing",
-          "title": "Cost-Aware Abstention: ხარჯზე ორიენტირებული თავშეკავება IT თიქეთების კლასიფიკაციაში",
-          "category": "AI Evaluation & საიმედოობა",
-          "primary_url": "https://arxiv.org/abs/2610.31657",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 9,
-          "source_quality": 8,
-          "confidence": 95,
-          "tldr": "ახალი კვლევა ამტკიცებს: აგენტის მიერ საეჭვო დავალებებზე უარის თქმა (abstention) სისტემის ხარჯს 38%-ით ამცირებს და ცდომილებას 3.5%-მდე ყინავს.",
-          "what_happened": "ICTAI 2026-ზე წარდგენილმა ნაშრომმა აჩვენა, რომ ხარჯზე გათვლილი თავშეკავების პოლიტიკა რადიკალურად ამცირებს IT სისტემების საოპერაციო დანაკარგს.",
-          "what_changed": "ადრე სისტემები ცდილობდნენ 100%-ით თავად გადაეწყვიტათ ამოცანა, ახლა მოდელი ზომავს რისკს და საეჭვო ქეისებს ადამიანს უგზავნის.",
-          "why_it_matters": "სანდო ბიზნეს აგენტის შექმნის საიდუმლო იმაშია, რომ მან იცოდეს საკუთარი შეზღუდვები და არ დაუშვას ძვირადღირებული შეცდომები.",
-          "key_takeaways": [
-            "არასწორი მოქმედების ფასი ხშირად აღემატება ადამიანის შრომის ფასს.",
-            "ზღვრული მაჩვენებლის (threshold) სწორი შერჩევა შეცდომებს 4-ჯერ ამცირებს.",
-            "მარტივი კლასიფიკატორები ზოგჯერ LLM-ზე უფრო ეფექტური და იაფია."
-          ],
-          "technical_architecture": [
-            "შემომავალი მოთხოვნის კლასიფიკაცია და confidence ქულის გამოთვლა.",
-            "თუ ქულა ნაკლებია ზღვარზე (მაგ. 0.60), საქმე გადადის ადამიანთან.",
-            "თუ ქულა მაღალია, აგენტი ავტომატურად ასრულებს მარშრუტიზაციას."
-          ],
-          "technical_details": [
-            "TF-IDF ლოგისტიკური რეგრესიით სწრაფი კლასიფიკაციისთვის",
-            "ზღვრული მნიშვნელობა (threshold) = 0.60 ოპტიმალური ხარჯისთვის",
-            "ხარჯების მოდელი: წარმატება=0, ადამიანი=1, შეცდომა=5",
-            "38.1% ხარჯის ეკონომია ტესტურ მონაცემებზე"
-          ],
-          "potential_impact": "კომპანიები დაზოგავენ ათასობით დოლარს არასწორად შესრულებული ავტომატური დავალებების აღმოფხვრით.",
-          "action_type": "BUILD",
-          "action": "დაწერე Python ფუნქცია, რომელიც API პასუხის ალბათობას ამოწმებს და დაბალი ქულის შემთხვევაში აგზავნის შეტყობინებას Telegram-ში ადამიანის ჩასარევად.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Technical Skill",
-            "Real Business Opportunity"
-          ],
-          "verified_facts": [
-            "არასწორი ავტომატური გადამისამართება ხშირად უფრო ძვირი ჯდება, ვიდრე ადამიანის მიერ ხელით დამუშავება.",
-            "TF-IDF-მა ლოგისტიკურ რეგრესიასთან ერთად 0.60 ზღვარზე შეამცირა ტესტირების ხარჯი 38.1%-ით.",
-            "შეცდომით გადამისამართებული თიქეთების წილი შემცირდა 15.3%-დან 3.5%-მდე.",
-            "დამტკიცდა, რომ დამოუკიდებელ ტესტზე გაყინული ზღვრული პოლიტიკა 16-დან 14 შემთხვევაში ჯობნის სრულ ავტომატიზაციას."
-          ],
-          "interpretation": "აგენტმა უნდა იცოდეს, როდის თქვას უარი და გადასცეს საქმე ადამიანს. 100%-იანი ავტომატიზაცია ბიზნესისთვის წამგებიანია შეცდომის მაღალი ფასის გამო.",
-          "uncertainty": "შედეგები ემყარება კონკრეტულ IT კორპუსს (47k თიქეთი); სხვა დომენებში ხარჯების თანაფარდობა შეიძლება განსხვავდებოდეს.",
-          "counter_argument": "თანამედროვე დიდ მოდელებს უკეთესი ზოგადი ინტელექტი აქვთ, თუმცა მათი გაშვება მცირე ამოცანებზე ფინანსურად გაუმართლებელია.",
-          "strategic_assessment": "შენს ბიზნეს აგენტებში ჩააშენე თავშეკავების (abstention/fallback) ლოგიკა. თუ მოდელის თავდაჯერებულობა დაბალია, დავალება ადამიანს გადაეცი.",
-          "time_horizon": "short-term",
-          "what_could_change": "კომპანიები შეწყვეტენ ძვირადღირებული LLM-ების გამოყენებას მარტივ კლასიფიკაციაზე და დანერგავენ ჰიბრიდულ, ხარჯზე მორგებულ სისტემებს.",
-          "risks": [
-            "ზღვრის არასწორად შერჩევისას ადამიანზე ზედმეტი გადამისამართება",
-            "მოდელის თვითდაჯერებულობის არასწორი კალიბრაცია",
-            "მონაცემთა ცვლილება (drift) დროთა განმავლობაში"
-          ],
-          "non_obvious_opportunity": "შესთავაზე მცირე ბიზნესებს თიქეთების გამანაწილებელი ბოტი, რომელიც მხოლოდ 95%+ დარწმუნებულ საქმეებს აკეთებს, დანარჩენს კი ადამიანს უტოვებს.",
-          "fit_assessment": "მარტივი დასანერგია Python-ში. გაჩვენებს, როგორ წყვეტს მარტივი კოდი რეალურ ბიზნეს პრობლემას მინიმალური ხარჯით."
-        },
-        {
-          "event_id": "evt-agentic-corpus-auditing-fineweb",
-          "title": "ავტონომიური აგენტი მონაცემთა ბაზების დებაგისთვის: FineWeb2-ის შემოწმება $2.5-ად",
-          "category": "Real Business Opportunity & Agent Architecture",
-          "primary_url": "https://arxiv.org/abs/2610.31636",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 9,
-          "source_quality": 8,
-          "confidence": 95,
-          "tldr": "ავტონომიურმა აგენტმა $2.5-ად იპოვა 1.4 მილიონი უხარისხო დოკუმენტი და შექმნა Python ტესტი, რომელმაც ბაზა 0.7 წამში შეამოწმა.",
-          "what_happened": "EMNLP 2026-ის ნაშრომში აჩვენეს, როგორ შეუძლია აგენტს შეისწავლოს მონაცემები, დაწეროს შემმოწმებელი კოდი და დაზოგოს $50,000-მდე თანხა.",
-          "what_changed": "იმის ნაცვლად, რომ LLM-მა სათითაოდ შეაფასოს მილიონობით ტექსტი, ის წერს ერთ ლოკალურ სკრიპტს, რომელიც მყისიერად ეშვება CPU-ზე.",
-          "why_it_matters": "ეს გაძლევს ფორმულას, როგორ გააკეთო ძვირადღირებული საწარმოო საქმე უფასო ან 3-დოლარიანი API კრედიტებით.",
-          "key_takeaways": [
-            "LLM უნდა იყოს მკვლევარი და კოდის მწერალი, არა უბრალო მუშა.",
-            "აგენტის მიერ შედგენილი წესები ეშვება მილიწამებში GPU-ს გარეშე.",
-            "ხარჯი შემცირდა $50k-დან $2.5-მდე მსგავსი შედეგის მისაღებად."
-          ],
-          "technical_architecture": [
-            "აგენტი იკვლევს მონაცემთა ნაწილს შეზღუდული Read-only API-ით.",
-            "აღმოჩენილი ანომალიების საფუძველზე აგენტი აგენერირებს Python/Regex ტესტს.",
-            "ტესტი ეშვება მთლიან ბაზაზე ლოკალურად მაღალი სისწრაფით."
-          ],
-          "technical_details": [
-            "26.5M დოკუმენტის სკანირება 0.7 წამში CPU-ზე",
-            "$2.21 - $2.84 საერთო ხარჯი აგენტის ექსპერიმენტზე",
-            "1,408,437 სპამ დოკუმენტის აღმოჩენა",
-            "დეტექციის სიზუსტე (precision) 0.53 - 1.00 დიაპაზონში"
-          ],
-          "potential_impact": "მონაცემთა ინჟინრები შეძლებენ უზარმაზარი კორპუსების გაწმენდას მინიმალურ დროში და ნულოვანი GPU ხარჯით.",
-          "action_type": "BUILD",
-          "action": "დაწერე Python სკრიპტი, სადაც LLM ნახულობს 5 ცუდ ჩანაწერს შენს მონაცემთა ბაზაში, წერს მათ დასაჭერ Regex წესს და ამოწმებს ბაზას.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Technical Skill",
-            "Real Business Opportunity"
-          ],
-          "verified_facts": [
-            "აგენტი გამოიყენეს არა როგორც კლასიფიკატორი, არამედ როგორც მონაცემთა ბაზის დებაგერი (corpus debugger).",
-            "26.5 მილიონიან სლოვაკურ FineWeb2 კორპუსზე აგენტმა 3 გაშვებით ($2.21-$2.84 ხარჯით) იპოვა 1.4 მილიონი დაფარული სპამ…",
-            "აგენტის მიერ გენერირებულმა ტესტ-სკრიპტმა მთლიანი კორპუსი შეამოწმა 0.7 წამში GPU-ს გარეშე.",
-            "ტრადიციული LLM კლასიფიკაციის მიდგომა იმავე ბაზაზე $12,000-დან $90,000-მდე დაჯდებოდა."
-          ],
-          "interpretation": "აგენტის გამოყენება კოდის/ტესტების დასაწერად მილიონობით ტოკენის პირდაპირ წაკითხვის ნაცვლად არის უდიდესი ბიზნეს უპირატესობა.",
-          "uncertainty": "ტესტების ვალიდაციისთვის მაინც საჭირო გახდა ადგილობრივი ენის მცოდნე ექსპერტის ჩართვა (human-in-the-loop).",
-          "counter_argument": "სტატიკური ჰიურისტიკები უფრო იაფია, თუმცა მათ არ აქვთ უნარი აღმოაჩინონ უცნობი ანომალიები დამოუკიდებლად.",
-          "strategic_assessment": "ნუ აიძულებ LLM-ს წაიკითხოს მთელი ბაზა. ააგე აგენტი, რომელიც შეისწავლის ნიმუშებს, დაწერს სწრაფ Python/SQL ტესტს და გაუშვებს ბაზაზე.",
-          "time_horizon": "short-term",
-          "what_could_change": "მონაცემთა გაწმენდის ძვირადღირებული სერვისები ჩანაცვლდება ავტონომიური აგენტებით, რომლებიც მყისიერად ქმნიან ვალიდაციის წესებს.",
-          "risks": [
-            "აგენტის მიერ არასწორი რეგულარული გამოსახულების (Regex) დაწერა",
-            "მონაცემთა გადარჩევის ცდომილება (sampling bias)",
-            "კომპლექსური სემანტიკური სპამის გამოტოვება მარტივი ტესტებით"
-          ],
-          "non_obvious_opportunity": "შექმენი სერვისი ქართულენოვანი ვებ-საიტების ან მონაცემთა ბაზების გასაწმენდად სპამისგან ამავე არქიტექტურით.",
-          "fit_assessment": "იდეალურია შენთვის: იყენებს SQL-ს, Python-ს და მინიმალურ API ბიუჯეტს ($2-3), რაც ზუსტად ჯდება შენს რესურსებში."
-        },
-        {
-          "event_id": "evt-nvidia-agentic-inference-dynamics",
-          "title": "NVIDIA Agentic Inference ანალიზი: მრავალბიჯიანი აგენტების ინფრასტრუქტურული გამოწვევები",
-          "category": "აგენტის არქიტექტურა და ოპტიმიზაცია",
-          "primary_url": "https://www.nvidia.com/en-us/use-cases/agentic-inference",
-          "supporting_urls": [
-            "https://www.nvidia.com/en-us/ai"
-          ],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 7,
-          "source_quality": 10,
-          "confidence": 90,
-          "tldr": "NVIDIA-მ გამოაქვეყნა Agentic Inference-ის ანალიზი: აგენტები 15-ჯერ მეტ ტოკენს მოიხმარენ და მოითხოვენ ციკლების მკაცრ ოპტიმიზაციას.",
-          "what_happened": "NVIDIA-მ ახსნა, თუ რატომ იშლება ტრადიციული ინფერენსის მოდელები აგენტების 50-500 ბიჯიანი ციკლებისა და ხელსაწყოების ლოდინის გამო.",
-          "what_changed": "ადრე ინფერენსი იყო მარტივი მოთხოვნა-პასუხი, ახლა ის არის Observe-Think-Act-Update ციკლი გაბერილი კონტექსტით.",
-          "why_it_matters": "შენს პროექტებში აგენტის ლუპის არასწორი დაგეგმვა უფასო API ლიმიტებს რამდენიმე წუთში ამოწურავს.",
-          "key_takeaways": [
-            "აგენტური ამოცანა საშუალოდ 50-500 გამოძახებისგან შედგება.",
-            "კონტექსტის ზომა იზრდება ყოველ ბიჯზე, რაც ზრდის მეხსიერების ხარჯს.",
-            "საჭიროა შუალედური მეხსიერების შეკუმშვა და მკაცრი ლიმიტები."
-          ],
-          "technical_architecture": [
-            "Observe: გარემოს მდგომარეობისა და ხელსაწყოების მიღება.",
-            "Think -> Act: გადაწყვეტილების მიღება და ხელსაწყოს გამოძახება.",
-            "Update: შედეგის დაბრუნება ახალ კონტექსტად."
-          ],
-          "technical_details": [
-            "50-500 თანმიმდევრული მოდელის გამოძახება ერთ ამოცანაზე",
-            "15x მეტი ტოკენის გენერაცია ჩატბოტებთან შედარებით",
-            "5x სპაიკი ტოკენების გენერაციაში მსჯელობისას",
-            "KV ქეშის დეგრადაცია გრძელ კონტექსტში"
-          ],
-          "potential_impact": "აგენტების არქიტექტორები შეამცირებენ ხარჯებს ციკლებისა და კონტექსტის სწორი შეკუმშვის გზით.",
-          "action_type": "APPLY",
-          "action": "დაამატე შენს Python აგენტის ლუპს მაქსიმალური ბიჯების მთვლელი (max_iterations=10) და ტოკენების ხარჯის ლოგერი თითოეულ ნაბიჯზე.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "ავტონომიური აგენტები ინფერენსისას 15-ჯერ მეტ ტოკენს მოიხმარენ, ვიდრე სტანდარტული ჩატბოტები.",
-            "ერთი აგენტური დავალება მოიცავს 50-დან 500-მდე თანმიმდევრულ მოდელის გამოძახებას.",
-            "ხელსაწყოების გამოძახების (tool-call) დროს GPU-ს მოცდენა იწვევს რესურსების არაეფექტურ ხარჯვას.",
-            "სპეკულაციური მსჯელობის ციკლებს შეუძლია ტოკენების გენერაცია დროებით 5-ჯერ გაზარდოს."
-          ],
-          "interpretation": "აგენტების შექმნისას მთავარი ბოთლის ყელი ხდება არა მოდელის ზომა, არამედ ციკლის (loop) ეფექტურობა და ტოკენების სწორი მართვა.",
-          "uncertainty": "Vera Rubin სისტემების შედარებითი ტესტები დამოუკიდებელი ლაბორატორიების მიერ ჯერ სრულად გადამოწმებული არ არის.",
-          "counter_argument": "უფასო API-ების გამოყენებისას ინფრასტრუქტურულ ოპტიმიზაციაზე მეტად კოდის სისწორე და ლოგიკური ჩიხების თავიდან არიდებაა გადამწყვეტი.",
-          "strategic_assessment": "შეიმუშავე აგენტის ციკლები მკაცრი ლიმიტებით (max steps, timeout). გაიაზრე, რომ ყოველი უსარგებლო tool call ფუჭად წვავს შენს უფასო ლიმიტებს.",
-          "time_horizon": "mid-term",
-          "what_could_change": "ღრუბლოვანი პროვაიდერები გადავლენ სპეციალურ ტარიფებზე აგენტური ციკლებისთვის, სადაც tool-wait დრო არ დაიბეგრება.",
-          "risks": [
-            "უსასრულო ლუპები, რომლებიც წამებში წვავს API კვოტას",
-            "KV ქეშის გადავსება კონტექსტის უკონტროლო ზრდისას",
-            "მაღალი ლატენტობა თანმიმდევრული გამოძახებების გამო"
-          ],
-          "non_obvious_opportunity": "შექმენი მსუბუქი Python ბიბლიოთეკა, რომელიც აგენტის ციკლში ტოკენების ხარჯს ზომავს და აჩერებს არაეფექტურ მსჯელობას.",
-          "fit_assessment": "შენთვის, როგორც შემზღუდველი ბიუჯეტის მქონე დეველოპერისთვის, ტოკენების ეკონომიის გაგება კრიტიკულად აუცილებელია."
-        },
-        {
-          "event_id": "evt-causal-cot-context-isolation",
-          "title": "CausalCoT: აგენტის მსჯელობის გაუმჯობესება იზოლირებული კონტექსტებით და DAG-ით",
-          "category": "AI Research / Agent Architecture",
-          "primary_url": "https://arxiv.org/abs/2610.31639",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 8,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "CausalCoT შლის ამოცანას იზოლირებულ გრაფად (DAG), რითაც სპობს მოდელის მიერ კონტექსტის გაჟონვას და მსჯელობის სიზუსტეს 21%-ით ზრდის.",
-          "what_happened": "მკვლევარებმა შექმნეს CausalCoT, რათა აიძულონ მოდელი იფიქროს მკაცრი მიზეზ-შედეგობრიობით და არა ზედაპირული ტექსტის გამოცნობით.",
-          "what_changed": "მთლიანი ჩატის ისტორიის გადაცემის ნაცვლად, ყოველი ნაბიჯი მუშავდება სუფთა გარემოში მხოლოდ უშუალო წინაპრის მონაცემებით.",
-          "why_it_matters": "ეს პრინციპი დაგიცავს ჰალუცინაციებისგან, როდესაც აგენტს დაავალებ რთული დოკუმენტების ან მონაცემთა ბაზების ანალიზს.",
-          "key_takeaways": [
-            "სრული კონტექსტის მიწოდება ხშირად აბნევს მოდელს (Attention Leakage).",
-            "იზოლირებული ქვესამუშაოები მკვეთრად ზრდის შედეგის საიმედოობას.",
-            "გრაფული არქიტექტურა იძლევა ლოკალური შეცდომების მარტივი გასწორების საშუალებას."
-          ],
-          "technical_architecture": [
-            "პრობლემის დაშლა DAG (Directed Acyclic Graph) სტრუქტურად.",
-            "კონტექსტის იზოლაცია თითოეული ქვე-კვანძისთვის.",
-            "შედეგების ეტაპობრივი აგრეგაცია ფინალურ პასუხში."
-          ],
-          "technical_details": [
-            "DAG სტრუქტურა დამოკიდებულებების სამართავად",
-            "Markovian იზოლაცია არა-მშობელი კონტექსტის მოსაშორებლად",
-            "12-21% გაუმჯობესება მსჯელობის ერთგულებაში (faithfulness)",
-            "ტესტ-ტაიმ ინტერვენციის მხარდაჭერა გრაფის კვანძებში"
-          ],
-          "potential_impact": "აგენტური სისტემები გახდება ბევრად უფრო გამჭვირვალე და იოლი აუდიტისთვის ბიზნეს პროცესებში.",
-          "action_type": "LEARN",
-          "action": "წაიკითხე CausalCoT-ის აბსტრაქტი და სცადე შენს კოდში ფუნქციის გამოძახებისას prompt-ს მოაშორო ყველა ზედმეტი წინა ისტორია.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "სტანდარტულ Chain-of-Thought-ში მოდელი ხშირად წინასწარ ხედავს პასუხს სრული კონტექსტიდან და ქმნის ფუჭ, ზედაპირულ ახსნებს.",
-            "CausalCoT ყოფს პრობლემას მიმართულ უციკლო გრაფად (DAG), სადაც ყოველი კვანძი იზოლირებულია.",
-            "თითოეული ქვესაკითხი ხედავს მხოლოდ საკუთარ მშობელ კვანძებს და არა სრულ გლობალურ კონტექსტს.",
-            "შუალედური მსჯელობის მიზეზ-შედეგობრივი სიზუსტე გაიზარდა საშუალოდ 12-დან 21 პროცენტულ პუნქტამდე."
-          ],
-          "interpretation": "აგენტებში Context Pollution-ის თავიდან ასაცილებლად საუკეთესო გზაა sub-agent-ებისთვის მხოლოდ აუცილებელი ინფორმაციის მიწოდება.",
-          "uncertainty": "გრაფის აწყობის ზედნადები ხარჯი (overhead) ძალიან მარტივ ამოცანებზე შეიძლება არ ამართლებდეს.",
-          "counter_argument": "გრაფების მართვა მოითხოვს დამატებით კოდს და შესაძლოა გაზარდოს მთლიანი პროცესის ლატენტობა.",
-          "strategic_assessment": "გამოიყენე Context Isolation შენს მრავალაგენტიან სისტემებში. ნუ გადასცემ მთელ ჩატის ისტორიას დამხმარე ხელსაწყოებს; მიეცი მხოლოდ კონკრეტული შეყვანა.",
-          "time_horizon": "mid-term",
-          "what_could_change": "მონოლითური პრომპტები სრულად ჩანაცვლდება იზოლირებული გრაფებით, სადაც შეცდომის პოვნა და შესწორება წამებში იქნება შესაძლებელი.",
-          "risks": [
-            "გრაფის არასწორი დაგეგმვა გაწყვეტს ლოგიკურ კავშირს",
-            "დამატებითი გამოძახებები ზრდის საერთო დროს",
-            "შეცდომის კასკადური გადაცემა მშობლიდან შვილზე"
-          ],
-          "non_obvious_opportunity": "ააწყვე მცირე სასწავლო დამხმარე ბოტი, რომელიც რთულ სასკოლო ამოცანებს შვილობილ იზოლირებულ კითხვებად დაშლის და ისე ამოხსნის.",
-          "fit_assessment": "შენ სწავლობ გრაფებსა და აგენტის მდგომარეობას (state). ეს კვლევა ზუსტად გაჩვენებს, რატომ არის გრაფული მიდგომა უმაღლესი დონე."
-        },
-        {
-          "event_id": "evt-episem-bench-missing-evidence",
-          "title": "EpiSEM-Bench: აგენტების ქცევა და უსაფრთხოება არასრული ინფორმაციის პირობებში",
-          "category": "AI Evaluation & საიმედოობა",
-          "primary_url": "https://arxiv.org/abs/2610.31650",
-          "supporting_urls": [
-            "https://arxiv.org/abs/2610.31662"
-          ],
-          "importance": 7,
-          "relevance": 8,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "EpiSEM-Bench-მა აჩვენა: როცა ხელსაწყო სრულ ფაქტებს არ აბრუნებს, აგენტები ხშირად საშიშ შეცდომებს უშვებენ ნაცვლად გადამოწმებისა.",
-          "what_happened": "ახალმა ბენჩმარკმა შეაფასა 10 მოდელი და აჩვენა, რომ ინფორმაციის გამოტოვებისას აგენტები იშვიათად ითხოვენ დამატებით მტკიცებულებებს.",
-          "what_changed": "ადრე ამოწმებდნენ მხოლოდ მოდელის ცოდნას, ახლა ამოწმებენ მის უნარს, ამოიცნოს ინფორმაციის ნაკლებობა ქმედებამდე.",
-          "why_it_matters": "რეალურ ბიზნეს აგენტში ამან შეიძლება გამოიწვიოს არასწორი გადახდა, წაშლილი ფაილი ან არასწორი მონაცემის ჩაწერა ბაზაში.",
-          "key_takeaways": [
-            "აგენტები ხშირად იღებენ გადაწყვეტილებას არასრულ მონაცემებზე დაყრდნობით.",
-            "ხელსაწყოს ვალიდაცია აუცილებელია აგენტის პასუხამდე.",
-            "დამაზუსტებელი კითხვების დასმა აგენტის საიმედოობის მთავარი ნიშანია."
-          ],
-          "technical_architecture": [
-            "User Request -> Tool Execution -> Result Validation.",
-            "Missing Fact Detector: ამოწმებს შეიცავს თუ არა შედეგი საჭირო ველებს.",
-            "Clarification Loop: აგენტი აჩერებს ქმედებას და ითხოვს დეტალებს."
-          ],
-          "technical_details": [
-            "300 ტესტური წყვილი 6 კრიტიკულ დომენში",
-            "10 თანამედროვე LLM მოდელის შედარება",
-            "მინიმალური ჩავარდნის კარდინალურობის გაზომვა",
-            "დამოუკიდებელი აუდიტის ხელსაწყო გადამოწმებისთვის"
-          ],
-          "potential_impact": "დეველოპერები შექმნიან უფრო უსაფრთხო აგენტურ გარსებს, რომლებიც თავიდან აიცილებენ კატასტროფულ შეცდომებს.",
-          "action_type": "APPLY",
-          "action": "განსაზღვრე Pydantic სქემა შენი Python ხელსაწყოსთვის და დარწმუნდი, რომ სავალდებულო ველების არარსებობისას ფუნქცია აბრუნებს შეცდომას.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Technical Skill"
-          ],
-          "verified_facts": [
-            "როდესაც ხელსაწყოს პასუხში აკლია უსაფრთხოებისთვის კრიტიკული ფაქტი, აგენტები ხშირად ასრულებენ აკრძალულ ქმედებას.",
-            "EpiSEM-Bench-მა შეამოწმა 10 წამყვანი მოდელი 300 უსაფრთხო/საფრთხის შემცველ წყვილზე 6 დომენში.",
-            "მოდელების უმრავლესობას უჭირს დამოუკიდებლად მოითხოვოს დაკარგული ფაქტები სანამ ქმედებას განახორციელებს.",
-            "დამტკიცდა, რომ მოდელის მდგრადობა ინფორმაციის გამოტოვებაზე ავტომატურად არ ნიშნავს მის უნარს, მოიძიოს დაკარგული მონაცემი."
-          ],
-          "interpretation": "აგენტს არ უნდა ენდო ბრმად. თუ Tool Calling-ის პასუხი ბუნდოვანია, სისტემამ უნდა აიძულოს აგენტი, დასვას დამაზუსტებელი კითხვა.",
-          "uncertainty": "სხვადასხვა სისტემურ პრომპტს შეუძლია მკვეთრად შეცვალოს მოდელის მიდრეკილება კითხვების დასმისკენ.",
-          "counter_argument": "ზედმეტად ეჭვიანი აგენტი ხშირად გაჩერდება და მომხმარებელს დაუსრულებელი კითხვებით შეაწუხებს.",
-          "strategic_assessment": "შენს აგენტებს ჩაუდე წესი: 'თუ პარამეტრი აკლია ან ბუნდოვანია, არ შეასრულო ოპერაცია, არამედ გამოიძახე დამაზუსტებელი ხელსაწყო'.",
-          "time_horizon": "short-term",
-          "what_could_change": "Tool-use სტანდარტები მოითხოვს მკაცრ სქემებს (JSON Schema validation), სადაც არასრული პასუხი ავტომატურად დაიბლოკება.",
-          "risks": [
-            "აგენტის მიერ არასწორი გადაწყვეტილების მიღება ფარული ცრუ მონაცემებით",
-            "დაუსრულებელი კითხვების ციკლი მომხმარებელთან",
-            "API-ს მხრიდან მოულოდნელი null მნიშვნელობების დაბრუნება"
-          ],
-          "non_obvious_opportunity": "შექმენი მარტივი 'Validator Wrapper' Python-ში, რომელიც ამოწმებს Tool-ის დაბრუნებულ ველებს სანამ მათ აგენტს გადასცემს.",
-          "fit_assessment": "პირდაპირ ეხება შენს მიმდინარე ეტაპს: Tool Calling-ისა და საიმედოობის სწავლას რეალურ გარემოში."
-        }
-      ],
-      "trends": [
-        "MCP (Model Context Protocol) ხდება სტანდარტული ფენა ქლაუდ გიგანტებისა და SaaS პროვაიდერებისთვის.",
-        "გადასვლა ერთიანი დიდი მოდელებიდან ხარჯზე ორიენტირებულ ჰიბრიდულ სისტემებზე (Abstention & Small Models).",
-        "აგენტების გამოყენება კოდის მწერლებად და მონაცემთა დებაგერებად, ნაცვლად უბრალო მონაცემთა მკითხველებისა.",
-        "კონტექსტის იზოლაცია და DAG არქიტექტურა რთული მსჯელობის გასამარტივებლად."
-      ]
-    },
     {
       "date": "2026-10-26",
       "summary": "დღევანდელი სიგნალები ფოკუსირდება multi-model agent არქიტექტურაზე, ფორმალურ ვერიფიკაციასა და multi-turn reinforcement learning-ზე. Google Antigravity-მ დაამატა Claude Opus 5.5 და Sonnet 5.5 მრავალდონიანი სუბ-აგენტური workflow-ებისთვის. Anthropic-მა და Theorem-მა აჩვენეს, რომ LLM-ებს RISC-V assembly-ის დონეზე ფორმალური მტკიცებულებების გენერირება შეუძლიათ.",
@@ -10232,14 +9859,310 @@
         "მსხვილი ღრუბლოვანი პროვაიდერები (Google, AWS) MCP სტანდარტს აინტეგრირებენ თავიანთ ძირითად სერვისებში",
         "LLM-ების შეფასება (Evaluation) სრულად გადადის გამართვად Code Sandbox და Environment Benchmark-ებზე"
       ]
+    },
+    {
+      "date": "2026-11-09",
+      "summary": "დღევანდელი ანალიზი ფოკუსირდება AI აგენტების უსაფრთხოებასა და მეხსიერების ინფრასტრუქტურაზე. Claude Code-ის v2.1.321 განახლებით გასწორდა MCP OAuth ტოკენების გაჟონვის კრიტიკული ხარვეზი. პარალელურად, Codebase Memory MCP და Weight-Space Programming გვიჩვენებს, თუ როგორ იცვლება აგენტების კოდის ანალიზისა და თვით-ოპტიმიზაციის პრაქტიკა.",
+      "events": [
+        {
+          "event_id": "evt-claude-code-21321-mcp-security",
+          "title": "Claude Code v2.1.321: MCP OAuth უსაფრთხოების ხარვეზის გასწორება და Fable 5.2 ინტეგრაცია",
+          "category": "LLM APIs და ხელსაწყოები",
+          "primary_url": "https://github.com/anthropics/claude-code/releases",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 95,
+          "tldr": "Claude Code-მა გამოაშვება v2.1.321, სადაც გასწორდა კრიტიკული MCP OAuth security bug და დაემატა 1M context-ის მქონე Fable 5.2 მოდელი.",
+          "what_happened": "Anthropic-მა გამოაქვეყნა Claude Code v2.1.321, სადაც გასწორდა MCP სერვერების OAuth ტოკენების გაჟონვის უსაფრთხოების ხარვეზი.",
+          "what_changed": "მანამდე MCP OAuth redirect-ისას refresh token-ები შეიძლება გაგზავნილიყო მესამე მხარის ჰოსტზე, ახლა ეს პროცესი სანდოა.",
+          "why_it_matters": "თუ აშენებ MCP სერვერებს, უსაფრთხო ავთენტიფიკაცია აუცილებელია რეალურ ბიზნეს აგენტებთან ინტეგრაციისთვის.",
+          "key_takeaways": [
+            "MCP OAuth სერვერების დაცვა redirect შეტევებისგან კრიტიკულია",
+            "Claude Fable 5.2 გთავაზობს 1M context window-ს $0.20/Mtok cache read ფასად",
+            "remote-control სესიები ახლა მართვადია ცენტრალური settings ფაილით"
+          ],
+          "technical_architecture": [
+            "Claude Code CLI v2.1.321 execution environment",
+            "MCP OAuth 2.0 protocol layer with redirect security checks",
+            "1M token context window model serving tier"
+          ],
+          "technical_details": [
+            "claude remote-control --settings <file>",
+            "Fable 5.2 pricing $8 input $40 output $0.20 cache read",
+            "SEP-2352 issuer handling for MCP authentication"
+          ],
+          "potential_impact": "აგენტური ინსტრუმენტების უსაფრთხოების ამაღლება საწარმოო გარემოში.",
+          "action_type": "APPLY",
+          "action": "განაახლე Claude Code CLI npx-ით და შეამოწმე შენი Python MCP სერვერების OAuth redirect ლოგიკა.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "Claude Code v2.1.321-ში გასწორდა MCP OAuth redirect ხარვეზი, რომელიც refresh token-ებს გარე ჰოსტზე აგზავნიდა",
+            "დაემატა Claude Fable 5.2 მოდელის მხარდაჭერა 1M token context window-ით",
+            "დაემატა --settings ფლაგი remote-control სესიების ცენტრალიზებული კონფიგურაციისთვის"
+          ],
+          "interpretation": "MCP OAuth სერვერების დანერგვისას HTTP Redirect-ების არასწორი დამუშავება აგენტურ სისტემებში სერიოზულ უსაფრთხოების რისკს ქმნის.",
+          "uncertainty": "Fable 5.2-ის API pricing ($8/$40 per Mtok) შეიძლება მაღალი იყოს მცირე პროექტებისთვის prompt caching-ის გარეშე.",
+          "counter_argument": "ადგილობრივი CLI ინსტრუმენტებისთვის OAuth flow-ის გამოყენება ზრდის არქიტექტურულ სირთულეს ჩვეულებრივ API key-ებთან შედარებით.",
+          "strategic_assessment": "გააახლე Claude Code CLI და გადაამოწმე შენი MCP OAuth სერვერები, რომ redirect-ის დროს Secret-ები არ გაედინებოდეს.",
+          "time_horizon": "short-term",
+          "what_could_change": "MCP OAuth ავთენტიფიკაცია გახდება სტანდარტი enterprise აგენტებისთვის, სადაც API Key-ების გაზიარება აკრძალულია.",
+          "risks": [
+            "OAuth refresh token გაჟონვა redirect-ის დროს",
+            "მაღალი API ხარჯი დიდ context window-ზე"
+          ],
+          "non_obvious_opportunity": "შექმენი open-source MCP security linter, რომელიც OAuth redirect და header-ების უსაფრთხოებას შეამოწმებს Python/TypeScript-ში.",
+          "fit_assessment": "იდეალურად ერგება შენს მიმდინარე MCP და Tool Calling სწავლის ეტაპს."
+        },
+        {
+          "event_id": "evt-codebase-memory-mcp-graph-intelligence",
+          "title": "Codebase Memory MCP: ლოკალური კოდის ინტელექტი AST და Graph Memory-ით AI აგენტებისთვის",
+          "category": "აგენტების ინფრასტრუქტურა და MCP",
+          "primary_url": "https://github.com/topics/aider",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "open-source პროექტი codebase-memory-mcp იყენებს Tree-sitter-ს და SQLite-ს, რომ AI აგენტებს კოდის სტრუქტურული მეხსიერება მისცეს.",
+          "what_happened": "შექმნა ლოკალური კოდის ინტელექტის MCP სერვერი, რომელიც AST-ის მეშვეობით კოდის ბაზას ინახავს SQLite გრაფში.",
+          "what_changed": "აგენტი აღარ წითხულობს ფაილებს თავიდან ბოლომდე; ის იყენებს MCP Tools-ს გრაფში კონკრეტული ფუნქციების მოსაძებნად.",
+          "why_it_matters": "ეს პატერნი საშუალებას გაძლევს ააშენო კოდის დამხმარე აგენტი უფასო LLM API-ების მცირე context window-ს პირობებში.",
+          "key_takeaways": [
+            "Tree-sitter პარსინგი + SQLite გრაფი = იაფი და სწრაფი Code Intelligence",
+            "MCP პროტოკოლი ამარტივებს მეხსიერების დაკავშირებას Claude Code და Cursor ინსტრუმენტებთან",
+            "მცირდება API ტოკენების მოხმარება კოდის რეფაქტორინგის დროს"
+          ],
+          "technical_architecture": [
+            "Tree-sitter AST parsing engine for code extraction",
+            "SQLite persistent knowledge graph storage",
+            "MCP server protocol interface for agent tool calls"
+          ],
+          "technical_details": [
+            "SQLite-vss or Cypher queries over AST nodes",
+            "Change-aware test selection via graph dependencies",
+            "MCP tool schema exposing graph query endpoints"
+          ],
+          "potential_impact": "დიდ კოდის ბაზებთან მომუშავე აგენტების ეფექტურობის 10-ჯერ გაზრდა.",
+          "action_type": "BUILD",
+          "action": "ჩამოტვირთე codebase-memory-mcp და გამოსცადე შენს ადგილობრივ Python პროექტზე SQLite ბაზის დასათვალიერებლად.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Real Business Opportunity"
+          ],
+          "verified_facts": [
+            "codebase-memory-mcp პროექტი იყენებს Tree-sitter-ს, SQLite-ს და MCP პროტოკოლს კოდის გრაფის ასაშენებლად",
+            "უზრუნველყოფს პერსისტენტულ კოდის მეხსიერებას Claude Code-ისთვის, Cursor-ისთვის და სხვა CLI აგენტებისთვის",
+            "ნაცვლად მთლიანი კოდის context-ში ჩატვირთვისა, აგენტი ითხოვს მხოლოდ რელევანტურ კვანძებს MCP ინსტრუმენტებით"
+          ],
+          "interpretation": "AST-ზე დაფუძნებული SQLite გრაფი საშუალებას აძლევს AI აგენტებს იმუშაონ დიდ პროექტებზე ტოკენების ხარჯის 80%-ით შემცირებით.",
+          "uncertainty": "კოდის სწრაფი ცვლილებებისას Graph Index-ის რეალურ დროში განახლება მოითხოვს დამატებით CPU რესურსს.",
+          "counter_argument": "უბრალო RAG vector index შეიძლება უფრო მარტივი ასაშენებელი იყოს, თუმცა კოდის სტრუქტურას (AST) ვერ ინარჩუნებს.",
+          "strategic_assessment": "გამოიყენე Tree-sitter და SQLite MCP სერვერის ასაშენებლად, რაც შენს აგენტს საშუალებას მისცემს გაიგოს Python პროექტის არქიტექტურა.",
+          "time_horizon": "mid-term",
+          "what_could_change": "კოდის ანალიზის ტრადიციული static analyzer-ები სრულად ჩანაცვლდება AST-aware MCP მეხსიერების გრაფებით.",
+          "risks": [
+            "დიდ რეპოზიტორიებზე SQLite გრაფის ინდექსირების შეყოვნება",
+            "Tree-sitter-ის პარსინგის შეცდომები დინამიურ ენებზე"
+          ],
+          "non_obvious_opportunity": "შექმენი მცირე Python სკრიპტი, რომელიც Telegram ბოტს დაუკავშირებს Codebase Memory MCP-ის და კოდის სტრუქტურულ ანალიზს გააკეთებს უფასოდ.",
+          "fit_assessment": "ზუსტად აკავშირებს შენს მიმდინარე SQL/SQLite და MCP სწავლის ეტაპებს რეალურ პროექტთან."
+        },
+        {
+          "event_id": "evt-aws-agent-exposure-layer-architecture",
+          "title": "AWS საწარმოო AI აგენტების Exposure Layer არქიტექტურა: Caching Ladder და Token Budgets",
+          "category": "აგენტის არქიტექტურა და წარმოება",
+          "primary_url": "https://aws.amazon.com/marketplace/build-learn/ai-agent-learning-series/agent-exposure-and-integration",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 10,
+          "confidence": 90,
+          "tldr": "AWS-მა გამოაქვეყნა აგენტების Exposure Layer არქიტექტურა, სადაც განხილულია MCP ინტერფეისები, Caching Ladder და Token Budgets.",
+          "what_happened": "AWS-ის ინჟინრებმა წარადგინეს AI აგენტების API Gateway და MCP ინტეგრაციის საუკეთესო პრაქტიკა წარმოებისთვის.",
+          "what_changed": "აგენტური ტრაფიკი განსხვავდება ჩვეულებრივი API-სგან: მოითხოვს ასობით KB კონტექსტს, ხანგრძლივ სტრიმინგს და დინამიურ ბიუჯეტირებას.",
+          "why_it_matters": "სწორი Exposure Layer-ის გარეშე აგენტის გაშვებამ შეიძლება გამოიწვიოს API Key-ის ბიუჯეტის მყისიერი ამოწურვა.",
+          "key_takeaways": [
+            "4 Exposure პატერნი: Direct, Gateway, Event-driven, MCP Server",
+            "Caching Ladder იცავს ბიუჯეტს დეტერმინისტული პასუხების ქეშირებით",
+            "Per-tenant token budget აუცილებელია აგენტური API-ების უსაფრთხოებისთვის"
+          ],
+          "technical_architecture": [
+            "Amazon API Gateway & AWS Lambda exposure tier",
+            "MCP Server interface adapter layer",
+            "Per-tenant token throttling and sliding-window rate limiting"
+          ],
+          "technical_details": [
+            "Gateway payload cap bypass with presigned S3 URLs",
+            "Semantic caching risk verification protocols",
+            "Streaming aggregation endpoints for non-deterministic LLM traffic"
+          ],
+          "potential_impact": "აგენტების API ხარჯების 60%-მდე შემცირება და სტაბილურობის ამაღლება.",
+          "action_type": "LEARN",
+          "action": "წაიკითხე AWS-ის Exposure patterns ნაწილი და დანერგე მარტივი SQLite Caching layer შენს Python API სკრიპტში.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "AWS-მა გამოაქვეყნა არქიტექტურული გზამკვლევი აგენტების Exposure Layer-ის ინჟინერიისთვის",
+            "მოიცავს 4 პატერნს: Direct, Gateway-mediated, Event-driven, და MCP server interfaces",
+            "წარმოადგენს Caching Ladder-ს და per-tenant token budget-ებს აგენტური ტრაფიკის ხარჯების დასაკონტროლებლად"
+          ],
+          "interpretation": "წარმოებაში აგენტების ჩაშლის მთავარი მიზეზი მოდელი კი არა, არამედ API Gateway-ის დონეზე ტოკენების ლიმიტების და სტრიმინგის არასწორი მართვაა.",
+          "uncertainty": "AWS-ის ზოგიერთი კომპონენტი (Bedrock, API Gateway) მოითხოვს Cloud ხარჯებს, თუმცა არქიტექტურული პატერნი უფასო ინსტრუმენტებზეც თავსებადია.",
+          "counter_argument": "მცირე პროექტებისთვის API Gateway-ის და Rate Limiter-ების აგება დამატებითი overhead-ია პირდაპირ FastAPI-თან შედარებით.",
+          "strategic_assessment": "გამოიყენე FastHTTP/FastAPI და SQLite, რომ ააშენო პატარა Caching Ladder შენი Telegram ბოტის წინ API ხარჯების შესამცირებლად.",
+          "time_horizon": "mid-term",
+          "what_could_change": "ყველა REST API Gateway გარდაიქმნება MCP-aware Smart Proxy-ებად, რომლებიც ტოკენების ბიუჯეტს ავტომატურად მართავენ.",
+          "risks": [
+            "Semantic caching-ის დროს არასწორი პასუხების დაბრუნების რისკი (bad match)",
+            "Streaming response-ების გაწყვეტა Gateway timeout-ის გამო"
+          ],
+          "non_obvious_opportunity": "დაწერე მცირე Python middleware (FastAPI-სთვის), რომელიც აგენტურ მოთხოვნებს ტოკენების მიხედვით შეზღუდავს და დაადე შენს პროექტებს.",
+          "fit_assessment": "გაძლევს საწარმოო ცოდნას, თუ როგორ გადააქციო უბრალო LLM სკრიპტი სტაბილურ API სერვისად."
+        },
+        {
+          "event_id": "evt-anthropic-project-eve-multiagent-code-exec",
+          "title": "Project EVE: Anthropic-ის კვლევა Fable 5 Multi-Agent გუნდებზე და ავტონომიურ კოდირებაზე",
+          "category": "AI Research / Agent Architecture",
+          "primary_url": "https://www.anthropic.com/research/project-eve-claude-plays-mmorpgs",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 7,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "Anthropic-მა წარადგინა Project EVE, სადაც Fable 5 აგენტებმა შექმნეს კოდი სწრაფი პროცესების ავტომატიზაციისთვის და ითანამშრომლეს გუნდურად.",
+          "what_happened": "Anthropic-ის მკვლევარებმა შეამოწმეს Claude-ის აგენტები EVE ეკონომიკურ სიმულაციაში, სადაც აგენტებმა დაწერეს კოდი რეალურ დროში სავაჭროდ.",
+          "what_changed": "ტრადიციული Prompting-ის ნაცვლად, აგენტებმა გამოიყენეს კოდის გენერაცია გარემოსთან სწრაფი ურთიერთქმედებისთვის.",
+          "why_it_matters": "ეს ადასტურებს, რომ მომავლის აგენტური ინჟინერია დაფუძნებულია კოდის ავტონომიურ წერასა და ლოკალურ შესრულებაზე.",
+          "key_takeaways": [
+            "Fable 5 იყენებს Code Generation პატერნს Latency-ს დასაძლევად",
+            "Multi-agent გუნდები ეფექტურია, თუმცა უსაფრთხოების/საბოტაჟის მონიტორინგს საჭიროებენ",
+            "მოდელის თაობებს შორის 3-ჯერ გაიზარდა ავტონომიური ეკონომიკური ეფექტურობა"
+          ],
+          "technical_architecture": [
+            "Multi-agent orchestrator framework with shared goal slate",
+            "Dynamic code generation & local execution runtime",
+            "Market state event-bus connection layer"
+          ],
+          "technical_details": [
+            "Claude Fable 5 dynamic Python code synthesis",
+            "Autonomous algorithmic trading strategy dispatch",
+            "Multi-agent trust verification metrics"
+          ],
+          "potential_impact": "ავტონომიური აგენტების მიერ კოდის წერის პატერნის დამკვიდრება რთულ სისტემებში.",
+          "action_type": "TRY",
+          "action": "გამოცადე სკრიპტი, სადაც LLM პასუხად აბრუნებს Python კოდს, რომელსაც შენი სერვერი უსაფრთხოდ exec()-ით გაუშვებს.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Long-Term Career Value",
+            "Real Technical Skill"
+          ],
+          "verified_facts": [
+            "Anthropic-მა ჩაატარა ექსპერიმენტი Claude Fable 5 აგენტების გუნდებზე EVE Online და EVE Frontier გარემოში",
+            "სწრაფი თამაშის მექანიკისთვის Fable 5 აგენტებმა თავად დაწერეს Python კოდი დამხმარე სკრიპტების გასაშვებად",
+            "ბაზრის სიმულაციაში Claude Fable 5-ის მოგება 3-ჯერ აღემატებოდა წინა Claude Opus 4.6 მოდელს"
+          ],
+          "interpretation": "როდესაც გარემო ძალიან სწრაფია LLM API-ის latency-სთვის, საუკეთესო არქიტექტურაა აგენტმა დაწეროს კოდი, რომელიც ლოკალურად შესრულდება.",
+          "uncertainty": "აგენტებს შორის ღალატის/საბოტაჟის (undermining) აღმოჩენა multi-agent სისტემებში კვლავ შეუსწავლელ პრობლემად რჩება.",
+          "counter_argument": "თამაშის გარემოში მიღებული შედეგები ყოველთვის პირდაპირ არ ითარგმნება რეალურ ბიზნეს პროცესებზე.",
+          "strategic_assessment": "გამოიყენე 'Code Execution as Tool Call' პატერნი: აგენტმა შექმნას მცირე Python სკრიპტი განმეორებადი ამოცანებისთვის API-ის ხშირი გამოძახების ნაცვლად.",
+          "time_horizon": "long-term",
+          "what_could_change": "Multi-agent არქიტექტურები გადავლენ 'Code Generation & Local Execution' მოდელზე, სადაც აგენტები მართავენ კოდს და არა ტექსტურ შეტყობინებებს.",
+          "risks": [
+            "აგენტის მიერ გენერირებული ლოკალური კოდის უსაფრთხოების რისკები Sandbox-ის გარეშე",
+            "Multi-agent კოორდინაციის ჩაშლა არასრული ინფორმაციის დროს"
+          ],
+          "non_obvious_opportunity": "შექმენი სავაჭრო/მონიტორინგის ბოტი, სადაც აგენტი Python სკრიპტებს გენერირებს API-ებთან სწრაფი ინტერაქციისთვის.",
+          "fit_assessment": "გეხმარება გაიგო რთული Multi-Agent ლოგიკა და Code Execution პატერნების პრაქტიკული საჭიროება."
+        },
+        {
+          "event_id": "evt-weight-space-programming-frontier-models",
+          "title": "Weight-Space Programming: Frontier მოდელების მიერ ნეირონული ქსელების წონების პირდაპირი რედაქტირება",
+          "category": "AI Research / Model Architecture",
+          "primary_url": "https://latent.space/p/ainews-behind-latent-space-kill-my-saas-jev-ai-in-2026-aiei-shanghai",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 8,
+          "actionability": 6,
+          "source_quality": 8,
+          "confidence": 85,
+          "tldr": "חדალი კვლევა გვიჩვენებს, რომ Frontier LLM-ებს შეუძლიათ მცირე მოდელების წონების პირდაპირი რედაქტირება Backprop-ის გარეშე.",
+          "what_happened": "მკვლევარებმა დაადასტურეს, რომ GPT-6 Astra-ს და Fable-ს შეუძლიათ მცირე ნეირონების წონების შეცვლა კონკრეტული შეცდომების გამოსასწორებლად.",
+          "what_changed": "ნაცვლად ათასობით GPU საათის Fine-Tuning-ისა, დიდი მოდელი პირდაპირ ცვლის მცირე მოდელის MLP ფენების წონებს.",
+          "why_it_matters": "ეს არის პირველი ნაბიჯი მოდელების მიერ საკუთარი თავის მყისიერი ოპტიმიზაციისკენ (instant weight editing).",
+          "key_takeaways": [
+            "Frontier LLM-ებს აქვთ წონების სივრცეში (Weight-Space) ნავიგაციის უნარი",
+            "Qwen3.5-0.8B-ის Looping შეცდომა გასწორდა MLPs წონების პირდაპირი სუბტრაქციით",
+            "Hugging Face-მა წარმატებით მოახდინა შედეგების რეპროდუცირება"
+          ],
+          "technical_architecture": [
+            "Direct neural weight editing matrix transformation",
+            "Contrastive looping vs productive context vector extraction",
+            "MLP layer weight projection subtraction without backpropagation"
+          ],
+          "technical_details": [
+            "131,072 edited weights in Qwen3.5-0.8B layers 15 and 19",
+            "MATH-500 accuracy jump from 7.9% to 48.1%",
+            "Hugging Face ML Intern open-source replication framework"
+          ],
+          "potential_impact": "მცირე Edge მოდელების მყისიერი პერსონალიზაცია GPU სწავლების გარეშე.",
+          "action_type": "TRACK",
+          "action": "ადევნე თვალი Weight-Space Programming-ის Open-Source რეპოზიტორიებს Hugging Face-ზე.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Long-Term Career Value",
+            "Temporary Trend"
+          ],
+          "verified_facts": [
+            "Frontier LLM-ებმა (GPT-6 Astra, Claude Fable) გამოავლინეს მცირე მოდელების წონების (Weights) პირდაპირი გენერირებისა და რედაქტირების…",
+            "Hugging Face-მა მოახდინა ექსპერიმენტის რეპროდუქცია ML Intern ჰარნესით",
+            "Astra-მ დაარედაქტირა 131,072 წონა Qwen3.5-0.8B მოდელში, რამაც აღმოფხვრა უსასრულო ციკლები (looping) და გაზარდა MATH-500 სიზუსტე"
+          ],
+          "interpretation": "მოდელებს შეუძლიათ მცირე ნეირონული ქსელების შეკეთება პირდაპირ Weight Matrix-ში ცვლილებებით, ტრადიციული Fine-Tuning-ის გარეშე.",
+          "uncertainty": "შედეგები ჯერ კიდევ ადრეულ ეტაპზეა და ძირითადად ეხება looping bug-ების გასწორებას და არა ახალი ცოდნის ჩაწერას.",
+          "counter_argument": "ეს შეიძლება იყოს მხოლოდ კონკრეტული პატერნების 'Fixing' და არა სრულფასოვანი სწავლა, სადაც Gradient Descent კვლავ შეუცვლელია.",
+          "strategic_assessment": "ადევნე თვალი ამ ტრენდს: Weight-space editing მომავალში შეამცირებს Fine-tuning-ის ხარჯებს მცირე აგენტური მოდელებისთვის.",
+          "time_horizon": "long-term",
+          "what_could_change": "LLM-ები შეძლებენ მცირე სპეციალიზებული 0.5B/1B მოდელების წონების წამებში ოპტიმიზაციას კონკრეტული ამოცანისთვის.",
+          "risks": [
+            "წონების არასწორი რედაქტირებისას მოდელის კატასტროფული გაფუჭება (catastrophic failure)",
+            "მაღალი compute ხარჯი დიდი მოდელების მიერ წონების ანალიზისას"
+          ],
+          "non_obvious_opportunity": "ისწავლე PyTorch-ში მოდელის წონების (state_dict) მანიპულაცია, რაც გამოგადგება აგენტების ოპტიმიზაციაში.",
+          "fit_assessment": "ღრმა ტექნიკური პერსპექტივა AI არქიტექტურაში 3-5 წლის ჰორიზონტზე."
+        }
+      ],
+      "trends": [
+        "MCP OAuth 2.0 და უსაფრთხოების პროტოკოლების სტანდარტიზაცია აგენტურ ინფრასტრუქტურაში",
+        "AST და SQLite გრაფების გამოყენება კოდის პერსისტენტული მეხსიერებისთვის vector DB-ების ნაცვლად",
+        "Code Generation as Tool Execution — აგენტების მიერ ლოკალური კოდის წერა Latency-ს შესამცირებლად"
+      ]
     }
   ],
   "learning_queue": [
-    "Google Workspace MCP Server API და OAuth 2.0 ინტეგრაცია Python-ში",
-    "Context Engineering: Write-and-Execute პატერნის დანერგვა LangChain/LangGraph-ში",
-    "SQLite memory pattern AI აგენტებისთვის დიდ მონაცემებთან სამუშაოდ"
+    "SQLite-vss და Tree-sitter integration Python-ში (Codebase Memory MCP პატერნი)",
+    "MCP OAuth 2.0 flow-ის იმპლემენტაცია FastMCP / Python-ის ბიბლიოთეკებით",
+    "FastAPI Middleware-ის წერა API ტრაფიკისა და Caching Ladder-ის დასანერგად"
   ],
-  "last_run": "2026-11-08T16:32:51.519852+00:00",
+  "last_run": "2026-11-09T20:25:34.585265+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -10374,9 +10297,9 @@
     "arxiv:2611.08478"
   ],
   "last_report_files": {
-    "markdown": "data/reports/2026-11-08/report.md",
-    "json": "data/reports/2026-11-08/report.json",
-    "newsletter": "data/reports/2026-11-08/newsletter.md",
-    "social": "data/reports/2026-11-08/social_posts.txt"
+    "markdown": "data/reports/2026-11-09/report.md",
+    "json": "data/reports/2026-11-09/report.json",
+    "newsletter": "data/reports/2026-11-09/newsletter.md",
+    "social": "data/reports/2026-11-09/social_posts.txt"
   }
 }
