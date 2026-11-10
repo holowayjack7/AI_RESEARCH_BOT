@@ -351,7 +351,11 @@
     "https://github.com/topics/aider",
     "https://aws.amazon.com/marketplace/build-learn/ai-agent-learning-series/agent-exposure-and-integration",
     "https://www.anthropic.com/research/project-eve-claude-plays-mmorpgs",
-    "https://latent.space/p/ainews-behind-latent-space-kill-my-saas-jev-ai-in-2026-aiei-shanghai"
+    "https://latent.space/p/ainews-behind-latent-space-kill-my-saas-jev-ai-in-2026-aiei-shanghai",
+    "https://aws.amazon.com/blogs/machine-learning/four-layers-of-context-engineering-for-production-ai-agents-how-deep-insight-applies-them-in-working-code",
+    "https://aws.amazon.com/marketplace/build-learn/ai-agent-learning-series/introduction-to-ai-agents",
+    "https://huggingface.co/papers/2611.12806",
+    "https://huggingface.co/papers/2611.12762"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -639,120 +643,11 @@
     "evt-codebase-memory-mcp-graph-intelligence",
     "evt-aws-agent-exposure-layer-architecture",
     "evt-anthropic-project-eve-multiagent-code-exec",
-    "evt-weight-space-programming-frontier-models"
+    "evt-weight-space-programming-frontier-models",
+    "evt-aws-four-layers-context-engineering",
+    "evt-lingbot-touch-tactile-foundation"
   ],
   "events": [
-    {
-      "event_id": "evt-mlexpert-autonomous-ml",
-      "title": "MLExpert: 35B MoE მოდელი ავტონომიური მანქანური სწავლებისა და კვლევისთვის",
-      "category": "AI Research / Agent Architecture",
-      "primary_url": "https://arxiv.org/abs/2610.22344",
-      "supporting_urls": [],
-      "importance": 9,
-      "relevance": 9,
-      "actionability": 8,
-      "source_quality": 8,
-      "confidence": 95,
-      "tldr": "MLExpert არის 35B MoE მოდელი, რომელიც ავტონომიურად ატარებს მანქანური სწავლების ექსპერიმენტებს და აღწევს ფრონტიერ მოდელების დონეს.",
-      "what_happened": "წარმოდგენილია MLExpert და Windowed Interaction RL (WIRL) მეთოდი გრძელვადიანი ექსპერიმენტების სამართავად.",
-      "what_changed": "ერთჯერადი კოდის გენერაციიდან გადავედით მრავალსვლიან, თვითშესწორებად ML ექსპერიმენტებზე.",
-      "why_it_matters": "გაჩვენებს, როგორ უნდა მოაწყო აგენტის მიერ ექსპერიმენტების მართვისა და ტრენინგის ციკლი.",
-      "key_takeaways": [
-        "MLExpert აუმჯობესებს ბაზის მოდელის მედალოსნობის მაჩვენებელს MLE-Bench Lite-ზე 72.7%-მდე.",
-        "WIRL მეთოდი ანაწილებს ჯილდოს მრავალსვლიანი ექსპერიმენტის შედეგებზე.",
-        "აღწევს ისეთსავე შედეგებს, როგორიც უფრო დიდ ფრონტიერ მოდელებს აქვთ."
-      ],
-      "technical_architecture": [
-        "35B Mixture-of-Experts არქიტექტურა.",
-        "Kaggle-MLE Factory შესასრულებელი ტასკებისა და ინტერაქციის ჰარნესისთვის."
-      ],
-      "technical_details": [
-        "Windowed Interaction RL (WIRL) აერთიანებს მრავალსვლიან გადაწყვეტილებებს ერთიანი ჯილდოს ქვეშ.",
-        "ასინქრონული კოლექცია და პოლიტიკის კორექცია ტრენინგის დასრულებამდე."
-      ],
-      "potential_impact": "ავტომატიზირებს მონაცემთა მეცნიერისა და ML ინჟინრის რუტინულ ექსპერიმენტულ სამუშაოს.",
-      "action_type": "LEARN",
-      "action": "შეისწავლე როგორ მუშაობს Windowed Interaction RL (WIRL) და სად შეიძლება მისი გამოყენება აგენტის მახსოვრობის ოპტიმიზაციისთვის.",
-      "evidence": [],
-      "factuality_level": "verified",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value",
-        "Real Business Opportunity"
-      ],
-      "verified_facts": [
-        "MLExpert არის 35B Mixture-of-Experts აგენტური მოდელი ავტონომიური MLE ოპტიმიზაციისთვის.",
-        "მოდელმა MLE-Bench Lite-ზე საშუალო მედალოსნობის მაჩვენებელი გაზარდა 37.9%-დან 72.7%-მდე.",
-        "იყენებს Windowed Interaction RL (WIRL) მეთოდს მრავალსვლიანი ექსპერიმენტების ჯილდოს განსასაზღვრად."
-      ],
-      "interpretation": "აგენტები აღარ უბრალოდ წერენ კოდს, არამედ ატარებენ გრძელვადიან ექსპერიმენტებს, აანალიზებენ მეტრიკებს და აუმჯობესებენ საკუთარ მოდელებს.",
-      "uncertainty": "გრძელვადიანი ექსპერიმენტები მოითხოვს უზარმაზარ გამოთვლით რესურსებს და უსაფრთხო სანდბოქს გარემოს.",
-      "counter_argument": "Kaggle ტიპის ამოცანებზე ავტონომიური ოპტიმიზაცია არ ნიშნავს რეალური ბიზნეს პრობლემების წარმატებით გადაჭრას.",
-      "strategic_assessment": "გაიგე, როგორ მუშაობს agentic reinforcement learning და ექსპერიმენტების ორკესტრაცია გრძელვადიან ციკლებში.",
-      "time_horizon": "mid-term",
-      "what_could_change": "მანქანური სწავლებისა და მონაცემთა ანალიზის საბაზისო ექსპერიმენტები მთლიანად ავტომატიზდება აგენტების მიერ.",
-      "risks": [
-        "აგენტმა შეიძლება ზედმეტად მოარგოს მოდელი ტესტურ მეტრიკებს (overfitting).",
-        "მაღალი ხარჯები ექსპერიმენტების მრავალსვლიანი ციკლების გამო."
-      ],
-      "non_obvious_opportunity": "შეგიძლია შექმნა მსუბუქი აგენტი, რომელიც უბრალოდ ატარებს ჰიპერპარამეტრების ძიებას და უბრალო ML სკრიპტებს აკონტროლებს.",
-      "fit_assessment": "გაინტერესებს აგენტური არქიტექტურები, ხოლო MLExpert გჩვენებს, როგორ ხდება მრავალსვლიანი ტასკების ოპტიმიზაცია."
-    },
-    {
-      "event_id": "evt-mai-gym-gui-agents",
-      "title": "MAI-Gym: ღია პლატფორმა GUI აგენტების შესაფასებლად და ონლაინ RL ტრენინგისთვის",
-      "category": "AI Research / Agent Architecture",
-      "primary_url": "https://huggingface.co/papers/2610.20939",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 8,
-      "source_quality": 8,
-      "confidence": 95,
-      "tldr": "MAI-Gym არის ღია პლატფორმა, რომელიც აერთიანებს მობილური და კომპიუტერული GUI აგენტების ევალუაციასა და RL ტრენინგს.",
-      "what_happened": "წარმოდგენილია MAI-Gym, რომელიც აერთიანებს 10 ბენჩმარკს და 20,000 პარალელურ გარემოს.",
-      "what_changed": "ფრაგმენტული GUI ტესტებიდან გადავედით ერთიან, მასშტაბურ ევალუაციისა და ტრენინგის პლატფორმაზე.",
-      "why_it_matters": "გაძლევს შაბლონებს, თუ როგორ მართო აგენტი, რომელიც მუშაობს ოპერაციულ სისტემებსა და აპლიკაციებში.",
-      "key_takeaways": [
-        "MAI-Gym-9B აღწევს სახელმწიფო დონის შედეგებს 10B-ზე პატარა მოდელებისთვის.",
-        "მოვლენები დაფუძნებულია execution-validated ტასკებზე.",
-        "ღია კოდი მოიცავს იმიტირებულ აპებსა და სინთეზის ხელსაწყოებს."
-      ],
-      "technical_architecture": [
-        "საერთო rollout პიპლაინი ტრენინგისა და ევალუაციისთვის.",
-        "კოდზე დამყარებული ტასკების ვერიფიკატორები."
-      ],
-      "technical_details": [
-        "78.4% წარმატება MobileWorld ბენჩმარკზე.",
-        "76.2% წარმატება OSWorld-Verified ბენჩმარკზე."
-      ],
-      "potential_impact": "აჩქარებს ღია კოდის კომპიუტერული აგენტების განვითარებას და ამცირებს დამოკიდებულებას დახურულ ეკოსისტემებზე.",
-      "action_type": "TRACK",
-      "action": "გადახედე MAI-Gym პროექტის GitHub რეპოზიტორიას და შეისწავლე მათი კოდ-ვერიფიკატორების არქიტექტურა.",
-      "evidence": [],
-      "factuality_level": "verified",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "MAI-Gym აერთიანებს GUI აგენტების ევალუაციასა და RL ტრენინგს მობილურ და კომპიუტერულ გარემოებში.",
-        "მოდელმა MAI-Gym-9B აჩვენა 78.4% MobileWorld-ზე და 76.2% OSWorld-Verified-ზე.",
-        "პლატფორმა მხარს უჭერს 20,000 პარალელურ გარემოს ინსტანსს."
-      ],
-      "interpretation": "GUI ავტომატიზაცია აღარ არის მხოლოდ კლავიატურისა და მაუსის სიმულაცია; ის მოითხოვს სრულყოფილ ეკოსისტემას და შესრულების ვერიფიკაციას.",
-      "uncertainty": "ასეთი მასშტაბის პარალელური გარემოების გაშვება მოითხოვს დიდ გამოთვლით რესურსებს.",
-      "counter_argument": "მსგავსი იმიტირებული აპლიკაციები შეიძლება სრულად ვერ ასახავდნენ რეალური დესკტოპ გარემოს არაპროგნოზირებადობას.",
-      "strategic_assessment": "გაეცანი MAI-Gym-ის არქიტექტურას, რათა გაიგო, როგორ მუშაობს აგენტი ეკრანის ვიზუალური და პროგრამული ინტერფეისებით.",
-      "time_horizon": "mid-term",
-      "what_could_change": "მობილური და დესკტოპ აპლიკაციების ტესტირება მთლიანად გადადის აგენტურ, ეკრანზე დამყარებულ ავტომატიზაციაზე.",
-      "risks": [
-        "იმიტირებულ გარემოში ნასწავლი პოლიტიკა შეიძლება რეალურ მოწყობილობაზე არ მუშაობდეს.",
-        "მაღალი გამოთვლითი ხარჯები RL ტრენინგის დროს."
-      ],
-      "non_obvious_opportunity": "შეგიძლია გამოიყენო მათი ღია 59 იმიტირებული აპლიკაცია შენივე აგენტების ტესტირებისთვის მცირე ბიუჯეტით.",
-      "fit_assessment": "კარგია დესკტოპ ავტომატიზაციის პრინციპების ასათვისებლად, თუმცა მოითხოვს ძლიერ აპარატურას სრული ტრენინგისთვის."
-    },
     {
       "event_id": "evt-evaluating-ai-agents-google",
       "title": "AI აგენტების შეფასება Vibe Check-ის გარეშე: Google-ის Evals Playbook",
@@ -6382,6 +6277,121 @@
       ],
       "non_obvious_opportunity": "ისწავლე PyTorch-ში მოდელის წონების (state_dict) მანიპულაცია, რაც გამოგადგება აგენტების ოპტიმიზაციაში.",
       "fit_assessment": "ღრმა ტექნიკური პერსპექტივა AI არქიტექტურაში 3-5 წლის ჰორიზონტზე."
+    },
+    {
+      "event_id": "evt-aws-four-layers-context-engineering",
+      "title": "Four layers of context engineering for production AI agents: Deep Insight reference",
+      "category": "აგენტის არქიტექტურა და კონტექსტი",
+      "primary_url": "https://aws.amazon.com/blogs/machine-learning/four-layers-of-context-engineering-for-production-ai-agents-how-deep-insight-applies-them-in-working-code",
+      "supporting_urls": [
+        "https://aws.amazon.com/marketplace/build-learn/ai-agent-learning-series/introduction-to-ai-agents"
+      ],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 10,
+      "confidence": 98,
+      "tldr": "AWS-ის ახალი სახელმძღვანელო გვიჩვენებს, როგორ შევამციროთ აგენტის ტოკენების ხარჯი 95 პროცენტით ფაილური სისტემის გარე გამოყენებით.",
+      "what_happened": "AWS-მა წარმოადგინა Deep Insight არქიტექტურა, რომელიც იყენებს კონტექსტის ინჟინერიის ოთხ ფენას.",
+      "what_changed": "გაჩნდა სტანდარტული მიდგომა, სადაც კონტექსტი გროვდება დისკზე და არა მოდელის ოპერატიულ მეხსიერებაში.",
+      "why_it_matters": "შეგიძლია შეამცირო API გამოძახების ხარჯები და აგენტს მისცე რთული ამოცანების შესრულების უნარი.",
+      "key_takeaways": [
+        "Write-and-execute ტექნიკა ამცირებს ტოკენების დამატებას 95 პროცენტით.",
+        "Skills-on-demand ჩატვირთვა ამცირებს სისტემურ პრომპტს 97 პროცენტით.",
+        "კონტექსტის იზოლაცია არქიტექტურულ დონეზე ხსნის მეხსიერების ბოთლნეკს."
+      ],
+      "technical_architecture": [
+        "Context isolation at architecture level",
+        "Externalization to filesystem",
+        "Independent verification agents"
+      ],
+      "technical_details": [
+        "Strands Agents SDK და Amazon Bedrock AgentCore ინტეგრაცია",
+        "200K context window ოპტიმიზაცია ფაილური შენახვით",
+        "დინამიური სკრიპტების ეკზეკუცია უსაფრთხო გარემოში"
+      ],
+      "potential_impact": "მნიშვნელოვნად ამცირებს API ხარჯებს საწარმოო დონის მრავალაგენტურ სისტემებში.",
+      "action_type": "BUILD",
+      "action": "დაწერე Python სკრიპტი, რომელიც გრძელი ტექსტური ისტორიის ნაცვლად აგენტის მეხსიერებას ინახავს ლოკალურ SQLite ბაზაში.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "AWS გამოაქვეყნა Deep Insight პროექტის მრავალაგენტური მონაცემთა ანალიზის კოდი.",
+        "Write-and-execute ტექნიკა კონტექსტის ტოკენებს ამცირებს 95 პროცენტით.",
+        "Skills-on-demand ჩატვირთვა სისტემურ პრომპტს ამცირებს 97 პროცენტით."
+      ],
+      "interpretation": "კონტექსტის მართვა ხდება აგენტების ძირითადი ბოთლნეკი და სწორედ ფაილური სისტემის გამოყენება წყვეტს ხარჯების პრობლემას.",
+      "uncertainty": "მიდგომა ოპტიმიზებულია Anthropic Claude Sonnet 4.5 მოდელზე და შესაძლოა განსხვავებულად მუშაობდეს სხვა მცირე მოდელებთან.",
+      "counter_argument": "ფაილურ სისტემაში მონაცემების შენახვა ზრდის I/O შეყოვნებას (latency), რაც ანელებს ინტერაქტიულ აგენტურ ලൂპებს.",
+      "strategic_assessment": "დაინერგე write-and-execute პატერნი შენს აგენტურ პროექტებში ტოკენების ხარჯების მინიმუმამდე დასაყვანად.",
+      "time_horizon": "mid-term",
+      "what_could_change": "API ტოკენების ეკონომია მცირე ბიუჯეტის მქონე დეველოპერებს მისცემს საწარმოო მასშტაბის აგენტების ტესტირების საშუალებას.",
+      "risks": [
+        "ფაილურ სისტემაში მდგომარეობის მართვა ართულებს ასინქრონულ შესრულებას.",
+        "უსაფრთხოების რისკები დინამიკური კოდის შესრულებისას."
+      ],
+      "non_obvious_opportunity": "შეგიძლია შეიმუშაო ღია ბიბლიოთეკა, რომელიც ავტომატიზებულად ასუფთავებს LLM კონტექსტს ფაილების მეშვეობით.",
+      "fit_assessment": "იდეალურად ერგება შენს ამოცანას, ააგო საწარმოო დონის აგენტები მინიმალური ფინანსური რესურსით."
+    },
+    {
+      "event_id": "evt-lingbot-touch-tactile-foundation",
+      "title": "LingBot-Touch: Learning Heterogeneous Tactile Representation for General Dexterous Manipulation",
+      "category": "AI Research / Robot Learning",
+      "primary_url": "https://huggingface.co/papers/2611.12806",
+      "supporting_urls": [
+        "https://huggingface.co/papers/2611.12762"
+      ],
+      "importance": 8,
+      "relevance": 7,
+      "actionability": 7,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "LingBot-Touch აერთიანებს სხვადასხვა ფიზიკური სენსორის მონაცემებს ერთიან ტაქტილურ ტოკენებში მულტიმოდალური აგენტებისთვის.",
+      "what_happened": "მკვლევრებმა წარმოადგინეს LingBot-Touch, რომელიც ხსნის სენსორ-სპეციფიკურ შეზღუდვებს რობოტიკაში.",
+      "what_changed": "განსხვავებული ფიზიკური სენსორების მონაცემები ახლა მარტივად ინტეგრირდება სტანდარტულ VLA მოდელებში.",
+      "why_it_matters": "გვიჩვენებს, როგორ უნდა მოხდეს ჰეტეროგენული მონაცემების სტრუქტურირება აგენტურ სისტემებში.",
+      "key_takeaways": [
+        "ქმნის უნივერსალურ წარმოდგენას სხვადასხვა ტიპის სენსორებისთვის.",
+        "Plug-and-play ტოკენები თავსებადია diffusion policy და VLA მოდელებთან."
+      ],
+      "technical_architecture": [
+        "Tactile foundation model representation",
+        "Cross-sensor data fusion layer"
+      ],
+      "technical_details": [
+        "პიეზორეზისტული, მაგნიტური და ვიზუოტაქტილური სენსორების ინტეგრაცია",
+        "Diffusion policy და VLA მოდელების ოპტიმიზაცია"
+      ],
+      "potential_impact": "აჩქარებს კონტაქტზე დაფუძნებული რობოტული მანიპულაციის განვითარებას.",
+      "action_type": "TRACK",
+      "action": "გაეცანი LingBot-Touch არქიტექტურის პრეპრინტს Hugging Face-ზე, რომ გაიგო მულტიმოდალური ტოკენების გაერთიანების პრინციპი.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "LingBot-Touch არის ტაქტილური foundation მოდელი, რომელიც აერთიანებს პიეზორეზისტულ, მაგნიტურ და ვიზუოტაქტილურ სენსორებს.",
+        "მოდელი გამოსცემს plug-and-play ტაქტილურ ტოკენებს, რომლებიც ინტეგრირდება diffusion policy და VLA მოდელებში.",
+        "კვლევა გამოქვეყნდა Hugging Face-ზე 2026 წლის 9 ნოემბერს."
+      ],
+      "interpretation": "რობოტიკაში სენსორული მონაცემების უნიფიკაცია ქმნის ახალ სტანდარტს მულტიმოდალური აგენტებისთვის.",
+      "uncertainty": "რეალურ ფიზიკურ აპარატურაზე ტესტირება მოითხოვს ძვირადღირებულ სენსორულ მოწყობილობებს.",
+      "counter_argument": "ტაქტილური სენსორების ჰეტეროგენულობა იმდენად მაღალია, რომ უნივერსალური ტოკენი კარგავს კონკრეტული სენსორის ფიზიკურ ნიუანსებს.",
+      "strategic_assessment": "გაეცანი მულტიმოდალური ტოკენების გაერთიანების პრინციპებს, თუნდაც ფიზიკური რობოტიკით პირდაპირ არ აკეთებდე.",
+      "time_horizon": "long-term",
+      "what_could_change": "ფიზიკური და ციფრული აგენტების სინთეზი უფრო გამართული გახდება მულტიმოდალური სენსორების წყალობით.",
+      "risks": [
+        "მაღალი გამოთვლითი სირთულე მულტიმოდალური ტოკენების დამუშავებისას.",
+        "აპარატურული შეზღუდვები."
+      ],
+      "non_obvious_opportunity": "მსგავსი ჰეტეროგენული ტოკენების მიდგომა შეგიძლია გამოიყენო Telegram-ის და ვებ-მონაცემების ერთდროულად დასამუშავებლად.",
+      "fit_assessment": "საშუალებას გაძლევს თვალი ადევნო მულტიმოდალური აგენტების არქიტექტურის უახლეს ტენდენციებს."
     }
   ],
   "topics": {
@@ -6533,306 +6543,11 @@
     "აგენტების არქიტექტურა და ინფრასტრუქტურა": 1,
     "აგენტის არქიტექტურა და Open Source": 2,
     "აგენტის არქიტექტურა და უსაფრთხოება": 4,
-    "აგენტების ინფრასტრუქტურა და Open Source": 1
+    "აგენტების ინფრასტრუქტურა და Open Source": 1,
+    "აგენტის არქიტექტურა და კონტექსტი": 1,
+    "AI Research / Robot Learning": 1
   },
   "reports": [
-    {
-      "date": "2026-10-26",
-      "summary": "დღევანდელი სიგნალები ფოკუსირდება multi-model agent არქიტექტურაზე, ფორმალურ ვერიფიკაციასა და multi-turn reinforcement learning-ზე. Google Antigravity-მ დაამატა Claude Opus 5.5 და Sonnet 5.5 მრავალდონიანი სუბ-აგენტური workflow-ებისთვის. Anthropic-მა და Theorem-მა აჩვენეს, რომ LLM-ებს RISC-V assembly-ის დონეზე ფორმალური მტკიცებულებების გენერირება შეუძლიათ.",
-      "events": [
-        {
-          "event_id": "evt-antigravity-claude-multi-model",
-          "title": "Google Antigravity: Claude Opus 5.5 / Sonnet 5.5 და მულტი-მოდელური აგენტური პატერნები",
-          "category": "აგენტის არქიტექტურა და ინფრასტრუქტურა",
-          "primary_url": "https://cloud.google.com/blog/products/ai-machine-learning/claude-opus-55-and-claude-sonnet-55-available-in-antigravity",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 10,
-          "actionability": 9,
-          "source_quality": 9,
-          "confidence": 95,
-          "tldr": "Google Antigravity-მ Claude 5.5 მოდელები დაამატა და წარადგინა cross-model verification პატერნი subagent-ების დონეზე.",
-          "what_happened": "Google Cloud-მა Antigravity-ში შეიყვანა Claude Opus 5.5 და Sonnet 5.5, Gemini 4 Argon-თან და Flash 3.8-თან ერთად.",
-          "what_changed": "ერთპირობანი მოდელის გამოძახება შეეცვალა მრავალდონიან სუბ-აგენტურ იერარქიას .agents/agents/*.md ფაილების მეშვეობით.",
-          "why_it_matters": "შეგიძლიათ ააგოთ იაფი და საიმედო აგენტური ციკლები Flash მოდელების ინსტრუმენტებად გამოყენებით და ძლიერი LLM-ით ვალიდაციით.",
-          "key_takeaways": [
-            "Cross-model verification გამორიცხავს მოდელის მიერ საკუთარი შეცდომის იგნორირებას",
-            "Flash subagent-ები ასრულებენ მექანიკურ search/grep ამოცანებს დაბალი latency-ით",
-            ".agents Markdown ფაილები განსაზღვრავენ აგენტის როლებსა და მოდელის დონეებს"
-          ],
-          "technical_architecture": [
-            "Subagent Tier Routing: inherit, flash, pro",
-            "Unified Enterprise Billing and Security Boundary",
-            "Antigravity CLI and VS Code / JetBrains Extensions"
-          ],
-          "technical_details": [
-            "Antigravity CLI model check syntax",
-            ".agents/agents/*.md subagent definition format",
-            "LLM-as-a-Judge loop orchestration"
-          ],
-          "potential_impact": "შემცირებული ტოკენების ხარჯი და მაღალი საიმედოობა მრავალფაილიანი კოდის რეფაქტორინგისას.",
-          "action_type": "BUILD",
-          "action": "ააგეთ ორ-მოდელიანი Python loop, სადაც იაფი მოდელი წერს ფუნქციას და Gemini/Claude ასრულებს Code Review-ს.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "Claude Opus 5.5 და Sonnet 5.5 ინტეგრირდა Google Antigravity 2.0-სა და IDE extension-ებში",
-            "სუბ-აგენტების კონფიგურაცია ხდება .agents/agents/*.md ფაილებით model tier-ების მითითებით",
-            "Cross-model verification პატერნი იყენებს სხვადასხვა მოდელ ოჯახებს კოდინგისა და ვალიდაციისთვის"
-          ],
-          "interpretation": "მრავალ-მოდელური არქიტექტურა ამცირებს ერთადერთი LLM-ის blind spot-ებს და საგრძნობლად წევს დაბლა ინფერენსის ხარჯს Flash subagent-ების გამოყენებით.",
-          "uncertainty": "არ არის დეტალურად მითითებული cross-provider API latency-ის გავლენა იტერაციულ ციკლებზე.",
-          "counter_argument": "სხვადასხვა მოდელის ოჯახების შეერთებამ შესაძლოა გაზარდოს prompt engineering-ის სირთულე და API latency.",
-          "strategic_assessment": "გამოიყენეთ იაფი მოდელები ინსტრუმენტების გამოძახებისთვის, ხოლო ძვირი მოდელები საბოლოო LLM-as-a-judge შემოწმებისთვის ხარჯების დასაზოგად.",
-          "time_horizon": "mid-term",
-          "what_could_change": "მულტი-მოდელური სუბ-აგენტური არქიტექტურა გახდება სტანდარტი enterprise IDE-ებსა და ავტონომიურ კოდინგ ინსტრუმენტებში.",
-          "risks": [
-            "API ხარჯების ზრდა რთული ციკლებისას",
-            "კონტექსტის დაკარგვა სუბ-აგენტებს შორის"
-          ],
-          "non_obvious_opportunity": "შექმენით ღია მარტივი CLI CLI-based judge, რომელიც local vLLM-ს და OpenAI API-ს ადარებს ერთმანეთს.",
-          "fit_assessment": "იდეალურად ერგება უფასო/დაბალბიუჯეტიან დეველოპმენტს, რადგან Flash subagent-ები ტოკენების ხარჯს 60-80%-ით ამცირებენ."
-        },
-        {
-          "event_id": "evt-anthropic-formal-verification",
-          "title": "Anthropic & Theorem: ფორმალური პროგრამული ვერიფიკაცია LLM-ების მეშვეობით",
-          "category": "AI Research / Agent Reliability",
-          "primary_url": "https://www.anthropic.com/research/formal-verification",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 9,
-          "actionability": 7,
-          "source_quality": 10,
-          "confidence": 92,
-          "tldr": "Anthropic-მა და Theorem-მა აჩვენეს, რომ Claude-ს შეუძლია მასშტაბური მათემატიკური ვერიფიკაციის მტკიცებულებების გენერირება RISC-V კოდისთვის.",
-          "what_happened": "Claude-ის მეშვეობით შეიქმნა მათემატიკური მტკიცებულებები 100-ზე მეტ ღია ბიბლიოთეკაში assembly დონეზე.",
-          "what_changed": "ათეულობით წლის ადამიანური ექსპერტიზის საჭიროება ჩანაცვლდა LLM-ზე დაფუძნებული ავტომატური proof generation-ით.",
-          "why_it_matters": "კოდის საიმედოობა გადადის უბრალო ტესტებიდან მათემატიკურად დამტკიცებულ უსაფრთხოებაზე.",
-          "key_takeaways": [
-            "LLM-ებს შეუძლიათ იპოვონ ბაგები, რომლებიც ტრილიონობით ტესტის გაშვებას ეპარება",
-            "ფორმალური ვერიფიკაცია ხდება ხელმისაწვდომი სტანდარტული production კოდისთვის",
-            "მტკიცებულების გენერაცია მოითხოვს მკაცრ ინვარიანტების დეფინიციას"
-          ],
-          "technical_architecture": [
-            "RISC-V Assembly Level Verification",
-            "Automated Proof Assistant Integration",
-            "Theorem Prover Loop with Claude"
-          ],
-          "technical_details": [
-            "Assembly code to mathematical model translation",
-            "Invariant extraction and checking",
-            "Bug disclosure in open-source binaries"
-          ],
-          "potential_impact": "ნულოვანი ბაგების მქონე კრიტიკული სისტემების ავტონომიური დეველოპმენტი.",
-          "action_type": "LEARN",
-          "action": "შეისწავლეთ კოდის ინვარიანტები და Pydantic-ით გაწერეთ თქვენი აგენტის Tool-ების არგუმენტების მკაცრი შეზღუდვები.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "Claude-მა შექმნა ფორმალური უსაფრთხოების მტკიცებულებები RISC-V assembly დონეზე 100+ ღია ბიბლიოთეკისთვის",
-            "პროცესის დროს Claude-მა აღმოაჩინა კრიტიკული ბაგები, რომლებიც წლების განმავლობაში ტესტებს გამოეპარათ",
-            "ფორმალური ვერიფიკაცია traditionally მოითხოვდა ათწლეულების ექსპერტულ შრომას (მაგ. seL4 kernel-ის 20 კაც-წელი)"
-          ],
-          "interpretation": "LLM-ებს შეუძლიათ რთული მათემატიკური მტკიცებულებების გენერირება, რაც პროგრამული უზრუნველყოფის უსაფრთხოების გარანტიას იძლევა.",
-          "uncertainty": "მაღალი გამოთვლითი ხარჯი და specialized proof assistant-ების (Coq, Lean) ინტეგრაციის სირთულე.",
-          "counter_argument": "ფორმალური მტკიცებულებები ჯერ კიდევ მოითხოვენ ადამიანის მიერ სპეციფიკაციების ზუსტად გაწერას.",
-          "strategic_assessment": "ისწავლეთ პროგრამული უზრუნველყოფის ინვარიანტების გაწერა; აგენტები ააგებენ ფორმალურ მტკიცებულებებს ამ ინვარიანტებზე დაყრდნობით.",
-          "time_horizon": "long-term",
-          "what_could_change": "ტრადიციული unit-ტესტირება ნაწილობრივ ჩანაცვლდება მათემატიკურად დამტკიცებული კოდის გენერაციით.",
-          "risks": [
-            "არასწორი ლოგიკური სპეციფიკაციები",
-            "მაღალი ტოკენური ხარჯი მტკიცების ციკლებზე"
-          ],
-          "non_obvious_opportunity": "აწყობა მარტივი Python ინსტრუმენტის, რომელიც Pydantic schema-დან ავტომატურად აგენერირებს ლოგიკურ ინვარიანტებს LLM-ისთვის.",
-          "fit_assessment": "ფუნდამენტური საინჟინრო უნარი 3-10 წლის პერსპექტივაში, რომელიც განასხვავებს AI ინჟინერს უბრალო prompt wrapper დეველოპერისგან."
-        },
-        {
-          "event_id": "evt-rescale-triage-agent-strands",
-          "title": "Rescale AI Triage Agent: ავტონომიური დებაგინგი Strands Agents და AI-DLC-ით",
-          "category": "Real Business Opportunity & Agent Architecture",
-          "primary_url": "https://aws.amazon.com/blogs/machine-learning/how-rescale-built-an-ai-triage-agent-with-strands-agents-and-ai-dlc",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 9,
-          "source_quality": 10,
-          "confidence": 88,
-          "tldr": "Rescale-მა გამოაქვეყნა პრაქტიკული ქეისი, თუ როგორ ააგო 5 დღეში CI/CD ტესტების ავტომატური Triage AI აგენტი AWS-ზე.",
-          "what_happened": "Rescale-მა შექმნა აგენტი, რომელიც ტესტების ჩაშლისას აგროვებს ლოგებს, პოულობს Root Cause-ს და გზავნის რეპორტს.",
-          "what_changed": "ინჟინრების მიერ ლოგების ხელით ქექვა ჩანაცვლდა აგენტის ავტომატური დიაგნოსტიკითა და თიქეთინგით.",
-          "why_it_matters": "ეს არის რეალური ბიზნეს აგენტის მაგალითი, რომლის აწყობაც უფასო ინსტრუმენტებით (GitHub Actions, Free LLM) შეგიძლიათ.",
-          "key_takeaways": [
-            "AI-DLC იძლევა მკაფიო ჩარჩოს იდეიდან Production-მდე მიყვანისთვის",
-            "ლოგების და კონტექსტის წინასწარი შეგროვება ზრდის აგენტის სიზუსტეს",
-            "ადამიანი რჩება საბოლოო გადაწყვეტილების მიმღებად (Human-in-the-loop)"
-          ],
-          "technical_architecture": [
-            "Strands Agents Framework Integration",
-            "AI-DLC Lifecycle Management on AWS",
-            "Automated Log and Multi-Repo Evidence Collector"
-          ],
-          "technical_details": [
-            "Test failure alert classification pipeline",
-            "Root cause log parsing logic",
-            "Team routing prompt pattern"
-          ],
-          "potential_impact": "დეველოპერული გუნდების ონ-ქოლ დროის შემცირება 50%-ზე მეტით.",
-          "action_type": "BUILD",
-          "action": "დაწერეთ GitHub Action, რომელიც ჩაშლილი run-ის ლოგს გაუგზავნის Gemini Flash-ს და შეცდომის რეზიუმეს მოგწერთ Telegram-ში.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Business Opportunity",
-            "Real Technical Skill"
-          ],
-          "verified_facts": [
-            "Rescale-მა შექმნა AI Triage აგენტი 5 დღეში staging-ში შესაყვანად და რამდენიმე კვირაში production-ისთვის",
-            "აგენტი ავტომატურად ახდენს ღამის ტესტების ჩაშლის კლასიფიკაციას, ლოგების შეგროვებას და შესაბამის გუნდზე მარშრუტიზაციას",
-            "სისტემა იყენებს AI-DLC (AI-Driven Development Lifecycle) ფრეიმვორკს AWS-ზე"
-          ],
-          "interpretation": "ინჟინრები აღარ უნდა ხარჯავდნენ დროს ლოგების მექანიკურ სორტირებაზე; აგენტები ამუშავებენ ინციდენტებს production-ში.",
-          "uncertainty": "აგენტის მიერ შეცდომით მარშრუტიზებული თიქეთების წილი მოითხოვს ადამიანის პერიოდულ ჩარევას.",
-          "counter_argument": "თუ ტესტების ლოგები არ არის სტანდარტიზებული, აგენტის სიზუსტე მკვეთრად ეცემა.",
-          "strategic_assessment": "შექმენით ანალოგიური მცირე triage აგენტი GitHub Actions-ის ჩაშლილი run-ების ლოგების ანალიზისთვის Telegram-ში.",
-          "time_horizon": "short-term",
-          "what_could_change": "On-call ინჟინრების ყოველდღიური რუტინა სრულად ავტომატიზირდება AI triage აგენტების მიერ.",
-          "risks": [
-            "არასწორი კლასიფიკაცია",
-            "ლოგების გადამეტებული ტოკენიზაციის ხარჯი"
-          ],
-          "non_obvious_opportunity": "სერვისის შეთავაზება მცირე ქართულ დეველოპერულ კომპანიებს: GitHub CI/CD ტესტების ავტომატური Triage ბოტი Telegram-ში.",
-          "fit_assessment": "იდეალური პორტფოლიო პროექტია 16 წლის დეველოპერისთვის: GitHub Actions + LLM API + Telegram Bot."
-        },
-        {
-          "event_id": "evt-sagemaker-mtrl-agentcore",
-          "title": "AWS SageMaker AI: Multi-Turn Reinforcement Learning (MTRL) აგენტური ამოცანებისთვის",
-          "category": "AI Research / Agent Architecture",
-          "primary_url": "https://aws.amazon.com/blogs/machine-learning/multi-turn-reinforcement-learning-on-amazon-sagemaker-ai-a-hands-on-guide",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 10,
-          "confidence": 90,
-          "tldr": "AWS-მა წარადგინა მრავალბიჯიანი RL (MTRL) მეთოდოლოგია აგენტების დასასწავლად საბოლოო შედეგის Reward-ზე დაყრდნობით.",
-          "what_happened": "SageMaker AI-მ გამოაქვეყნა არქიტექტურა, სადაც აგენტი ასრულებს მრავალ ნაბიჯს AgentCore-ში და სწავლობს მთლიანი ეპიზოდის ქულით.",
-          "what_changed": "SFT-ის მიერ ცალკეული ტოკენების სწავლებიდან გადავედით აგენტის მთლიანი სესიის ეფექტურობის ოპტიმიზაციაზე.",
-          "why_it_matters": "პატარა იაფი მოდელების ადაპტირება შესაძლებელი ხდება რთულ მრავალბიჯიან ბიზნეს პროცესებზე.",
-          "key_takeaways": [
-            "MTRL აფასებს აგენტის მიერ მიღებული გადაწყვეტილებების ჯაჭვს ეპიზოდის ბოლოს",
-            "gpt-oss-20b-ის წარმატება გაიზარდა 61%-დან 84%-მდე ნაგულისხმევ reasoning effort-ზე",
-            "Reward design არის კრიტიკული ფაქტორი აგენტის არასწორი ქცევის თავიდან ასაცილებლად"
-          ],
-          "technical_architecture": [
-            "SageMaker Training Job Policy Model Engine",
-            "Amazon Bedrock AgentCore Runtime Host",
-            "AWS Lambda Forwarder and MLflow Monitoring"
-          ],
-          "technical_details": [
-            "Episode rollout sampling pattern",
-            "Final episode reward function calculation",
-            "Policy gradient update over multi-turn trajectory"
-          ],
-          "potential_impact": "სპეციალიზებული დაბალხარჯიანი აგენტების შექმნა enterprise სამუშაო ნაკადებისთვის.",
-          "action_type": "LEARN",
-          "action": "წაიკითხეთ MTRL-ის არქიტექტურა და დაწერეთ მარტივი Python ეპიზოდური Reward ფუნქცია თქვენი აგენტისთვის.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "MTRL საშუალებას იძლევა მოდელი გაიწვრთნოს არა ცალკეულ პრომპტზე, არამედ ნაბიჯების მთლიან სერიაზე და საბოლოო Reward-ზე",
-            "gpt-oss-20b მოდელის ეფექტურობა გაიზარდა 15%-დან 69%-მდე დაბალი reasoning effort-ის დროს MTRL fine-tuning-ით",
-            "ტრენინგი იყენებს Amazon Bedrock AgentCore-ს და Lambda forwarder-ს აგენტსა და პოლიტიკის მოდელს შორის"
-          ],
-          "interpretation": "Single-turn SFT საკმარისი არ არის მრავალბიჯიანი აგენტებისთვის; მომავალი ეკუთვნის ეპიზოდურ RL-ს, სადაც აგენტი გარემოსთან ურთიერთქმედებით სწავლობს.",
-          "uncertainty": "MTRL მოითხოვს მკაფიოდ განსაზღვრულ Reward ფუნქციას, რაც რთულია ბუნდოვანი ბიზნეს ამოცანებისთვის.",
-          "counter_argument": "მცირე პროექტებისთვის MTRL ტრენინგი ხშირად ძვირია და სჯობს მზა frontier model-ების სწორი prompt engineering.",
-          "strategic_assessment": "გაიაზრეთ ეპიზოდური Reward-ის კონცეფცია; ეს დაგეხმარებათ აგენტური სესიების სწორ Evaluation-ში.",
-          "time_horizon": "mid-term",
-          "what_could_change": "პატარა open-weight მოდელები MTRL-ის შემდეგ აჯობებენ დიდ მოდელებს სპეციფიკურ ბიზნეს-პროცესებში.",
-          "risks": [
-            "არასწორი reward design-ის გამო მოდელის არასასურველი ქცევა",
-            "მაღალი compute ხარჯი"
-          ],
-          "non_obvious_opportunity": "შექმენით ლოკალური სტიმულირების (reward) ფუნქცია Telegram ბოტის აგენტისთვის, რომელიც მომხმარებლის წარმატებულ ქმედებას ზომავს.",
-          "fit_assessment": "აძლევს დეველოპერს ცოდნას, თუ როგორ უნდა შეფასდეს და გაუმჯობესდეს აგენტი მრავალბიჯიანი სესიების დროს."
-        },
-        {
-          "event_id": "evt-openai-agent-runtime-infrastructure",
-          "title": "OpenAI Agent Runtime: პერსისტენტული მდგომარეობა და ასინქრონული ორკესტრაცია",
-          "category": "აგენტის არქიტექტურა და ინფრასტრუქტურა",
-          "primary_url": "https://openai.com/careers/software-engineer-product-infrastructure-agent-runtime-san-francisco",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 10,
-          "confidence": 85,
-          "tldr": "OpenAI-ს Agent Runtime გუნდის მონაცემები ააშკარავებს პერსისტენტული მეხსიერებისა და ასინქრონული ორკესტრაციის აუცილებლობას.",
-          "what_happened": "OpenAI ქმნის Runtime ინფრასტრუქტურას, რომელიც აგენტებს საშუალებას აძლევს შეინარჩუნონ state ხანგრძლივი ამოცანებისას.",
-          "what_changed": "Stateless HTTP LLM მოთხოვნებიდან გადავედით მუდმივ პერსისტენტულ სესიებსა და ასინქრონულ execution-ზე.",
-          "why_it_matters": "ნამდვილი ბიზნეს აგენტები მოითხოვენ პროგრესის შენახვას და შეცდომის შემდეგ მუშაობის გაგრძელებას (Failure Recovery).",
-          "key_takeaways": [
-            "Persistent State აუცილებელია ხანგრძლივი აგენტური პროცესებისთვის",
-            "Asynchronous Execution იცავს აგენტს API Timeout შეცდომებისგან",
-            "Progress Reporting აძლევს მომხმარებელს ხილვადობას აგენტის ნაბიჯებზე"
-          ],
-          "technical_architecture": [
-            "Persistent Agent State Layer",
-            "Asynchronous Execution Engine",
-            "Tool Execution Environment Sandbox"
-          ],
-          "technical_details": [
-            "State checkpoints across agent steps",
-            "Asynchronous event loop handling",
-            "Failure recovery and retry mechanisms"
-          ],
-          "potential_impact": "საიმედო ავტონომიური აგენტები, რომლებსაც შეუძლიათ დღეების განმავლობაში მუშაობა.",
-          "action_type": "LEARN",
-          "action": "შეისწავლეთ როგორ შეინახოთ აგენტის ნაბიჯები (Checkpoints) SQLite მონაცემთა ბაზაში ყოველი Tool Execution-ის შემდეგ.",
-          "evidence": [],
-          "factuality_level": "single_source",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "OpenAI აშენებს სპეციალიზებულ Agent Runtime ინფრასტრუქტურას ხანგრძლივად მომუშავე (long-running) აგენტებისთვის",
-            "სისტემის მთავარი პრიმიტივებია: Persistent State, Asynchronous Execution, Orchestration და Progress Reporting",
-            "ინფრასტრუქტურა უზრუნველყოფს უსაფრთხო გარემოს ინსტრუმენტების გამოძახებისა და შეცდომებისგან აღდგენისთვის (Failure Recovery)"
-          ],
-          "interpretation": "სტანდარტული Stateless API გამოძახებები არ არის საკმარისი; აგენტებს სჭირდებათ ოპერაციული სისტემის მსგავსი Runtime გარემო.",
-          "uncertainty": "კონკრეტული ღია კოდის ბაზა ჯერ არ არის გამოქვეყნებული OpenAI-ს მიერ.",
-          "counter_argument": "სრული Runtime-ის აწყობა ხშირად ზედმეტია მარტივი აგენტებისთვის, სადაც SQLite და LangGraph/LiteLLM საკმარისია.",
-          "strategic_assessment": "ფოკუსირდით თქვენს აგენტებში Asynchronous State Persistence-ზე SQLite/PostgreSQL ბაზების გამოყენებით.",
-          "time_horizon": "mid-term",
-          "what_could_change": "LLM API-ები გარდაიქმნებიან Stateful Agent Execution Platform-ებად, სადაც აგენტის პროგრესი ინახება ღრუბელში.",
-          "risks": [
-            "State synchronization შეცდომები",
-            "ხანგრძლივი პროცესების მეხსიერების გაჟონვა"
-          ],
-          "non_obvious_opportunity": "შექმენით მცირე open-source Python ბიბლიოთეკა Telegram აგენტების state-ის ასინქრონული შენახვისთვის SQLite-ში.",
-          "fit_assessment": "პირდაპირ ეხება მომხმარებლის მიზანს: Agent State, Memory და Asynchronous Loop-ების შესწავლას."
-        }
-      ],
-      "trends": [
-        "გადასვლა Single-Model-იდან Multi-Model Subagent იერარქიაზე ინფერენსის ხარჯების 80%-ით დასაზოგად",
-        "LLM-ზე დაფუძნებული ფორმალური ვერიფიკაცია კოდის მათემატიკური უსაფრთხოების უზრუნველსაყოფად",
-        "Multi-Turn Reinforcement Learning (MTRL) აგენტების დასასწავლად მთლიანი ეპიზოდის Reward-ზე დაყრდნობით",
-        "Stateful Agent Runtimes: ასინქრონული execution და persistent state ინფრასტრუქტურის სტანდარტიზაცია"
-      ]
-    },
     {
       "date": "2026-10-27",
       "summary": "დღევანდელი გამოშვება აერთიანებს მნიშვნელოვან ტექნიკურ სიგნალებს: გადაწყვეტილებაზე დაფუძნებულ Retriever-Free Retrieval არქიტექტურას, Google Cloud-ის Knowledge Catalog-ის self-learning კონტექსტს და LLM ავტო-კვლევის Auto-Research Arena ბენჩმარკს. შენთვის მთავარი ამოცანაა აგენტების RAG და კონტექსტის მართვის ოპტიმიზაცია.",
@@ -10155,14 +9870,138 @@
         "AST და SQLite გრაფების გამოყენება კოდის პერსისტენტული მეხსიერებისთვის vector DB-ების ნაცვლად",
         "Code Generation as Tool Execution — აგენტების მიერ ლოკალური კოდის წერა Latency-ს შესამცირებლად"
       ]
+    },
+    {
+      "date": "2026-11-10",
+      "summary": "AWS გამოაქვეყნა production აგენტების კონტექსტის ინჟინერიის პრაქტიკული სახელმძღვანელო, ხოლო Hugging Face-ზე გამოჩნდა LingBot-Touch — ტაქტილური foundation მოდელი მულტიმოდალური აგენტებისთვის. ეს სიახლეები პირდაპირ ეხმარება შენს აგენტურ არქიტექტურას და ტოკენების ოპტიმიზაციას.",
+      "events": [
+        {
+          "event_id": "evt-aws-four-layers-context-engineering",
+          "title": "Four layers of context engineering for production AI agents: Deep Insight reference",
+          "category": "აგენტის არქიტექტურა და კონტექსტი",
+          "primary_url": "https://aws.amazon.com/blogs/machine-learning/four-layers-of-context-engineering-for-production-ai-agents-how-deep-insight-applies-them-in-working-code",
+          "supporting_urls": [
+            "https://aws.amazon.com/marketplace/build-learn/ai-agent-learning-series/introduction-to-ai-agents"
+          ],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 10,
+          "confidence": 98,
+          "tldr": "AWS-ის ახალი სახელმძღვანელო გვიჩვენებს, როგორ შევამციროთ აგენტის ტოკენების ხარჯი 95 პროცენტით ფაილური სისტემის გარე გამოყენებით.",
+          "what_happened": "AWS-მა წარმოადგინა Deep Insight არქიტექტურა, რომელიც იყენებს კონტექსტის ინჟინერიის ოთხ ფენას.",
+          "what_changed": "გაჩნდა სტანდარტული მიდგომა, სადაც კონტექსტი გროვდება დისკზე და არა მოდელის ოპერატიულ მეხსიერებაში.",
+          "why_it_matters": "შეგიძლია შეამცირო API გამოძახების ხარჯები და აგენტს მისცე რთული ამოცანების შესრულების უნარი.",
+          "key_takeaways": [
+            "Write-and-execute ტექნიკა ამცირებს ტოკენების დამატებას 95 პროცენტით.",
+            "Skills-on-demand ჩატვირთვა ამცირებს სისტემურ პრომპტს 97 პროცენტით.",
+            "კონტექსტის იზოლაცია არქიტექტურულ დონეზე ხსნის მეხსიერების ბოთლნეკს."
+          ],
+          "technical_architecture": [
+            "Context isolation at architecture level",
+            "Externalization to filesystem",
+            "Independent verification agents"
+          ],
+          "technical_details": [
+            "Strands Agents SDK და Amazon Bedrock AgentCore ინტეგრაცია",
+            "200K context window ოპტიმიზაცია ფაილური შენახვით",
+            "დინამიური სკრიპტების ეკზეკუცია უსაფრთხო გარემოში"
+          ],
+          "potential_impact": "მნიშვნელოვნად ამცირებს API ხარჯებს საწარმოო დონის მრავალაგენტურ სისტემებში.",
+          "action_type": "BUILD",
+          "action": "დაწერე Python სკრიპტი, რომელიც გრძელი ტექსტური ისტორიის ნაცვლად აგენტის მეხსიერებას ინახავს ლოკალურ SQLite ბაზაში.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "AWS გამოაქვეყნა Deep Insight პროექტის მრავალაგენტური მონაცემთა ანალიზის კოდი.",
+            "Write-and-execute ტექნიკა კონტექსტის ტოკენებს ამცირებს 95 პროცენტით.",
+            "Skills-on-demand ჩატვირთვა სისტემურ პრომპტს ამცირებს 97 პროცენტით."
+          ],
+          "interpretation": "კონტექსტის მართვა ხდება აგენტების ძირითადი ბოთლნეკი და სწორედ ფაილური სისტემის გამოყენება წყვეტს ხარჯების პრობლემას.",
+          "uncertainty": "მიდგომა ოპტიმიზებულია Anthropic Claude Sonnet 4.5 მოდელზე და შესაძლოა განსხვავებულად მუშაობდეს სხვა მცირე მოდელებთან.",
+          "counter_argument": "ფაილურ სისტემაში მონაცემების შენახვა ზრდის I/O შეყოვნებას (latency), რაც ანელებს ინტერაქტიულ აგენტურ ලൂპებს.",
+          "strategic_assessment": "დაინერგე write-and-execute პატერნი შენს აგენტურ პროექტებში ტოკენების ხარჯების მინიმუმამდე დასაყვანად.",
+          "time_horizon": "mid-term",
+          "what_could_change": "API ტოკენების ეკონომია მცირე ბიუჯეტის მქონე დეველოპერებს მისცემს საწარმოო მასშტაბის აგენტების ტესტირების საშუალებას.",
+          "risks": [
+            "ფაილურ სისტემაში მდგომარეობის მართვა ართულებს ასინქრონულ შესრულებას.",
+            "უსაფრთხოების რისკები დინამიკური კოდის შესრულებისას."
+          ],
+          "non_obvious_opportunity": "შეგიძლია შეიმუშაო ღია ბიბლიოთეკა, რომელიც ავტომატიზებულად ასუფთავებს LLM კონტექსტს ფაილების მეშვეობით.",
+          "fit_assessment": "იდეალურად ერგება შენს ამოცანას, ააგო საწარმოო დონის აგენტები მინიმალური ფინანსური რესურსით."
+        },
+        {
+          "event_id": "evt-lingbot-touch-tactile-foundation",
+          "title": "LingBot-Touch: Learning Heterogeneous Tactile Representation for General Dexterous Manipulation",
+          "category": "AI Research / Robot Learning",
+          "primary_url": "https://huggingface.co/papers/2611.12806",
+          "supporting_urls": [
+            "https://huggingface.co/papers/2611.12762"
+          ],
+          "importance": 8,
+          "relevance": 7,
+          "actionability": 7,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "LingBot-Touch აერთიანებს სხვადასხვა ფიზიკური სენსორის მონაცემებს ერთიან ტაქტილურ ტოკენებში მულტიმოდალური აგენტებისთვის.",
+          "what_happened": "მკვლევრებმა წარმოადგინეს LingBot-Touch, რომელიც ხსნის სენსორ-სპეციფიკურ შეზღუდვებს რობოტიკაში.",
+          "what_changed": "განსხვავებული ფიზიკური სენსორების მონაცემები ახლა მარტივად ინტეგრირდება სტანდარტულ VLA მოდელებში.",
+          "why_it_matters": "გვიჩვენებს, როგორ უნდა მოხდეს ჰეტეროგენული მონაცემების სტრუქტურირება აგენტურ სისტემებში.",
+          "key_takeaways": [
+            "ქმნის უნივერსალურ წარმოდგენას სხვადასხვა ტიპის სენსორებისთვის.",
+            "Plug-and-play ტოკენები თავსებადია diffusion policy და VLA მოდელებთან."
+          ],
+          "technical_architecture": [
+            "Tactile foundation model representation",
+            "Cross-sensor data fusion layer"
+          ],
+          "technical_details": [
+            "პიეზორეზისტული, მაგნიტური და ვიზუოტაქტილური სენსორების ინტეგრაცია",
+            "Diffusion policy და VLA მოდელების ოპტიმიზაცია"
+          ],
+          "potential_impact": "აჩქარებს კონტაქტზე დაფუძნებული რობოტული მანიპულაციის განვითარებას.",
+          "action_type": "TRACK",
+          "action": "გაეცანი LingBot-Touch არქიტექტურის პრეპრინტს Hugging Face-ზე, რომ გაიგო მულტიმოდალური ტოკენების გაერთიანების პრინციპი.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "LingBot-Touch არის ტაქტილური foundation მოდელი, რომელიც აერთიანებს პიეზორეზისტულ, მაგნიტურ და ვიზუოტაქტილურ სენსორებს.",
+            "მოდელი გამოსცემს plug-and-play ტაქტილურ ტოკენებს, რომლებიც ინტეგრირდება diffusion policy და VLA მოდელებში.",
+            "კვლევა გამოქვეყნდა Hugging Face-ზე 2026 წლის 9 ნოემბერს."
+          ],
+          "interpretation": "რობოტიკაში სენსორული მონაცემების უნიფიკაცია ქმნის ახალ სტანდარტს მულტიმოდალური აგენტებისთვის.",
+          "uncertainty": "რეალურ ფიზიკურ აპარატურაზე ტესტირება მოითხოვს ძვირადღირებულ სენსორულ მოწყობილობებს.",
+          "counter_argument": "ტაქტილური სენსორების ჰეტეროგენულობა იმდენად მაღალია, რომ უნივერსალური ტოკენი კარგავს კონკრეტული სენსორის ფიზიკურ ნიუანსებს.",
+          "strategic_assessment": "გაეცანი მულტიმოდალური ტოკენების გაერთიანების პრინციპებს, თუნდაც ფიზიკური რობოტიკით პირდაპირ არ აკეთებდე.",
+          "time_horizon": "long-term",
+          "what_could_change": "ფიზიკური და ციფრული აგენტების სინთეზი უფრო გამართული გახდება მულტიმოდალური სენსორების წყალობით.",
+          "risks": [
+            "მაღალი გამოთვლითი სირთულე მულტიმოდალური ტოკენების დამუშავებისას.",
+            "აპარატურული შეზღუდვები."
+          ],
+          "non_obvious_opportunity": "მსგავსი ჰეტეროგენული ტოკენების მიდგომა შეგიძლია გამოიყენო Telegram-ის და ვებ-მონაცემების ერთდროულად დასამუშავებლად.",
+          "fit_assessment": "საშუალებას გაძლევს თვალი ადევნო მულტიმოდალური აგენტების არქიტექტურის უახლეს ტენდენციებს."
+        }
+      ],
+      "trends": [
+        "კონტექსტის ინჟინერია და ფაილური სისტემის გამოყენება ტოკენების ხარჯების შესამცირებლად",
+        "მულტიმოდალური არქიტექტურები ჰეტეროგენული მონაცემების ინტეგრაციისთვის"
+      ]
     }
   ],
   "learning_queue": [
-    "SQLite-vss და Tree-sitter integration Python-ში (Codebase Memory MCP პატერნი)",
-    "MCP OAuth 2.0 flow-ის იმპლემენტაცია FastMCP / Python-ის ბიბლიოთეკებით",
-    "FastAPI Middleware-ის წერა API ტრაფიკისა და Caching Ladder-ის დასანერგად"
+    "ფაილურ სისტემაზე დაფუძნებული კონტექსტის მართვა Python-ში",
+    "SQLite-ის ეფექტური გამოყენება აგენტური მეხსიერების მდგომარეობის შესანახად"
   ],
-  "last_run": "2026-11-09T20:25:34.585265+00:00",
+  "last_run": "2026-11-10T17:34:25.103058+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -10294,12 +10133,13 @@
     "arxiv:2611.08483",
     "arxiv:2611.08452",
     "arxiv:2611.08453",
-    "arxiv:2611.08478"
+    "arxiv:2611.08478",
+    "arxiv:2611.12806"
   ],
   "last_report_files": {
-    "markdown": "data/reports/2026-11-09/report.md",
-    "json": "data/reports/2026-11-09/report.json",
-    "newsletter": "data/reports/2026-11-09/newsletter.md",
-    "social": "data/reports/2026-11-09/social_posts.txt"
+    "markdown": "data/reports/2026-11-10/report.md",
+    "json": "data/reports/2026-11-10/report.json",
+    "newsletter": "data/reports/2026-11-10/newsletter.md",
+    "social": "data/reports/2026-11-10/social_posts.txt"
   }
 }
