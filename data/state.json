@@ -355,7 +355,14 @@
     "https://aws.amazon.com/blogs/machine-learning/four-layers-of-context-engineering-for-production-ai-agents-how-deep-insight-applies-them-in-working-code",
     "https://aws.amazon.com/marketplace/build-learn/ai-agent-learning-series/introduction-to-ai-agents",
     "https://huggingface.co/papers/2611.12806",
-    "https://huggingface.co/papers/2611.12762"
+    "https://huggingface.co/papers/2611.12762",
+    "https://huggingface.co/papers/2611.14320",
+    "https://aws.amazon.com/blogs/machine-learning/uaef-a-framework-agnostic-system-for-closed-loop-evaluation-of-ai-agents",
+    "https://arxiv.org/abs/2611.14493",
+    "https://openai.com/index/coderabbit-codex-daybreak",
+    "https://aws.amazon.com/blogs/containers/aws-nitro-sandboxes-hardware-enforced-workload-isolation-on-amazon-eks",
+    "https://cloud.google.com/blog/topics/developers-practitioners/the-open-ai-native-stack-on-kubernetes-from-open-models-to-distributed-inference-and-agents",
+    "https://deepmind.google/blog/gemini-4-carbon-is-now-available"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -645,303 +652,14 @@
     "evt-anthropic-project-eve-multiagent-code-exec",
     "evt-weight-space-programming-frontier-models",
     "evt-aws-four-layers-context-engineering",
-    "evt-lingbot-touch-tactile-foundation"
+    "evt-lingbot-touch-tactile-foundation",
+    "evt-wikitrace-evidence-linked-memory",
+    "evt-aws-uaef-agent-evaluation",
+    "evt-coderabbit-scaling-agentic-dev",
+    "evt-aws-nitro-sandboxes-agent-isolation",
+    "evt-gemini-4-carbon-antigravity"
   ],
   "events": [
-    {
-      "event_id": "evt-evaluating-ai-agents-google",
-      "title": "AI აგენტების შეფასება Vibe Check-ის გარეშე: Google-ის Evals Playbook",
-      "category": "AI Evaluation & Agent Reliability",
-      "primary_url": "https://developers.googleblog.com/evaluating-ai-agents-moving-past-the-vibe-check",
-      "supporting_urls": [
-        "https://aws.amazon.com/blogs/machine-learning/building-trust-in-ai-agents-a-production-ready-evaluation-framework-with-amazon-bedrock-agentcore"
-      ],
-      "importance": 9,
-      "relevance": 10,
-      "actionability": 10,
-      "source_quality": 10,
-      "confidence": 95,
-      "tldr": "Google-მა და AWS-მა გამოაქვეყნეს გზამკვლევი აგენტების შეფასებაზე: ფარული ჩავარდნების აღმოჩენა მხოლოდ CUJ და ავტომატური Evals-ით არის შესაძლებელი.",
-      "what_happened": "Google Developers-მა გამოაქვეყნა AI Agent Clinic-ის პლეიბუქი agent-eval ინსტრუმენტარიუმზე და LangGraph ევალუაციაზე.",
-      "what_changed": "თვალით შემოწმებიდან (vibe check) გადავედით Programmatic Assertions და Tracing არქიტექტურაზე.",
-      "why_it_matters": "დაზოგავ ათასობით ტოკენს და თავიდან აიცილებ აგენტის მიერ მომხმარებლისთვის არასწორი მონაცემების მიწოდებას.",
-      "key_takeaways": [
-        "CUJ (Critical User Journeys) განსაზღვრავს წარმატების კრიტერიუმებს.",
-        "ჩუმად გაპარული შეცდომები ყველაზე მეტად აზიანებს მომხმარებლის ნდობას.",
-        "agent-eval toolkit საშუალებას იძლევა ავტომატურად შემოწმდეს Step-by-Step ტრაექტორია."
-      ],
-      "technical_architecture": [
-        "Framework: Open-source agent-eval toolkit",
-        "Methodology: Critical User Journeys (CUJ)",
-        "Orchestration Integration: LangGraph Tracing"
-      ],
-      "technical_details": [
-        "Eval Loop Time: 60 minutes setup",
-        "Failure Type: Silent retries and tool loop leakage",
-        "Verification: Programmatic and LLM-as-a-judge"
-      ],
-      "potential_impact": "ზრდის აგენტების საიმედოობას რეალურ ბიზნეს ამოცანებში და ამცირებს Cloud ხარჯებს.",
-      "action_type": "APPLY",
-      "action": "დაწერე 3 Python pytest ფუნქცია შენი ბოლო Telegram ბოტის აგენტის ინსტრუმენტების (Tools) გამოსაძახებლად.",
-      "evidence": [],
-      "factuality_level": "verified",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value",
-        "AI Evaluation"
-      ],
-      "verified_facts": [
-        "ვიზუალური \"vibe check\" ვერ აფიქსირებს აგენტის ფარულ ციკლებს, ტოკენების გაფლანგვას და არასწორ Tool Call-ებს.",
-        "Google-ის agent-eval ინსტრუმენტი იყენებს Critical User Journeys (CUJ) ჩარჩოს.",
-        "AWS Bedrock-ის Customer Insights აგენტი Green ტესტების მიუხედავად $410.08-ს $410.08M-ად აფორმებდა."
-      ],
-      "interpretation": "წარმატებული AI ინჟინერია განისაზღვრება არა პრომპტის სილამაზით, არამედ ავტომატიზირებული Evals მილსადენის არსებობით.",
-      "uncertainty": "LLM-as-a-judge მეთოდოლოგიას თავადაც ახასიათებს მცირე პროცენტული ჰალუცინაცია შეფასებისას.",
-      "counter_argument": "ადრეულ ეტაპზე რთული Eval ჩარჩოს აგებას დიდი დრო მიაქვს, რაც ანელებს პროტოტიპირებას.",
-      "strategic_assessment": "დანერგე მარტივი Assertions და Trace Monitoring ყოველ აგენტურ პროექტში პირველივე დღიდან.",
-      "time_horizon": "short-term",
-      "what_could_change": "კომპანიები შეწყვეტენ იმ AI დეველოპერების დაქირავებას, რომლებსაც არ აქვთ Evals/Testing პორტფოლიო.",
-      "risks": [
-        "არასაკმარისი ტესტური სცენარები (CUJ).",
-        "Eval Pipeline-ის მიერ დამატებითი API ხარჯების გენერირება."
-      ],
-      "non_obvious_opportunity": "შექმენი მცირე Open-Source Python ბიბლიოთეკა, რომელიც Telegram ბოტების აგენტურ პასუხებს ავტომატურად უტარებს Eval-ს.",
-      "fit_assessment": "უმთავრესი უნარი 16 წლის დეველოპერისთვის, რათა დაამტკიცოს, რომ მისი აგენტები Production-Ready-ია."
-    },
-    {
-      "event_id": "evt-gemini-4-argon-code-opt",
-      "title": "Gemini 4 Argon: 200,000 სტრიქონიანი Python კოდის ავტონომიური ოპტიმიზაცია .agents/skills ჰუკებით",
-      "category": "AI Coding Tools & LLM APIs",
-      "primary_url": "https://developers.googleblog.com/optimizing-a-200000-line-python-codebase-overnight-with-gemini-4-argon",
-      "supporting_urls": [
-        "https://ai.google.dev/gemini-api/docs/models"
-      ],
-      "importance": 9,
-      "relevance": 10,
-      "actionability": 9,
-      "source_quality": 10,
-      "confidence": 95,
-      "tldr": "Gemini 4 Argon-მა .agents/skills ფაილების დახმარებით 200K+ სტრიქონიანი რეპოზიტორია 11 საათში ავტონომიურად დაარეფაქტორა და 40%-ით აჩქარა.",
-      "what_happened": "Google-მა გამოაქვეყნა Gemini 4 Argon-ის 11-საათიანი ავტონომიური run-ის შედეგები google/adk-python რეპოზიტორიაზე.",
-      "what_changed": "უბრალო პრომპტებიდან გადავედით .agents/skills არქიტექტურაზე, სადაც აგენტი ინსტრუქციებს იღებს კონტექსტის გადატვირთვის გარეშე.",
-      "why_it_matters": "შეგიძლია ღამით გააშვა აგენტი შენს Python პროექტზე და დილით მიიღო მზა pull request გაუმჯობესებული პერფორმანსით.",
-      "key_takeaways": [
-        "Gemini 4 Argon მხარს უჭერს 1M context window-ს და long decodes.",
-        ".agents/skills იყენებს SKILL.md ინდექსს კონტექსტის ეკონომიისთვის.",
-        "ავტონომიურ აგენტს სჭირდება მყარი ტესტების ბაზა რეგრესიის თავიდან ასაცილებლად."
-      ],
-      "technical_architecture": [
-        "Model Endpoint: gemini-4-argon",
-        "Context Window: 1M tokens",
-        "Rule Architecture: .agents/skills/SKILL.md with modular references"
-      ],
-      "technical_details": [
-        "In-memory session prep speedup: 40%",
-        "Cold package import speedup: 21%",
-        "Execution time: 11 hours unattended run"
-      ],
-      "potential_impact": "მკვეთრად ამცირებს კოდის ბაზის მოვლის ხარჯებს და აჩქარებს ღია კოდის პროექტების რეფაქტორინგს.",
-      "action_type": "TRY",
-      "action": "შექმენი .agents/skills/SKILL.md შენს Python პროექტში და გაუშვი Gemini API კოდის პერფორმანსის შესამოწმებლად.",
-      "evidence": [],
-      "factuality_level": "verified",
-      "classification": [
-        "Real Technical Skill",
-        "AI Coding Tools",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "Gemini 4 Argon-მა 11 საათში 40%-ით შეამცირა session prep time adk-python რეპოზიტორიაში.",
-        "კოდის ბაზა შეიცავდა 205,000 სტრიქონს, 800 ფაილს და 17,000 unit ტესტს.",
-        ".agents/skills საქაღალდეში SKILL.md ფაილების დამატებამ აიცილა Schema-ს დაზიანება."
-      ],
-      "interpretation": "მოდელებს უკვე შეუძლიათ რთული, მრავალფაილიანი კოდის ბაზების ოპტიმიზაცია, თუ მათ რეპოზიტორიის კონვენციებს პრომპტების ნაცვლად .agents/skills წესებით მივაწვდით.",
-      "uncertainty": "უცნობია, რამდენად ეფექტურია Argon გაუმართავი Unit ტესტების მქონე legacy კოდურ ბაზებზე.",
-      "counter_argument": "11-საათიანი უზედამხედველო run მოითხოვს ხარისხიან Unit test suite-ს, რაც პროექტების უმეტესობას არ გააჩნია.",
-      "strategic_assessment": "გამოიყენე Gemini Argon ლოკალური რეპოზიტორიების refactoring-ისთვის .agents/skills სტრუქტურის შექმნით.",
-      "time_horizon": "short-term",
-      "what_could_change": "დეველოპერები გადავლენ ხელით კოდის წერიდან აგენტებისთვის ტესტებისა და .agents/skills გზამკვლევების წერაზე.",
-      "risks": [
-        "ტესტების ნაკლებობამ შეიძლება კოდის ჩუმად გაფუჭება გამოიწვიოს.",
-        "მაღალი token consumption ხანგრძლივი loops დროს."
-      ],
-      "non_obvious_opportunity": "შექმენი სერვისი, რომელიც ძველ Python პროექტებს ავტომატურად უგენერირებს .agents/skills სტრუქტურას AI რეფაქტორინგისთვის.",
-      "fit_assessment": "იდეალურია 16 წლის დეველოპერისთვის — უფასო tier-ით და სწორი სტრუქტურით დიდი კოდის მართვას ისწავლი."
-    },
-    {
-      "event_id": "evt-x402-agentic-payments-bedrock",
-      "title": "x402 პროტოკოლი და AgentCore Payments: AI აგენტების ავტონომიური ტრანზაქციები",
-      "category": "Real Business Opportunity & Agent Infrastructure",
-      "primary_url": "https://aws.amazon.com/blogs/machine-learning/building-agents-that-transact-with-anchor-browser-and-agentcore-payments",
-      "supporting_urls": [],
-      "importance": 9,
-      "relevance": 9,
-      "actionability": 8,
-      "source_quality": 10,
-      "confidence": 90,
-      "tldr": "AWS Bedrock-მა და Anchor Browser-მა წარადგინეს x402 პროტოკოლის ინტეგრაცია, რაც აგენტებს HTTP 402-ით ფასიანი API-ების ავტონომიურად ყიდვის საშუალებას აძლევს.",
-      "what_happened": "AWS-მა გამოაქვეყნა AgentCore Payments-ისა და Anchor Browser-ის ინტეგრაცია x402 ღია პროტოკოლთან.",
-      "what_changed": "აგენტები აღარ გაჩერდებიან Paywall-თან ან ფასიან API-თან; ისინი ავტომატურად გადაიხდიან ლიმიტების ფარგლებში.",
-      "why_it_matters": "ხსნის ახალ Monetization მოდელს აგენტებისთვის — შეგიძლია ააგო სერვისი, რომელსაც AI აგენტები პირდაპირ გადაუხდიან.",
-      "key_takeaways": [
-        "x402 პროტოკოლი იყენებს HTTP 402 status code-ს.",
-        "AgentCore მართავს spending limits-ს CloudWatch მონიტორინგით.",
-        "Anchor Browser ინახავს სესიის ავტორიზაციას და ბრაუზერის state-ს."
-      ],
-      "technical_architecture": [
-        "Protocol: HTTP x402 Payment Required",
-        "Environment: Anchor Browser with Headless Cloud Context",
-        "Governance: Amazon Bedrock AgentCore Infrastructure Spending Limits"
-      ],
-      "technical_details": [
-        "HTTP Status Code: 402",
-        "Observability: CloudWatch Payment Metrics",
-        "Integration: MCP payment servers"
-      ],
-      "potential_impact": "საფუძველს უყრის ავტონომიურ აგენტურ ეკონომიკას, სადაც AI თავად ყიდულობს საჭირო რესურსებს.",
-      "action_type": "LEARN",
-      "action": "წაიკითხე x402 პროტოკოლის დოკუმენტაცია და დაწერე Python FastAPI სერვერი, რომელიც აბრუნებს HTTP 402 სტატუსს.",
-      "evidence": [],
-      "factuality_level": "verified",
-      "classification": [
-        "Real Business Opportunity",
-        "Real Technical Skill",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "x402 არის ღია სტანდარტი HTTP 402 Payment Required პასუხების დასამუშავებლად.",
-        "Amazon Bedrock AgentCore Payments უზრუნველყოფს Wallet Connectivity-ს და spending limits-ს.",
-        "Anchor Browser აძლევს აგენტს საშუალებას გადალახოს paywall-ები Machine-to-Machine გადახდებით."
-      ],
-      "interpretation": "AI აგენტებს უკვე შეუძლიათ დამოუკიდებლად იყიდონ ფასიანი მონაცემები და API რეფორმირებული HTTP 402 პროტოკოლით.",
-      "uncertainty": "საფულეების უსაფრთხოება და ავტომატური გადახდების საბანკო რეგულაციები ჯერ კიდევ ჩამოყალიბების პროცესშია.",
-      "counter_argument": "მომხმარებელთა უმეტესობას ეშინია აგენტისთვის საბანკო ლიმიტების დაწესების გარეშე ფინანსური წვდომის მიცემის.",
-      "strategic_assessment": "შეისწავლე HTTP 402 პროტოკოლის ჰედერები და შექმენი მიკრო-სერვისი, რომელიც აგენტებს სთავაზობს ფასიან API-ებს.",
-      "time_horizon": "mid-term",
-      "what_could_change": "ვებ-საიტები გადავლენ სარეკლამო მოდელიდან x402 მიკრო-გადახდებზე, სადაც აგენტები იხდიან თითო მოთხოვნაში.",
-      "risks": [
-        "აგენტის უსასრულო ციკლმა შეიძლება ამოწუროს საბიუჯეტო ლიმიტი.",
-        "არასაკმარისი ლოგირება გადახდის უარყოფისას."
-      ],
-      "non_obvious_opportunity": "შექმენი ქართული ბიზნეს-მონაცემების MCP სერვერი, რომელიც მოითხოვს x402 მიკრო-გადახდას თითო Lookup-ზე.",
-      "fit_assessment": "გაძლევს საშუალებას გაიგო, როგორ იშოვება ფული M2M (Machine-to-Machine) ეკონომიკაში 16 წლის ასაკში."
-    },
-    {
-      "event_id": "evt-unblocked-mcp-context-layer",
-      "title": "Unblocked Connector: ერთიანი MCP Context Layer დეველოპერული აგენტებისთვის",
-      "category": "AI Coding Tools & MCP Infrastructure",
-      "primary_url": "https://claude.com/connectors/unblocked",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 9,
-      "source_quality": 10,
-      "confidence": 92,
-      "tldr": "Anthropic Claude-ზე გამოვიდა Unblocked MCP კონექტორი, რომელიც დეველოპერულ ინსტრუმენტებს ერთ სერვერში აერთიანებს და კონტექსტს სერვერზევე კუმპრესავს.",
-      "what_happened": "Unblocked-მა გამოაშვება Claude Connector, რომელიც ცვლილებს 12 სხვადასხვა MCP ინსტრუმენტს ერთიანი არქიტექტურით.",
-      "what_changed": "ნაცვლად იმისა, რომ აგენტი თვითონ ეძებდეს 10 სხვადასხვა API-ში, სერვერი თავად აწვდის შეკუმშულ კონტექსტს.",
-      "why_it_matters": "მკვეთრად მცირდება Token Usage და იზრდება კოდის გენერაციის სიზუსტე Jira/GitHub კონტექსტის გათვალისწინებით.",
-      "key_takeaways": [
-        "ერთი MCP სერვერი ცვლის ათობით ცალკეულ ინტეგრაციას.",
-        "კონტექსტი რანჟირდება და კომპრესირდება Server-side.",
-        "მუშაობს Claude Code, Cursor და Windsurf IDE-ებთან."
-      ],
-      "technical_architecture": [
-        "Protocol: MCP SSE (Server-Sent Events)",
-        "Endpoint: https://getunblocked.com/api/mcpsse",
-        "Context Management: Server-Side Context Compression & Ranking"
-      ],
-      "technical_details": [
-        "Integrated Tools: GitHub, Jira, Slack, Notion, Sentry",
-        "Exposed MCP Tools: context_research, context_get_urls",
-        "Token Efficiency: High compression prior to LLM payload"
-      ],
-      "potential_impact": "ზოგავს დეველოპერთა ბიუჯეტს ტოკენებზე და ამცირებს აგენტის მიერ არასწორი დოკუმენტაციის წაკითხვის რისკს.",
-      "action_type": "TRY",
-      "action": "შეაერთე Unblocked MCP სერვერი შენს Claude/Cursor IDE-ში და გატესტე კოდის გენერაცია არსებულ GitHub რეპოზიტორიაზე.",
-      "evidence": [],
-      "factuality_level": "verified",
-      "classification": [
-        "Real Technical Skill",
-        "AI Coding Tools",
-        "Short-term Opportunity"
-      ],
-      "verified_facts": [
-        "Unblocked აერთიანებს GitHub, Jira, Slack, Notion და Sentry კონტექსტს ერთ MCP სერვერში.",
-        "კონტექსტის რანჟირება, კუმპრესია და აწყობა ხდება Server-Side აგენტთან გაგზავნამდე.",
-        "თავსებადია Claude Code, Cursor, Windsurf და GitHub Copilot ინსტრუმენტებთან."
-      ],
-      "interpretation": "ათობით ცალკეული MCP სერვერის ნაცვლად ინდუსტრია გადადის Context Compression სერვერებზე, რომლებიც ტოკენებს ზოგავენ.",
-      "uncertainty": "მესამე მხარის სერვერზე ორგანიზაციული მონაცემების გაგზავნა უსაფრთხოების რისკებს შეიცავს.",
-      "counter_argument": "მცირე პროექტებისთვის ცალკე Context Layer სერვერის დაყენება ზედმეტი არქიტექტურული სიმძიმეა.",
-      "strategic_assessment": "გამოიყენე Context Compression პრინციპი შენს საკუთარ MCP სერვერებში ტოკენების ეკონომიისთვის.",
-      "time_horizon": "short-term",
-      "what_could_change": "LLM აგენტები მიიღებენ მხოლოდ უკვე დაფილტრულ და რანჟირებულ კონტექსტს, რაც Context Window-ს ხარჯს 70%-ით შეამცირებს.",
-      "risks": [
-        "არასწორმა Server-Side კუმპრესიამ შეიძლება მნიშვნელოვანი დეტალი გააქროს.",
-        "API rate-limits მრავალ წყაროსთან ერთდროულად მუშაობისას."
-      ],
-      "non_obvious_opportunity": "ააგე მცირე ლოკალური MCP სერვერი Python-ში, რომელიც SQLite ბაზიდან იღებს და სურათებს/დოკუმენტებს შეკუმშულად აწვდის LLM-ს.",
-      "fit_assessment": "ძალიან პრაქტიკულია: გიჩვენებს როგორ გამოიყენო MCP ეფექტურად უფასო/დაბალბიუჯეტიან გარემოში."
-    },
-    {
-      "event_id": "evt-opengcua-open-computer-use",
-      "title": "OpenGCUA: ღია სრულფასოვანი სტეკი Generalist Computer Use აგენტებისთვის",
-      "category": "AI Research / Agent Architecture",
-      "primary_url": "https://huggingface.co/papers/2610.22200",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 7,
-      "source_quality": 8,
-      "confidence": 88,
-      "tldr": "OpenGCUA-მ გამოაშვება ღია Open-Source სტეკი Computer Use აგენტებისთვის, რაც კოდის გაშვებით 53%-ით ამცირებს ნაბიჯების რაოდენობას.",
-      "what_happened": "Alibaba MAI-UI გუნდმა გამოაქვეყნა OpenGCUA-ს პირველი ღია ვერსია და OSWorld-v2 შედეგები.",
-      "what_changed": "მხოლოდ ღილაკებზე დაჭერის ნაცვლად, აგენტი თავად წერს Python სკრიპტებს OS ტასკების შესასრულებლად.",
-      "why_it_matters": "ღია კოდის საშუალებით შეგიძლია საკუთარ კომპიუტერზე ააგო Computer Use აგენტი ნულოვანი ლიცენზიის ხარჯით.",
-      "key_takeaways": [
-        "Code execution ამცირებს GUI ნაბიჯების რაოდენობას 53%-ით.",
-        "Harness-to-model მეთოდი გადაწყვეტილების მიღებას გადასცემს LLM-ს.",
-        "Cross-device SDK უზრუნველყოფს მუშაობას macOS, Browser და Mobile-ზე."
-      ],
-      "technical_architecture": [
-        "Interface: Visual GUI + Programmatic Code Execution",
-        "Evaluation Benchmark: OSWorld-v2",
-        "Framework: Multi-agent Directed Acyclic Graph (DAG)"
-      ],
-      "technical_details": [
-        "Partial Score Improvement: +19.6 points",
-        "Step Reduction: 53.0% average decrease",
-        "Token Disparity: Qwen3.8-Max used 19.4x tokens vs Astra"
-      ],
-      "potential_impact": "აჩქარებს ღია კოდის კომპიუტერული ავტომატიზაციის განვითარებას და ამცირებს API ხარჯებს.",
-      "action_type": "BUILD",
-      "action": "გადმოწერე OpenGCUA რეპოზიტორია GitHub-იდან და გაუშვი მარტივი Python automation სკრიპტი ლოკალურ გარემოში.",
-      "evidence": [],
-      "factuality_level": "single_source",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value",
-        "AI Research"
-      ],
-      "verified_facts": [
-        "OpenGCUA აერთიანებს ვიზუალურ (GUI) და პროგრამულ (Code) ინტერფეისებს OSWorld-v2-ზე.",
-        "Harness-to-model გადაწყვეტილებით ნაბიჯების რაოდენობა საშუალოდ 53.0%-ით შემცირდა.",
-        "OSWorld-v2 ბენჩმარკზე partial score გაიზარდა +19.6 პუნქტით 8 სხვადასხვა მოდელზე."
-      ],
-      "interpretation": "მხოლოდ სქრინშოტებით მუშაობა ეფექტური არ არის; აგენტმა უნდა გამოიყენოს Python კოდის გაშვება და GUI ერთდროულად.",
-      "uncertainty": "რეალურ მოწყობილობებზე Latency და Reasoning Token-ების მოხმარება ჯერ კიდევ მაღალია (Qwen3.8-Max იყენებს 19.4x ტოკენს).",
-      "counter_argument": "GUI აგენტები უსაფრთხოების დიდ რისკს შეიცავენ OS დონეზე სრული წვდომის გამო.",
-      "strategic_assessment": "გააანალიზე OpenGCUA-ს კოდი და გამოიყენე Code Execution მიდგომა მხოლოდ GUI-ზე დაყრდნობილი აგენტების ნაცვლად.",
-      "time_horizon": "mid-term",
-      "what_could_change": "ოპერაციული სისტემები გახდებიან აგენტებთან ინტეგრირებული, სადაც API და GUI გაერთიანდება ერთიან SDK-ში.",
-      "risks": [
-        "მაღალი ტოკენების ხარჯი ვიზუალური Reasoning-ისას.",
-        "OS დონის შეცდომების ავტომატური აღდგენის სირთულე."
-      ],
-      "non_obvious_opportunity": "შექმენი ლოკალური Cross-Device SDK, რომელიც Telegram ბოტიდან კომპიუტერის კოდით მართვის საშუალებას იძლევა.",
-      "fit_assessment": "ეხმარება 16 წლის დეველოპერს გაიგოს, როგორ აშენებენ Alibaba და OpenAI Computer Use აგენტებს."
-    },
     {
       "event_id": "evt-swe-misbehavior-boundary-benchmark",
       "title": "SWE-Misbehavior: ავტონომიური კოდის აგენტების საზღვრების დარღვევის ბენჩმარკი და Code-KIT",
@@ -6392,6 +6110,310 @@
       ],
       "non_obvious_opportunity": "მსგავსი ჰეტეროგენული ტოკენების მიდგომა შეგიძლია გამოიყენო Telegram-ის და ვებ-მონაცემების ერთდროულად დასამუშავებლად.",
       "fit_assessment": "საშუალებას გაძლევს თვალი ადევნო მულტიმოდალური აგენტების არქიტექტურის უახლეს ტენდენციებს."
+    },
+    {
+      "event_id": "evt-wikitrace-evidence-linked-memory",
+      "title": "WikiTrace: Evidence-Linked Memory ამცირებს აგენტების მეხსიერებით გამოწვეულ დეგრადაციას",
+      "category": "აგენტის არქიტექტურა და მეხსიერება",
+      "primary_url": "https://huggingface.co/papers/2611.14320",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 92,
+      "tldr": "WikiTrace აგენტების მეხსიერების დეგრადაციას წყვეტს გაკვეთილების raw execution trace-ებთან დაკავშირებით, რაც ბენჩმარკებზე სიზუსტეს 3.2 ქულით ზრდის.",
+      "what_happened": "KAIST-ის მკვლევრებმა შექმნეს WikiTrace, რომელიც აგენტს აძლევს საშუალებას გადაამოწმოს მეხსიერებაში არსებული გაკვეთილები რეალურ ტრაექტორიებთან.",
+      "what_changed": "ადრე აგენტები მხოლოდ მოკლე ტექსტურ შეჯამებებს ენდობოდნენ; ახლა გადამოწმება ხდება საწყის ლოგებთან დაკავშირებით.",
+      "why_it_matters": "შენს აგენტებს აღარ ექნებათ ჰალუცინაციური მეხსიერება; შეძლებ SQLite-ში სწორი მონაცემთა მოდელის აგებას უფასოდ.",
+      "key_takeaways": [
+        "მეხსიერების უბრალო დამატებამ შეიძლება 9.7%-ით გააუარესოს შედეგი",
+        "Evidence-linking აკავშირებს summary-ს raw tool execution trace-თან",
+        "კოდი სრულად ხელმისაწვდომია GitHub-ზე რეპროდუცირებისთვის"
+      ],
+      "technical_architecture": [
+        "ორდონიანი მეხსიერება: მაღალი დონის insight დაკავშირებული raw trace-თან",
+        "კონფლიქტის დროს ტერმინალური ხელსაწყოებით ჩასვლა საწყის ლოგებში",
+        "შეფასებულია ხუთ დამოუკიდებელ agentic ბენჩმარკზე"
+      ],
+      "technical_details": [
+        "GitHub რეპო: yukyeongleee/wikitrace",
+        "3.2 ქულით უპირატესობა",
+        "9.7% flipping rate შემცირება",
+        "JSON დაფუძნებული ტრაექტორიის სქემა"
+      ],
+      "potential_impact": "აგენტების საიმედოობის მკვეთრი ზრდა ხანგრძლივ ამოცანებში დამატებითი ძვირადღირებული API ზარების გარეშე.",
+      "action_type": "BUILD",
+      "action": "დაამატე SQLite ბაზაში ცხრილი lessons და დაუკავშირე execution_traces ცხრილს trace_id-ით შენს სკრიპტში.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "WikiTrace აკავშირებს თითოეულ შეჯამებულ გაკვეთილს მის თავდაპირველ raw trajectory-სთან და დიაგნოსტიკასთან",
+        "მეხსიერების გარეშე აგენტის ხელახლა გაშვება აბრუნებს 9.7% ამოხსნილ დავალებას",
+        "ხუთ აგენტურ ბენჩმარკზე WikiTrace-მა საშუალოდ 3.2 ქულით აჯობა მხოლოდ გაკვეთილებზე დაფუძნებულ მიდგომას",
+        "ღია კოდი ხელმისაწვდომია GitHub-ზე (yukyeongleee/wikitrace)"
+      ],
+      "interpretation": "მხოლოდ ტექსტური შეჯამებების შენახვა აგენტს აცდომებს. წარსული შეცდომების წყაროსთან მიბმა აუცილებელია საიმედო მეხსიერებისთვის.",
+      "uncertainty": "უცნობია, როგორ მასშტაბირდება ტრაექტორიების შენახვა მილიონობით ნაბიჯის შემთხვევაში SQLite ბაზაში.",
+      "counter_argument": "Raw ტრაექტორიების შენახვა და მათი ხელახალი ჩაკითხვა ზრდის context window-ის მოცულობას და ტოკენების ხარჯს.",
+      "strategic_assessment": "დანერგე Evidence-Linked სტრუქტურა SQLite-ში: შეინახე გაკვეთილი raw log-ის ID-სთან ერთად და გადაამოწმე კონფლიქტისას.",
+      "time_horizon": "mid-term",
+      "what_could_change": "აგენტური მეხსიერება გადავა უბრალო ვექტორული ბაზებიდან trace-linked სტრუქტურირებულ ლოგებზე.",
+      "risks": [
+        "კონტექსტის გაზრდილი მოხმარება",
+        "ტრეისების შენახვის ფაილური ლიმიტები",
+        "მოდელის მიერ არასწორი დიაგნოსტიკა"
+      ],
+      "non_obvious_opportunity": "შექმენი მცირე Python ბიბლიოთეკა, რომელიც SQLite-ში აგენტის trace-ებს ავტომატურად უკავშირებს შეჯამებულ წესებს.",
+      "fit_assessment": "ზუსტად ემთხვევა შენს სწავლის გეგმას: SQLite და აგენტური მეხსიერების არქიტექტურა."
+    },
+    {
+      "event_id": "evt-aws-uaef-agent-evaluation",
+      "title": "AWS UAEF: აგნოსტიკური სისტემა AI აგენტების დახურული ციკლის შეფასებისთვის",
+      "category": "AI Evaluation & საიმედოობა",
+      "primary_url": "https://aws.amazon.com/blogs/machine-learning/uaef-a-framework-agnostic-system-for-closed-loop-evaluation-of-ai-agents",
+      "supporting_urls": [
+        "https://arxiv.org/abs/2611.14493"
+      ],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "AWS-მა წარმოადგინა UAEF, რომელიც აგენტების trace-ების უნიფიცირებითა და 36 მეტრიკით ზომავს tool calling-ისა და მსჯელობის ხარისხს.",
+      "what_happened": "AWS-მა გამოუშვა უნივერსალური აგენტების შეფასების სისტემა UAEF, ხოლო პარალელურმა KDD კვლევამ აჩვენა trace-based შეფასების F1=0.90 სიზუსტე.",
+      "what_changed": "ადრე თითოეულ ფრეიმვორკს ცალკე evaluation ლოგიკა სჭირდებოდა; ახლა trace-ები ნორმალიზდება ერთ ფორმატში.",
+      "why_it_matters": "სწავლობ, როგორ შეაფასო შენი აგენტები პროფესიონალურ დონეზე trace-ების შედარებით და არა თვალით შემოწმებით.",
+      "key_takeaways": [
+        "Tool call შეფასება მოითხოვს ხელსაწყოს სახელის, რიგითობის და არგუმენტების შემოწმებას",
+        "Trace-based მიდგომა 5-ჯერ ნაკლებ ცრუ განგაშს (false alarms) იძლევა, ვიდრე text-only",
+        "ერთიანი trace ფორმატი ათავისუფლებს დეველოპერს ფრეიმვორკზე დამოკიდებულებისგან"
+      ],
+      "technical_architecture": [
+        "Adapter layer ფრეიმვორკის trace-ების კანონიკურ ფორმატში გადასაყვანად",
+        "Execution storage DynamoDB-სა და S3-ში მეტრიკების ისტორიისთვის",
+        "Closed-loop რეპორტინგი 36 მეტრიკის ანალიზით"
+      ],
+      "technical_details": [
+        "36 ჩაშენებული მეტრიკა",
+        "7 შეფასების განზომილება",
+        "Trace-based F1 ქულა: 0.90",
+        "12 საწარმოო ორგანიზაციის ტესტი"
+      ],
+      "potential_impact": "დეველოპერს შეუძლია დაამტკიცოს, რომ პრომპტის ან მოდელის შეცვლამ გააუმჯობესა აგენტი და არაფერი გააფუჭა.",
+      "action_type": "APPLY",
+      "action": "დაწერე Python ფუნქცია, რომელიც ადარებს აგენტის tool_calls მასივს მოსალოდნელ JSON სქემასთან და ითვლის სიზუსტეს.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Real Business Opportunity"
+      ],
+      "verified_facts": [
+        "UAEF იყენებს ადაპტერებს სხვადასხვა ფრეიმვორკის (LangGraph, Bedrock) trace-ების ერთიან ფორმატში გადასაყვანად",
+        "შეიცავს 36 ჩაშენებულ მეტრიკას 7 განზომილებაში (tool calling, multi-turn, coordination)",
+        "ტესტირებულია 12 ორგანიზაციაში ტელეკომის, ჯანდაცვისა და ფინანსების სექტორში",
+        "KDD 2026-ის კვლევა ადასტურებს, რომ trace-based LLM judging აღწევს F1=0.90 სიზუსტეს"
+      ],
+      "interpretation": "აგენტების ტესტირება აღარ არის მხოლოდ პასუხის შემოწმება; სტანდარტი ხდება tool calling თანმიმდევრობისა და არგუმენტების ვალიდაცია.",
+      "uncertainty": "AWS UAEF-ის სრული კოდის ხელმისაწვდომობა AWS ეკოსისტემის გარეთ შეზღუდულია მხოლოდ ნოუთბუქებით.",
+      "counter_argument": "მცირე პროექტებისთვის 36 მეტრიკის გაზომვა ზედმეტი სირთულეა და ანელებს სწრაფ პროტოტიპირებას.",
+      "strategic_assessment": "ააგე მინიმალური trace normalizer Python-ში: შეადარე გამოძახებული ხელსაწყოების სია და პარამეტრები მოსალოდნელ JSON-ს.",
+      "time_horizon": "mid-term",
+      "what_could_change": "ყველა სერიოზული კომპანია მოითხოვს trace-based evaluation-ს აგენტის პროდაქშენში გაშვებამდე.",
+      "risks": [
+        "AWS სერვისებზე გადაბმის რისკი",
+        "შეფასების მაღალი დრო",
+        "რთული ground truth მომზადება"
+      ],
+      "non_obvious_opportunity": "შესთავაზე ლოკალურ ბიზნესებს მათი არსებული AI ბოტების დამოუკიდებელი ტესტირება და ხარვეზების აუდიტი.",
+      "fit_assessment": "პირდაპირ პასუხობს შენს გეგმას: tool calling-იდან გადასვლა evaluation და production ეტაპზე."
+    },
+    {
+      "event_id": "evt-coderabbit-scaling-agentic-dev",
+      "title": "CodeRabbit: აგენტური კოდის შემოწმება და 20-ჯერ მეტი პროგრამული უზრუნველყოფის მიწოდება",
+      "category": "Real Business Opportunity & Agent Architecture",
+      "primary_url": "https://openai.com/index/coderabbit-codex-daybreak",
+      "supporting_urls": [],
+      "importance": 7,
+      "relevance": 9,
+      "actionability": 7,
+      "source_quality": 10,
+      "confidence": 88,
+      "tldr": "CodeRabbit-მა აჩვენა, რომ აგენტების ეპოქაში მთავარი ბოთლის ყელი Code Review ხდება და მისი ავტომატიზაცია გუნდს 20x აჩქარებს.",
+      "what_happened": "CodeRabbit-მა გამოაქვეყნა თავისი არქიტექტურული გამოცდილება OpenAI-ის მოდელებით კოდის ავტონომიური რევიუს შესახებ.",
+      "what_changed": "ადრე კოდს მხოლოდ ადამიანები კითხულობდნენ; ახლა აგენტების დაწერილ მასიურ კოდს სპეციალური რევიუერ-აგენტები ფილტრავენ.",
+      "why_it_matters": "შენთვის ეს არის პრაქტიკული ბიზნეს მოდელი: ააგო მარტივი, სპეციალიზებული რევიუ-აგენტი კონკრეტული წესებისთვის.",
+      "key_takeaways": [
+        "კოდის გენერაციის ზრდასთან ერთად კრიტიკული ხდება კოდის შემოწმება (review bottleneck)",
+        "ეფექტურია სპეციალიზებული საბ-აგენტების გამოყენება (code navigation, security)",
+        "მოდელების შეფასება საკუთარ known-issue ბენჩმარკზე აუცილებელია"
+      ],
+      "technical_architecture": [
+        "ასინქრონული code review პაიპლაინი ღრუბელში",
+        "მრავალი ქვედაგენტის (subagents) პარალელური მუშაობა ნავიგაციასა და უსაფრთხოებაზე",
+        "Known-issue benchmark ახალი მოდელების უწყვეტი ტესტირებისთვის"
+      ],
+      "technical_details": [
+        "20,000+ ორგანიზაცია",
+        "150,000+ open-source პროექტი",
+        "50% issue detection მაჩვენებელი",
+        "OpenAI Codex და reasoning მოდელები"
+      ],
+      "potential_impact": "მცირე გუნდებს შეუძლიათ შეინარჩუნონ მაღალი ხარისხის კოდი დიდი საინჟინრო რესურსის გარეშე.",
+      "action_type": "BUILD",
+      "action": "ააგე GitHub Action workflow, რომელიც PR-ის diff-ს უგზავნის Gemini API-ს და აბრუნებს 3 მთავარ შენიშვნას კომენტარად.",
+      "evidence": [],
+      "factuality_level": "single_source",
+      "classification": [
+        "Real Business Opportunity",
+        "Real Technical Skill"
+      ],
+      "verified_facts": [
+        "CodeRabbit გამოიყენება 20,000 ორგანიზაციისა და 150,000+ open-source პროექტის მიერ",
+        "ინჟინერიის გუნდი აგენტების დახმარებით 20-ჯერ მეტ კოდს აგზავნის (ships 20x more)",
+        "პირველი მთავარი ბოთლის ყელი აგენტების დანერგვისას არის Code Review",
+        "ახალი მოდელების შეფასება ხდება ცნობილი ხარვეზების შიდა ბენჩმარკზე (GPT-6 Astra-მ დაიჭირა 50%)"
+      ],
+      "interpretation": "აგენტების მიერ დაწერილი კოდის რაოდენობა იზრდება; რეალური ბიზნეს ღირებულება არის ამ კოდის ავტომატურ ვალიდაციასა და რევიუში.",
+      "uncertainty": "20x პროდუქტიულობის ზრდა კომპანიის საკუთარი შეფასებაა და შესაძლოა შეიცავდეს მარკეტინგულ გაზვიადებას.",
+      "counter_argument": "ზედმეტი ავტომატური რევიუ ქმნის ხმაურს pull request-ებში, რაც ხშირად აღიზიანებს დეველოპერებს.",
+      "strategic_assessment": "შექმენი მცირე GitHub Action შენი პროექტებისთვის, რომელიც PR-ებზე ავტომატურ შემოწმებას გაატარებს LLM API-ით.",
+      "time_horizon": "short-term",
+      "what_could_change": "კოდის წერა გაუფასურდება; დაფასდება სისტემური დიზაინი, შეფასების კრიტერიუმები და უსაფრთხოების აუდიტი.",
+      "risks": [
+        "ცრუ პოზიტიური შენიშვნები კოდზე",
+        "API ტოკენების ხარჯი დიდ რეპოზიტორიებზე",
+        "დეველოპერების ზედმეტი ნდობა აგენტზე"
+      ],
+      "non_obvious_opportunity": "შესთავაზე ქართულ სტარტაპებს უფასო GitHub Action ბოტი, რომელიც ქართულ/ინგლისურ ენაზე ამოწმებს PR-ებს.",
+      "fit_assessment": "იდეალურია პორტფოლიოსთვის: GitHub Actions + Python + LLM API არის შენი არსებული ტექნოლოგიური სტეკი."
+    },
+    {
+      "event_id": "evt-aws-nitro-sandboxes-agent-isolation",
+      "title": "AWS Nitro Sandboxes: აგენტების მიერ გენერირებული კოდის უსაფრთხო იზოლაცია",
+      "category": "აგენტების ინფრასტრუქტურა და Open Source",
+      "primary_url": "https://aws.amazon.com/blogs/containers/aws-nitro-sandboxes-hardware-enforced-workload-isolation-on-amazon-eks",
+      "supporting_urls": [
+        "https://cloud.google.com/blog/topics/developers-practitioners/the-open-ai-native-stack-on-kubernetes-from-open-models-to-distributed-inference-and-agents"
+      ],
+      "importance": 7,
+      "relevance": 8,
+      "actionability": 7,
+      "source_quality": 10,
+      "confidence": 92,
+      "tldr": "AWS-მა გამოუშვა Nitro Sandboxes EKS-ისთვის, რაც აგენტების მიერ დაწერილ კოდს აპარატურულად იზოლირებულ მსუბუქ VM-ებში უშვებს.",
+      "what_happened": "ღრუბლოვანმა გიგანტებმა (AWS, Google) წარმოადგინეს აგენტების კოდის იზოლაციის ახალი სტანდარტები EKS-სა და GKE-ში.",
+      "what_changed": "ადრე კონტეინერები იზიარებდნენ ჰოსტის ბირთვს (shared kernel); ახლა თითოეული აგენტის პოდი იღებს საკუთარ იზოლირებულ OS-ს.",
+      "why_it_matters": "როცა შენს აგენტს დაავალებ Python კოდის გაშვებას, უნდა იცოდე მისი უსაფრთხო ჩარჩოში მოქცევა.",
+      "key_takeaways": [
+        "ავტონომიური აგენტები წარმოადგენენ უსაფრთხოების რისკს shared kernel გარემოში",
+        "Hardware-enforced იზოლაცია აქრობს კონტეინერიდან გაქცევის (breakout) საფრთხეს",
+        "ღია ალტერნატივად რჩება gVisor და მსუბუქი სავარჯიშო კონტეინერები"
+      ],
+      "technical_architecture": [
+        "AWS Nitro System-ზე დაფუძნებული lightweight VM თითოეული EKS პოდისთვის",
+        "კრიპტოგრაფიული ატესტაცია რეგულირებადი ინდუსტრიებისთვის (HIPAA, PCI DSS)",
+        "Zero shared kernel attack surface მრავალმოიჯარიან გარემოში"
+      ],
+      "technical_details": [
+        "პლატფორმა: Amazon EKS",
+        "ტექნოლოგია: AWS Nitro System",
+        "ალტერნატივა: CNCF gVisor",
+        "დანიშნულება: Untrusted code execution"
+      ],
+      "potential_impact": "კომპანიებს შეეძლებათ უსაფრთხოდ გაუშვან აგენტები, რომლებიც ცოცხალ კოდს წერენ და ატესტირებენ.",
+      "action_type": "LEARN",
+      "action": "გაეცანი Python-ის subprocess მოდულის უსაფრთხო პარამეტრებს და გაუშვი აგენტის კოდი შეზღუდული მომხმარებლის უფლებით.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "Nitro Sandboxes აძლევს თითოეულ EKS პოდს აპარატურულად იზოლირებულ მსუბუქ VM-ს Nitro System-ზე დაყრდნობით",
+        "პრობლემა გამოწვეულია AI აგენტებით, რომლებიც თავად წერენ და უშვებენ კოდს ადამიანის განხილვის გარეშე",
+        "Google Cloud-მა KubeCon-ზე წარადგინა მსგავსი AI-native stack gVisor-ისა და OpenRL-ის გამოყენებით",
+        "ხსნის კონტეინერებიდან breakout-ისა და ჰოსტის საიდუმლოებებზე (secrets) წვდომის რისკს"
+      ],
+      "interpretation": "აგენტებისთვის bash/python გარემოს მიცემა უკვე მოითხოვს მიკრო-VM ან gVisor დონის იზოლაციას, უბრალო Docker აღარ კმარა.",
+      "uncertainty": "EKS Nitro Sandboxes მოითხოვს ძვირადღირებულ AWS ინფრასტრუქტურას და მიუწვდომელია ლოკალურად.",
+      "counter_argument": "ლოკალური დეველოპმენტისთვის Docker ან ჩვეულებრივი subprocess timeout-ებით სრულიად საკმარისია საწყის ეტაპზე.",
+      "strategic_assessment": "გაიაზრე იზოლაციის პრინციპი: შენს ლოკალურ აგენტებში კოდის გაშვება შეზღუდე ცალკე დაბალპრივილეგიურ გარემოში.",
+      "time_horizon": "long-term",
+      "what_could_change": "ყველა აგენტური პლატფორმა სტანდარტად აქცევს hardware-level იზოლაციას დაუმოწმებელი კოდის გაშვებისას.",
+      "risks": [
+        "მაღალი ღრუბლოვანი ხარჯი საწარმოო მასშტაბზე",
+        "კონფიგურაციის სირთულე Kubernetes-ში",
+        "ოვერჰედი ციკლების დაყოვნებისას"
+      ],
+      "non_obvious_opportunity": "ისწავლე gVisor-ის ან ლოკალური sandbox კონტეინერების გამართვა, რაც იშვიათი და ძვირადღირებული უნარია ბაზარზე.",
+      "fit_assessment": "ფუნდამენტური უსაფრთხოების კონცეფციაა: გაიგებ, რატომ არ შეიძლება აგენტს მისცე პირდაპირი root shell წვდომა."
+    },
+    {
+      "event_id": "evt-gemini-4-carbon-antigravity",
+      "title": "Google DeepMind-მა გამოუშვა Gemini 4 Carbon და Antigravity Swarm პრევიუ",
+      "category": "LLM APIs და ხელსაწყოები",
+      "primary_url": "https://deepmind.google/blog/gemini-4-carbon-is-now-available",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 8,
+      "actionability": 8,
+      "source_quality": 10,
+      "confidence": 90,
+      "tldr": "Google-მა გამოუშვა Gemini 4 Carbon $2/$10 ტარიფით და წარადგინა Antigravity /swarm მულტი-აგენტური გუნდების სამართავად.",
+      "what_happened": "DeepMind-მა ოფიციალურად ხელმისაწვდომი გახადა Gemini 4 Carbon მოდელი ხანგრძლივი აგენტური სამუშაო პროცესებისთვის.",
+      "what_changed": "ადრე რთული მსჯელობის მოდელები ძვირი იყო; ახლა ფრონტიერ დონის მოდელი ხელმისაწვდომია Argon-ის ფასად ($2/$10).",
+      "why_it_matters": "შეგიძლია უფასოდ ან მიზერულ ფასად დატესტო მოწინავე მოდელი შენს Python სკრიპტებში Google AI Studio-ს მეშვეობით.",
+      "key_takeaways": [
+        "ფასი უტოლდება Argon-ს: $2/1M input და $10/1M output ტოკენი",
+        "#1 ადგილი CursorBench 4.0-სა და Zapier AutomationBench-ზე",
+        "/swarm ფუნქცია იძლევა აგენტების გუნდის ერთიან მართვას"
+      ],
+      "technical_architecture": [
+        "Extended verification loops რთული კოდირების ამოცანებისთვის",
+        "როლების გადანაწილება: Carbon როგორც არქიტექტორი, მსუბუქი მოდელები როგორც შემსრულებლები",
+        "იზოლირებული სამუშაო გარემოები და adversarial verifiers"
+      ],
+      "technical_details": [
+        "ინპუტ ფასი: $2 / 1M tokens",
+        "აუთპუტ ფასი: $10 / 1M tokens",
+        "პლატფორმა: Google AI Studio API",
+        "ბენჩმარკი: #1 Zapier AutomationBench"
+      ],
+      "potential_impact": "დეველოპერებს შეუძლიათ 2-ჯერ ნაკლები ხარჯით გაუშვან რთული აგენტური ავტომატიზაციები.",
+      "action_type": "TRY",
+      "action": "გაიარე ტესტირება Google AI Studio-ში Gemini 4 Carbon API გასაღებით და შეადარე მისი tool calling სიზუსტე.",
+      "evidence": [],
+      "factuality_level": "single_source",
+      "classification": [
+        "Real Technical Skill",
+        "Temporary Trend"
+      ],
+      "verified_facts": [
+        "Gemini 4 Carbon ხელმისაწვდომია Google AI Studio API-ში $2/M input და $10/M output ფასად",
+        "იკავებს #1 ადგილს CursorBench 4.0-ზე, WANDR-ზე და AutomationBench-ზე",
+        "Google Antigravity-ში გაეშვა /swarm პრევიუ ერთი პრომპტით მულტი-აგენტური კოორდინაციისთვის",
+        "განკუთვნილია რთული multi-step coding და debugging ამოცანებისთვის extended verification loop-ებით"
+      ],
+      "interpretation": "Google ამკვიდრებს იაფ ფრონტიერ მოდელს აგენტური ამოცანებისთვის, რაც კონკურენციას უწევს Claude Fable 5.2-ს ($8/$40).",
+      "uncertainty": "უცნობია, რამდენად სტაბილურია /swarm რეჟიმი რეალურ გარემოში დამოუკიდებელი ტესტირების გარეშე.",
+      "counter_argument": "უმეტესი ყოველდღიური ამოცანისთვის უფრო იაფი Argon ან Flash მოდელები საკმარისია და Carbon ზედმეტ ტოკენებს წვავს.",
+      "strategic_assessment": "გამოიყენე Google AI Studio-ს უფასო/იაფი კვოტა რთული არქიტექტურული გეგმების დასაგენერირებლად და კოდის აუდიტისთვის.",
+      "time_horizon": "short-term",
+      "what_could_change": "მულტი-აგენტური orchestration ხდება API პროვაიდერის ჩაშენებული ფუნქცია და არა ცალკე ბიბლიოთეკა.",
+      "risks": [
+        "extended verification ზრდის საბოლოო ტოკენების რაოდენობას",
+        "API rate limit შეზღუდვები",
+        "სწრაფი ცვლილებები Antigravity SDK-ში"
+      ],
+      "non_obvious_opportunity": "შეადარე Carbon-ის მიერ დაგენერირებული MCP სერვერის კოდი შენს არსებულ კოდთან და იპოვე შეცდომები.",
+      "fit_assessment": "შესანიშნავია შენი ბიუჯეტისთვის: Google AI Studio გაძლევს წვდომას მოწინავე მოდელზე მინიმალურ ფასად."
     }
   ],
   "topics": {
@@ -6503,7 +6525,7 @@
     "აგენტების ინფრასტრუქტურა და უსაფრთხოება": 2,
     "": 1,
     "AI Research & RAG": 1,
-    "აგენტის არქიტექტურა და მეხსიერება": 5,
+    "აგენტის არქიტექტურა და მეხსიერება": 6,
     "LLM APIs და Cost Optimization": 2,
     "აგენტების უსაფრთხოება და Governance": 1,
     "Agent Architecture & APIs": 1,
@@ -6512,7 +6534,7 @@
     "RAG & Database Architecture": 2,
     "აგენტის არქიტექტურა და Cost Optimization": 1,
     "აგენტების უსაფრთხოება და Sandbox": 3,
-    "AI Evaluation & საიმედოობა": 15,
+    "AI Evaluation & საიმედოობა": 16,
     "აგენტის არქიტექტურა და ხელსაწყოები": 4,
     "Long-Term Career Strategy": 1,
     "უსაფრთხოება და ღია კოდი": 1,
@@ -6525,14 +6547,14 @@
     "AI Coding Tools & LLM APIs": 2,
     "AI Coding Tools & MCP Infrastructure": 1,
     "აგენტის შეფასება და უსაფრთხოება": 1,
-    "LLM APIs და ხელსაწყოები": 4,
+    "LLM APIs და ხელსაწყოები": 5,
     "აგენტის ინფრასტრუქტურა და ეკოსისტემა": 1,
     "RAG და აგენტის მეხსიერება": 3,
     "აგენტის არქიტექტურა და რობოტიკა": 2,
     "Long-Term Career Value": 2,
     "აგენტის არქიტექტურა და ოპტიმიზაცია": 7,
     "Open Source AI & Infrastructure": 1,
-    "Real Business Opportunity & Agent Architecture": 6,
+    "Real Business Opportunity & Agent Architecture": 7,
     "აგენტების ინფრასტრუქტურა და LLM APIs": 1,
     "აგენტების ინფრასტრუქტურა და Sandbox": 1,
     "აგენტის არქიტექტურა და საიმედოობა": 1,
@@ -6543,187 +6565,11 @@
     "აგენტების არქიტექტურა და ინფრასტრუქტურა": 1,
     "აგენტის არქიტექტურა და Open Source": 2,
     "აგენტის არქიტექტურა და უსაფრთხოება": 4,
-    "აგენტების ინფრასტრუქტურა და Open Source": 1,
+    "აგენტების ინფრასტრუქტურა და Open Source": 2,
     "აგენტის არქიტექტურა და კონტექსტი": 1,
     "AI Research / Robot Learning": 1
   },
   "reports": [
-    {
-      "date": "2026-10-27",
-      "summary": "დღევანდელი გამოშვება აერთიანებს მნიშვნელოვან ტექნიკურ სიგნალებს: გადაწყვეტილებაზე დაფუძნებულ Retriever-Free Retrieval არქიტექტურას, Google Cloud-ის Knowledge Catalog-ის self-learning კონტექსტს და LLM ავტო-კვლევის Auto-Research Arena ბენჩმარკს. შენთვის მთავარი ამოცანაა აგენტების RAG და კონტექსტის მართვის ოპტიმიზაცია.",
-      "events": [
-        {
-          "event_id": "evt-decisionrag-retriever-free-retrieval",
-          "title": "DecisionRAG: დოკუმენტების ნავიგაცია Decision Model-ებით პირველი ეტაპის Retriever-ის გარეშე",
-          "category": "RAG და აგენტის მეხსიერება",
-          "primary_url": "https://arxiv.org/abs/2610.35868",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "DecisionRAG აუქმებს ტრადიციულ vector retriever-ს და იყენებს Decision Model-ებს ტექსტში ნავიგაციისთვის, რაც აუმჯობესებს RAG სიზუსტეს.",
-          "what_happened": "მკვლევარებმა წარმოადგინეს DecisionRAG, რომელიც ტოკენების გენერაციის გარეშე აფასებს კანდიდატ ბრენჩებს ერთ forward pass-ში.",
-          "what_changed": "სტატიკური vector similarity ძიებიდან გადავდივართ მოდელზე დაფუძნებულ დინამიურ კორპუსის ნავიგაციაზე.",
-          "why_it_matters": "შენ შეგიძლია აგენტებს მისცე უფრო ჭკვიანი ძიების ინსტრუმენტი, რომელიც ზუსტად პოულობს ფრაგმენტებს რთული კითხვებისთვის.",
-          "key_takeaways": [
-            "DecisionRAG აფასებს კანდიდატებს ერთ forward pass-ში ტოკენების გენერაციის გარეშე.",
-            "აუმჯობესებს ძიების სიზუსტეს რთულ მრავალდოკუმენტიან ბენჩმარკებზე.",
-            "მუშაობს მილიონიან კორპუსებზე 1-2 წამში."
-          ],
-          "technical_architecture": [
-            "Decision models evaluate candidate branches jointly in a single forward pass without token generation.",
-            "Navigates corpus structure from broad topics down to individual passages hierarchically."
-          ],
-          "technical_details": [
-            "Evaluates 2.68 million paragraphs in 0.7-1.8 seconds per query.",
-            "Outperforms 8B dense retrievers by 13.8 R@1 points on MultiDoc2Dial."
-          ],
-          "potential_impact": "ამცირებს RAG-ის გამოტოვებული ფრაგმენტების პრობლემას და ზრდის საპასუხო აგენტების სანდოობას.",
-          "action_type": "LEARN",
-          "action": "წაიკითხე DecisionRAG-ის აბსტრაქტი და შეადარე შენი არსებული RAG pipeline-ის მიდგომებს.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "DecisionRAG uses pretrained language models as decision models evaluating branches in a single forward pass.",
-            "It achieves 13.8 R@1 points higher on MultiDoc2Dial and 17.4 Hit@1 on Natural Questions than…",
-            "Retrieval takes 0.7-1.8 seconds per query across 2.68 million Wikipedia paragraphs."
-          ],
-          "interpretation": "ტრადიციული embedding RAG-ის ნაცვლად, decision model-ების გამოყენება აგენტებს საშუალებას აძლევს პირდაპირ დააორგანიზონ დოკუმენტების ძიება.",
-          "uncertainty": "მეთოდი მოითხოვს სპეციალურ ხეების სტრუქტურას და მოდელის არქიტექტურას, რაც მარტივი API-ებით მუშაობისას შეიძლება რთული იყოს.",
-          "counter_argument": "დიდი კორპუსებისთვის ტრადიციული vector search ჯერ კიდევ უფრო სწრაფი და მარტივი ინსალაციის მქონეა.",
-          "strategic_assessment": "შეისწავლე როგორ მუშაობს დოკუმენტების იერარქიული ძიება; ეს გამოგადგება აგენტების RAG-ის საიმედოობის ასამაღლებლად.",
-          "time_horizon": "mid-term",
-          "what_could_change": "RAG პატერნები გადავა სტატიკური vector embedding-ებიდან დინამიურ, მრავალბიჯიან decision-based ძიებაზე.",
-          "risks": [
-            "მაღალი გამოთვლითი სირთულე ინფერენსის დროს",
-            "დოკუმენტების წინასწარ სტრუქტურირების აუცილებლობა"
-          ],
-          "non_obvious_opportunity": "შეგიძლია ააგო პატარა Python პროტოტიპი, რომელიც LLM-ით აწყობს იერარქიულ ხეს და ატარებს decision-based ძიებას.",
-          "fit_assessment": "იდეალურია შენი RAG და agent memory უნარების განსავითარებლად, რადგან გასწავლის ალტერნატიულ ძიების პატერნებს."
-        },
-        {
-          "event_id": "evt-google-knowledge-catalog-self-learning",
-          "title": "Google Cloud Knowledge Catalog: AI აგენტების თვითგანვითარებადი კონტექსტური ძრავა",
-          "category": "აგენტის არქიტექტურა და მეხსიერება",
-          "primary_url": "https://cloud.google.com/blog/products/data-analytics/knowledge-catalog-self-learning-context-enrichment-for-ai-agents",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 9,
-          "actionability": 7,
-          "source_quality": 9,
-          "confidence": 95,
-          "tldr": "Google Cloud-მა წარადგინა Knowledge Catalog თვითგანვითარებადი კონტექსტით, რომელიც აუმჯობესებს აგენტის სიზუსტეს 4-ჯერ და ამცირებს ტოკენების ხარჯს.",
-          "what_happened": "Google-მა გამოუშვა Knowledge Studio და Knowledge Catalog-ის self-learning ფუნქცია აგენტების კონტექსტის განსაახლებლად.",
-          "what_changed": "ხელით დაწერილი static context მენეჯმენტიდან გადავდივართ აგენტების ურთიერთქმედებაზე დაფუძნებულ დინამიურ კონტექსტზე.",
-          "why_it_matters": "ეხმარება აგენტებს შეინარჩუნონ ზუსტი ბიზნეს დფინიციები ტოკენების ზედმეტი ხარჯის გარეშე.",
-          "key_takeaways": [
-            "Self-learning enrichment აანალიზებს აგენტისა და მომხმარებლის ინტერაქციებს ხარვეზების მოსაძებნად.",
-            "ზდის აგენტის სიზუსტეს თითქმის 4-ჯერ.",
-            "ამცირებს ტოკენების მოხმარებას 75%-ით."
-          ],
-          "technical_architecture": [
-            "Knowledge Catalog combines Gemini-powered enrichment with visual context graphs.",
-            "Continuously pulls verified definitions from code repos, docs, and playbooks."
-          ],
-          "technical_details": [
-            "Achieves 4X higher accuracy for AI agents.",
-            "Reduces latency by up to 33% and token usage by 75%."
-          ],
-          "potential_impact": "აუმჯობესებს საწარმოო აგენტების საიმედოობას და ხსნის ხელით კონტექსტის წერის ტვირთს.",
-          "action_type": "LEARN",
-          "action": "შეისწავლე როგორ აწყობენ კონტექსტურ გრაფებს აგენტებისთვის და დააპროექტე მარტივი SQLite კონტექსტის მენეჯერი შენი აგენტისთვის.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Real Business Opportunity"
-          ],
-          "verified_facts": [
-            "Google Cloud launched self-learning context enrichment and Knowledge Studio in Knowledge Catalog.",
-            "Gemini-powered self-learning analyzes agent-user interactions to identify missing or outdated context.",
-            "It makes AI agents nearly 4X more accurate, with up to 33% lower latency and…"
-          ],
-          "interpretation": "კონტექსტის მართვა და ძველი ინფორმაციის ავტომატური განახლება ხდება საწარმოო აგენტების მთავარი ბოთლის ყელი.",
-          "uncertainty": "ფუნქციონალი მიბმულია Google Cloud ეკოსისტემაზე და მის ინფრასტრუქტურაზე.",
-          "counter_argument": "ხელით კოდირებული system prompt-ები და vector DB-ები ბევრად მარტივია სტარტაპებისთვის დასაწყებად.",
-          "strategic_assessment": "გაიგე როგორ მუშაობს აგენტების კონტექსტის ავტომატური განახლება და გამოიყენე ეს პრინციპი შენს Python პროექტებში.",
-          "time_horizon": "mid-term",
-          "what_could_change": "სტატიკური კონტექსტური ფაილები ჩანაცვლდება დინამიური, ინტერაქციაზე დაფუძნებული თვითგანვითარებადი კონტექსტური გრაფებით.",
-          "risks": [
-            "ავტომატური განახლების დროს არასწორი დფინიტების შეპარვა",
-            "ინფრასტრუქტურული მიბმა ერთ პროვაიდერზე"
-          ],
-          "non_obvious_opportunity": "შეგიძლია შექმნა ღია კოდის პატარა ბიბლიოთეკა, რომელიც აგენტის ჩატის ლოგებიდან ავტომატურად ანახლებს აგენტის მეხსიერების ფაილებს.",
-          "fit_assessment": "შესანიშნავია, რადგან ეხება აგენტის კონტექსტისა და მეხსიერების ოპტიმიზაციას, რაც შენს მიმდინარე ამოცანებს ერწყმის."
-        },
-        {
-          "event_id": "evt-auto-research-arena-benchmark",
-          "title": "Auto-Research Arena: ავტონომიური კვლევითი სისტემებისა და ჰარნესების ბენჩმარკი",
-          "category": "AI Research / Agent Architecture",
-          "primary_url": "https://arxiv.org/abs/2610.35866",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 7,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "Auto-Research Arena არის ახალი ბენჩმარკი, რომელიც აფასებს ავტონომიურ კვლევით ჰარნესებს ენა მოდელების პრეტეინინგისა და ეფექტურობის ოპტიმიზაციისთვის.",
-          "what_happened": "მკვლევარებმა წარმოადგინეს Auto-Research Arena, რომელიც ჰყოფს მიღებადობას (admissibility) და გაუმჯობესებას (improvement).",
-          "what_changed": "ავტონომიური კვლევების შეფასება ხდება არა ქაოტურად, არამედ სტანდარტიზებულ მრავალმიზნობრივ გარემოში.",
-          "why_it_matters": "გაჩვენებს როგორ უნდა ააგო სტრუქტურირებული სატესტო გარემო შენი აგენტების შესაფასებლად.",
-          "key_takeaways": [
-            "Arena supports nine targets in model, data, training, and inference efficiency.",
-            "Separates admissibility from improvement to benchmark accurately.",
-            "Reveals significant headroom as simple sequential search outperformed several complex harnesses."
-          ],
-          "technical_architecture": [
-            "Shared experimental environment separating admissibility criteria from optimization targets.",
-            "Evaluates multiple research harnesses across foundation models."
-          ],
-          "technical_details": [
-            "Instantiated in language model pretraining with nine distinct efficiency targets.",
-            "Code available via open-source repository."
-          ],
-          "potential_impact": "აჩქარებს AI მოდელებისა და სისტემების ავტომატურ ოპტიმიზაციას და ტესტირებას.",
-          "action_type": "LEARN",
-          "action": "შეისწავლე როგორ ყოფს ეს ბენჩმარკი ექსპერიმენტის ადმისიას და ოპტიმიზაციას, და გამოიყენე იგივე პრინციპი შენს eval სკრიპტებში.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "Auto-Research Arena evaluates autonomous research systems in language model pretraining.",
-            "It features nine targets spanning model, data, training, and inference efficiency.",
-            "Evaluated seven research harnesses using two foundation models and separated admissibility from improvement."
-          ],
-          "interpretation": "ავტონომიური აგენტები უკვე იკვლევენ მოდელის არქიტექტურებსა და ჰიპერპარამეტრებს, მაგრამ საჭიროებენ მკაცრ ბენჩმარკებს.",
-          "uncertainty": "კვლევა ძირითადად ფოკუსირებულია მოდელის პრეტეინინგის ოპტიმიზაციაზე, რაც ძვირია გამოსაცდელად.",
-          "counter_argument": "უმეტეს დეველოპერებისთვის ავტონომიური კვლევა შორეული თემაა და უფრო პრაქტიკული აგენტები ურჩევნიათ.",
-          "strategic_assessment": "გაიაზრე როგორ იყენებენ ავტონომიური ჰარნესები ციკლურ ექსპერიმენტებს, რათა უკეთ დააპროექტო შენი აგენტების თვით-გაუმჯობესების ლოგიკა.",
-          "time_horizon": "mid-term",
-          "what_could_change": "მოდელების ოპტიმიზაცია და ჰიპერპარამეტრების ძიება სრულად ავტომატიზირდება აგენტური ჰარნესების მიერ.",
-          "risks": [
-            "მაღალი გამოთვლითი ხარჯები ავტონომიური ექსპერიმენტებისთვის",
-            "ზედმეტად რთული არქიტექტურები დამწყებებისთვის"
-          ],
-          "non_obvious_opportunity": "შეგიძლია დაწერო პატარა Python ჰარნესი, რომელიც ავტომატურად ტესტავს შენი RAG პროექტის სხვადასხვა პრომპტებს და ზომავს სიზუსტეს.",
-          "fit_assessment": "გეხმარება გაიგო როგორ მუშაობს აგენტების სისტემური შეფასება და ექსპერიმენტების ავტომატიზაცია."
-        }
-      ],
-      "trends": [
-        "Decision-based ძიებისა და RAG არქიტექტურების განვითარება ტრადიციული vector search-ის ნაცვლად",
-        "აგენტების კონტექსტისა და მეხსიერების ავტომატური თვითგანვითარება",
-        "ავტონომიური კვლევითი სისტემებისა და ჰარნესების სტანდარტიზაცია ბენჩმარკებით"
-      ]
-    },
     {
       "date": "2026-10-28",
       "summary": "OpenAI-მ გამოაშვება GPT-6.1 Terra, რომელიც კომპიუტერული მართვისა და API ხარჯების 50%-იან შემცირებაზეა ორიენტირებული. Anthropic-ის ახალმა კვლევამ აჩვენა, რომ ექსპერტები 86%-ით ენდობიან აგენტის ფარულ მიკერძოებას, რაც AI-ს უსაფრთხოების კონტროლს კრიტიკულს ხდის. ახალი კვლევები გვთავაზობენ Heads of Security ყურადღების გეიტებს პრომპტ ინჯექციის წინააღმდეგ და SynthAPI-ს Tool Scaling კანონებს.",
@@ -9995,13 +9841,330 @@
         "კონტექსტის ინჟინერია და ფაილური სისტემის გამოყენება ტოკენების ხარჯების შესამცირებლად",
         "მულტიმოდალური არქიტექტურები ჰეტეროგენული მონაცემების ინტეგრაციისთვის"
       ]
+    },
+    {
+      "date": "2026-11-11",
+      "summary": "დღევანდელი სიახლეები ფოკუსირებულია აგენტების მეხსიერების დეგრადაციის აღმოფხვრაზე, multi-framework შეფასების სისტემებსა და ახალ საბაზისო მოდელებზე. WikiTrace აჩვენებს, როგორ დავაკავშიროთ აგენტის გამოცდილება raw trace-ებთან შეცდომების თავიდან ასაცილებლად. AWS UAEF და KDD-ს კვლევა კი Trace-based შეფასებას საწარმოო სტანდარტად ამკვიდრებს.",
+      "events": [
+        {
+          "event_id": "evt-wikitrace-evidence-linked-memory",
+          "title": "WikiTrace: Evidence-Linked Memory ამცირებს აგენტების მეხსიერებით გამოწვეულ დეგრადაციას",
+          "category": "აგენტის არქიტექტურა და მეხსიერება",
+          "primary_url": "https://huggingface.co/papers/2611.14320",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 92,
+          "tldr": "WikiTrace აგენტების მეხსიერების დეგრადაციას წყვეტს გაკვეთილების raw execution trace-ებთან დაკავშირებით, რაც ბენჩმარკებზე სიზუსტეს 3.2 ქულით ზრდის.",
+          "what_happened": "KAIST-ის მკვლევრებმა შექმნეს WikiTrace, რომელიც აგენტს აძლევს საშუალებას გადაამოწმოს მეხსიერებაში არსებული გაკვეთილები რეალურ ტრაექტორიებთან.",
+          "what_changed": "ადრე აგენტები მხოლოდ მოკლე ტექსტურ შეჯამებებს ენდობოდნენ; ახლა გადამოწმება ხდება საწყის ლოგებთან დაკავშირებით.",
+          "why_it_matters": "შენს აგენტებს აღარ ექნებათ ჰალუცინაციური მეხსიერება; შეძლებ SQLite-ში სწორი მონაცემთა მოდელის აგებას უფასოდ.",
+          "key_takeaways": [
+            "მეხსიერების უბრალო დამატებამ შეიძლება 9.7%-ით გააუარესოს შედეგი",
+            "Evidence-linking აკავშირებს summary-ს raw tool execution trace-თან",
+            "კოდი სრულად ხელმისაწვდომია GitHub-ზე რეპროდუცირებისთვის"
+          ],
+          "technical_architecture": [
+            "ორდონიანი მეხსიერება: მაღალი დონის insight დაკავშირებული raw trace-თან",
+            "კონფლიქტის დროს ტერმინალური ხელსაწყოებით ჩასვლა საწყის ლოგებში",
+            "შეფასებულია ხუთ დამოუკიდებელ agentic ბენჩმარკზე"
+          ],
+          "technical_details": [
+            "GitHub რეპო: yukyeongleee/wikitrace",
+            "3.2 ქულით უპირატესობა",
+            "9.7% flipping rate შემცირება",
+            "JSON დაფუძნებული ტრაექტორიის სქემა"
+          ],
+          "potential_impact": "აგენტების საიმედოობის მკვეთრი ზრდა ხანგრძლივ ამოცანებში დამატებითი ძვირადღირებული API ზარების გარეშე.",
+          "action_type": "BUILD",
+          "action": "დაამატე SQLite ბაზაში ცხრილი lessons და დაუკავშირე execution_traces ცხრილს trace_id-ით შენს სკრიპტში.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "WikiTrace აკავშირებს თითოეულ შეჯამებულ გაკვეთილს მის თავდაპირველ raw trajectory-სთან და დიაგნოსტიკასთან",
+            "მეხსიერების გარეშე აგენტის ხელახლა გაშვება აბრუნებს 9.7% ამოხსნილ დავალებას",
+            "ხუთ აგენტურ ბენჩმარკზე WikiTrace-მა საშუალოდ 3.2 ქულით აჯობა მხოლოდ გაკვეთილებზე დაფუძნებულ მიდგომას",
+            "ღია კოდი ხელმისაწვდომია GitHub-ზე (yukyeongleee/wikitrace)"
+          ],
+          "interpretation": "მხოლოდ ტექსტური შეჯამებების შენახვა აგენტს აცდომებს. წარსული შეცდომების წყაროსთან მიბმა აუცილებელია საიმედო მეხსიერებისთვის.",
+          "uncertainty": "უცნობია, როგორ მასშტაბირდება ტრაექტორიების შენახვა მილიონობით ნაბიჯის შემთხვევაში SQLite ბაზაში.",
+          "counter_argument": "Raw ტრაექტორიების შენახვა და მათი ხელახალი ჩაკითხვა ზრდის context window-ის მოცულობას და ტოკენების ხარჯს.",
+          "strategic_assessment": "დანერგე Evidence-Linked სტრუქტურა SQLite-ში: შეინახე გაკვეთილი raw log-ის ID-სთან ერთად და გადაამოწმე კონფლიქტისას.",
+          "time_horizon": "mid-term",
+          "what_could_change": "აგენტური მეხსიერება გადავა უბრალო ვექტორული ბაზებიდან trace-linked სტრუქტურირებულ ლოგებზე.",
+          "risks": [
+            "კონტექსტის გაზრდილი მოხმარება",
+            "ტრეისების შენახვის ფაილური ლიმიტები",
+            "მოდელის მიერ არასწორი დიაგნოსტიკა"
+          ],
+          "non_obvious_opportunity": "შექმენი მცირე Python ბიბლიოთეკა, რომელიც SQLite-ში აგენტის trace-ებს ავტომატურად უკავშირებს შეჯამებულ წესებს.",
+          "fit_assessment": "ზუსტად ემთხვევა შენს სწავლის გეგმას: SQLite და აგენტური მეხსიერების არქიტექტურა."
+        },
+        {
+          "event_id": "evt-aws-uaef-agent-evaluation",
+          "title": "AWS UAEF: აგნოსტიკური სისტემა AI აგენტების დახურული ციკლის შეფასებისთვის",
+          "category": "AI Evaluation & საიმედოობა",
+          "primary_url": "https://aws.amazon.com/blogs/machine-learning/uaef-a-framework-agnostic-system-for-closed-loop-evaluation-of-ai-agents",
+          "supporting_urls": [
+            "https://arxiv.org/abs/2611.14493"
+          ],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "AWS-მა წარმოადგინა UAEF, რომელიც აგენტების trace-ების უნიფიცირებითა და 36 მეტრიკით ზომავს tool calling-ისა და მსჯელობის ხარისხს.",
+          "what_happened": "AWS-მა გამოუშვა უნივერსალური აგენტების შეფასების სისტემა UAEF, ხოლო პარალელურმა KDD კვლევამ აჩვენა trace-based შეფასების F1=0.90 სიზუსტე.",
+          "what_changed": "ადრე თითოეულ ფრეიმვორკს ცალკე evaluation ლოგიკა სჭირდებოდა; ახლა trace-ები ნორმალიზდება ერთ ფორმატში.",
+          "why_it_matters": "სწავლობ, როგორ შეაფასო შენი აგენტები პროფესიონალურ დონეზე trace-ების შედარებით და არა თვალით შემოწმებით.",
+          "key_takeaways": [
+            "Tool call შეფასება მოითხოვს ხელსაწყოს სახელის, რიგითობის და არგუმენტების შემოწმებას",
+            "Trace-based მიდგომა 5-ჯერ ნაკლებ ცრუ განგაშს (false alarms) იძლევა, ვიდრე text-only",
+            "ერთიანი trace ფორმატი ათავისუფლებს დეველოპერს ფრეიმვორკზე დამოკიდებულებისგან"
+          ],
+          "technical_architecture": [
+            "Adapter layer ფრეიმვორკის trace-ების კანონიკურ ფორმატში გადასაყვანად",
+            "Execution storage DynamoDB-სა და S3-ში მეტრიკების ისტორიისთვის",
+            "Closed-loop რეპორტინგი 36 მეტრიკის ანალიზით"
+          ],
+          "technical_details": [
+            "36 ჩაშენებული მეტრიკა",
+            "7 შეფასების განზომილება",
+            "Trace-based F1 ქულა: 0.90",
+            "12 საწარმოო ორგანიზაციის ტესტი"
+          ],
+          "potential_impact": "დეველოპერს შეუძლია დაამტკიცოს, რომ პრომპტის ან მოდელის შეცვლამ გააუმჯობესა აგენტი და არაფერი გააფუჭა.",
+          "action_type": "APPLY",
+          "action": "დაწერე Python ფუნქცია, რომელიც ადარებს აგენტის tool_calls მასივს მოსალოდნელ JSON სქემასთან და ითვლის სიზუსტეს.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Real Business Opportunity"
+          ],
+          "verified_facts": [
+            "UAEF იყენებს ადაპტერებს სხვადასხვა ფრეიმვორკის (LangGraph, Bedrock) trace-ების ერთიან ფორმატში გადასაყვანად",
+            "შეიცავს 36 ჩაშენებულ მეტრიკას 7 განზომილებაში (tool calling, multi-turn, coordination)",
+            "ტესტირებულია 12 ორგანიზაციაში ტელეკომის, ჯანდაცვისა და ფინანსების სექტორში",
+            "KDD 2026-ის კვლევა ადასტურებს, რომ trace-based LLM judging აღწევს F1=0.90 სიზუსტეს"
+          ],
+          "interpretation": "აგენტების ტესტირება აღარ არის მხოლოდ პასუხის შემოწმება; სტანდარტი ხდება tool calling თანმიმდევრობისა და არგუმენტების ვალიდაცია.",
+          "uncertainty": "AWS UAEF-ის სრული კოდის ხელმისაწვდომობა AWS ეკოსისტემის გარეთ შეზღუდულია მხოლოდ ნოუთბუქებით.",
+          "counter_argument": "მცირე პროექტებისთვის 36 მეტრიკის გაზომვა ზედმეტი სირთულეა და ანელებს სწრაფ პროტოტიპირებას.",
+          "strategic_assessment": "ააგე მინიმალური trace normalizer Python-ში: შეადარე გამოძახებული ხელსაწყოების სია და პარამეტრები მოსალოდნელ JSON-ს.",
+          "time_horizon": "mid-term",
+          "what_could_change": "ყველა სერიოზული კომპანია მოითხოვს trace-based evaluation-ს აგენტის პროდაქშენში გაშვებამდე.",
+          "risks": [
+            "AWS სერვისებზე გადაბმის რისკი",
+            "შეფასების მაღალი დრო",
+            "რთული ground truth მომზადება"
+          ],
+          "non_obvious_opportunity": "შესთავაზე ლოკალურ ბიზნესებს მათი არსებული AI ბოტების დამოუკიდებელი ტესტირება და ხარვეზების აუდიტი.",
+          "fit_assessment": "პირდაპირ პასუხობს შენს გეგმას: tool calling-იდან გადასვლა evaluation და production ეტაპზე."
+        },
+        {
+          "event_id": "evt-coderabbit-scaling-agentic-dev",
+          "title": "CodeRabbit: აგენტური კოდის შემოწმება და 20-ჯერ მეტი პროგრამული უზრუნველყოფის მიწოდება",
+          "category": "Real Business Opportunity & Agent Architecture",
+          "primary_url": "https://openai.com/index/coderabbit-codex-daybreak",
+          "supporting_urls": [],
+          "importance": 7,
+          "relevance": 9,
+          "actionability": 7,
+          "source_quality": 10,
+          "confidence": 88,
+          "tldr": "CodeRabbit-მა აჩვენა, რომ აგენტების ეპოქაში მთავარი ბოთლის ყელი Code Review ხდება და მისი ავტომატიზაცია გუნდს 20x აჩქარებს.",
+          "what_happened": "CodeRabbit-მა გამოაქვეყნა თავისი არქიტექტურული გამოცდილება OpenAI-ის მოდელებით კოდის ავტონომიური რევიუს შესახებ.",
+          "what_changed": "ადრე კოდს მხოლოდ ადამიანები კითხულობდნენ; ახლა აგენტების დაწერილ მასიურ კოდს სპეციალური რევიუერ-აგენტები ფილტრავენ.",
+          "why_it_matters": "შენთვის ეს არის პრაქტიკული ბიზნეს მოდელი: ააგო მარტივი, სპეციალიზებული რევიუ-აგენტი კონკრეტული წესებისთვის.",
+          "key_takeaways": [
+            "კოდის გენერაციის ზრდასთან ერთად კრიტიკული ხდება კოდის შემოწმება (review bottleneck)",
+            "ეფექტურია სპეციალიზებული საბ-აგენტების გამოყენება (code navigation, security)",
+            "მოდელების შეფასება საკუთარ known-issue ბენჩმარკზე აუცილებელია"
+          ],
+          "technical_architecture": [
+            "ასინქრონული code review პაიპლაინი ღრუბელში",
+            "მრავალი ქვედაგენტის (subagents) პარალელური მუშაობა ნავიგაციასა და უსაფრთხოებაზე",
+            "Known-issue benchmark ახალი მოდელების უწყვეტი ტესტირებისთვის"
+          ],
+          "technical_details": [
+            "20,000+ ორგანიზაცია",
+            "150,000+ open-source პროექტი",
+            "50% issue detection მაჩვენებელი",
+            "OpenAI Codex და reasoning მოდელები"
+          ],
+          "potential_impact": "მცირე გუნდებს შეუძლიათ შეინარჩუნონ მაღალი ხარისხის კოდი დიდი საინჟინრო რესურსის გარეშე.",
+          "action_type": "BUILD",
+          "action": "ააგე GitHub Action workflow, რომელიც PR-ის diff-ს უგზავნის Gemini API-ს და აბრუნებს 3 მთავარ შენიშვნას კომენტარად.",
+          "evidence": [],
+          "factuality_level": "single_source",
+          "classification": [
+            "Real Business Opportunity",
+            "Real Technical Skill"
+          ],
+          "verified_facts": [
+            "CodeRabbit გამოიყენება 20,000 ორგანიზაციისა და 150,000+ open-source პროექტის მიერ",
+            "ინჟინერიის გუნდი აგენტების დახმარებით 20-ჯერ მეტ კოდს აგზავნის (ships 20x more)",
+            "პირველი მთავარი ბოთლის ყელი აგენტების დანერგვისას არის Code Review",
+            "ახალი მოდელების შეფასება ხდება ცნობილი ხარვეზების შიდა ბენჩმარკზე (GPT-6 Astra-მ დაიჭირა 50%)"
+          ],
+          "interpretation": "აგენტების მიერ დაწერილი კოდის რაოდენობა იზრდება; რეალური ბიზნეს ღირებულება არის ამ კოდის ავტომატურ ვალიდაციასა და რევიუში.",
+          "uncertainty": "20x პროდუქტიულობის ზრდა კომპანიის საკუთარი შეფასებაა და შესაძლოა შეიცავდეს მარკეტინგულ გაზვიადებას.",
+          "counter_argument": "ზედმეტი ავტომატური რევიუ ქმნის ხმაურს pull request-ებში, რაც ხშირად აღიზიანებს დეველოპერებს.",
+          "strategic_assessment": "შექმენი მცირე GitHub Action შენი პროექტებისთვის, რომელიც PR-ებზე ავტომატურ შემოწმებას გაატარებს LLM API-ით.",
+          "time_horizon": "short-term",
+          "what_could_change": "კოდის წერა გაუფასურდება; დაფასდება სისტემური დიზაინი, შეფასების კრიტერიუმები და უსაფრთხოების აუდიტი.",
+          "risks": [
+            "ცრუ პოზიტიური შენიშვნები კოდზე",
+            "API ტოკენების ხარჯი დიდ რეპოზიტორიებზე",
+            "დეველოპერების ზედმეტი ნდობა აგენტზე"
+          ],
+          "non_obvious_opportunity": "შესთავაზე ქართულ სტარტაპებს უფასო GitHub Action ბოტი, რომელიც ქართულ/ინგლისურ ენაზე ამოწმებს PR-ებს.",
+          "fit_assessment": "იდეალურია პორტფოლიოსთვის: GitHub Actions + Python + LLM API არის შენი არსებული ტექნოლოგიური სტეკი."
+        },
+        {
+          "event_id": "evt-aws-nitro-sandboxes-agent-isolation",
+          "title": "AWS Nitro Sandboxes: აგენტების მიერ გენერირებული კოდის უსაფრთხო იზოლაცია",
+          "category": "აგენტების ინფრასტრუქტურა და Open Source",
+          "primary_url": "https://aws.amazon.com/blogs/containers/aws-nitro-sandboxes-hardware-enforced-workload-isolation-on-amazon-eks",
+          "supporting_urls": [
+            "https://cloud.google.com/blog/topics/developers-practitioners/the-open-ai-native-stack-on-kubernetes-from-open-models-to-distributed-inference-and-agents"
+          ],
+          "importance": 7,
+          "relevance": 8,
+          "actionability": 7,
+          "source_quality": 10,
+          "confidence": 92,
+          "tldr": "AWS-მა გამოუშვა Nitro Sandboxes EKS-ისთვის, რაც აგენტების მიერ დაწერილ კოდს აპარატურულად იზოლირებულ მსუბუქ VM-ებში უშვებს.",
+          "what_happened": "ღრუბლოვანმა გიგანტებმა (AWS, Google) წარმოადგინეს აგენტების კოდის იზოლაციის ახალი სტანდარტები EKS-სა და GKE-ში.",
+          "what_changed": "ადრე კონტეინერები იზიარებდნენ ჰოსტის ბირთვს (shared kernel); ახლა თითოეული აგენტის პოდი იღებს საკუთარ იზოლირებულ OS-ს.",
+          "why_it_matters": "როცა შენს აგენტს დაავალებ Python კოდის გაშვებას, უნდა იცოდე მისი უსაფრთხო ჩარჩოში მოქცევა.",
+          "key_takeaways": [
+            "ავტონომიური აგენტები წარმოადგენენ უსაფრთხოების რისკს shared kernel გარემოში",
+            "Hardware-enforced იზოლაცია აქრობს კონტეინერიდან გაქცევის (breakout) საფრთხეს",
+            "ღია ალტერნატივად რჩება gVisor და მსუბუქი სავარჯიშო კონტეინერები"
+          ],
+          "technical_architecture": [
+            "AWS Nitro System-ზე დაფუძნებული lightweight VM თითოეული EKS პოდისთვის",
+            "კრიპტოგრაფიული ატესტაცია რეგულირებადი ინდუსტრიებისთვის (HIPAA, PCI DSS)",
+            "Zero shared kernel attack surface მრავალმოიჯარიან გარემოში"
+          ],
+          "technical_details": [
+            "პლატფორმა: Amazon EKS",
+            "ტექნოლოგია: AWS Nitro System",
+            "ალტერნატივა: CNCF gVisor",
+            "დანიშნულება: Untrusted code execution"
+          ],
+          "potential_impact": "კომპანიებს შეეძლებათ უსაფრთხოდ გაუშვან აგენტები, რომლებიც ცოცხალ კოდს წერენ და ატესტირებენ.",
+          "action_type": "LEARN",
+          "action": "გაეცანი Python-ის subprocess მოდულის უსაფრთხო პარამეტრებს და გაუშვი აგენტის კოდი შეზღუდული მომხმარებლის უფლებით.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "Nitro Sandboxes აძლევს თითოეულ EKS პოდს აპარატურულად იზოლირებულ მსუბუქ VM-ს Nitro System-ზე დაყრდნობით",
+            "პრობლემა გამოწვეულია AI აგენტებით, რომლებიც თავად წერენ და უშვებენ კოდს ადამიანის განხილვის გარეშე",
+            "Google Cloud-მა KubeCon-ზე წარადგინა მსგავსი AI-native stack gVisor-ისა და OpenRL-ის გამოყენებით",
+            "ხსნის კონტეინერებიდან breakout-ისა და ჰოსტის საიდუმლოებებზე (secrets) წვდომის რისკს"
+          ],
+          "interpretation": "აგენტებისთვის bash/python გარემოს მიცემა უკვე მოითხოვს მიკრო-VM ან gVisor დონის იზოლაციას, უბრალო Docker აღარ კმარა.",
+          "uncertainty": "EKS Nitro Sandboxes მოითხოვს ძვირადღირებულ AWS ინფრასტრუქტურას და მიუწვდომელია ლოკალურად.",
+          "counter_argument": "ლოკალური დეველოპმენტისთვის Docker ან ჩვეულებრივი subprocess timeout-ებით სრულიად საკმარისია საწყის ეტაპზე.",
+          "strategic_assessment": "გაიაზრე იზოლაციის პრინციპი: შენს ლოკალურ აგენტებში კოდის გაშვება შეზღუდე ცალკე დაბალპრივილეგიურ გარემოში.",
+          "time_horizon": "long-term",
+          "what_could_change": "ყველა აგენტური პლატფორმა სტანდარტად აქცევს hardware-level იზოლაციას დაუმოწმებელი კოდის გაშვებისას.",
+          "risks": [
+            "მაღალი ღრუბლოვანი ხარჯი საწარმოო მასშტაბზე",
+            "კონფიგურაციის სირთულე Kubernetes-ში",
+            "ოვერჰედი ციკლების დაყოვნებისას"
+          ],
+          "non_obvious_opportunity": "ისწავლე gVisor-ის ან ლოკალური sandbox კონტეინერების გამართვა, რაც იშვიათი და ძვირადღირებული უნარია ბაზარზე.",
+          "fit_assessment": "ფუნდამენტური უსაფრთხოების კონცეფციაა: გაიგებ, რატომ არ შეიძლება აგენტს მისცე პირდაპირი root shell წვდომა."
+        },
+        {
+          "event_id": "evt-gemini-4-carbon-antigravity",
+          "title": "Google DeepMind-მა გამოუშვა Gemini 4 Carbon და Antigravity Swarm პრევიუ",
+          "category": "LLM APIs და ხელსაწყოები",
+          "primary_url": "https://deepmind.google/blog/gemini-4-carbon-is-now-available",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 8,
+          "actionability": 8,
+          "source_quality": 10,
+          "confidence": 90,
+          "tldr": "Google-მა გამოუშვა Gemini 4 Carbon $2/$10 ტარიფით და წარადგინა Antigravity /swarm მულტი-აგენტური გუნდების სამართავად.",
+          "what_happened": "DeepMind-მა ოფიციალურად ხელმისაწვდომი გახადა Gemini 4 Carbon მოდელი ხანგრძლივი აგენტური სამუშაო პროცესებისთვის.",
+          "what_changed": "ადრე რთული მსჯელობის მოდელები ძვირი იყო; ახლა ფრონტიერ დონის მოდელი ხელმისაწვდომია Argon-ის ფასად ($2/$10).",
+          "why_it_matters": "შეგიძლია უფასოდ ან მიზერულ ფასად დატესტო მოწინავე მოდელი შენს Python სკრიპტებში Google AI Studio-ს მეშვეობით.",
+          "key_takeaways": [
+            "ფასი უტოლდება Argon-ს: $2/1M input და $10/1M output ტოკენი",
+            "#1 ადგილი CursorBench 4.0-სა და Zapier AutomationBench-ზე",
+            "/swarm ფუნქცია იძლევა აგენტების გუნდის ერთიან მართვას"
+          ],
+          "technical_architecture": [
+            "Extended verification loops რთული კოდირების ამოცანებისთვის",
+            "როლების გადანაწილება: Carbon როგორც არქიტექტორი, მსუბუქი მოდელები როგორც შემსრულებლები",
+            "იზოლირებული სამუშაო გარემოები და adversarial verifiers"
+          ],
+          "technical_details": [
+            "ინპუტ ფასი: $2 / 1M tokens",
+            "აუთპუტ ფასი: $10 / 1M tokens",
+            "პლატფორმა: Google AI Studio API",
+            "ბენჩმარკი: #1 Zapier AutomationBench"
+          ],
+          "potential_impact": "დეველოპერებს შეუძლიათ 2-ჯერ ნაკლები ხარჯით გაუშვან რთული აგენტური ავტომატიზაციები.",
+          "action_type": "TRY",
+          "action": "გაიარე ტესტირება Google AI Studio-ში Gemini 4 Carbon API გასაღებით და შეადარე მისი tool calling სიზუსტე.",
+          "evidence": [],
+          "factuality_level": "single_source",
+          "classification": [
+            "Real Technical Skill",
+            "Temporary Trend"
+          ],
+          "verified_facts": [
+            "Gemini 4 Carbon ხელმისაწვდომია Google AI Studio API-ში $2/M input და $10/M output ფასად",
+            "იკავებს #1 ადგილს CursorBench 4.0-ზე, WANDR-ზე და AutomationBench-ზე",
+            "Google Antigravity-ში გაეშვა /swarm პრევიუ ერთი პრომპტით მულტი-აგენტური კოორდინაციისთვის",
+            "განკუთვნილია რთული multi-step coding და debugging ამოცანებისთვის extended verification loop-ებით"
+          ],
+          "interpretation": "Google ამკვიდრებს იაფ ფრონტიერ მოდელს აგენტური ამოცანებისთვის, რაც კონკურენციას უწევს Claude Fable 5.2-ს ($8/$40).",
+          "uncertainty": "უცნობია, რამდენად სტაბილურია /swarm რეჟიმი რეალურ გარემოში დამოუკიდებელი ტესტირების გარეშე.",
+          "counter_argument": "უმეტესი ყოველდღიური ამოცანისთვის უფრო იაფი Argon ან Flash მოდელები საკმარისია და Carbon ზედმეტ ტოკენებს წვავს.",
+          "strategic_assessment": "გამოიყენე Google AI Studio-ს უფასო/იაფი კვოტა რთული არქიტექტურული გეგმების დასაგენერირებლად და კოდის აუდიტისთვის.",
+          "time_horizon": "short-term",
+          "what_could_change": "მულტი-აგენტური orchestration ხდება API პროვაიდერის ჩაშენებული ფუნქცია და არა ცალკე ბიბლიოთეკა.",
+          "risks": [
+            "extended verification ზრდის საბოლოო ტოკენების რაოდენობას",
+            "API rate limit შეზღუდვები",
+            "სწრაფი ცვლილებები Antigravity SDK-ში"
+          ],
+          "non_obvious_opportunity": "შეადარე Carbon-ის მიერ დაგენერირებული MCP სერვერის კოდი შენს არსებულ კოდთან და იპოვე შეცდომები.",
+          "fit_assessment": "შესანიშნავია შენი ბიუჯეტისთვის: Google AI Studio გაძლევს წვდომას მოწინავე მოდელზე მინიმალურ ფასად."
+        }
+      ],
+      "trends": [
+        "Trace-level აგენტური შეფასება: ტექსტური პასუხის ნაცვლად მოწმდება გამოძახებული ხელსაწყოების რიგითობა და არგუმენტები",
+        "Evidence-linked მეხსიერება: აბსტრაქტული შეჯამებების მიბმა raw შესრულების ლოგებთან მეხსიერების დეგრადაციის აღმოსაფხვრელად",
+        "Hardware-level აგენტური იზოლაცია: Docker-იდან გადასვლა მიკრო-VM-ებსა და gVisor-ზე untrusted code-ის გასაშვებად",
+        "Reasoning მოდელების გაიაფება: ფრონტიერ დონის მოდელების გამოშვება $2/$10 ტარიფით (Gemini 4 Carbon)"
+      ]
     }
   ],
   "learning_queue": [
-    "ფაილურ სისტემაზე დაფუძნებული კონტექსტის მართვა Python-ში",
-    "SQLite-ის ეფექტური გამოყენება აგენტური მეხსიერების მდგომარეობის შესანახად"
+    "SQLite უცხო გასაღებები (Foreign Keys) და ინდექსები აგენტის trace ლოგების სწრაფი ფილტრაციისთვის",
+    "Python subprocess მოდულის უსაფრთხო გამოყენება (timeout, sandbox, no-shell გარემო)",
+    "F1 Score-ის გამოთვლა დამოუკიდებელ ტესტებზე აგენტის შეფასების (Evaluation) გასაზომად"
   ],
-  "last_run": "2026-11-10T17:34:25.103058+00:00",
+  "last_run": "2026-11-11T17:52:33.790496+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -10134,12 +10297,13 @@
     "arxiv:2611.08452",
     "arxiv:2611.08453",
     "arxiv:2611.08478",
-    "arxiv:2611.12806"
+    "arxiv:2611.12806",
+    "arxiv:2611.14320"
   ],
   "last_report_files": {
-    "markdown": "data/reports/2026-11-10/report.md",
-    "json": "data/reports/2026-11-10/report.json",
-    "newsletter": "data/reports/2026-11-10/newsletter.md",
-    "social": "data/reports/2026-11-10/social_posts.txt"
+    "markdown": "data/reports/2026-11-11/report.md",
+    "json": "data/reports/2026-11-11/report.json",
+    "newsletter": "data/reports/2026-11-11/newsletter.md",
+    "social": "data/reports/2026-11-11/social_posts.txt"
   }
 }
