@@ -374,7 +374,12 @@
     "https://aws.amazon.com/blogs/machine-learning/building-a-self-service-llm-gateway-with-amazon-bedrock-and-litellm",
     "https://simonwillison.net/2026/Nov/11/llm",
     "https://huggingface.co/papers/2611.15777",
-    "https://www.anthropic.com/claude-fable-and-mythos-5-2"
+    "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+    "https://developers.googleblog.com/a2ui-10-build-delightful-fast-reliable-agentic-experiences",
+    "https://www.microsoft.com/en-us/security/blog/2026/11/12/trained-to-betray-how-post-training-supply-chain-attacks-hijack-coding-agents",
+    "https://research.google/blog/advancing-science-engineering-with-antigravitys-teamwork-feature",
+    "https://arxiv.org/abs/2611.17316",
+    "https://aws.amazon.com/blogs/machine-learning/introducing-the-web-search-api-on-amazon-bedrock-agentcore"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -678,308 +683,14 @@
     "evt-alphaproof-code-signal-verification",
     "evt-litellm-bedrock-llm-gateway",
     "evt-so-arena-system-one-reliability",
-    "evt-claude-fable-52-release"
+    "evt-claude-fable-52-release",
+    "evt-google-a2ui-10-generative-ui",
+    "evt-microsoft-agent-supply-chain-attacks",
+    "evt-google-antigravity-teamwork-multiagent",
+    "evt-coremem-cost-internalizing-agent-memory",
+    "evt-aws-bedrock-agentcore-web-search-api"
   ],
   "events": [
-    {
-      "event_id": "evt-third-moment-agent-optimization",
-      "title": "Third Moment Research: 10,000 აგენტის 48-საათიანი გაშვება და Context Pollution-ის ოპტიმიზაცია",
-      "category": "აგენტის არქიტექტურა და ოპტიმიზაცია",
-      "primary_url": "https://openai.com/index/third-moment-research",
-      "supporting_urls": [
-        "https://openai.com/index/third-moment-research"
-      ],
-      "importance": 9,
-      "relevance": 9,
-      "actionability": 8,
-      "source_quality": 10,
-      "confidence": 95,
-      "tldr": "Third Moment-მა 10,000 აგენტის 48-საათიან სისტემაში context pollution აღმოფხვრა, რითაც ტესტირების დრო 97%-ით შეამცირა.",
-      "what_happened": "კომპანიამ გამოავლინა, რომ აგენტები polling-ით ფლანგავდნენ ტოკენებს და memory-packing-ით backtest-ის დრო წუთებამდე შეამცირა.",
-      "what_changed": "აგენტები აღარ ელიან პროცესს context window-ში; მონაცემები იკრიბება გარედან და მიეწოდება მხოლოდ დასრულებული რეზულტატი.",
-      "why_it_matters": "სასკოლო ბიუჯეტით მუშაობისას უფასო API ტოკენები არ უნდა დახარჯო სტატუსის შემოწმებაზე; უნდა ისწავლო ასინქრონული არქიტექტურა.",
-      "key_takeaways": [
-        "Polling აბინძურებს context window-ს და აგდებს აგენტის სიზუსტეს.",
-        "Memory-packing და კეშირება ტოკენების ბიუჯეტს მნიშვნელოვნად ზოგავს.",
-        "Codex წარმატებით გამოიყენება აგენტის საკუთარი კოდის ბაზის პროფაილინგისთვის."
-      ],
-      "technical_architecture": [
-        "მოდელები: GPT-6 Astra, GPT-6 Sol და Codex.",
-        "გარემო: 10,000 concurrent agents 36-48 საათიანი სესიებით.",
-        "უსაფრთხოება: Daybreak პლატფორმა აგენტების გარემოს შესამოწმებლად."
-      ],
-      "technical_details": [
-        "Backtest დრო: 3 საათიდან 3-5 წუთამდე.",
-        "ოპტიმიზაცია: caching და memory-packing ტექნიკა.",
-        "ტრანზაქციები: ტრილიონი ტოკენი ერთ სამუშაო დღეში."
-      ],
-      "potential_impact": "ინჟინრები, რომლებიც Context Hygiene-ს იცავენ, 90%-ით ნაკლებ API ხარჯს გასწევენ გრძელვადიან დავალებებზე.",
-      "action_type": "APPLY",
-      "action": "შეცვალე შენი აგენტის loop-ში sleep/poll ლოგიკა webhook callback-ით, რათა ტოკენები ცარიელ ლოდინში არ დაიხარჯოს.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "Third Moment ერთდროულად უშვებს 10,000 ავტონომიურ აგენტს 36-დან 48 საათამდე სესიებით.",
-        "Codex-ით ჩატარებულმა ანალიზმა backtest-ის დრო 3 საათიდან 3-5 წუთამდე შეამცირა.",
-        "სტატუსის პერიოდული შემოწმება (polling) აბინძურებდა context window-ს და ფლანგავდა ტოკენებს."
-      ],
-      "interpretation": "აგენტურ ლუპებში მთავარი პრობლემა მოდელის სისუსტე კი არა, ცუდად აწყობილი ხელსაწყოების გამო ტოკენების გაფლანგვა და კონტექსტის დაბინძურებაა.",
-      "uncertainty": "უცნობია კომპანიის მიერ გამოყენებული სინთეზური სცენარების გენერაციის ზუსტი პრომპტები და გარემოს არქიტექტურა.",
-      "counter_argument": "ფინანსური სიმულაციები უნიკალური დომენია მკაფიო მეტრიკებით და ეს ოპტიმიზაცია შეიძლება პირდაპირ არ მოერგოს ჩვეულებრივ ბიზნეს აგენტებს.",
-      "strategic_assessment": "შეწყვიტე აგენტისთვის გრძელი პროცესების polling-ით ლოდინის უფლების მიცემა. გამოიყენე webhook ან callback მექანიზმი ტოკენების დაზოგვისთვის.",
-      "time_horizon": "mid-term",
-      "what_could_change": "ავტონომიური სისტემები გადავლენ ასინქრონულ event-driven არქიტექტურაზე, რაც context-ში სტატუს-ჩექების წერას სრულად გამორიცხავს.",
-      "risks": [
-        "API ტოკენების ხარჯი უმართავი ხდება.",
-        "დაბინძურებული კონტექსტი აგენტს მიზანს აკარგვინებს.",
-        "არასწორი კეშირება იწვევს მოძველებულ მონაცემებს."
-      ],
-      "non_obvious_opportunity": "მცირე ბიზნესებისთვის შექმენი background task monitoring აგენტი, რომელიც შედეგს Telegram-ში აგზავნის და ტოკენებს არ წვავს.",
-      "fit_assessment": "იდეალურია შენთვის: გასწავლის, როგორ ააგო იაფი, გრძელვადიანი აგენტური ლუპები მინიმალური ტოკენების ხარჯვით."
-    },
-    {
-      "event_id": "evt-google-adk-mcp-a2a",
-      "title": "Google Cloud ADK: MCP და Agent2Agent პროტოკოლების მხარდაჭერა 5 ენაზე",
-      "category": "აგენტების ინფრასტრუქტურა და MCP",
-      "primary_url": "https://cloud.google.com/blog/topics/developers-practitioners/one-agent-development-kit-five-languages",
-      "supporting_urls": [
-        "https://cloud.google.com/blog/topics/developers-practitioners/one-agent-development-kit-five-languages"
-      ],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 9,
-      "source_quality": 9,
-      "confidence": 92,
-      "tldr": "Google-მა გამოუშვა ADK 5 ენისთვის MCP და A2A პროტოკოლების ჩაშენებული მხარდაჭერით და ლოკალური Android აგენტების შესაძლებლობით.",
-      "what_happened": "Google-მა გააფართოვა Agent Development Kit და დაამატა ღია პროტოკოლები cross-language აგენტური კომუნიკაციისთვის.",
-      "what_changed": "აგენტების ხელსაწყოები აღარ იწერება ცალკეული ენის ექსკლუზიურ ფორმატში; MCP და A2A აერთიანებს Python, Go და TS ეკოსისტემებს.",
-      "why_it_matters": "შენ მიერ დაწერილი ერთი Python MCP ხელსაწყო ახლა პირდაპირ თავსებადია გლობალურ კორპორატიულ სისტემებთან.",
-      "key_takeaways": [
-        "ADK მხარს უჭერს Python, Go, TypeScript, Java და Kotlin ენებს.",
-        "MCP ჩაშენებულია თითოეულ ენაში, რაც ხელსაწყოების გაზიარებას ამარტივებს.",
-        "Agent2Agent (A2A) უზრუნველყოფს HTTP კომუნიკაციას დამოუკიდებელ აგენტებს შორის."
-      ],
-      "technical_architecture": [
-        "პროტოკოლები: Model Context Protocol (MCP) და Agent2Agent (A2A).",
-        "Android Runtime: LiteRT-LM tool calling-ისთვის, ML Kit (Gemini Nano) ტექსტისთვის.",
-        "ლოკალური მდგომარეობა: Room და AppSearch ბაზები Android-ზე."
-      ],
-      "technical_details": [
-        "დეკორატორები: @Tool და @Param ტიპების მკაცრი ვალიდაციით compile-time-ში.",
-        "კომპილაცია: Zero runtime reflection R8 shrinker-ის მხარდაჭერით.",
-        "ინტეგრაცია: Spring AI bridge და ADK 2.0 გრაფების სამუშაო პროცესი."
-      ],
-      "potential_impact": "დეველოპერები შეძლებენ მრავალენოვანი multi-agent სისტემების აწყობას სტანდარტიზებული HTTP ინტერფეისით.",
-      "action_type": "BUILD",
-      "action": "დააინსტალირე ოფიციალური MCP SDK Python-ში და შექმენი ერთი ფუნქცია, რომელიც კითხულობს ადგილობრივ ფაილს.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Technical Skill",
-        "Real Business Opportunity"
-      ],
-      "verified_facts": [
-        "Google Agent Development Kit (ADK) გამოვიდა ხუთი ენისთვის: Python, Go, TypeScript, Java და Kotlin.",
-        "ყველა ვერსიაში ინტეგრირებულია Model Context Protocol (MCP) კლიენტი.",
-        "დამატებულია Agent2Agent (A2A) სტანდარტი აგენტების HTTP-ით ურთიერთობისთვის.",
-        "Kotlin ვერსია მუშაობს Android-ზე ლოკალურად LiteRT-LM და Gemini Nano ინტეგრაციით."
-      ],
-      "interpretation": "MCP ხდება ინდუსტრიული უნივერსალური სტანდარტი ხელსაწყოებისთვის, ხოლო A2A ქმნის multi-agent კომუნიკაციის საერთო ენას.",
-      "uncertainty": "უცნობია, რამდენად სწრაფად მიიღებს ღია ოფენსორს კომიუნითი Google-ის ADK-ს LangGraph-ისა და CrewAI-ს ფონზე.",
-      "counter_argument": "Google-ის SDK-ები ხშირად რთულია და მიბმულია Google Cloud-ის ფასიან სერვისებზე.",
-      "strategic_assessment": "გამოიყენე MCP შენი ხელსაწყოების ასაგებად; ეს უზრუნველყოფს, რომ შენი კოდი იმუშავებს ნებისმიერ ფრეიმვორკში გადაწერის გარეშე.",
-      "time_horizon": "mid-term",
-      "what_could_change": "სხვადასხვა ენაზე დაწერილ აგენტებს შეეძლებათ პირდაპირ HTTP-ით დაუძახონ ერთმანეთს A2A პროტოკოლით.",
-      "risks": [
-        "სტანდარტების ფრაგმენტაცია დიდ გიგანტებს შორის.",
-        "ლოკალური მობილური აგენტების აპარატურული შეზღუდვები.",
-        "სერვერული runtime-ების სირთულე დამწყებთათვის."
-      ],
-      "non_obvious_opportunity": "ააგე მარტივი Python MCP სერვერი ლოკალური SQLite მონაცემთა ბაზისთვის, რომელსაც ნებისმიერი ADK აგენტი გამოიყენებს.",
-      "fit_assessment": "იდეალურად ებმის შენს მიმდინარე ეტაპს: MCP და tool calling შენი სწავლის გეგმის ცენტრალური ნაწილია."
-    },
-    {
-      "event_id": "evt-agent-retrieval-evidence-substitution",
-      "title": "Evidence Substitution: რატომ კარგავენ აგენტები სიზუსტეს Tool-ის შედეგების RAG-ით ძიებისას",
-      "category": "AI Evaluation & საიმედოობა",
-      "primary_url": "https://arxiv.org/abs/2610.26836",
-      "supporting_urls": [
-        "https://arxiv.org/abs/2610.26836"
-      ],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 9,
-      "source_quality": 8,
-      "confidence": 90,
-      "tldr": "ხელსაწყოს შედეგების ფაილიდან RAG-ით ამოღება აგენტებში იწვევს Evidence Substitution შეცდომას და სიზუსტის მკვეთრ ვარდნას.",
-      "what_happened": "მკვლევრებმა 11,007 სიმულაციაზე შეისწავლეს, როგორ ცდება LLM, როდესაც ხელსაწყოს პასუხს გარე ინდექსიდან კითხულობს.",
-      "what_changed": "გამოვლინდა, რომ აგენტები ითვლიან სწორად, მაგრამ საბოლოო პასუხს იღებენ არა ოფიციალური რეპორტიდან, არამედ მეორადი ფაილებიდან.",
-      "why_it_matters": "როცა ბიზნეს აგენტს SQL-ის ან API-ის პასუხს აძლევ, არ დამალო ის vector search-ის მიღმა, თუ შეგიძლია პირდაპირ აჩვენო.",
-      "key_takeaways": [
-        "Retrieval-მა GPT მოდელებს 11.3 ქულამდე დააკარგვინა სიზუსტეში.",
-        "Inlining (შედეგის პირდაპირ კონტექსტში დატოვება) საუკეთესო გამოსავალია ზომიერ მონაცემებზე.",
-        "ფაილის მკაფიო დასახელება აღადგენს დაკარგული სიზუსტის დიდ ნაწილს."
-      ],
-      "technical_architecture": [
-        "სატესტო გარემო: PHREEQC გეოქიმიური სიმულატორი (846.8k სიმბოლოიანი რეპორტები).",
-        "ტესტები: 158 execution-verified ამოცანა.",
-        "შედარებული მოდელები: GPT-5 ოჯახი vs Claude 4.6 სერია."
-      ],
-      "technical_details": [
-        "ზარების რაოდენობა: 11,007 ლოგირებული simulator call.",
-        "სიზუსტის დელტა: -11.3 ქულა GPT-5.1-ზე retrieval-ის დროს.",
-        "გაუმჯობესება: +7.9 ქულა explicit artifact naming-ით."
-      ],
-      "potential_impact": "Agent harness-ების დეველოპერები თავიდან აიცილებენ ჩუმ ჰალუცინაციებს ინსტრუმენტების აუთფუთის სწორი მენეჯმენტით.",
-      "action_type": "APPLY",
-      "action": "შეამოწმე შენი აგენტის პრომპტი და დარწმუნდი, რომ tool output-ის ფაილის სახელი აგენტს გადაეცემა მკაფიოდ, უნიკალური ID-ით.",
-      "evidence": [],
-      "factuality_level": "single_source",
-      "classification": [
-        "Real Technical Skill"
-      ],
-      "verified_facts": [
-        "ხელსაწყოს დიდი შედეგების RAG-ით ამოღებისას GPT-5.1-მა და GPT-5.2-მა 11.3 და 7.9 სიზუსტის ქულა დაკარგეს.",
-        "Claude Opus 4.6-მა და Sonnet 4.6-მა ინდექსირებული ძიებისას სიზუსტის ვარდნა არ აჩვენეს.",
-        "ავტორიტეტული ფაილის სახელის პირდაპირ მითითებამ სიზუსტე 6.3-7.9 ქულით გაზარდა."
-      ],
-      "interpretation": "როცა აგენტს აიძულებ ხელსაწყოს შედეგი ფაილიდან დამოუკიდებლად ამოიღოს, ის ხშირად საკუთარ შუალედურ ვარაუდს ეყრდნობა რეალური მონაცემის ნაცვლად.",
-      "uncertainty": "კვლევა ჩატარდა სამეცნიერო სიმულატორ PHREEQC-ზე და შეიძლება განსხვავდებოდეს მარტივ JSON API პასუხებზე.",
-      "counter_argument": "გრძელი პასუხების პირდაპირ context window-ში ჩასმა ზრდის ხარჯს და იწვევს მოდელის ყურადღების გაფანტვას.",
-      "strategic_assessment": "თუ tool output ეტევა context-ში, ჩააწოდე პირდაპირ. თუ ფაილში ინახავ, prompt-ში მკაფიოდ მიუთითე ზუსტი ფაილის სახელი.",
-      "time_horizon": "short-term",
-      "what_could_change": "აგენტების ფრეიმვორკები შეწყვეტენ ბრმა vector retrieval-ს ხელსაწყოების შედეგებზე და გადავლენ explicit artifact referencing-ზე.",
-      "risks": [
-        "აგენტი პასუხობს არასწორი შუალედური გამოთვლით.",
-        "დამალული შეცდომები, რომლებსაც eval-ები ძნელად იჭერს.",
-        "კონტექსტის ზომის არასწორი მართვა."
-      ],
-      "non_obvious_opportunity": "შექმენი მსუბუქი Python ბიბლიოთეკა, რომელიც ამოწმებს, აგენტის პასუხი ემთხვევა თუ არა Tool-ის რეალურ raw output-ს.",
-      "fit_assessment": "კრიტიკულია შენი RAG და tool calling პროექტებისთვის: გასწავლის, სად უშვებენ შეცდომას რეალური აგენტები."
-    },
-    {
-      "event_id": "evt-weact-dynamic-lora-switching",
-      "title": "WeAct: LoRA წონების დინამიური გადართვა აგენტის Action-ის სახით",
-      "category": "AI Research & Model Architecture",
-      "primary_url": "https://arxiv.org/abs/2610.26847",
-      "supporting_urls": [
-        "https://arxiv.org/abs/2610.26847"
-      ],
-      "importance": 8,
-      "relevance": 8,
-      "actionability": 7,
-      "source_quality": 8,
-      "confidence": 89,
-      "tldr": "WeAct-მა აგენტის action space-ში LoRA წონების გადართვა ჩასვა, რითაც რთულ კვლევით ამოცანებში სიზუსტე 27.5%-ით გაზარდა.",
-      "what_happened": "შეიქმნა სისტემა, სადაც აგენტი tool calling-ის მსგავსად თავად ირჩევს, რომელი სპეციალიზებული LoRA ადაპტერი გაააქტიუროს.",
-      "what_changed": "ფიქსირებული პარამეტრების ნაცვლად, მოდელი ადაპტირდება ამოცანის მიმდინარე ეტაპზე (მაგ. კოდის წერა vs ტექსტის ანალიზი).",
-      "why_it_matters": "ეს აჩვენებს, რომ აგენტის 'ხელსაწყო' შეიძლება იყოს არა მხოლოდ გარე API, არამედ მოდელის შიდა პარამეტრების შეცვლაც.",
-      "key_takeaways": [
-        "Internal Action-ები იყენებს სტანდარტულ tool-calling ინტერფეისს.",
-        "Catastrophic forgetting თავიდან აცილებულია გაყინული backbone მოდელით.",
-        "მოდულარული ადაპტაცია საშუალებას იძლევა ცალკეული უნარების დამოუკიდებლად განახლების."
-      ],
-      "technical_architecture": [
-        "ბაზისური მოდელი: Qwen3-32B გაყინული backbone-ით.",
-        "ადაპტერები: დამოუკიდებელი capability-specific LoRA ბლოკები.",
-        "ინტერფეისი: მოდელის native tool calling მექანიზმი."
-      ],
-      "technical_details": [
-        "სიზუსტის ზრდა: +6.2% full fine-tuning-თან შედარებით.",
-        "შედარება LoRA-merging-თან: +27.5% სიზუსტის უპირატესობა.",
-        "ბენჩმარკი: 8 deep-research სატესტო ნაკრები."
-      ],
-      "potential_impact": "შემცირდება ძვირადღირებული მოდელების ხელახალი დატრენინგების საჭიროება სპეციალიზებული აგენტური ამოცანებისთვის.",
-      "action_type": "LEARN",
-      "action": "წაიკითხე WeAct-ის აბსტრაქტი და გაიაზრე, როგორ შეიძლება გამოიყენო tool calling მოდელის ქცევის შესაცვლელად.",
-      "evidence": [],
-      "factuality_level": "single_source",
-      "classification": [
-        "Real Technical Skill"
-      ],
-      "verified_facts": [
-        "WeAct ამატებს LoRA ადაპტერების არჩევას აგენტის action space-ში native tool-calling ინტერფეისით.",
-        "Qwen3-32B მოდელზე WeAct-მა სიზუსტე 6.2%-ით გაზარდა full fine-tuning-თან შედარებით ნაკლები გამოთვლითი რესურსით.",
-        "სტატიკურ LoRA-merging მეთოდებთან შედარებით სიზუსტის ზრდამ 27.5% შეადგინა."
-      ],
-      "interpretation": "ერთი გიგანტური მოდელის ნაცვლად, აგენტს შეუძლია runtime-ში გამოიძახოს სპეციალიზებული ადაპტერები კოდისთვის, ძიებისთვის ან წერისთვის.",
-      "uncertainty": "წონების დინამიურ გადართვას სჭირდება GPU ინფრასტრუქტურის მხარდაჭერა და შეიძლება გაზარდოს latency.",
-      "counter_argument": "სხვადასხვა დავალებისთვის ცალკეული მცირე მოდელების გამოძახება API-ით ხშირად უფრო მარტივია, ვიდრე წონების მანიპულაცია.",
-      "strategic_assessment": "გაიაზრე მოდულარული აგენტის პრინციპი: ერთ უნივერსალურ სისტემას სჯობს ვიწრო, კონკრეტულ ამოცანაზე მომართული ხელსაწყოები.",
-      "time_horizon": "mid-term",
-      "what_could_change": "აგენტები შეძლებენ ახალი უნარების შესწავლას ძველი ცოდნის დავიწყების (catastrophic forgetting) გარეშე, მხოლოდ ახალი LoRA-ს მიბმით.",
-      "risks": [
-        "GPU მეხსიერების მენეჯმენტის სირთულე.",
-        "ადაპტერის გადართვის დაყოვნება.",
-        "შეცდომა ადაპტერის შერჩევის დროს."
-      ],
-      "non_obvious_opportunity": "სცადე multi-agent სისტემაში თითოეულ აგენტს მისცე მკაფიოდ განსხვავებული სისტემური პრომპტი, როგორც მსუბუქი ალტერნატივა LoRA-სი.",
-      "fit_assessment": "გეხმარება აგენტის loop-ის და action space-ის გააზრებაში: აგენტს შეუძლია მართოს არა მხოლოდ გარე სამყარო, არამედ საკუთარი თავი."
-    },
-    {
-      "event_id": "evt-memt1-memory-native-architecture",
-      "title": "MemT-1.0: მეხსიერების ჩაშენება მოდელის გამოთვლაში 66-ჯერ ნაკლები KV Cache-ით",
-      "category": "აგენტის არქიტექტურა და მეხსიერება",
-      "primary_url": "https://huggingface.co/papers/2610.26825",
-      "supporting_urls": [
-        "https://huggingface.co/papers/2610.26825"
-      ],
-      "importance": 8,
-      "relevance": 8,
-      "actionability": 7,
-      "source_quality": 8,
-      "confidence": 88,
-      "tldr": "MemT-1.0-მა წარადგინა მეხსიერების ჩაშენებული არქიტექტურა, რომელმაც KV Cache 66-ჯერ შეამცირა და სიჩქარე გააორმაგა.",
-      "what_happened": "მკვლევრებმა შექმნეს მოდელი, რომელიც ინფორმაციას იმახსოვრებს გამოთვლით პროცესში და არა გარე ვექტორულ ბაზაში.",
-      "what_changed": "128K ტოკენის ისტორიის შენახვა აღარ მოითხოვს გიგანტურ მეხსიერებას; სისტემა ინარჩუნებს გამოცდილებას კომპაქტურ ფორმატში.",
-      "why_it_matters": "აგენტების მეხსიერება ყველაზე ძვირი კომპონენტია; ასეთი არქიტექტურები გრძელვადიან აგენტებს ბევრად იაფს გახდის.",
-      "key_takeaways": [
-        "Gated DeltaNet-2 უზრუნველყოფს სტაბილურ token-level მეხსიერების განახლებას.",
-        "KV Cache-ის მოცულობა 66-ჯერ მცირდება 128K სიგრძეზე.",
-        "აგენტური ამოცანების წარმატება იზრდება პროცედურული მეხსიერების შინაგანი ათვისებით."
-      ],
-      "technical_architecture": [
-        "არქიტექტურა: Gated DeltaNet-2 და Mixture-of-Storage.",
-        "ტრენინგი: 34 მილიარდი ტოკენი continuous pre-training და post-training ეტაპზე.",
-        "ვარიანტები: MemT-1.0-Nano და MemT-1.0-Flash."
-      ],
-      "technical_details": [
-        "ინფერენსის აჩქარება: 1.86x 128K ტოკენის ისტორიაზე.",
-        "შენახვის ეკონომია: 66-ჯერ ნაკლები მოცულობა KV ქეშთან შედარებით.",
-        "დომენი: Procedural experience retention აგენტურ ამოცანებში."
-      ],
-      "potential_impact": "ხანგრძლივი დიალოგისა და კვლევითი აგენტების გაშვება შესაძლებელი გახდება შეზღუდული მეხსიერების მქონე სერვერებზე.",
-      "action_type": "TRACK",
-      "action": "შეინახე MemT-1.0-ის HuggingFace გვერდი და თვალი ადევნე მის llama.cpp ან Ollama პორტირებას ლოკალური ტესტირებისთვის.",
-      "evidence": [],
-      "factuality_level": "single_source",
-      "classification": [
-        "Real Technical Skill"
-      ],
-      "verified_facts": [
-        "MemT-1.0 იყენებს Gated DeltaNet-2 არქიტექტურას და Mixture-of-Storage მექანიზმს.",
-        "128K კონტექსტზე MemT-1.0-Nano აღწევს 1.86x აჩქარებას ინფერენსის დროს.",
-        "მუდმივი შენახვის მოცულობა (storage) შემცირდა 66-ჯერ სრულ KV ქეშთან შედარებით.",
-        "მოდელების ოჯახი მოიცავს MemT-1.0-Nano და MemT-1.0-Flash ვერსიებს."
-      ],
-      "interpretation": "მომავლის აგენტური მეხსიერება გადაინაცვლებს გარე ვექტორული ბაზებიდან თავად მოდელის შიდა პარამეტრულ მდგომარეობაში.",
-      "uncertainty": "უცნობია, რამდენად მარტივი იქნება ამ მოდელების გაშვება consumer-grade GPU-ებზე უფასო რესურსებით.",
-      "counter_argument": "ტრადიციული RAG ჯერ კიდევ უფრო იაფია და მარტივი სამართავია, რადგან არ მოითხოვს სპეციალურ მოდელურ წონებს.",
-      "strategic_assessment": "აკონტროლე memory-native მოდელები, მაგრამ პრაქტიკაში ჯერ ფოკუსირდი გარე სტრუქტურირებულ მეხსიერებაზე (SQLite + JSON).",
-      "time_horizon": "long-term",
-      "what_could_change": "მოდელები შეძლებენ ულიმიტო ისტორიის დამახსოვრებას RAM-ის გადავსებისა და ძვირადღირებული KV cache-ის გარეშე.",
-      "risks": [
-        "მოდელის წონების ჩაკეტვა სპეციფიკურ არქიტექტურაზე.",
-        "წინა გამოცდილების წაშლის ან რედაქტირების სირთულე.",
-        "მწირი მხარდაჭერა სტანდარტულ inference სერვერებში."
-      ],
-      "non_obvious_opportunity": "გამოიყენე ამ კვლევის დასკვნები იმის გასაგებად, თუ რატომ ჯობია მეხსიერების კომპაქტური შეჯამება მთლიანი ჩათის შენახვას.",
-      "fit_assessment": "გაძლევს ღრმა თეორიულ ხედვას აგენტის მდგომარეობისა და მეხსიერების ევოლუციაზე, რაც RAG-ის შემდეგი ეტაპია."
-    },
     {
       "event_id": "evt-aws-mcp-x509-agent-identity",
       "title": "AWS & Keyfactor: AI აგენტებისა და MCP სერვერების დაცვა X.509 PKI იდენტობით",
@@ -6439,6 +6150,299 @@
       ],
       "non_obvious_opportunity": "შეგიძლია ააგო Telegram ბოტი, რომელიც თავდაპირველად პასუხობს Haiku 5.5-ით, ხოლო შეცდომისას ავტომატურად გადადის Fable 5.2 Advisor-ზე.",
       "fit_assessment": "გეხმარება ათვისებული Effort Control API Integration-ის პრაქტიკაში გამოყენებაში დაბალი ხარჯის პატერნებით."
+    },
+    {
+      "event_id": "evt-google-a2ui-10-generative-ui",
+      "title": "Google A2UI 1.0: ღია პროტოკოლი AI აგენტების ინტერაქტიული UI-ს გენერირებისთვის",
+      "category": "აგენტის არქიტექტურა და Frontend",
+      "primary_url": "https://developers.googleblog.com/a2ui-10-build-delightful-fast-reliable-agentic-experiences",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 9,
+      "actionability": 9,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "Google-მა გამოუშვა A2UI 1.0 პროტოკოლი. აგენტებს ახლა შეუძლიათ ტექსტის ნაცვლად ინტერაქტიული ნატიური UI კომპონენტები დააგენერირონ Python SDK-ს მეშვეობით.",
+      "what_happened": "Google-მა გამოაქვეყნა A2UI 1.0 ღია სტანდარტი და SDK-ები. LLM აგენტი აგზავნის JSON აღწერას, ხოლო აპლიკაცია არენდერებს ნატიურ კომპონენტებს.",
+      "what_changed": "დიდი ტექსტური პასუხები -> დინამიური, უსაფრთხო, ნატიური ინტერაქტიული UI კომპონენტები.",
+      "why_it_matters": "შენს ბიზნეს აგენტებს Telegram WebApp-ში ან ვებ-ინტერფეისში შეუძლიათ გაგზავნონ ფორმები და დეშბორდები ტექსტური პასუხების ნაცვლად.",
+      "key_takeaways": [
+        "A2UI 1.0 უზრუნველყოფს უსაფრთხო Generative UI-ს",
+        "Python Agent SDK ხელმისაწვდომია ღია კოდით",
+        "მოდელი არ ხედავს სენსიტიურ მონაცემებს UI ბაინდინგისას"
+      ],
+      "technical_architecture": [
+        "A2UI Protocol Schema",
+        "Python, TypeScript, Dart Agent SDKs",
+        "Native Renderer SDKs for Web, Android, iOS"
+      ],
+      "technical_details": [
+        "A2UI Express Protocol Message",
+        "System One decision models",
+        "Native Component Binding"
+      ],
+      "potential_impact": "აგენტებთან ინტერაქციის ლატენტურობა მცირდება, ხოლო მომხმარებლის ნდობა და UX ხარისხი მკვეთრად იზრდება.",
+      "action_type": "BUILD",
+      "action": "გადახედე A2UI Python SDK-ს და შექმენი მცირე დემო აგენტი, რომელიც ტექსტის ნაცვლად სტრუქტურირებულ JSON UI შეტყობინებას აბრუნებს.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Real Business Opportunity",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "Google-მა გამოუშვა A2UI 1.0 სტაბილური პროტოკოლი Generative UI-სთვის",
+        "ხელმისაწვდომია open-source SDK-ები Python, TypeScript და Dart-ისთვის",
+        "მხარდაჭერილია Web, Android და iOS ნატიური რენდერერები",
+        "ინტეგრირებულია Gemini და Claude MCP აპლიკაციების ჰოსტინგში"
+      ],
+      "interpretation": "ტექსტზე დაფუძნებული აგენტური ინტერფეისები იცვლება დინამიური, კომპონენტური UI-ით, სადაც LLM მხოლოდ მონაცემთა სტრუქტურას აგზავნის და კლიენტი ნატიურად არენდერებს.",
+      "uncertainty": "მესამე მხარის აპლიკაციების მიერ A2UI პროტოკოლის ფართომასშტაბიანი მიღების სიჩქარე ჯერ კიდევ გაურკვეველია.",
+      "counter_argument": "სტანდარტული Webhook და Telegram Inline Keyboard ინტერფეისები უბრალო აგენტური API-ებისთვის შესაძლოა უფრო მარტივი შესანარჩუნებელი იყოს.",
+      "strategic_assessment": "გამოიყენე Python A2UI SDK შენს Telegram და Web აგენტებში სტრუქტურირებული UI-ს მისაწოდებლად. ეს ზრდის პროდუქტის პროფესიონალიზმს პორტფოლიოში.",
+      "time_horizon": "mid-term",
+      "what_could_change": "მომხმარებელთან ურთიერთქმედება ტექსტური ჩატიდან გადავა დინამიურად გენერირებულ ფორმებსა და დეშბორდებზე.",
+      "risks": [
+        "კლიენტის მხარეს რენდერერის არასწორი კონფიგურაცია",
+        "სქემის ცვლილებების გამო UI რენდერინგის შეცდომები"
+      ],
+      "non_obvious_opportunity": "შეგიძლია შექმნა მცირე ბიზნესის აგენტური Telegram WebApp UI, რომელიც A2UI JSON ფორმატს დინამიურ HTML/JS ვიჯეტებად გარდაქმნის.",
+      "fit_assessment": "იდეალურად ერგება Python-ზე მომუშავე დეველოპერს, ვისაც სურს რეალური ბიზნეს აგენტების აწყობა ტექსტური კედლის გარეშე."
+    },
+    {
+      "event_id": "evt-microsoft-agent-supply-chain-attacks",
+      "title": "Microsoft Security Research: Post-Training შეტევები AI აგენტებზე და იზოლირებული Sandbox-ის აუცილებლობა",
+      "category": "აგენტის არქიტექტურა და უსაფრთხოება",
+      "primary_url": "https://www.microsoft.com/en-us/security/blog/2026/11/12/trained-to-betray-how-post-training-supply-chain-attacks-hijack-coding-agents",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 9,
+      "actionability": 9,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "Microsoft-ის კვლევამ აჩვენა, რომ დაზიანებული Fine-tuning მონაცემები აგენტებს აიძულებს ბრძანებების ბოროტად შესრულებას. აუცილებელია გარეგანი Sandbox კონტროლი.",
+      "what_happened": "Microsoft-მა გამოაქვეყნა კვლევა, სადაც Dataset და Model Poisoning შეტევებმა აგენტები აიძულა Shell ინსტრუმენტების ბოროტად გამოყენებაზე (84-94% წარმატება).",
+      "what_changed": "მოდელის შიდა ინსტრუქციების ნდობა -> გარეგანი იზოლირებული Sandbox და პოლიტიკის კონტროლი.",
+      "why_it_matters": "თუ შენი აგენტი იღებს უცხო ტექსტს ან კოდს, მან შეიძლება შეასრულოს მავნე ბრძანებები შენს სერვერზე Sandbox-ის გარეშე.",
+      "key_takeaways": [
+        "Prompt Injection თავდაცვა არ არის საკმარისი აგენტებისთვის",
+        "Dataset Poisoning აღწევს 78% წარმატებას Tool Hijacking-ში",
+        "OS Sandbox (Docker/gVisor) სავალდებულოა აგენტური კოდის გაშვებისას"
+      ],
+      "technical_architecture": [
+        "Independent Agent Observability Layer",
+        "OS-level Containerized Sandbox (Docker/gVisor)",
+        "Out-of-model Dynamic Policy Enforcer"
+      ],
+      "technical_details": [
+        "78% attack success rate on in-distribution harnesses",
+        "84.1% to 94.8% success rate on unseen repos via model poisoning",
+        "SFT + RL Backdoor optimization"
+      ],
+      "potential_impact": "აიძულებს ინჟინრებს დანერგონ მკაცრი Zero-Trust არქიტექტურა AI აგენტების ინსტრუმენტების გამოძახებისას.",
+      "action_type": "TRY",
+      "action": "გადაიტანე შენი Python აგენტის მიერ Shell ბრძანებების გაშვების ლოგიკა იზოლირებულ Docker კონტეინერში restricted privileges-ით.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value",
+        "Short-term Opportunity"
+      ],
+      "verified_facts": [
+        "Microsoft Defender-ისა და AI Red Team-ის კვლევამ აჩვენა post-training შეტევების ეფექტურობა აგენტებზე",
+        "Dataset poisoning აღწევს 78% წარმატებას აგენტისთვის უცხო Command Execution ინსტრუმენტების ბოროტად გამოყენებაში",
+        "Model poisoning აღწევს 84.1%-იდან 94.8%-მდე წარმატებას უცხო რეპოზიტორიებში hidden backdoor-ების გააქტიურებით",
+        "Prompt injection თავდაცვა ვერ ამჩნევს შეტევას, რადგან მომხმარებლის მოთხოვნა გარეგნულად ვალიდურია"
+      ],
+      "interpretation": "მოდელის შიდა უსაფრთხოებაზე ნდობა შეუძლებელია. AI აგენტის მიერ ინსტრუმენტების გამოძახება და კოდის გაშვება უნდა კონტროლდებოდეს მოდელის გარეთ იზოლირებულ OS Sandbox-ში.",
+      "uncertainty": "კვლევა ფოკუსირებულია Open-weight fine-tuned მოდელებზე; API-ზე დაფუძნებულ მოდელებს განსხვავებული რისკები აქვთ.",
+      "counter_argument": "დახურული API მოდელები (მაგ. Claude/Gemini) ნაკლებად არიან მგრძნობიარე Post-training Dataset Poisoning-ის მიმართ.",
+      "strategic_assessment": "არასოდეს მისცე აგენტს პირდაპირი წვდომა შენს ლოკალურ OS-ზე. ყოველთვის გამოიყენე Docker ან gVisor Sandbox კოდისა და Shell ბრძანებების შესასრულებლად.",
+      "time_horizon": "long-term",
+      "what_could_change": "უსაფრთხოების არქიტექტურა გადავა მოდელის Guardrail-ებიდან გარეგან, ოს-დონის იზოლირებულ Execution Environments-ზე.",
+      "risks": [
+        "იზოლირებული Docker/gVisor გარემოს გამართვის Overhead",
+        "უსაფრთხოების ილუზია მხოლოდ Prompt Filtering-ის იმედად ყოფნისას"
+      ],
+      "non_obvious_opportunity": "შეგიძლია შექმნა Open-Source Python ბიბლიოთეკა აგენტების Tool Execution Validator-ისთვის, რომელიც პრინციპულად ბლოკავს მავნე ბრძანებებს Container-მდე.",
+      "fit_assessment": "კრიტიკული ცოდნა 16 წლის დეველოპერისთვის: გვასწავლის, თუ როგორ ავაშენოთ უსაფრთხო, საწარმოო დონის ბიზნეს აგენტები."
+    },
+    {
+      "event_id": "evt-google-antigravity-teamwork-multiagent",
+      "title": "Google Research /teamwork: მულტი-აგენტური კონტექსტის იზოლაცია და ავტომატური ვერიფიკაცია",
+      "category": "AI Research / Agent Architecture",
+      "primary_url": "https://research.google/blog/advancing-science-engineering-with-antigravitys-teamwork-feature",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 10,
+      "confidence": 92,
+      "tldr": "Google Research-მა გამოაქვეყნა /teamwork არქიტექტურა. მთავარი პრინციპი: Context Windows-ის მკაცრი გაყოფა სუბ-აგენტებს შორის და კოდის ტესტებით ვერიფიკაცია.",
+      "what_happened": "Google-მა წარადგინა Antigravity /teamwork მულტი-აგენტური სისტემა, რომელიც კონტექსტს სუბ-აგენტებად ყოფს და გარეგანი ტესტებით ამოწმებს პასუხებს.",
+      "what_changed": "დიდ კონტექსტში გაფანტული მსჯელობა -> იზოლირებული მცირე კონტექსტები + დედიკირებული ვერიფიკატორები.",
+      "why_it_matters": "შენს უფასო Tier LLM API-ებთან მუშაობისას კონტექსტის შემცირება ამცირებს ხარჯს და ზრდის აგენტის სიზუსტეს.",
+      "key_takeaways": [
+        "კონტექსტის გაყოფა ხელს უშლის აგენტის ყურადღების გაფანტვას",
+        "გარე ვერიფიკატორები (pytest/simulators) აუცილებელია",
+        "მულტი-აგენტური როუტინგი ზრდის რთული ამოცანების ხარისხს"
+      ],
+      "technical_architecture": [
+        "Gemini 4 Argon/Carbon/Hydrogen Backbones",
+        "Declarative Self-Improving Patterns (/boost, /teamwork)",
+        "External Falsifiers (Lean 4, Software Test Suites)"
+      ],
+      "technical_details": [
+        "Context Partitioning by construction",
+        "Clean Context Handoffs",
+        "Falsification-driven exploration loops"
+      ],
+      "potential_impact": "აგენტებს შეუძლიათ მრავალდღიანი ინჟინრული და კოდური ამოცანების გადაჭრა კონტექსტის დეგრადაციის გარეშე.",
+      "action_type": "APPLY",
+      "action": "დააპროექტე შენი შემდეგი Python აგენტი Context Partitioning პატერნით: ცალკე მოდული კოდის შესრულებისთვის და ცალკე pytest-ის ანალიზისთვის.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value",
+        "Short-term Opportunity"
+      ],
+      "verified_facts": [
+        "Google Research-მა წარადგინა Antigravity /teamwork მულტი-აგენტური არქიტექტურა",
+        "სისტემა იყენებს Gemini 4 Argon, Carbon და Hydrogen მოდელებს",
+        "კონტექსტის ფრაგმენტაცია ხდება არქიტექტურულ დონეზე ყოველი სპეციალიზებული აგენტისთვის",
+        "შედეგების გადამოწმება ხდება გარეგანი Falsifier-ების მეშვეობით (Lean 4, ტესტ-სუიტები, ჰარდვერ ქაუნთერები)"
+      ],
+      "interpretation": "გრძელვადიანი აგენტური ამოცანების გადასაჭრელად საჭიროა არა დიდი კონტექსტის ფანჯარა, არამედ კონტექსტის იზოლაცია და გარე გარემოში ტესტებით ვერიფიკაცია.",
+      "uncertainty": "Antigravity/teamwork სრული კოდური ბაზის ნაწილი შიდა ინსტრუმენტია და ექსტერნალ წვდომა ეტაპობრივად იხსნება.",
+      "counter_argument": "მცირე პროექტებისთვის მულტი-აგენტური იზოლირებული არქიტექტურა ზრდის სისტემის კომპლექსურობას და API ხარჯებს.",
+      "strategic_assessment": "გამოიყენე Context Partitioning პატერნი შენს Python აგენტებში: გაყავი ამოცანები მცირე Sub-agent-ებად, რომლებიც მხოლოდ საჭირო ფაილებს იღებენ.",
+      "time_horizon": "mid-term",
+      "what_could_change": "ერთიან Prompt-ზე დაფუძნებულ აგენტებს ჩაანაცვლებს იზოლირებული Context და Evaluator Loop-ზე აგებული გუნდები.",
+      "risks": [
+        "სუბ-აგენტების კოორდინაციის ზედმეტი Overhead",
+        "არასწორად კონფიგურირებული Falsifier-ები"
+      ],
+      "non_obvious_opportunity": "შეგიძლია შექმნა GitHub Actions ავტომატიზაცია, სადაც ცალკე აგენტი წერს კოდს და ცალკე კრიტიკოსი აგენტი გაშვებული pytest-ით ამწმებს მას.",
+      "fit_assessment": "პრინციპული გაკვეთილია აგენტების არქიტექტურაში, რაც პირდაპირ ეხმარება რთული Agent Loops-ის დაპროექტებას Python-ში."
+    },
+    {
+      "event_id": "evt-coremem-cost-internalizing-agent-memory",
+      "title": "CoReMem: კოდირების აგენტების მეხსიერების ოპტიმიზაცია ხარჯებისა და ტოკენების 11%-ით შესამცირებლად",
+      "category": "AI Research / Agent Architecture",
+      "primary_url": "https://arxiv.org/abs/2611.17316",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "Yale-ისა და Tsinghua-ს CoReMem არქიტექტურა ამცირებს კოდური აგენტების ტოკენების ხარჯს 11%-ით და ზრდის ამოცანების გადაჭრის სიზუსტეს Anchor-ზე დაფუძნებული მეხსიერებით.",
+      "what_happened": "გამოქვეყნდა CoReMem კვლევა, რომელიც აგენტის მეხსიერებაში ინახავს მხოლოდ კრიტიკულ რეპოზიტორიის წერტილებს (Anchors) და ტესტებს.",
+      "what_changed": "მთლიანი ჩატის ისტორიის შენახვა -> Prospective Anchor Valuation & Cost-Internalizing Memory.",
+      "why_it_matters": "ამცირებს აგენტური მარყუჟის ტოკენების ხარჯს და საშუალებას გაძლევს იაფ API-ებზე აამუშაო რთული კოდური აგენტები.",
+      "key_takeaways": [
+        "CoReMem ზრდის Resolve Rate-ს 25.7%-მდე ChainSWE-ზე",
+        "ტოკენების ხარჯი მცირდება 11%-ით, ნაბიჯები 17%-ით",
+        "მეხსიერების ფოკუსი არის გამართვად შემოწმებებზე (Executable Checks)"
+      ],
+      "technical_architecture": [
+        "CoReMem Prospective Valuation Framework",
+        "Repository Anchor Point Storage",
+        "Provenance-Gated Value Credit Assignment"
+      ],
+      "technical_details": [
+        "27B Parameter Actor Model",
+        "11% Token Reduction on ChainSWE",
+        "17% Fewer Rollout Steps"
+      ],
+      "potential_impact": "კოდირების აგენტები ხდებიან ბევრად უფრო იაფი და სწრაფი საწარმოო რეპოზიტორიებში მუშაობისას.",
+      "action_type": "LEARN",
+      "action": "წაიკითხე CoReMem-ის არქიტექტურული პრინციპები და დაამატე Executable Check Anchors შენს მიმდინარე Python Agent State-ში.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "Yale-ის და Tsinghua-ს მკვლევრებმა წარადგინეს CoReMem არქიტექტურა",
+        "ChainSWE ბენჩმარკზე აგენტის Resolve Rate გაიზარდა 21.0%-დან 25.7%-მდე",
+        "სამუშაო ნაბიჯები შემცირდა 17%-ით, ხოლო ტოკენების ხარჯი 11%-ით",
+        "მეხსიერება იყენებს executable checks-ებს და repository anchors-ებს"
+      ],
+      "interpretation": "აუცილებელია აგენტის მეხსიერებაში მხოლოდ ღირებული კოდის წერტილებისა და ტესტის შედეგების შენახვა, რაც ამცირებს API ტოკენების ხარჯს.",
+      "uncertainty": "კვლევა ჩატარებულია SWE-bench ტიპის ამოცანებზე; სხვა ტიპის ბიზნეს აგენტებზე ეფექტი შესაფასებელია.",
+      "counter_argument": "უბრალო RAG ან Vector Store მეხსიერება უფრო იოლი დასანერგია, ვიდრე Prospective Valuation ლოგიკა.",
+      "strategic_assessment": "გამოიყენე Anchor-based მეხსიერება შენს Python კოდურ აგენტებში — შეინახე მხოლოდ ჩასატარებელი ტესტები და ფაილის კონკრეტული სტრიქონები.",
+      "time_horizon": "mid-term",
+      "what_could_change": "ყველაფრის დამამახსოვრებელი აგენტები შეიცვლება ხარჯთეფექტური, Anchor-ზე დაფუძნებული მეხსიერების მოდულებით.",
+      "risks": [
+        "Prospective valuation ლოგიკის სირთულე",
+        "მცირე მოდელებზე Anchor-ების არასწორი ექსტრაქცია"
+      ],
+      "non_obvious_opportunity": "შეგიძლია შექმნა lightweight Python ბიბლიოთეკა, რომელიც Git diff-ებიდან მხოლოდ Anchor-ებს და Executable Check-ებს ინახავს აგენტის მეხსიერებაში.",
+      "fit_assessment": "ძალიან მნიშვნელოვანია დაბალბიუჯეტიანი AI ინჟინრისთვის, რადგან ტოკენების 11%-იანი დაზოგვა პირდაპირ ამცირებს API ხარჯებს."
+    },
+    {
+      "event_id": "evt-aws-bedrock-agentcore-web-search-api",
+      "title": "AWS Bedrock AgentCore Direct Web Search API: მარტივი ინტეგრაცია Custom Agent Loops-ისთვის",
+      "category": "LLM APIs და ხელსაწყოები",
+      "primary_url": "https://aws.amazon.com/blogs/machine-learning/introducing-the-web-search-api-on-amazon-bedrock-agentcore",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 8,
+      "actionability": 9,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "AWS-მა გამოუშვა Web Search API Bedrock AgentCore-ზე. ერთი API გამოძახებით შესაძლებელია ვებ-ძიების შედეგების მიღება custom Python agent loop-ში.",
+      "what_happened": "AWS-მა გამოაქვეყნა InvokeWebSearch API endpoint, რომელიც Gateway-ს გარეშე იძლევა ვებ-ძიების ინსტრუმენტის გამოძახების საშუალებას AWS SDK-დან.",
+      "what_changed": "AgentCore Gateway კომპლექსური Setup -> პირდაპირი AWS SDK API call.",
+      "why_it_matters": "შენს საკუთარ Python agent loop-ში შეგიძლია პირდაპირ ჩართო ვებ-ძიება დამატებითი ინფრასტრუქტურის გარეშე.",
+      "key_takeaways": [
+        "InvokeWebSearch არ მოითხოვს წინასწარ რესურსების შექმნას",
+        "ინტეგრირდება პირდაპირ Python AWS SDK (boto3)-თან",
+        "აბრუნებს სტრუქტურირებულ ექსტრაქტებს და მეტამონაცემებს"
+      ],
+      "technical_architecture": [
+        "Amazon Bedrock AgentCore Data Plane",
+        "InvokeWebSearch direct API operation",
+        "Standard AWS IAM Authentication"
+      ],
+      "technical_details": [
+        "Direct AWS CLI/SDK invoke syntax",
+        "Ranked search results with titles and URLs",
+        "IAM-signed token-free authentication"
+      ],
+      "potential_impact": "ამცირებს აგენტების ვებ-ინფორმაციით Grounding-ის დროის და ინფრასტრუქტურულ სირთულეს.",
+      "action_type": "TRY",
+      "action": "გამოიკვლიე AWS boto3 SDK-ს Web Search API ან შექმენი მისი ანალოგი Python-ში DuckDuckGo-ს უფასო API-ით შენს აგენტში.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Short-term Opportunity"
+      ],
+      "verified_facts": [
+        "AWS-მა გამოაცხადა პირდაპირი Web Search API Bedrock AgentCore-ზე",
+        "ოპერაცია `InvokeWebSearch` ხელმისაწვდომია AWS SDK და CLI-ს მეშვეობით",
+        "არ მოითხოვს წინასწარ Gateway-ს ან complex MCP infrastructure-ს შექმნას",
+        "აბრუნებს რანჟირებულ შედეგებს ტექსტური ექსტრაქტით, სათაურით, URL-ით და თარიღით"
+      ],
+      "interpretation": "დეველოპერებს აღარ სჭირდებათ რთული Gateway ინფრასტრუქტურის აწყობა მხოლოდ ვებ-ძიების ინსტრუმენტის აგენტში ჩასასმელად.",
+      "uncertainty": "AWS API-ს ფასწარმოქმნა მცირე პროექტებისთვის შედარებითი უნდა იყოს უფასო Tavily/DuckDuckGo API ალტერნატივებთან.",
+      "counter_argument": "Python-ში არსებული ღია ბიბლიოთეკები (მაგ. DuckDuckGo Search / Tavily Python SDK) უფასოა და არ მოითხოვს AWS IAM კონფიგურაციას.",
+      "strategic_assessment": "გამოიყენე Direct Tool API პატერნი შენს აგენტურ loops-ში: არ ააგო რთული MCP Gateway სანამ 1 ინსტრუმენტზე მეტი არ დაგჭირდება.",
+      "time_horizon": "short-term",
+      "what_could_change": "დაბალი დონის Tool API-ები ჩაანაცვლებს მძიმე Agent Framework-ებს მარტივი აგენტური ამოცანების შესრულებისას.",
+      "risks": [
+        "AWS IAM Credential-ების არასწორი მართვა",
+        "API მოთხოვნების ხარჯების კონტროლი"
+      ],
+      "non_obvious_opportunity": "შეგიძლია შექმნა მცირე Python სკრიპტი, რომელიც AWS Web Search API-ს პასუხებს გარდაქმნის სტანდარტულ MCP Tool Result ფორმატში.",
+      "fit_assessment": "პრაქტიკული მაგალითია იმისა, თუ როგორ უნდა გამოიყენო პირდაპირი API-ები Custom Agent Loop-ში მძიმე ფრეიმვორკების გარეშე."
     }
   ],
   "topics": {
@@ -6512,7 +6516,7 @@
     "AI Coding Tools / Agent Architecture": 2,
     "LLM API / Agent Frameworks": 1,
     "AI Research / LLM Infrastructure": 1,
-    "AI Research / Agent Architecture": 27,
+    "AI Research / Agent Architecture": 29,
     "AI Research / Agent Memory": 1,
     "AI Research / RAG & Embeddings": 1,
     "AI Evaluation / Agent Reliability": 1,
@@ -6572,7 +6576,7 @@
     "AI Coding Tools & LLM APIs": 2,
     "AI Coding Tools & MCP Infrastructure": 1,
     "აგენტის შეფასება და უსაფრთხოება": 1,
-    "LLM APIs და ხელსაწყოები": 8,
+    "LLM APIs და ხელსაწყოები": 9,
     "აგენტის ინფრასტრუქტურა და ეკოსისტემა": 1,
     "RAG და აგენტის მეხსიერება": 3,
     "აგენტის არქიტექტურა და რობოტიკა": 2,
@@ -6589,313 +6593,13 @@
     "AI Research / Self-Improvement": 1,
     "აგენტების არქიტექტურა და ინფრასტრუქტურა": 1,
     "აგენტის არქიტექტურა და Open Source": 2,
-    "აგენტის არქიტექტურა და უსაფრთხოება": 4,
+    "აგენტის არქიტექტურა და უსაფრთხოება": 5,
     "აგენტების ინფრასტრუქტურა და Open Source": 2,
     "აგენტის არქიტექტურა და კონტექსტი": 1,
-    "AI Research / Robot Learning": 1
+    "AI Research / Robot Learning": 1,
+    "აგენტის არქიტექტურა და Frontend": 1
   },
   "reports": [
-    {
-      "date": "2026-10-30",
-      "summary": "დღევანდელი სიგნალები პრაქტიკულ სისტემურ ოპტიმიზაციაზე მიუთითებს: ცალკე reranker მოდელების გაუქმება ერთი გენერატორით, საწარმოო tool-calling ორკესტრაცია და მონაცემების გარეშე თვითგანვითარება. შენთვის მთავარია RAG პაიპლაინში זיხსიერებისა და latency-ის შემცირება ერთი მოდელის გამოყენებით.",
-      "events": [
-        {
-          "event_id": "evt-glance-generator-own-reranker",
-          "title": "Glance: LLM გენერატორი როგორც საკუთარი Reranker ცალკე Cross-Encoder-ის გარეშე",
-          "category": "RAG და აგენტის მეხსიერება",
-          "primary_url": "https://huggingface.co/papers/2610.40454",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 10,
-          "actionability": 9,
-          "source_quality": 8,
-          "confidence": 88,
-          "tldr": "Glance აერთიანებს reranking-სა და გენერაციას ერთ 9B მოდელში, რითაც ხსნის ცალკე cross-encoder-ის საჭიროებას და აუმჯობესებს სიზუსტეს.",
-          "what_happened": "Airun Labs-მა გამოაქვეყნა Glance, რომელიც მსუბუქი LoRA ადაპტერითა და pointer head-ით თავად არანჟირებს პასაჟებს shared prefill-დან.",
-          "what_changed": "ორმოდელიანი RAG (Cross-Encoder + Generator) შეიცვალა ერთიანი resident მოდელით, რომელიც იყენებს საერთო KV ქეშს.",
-          "why_it_matters": "შენთვის ეს ნიშნავს 2-ჯერ ნაკლებ მეხსიერების ხარჯს ლოკალურ ტესტირებაზე და ნაკლებ შეყოვნებას პასუხის გაცემისას.",
-          "key_takeaways": [
-            "Glance ზოგავს მეხსიერებას ერთი resident მოდელის გამოყენებით",
-            "HotpotQA-ზე აჩვენებს +0.045 F1 ზრდას BGE-სთან შედარებით",
-            "კოდი და ადაპტერები ღიაა Apache-2.0 ლიცენზიით Hugging Face-ზე"
-          ],
-          "technical_architecture": [
-            "9B Hybrid Gated DeltaNet backbone shared context prefill-ით",
-            "LoRA adapter და pointer head პასაჟების სკორინგისთვის",
-            "0.1 GiB VRAM overhead თითო decision skill-ზე"
-          ],
-          "technical_details": [
-            "k=200 კანდიდატის რანჟირება 43k ტოკენიან prefill-ში",
-            "39 წუთიანი training ერთ B200 GPU-ზე",
-            "SciFact nDCG@10: 0.741 vs BGE 0.721"
-          ],
-          "potential_impact": "RAG სისტემების ინფრასტრუქტურული ხარჯების შემცირება მინიმუმ 30%-ით გამოთვლითი რესურსების ოპტიმიზაციის ხარჯზე.",
-          "action_type": "TRY",
-          "action": "გადმოწერე GlanceRAG-MiMo-9B რეპოზიტორიიდან და შეადარე მისი შედეგი bge-reranker-v2-ს შენს არსებულ სატესტო RAG პაიპლაინში.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Technical Skill",
-            "Short-term Opportunity"
-          ],
-          "verified_facts": [
-            "Glance იყენებს ერთიან 9B backbone-ს გენერაციისთვის და რანჟირებისთვის",
-            "MS MARCO-ზე 39 წუთიანი fine-tuning-ით SciFact-ზე nDCG@10 აღწევს 0.741-ს (bge-reranker-v2-m3: 0.721)",
-            "HotpotQA-ზე answer F1 გაიზარდა 0.045-ით cross-encoder-თან შედარებით",
-            "Adapter მოითხოვს მხოლოდ 0.1 GiB დამატებით მეხსიერებას resident მოდელზე"
-          ],
-          "interpretation": "RAG სისტემებში აღარ არის საჭირო ცალკე cross-encoder-ის შენახვა RAM-ში; გენერატორი ერთი prefill-ით არჩევს პასაჟებს და აგრძელებს პასუხის გენერაციას.",
-          "uncertainty": "შემოწმებულია მხოლოდ 9B ჰიბრიდულ არქიტექტურაზე და ორ საძიებო ბენჩმარკზე.",
-          "counter_argument": "დიდი მოცულობის დოკუმენტებზე ცალკე ოპტიმიზებული მცირე cross-encoder შეიძლება უფრო იაფი იყოს CPU ინფერენსზე.",
-          "strategic_assessment": "დანერგე Glance-ის პატერნი ლოკალურ RAG-ში: მოხსენი ცალკე reranker სერვისი და დაზოგე GPU/RAM რესურსი.",
-          "time_horizon": "short-term",
-          "what_could_change": "RAG არქიტექტურებიდან ცალკეული reranking მიკროსერვისების გაქრობა და context cache-ის ხელახალი გამოყენება.",
-          "risks": [
-            "შეზღუდული მხარდაჭერა არა-Gated-DeltaNet მოდელებისთვის",
-            "კონტექსტის გაზრდისას prefill latency-ის მატება"
-          ],
-          "non_obvious_opportunity": "იაფი ლოკალური RAG სისტემების შექმნა კლიენტებისთვის, სადაც 8-9B მოდელი ერთდროულად რანჟირებს და პასუხობს.",
-          "fit_assessment": "პირდაპირ ერგება შენს მიზანს შეამცირო API ხარჯები და RAG სირთულე Python-ში."
-        },
-        {
-          "event_id": "evt-toyota-basispilot-aws-bedrock",
-          "title": "Toyota BasisPilot: საწარმოო SAP ოპერაციების AI აგენტი Amazon Bedrock-ზე",
-          "category": "აგენტის არქიტექტურა და წარმოება",
-          "primary_url": "https://aws.amazon.com/blogs/awsforsap/how-toyota-built-basispilot-an-ai-assisted-sap-operations-platform-on-aws",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 10,
-          "confidence": 95,
-          "tldr": "Toyota-მ ააგო BasisPilot, Bedrock-ზე დაფუძნებული tool-calling აგენტი 20 SAP სისტემის სამართავად მკაცრი approval boundaries კონტროლით.",
-          "what_happened": "Toyota North America-მ წარადგინა BasisPilot — პლატფორმა, სადაც Amazon Bedrock-ის აგენტი ასრულებს SAP ინფრასტრუქტურის შემოწმებას და განახლების დაგეგმვას.",
-          "what_changed": "მრავალ ტერმინალსა და AWS კონსოლს შორის ხელით გადართვის ნაცვლად, ინჟინრები იყენებენ ერთიან დაცულ tool-calling აგენტს.",
-          "why_it_matters": "გაჩვენებს როგორ უნდა დააპროექტო B2B აგენტები: არა სრული ავტონომია, არამედ human-in-the-loop და auditable workflows.",
-          "key_takeaways": [
-            "BasisPilot მართავს 60+ EC2 ინსტანსს multi-account გარემოში",
-            "არქიტექტურა გამორიცხავს უნებართვო ცვლილებებს approval boundaries-ით",
-            "ინტეგრირებულია სერვერლეს API-ებთან და DynamoDB-სთან"
-          ],
-          "technical_architecture": [
-            "Amazon Bedrock tool-calling runtime",
-            "AWS Lambda serverless APIs და DynamoDB event state tracking",
-            "Asynchronous workflow engine უსაფრთხოების ბარიერებით"
-          ],
-          "technical_details": [
-            "Cross-account IAM როლები SAP წვდომისთვის",
-            "ABAP/Java application stacks და SAP HANA მხარდაჭერა",
-            "Kiro AI IDE გამოყენებული Lambda ტრასირებისთვის"
-          ],
-          "potential_impact": "IT ოპერაციების დროის შემცირება 40-60%-ით ავტომატური დიაგნოსტიკისა და pre-flight შემოწმებების ხარჯზე.",
-          "action_type": "LEARN",
-          "action": "დახაზე შენი Telegram ბიზნეს აგენტისთვის Human-in-the-loop არქიტექტურა, სადაც კრიტიკული SQL მოქმედებები მომხმარებლის ღილაკზე დაჭერით მტკიცდება.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Business Opportunity",
-            "Real Technical Skill"
-          ],
-          "verified_facts": [
-            "Toyota მართავს 20 SAP სისტემას 60+ EC2 ჰოსტზე BasisPilot პლატფორმით",
-            "სისტემა იყენებს Amazon Bedrock-ზე დაფუძნებულ tool-calling AI ასისტენტს",
-            "არქიტექტურა მოიცავს shared evidence model-ს, asynchronous workflow engine-ს და approval boundaries-ს",
-            "დეველოპმენტისთვის გამოიყენეს Kiro IDE კოდის გენერაციისა და Lambda ტრასირებისთვის"
-          ],
-          "interpretation": "კომპანიებს სჭირდებათ მკაცრად კონტროლირებადი tool-calling აგენტები, სადაც ყოველი კრიტიკული ქმედება გადის ადამიანის approval-ზე და მკაფიო dependency graph-ზე.",
-          "uncertainty": "ბლოგპოსტში არ არის დაკონკრეტებული ზუსტი LLM მოდელი (Claude 3.5 Sonnet თუ სხვა) და შეცდომების პროცენტული მაჩვენებელი.",
-          "counter_argument": "ეს არის შიდა კორპორატიული პლატფორმა დიდი ბიუჯეტით; მცირე პროექტებისთვის AWS Bedrock-ის ასეთი წყობა ძვირია.",
-          "strategic_assessment": "ისწავლე Toyota-ს approval boundaries და async workflow პატერნი: აგენტს მიეცი მხოლოდ შემოწმების უფლება, ხოლო ცვლილებებზე მოითხოვე ადამიანის თანხმობა.",
-          "time_horizon": "mid-term",
-          "what_could_change": "IT ოპერაციებისა და DevOps-ის ტრანსფორმაცია აგენტურ მართვაზე, სადაც ინჟინერი მხოლოდ ნებართვებს ადასტურებს.",
-          "risks": [
-            "AWS Bedrock-ის API ხარჯების ზრდა ხშირი polling-ისას",
-            "არასწორი dependency mapping-ით გამოწვეული სისტემური შეფერხებები"
-          ],
-          "non_obvious_opportunity": "საქართველოში მცირე და საშუალო IT კომპანიებისთვის მსგავსი lightweight სერვერული მონიტორინგის აგენტის აწყობა Telegram-ბოტის ინტერფეისით.",
-          "fit_assessment": "იდეალური მაგალითია იმისა, თუ როგორ შენდება რეალური ბიზნეს აგენტი და არა უსარგებლო დემო."
-        },
-        {
-          "event_id": "evt-strata-art-temporal-clinical-hypotheses",
-          "title": "STRATA & ART: აგენტების შეფასება დროით ჰიპოთეზებზე და Verdict-Evidence Gap",
-          "category": "AI Evaluation & საიმედოობა",
-          "primary_url": "https://arxiv.org/abs/2610.40619",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 7,
-          "source_quality": 8,
-          "confidence": 87,
-          "tldr": "STRATA ბენჩმარკმა აჩვენა, რომ LLM-ები ხშირად შემთხვევით 'იცნობენ' პასუხს, ხოლო ART მეთოდმა 31B მოდელი frontier დონემდე აიყვანა.",
-          "what_happened": "მკვლევარებმა შექმნეს STRATA და ART მიდგომა, რომელიც ამოწმებს აგენტის მიერ მონაცემების შერჩევის სისწორეს სტატისტიკურ ანალიზში.",
-          "what_changed": "მხოლოდ საბოლოო დასკვნის შეფასების ნაცვლად, ფასდება ჰიპოთეზის ფორმულირება, მონაცემთა გაფილტვრა და სტატისტიკური ტესტირება.",
-          "why_it_matters": "როდესაც SQL აგენტს ააშენებ, ეს ცოდნა დაგიცავს ჰალუცინაციებისგან: აგენტმა უნდა დაასაბუთოს რომელი ცხრილი და სვეტი გამოიყენა.",
-          "key_takeaways": [
-            "სწორი დასკვნა ხშირად ეფუძნება არასწორად ამოღებულ მტკიცებულებებს",
-            "ART სტრუქტურა ხდის ყოველ ეტაპს აუდიტირებადს",
-            "ღია 31B მოდელმა გაიმეორა frontier მოდელების სიზუსტე"
-          ],
-          "technical_architecture": [
-            "ART (Articulate, Retrieve, Test) staged execution loop",
-            "Deterministic oracle ვალიდაცია codebook-ის მიხედვით",
-            "Structured evidence sets და p-value verification"
-          ],
-          "technical_details": [
-            "8,735 ჰიპოთეზა დროით კლინიკურ მონაცემებზე",
-            "Open 31B model delta < 0.01 frontier მოდელებთან ART-ით",
-            "Inspection intermediate outputs for decision audit"
-          ],
-          "potential_impact": "აგენტების საიმედოობის მკვეთრი ზრდა მაღალი პასუხისმგებლობის (ფინანსები, მედიცინა) ანალიტიკურ სისტემებში.",
-          "action_type": "LEARN",
-          "action": "გააანალიზე ART მეთოდოლოგია და შენს SQL პროექტში დაამატე ლოგი, რომელიც აჩვენებს SQL მოთხოვნის შედეგად დაბრუნებულ ზუსტ ჩანაწერებს.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "STRATA ბენჩმარკი შეიცავს 8,735 კლინიკურ ჰიპოთეზას და აფასებს მსჯელობის ყოველ ეტაპს",
-            "მოდელები ხშირად იღებენ სწორ პასუხს არასწორ მონაცემებზე დაყრდნობით (verdict-evidence gap)",
-            "ART (Articulate, Retrieve, Test) პარადიგმამ 31B ღია მოდელი მიიყვანა frontier მოდელების დონემდე (0.01 სხვაობით)",
-            "Frontier მოდელები წარმატებით მუშაობენ მხოლოდ მაშინ, როდესაც მათ ეძლევათ კონკრეტული codebook"
-          ],
-          "interpretation": "აგენტის საბოლოო პასუხის სისწორე არ ნიშნავს, რომ მან სწორი მონაცემები გამოიყენა; აუცილებელია შუალედური ფილტრაციის ეტაპების ინსპექტირება.",
-          "uncertainty": "კვლევა ფოკუსირებულია მხოლოდ კლინიკურ მონაცემებზე (ვაქცინების გვერდითი მოვლენები).",
-          "counter_argument": "ბიზნეს ამოცანების უმრავლესობაში მომხმარებელს აინტერესებს საბოლოო შედეგი და არა შუალედური p-value ტესტები.",
-          "strategic_assessment": "ააგე აგენტური პაიპლაინები ART სტრუქტურით: ჯერ დააგენერირე ჰიპოთეზა, შემდეგ ამოიღე მტკიცებულება, ბოლოს ჩაატარე ტესტი.",
-          "time_horizon": "mid-term",
-          "what_could_change": "LLM ევალუაციის გადასვლა end-to-end შეფასებიდან ნაბიჯ-ნაბიჯ აუდიტირებად შეფასებაზე.",
-          "risks": [
-            "მრავალეტაპიანი შემოწმების გამო გაზრდილი latency",
-            "რთული codebook-ის საჭიროება ყველა დომენისთვის"
-          ],
-          "non_obvious_opportunity": "სატესტო ხელსაწყოს შექმნა, რომელიც აჩვენებს იპოვა თუ არა აგენტმა სწორი სტრიქონები SQL ბაზაში, სანამ დასკვნას გამოიტანს.",
-          "fit_assessment": "კრიტიკულია შენი განვითარებისთვის SQL/Database ეტაპზე: გასწავლის რატომ არ უნდა ენდო მხოლოდ აგენტის ტექსტურ პასუხს."
-        },
-        {
-          "event_id": "evt-a-rsi-zero-data-self-improvement",
-          "title": "A-RSI: მულტიმოდალური მოდელების თვითგანვითარება გარე მონაცემების გარეშე",
-          "category": "AI Research / Self-Improvement",
-          "primary_url": "https://huggingface.co/papers/2610.38568",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 8,
-          "actionability": 7,
-          "source_quality": 8,
-          "confidence": 85,
-          "tldr": "A-RSI ზრდის მოდელის სიზუსტეს გარე მონაცემების გარეშე, პროგრამულად გადამოწმებადი ახალი ამოცანების დინამიური დამატებით.",
-          "what_happened": "Xiaomi Research-მა წარმოადგინა A-RSI მეთოდი, რომელიც სასწავლო სიგნალის კლებისას ავტომატურად აგენერირებს ახალ დავალებებს კოდის მეშვეობით.",
-          "what_changed": "LLM-ის გაურკვეველ self-consistency შეფასებებზე დაყრდნობის ნაცვლად, დაინერგა მკაცრი, პროგრამულად აუდიტირებადი სინთეზური ამოცანები.",
-          "why_it_matters": "გაჩვენებს საიმედო აგენტების შექმნის საიდუმლოს: ჭეშმარიტების წყარო უნდა იყოს კოდი (Deterministic Code), არა სხვა LLM.",
-          "key_takeaways": [
-            "A-RSI აუმჯობესებს მოდელს ადამიანური ლეიბლების გარეშე",
-            "დავალებების პასუხები მოწმდება სტატიკური პროგრამებით",
-            "800 ახალმა ამოცანამ 3.28 პუნქტით გაზარდა საშუალო სიზუსტე"
-          ],
-          "technical_architecture": [
-            "Adaptive task refresh engine ტრენინგის ლოგების მონიტორინგით",
-            "Static code library multimodal კითხვა-პასუხის სინთეზისთვის",
-            "Automated reward verification contract"
-          ],
-          "technical_details": [
-            "11-benchmark suite გაუმჯობესება: 57.77 -> 61.05",
-            "Zero-data supervision მოდელის საკუთარი rollouts-ის წინააღმდეგ",
-            "800 fresh programmatically generated tasks"
-          ],
-          "potential_impact": "სინთეზური RL წვრთნის გაიაფება და საიმედოობის ზრდა დამოუკიდებელი პროგრამული ვერიფიკატორებით.",
-          "action_type": "LEARN",
-          "action": "წაიკითხე A-RSI-ის აბსტრაქტი და ჩამოწერე 3 წესი, თუ როგორ შეიძლება Python-ის assert ბრძანებით შეამოწმო შენი აგენტის JSON პასუხი.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "A-RSI აკონტროლებს reward variation-სა და სიზუსტეს ლოგებში ახალი ამოცანების დასაგენერირებლად",
-            "იყენებს პროგრამულად გენერირებულ და დამოუკიდებლად გადამოწმებად პასუხებს",
-            "11 ბენჩმარკზე საშუალო ქულა 57.77-დან 61.05-მდე გაიზარდა 800 ახალი დავალებით",
-            "სისტემა არ იყენებს გარე ადამიანურ ლეიბლებს ან სატესტო ქულებს გადაწყვეტილების მისაღებად"
-          ],
-          "interpretation": "მოდელებს შეუძლიათ საკუთარი თავის გაუმჯობესება, თუ დავალებების შექმნა ხდება კოდით (პროგრამული ვერიფიკაცია) და არა სხვა LLM-ის შეფასებით.",
-          "uncertainty": "კვლევა ჯერჯერობით Xiaomi Research-ის მიერ არის წარმოდგენილი და მოითხოვს დამოუკიდებელ რეპლიკაციას სხვა ლაბორატორიებში.",
-          "counter_argument": "პროგრამულად გენერირებული ამოცანები ხშირად შეზღუდულია ფორმალური ლოგიკით და ვერ ფარავს რთულ ბიზნეს კონტექსტებს.",
-          "strategic_assessment": "გამოიყენე პრინციპი: აგენტის თვითგანვითარებისთვის შექმნა არა LLM-as-a-judge, არამედ Python-ით შემოწმებადი unit test-ები და ვალიდატორები.",
-          "time_horizon": "mid-term",
-          "what_could_change": "მონაცემთა მომზადების ხარჯების შემცირება და მოდელების ავტონომიური სინთეზური წვრთნა.",
-          "risks": [
-            "ამოცანების გენერატორი კოდის შეზღუდული მრავალფეროვნება",
-            "სინთეზურ მონაცემებზე გადამეტებული მორგება (overfitting)"
-          ],
-          "non_obvious_opportunity": "სინთეზური მონაცემთა გენერატორის აწყობა სპეციფიკური JSON სქემების ვალიდაციისთვის, რომელიც LLM-ს tool-calling შეცდომებს გამოასწორებინებს.",
-          "fit_assessment": "დაგეხმარება გაიგო, როგორ მუშაობს ავტონომიური loop-ები და reinforcement learning გარე მონაცემების გარეშე."
-        },
-        {
-          "event_id": "evt-investors-last-exam-financial-agents",
-          "title": "Investor's Last Exam: რატომ ვერ თარგმნიან AI აგენტები კვლევას პროგნოზში",
-          "category": "AI Evaluation & საიმედოობა",
-          "primary_url": "https://huggingface.co/papers/2610.38342",
-          "supporting_urls": [],
-          "importance": 7,
-          "relevance": 8,
-          "actionability": 7,
-          "source_quality": 8,
-          "confidence": 86,
-          "tldr": "Investor's Last Exam ბენჩმარკმა აჩვენა, რომ უძლიერესი LLM-ებიც კი ვერ აკეთებენ საიმედო პროგნოზს, მიუხედავად ძლიერი რისერჩისა.",
-          "what_happened": "მკვლევარებმა წარადგინეს ILE — 86 დავალებიანი ბენჩმარკი 1.52TB დროით ფიქსირებულ ფინანსურ მონაცემებზე დამოკიდებულების გრაფებით.",
-          "what_changed": "იზოლირებული კითხვა-პასუხის ნაცვლად, ფინანსური აგენტები ფასდებიან სრულ ჯაჭვზე: evidence -> assumptions -> judgment.",
-          "why_it_matters": "ბიზნეს აგენტების შექმნისას დაგიცავს ილუზიისგან, რომ LLM თავისით მიიღებს სწორ ბიზნეს გადაწყვეტილებას დამატებითი ლოგიკის გარეშე.",
-          "key_takeaways": [
-            "GPT-6 Astra ლიდერობს 68.1 ქულით, მაგრამ პროგნოზში მხოლოდ 52.5 აქვს",
-            "მოდელები კარგად აანალიზებენ წარსულს, მაგრამ უჭირთ დაშვებების აგება",
-            "საჭიროა dependency graphs ციფრების გადასამოწმებლად"
-          ],
-          "technical_architecture": [
-            "Time-versioned financial database (3.43M documents)",
-            "Financial Dependency Graphs დაშვებების ტრასირებისთვის",
-            "Evidence-Assumption-Judgment evaluation chain"
-          ],
-          "technical_details": [
-            "Claude Opus 5.5 overall: 66.9 / 100",
-            "GPT-6 Astra forecast score: 52.5 / 100",
-            "86 comprehensive buy-side assignments"
-          ],
-          "potential_impact": "ფინანსურ AI პროდუქტებში ჰალუცინაციების გამოვლენა და traceable ანალიტიკის სტანდარტიზაცია.",
-          "action_type": "TRACK",
-          "action": "შეინახე ILE-ს კონცეფცია და გამოიყენე dependency graph-ის პრინციპი (მტკიცებულება -> დაშვება -> დასკვნა) შენს შემდეგ მონაცემთა აგენტში.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Technical Skill",
-            "Real Business Opportunity"
-          ],
-          "verified_facts": [
-            "ILE შეიცავს 3.43 მილიონ დოკუმენტის ვერსიას დროის მკაცრი ანაბეჭდებით (1.52 TB მონაცემები)",
-            "საუკეთესო მოდელებმა (GPT-6 Astra: 68.1, Claude Opus 5.5: 66.9) კარგად ჩააბარეს რისერჩი, მაგრამ ჩავარდნენ პროგნოზში…",
-            "შეფასება იყენებს Financial Dependency Graphs-ს, რომელიც აკავშირებს მტკიცებულებას, დაშვებებსა და გადაწყვეტილებას",
-            "ბენჩმარკი შექმნილია გამოცდილი buy-side ინვესტორებისა და ფონდის მენეჯერების მიერ"
-          ],
-          "interpretation": "Frontier მოდელები ბრწყინვალედ აჯამებენ ფინანსურ დოკუმენტებს, მაგრამ ვერ ახდენენ მომავლის მოდელირებას; ბიზნეს აგენტები საჭიროებენ მკაცრ დაშვებათა ჯაჭვს.",
-          "uncertainty": "სიმულირებული საინვესტიციო პორტფელების შედეგები შეიძლება შეიცვალოს რეალურ საბაზრო არასტაბილურობაში.",
-          "counter_argument": "ფინანსური ბაზრების პროგნოზირება ადამიან ექსპერტებსაც უჭირთ, ამიტომ 52.5 ქულა შესაძლოა უკვე საბაზრო საშუალოზე მაღალი იყოს.",
-          "strategic_assessment": "ნუ ააგებ აგენტებს, რომლებიც 'წინასწარმეტყველებენ' ბიზნეს შედეგებს; ააგე აგენტები, რომლებიც ამოწმებენ ფაქტებს და აგროვებენ dependency graph-ს.",
-          "time_horizon": "mid-term",
-          "what_could_change": "ფინანსური ანალიტიკის გადასვლა ტექსტური რეპორტებიდან დამოწმებული ციფრების გრაფულ სტრუქტურებზე.",
-          "risks": [
-            "Lookahead bias-ის რისკი დროით მონაცემებთან მუშაობისას",
-            "დიდი მოცულობის ფინანსური მონაცემების შენახვისა და დამუშავების ხარჯი"
-          ],
-          "non_obvious_opportunity": "საქართველოში ბუღალტრული დოკუმენტების და შემოსავლების ანალიზის აგენტი, რომელიც აჩვენებს ციფრების წყაროს და არა სპეკულაციურ პროგნოზს.",
-          "fit_assessment": "გაჩვენებს აგენტების რეალურ საზღვრებს: შეჯამება ადვილია, გადაწყვეტილების მიღება — რთული."
-        }
-      ],
-      "trends": [
-        "RAG სისტემების კონსოლიდაცია: გადასვლა მრავალი მოდელიდან ერთიან გენერატორზე, რომელიც თავად ასრულებს reranking-ს (Glance)",
-        "მკაცრი დამოწმების (Verification) მოთხოვნა: LLM-as-a-judge-ის ჩანაცვლება პროგრამული დამოწმებითა და სტატისტიკური ტესტებით (A-RSI, STRATA)",
-        "Human-in-the-loop და Approval Boundaries საწარმოო აგენტებში: სრული ავტონომიის უარყოფა დაცული workflow-ების სასარგებლოდ (Toyota BasisPilot)"
-      ]
-    },
     {
       "date": "2026-10-31",
       "summary": "დღევანდელი კვლევები ფოკუსირებულია აგენტების ეფექტურობასა და მცირე მოდელების ოპტიმიზაციაზე. JEPA არქიტექტურა 42-ჯერ ნაკლები რესურსით ამყარებს მულტიმოდალურ ალინმენტს, ხოლო 1B დეკოდერები და Logit PSV მეთოდი ამცირებენ inference latency-ს და ინფრასტრუქტურულ ხარჯებს. ეს ტექნოლოგიები საშუალებას გაძლევს ააგო მაღალი სიზუსტის ბიზნეს-აგენტები უფასო და დაბალბიუჯეტიანი რესურსებით.",
@@ -10139,15 +9843,320 @@
         "Focus on Decision Reliability: აგენტების შეფასება გადადის უბრალო Accuracy-დან Decision Stability-სა და Missing-answer detection-ზე",
         "Formal Code Verification by AI: აგენტები გადადიან unit test-ებიდან Machine-code დონეზე მათემატიკურ დამტკიცებებზე (Lean 4)"
       ]
+    },
+    {
+      "date": "2026-11-14",
+      "summary": "Google-მა გამოუშვა A2UI 1.0 ღია პროტოკოლი აგენტების ინტერაქტიული UI კომპონენტების გენერირებისთვის, რაც ტექსტურ პასუხებს ნატიური ინტერფეისებით ცვლის. Yale-ისა და Tsinghua-ს მკვლევრებმა CoReMem არქიტექტურით აჩვენეს, თუ როგორ შემცირდეს კოდირების აგენტების Token ხარჯები 11%-ით. Microsoft-ის უსაფრთხოების კვლევამ კი დაადასტურა, რომ აგენტების ინსტრუმენტების უსაფრთხოება მოდელის მიღმა, იზოლირებულ Sandbox-ში უნდა იმართებოდეს.",
+      "events": [
+        {
+          "event_id": "evt-google-a2ui-10-generative-ui",
+          "title": "Google A2UI 1.0: ღია პროტოკოლი AI აგენტების ინტერაქტიული UI-ს გენერირებისთვის",
+          "category": "აგენტის არქიტექტურა და Frontend",
+          "primary_url": "https://developers.googleblog.com/a2ui-10-build-delightful-fast-reliable-agentic-experiences",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 9,
+          "actionability": 9,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "Google-მა გამოუშვა A2UI 1.0 პროტოკოლი. აგენტებს ახლა შეუძლიათ ტექსტის ნაცვლად ინტერაქტიული ნატიური UI კომპონენტები დააგენერირონ Python SDK-ს მეშვეობით.",
+          "what_happened": "Google-მა გამოაქვეყნა A2UI 1.0 ღია სტანდარტი და SDK-ები. LLM აგენტი აგზავნის JSON აღწერას, ხოლო აპლიკაცია არენდერებს ნატიურ კომპონენტებს.",
+          "what_changed": "დიდი ტექსტური პასუხები -> დინამიური, უსაფრთხო, ნატიური ინტერაქტიული UI კომპონენტები.",
+          "why_it_matters": "შენს ბიზნეს აგენტებს Telegram WebApp-ში ან ვებ-ინტერფეისში შეუძლიათ გაგზავნონ ფორმები და დეშბორდები ტექსტური პასუხების ნაცვლად.",
+          "key_takeaways": [
+            "A2UI 1.0 უზრუნველყოფს უსაფრთხო Generative UI-ს",
+            "Python Agent SDK ხელმისაწვდომია ღია კოდით",
+            "მოდელი არ ხედავს სენსიტიურ მონაცემებს UI ბაინდინგისას"
+          ],
+          "technical_architecture": [
+            "A2UI Protocol Schema",
+            "Python, TypeScript, Dart Agent SDKs",
+            "Native Renderer SDKs for Web, Android, iOS"
+          ],
+          "technical_details": [
+            "A2UI Express Protocol Message",
+            "System One decision models",
+            "Native Component Binding"
+          ],
+          "potential_impact": "აგენტებთან ინტერაქციის ლატენტურობა მცირდება, ხოლო მომხმარებლის ნდობა და UX ხარისხი მკვეთრად იზრდება.",
+          "action_type": "BUILD",
+          "action": "გადახედე A2UI Python SDK-ს და შექმენი მცირე დემო აგენტი, რომელიც ტექსტის ნაცვლად სტრუქტურირებულ JSON UI შეტყობინებას აბრუნებს.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Real Business Opportunity",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "Google-მა გამოუშვა A2UI 1.0 სტაბილური პროტოკოლი Generative UI-სთვის",
+            "ხელმისაწვდომია open-source SDK-ები Python, TypeScript და Dart-ისთვის",
+            "მხარდაჭერილია Web, Android და iOS ნატიური რენდერერები",
+            "ინტეგრირებულია Gemini და Claude MCP აპლიკაციების ჰოსტინგში"
+          ],
+          "interpretation": "ტექსტზე დაფუძნებული აგენტური ინტერფეისები იცვლება დინამიური, კომპონენტური UI-ით, სადაც LLM მხოლოდ მონაცემთა სტრუქტურას აგზავნის და კლიენტი ნატიურად არენდერებს.",
+          "uncertainty": "მესამე მხარის აპლიკაციების მიერ A2UI პროტოკოლის ფართომასშტაბიანი მიღების სიჩქარე ჯერ კიდევ გაურკვეველია.",
+          "counter_argument": "სტანდარტული Webhook და Telegram Inline Keyboard ინტერფეისები უბრალო აგენტური API-ებისთვის შესაძლოა უფრო მარტივი შესანარჩუნებელი იყოს.",
+          "strategic_assessment": "გამოიყენე Python A2UI SDK შენს Telegram და Web აგენტებში სტრუქტურირებული UI-ს მისაწოდებლად. ეს ზრდის პროდუქტის პროფესიონალიზმს პორტფოლიოში.",
+          "time_horizon": "mid-term",
+          "what_could_change": "მომხმარებელთან ურთიერთქმედება ტექსტური ჩატიდან გადავა დინამიურად გენერირებულ ფორმებსა და დეშბორდებზე.",
+          "risks": [
+            "კლიენტის მხარეს რენდერერის არასწორი კონფიგურაცია",
+            "სქემის ცვლილებების გამო UI რენდერინგის შეცდომები"
+          ],
+          "non_obvious_opportunity": "შეგიძლია შექმნა მცირე ბიზნესის აგენტური Telegram WebApp UI, რომელიც A2UI JSON ფორმატს დინამიურ HTML/JS ვიჯეტებად გარდაქმნის.",
+          "fit_assessment": "იდეალურად ერგება Python-ზე მომუშავე დეველოპერს, ვისაც სურს რეალური ბიზნეს აგენტების აწყობა ტექსტური კედლის გარეშე."
+        },
+        {
+          "event_id": "evt-microsoft-agent-supply-chain-attacks",
+          "title": "Microsoft Security Research: Post-Training შეტევები AI აგენტებზე და იზოლირებული Sandbox-ის აუცილებლობა",
+          "category": "აგენტის არქიტექტურა და უსაფრთხოება",
+          "primary_url": "https://www.microsoft.com/en-us/security/blog/2026/11/12/trained-to-betray-how-post-training-supply-chain-attacks-hijack-coding-agents",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 9,
+          "actionability": 9,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "Microsoft-ის კვლევამ აჩვენა, რომ დაზიანებული Fine-tuning მონაცემები აგენტებს აიძულებს ბრძანებების ბოროტად შესრულებას. აუცილებელია გარეგანი Sandbox კონტროლი.",
+          "what_happened": "Microsoft-მა გამოაქვეყნა კვლევა, სადაც Dataset და Model Poisoning შეტევებმა აგენტები აიძულა Shell ინსტრუმენტების ბოროტად გამოყენებაზე (84-94% წარმატება).",
+          "what_changed": "მოდელის შიდა ინსტრუქციების ნდობა -> გარეგანი იზოლირებული Sandbox და პოლიტიკის კონტროლი.",
+          "why_it_matters": "თუ შენი აგენტი იღებს უცხო ტექსტს ან კოდს, მან შეიძლება შეასრულოს მავნე ბრძანებები შენს სერვერზე Sandbox-ის გარეშე.",
+          "key_takeaways": [
+            "Prompt Injection თავდაცვა არ არის საკმარისი აგენტებისთვის",
+            "Dataset Poisoning აღწევს 78% წარმატებას Tool Hijacking-ში",
+            "OS Sandbox (Docker/gVisor) სავალდებულოა აგენტური კოდის გაშვებისას"
+          ],
+          "technical_architecture": [
+            "Independent Agent Observability Layer",
+            "OS-level Containerized Sandbox (Docker/gVisor)",
+            "Out-of-model Dynamic Policy Enforcer"
+          ],
+          "technical_details": [
+            "78% attack success rate on in-distribution harnesses",
+            "84.1% to 94.8% success rate on unseen repos via model poisoning",
+            "SFT + RL Backdoor optimization"
+          ],
+          "potential_impact": "აიძულებს ინჟინრებს დანერგონ მკაცრი Zero-Trust არქიტექტურა AI აგენტების ინსტრუმენტების გამოძახებისას.",
+          "action_type": "TRY",
+          "action": "გადაიტანე შენი Python აგენტის მიერ Shell ბრძანებების გაშვების ლოგიკა იზოლირებულ Docker კონტეინერში restricted privileges-ით.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value",
+            "Short-term Opportunity"
+          ],
+          "verified_facts": [
+            "Microsoft Defender-ისა და AI Red Team-ის კვლევამ აჩვენა post-training შეტევების ეფექტურობა აგენტებზე",
+            "Dataset poisoning აღწევს 78% წარმატებას აგენტისთვის უცხო Command Execution ინსტრუმენტების ბოროტად გამოყენებაში",
+            "Model poisoning აღწევს 84.1%-იდან 94.8%-მდე წარმატებას უცხო რეპოზიტორიებში hidden backdoor-ების გააქტიურებით",
+            "Prompt injection თავდაცვა ვერ ამჩნევს შეტევას, რადგან მომხმარებლის მოთხოვნა გარეგნულად ვალიდურია"
+          ],
+          "interpretation": "მოდელის შიდა უსაფრთხოებაზე ნდობა შეუძლებელია. AI აგენტის მიერ ინსტრუმენტების გამოძახება და კოდის გაშვება უნდა კონტროლდებოდეს მოდელის გარეთ იზოლირებულ OS Sandbox-ში.",
+          "uncertainty": "კვლევა ფოკუსირებულია Open-weight fine-tuned მოდელებზე; API-ზე დაფუძნებულ მოდელებს განსხვავებული რისკები აქვთ.",
+          "counter_argument": "დახურული API მოდელები (მაგ. Claude/Gemini) ნაკლებად არიან მგრძნობიარე Post-training Dataset Poisoning-ის მიმართ.",
+          "strategic_assessment": "არასოდეს მისცე აგენტს პირდაპირი წვდომა შენს ლოკალურ OS-ზე. ყოველთვის გამოიყენე Docker ან gVisor Sandbox კოდისა და Shell ბრძანებების შესასრულებლად.",
+          "time_horizon": "long-term",
+          "what_could_change": "უსაფრთხოების არქიტექტურა გადავა მოდელის Guardrail-ებიდან გარეგან, ოს-დონის იზოლირებულ Execution Environments-ზე.",
+          "risks": [
+            "იზოლირებული Docker/gVisor გარემოს გამართვის Overhead",
+            "უსაფრთხოების ილუზია მხოლოდ Prompt Filtering-ის იმედად ყოფნისას"
+          ],
+          "non_obvious_opportunity": "შეგიძლია შექმნა Open-Source Python ბიბლიოთეკა აგენტების Tool Execution Validator-ისთვის, რომელიც პრინციპულად ბლოკავს მავნე ბრძანებებს Container-მდე.",
+          "fit_assessment": "კრიტიკული ცოდნა 16 წლის დეველოპერისთვის: გვასწავლის, თუ როგორ ავაშენოთ უსაფრთხო, საწარმოო დონის ბიზნეს აგენტები."
+        },
+        {
+          "event_id": "evt-google-antigravity-teamwork-multiagent",
+          "title": "Google Research /teamwork: მულტი-აგენტური კონტექსტის იზოლაცია და ავტომატური ვერიფიკაცია",
+          "category": "AI Research / Agent Architecture",
+          "primary_url": "https://research.google/blog/advancing-science-engineering-with-antigravitys-teamwork-feature",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 10,
+          "confidence": 92,
+          "tldr": "Google Research-მა გამოაქვეყნა /teamwork არქიტექტურა. მთავარი პრინციპი: Context Windows-ის მკაცრი გაყოფა სუბ-აგენტებს შორის და კოდის ტესტებით ვერიფიკაცია.",
+          "what_happened": "Google-მა წარადგინა Antigravity /teamwork მულტი-აგენტური სისტემა, რომელიც კონტექსტს სუბ-აგენტებად ყოფს და გარეგანი ტესტებით ამოწმებს პასუხებს.",
+          "what_changed": "დიდ კონტექსტში გაფანტული მსჯელობა -> იზოლირებული მცირე კონტექსტები + დედიკირებული ვერიფიკატორები.",
+          "why_it_matters": "შენს უფასო Tier LLM API-ებთან მუშაობისას კონტექსტის შემცირება ამცირებს ხარჯს და ზრდის აგენტის სიზუსტეს.",
+          "key_takeaways": [
+            "კონტექსტის გაყოფა ხელს უშლის აგენტის ყურადღების გაფანტვას",
+            "გარე ვერიფიკატორები (pytest/simulators) აუცილებელია",
+            "მულტი-აგენტური როუტინგი ზრდის რთული ამოცანების ხარისხს"
+          ],
+          "technical_architecture": [
+            "Gemini 4 Argon/Carbon/Hydrogen Backbones",
+            "Declarative Self-Improving Patterns (/boost, /teamwork)",
+            "External Falsifiers (Lean 4, Software Test Suites)"
+          ],
+          "technical_details": [
+            "Context Partitioning by construction",
+            "Clean Context Handoffs",
+            "Falsification-driven exploration loops"
+          ],
+          "potential_impact": "აგენტებს შეუძლიათ მრავალდღიანი ინჟინრული და კოდური ამოცანების გადაჭრა კონტექსტის დეგრადაციის გარეშე.",
+          "action_type": "APPLY",
+          "action": "დააპროექტე შენი შემდეგი Python აგენტი Context Partitioning პატერნით: ცალკე მოდული კოდის შესრულებისთვის და ცალკე pytest-ის ანალიზისთვის.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value",
+            "Short-term Opportunity"
+          ],
+          "verified_facts": [
+            "Google Research-მა წარადგინა Antigravity /teamwork მულტი-აგენტური არქიტექტურა",
+            "სისტემა იყენებს Gemini 4 Argon, Carbon და Hydrogen მოდელებს",
+            "კონტექსტის ფრაგმენტაცია ხდება არქიტექტურულ დონეზე ყოველი სპეციალიზებული აგენტისთვის",
+            "შედეგების გადამოწმება ხდება გარეგანი Falsifier-ების მეშვეობით (Lean 4, ტესტ-სუიტები, ჰარდვერ ქაუნთერები)"
+          ],
+          "interpretation": "გრძელვადიანი აგენტური ამოცანების გადასაჭრელად საჭიროა არა დიდი კონტექსტის ფანჯარა, არამედ კონტექსტის იზოლაცია და გარე გარემოში ტესტებით ვერიფიკაცია.",
+          "uncertainty": "Antigravity/teamwork სრული კოდური ბაზის ნაწილი შიდა ინსტრუმენტია და ექსტერნალ წვდომა ეტაპობრივად იხსნება.",
+          "counter_argument": "მცირე პროექტებისთვის მულტი-აგენტური იზოლირებული არქიტექტურა ზრდის სისტემის კომპლექსურობას და API ხარჯებს.",
+          "strategic_assessment": "გამოიყენე Context Partitioning პატერნი შენს Python აგენტებში: გაყავი ამოცანები მცირე Sub-agent-ებად, რომლებიც მხოლოდ საჭირო ფაილებს იღებენ.",
+          "time_horizon": "mid-term",
+          "what_could_change": "ერთიან Prompt-ზე დაფუძნებულ აგენტებს ჩაანაცვლებს იზოლირებული Context და Evaluator Loop-ზე აგებული გუნდები.",
+          "risks": [
+            "სუბ-აგენტების კოორდინაციის ზედმეტი Overhead",
+            "არასწორად კონფიგურირებული Falsifier-ები"
+          ],
+          "non_obvious_opportunity": "შეგიძლია შექმნა GitHub Actions ავტომატიზაცია, სადაც ცალკე აგენტი წერს კოდს და ცალკე კრიტიკოსი აგენტი გაშვებული pytest-ით ამწმებს მას.",
+          "fit_assessment": "პრინციპული გაკვეთილია აგენტების არქიტექტურაში, რაც პირდაპირ ეხმარება რთული Agent Loops-ის დაპროექტებას Python-ში."
+        },
+        {
+          "event_id": "evt-coremem-cost-internalizing-agent-memory",
+          "title": "CoReMem: კოდირების აგენტების მეხსიერების ოპტიმიზაცია ხარჯებისა და ტოკენების 11%-ით შესამცირებლად",
+          "category": "AI Research / Agent Architecture",
+          "primary_url": "https://arxiv.org/abs/2611.17316",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "Yale-ისა და Tsinghua-ს CoReMem არქიტექტურა ამცირებს კოდური აგენტების ტოკენების ხარჯს 11%-ით და ზრდის ამოცანების გადაჭრის სიზუსტეს Anchor-ზე დაფუძნებული მეხსიერებით.",
+          "what_happened": "გამოქვეყნდა CoReMem კვლევა, რომელიც აგენტის მეხსიერებაში ინახავს მხოლოდ კრიტიკულ რეპოზიტორიის წერტილებს (Anchors) და ტესტებს.",
+          "what_changed": "მთლიანი ჩატის ისტორიის შენახვა -> Prospective Anchor Valuation & Cost-Internalizing Memory.",
+          "why_it_matters": "ამცირებს აგენტური მარყუჟის ტოკენების ხარჯს და საშუალებას გაძლევს იაფ API-ებზე აამუშაო რთული კოდური აგენტები.",
+          "key_takeaways": [
+            "CoReMem ზრდის Resolve Rate-ს 25.7%-მდე ChainSWE-ზე",
+            "ტოკენების ხარჯი მცირდება 11%-ით, ნაბიჯები 17%-ით",
+            "მეხსიერების ფოკუსი არის გამართვად შემოწმებებზე (Executable Checks)"
+          ],
+          "technical_architecture": [
+            "CoReMem Prospective Valuation Framework",
+            "Repository Anchor Point Storage",
+            "Provenance-Gated Value Credit Assignment"
+          ],
+          "technical_details": [
+            "27B Parameter Actor Model",
+            "11% Token Reduction on ChainSWE",
+            "17% Fewer Rollout Steps"
+          ],
+          "potential_impact": "კოდირების აგენტები ხდებიან ბევრად უფრო იაფი და სწრაფი საწარმოო რეპოზიტორიებში მუშაობისას.",
+          "action_type": "LEARN",
+          "action": "წაიკითხე CoReMem-ის არქიტექტურული პრინციპები და დაამატე Executable Check Anchors შენს მიმდინარე Python Agent State-ში.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "Yale-ის და Tsinghua-ს მკვლევრებმა წარადგინეს CoReMem არქიტექტურა",
+            "ChainSWE ბენჩმარკზე აგენტის Resolve Rate გაიზარდა 21.0%-დან 25.7%-მდე",
+            "სამუშაო ნაბიჯები შემცირდა 17%-ით, ხოლო ტოკენების ხარჯი 11%-ით",
+            "მეხსიერება იყენებს executable checks-ებს და repository anchors-ებს"
+          ],
+          "interpretation": "აუცილებელია აგენტის მეხსიერებაში მხოლოდ ღირებული კოდის წერტილებისა და ტესტის შედეგების შენახვა, რაც ამცირებს API ტოკენების ხარჯს.",
+          "uncertainty": "კვლევა ჩატარებულია SWE-bench ტიპის ამოცანებზე; სხვა ტიპის ბიზნეს აგენტებზე ეფექტი შესაფასებელია.",
+          "counter_argument": "უბრალო RAG ან Vector Store მეხსიერება უფრო იოლი დასანერგია, ვიდრე Prospective Valuation ლოგიკა.",
+          "strategic_assessment": "გამოიყენე Anchor-based მეხსიერება შენს Python კოდურ აგენტებში — შეინახე მხოლოდ ჩასატარებელი ტესტები და ფაილის კონკრეტული სტრიქონები.",
+          "time_horizon": "mid-term",
+          "what_could_change": "ყველაფრის დამამახსოვრებელი აგენტები შეიცვლება ხარჯთეფექტური, Anchor-ზე დაფუძნებული მეხსიერების მოდულებით.",
+          "risks": [
+            "Prospective valuation ლოგიკის სირთულე",
+            "მცირე მოდელებზე Anchor-ების არასწორი ექსტრაქცია"
+          ],
+          "non_obvious_opportunity": "შეგიძლია შექმნა lightweight Python ბიბლიოთეკა, რომელიც Git diff-ებიდან მხოლოდ Anchor-ებს და Executable Check-ებს ინახავს აგენტის მეხსიერებაში.",
+          "fit_assessment": "ძალიან მნიშვნელოვანია დაბალბიუჯეტიანი AI ინჟინრისთვის, რადგან ტოკენების 11%-იანი დაზოგვა პირდაპირ ამცირებს API ხარჯებს."
+        },
+        {
+          "event_id": "evt-aws-bedrock-agentcore-web-search-api",
+          "title": "AWS Bedrock AgentCore Direct Web Search API: მარტივი ინტეგრაცია Custom Agent Loops-ისთვის",
+          "category": "LLM APIs და ხელსაწყოები",
+          "primary_url": "https://aws.amazon.com/blogs/machine-learning/introducing-the-web-search-api-on-amazon-bedrock-agentcore",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 8,
+          "actionability": 9,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "AWS-მა გამოუშვა Web Search API Bedrock AgentCore-ზე. ერთი API გამოძახებით შესაძლებელია ვებ-ძიების შედეგების მიღება custom Python agent loop-ში.",
+          "what_happened": "AWS-მა გამოაქვეყნა InvokeWebSearch API endpoint, რომელიც Gateway-ს გარეშე იძლევა ვებ-ძიების ინსტრუმენტის გამოძახების საშუალებას AWS SDK-დან.",
+          "what_changed": "AgentCore Gateway კომპლექსური Setup -> პირდაპირი AWS SDK API call.",
+          "why_it_matters": "შენს საკუთარ Python agent loop-ში შეგიძლია პირდაპირ ჩართო ვებ-ძიება დამატებითი ინფრასტრუქტურის გარეშე.",
+          "key_takeaways": [
+            "InvokeWebSearch არ მოითხოვს წინასწარ რესურსების შექმნას",
+            "ინტეგრირდება პირდაპირ Python AWS SDK (boto3)-თან",
+            "აბრუნებს სტრუქტურირებულ ექსტრაქტებს და მეტამონაცემებს"
+          ],
+          "technical_architecture": [
+            "Amazon Bedrock AgentCore Data Plane",
+            "InvokeWebSearch direct API operation",
+            "Standard AWS IAM Authentication"
+          ],
+          "technical_details": [
+            "Direct AWS CLI/SDK invoke syntax",
+            "Ranked search results with titles and URLs",
+            "IAM-signed token-free authentication"
+          ],
+          "potential_impact": "ამცირებს აგენტების ვებ-ინფორმაციით Grounding-ის დროის და ინფრასტრუქტურულ სირთულეს.",
+          "action_type": "TRY",
+          "action": "გამოიკვლიე AWS boto3 SDK-ს Web Search API ან შექმენი მისი ანალოგი Python-ში DuckDuckGo-ს უფასო API-ით შენს აგენტში.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Short-term Opportunity"
+          ],
+          "verified_facts": [
+            "AWS-მა გამოაცხადა პირდაპირი Web Search API Bedrock AgentCore-ზე",
+            "ოპერაცია `InvokeWebSearch` ხელმისაწვდომია AWS SDK და CLI-ს მეშვეობით",
+            "არ მოითხოვს წინასწარ Gateway-ს ან complex MCP infrastructure-ს შექმნას",
+            "აბრუნებს რანჟირებულ შედეგებს ტექსტური ექსტრაქტით, სათაურით, URL-ით და თარიღით"
+          ],
+          "interpretation": "დეველოპერებს აღარ სჭირდებათ რთული Gateway ინფრასტრუქტურის აწყობა მხოლოდ ვებ-ძიების ინსტრუმენტის აგენტში ჩასასმელად.",
+          "uncertainty": "AWS API-ს ფასწარმოქმნა მცირე პროექტებისთვის შედარებითი უნდა იყოს უფასო Tavily/DuckDuckGo API ალტერნატივებთან.",
+          "counter_argument": "Python-ში არსებული ღია ბიბლიოთეკები (მაგ. DuckDuckGo Search / Tavily Python SDK) უფასოა და არ მოითხოვს AWS IAM კონფიგურაციას.",
+          "strategic_assessment": "გამოიყენე Direct Tool API პატერნი შენს აგენტურ loops-ში: არ ააგო რთული MCP Gateway სანამ 1 ინსტრუმენტზე მეტი არ დაგჭირდება.",
+          "time_horizon": "short-term",
+          "what_could_change": "დაბალი დონის Tool API-ები ჩაანაცვლებს მძიმე Agent Framework-ებს მარტივი აგენტური ამოცანების შესრულებისას.",
+          "risks": [
+            "AWS IAM Credential-ების არასწორი მართვა",
+            "API მოთხოვნების ხარჯების კონტროლი"
+          ],
+          "non_obvious_opportunity": "შეგიძლია შექმნა მცირე Python სკრიპტი, რომელიც AWS Web Search API-ს პასუხებს გარდაქმნის სტანდარტულ MCP Tool Result ფორმატში.",
+          "fit_assessment": "პრაქტიკული მაგალითია იმისა, თუ როგორ უნდა გამოიყენო პირდაპირი API-ები Custom Agent Loop-ში მძიმე ფრეიმვორკების გარეშე."
+        }
+      ],
+      "trends": [
+        "Generative UI პროტოკოლების (A2UI) გაჩენა ტექსტური ჩატების ნაცვლად",
+        "აგენტების მეხსიერების ოპტიმიზაცია ტოკენების და API ხარჯების შესამცირებლად (CoReMem)",
+        "მულტი-აგენტური კონტექსტის იზოლაცია და დედიკირებული ვერიფიკატორები (Google Antigravity)",
+        "აგენტების ინსტრუმენტების უსაფრთხოება OS-დონის Docker/gVisor Sandbox-ებით"
+      ]
     }
   ],
   "learning_queue": [
-    "LiteLLM Proxy API Architecture & Virtual Keys setup",
-    "Gemini 4 Hydrogen & Google GenAI Python SDK integration",
-    "SO-Arena Decision Reliability Evaluation methodology",
-    "Lean 4 Formal Verification basics for AI Safety"
+    "Google A2UI Protocol Specification & Python SDK integration",
+    "Context Partitioning & Multi-Agent Handoff Patterns",
+    "Docker Sandboxing for Agent Tool Calling security",
+    "Anchor-based Memory Design for Codebase Agents"
   ],
-  "last_run": "2026-11-13T17:30:43.317776+00:00",
+  "last_run": "2026-11-14T16:24:11.585879+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -10285,12 +10294,13 @@
     "arxiv:2611.14492",
     "arxiv:2611.13410",
     "arxiv:2611.14505",
-    "arxiv:2611.15777"
+    "arxiv:2611.15777",
+    "arxiv:2611.17316"
   ],
   "last_report_files": {
-    "markdown": "data/reports/2026-11-13/report.md",
-    "json": "data/reports/2026-11-13/report.json",
-    "newsletter": "data/reports/2026-11-13/newsletter.md",
-    "social": "data/reports/2026-11-13/social_posts.txt"
+    "markdown": "data/reports/2026-11-14/report.md",
+    "json": "data/reports/2026-11-14/report.json",
+    "newsletter": "data/reports/2026-11-14/newsletter.md",
+    "social": "data/reports/2026-11-14/social_posts.txt"
   }
 }
