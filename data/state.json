@@ -379,7 +379,12 @@
     "https://www.microsoft.com/en-us/security/blog/2026/11/12/trained-to-betray-how-post-training-supply-chain-attacks-hijack-coding-agents",
     "https://research.google/blog/advancing-science-engineering-with-antigravitys-teamwork-feature",
     "https://arxiv.org/abs/2611.17316",
-    "https://aws.amazon.com/blogs/machine-learning/introducing-the-web-search-api-on-amazon-bedrock-agentcore"
+    "https://aws.amazon.com/blogs/machine-learning/introducing-the-web-search-api-on-amazon-bedrock-agentcore",
+    "https://developers.google.com/colab/api/reference/mcp",
+    "https://openai.com/index/introducing-gpt-6-sol-and-luna",
+    "https://aws.amazon.com/blogs/machine-learning/run-agents-securely-and-efficiently-with-the-next-generation-agentcore-runtime",
+    "https://aws.amazon.com/about-aws/whats-new/2026/01/deepseek-v4-pro-v4-flash-v4.1-flash-on-sagemaker-jumpstart",
+    "https://openai.com/index/introducing-chatgpt-wallet"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -688,298 +693,14 @@
     "evt-microsoft-agent-supply-chain-attacks",
     "evt-google-antigravity-teamwork-multiagent",
     "evt-coremem-cost-internalizing-agent-memory",
-    "evt-aws-bedrock-agentcore-web-search-api"
+    "evt-aws-bedrock-agentcore-web-search-api",
+    "evt-google-colab-mcp-server-reference",
+    "evt-openai-gpt-6-sol-luna-release",
+    "evt-aws-bedrock-agentcore-firecracker-runtime",
+    "evt-deepseek-v41-flash-sagemaker",
+    "evt-chatgpt-wallet-agent-payments"
   ],
   "events": [
-    {
-      "event_id": "evt-aws-mcp-x509-agent-identity",
-      "title": "AWS & Keyfactor: AI აგენტებისა და MCP სერვერების დაცვა X.509 PKI იდენტობით",
-      "category": "აგენტების ინფრასტრუქტურა და MCP",
-      "primary_url": "https://aws.amazon.com/blogs/machine-learning/securing-ai-agent-identity-with-x-509-pki-on-aws",
-      "supporting_urls": [],
-      "importance": 9,
-      "relevance": 10,
-      "actionability": 8,
-      "source_quality": 10,
-      "confidence": 95,
-      "tldr": "AWS-მა აჩვენა, რომ MCP-ს აკლია აუთენტიფიკაცია და შემოგვთავაზა X.509 სერტიფიკატებით აგენტის ხელმოწერის არქიტექტურა.",
-      "what_happened": "AWS-მა გამოაქვეყნა არქიტექტურა, სადაც აგენტები მონაცემთა ბაზებს და MCP ხელსაწყოებს X.509 ციფრული ხელმოწერით უკავშირდებიან.",
-      "what_changed": "მარტივი API key-ების გაზიარება ჩანაცვლდა signed request envelope-ებით და დელეგირების ტოკენებით.",
-      "why_it_matters": "საშუალებას გაძლევს ააგო ისეთი MCP სერვერი, რომელსაც ენტერპრაიზ უსაფრთხოების მოთხოვნების გამო არ დაბლოკავენ.",
-      "key_takeaways": [
-        "MCP არ შეიცავს ჩაშენებულ auth მექანიზმს",
-        "Signed envelopes ადასტურებს, რომ ზარი კონკრეტულმა აგენტმა განახორციელა",
-        "RFC 8693 ტოკენები ზღუდავს წვდომის არეალს გაჟონვისას"
-      ],
-      "technical_architecture": [
-        "Keyfactor EJBCA PKI პლატფორმა CA სერვერისთვის",
-        "AWS Bedrock და Strands Agents SDK",
-        "RFC 8693 audience-scoped ტოკენები და OCSP ვალიდაცია"
-      ],
-      "technical_details": [
-        "X.509 proof-of-possession ხელმოწერა თითოეულ call-ზე",
-        "REST API ავტომატიზაცია EJBCA-ს მეშვეობით",
-        "მონაცემთა ბაზა როგორც MCP protected resource"
-      ],
-      "potential_impact": "აგენტების დაცული ინტეგრაცია საბანკო და კორპორატიულ ბაზებთან მონაცემთა გაჟონვის რისკის გარეშე.",
-      "action_type": "LEARN",
-      "action": "გაეცანი AWS-ის რეპოზიტორიას და გააანალიზე, როგორ ამოწმებს MCP სერვერი ხელმოწერილ request envelope-ს Python-ში.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "MCP პროტოკოლს არ გააჩნია ჩაშენებული აუთენტიფიკაციის სტანდარტი",
-        "რეფერენს არქიტექტურა იყენებს Keyfactor EJBCA-ს და AWS Strands Agents SDK-ს",
-        "სისტემა იყენებს RFC 8693 ტოკენებს და OCSP რეალურ დროში ვალიდაციას",
-        "დამცავი პატერნი მუშაობს ნებისმიერ MCP-თავსებად tool server-ზე"
-      ],
-      "interpretation": "კომპანიები უბრალო API key-ების გადაცემიდან გადადიან კრიპტოგრაფიულ Zero-Trust იდენტობაზე, რადგან MCP სერვერები დაუცველია impersonation შეტევებისგან.",
-      "uncertainty": "EJBCA Enterprise-ის ინტეგრაციის რეალური სირთულე მცირე ზომის ლოკალურ პროექტებში.",
-      "counter_argument": "მცირე პროექტებისთვის X.509 PKI ზედმეტად მძიმეა და მარტივი mTLS ან HMAC საკმარისია.",
-      "strategic_assessment": "შეისწავლე MCP სერვერების იდენტობის პრობლემა; ბიზნეს აგენტის გაყიდვისას უსაფრთხოების ეს არგუმენტი მთავარი კონკურენტული უპირატესობაა.",
-      "time_horizon": "mid-term",
-      "what_could_change": "ყველა სერიოზული MCP სერვერი მოითხოვს კრიპტოგრაფიულ handshakes, რაც სტატიკურ API გასაღებებს სრულად ჩაანაცვლებს.",
-      "risks": [
-        "EJBCA-ს სერტიფიკატების მართვის მაღალი ინფრასტრუქტურული ხარჯი",
-        "ლატენტურობის ზრდა ყოველ tool call-ზე OCSP შემოწმების გამო"
-      ],
-      "non_obvious_opportunity": "შექმენი გამარტივებული Python middleware, რომელიც ამოწმებს agent signature-ს ადგილობრივ FastMCP სერვერზე.",
-      "fit_assessment": "პირდაპირ ეხება შენს მიმდინარე ეტაპს: tool calling-ის და MCP-ის საიმედოობას."
-    },
-    {
-      "event_id": "evt-openai-multilangbench-gpt6",
-      "title": "OpenAI: MultiLangBench ბენჩმარკი და GPT-6 სერიის შესაძლებლობები კოდის მიგრაციაში",
-      "category": "AI Coding Tools & LLM APIs",
-      "primary_url": "https://openai.com/index/low-resource-programming-languages",
-      "supporting_urls": [],
-      "importance": 9,
-      "relevance": 9,
-      "actionability": 7,
-      "source_quality": 10,
-      "confidence": 92,
-      "tldr": "OpenAI-მ წარადგინა GPT-6 სერია და MultiLangBench, სადაც მოდელები SQLite-ის ძრავს 20 ენაზე ნულიდან აგებენ.",
-      "what_happened": "OpenAI-მ გამოაქვეყნა კვლევა დაბალრესურსულ ენებსა და კოდის მიგრაციაზე, სადაც GPT-6 Astra-მ 87.4% სიზუსტე აჩვენა.",
-      "what_changed": "ტესტირება გადავიდა მარტივი LeetCode ამოცანებიდან სრულფასოვანი SQLite-თავსებადი მონაცემთა ბაზის იმპლემენტაციაზე.",
-      "why_it_matters": "გეხმარება გააცნობიერო, რომ მომავლის აგენტური ინჟინერია მოითხოვს სისტემური დონის პროგრამირების და მონაცემთა ბაზების ცოდნას.",
-      "key_takeaways": [
-        "MultiLangBench ამოწმებს მონაცემთა ბაზის აგებას ნულიდან",
-        "GPT-6 Luna ამცირებს API ხარჯს 78%-ით",
-        "COBOL მიგრაციის სიზუსტე გაიზარდა 5.4%-დან 97.9%-მდე"
-      ],
-      "technical_architecture": [
-        "MultiLangBench 20 ენის მხარდაჭერით",
-        "SQLite თავსებადი არქიტექტურული ვალიდაცია",
-        "High reasoning effort რეჟიმი GPT-6.1 Sol-ში"
-      ],
-      "technical_details": [
-        "87.4% pass rate GPT-6 Astra-ზე",
-        "78% API cost reduction GPT-6 Luna-ზე",
-        "97.9% accuracy COBOL ტრანსლაციაში"
-      ],
-      "potential_impact": "დეველოპერები შეძლებენ რთული legacy სისტემების უსაფრთხო მოდერნიზაციას მინიმალურ ფასად.",
-      "action_type": "LEARN",
-      "action": "გაარჩიე SQLite-ის ძირითადი კომპონენტები (B-Tree, Pager, Parser) და გაიაზრე, რა ლოგიკის დაწერას სთხოვენ მოდელებს.",
-      "evidence": [],
-      "factuality_level": "single_source",
-      "classification": [
-        "Real Technical Skill",
-        "Real Business Opportunity"
-      ],
-      "verified_facts": [
-        "MultiLangBench ამოწმებს SQLite ძრავის ნულიდან აწყობას 20 პროგრამირების ენაზე",
-        "GPT-6 Astra აღწევს 87.4% pass rate-ს MultiLangBench-ზე GPT-5.6 Sol-ის 26.8%-ის წინააღმდეგ",
-        "GPT-6 Luna აჩვენებს 40.3%-ს დაახლოებით 78%-ით ნაკლები API ხარჯით",
-        "GPT-6.1 Sol COBOL-ის მიგრაციის ტესტზე აღწევს 97.9% სიზუსტეს მაღალი reasoning effort-ის დროს"
-      ],
-      "interpretation": "მოდელების კოდირების ევოლუცია გადავიდა ცალკეული ფუნქციებიდან მთლიანი სისტემური პროექტების (როგორიცაა მონაცემთა ბაზის ძრავი) ნულიდან შექმნაზე.",
-      "uncertainty": "GPT-6 მოდელების საჯარო API ხელმისაწვდომობის თარიღი ფართო დეველოპერებისთვის.",
-      "counter_argument": "სინთეტიკური ბენჩმარკები ხშირად ვერ ასახავს რეალურ legacy კოდში არსებულ გაურკვეველ ბიზნეს ლოგიკას.",
-      "strategic_assessment": "ფოკუსირდი SQLite-ის და მონაცემთა ბაზის შიდა არქიტექტურის გაგებაზე; აგენტების შესაძლებლობების შეფასება ამ დონეზე გადადის.",
-      "time_horizon": "mid-term",
-      "what_could_change": "ძველი საბანკო და ინდუსტრიული კოდის (COBOL, Fortran) მიგრაცია გახდება იაფი და ავტომატიზებული პროცესი.",
-      "risks": [
-        "Legacy სისტემების მიგრაციისას დაუდოკუმენტირებელი ლოგიკის დაკარგვა",
-        "მაღალი reasoning რეჟიმის ფასი დიდ კოდურ ბაზებზე"
-      ],
-      "non_obvious_opportunity": "შექმენი სატესტო გარემო, სადაც პატარა LLM-ს ავალებ SQLite-ის მინიმალური B-Tree ინდექსის იმპლემენტაციას Python-ში.",
-      "fit_assessment": "იდეალურია შენი SQL/database სწავლის ეტაპისთვის, რადგან ხედავ როგორ აფასებენ frontier მოდელებს."
-    },
-    {
-      "event_id": "evt-arxiv-amtp-adaptive-multi-token",
-      "title": "AMTP: ადაპტური Multi-Token Prediction ინფერენსის 4.1-ჯერ დასაჩქარებლად",
-      "category": "AI Research / Model Architecture",
-      "primary_url": "https://arxiv.org/abs/2610.28619",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 8,
-      "source_quality": 8,
-      "confidence": 88,
-      "tldr": "ახალი მეთოდი AMTP დინამიურად არჩევს წინასწარ გამოსათვლელი ტოკენების რაოდენობას და LLM-ის ინფერენსს 4.1-ჯერ აჩქარებს.",
-      "what_happened": "მკვლევარებმა წარმოადგინეს AMTP, მსუბუქი კონტროლერი, რომელიც ტოკენების მიღების ალბათობით ოპტიმიზაციას უკეთებს დეკოდირებას.",
-      "what_changed": "ფიქსირებული speculation ფანჯრის ნაცვლად, სისტემა რეალურ დროში სწავლობს, რამდენ ტოკენს ენდოს კონტექსტის მიხედვით.",
-      "why_it_matters": "აგენტის loop-ში სწრაფი პასუხი ნიშნავს ნაკლებ მოლოდინს tool-ების გამოძახებებს შორის.",
-      "key_takeaways": [
-        "AMTP ზრდის ინფერენსის სიჩქარეს 4.1x-მდე მოდელის გადამზადების გარეშე",
-        "მუშაობს Llama-3.1-8B და Qwen3-4B მოდელებთან",
-        "იყენებს ონლაინ სწავლებას ვერიფიკაციის შედეგებიდან"
-      ],
-      "technical_architecture": [
-        "Multi-token prediction (MTP) არქიტექტურა",
-        "Acceptance survival ალბათური მოდელი",
-        "Online gradient descent კონტროლერი"
-      ],
-      "technical_details": [
-        "4.1x დეკოდირების აჩქარება GSM8K-ზე",
-        "10%-მდე გამტარუნარიანობის ზრდა ფიქსირებულ ფანჯარასთან შედარებით",
-        "Sublinear regret ალგორითმული გარანტია"
-      ],
-      "potential_impact": "ლოკალური აგენტების და CLI ხელსაწყოების რეაქციის დროის მკვეთრი შემცირება.",
-      "action_type": "LEARN",
-      "action": "წაიკითხე AMTP-ის აბსტრაქტი და გაარკვიე, როგორ მუშაობს speculative decoding-ის ვერიფიკაციის ეტაპი.",
-      "evidence": [],
-      "factuality_level": "single_source",
-      "classification": [
-        "Real Technical Skill"
-      ],
-      "verified_facts": [
-        "AMTP ირჩევს speculation horizon-ს ონლაინ კონტროლის ალგორითმით გადამზადების გარეშე",
-        "Llama-3.1-8B-Instruct და Qwen3-4B მოდელებზე მიღწეულია 4.1x-მდე აჩქარება AIME 2025-ზე და GSM8K-ზე",
-        "კონტროლერი იყენებს acceptance survival ალბათობას ტოკენების სიჩქარის მაქსიმიზაციისთვის",
-        "ონლაინ გრადიენტული დაშვებით regret რჩება ქვეხაზოვანი (sublinear)"
-      ],
-      "interpretation": "აგენტების მრავალეტაპიან loop-ებში მთავარი შემაფერხებელი ტოკენების გენერაციის ლატენტურობაა; ადაპტური დრაფტინგი ამ პრობლემას დამატებითი ხარჯის გარეშე წყვეტს.",
-      "uncertainty": "რამდენად ადვილად ინტეგრირდება AMTP არსებულ ლოკალურ ინფერენს ძრავებში (მაგ. Ollama, llama.cpp).",
-      "counter_argument": "ძალიან რთულ ლოგიკურ ამოცანებზე speculation ხშირად უარყოფილია, რაც რეალურ მოგებას ამცირებს.",
-      "strategic_assessment": "გაიაზრე Speculative Decoding-ის და Multi-Token Prediction-ის პრინციპი; ეს დაგეხმარება ლოკალური აგენტების რეაქციის დროის შემცირებაში.",
-      "time_horizon": "short-term",
-      "what_could_change": "მცირე ლოკალური მოდელები (8B/4B) იმუშავებენ 4-ჯერ უფრო სწრაფად, რაც რეალურ დროში აგენტურ კომუნიკაციას შესაძლებელს გახდის.",
-      "risks": [
-        "დამატებითი მეხსიერების მოხმარება მრავალი speculative head-ის შენახვისას",
-        "ვერიფიკაციის ჩავარდნისას გამოთვლითი რესურსის ფუჭი ხარჯვა"
-      ],
-      "non_obvious_opportunity": "სცადე მცირე ზომის Qwen მოდელის გაშვება speculative decoding-ით ლოკალურ სკრიპტში და გაზომე tokens/sec.",
-      "fit_assessment": "უშუალოდ გეხმარება უფასო/დაბალრესურსიან გარემოში აგენტის ლატენტურობის შემცირებაში."
-    },
-    {
-      "event_id": "evt-google-torchtpu-open-source",
-      "title": "Google Cloud: TorchTPU გახდა Open Source PyTorch-ის TPU-ზე გასაშვებად",
-      "category": "Open Source AI & Infrastructure",
-      "primary_url": "https://cloud.google.com/blog/topics/ai-infrastructure/torchtpu-is-now-open-source-run-native-pytorch-on-tpus",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 8,
-      "actionability": 7,
-      "source_quality": 9,
-      "confidence": 95,
-      "tldr": "Google-მა და Meta-მ TorchTPU გახსნეს, რაც PyTorch-ის TPU-ზე გაშვებას ისეთივე მარტივს ხდის, როგორც GPU-ზე.",
-      "what_happened": "PyTorch Conference 2026-ზე გამოცხადდა TorchTPU-ს ღია კოდი GitHub-ზე და Hugging Face v5 ინტეგრაცია.",
-      "what_changed": "ადრე რთული XLA კონფიგურაციები ჩანაცვლდა მშობლიური PyTorch API-ით და device_map='tpu'-ით.",
-      "why_it_matters": "საშუალებას მოგცემს უფასო/იაფი ღრუბლოვანი TPU რესურსები გამოიყენო საკუთარი აგენტების მოდელების გასაშვებად.",
-      "key_takeaways": [
-        "TorchTPU ხელმისაწვდომია GitHub-ზე open-source ლიცენზიით",
-        "Transformers v5-ში დაემატა device_map='tpu'",
-        "vLLM და SGLang მხარს უჭერენ TorchTPU სტეკს"
-      ],
-      "technical_architecture": [
-        "TorchTPU native PyTorch stack",
-        "torch.compile და XLA ბექენდის შერწყმა",
-        "Transformers v5 და Diffusers ინტეგრაცია"
-      ],
-      "technical_details": [
-        "device_map='tpu' ერთი ხაზით ინფერენსისთვის",
-        "Eager mode მხარდაჭერა მარტივი debugging-ისთვის",
-        "Tensor parallelism მხარდაჭერა გენერაციულ მოდელებში"
-      ],
-      "potential_impact": "ღია მოდელების სერვინგის ხარჯების შემცირება და ტექნოლოგიური დამოუკიდებლობა ერთი ჩიპების მწარმოებლისგან.",
-      "action_type": "TRACK",
-      "action": "შეამოწმე TorchTPU-ს GitHub რეპოზიტორია და ნახე, როგორ უერთდება vLLM ბექენდი TPU-ს.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "TorchTPU ღია სახით გამოქვეყნდა GitHub-ზე Google-ისა და Meta-ს მიერ",
-        "Hugging Face Transformers v5-ში TPU-ს მხარდაჭერა ჩაშენებულია device_map='tpu'-ით",
-        "ინტეგრირებულია vLLM, SGLang, torch.compile და Ray ფრეიმვორკებთან",
-        "მხარს უჭერს eager mode-ს დებაგინგისთვის და torch.compile-ს ოპტიმიზაციისთვის"
-      ],
-      "interpretation": "NVIDIA CUDA-ს მონოპოლია ღია კოდის ინფერენსსა და ტრენინგში სუსტდება; Google TPU ხდება სტანდარტული ალტერნატივა PyTorch-ში.",
-      "uncertainty": "უფასო Colab/Kaggle TPU გარემოებში TorchTPU-ს სრული მხარდაჭერის ვადები.",
-      "counter_argument": "ადგილობრივ დეველოპმენტში ინჟინრების უმეტესობა ისევ მომხმარებლის GPU-ებზე და llama.cpp-ზე დარჩება.",
-      "strategic_assessment": "აკონტროლე TorchTPU-ს ინტეგრაცია vLLM-ში; ეს მოგცემს იაფი ან უფასო Cloud TPU-ების გამოყენების შანსს ინფერენსისთვის.",
-      "time_horizon": "mid-term",
-      "what_could_change": "Open-weight მოდელების ჰოსტინგის ხარჯი მკვეთრად შემცირდება Cloud TPU-ების კონკურენციის ხარჯზე.",
-      "risks": [
-        "Cloud TPU-ების საათობრივი ფასები მცირე ექსპერიმენტებისთვის",
-        "დამატებითი სირთულე torch.compile-ის TPU გრაფიკებთან თავსებადობაში"
-      ],
-      "non_obvious_opportunity": "გამოიყენე Kaggle-ის უფასო TPU კვოტა open-source მოდელების vLLM/TorchTPU ინფერენსის დასატესტად.",
-      "fit_assessment": "გაძლევს ცოდნას მოდელების გაშვების ინფრასტრუქტურაზე CUDA-ს მიღმა, რაც იაფ გამოთვლებს გაგიადვილებს."
-    },
-    {
-      "event_id": "evt-openai-boticario-enterprise-agents",
-      "title": "Grupo Boticário: 30+ ბიზნეს აგენტის პროდუქციული სისტემა WhatsApp-ზე 80% ავტონომიით",
-      "category": "Real Business Opportunity & Agent Architecture",
-      "primary_url": "https://openai.com/index/grupo-boticario",
-      "supporting_urls": [],
-      "importance": 7,
-      "relevance": 9,
-      "actionability": 8,
-      "source_quality": 10,
-      "confidence": 95,
-      "tldr": "Grupo Boticário-მ გაუშვა 30+ AI აგენტი, რომლებიც WhatsApp-ზე მომხმარებელთა მოთხოვნების 80%-ს ადამიანის გარეშე აგვარებენ.",
-      "what_happened": "OpenAI-მ გამოაქვეყნა ენტერპრაიზ ქეისი, სადაც კომპანიამ შექმნა საკუთარი აგენტური პლატფორმა 30+ აგენტით.",
-      "what_changed": "უბრალო FAQ ბოტები ჩანაცვლდა ინტეგრირებული აგენტებით, რომლებიც პირდაპირ ცვლიან მონაცემებს ERP და CRM სისტემებში.",
-      "why_it_matters": "აჩვენებს რეალურ არქიტექტურას, რომელშიც ბიზნესი რეალურ ფულს იხდის: ოპერაციული ხარჯის შემცირება და lead qualification.",
-      "key_takeaways": [
-        "80% ოპერაციული მოთხოვნების სრული ავტონომიური გადაწყვეტა",
-        "90% შემოსული ლიდების ავტომატური კვალიფიკაცია",
-        "30-ზე მეტი ურთიერთდაკავშირებული აგენტი ერთ პლატფორმაზე"
-      ],
-      "technical_architecture": [
-        "Proprietary multi-agent platform",
-        "WhatsApp Enterprise API და მობილური ჩატის ინტეგრაცია",
-        "ცენტრალიზებული CRM/ERP ორკესტრაცია"
-      ],
-      "technical_details": [
-        "30+ სპეციალიზებული აგენტი მომხმარებლის გზაზე",
-        "100% შეტყობინებების დაფარვა ორ არხში",
-        "OpenAI API ინტეგრაცია გადაწყვეტილებების მისაღებად"
-      ],
-      "potential_impact": "მცირე და საშუალო ბიზნესების გაყიდვების გუნდის პროდუქტიულობის გაორმაგება რუტინული კითხვების მოხსნით.",
-      "action_type": "BUILD",
-      "action": "ააგე Telegram ბოტი Python-ში, რომელიც მომხმარებლის მოთხოვნას აკვალიფიცირებს და შედეგს ლოკალურ SQLite ბაზაში ინახავს.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Business Opportunity",
-        "Real Technical Skill"
-      ],
-      "verified_facts": [
-        "Grupo Boticário-მ შექმნა საკუთარი აგენტური პლატფორმა 30-ზე მეტი სპეციალიზებული აგენტით",
-        "სისტემა ავტონომიურად წყვეტს რესელერების ოპერაციული მოთხოვნების 80%-ს",
-        "2025 წლის ნოემბრიდან 100% იფარება appchat-სა და WhatsApp Enterprise-ში",
-        "პირდაპირი გაყიდვების ლიდების 90% კვალიფიცირდება AI-ის მიერ"
-      ],
-      "interpretation": "მონოლითური ჩატბოტების დრო დასრულდა; რეალური ბიზნეს ღირებულება იქმნება ვიწრო როლების მქონე მრავალაგენტიანი (30+ agents) ქსელით.",
-      "uncertainty": "კონკრეტული orchestration ფრეიმვორკი, რომელსაც შიდა პლატფორმა იყენებს.",
-      "counter_argument": "დიდი ენტერპრაიზის ქეისი რთულად გადმოიტანება მცირე ლოკალურ ბიზნესში ინფრასტრუქტურის ხარჯის გამო.",
-      "strategic_assessment": "შექმენი მცირე ბიზნესისთვის მორგებული 2-აგენტიანი სისტემა Telegram-ზე (ერთი კვალიფიკაციისთვის, მეორე შეკვეთის ბაზაში ჩასაწერად).",
-      "time_horizon": "short-term",
-      "what_could_change": "მომხმარებელთა მომსახურების და გაყიდვების პირველი ხაზი სრულად გადავა სპეციალიზებულ მესენჯერ-აგენტებზე.",
-      "risks": [
-        "მესენჯერის API-ების (WhatsApp/Telegram) ლიმიტები და ტარიფები",
-        "აგენტების მიერ არასწორი ფასდაკლების ან პირობის დაპირება მომხმარებლისთვის"
-      ],
-      "non_obvious_opportunity": "ადგილობრივ ქართულ ონლაინ მაღაზიებს სჭირდებათ ზუსტად ასეთი Telegram/WhatsApp ბოტი, რომელიც lead-ს გაფილტრავს და Google Sheets/SQL-ში ჩაწერს.",
-      "fit_assessment": "პირდაპირ პასუხობს შენს მიზანს: რეალური ბიზნეს აგენტების აგება და არა სათამაშო დემოები."
-    },
     {
       "event_id": "evt-openai-google-cloud-model-garden",
       "title": "OpenAI Models and Codex Agentic Workflows Arrive in Google Cloud Model Garden",
@@ -6443,6 +6164,296 @@
       ],
       "non_obvious_opportunity": "შეგიძლია შექმნა მცირე Python სკრიპტი, რომელიც AWS Web Search API-ს პასუხებს გარდაქმნის სტანდარტულ MCP Tool Result ფორმატში.",
       "fit_assessment": "პრაქტიკული მაგალითია იმისა, თუ როგორ უნდა გამოიყენო პირდაპირი API-ები Custom Agent Loop-ში მძიმე ფრეიმვორკების გარეშე."
+    },
+    {
+      "event_id": "evt-google-colab-mcp-server-reference",
+      "title": "Google Colab Remote MCP: ოფიციალური სერვერი აგენტების კოდის დისტანციური შესრულებისთვის",
+      "category": "აგენტების ინფრასტრუქტურა და MCP",
+      "primary_url": "https://developers.google.com/colab/api/reference/mcp",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 10,
+      "source_quality": 9,
+      "confidence": 95,
+      "tldr": "Google-მა Colab API-სთვის MCP სერვერი გამოუშვა. შენს აგენტს ახლა შეუძლია დისტანციურად შექმნას Colab kernel და გააშვას Python კოდი.",
+      "what_happened": "Google-მა გამოაქვეყნა Colab Remote MCP spec დოკუმენტაცია და public endpoint.",
+      "what_changed": "მანამდე: აგენტს სჭირდებოდა ლოკალური Python runtime ან ფასიანი სერვერი. ახლა: პირდაპირი MCP ინტეგრაცია Colab-თან.",
+      "why_it_matters": "შეგიძლია აგენტური workflow-ები ააგო უფასო ქლაუდ compute-ზე MCP პროტოკოლით.",
+      "key_takeaways": [
+        "ოფიციალური MCP endpoint ქლაუდში Python-ის გასაშვებად",
+        "Kernel session-ების მართვა execute_code და delete_session ინსტრუმენტებით",
+        "იზოლირებული State მრავალჯერადი execute_code გამოძახებისთვის"
+      ],
+      "technical_architecture": [
+        "Endpoint: https://colaboratory.googleapis.com/mcp",
+        "MCP Protocol Proxy pattern Google API-ზე",
+        "Stateful Jupyter kernel sessions ქლაუდში"
+      ],
+      "technical_details": [
+        "create_runtime: ირჩევს runtimeSpec-ს",
+        "create_session: ხსნის kernel session-ს",
+        "execute_code: უშვებს Python კოდს session-ში"
+      ],
+      "potential_impact": "შემცირდება აგენტების execution sandbox ხარჯები და გამარტივდება MCP ინტეგრაცია.",
+      "action_type": "BUILD",
+      "action": "დააკავშირე შენი Python LLM აგენტი Colab MCP სერვერს და გააშვი მონაცემთა ანალიზის კოდი დისტანციურად.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Real Business Opportunity"
+      ],
+      "verified_facts": [
+        "Google-მა Colab API-სთვის ოფიციალური Remote MCP სერვერი გამოუშვა",
+        "MCP endpoint: https://colaboratory.googleapis.com/mcp",
+        "მოიცავს ინსტრუმენტებს: create_runtime, create_session, execute_code, delete_session"
+      ],
+      "interpretation": "Google Colab MCP აგენტებს აძლევს საშუალებას, გააშვან Python კოდი იზოლირებულ ქლაუდ გარემოში ადგილობრივი რესურსების დახარჯვის გარეშე.",
+      "uncertainty": "Colab runtimes-ის quota limits და cold-start ლატენტურობა მაღალი სიხშირის აგენტებისთვის.",
+      "counter_argument": "ლოკალური Docker კონტეინერი უფრო სწრაფია, თუმცა Colab MCP იძლევა უფასო ქლაუდ ინფრასტრუქტურას.",
+      "strategic_assessment": "გამოიყენე Colab MCP შენი აგენტების Code Execution Sandbox-ად. ეს ამცირებს ინფრასტრუქტურის ხარჯს 0 დოლარამდე.",
+      "time_horizon": "short-term",
+      "what_could_change": "აგენტებს აღარ დასჭირდებათ ძვირადღირებული E2B ან Modal იზოლირებული Python კოდის გასაშვებად.",
+      "risks": [
+        "Colab API Rate limits",
+        "Session expiration და state დაკარგვა",
+        "Google Cloud Auth კონფიგურაციის სირთულე"
+      ],
+      "non_obvious_opportunity": "შეგიძლია შექმნა Telegram ბოტი, რომელიც Colab MCP-ით მონაცემთა ანალიზის კოდს უფასო ქლაუდში გააშვებს.",
+      "fit_assessment": "იდეალურად ერგება შენს მიზანს: უფასო ქლაუდ ინფრასტრუქტურა Python აგენტების ინსტრუმენტების გასაშვებად."
+    },
+    {
+      "event_id": "evt-openai-gpt-6-sol-luna-release",
+      "title": "OpenAI GPT-6 Sol და Luna: 50%-ით იაფი API მოდელები საწარმოო აგენტებისთვის",
+      "category": "LLM APIs და ხელსაწყოები",
+      "primary_url": "https://openai.com/index/introducing-gpt-6-sol-and-luna",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 9,
+      "actionability": 9,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "OpenAI-მ გამოუშვა GPT-6 Sol და Luna. ფასები 50%-ით შემცირდა ($0.10 input Luna-ზე), რაც აგენტების შენებას გაცილებით იაფს ხდის.",
+      "what_happened": "OpenAI-მ დაამატა GPT-6 Sol და Luna API-ზე გაუმჯობესებული inference caching-ით.",
+      "what_changed": "მანამდე: GPT-5.6 სჭირდებოდა ორჯერ მეტი ბიუჯეტი. ახლა: 50%-ით იაფი ტოკენები იმავე აგენტურ ლოგიკაში.",
+      "why_it_matters": "დაბალი API ფასი გაძლევს საშუალებას, გააშვა მრავალეტაპიანი Agent Loops ფინანსური რისკის გარეშე.",
+      "key_takeaways": [
+        "GPT-6 Sol: $2/$10 1M ტოკენზე, სჯობნის Claude Opus 5-ს 9% ხარჯით",
+        "GPT-6 Luna: $0.10/$0.50 1M ტოკენზე, იდეალურია subagents-ისთვის",
+        "AutomationBench-ზე ბიზნეს workflows ეფექტური შესრულება"
+      ],
+      "technical_architecture": [
+        "Optimized Inference Caching",
+        "Multi-tier effort scaling (low, high, xhigh)",
+        "AutomationBench 1.0.6 evaluation"
+      ],
+      "technical_details": [
+        "Sol input: $2 per 1M tokens",
+        "Luna input: $0.10 per 1M tokens",
+        "AutomationBench Score: 33.2%"
+      ],
+      "potential_impact": "შემცირდება აგენტების შენახვის ხარჯი საწარმოო და პერსონალურ პროექტებში.",
+      "action_type": "TRY",
+      "action": "შეცვალე შენი აგენტის API Config-ში მოდელი gpt-6-luna-ზე და გაზომე პასუხის სიჩქარე და ხარჯი.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "OpenAI-მ გამოუშვა GPT-6 Sol ($2/1M input, $10/1M output tokens)",
+        "გამოვიდა GPT-6 Luna ($0.10/1M input, $0.50/1M output tokens)",
+        "GPT-6 Sol-მა AutomationBench 1.0.6-ზე 33.2% შედეგი აჩვენა $0.27 ხარჯით"
+      ],
+      "interpretation": "GPT-6 Sol და Luna აგენტების API ხარჯებს განახევრებს. Luna ხდება საუკეთესო არჩევანი დაბალი ლატენტურობის subagent loops-ისთვის.",
+      "uncertainty": "ხარჯები მაღალი effort settings-ზე (xhigh) შესაძლოა მაინც სწრაფად გაიზარდოს.",
+      "counter_argument": "Open-weight მოდელები (DeepSeek) ლოკალურად უფასოა, თუმცა API სტაბილურობა GPT-6-ს უკეთესი აქვს.",
+      "strategic_assessment": "გადაიყვანე შენი აგენტების Router და Evaluation loops GPT-6 Luna-ზე, ხოლო რთული reasoning tasks — Sol-ზე.",
+      "time_horizon": "short-term",
+      "what_could_change": "აგენტების API ხარჯების შემცირება საშუალებას მისცემს მცირე დეველოპერებს გააშვან Multi-Agent სისტემები.",
+      "risks": [
+        "API rate limits",
+        "Prompt token accumulation ხანგრძლივ loops-ში",
+        "Effort multiplier-ით გამოწვეული ფარული ხარჯი"
+      ],
+      "non_obvious_opportunity": "Luna-ს $0.10-იანი ფასი იძლევა საშუალებას ჩაატარო ათასობით Agent Evaluation test თვეში $5-ად.",
+      "fit_assessment": "ზუსტად პასუხობს შენს შეზღუდვას — მინიმალური ბიუჯეტით მიიღო frontier class აგენტური მოდელი."
+    },
+    {
+      "event_id": "evt-aws-bedrock-agentcore-firecracker-runtime",
+      "title": "Amazon Bedrock AgentCore Runtime: Firecracker MicroVM იზოლაცია აგენტებისთვის",
+      "category": "აგენტების ინფრასტრუქტურა და Open Source",
+      "primary_url": "https://aws.amazon.com/blogs/machine-learning/run-agents-securely-and-efficiently-with-the-next-generation-agentcore-runtime",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 8,
+      "actionability": 7,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "AWS-მა განაახლა AgentCore Runtime. ახლა ყოველი აგენტური სესია აპარატურულად იზოლირებულია Firecracker MicroVM-ით.",
+      "what_happened": "AWS-მა გამოაქვეყნა AgentCore Runtime-ის ახალი არქიტექტურა მრავალსესიური აგენტებისთვის.",
+      "what_changed": "მანამდე: აგენტები იზიარებდნენ სერვერის გარემოს. ახლა: თითოეულ სესიას აქვს საკუთარი Firecracker MicroVM.",
+      "why_it_matters": "აგენტების მიერ კოდის გაშვებისას უსაფრთხოება და იზოლაცია წარმოების მთავარი სტანდარტი ხდება.",
+      "key_takeaways": [
+        "Firecracker MicroVM ყოველი სესიის იზოლაციისთვის",
+        "Cold-start ლატენტურობის შემცირება ქლაუდში",
+        "Zero trust არქიტექტურა აგენტური ინსტრუმენტებისთვის"
+      ],
+      "technical_architecture": [
+        "Firecracker MicroVM Isolation",
+        "Managed Agent Compute Layer",
+        "Hardware-level Security Boundary"
+      ],
+      "technical_details": [
+        "KVM-based MicroVMs",
+        "Elastic scaling runtime",
+        "Per-session compute isolation"
+      ],
+      "potential_impact": "ამაღლდება საწარმოო AI აგენტების უსაფრთხოების სტანდარტი.",
+      "action_type": "LEARN",
+      "action": "გაეცანი Firecracker MicroVM-ისა და gVisor-ის განსხვავებებს აგენტების Sandbox იზოლაციისთვის.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "Bedrock AgentCore Runtime თითოეულ აგენტურ სესიას მართავს Firecracker MicroVM-ში",
+        "აპარატურულად იზოლირებული გარემო (Hardware-isolated MicroVM)",
+        "გათვლილია ათასობით პარალელური აგენტური სესიის უსაფრთხო გაშვებაზე"
+      ],
+      "interpretation": "საწარმოო აგენტების მთავარი მოთხოვნა ხდება იზოლირებული Sandbox execution გარემო უსაფრთხოების რისკების შესამცირებლად.",
+      "uncertainty": "Firecracker ლოკალური კონფიგურაცია მოითხოვს Linux/KVM გარემოს.",
+      "counter_argument": "Docker კონტეინერები უფრო მარტივია, თუმცა Firecracker იძლევა გაცილებით ძლიერ იზოლაციას და სწრაფ cold-start-ს.",
+      "strategic_assessment": "გაიგე Firecracker MicroVM-ის პრინციპი — აგენტების მიერ კოდის გაშვება მოითხოვს აპარატურულ იზოლაციას.",
+      "time_horizon": "mid-term",
+      "what_could_change": "ყველა Production Agent Framework გამოიყენებს MicroVM იზოლაციას კოდის შესასრულებლად.",
+      "risks": [
+        "AWS-ზე მიბმულობა (Vendor lock-in)",
+        "სისტემური ინფრასტრუქტურის სირთულე"
+      ],
+      "non_obvious_opportunity": "შეგიძლია გამოიყენო ლოკალური Firecracker / gVisor შენს პითონის აგენტებში კოდის უსაფრთხო Execution Sandbox-ისთვის.",
+      "fit_assessment": "სასარგებლოა აგენტების უსაფრთხოებისა და Sandbox არქიტექტურის დასანერგად."
+    },
+    {
+      "event_id": "evt-deepseek-v41-flash-sagemaker",
+      "title": "DeepSeek-V4.1-Flash: open-weight მოდელი CED არქიტექტურით და FP4 KV Caching-ით",
+      "category": "LLM APIs და ხელსაწყოები",
+      "primary_url": "https://aws.amazon.com/about-aws/whats-new/2026/01/deepseek-v4-pro-v4-flash-v4.1-flash-on-sagemaker-jumpstart",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 8,
+      "actionability": 7,
+      "source_quality": 10,
+      "confidence": 90,
+      "tldr": "DeepSeek-V4.1-Flash გამოვიდა. Causal Encoder-Decoder (CED) და FP4 KV Caching 4-ჯერ ამცირებს KV Cache-ს 1M context-ზე.",
+      "what_happened": "AWS SageMaker-ზე დამატებით გამოქვეყნდა DeepSeek-V4 open-weight მოდელების ოჯახი MIT ლიცენზიით.",
+      "what_changed": "მანამდე: 1M Context Window მოითხოვდა უზარმაზარ RAM/VRAM-ს. ახლა: FP4 caching-ით მეხსიერების ხარჯი 75%-ით ნაკლებია.",
+      "why_it_matters": "გაიგებ, როგორ მუშაობს თანამედროვე ეფექტური აგენტური Backbone მოდელები.",
+      "key_takeaways": [
+        "MIT open-weight ლიცენზია სრული თავისუფლებისთვის",
+        "CED არქიტექტურა: 8B prefill / 16B decode აქტივაცია",
+        "FP4 KV Caching (CSA2) 4-ჯერ ნაკლები მეხსიერების ხარჯისთვის"
+      ],
+      "technical_architecture": [
+        "Causal Encoder-Decoder (CED) 552B MoE",
+        "Compressed Sparse Attention 2 (CSA2)",
+        "FP4 KV Cache quantization"
+      ],
+      "technical_details": [
+        "Context Window: 1M tokens",
+        "Max Output Tokens: 384K",
+        "Prefill Active Params: 8B"
+      ],
+      "potential_impact": "შემცირდება აგენტების Inference ხარჯი დიდ კონტექსტებზე.",
+      "action_type": "LEARN",
+      "action": "წაიკითხე DeepSeek-V4.1 CED არქიტექტურის დოკუმენტაცია და გაიგე FP4 KV Caching-ის მუშაობის პრინციპი.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "DeepSeek-V4.1-Flash ხელმისაწვდომია MIT ლიცენზიით",
+        "იყენებს Causal Encoder-Decoder (CED) არქიტექტურას 552B პარამეტრით",
+        "Prefill დროს აქტიურდება 8B, ხოლო Decode დროს 16B პარამეტრი",
+        "FP4 KV caching (CSA2) ამცირებს KV cache მეხსიერებას 1/4-მდე"
+      ],
+      "interpretation": "CED არქიტექტურა და FP4 KV caching წყვეტს ხანგრძლივი Context Window-ის მეხსიერების პრობლემას აგენტებში.",
+      "uncertainty": "SageMaker-ზე გაშვება მოითხოვს Cloud Compute ბიუჯეტს.",
+      "counter_argument": "Open API ეპიზოდურად უფრო იაფია, თუმცა open-weight იძლევა სრულ კონტროლს ლოკალურ გარემოში.",
+      "strategic_assessment": "ისწავლე CED არქიტექტურისა და FP4 KV caching პრინციპები — ეს არის LLM ეფექტურობის მომავალი სტანდარტი.",
+      "time_horizon": "mid-term",
+      "what_could_change": "1M ტოკენის Context Window გახდება ძალზე იაფი და სწრაფი ლოკალურ და ქლაუდ სერვერებზე.",
+      "risks": [
+        "საკუთარი GPU ინფრასტრუქტურის საჭიროება ლოკალური გაშვებისთვის",
+        "SageMaker JumpStart ხარჯები"
+      ],
+      "non_obvious_opportunity": "FP4 KV Caching საშუალებას იძლევა აგენტმა შეინახოს მთელი Codebase Context 4-ჯერ ნაკლები RAM-ის გამოყენებით.",
+      "fit_assessment": "მნიშვნელოვანია მოდელის არქიტექტურის გაგებისთვის, თუმცა გაშვება სჯობს მესამე მხარის იაფი API-ით."
+    },
+    {
+      "event_id": "evt-chatgpt-wallet-agent-payments",
+      "title": "ChatGPT Wallet: აგენტური გადახდების პროტოკოლი Visa, Mastercard და Amex ინტეგრაციით",
+      "category": "Real Business Opportunity & Agent Architecture",
+      "primary_url": "https://openai.com/index/introducing-chatgpt-wallet",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 8,
+      "actionability": 7,
+      "source_quality": 10,
+      "confidence": 90,
+      "tldr": "OpenAI-მ გამოუშვა ChatGPT Wallet. აგენტებს შეუძლიათ განახორციელონ გადახდები Payment Tokens-ის მეშვეობით ბარათის ნომრის გაჟონვის გარეშე.",
+      "what_happened": "OpenAI-მ Visa/Mastercard/Amex-თან ერთად აგენტური საგადახდო სისტემა გამოაქვეყნა.",
+      "what_changed": "მანამდე: აგენტს ვერ ვენდობოდით ბარათის მონაცემებს. ახლა: Tokenized უსაფრთხო გადახდა ბიომეტრიული დასტურით.",
+      "why_it_matters": "ბიზნეს აგენტების შექმნისას გადახდების ავტომატიზაცია ხდება რეალური და უსაფრთხო.",
+      "key_takeaways": [
+        "Tokenized Payment Architecture ბარათის დაცვისთვის",
+        "Human-in-the-loop ბიომეტრიული დასტური",
+        "საბანკო სისტემებთან პირდაპირი ინტეგრაციის სტანდარტი"
+      ],
+      "technical_architecture": [
+        "Payment Tokenization Engine",
+        "Biometric Authentication Guardrail",
+        "Merchant Agent-friendly Headers"
+      ],
+      "technical_details": [
+        "1.2B ყოველკვირეული მომხმარებელი",
+        "Face ID / Fingerprint Auth",
+        "One-time payment tokens"
+      ],
+      "potential_impact": "შეიცვლება ონლაინ ყიდვის პროცესი AI აგენტების სასარგებლოდ.",
+      "action_type": "TRACK",
+      "action": "ადევნე თვალი Agent Payments პროტოკოლებს და ისწავლე Payment Tokenization-ის პრინციპები.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Business Opportunity",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "OpenAI-მ წარადგინა ChatGPT Wallet ავტონომიური აგენტური გადახდებისთვის",
+        "პარტნიორობა: American Express, Mastercard და Visa",
+        "იყენებს Payment Tokens — ბარათის რეალური მონაცემების გაზიარების გარეშე",
+        "მოითხოვს მომხმარებლის ბიომეტრიულ ავტორიზაციას (Face ID / fingerprint)"
+      ],
+      "interpretation": "AI აგენტები იღებენ ფინანსური ტრანზაქციების უსაფრთხო შესრულების უნარს, რაც ხსნის ავტონომიური E-commerce აგენტების ბაზარს.",
+      "uncertainty": "ჯერჯერობით ხელმისაწვდომია მხოლოდ აშშ-ში ChatGPT Pro მომხმარებლებისთვის.",
+      "counter_argument": "მომხმარებელთა უმეტესობა ჯერ კიდევ ვერ ენდობა აგენტებს ფინანსურ ტრანზაქციებში.",
+      "strategic_assessment": "შეისწავლე აგენტური ტრანზაქციების Tokenization არქიტექტურა. მომავალში ბიზნეს აგენტებს დასჭირდებათ საგადახდო ინტეგრაცია.",
+      "time_horizon": "long-term",
+      "what_could_change": "ონლაინ მაღაზიებს დასჭირდებათ API-ები და პროტოკოლები, რომლებიც სპეციალურად AI აგენტების გადახდებს მიიღებენ.",
+      "risks": [
+        "რეგიონული შეზღუდვები (აშშ-ის მიღმა)",
+        "უსაფრთხოების ხარვეზები აგენტის Prompt Injection-ის დროს",
+        "საბანკო რეგულაციები"
+      ],
+      "non_obvious_opportunity": "შეგიძლია შექმნა აგენტური Checkout verification სისტემები მცირე ელექტრონული კომერციის ვებ-საიტებისთვის.",
+      "fit_assessment": "გაჩვენებს საით მიდის აგენტური ინდუსტრია — უბრალო ჩატიდან რეალურ ეკონომიკურ მოქმედებებამდე."
     }
   ],
   "topics": {
@@ -6550,7 +6561,7 @@
     "AI Research & Agent Optimization": 1,
     "AI Research & Agent Infrastructure": 1,
     "AI Coding Tools და Agent Architecture": 1,
-    "აგენტების ინფრასტრუქტურა და MCP": 17,
+    "აგენტების ინფრასტრუქტურა და MCP": 18,
     "აგენტების ინფრასტრუქტურა და უსაფრთხოება": 2,
     "": 1,
     "AI Research & RAG": 1,
@@ -6576,14 +6587,14 @@
     "AI Coding Tools & LLM APIs": 2,
     "AI Coding Tools & MCP Infrastructure": 1,
     "აგენტის შეფასება და უსაფრთხოება": 1,
-    "LLM APIs და ხელსაწყოები": 9,
+    "LLM APIs და ხელსაწყოები": 11,
     "აგენტის ინფრასტრუქტურა და ეკოსისტემა": 1,
     "RAG და აგენტის მეხსიერება": 3,
     "აგენტის არქიტექტურა და რობოტიკა": 2,
     "Long-Term Career Value": 2,
     "აგენტის არქიტექტურა და ოპტიმიზაცია": 9,
     "Open Source AI & Infrastructure": 1,
-    "Real Business Opportunity & Agent Architecture": 7,
+    "Real Business Opportunity & Agent Architecture": 8,
     "აგენტების ინფრასტრუქტურა და LLM APIs": 1,
     "აგენტების ინფრასტრუქტურა და Sandbox": 1,
     "აგენტის არქიტექტურა და საიმედოობა": 1,
@@ -6594,294 +6605,12 @@
     "აგენტების არქიტექტურა და ინფრასტრუქტურა": 1,
     "აგენტის არქიტექტურა და Open Source": 2,
     "აგენტის არქიტექტურა და უსაფრთხოება": 5,
-    "აგენტების ინფრასტრუქტურა და Open Source": 2,
+    "აგენტების ინფრასტრუქტურა და Open Source": 3,
     "აგენტის არქიტექტურა და კონტექსტი": 1,
     "AI Research / Robot Learning": 1,
     "აგენტის არქიტექტურა და Frontend": 1
   },
   "reports": [
-    {
-      "date": "2026-10-31",
-      "summary": "დღევანდელი კვლევები ფოკუსირებულია აგენტების ეფექტურობასა და მცირე მოდელების ოპტიმიზაციაზე. JEPA არქიტექტურა 42-ჯერ ნაკლები რესურსით ამყარებს მულტიმოდალურ ალინმენტს, ხოლო 1B დეკოდერები და Logit PSV მეთოდი ამცირებენ inference latency-ს და ინფრასტრუქტურულ ხარჯებს. ეს ტექნოლოგიები საშუალებას გაძლევს ააგო მაღალი სიზუსტის ბიზნეს-აგენტები უფასო და დაბალბიუჯეტიანი რესურსებით.",
-      "events": [
-        {
-          "event_id": "evt-jepa-platonic-representation-2610-39302",
-          "title": "JEPAs-ის მულტიმოდალური ალინმენტი: 109M მოდელი სჯობნის 72B LLM-ებს",
-          "category": "AI Research / Model Architecture",
-          "primary_url": "https://huggingface.co/papers/2610.39302",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 95,
-          "tldr": "Yann LeCun-ის გუნდმა დაამტკიცა, რომ 109M JEPA მოდელი სჯობნის 72B LLM-ებს მულტიმოდალურ ალინმენტში 42-ჯერ ნაკლები ტრენინგ მონაცემით.",
-          "what_happened": "მკვლევარებმა დაამტკიცეს Platonic Representation Theorem და აჩვენეს JEPA-ს ეფექტურობა next-token prediction-ის წინააღმდეგ.",
-          "what_changed": "მულტიმოდალური ვექტორული სივრცის შესაქმნელად გიგანტური LLM-ების ტრენინგი აღარ არის აუცილებელი.",
-          "why_it_matters": "შეგიძლია შექმნა მაღალეფექტური cross-modal RAG და მეხსიერების არქიტექტურა მინიმალური ინფრასტრუქტურული ხარჯით.",
-          "key_takeaways": [
-            "109M JEPA აჭარბებს Qwen2.5-72B-ს PRH ბენჩმარკზე (.184 vs .154)",
-            "42-ჯერ ნაკლები მონაცემია საჭირო იდენტური ალინმენტის მისაღწევად",
-            "ერთადერთი როტაცია საკმარისია ცალკე გაწვრთნილი ენკოდერების შესაერთებლად"
-          ],
-          "technical_architecture": [
-            "Joint-Embedding Predictive Architecture (JEPA)",
-            "109M parameter text JEPA aligned with DINOv2 / CLIP"
-          ],
-          "technical_details": [
-            "CIDEr 0.838 COCO-ზე",
-            "64% top-5 ImageNet-100 pair-free benchmark"
-          ],
-          "potential_impact": "მკვეთრად ამცირებს მულტიმოდალური AI სისტემების შექმნისა და ჰოსტინგის ხარჯებს.",
-          "action_type": "LEARN",
-          "action": "გაეცანი JEPA-ს არქიტექტურას Hugging Face-ზე და გამოსცადე 109M ენკოდერი ლოკალურ RAG პაიპლაინში.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "109M JEPA მოდელი პლატონური წარმოდგენის ბენჩმარკზე ამარცხებს Qwen2.5-72B და Llama-3-70B მოდელებს",
-            "Good views წყვილები საჭიროებენ 42-ჯერ ნაკლებ ტრენინგ ნიმუშს next-token prediction-თან შედარებით"
-          ],
-          "interpretation": "Next-token prediction არ არის ეფექტური გზა მულტიმოდალური ალინმენტისთვის. JEPA-ს Joint-Embedding სტრუქტურა იძლევა უმაღლეს წარმოდგენას მცირე პარამეტრებით.",
-          "uncertainty": "ექსპერიმენტები ჩატარებულია ძირითადად გამოსახულება-ტექსტის წყვილებზე; რთულ იერარქიულ მსჯელობაზე გავლენა ჯერ კიდევ შესასწავლია.",
-          "counter_argument": "Next-token LLM-ებს აქვთ უკეთესი zero-shot ტექსტური გენერაციის უნარი, რაც JEPA-ს ცალკე დეკოდერის გარეშე არ გააჩნია.",
-          "strategic_assessment": "გამოიყენე JEPA ემბედინგები RAG და cross-modal search სისტემებში დიდი LLM-ების ძვირადღირებული API-ების ჩასანაცვლებლად.",
-          "time_horizon": "long-term",
-          "what_could_change": "მულტიმოდალური აგენტების მეხსიერება გახდება 40-ჯერ იაფი, რადგან დიდი LLM-ების ნაცვლად მცირე JEPA ემბედინგებს გამოიყენებენ.",
-          "risks": [
-            "JEPA მოითხოვს სპეციფიკურ positive view მონაცემთა წყვილებს",
-            "ტექსტის გენერაციისთვის მაინც საჭიროა ცალკე დეკოდერი"
-          ],
-          "non_obvious_opportunity": "შეგიძლია ააგო ძალიან იაფი cross-modal საძიებო სისტემა ლოკალურ 100M მოდელზე დაყრდნობით.",
-          "fit_assessment": "იდეალურია შენთვის: იძლევა საშუალებას მცირე კომპიუტერული რესურსით მიაღწიო 70B+ მოდელების ალინმენტის დონეს."
-        },
-        {
-          "event_id": "evt-youtu-parsing-omni-2610-39301",
-          "title": "Youtu-Parsing-Omni: 5B მოდელი მულტიმოდალური დოკუმენტების სტრუქტურირებულ JSON-ში გადასაყვანად",
-          "category": "აგენტების არქიტექტურა და ინფრასტრუქტურა",
-          "primary_url": "https://huggingface.co/papers/2610.39301",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 9,
-          "source_quality": 8,
-          "confidence": 92,
-          "tldr": "Tencent-მა გამოაშვება 5B Youtu-Parsing-Omni, რომელიც დოკუმენტებს, აუდიოსა და ვიდეოს ერთიან სტრუქტურირებულ JSON-ად გარდაქმნის.",
-          "what_happened": "შეიქმნა ერთიანი OmniSchema და 5B ენკოდერი OSAD ონ-პოლისი დისტილაციით omni-modal პარსინგისთვის.",
-          "what_changed": "მულტიმოდალური მონაცემების დამუშავებას აღარ სჭირდება 4-5 სხვადასხვა API-ს და ბიბლიოთეკის კომბინაცია.",
-          "why_it_matters": "შენს აგენტებს შეუძლიათ ნებისმიერი მედია ფაილიდან დაუყოვნებლივ ამოიღონ დამოწმებული JSON სტრუქტურა.",
-          "key_takeaways": [
-            "ერთადერთი ენკოდერი და სქემა ტექსტის, აუდიოსა და ვიდეოსთვის",
-            "SOTA OmniDocBench v1.6 (96.96) და Chart Parsing (95.02)",
-            "ღია წონები და კოდი ხელმისაწვდომია"
-          ],
-          "technical_architecture": [
-            "Youtu-Omni-Encoder initialized from pre-trained LM",
-            "OmniSchema-Aware On-Policy Distillation (OSAD)"
-          ],
-          "technical_details": [
-            "5B parameter count",
-            "Grounded spatiotemporal JSON outputs"
-          ],
-          "potential_impact": "ზოგავს დეველოპმენტის დროს მულტიმოდალური RAG და Data Extraction აგენტების აგებისას.",
-          "action_type": "TRY",
-          "action": "ჩამოტვირთე მოდელის რეპოზიტორია GitHub-იდან და გატესტე რთული PDF ინვოისისა და აუდიო ფაილის JSON-ად გარდაქმნა.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Real Business Opportunity"
-          ],
-          "verified_facts": [
-            "5B პარამეტრიანი ერთიანი მოდელი გადაიყვანს დოკუმენტებს, სურათებს, აუდიოსა და ვიდეოს სტრუქტურირებულ JSON ჩანაწერებში",
-            "მიაღწია SOTA შედეგს OmniDocBench v1.6-ზე (96.96 Overall) და ლიდერობს open-weight მოდელებში OmniParsingBench-ზე (75.08 Avg)"
-          ],
-          "interpretation": "აგენტებისთვის აღარ არის საჭირო ცალ-ცალკე OCR, აუდიო ტრანსკრიფციისა და ვიდეო ანალიზის ინსტრუმენტების გაერთიანება; ერთი OmniSchema ამუშავებს ყველაფერს.",
-          "uncertainty": "5B მოდელის real-time inference latency დაბალი რესურსების GPU-ზე საჭიროებს დამატებით ტესტირებას.",
-          "counter_argument": "სპეციალიზებული ვიწრო მოდელები (მაგ. სუფთა Whisper აუდიოსთვის) ცალკეულ ამოცანებზე შეიძლება ოდნავ სწრაფი ან იაფი იყოს.",
-          "strategic_assessment": "გამოიყენე Omni-parsing სქემა ბიზნეს პროცესების ავტომატიზაციისთვის, სადაც შემავალი მონაცემები შერეული ფორმატისაა.",
-          "time_horizon": "mid-term",
-          "what_could_change": "მრავალკომპონენტიანი ETL პაიპლაინები ჩანაცვლდება ერთიანი omni-modal parser მოდელებით.",
-          "risks": [
-            "5B მოდელის გაშვება მოითხოვს მინიმუმ 12GB VRAM-ს local inference-ისას",
-            "დიდ ვიდეო ფაილებზე context window-ს გადავსება"
-          ],
-          "non_obvious_opportunity": "შეგიძლია შექმნა ავტომატიზებული სერვისი ადგილობრივი ბიზნესებისთვის, რომელიც ინვოისებსა და აუდიო ჩანაწერებს ერთიან ბაზაში გადაიყვანს.",
-          "fit_assessment": "ძალიან პრაქტიკულია: იდეალური ბაზისია Telegram ბოტების არქიტექტურისთვის, რომლებიც მრავალფეროვან ფაილებს იღებენ."
-        },
-        {
-          "event_id": "evt-logit-psv-neural-thickets-2610-40649",
-          "title": "Logit PSV: LLM-ის მსჯელობის გაუმჯობესება ლოგიტების მცირე ცვლილებითა და კენჭისყრით",
-          "category": "აგენტის არქიტექტურა და ოპტიმიზაცია",
-          "primary_url": "https://arxiv.org/abs/2610.40649",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 9,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "ახალმა კვლევამ აჩვენა, რომ LLM-ის მსჯელობის გასაუმჯობესებლად საკმარისია გამოსავალ ლოგიტებზე მცირე ხმაურის დამატება და კენჭისყრა.",
-          "what_happened": "მკვლევარებმა უარყვეს წონების რთული პერტურბაციის აუცილებლობა და წარადგინეს Perturb-Select-Vote (PSV).",
-          "what_changed": "მოდელის შიდა წონების შეცვლის ნაცვლად, იგივე ეფექტი მიიღწევა გამოსავალ შრეზე მარტივი ოპერაციით.",
-          "why_it_matters": "შეგიძლია გაზარდო ლოკალური მოდელების სიზუსტე მსჯელობით დავალებებზე ტრენინგის გარეშე.",
-          "key_takeaways": [
-            "Logit PSV უტოლდება ან აჭარბებს full-weight perturbations-ს",
-            "მუშაობს სრულიად გაყინულ (frozen) მოდელებზე",
-            "ინტეგრირდება Self-Consistency და Verifier-guided პატერნებთან"
-          ],
-          "technical_architecture": [
-            "Perturb-Select-Vote (PSV) inference framework",
-            "Logit-level noise injection without fine-tuning"
-          ],
-          "technical_details": [
-            "Zero weight updates required",
-            "Applicable to language and vision models"
-          ],
-          "potential_impact": "ამცირებს აგენტების შეცდომებს ლოგიკურ მსჯელობაში უფასო/იაფი მოდელების გამოყენებისას.",
-          "action_type": "BUILD",
-          "action": "დაწერე Python ფუნქცია Ollama/vLLM-ისთვის, რომელიც ლოგიტების/ტემპერატურის ცვლილებით აკეთებს 3 პასუხის გენერაციას და Majority Voting-ს.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "გამოსავალი logit-ების შემთხვევითი ცვლილება (Perturb-Select-Vote) იძლევა იგივე ან უკეთეს შედეგს, ვიდრე წონების სრული პერტურბაცია Neural…",
-            "მეთოდი მუშაობს სრულიად გაყინულ (frozen) მოდელებზე ყოველგვარი დამატებითი ტრენინგის გარეშე"
-          ],
-          "interpretation": "რთული წონითი ანსამბლებისა და Gaussian perturbations-ის ნაცვლად, ინფერენსის დროს ლოგიტების მარტივი მოდიფიკაცია და Majority Voting საკმარისია მსჯელობის ხარისხის ასაწევად.",
-          "uncertainty": "მოითხოვს მრავალჯერად გენერაციას (sampling/voting), რაც ზრდის API ან ინფერენს ტოკენების რაოდენობას.",
-          "counter_argument": "თუ API არ გაძლევს raw logits-ზე წვდომას, მოგიწევს temperature/top_p პარამეტრების ვარიაციით ჩანაცვლება.",
-          "strategic_assessment": "გამოიყენე Logit PSV ან პრაქტიკული Logit/Temperature Sampling + Voting აგენტის გადაწყვეტილების მიღებისას რთულ ლოგიკურ ბიჯებზე.",
-          "time_horizon": "short-term",
-          "what_could_change": "Inference-time reasoning ტექნიკები გახდება ბევრად უფრო მარტივი და იაფი დამატებითი fine-tuning-ის გარეშე.",
-          "risks": [
-            "API პროვაიდერების უმეტესობა პირდაპირ logit perturbation-ს არ გიხსნის",
-            "დამატებითი გენერაციები ზრდის latency-ს"
-          ],
-          "non_obvious_opportunity": "შეგიძლია დაწერო მცირე Python Wrapper open-source ლოკალური მოდელებისთვის (Ollama/vLLM), რომელიც ავტომატურად გააუმჯობესებს პასუხებს PSV-ით.",
-          "fit_assessment": "ზუსტად ჯდება შენს კვლევაში: იაფი inference-time ოპტიმიზაცია, რომელიც არ მოითხოვს GPU-ების კლასტერს ტრენინგისთვის."
-        },
-        {
-          "event_id": "evt-wxcrop-agricultural-agent-2610-40641",
-          "title": "WxCrop: მიზეზ-შედეგობრივ ანალიზზე დაფუძნებული აგენტი აგროსექტორში ზარალის პროგნოზირებისთვის",
-          "category": "Real Business Opportunity & Agent Architecture",
-          "primary_url": "https://arxiv.org/abs/2610.40641",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 92,
-          "tldr": "შეიქმნა WxCrop აგენტი, რომელიც ამინდის პროგნოზსა და სადაზღვევო მონაცემებს აერთიანებს მოსავლის ზარალის 98%-იანი სიზუსტით დასათვლელად.",
-          "what_happened": "მკვლევარებმა შექმნეს პირველი აგენტი, რომელიც Causal Analysis-ით ითვლის აგრო-ზარალს და იძლევა დასაბუთებულ ციტირებას.",
-          "what_changed": "ზოგადი ჩატბოტების ნაცვლად შეიქმნა კონკრეტული სექტორული აგენტი, რომელიც იძლევა ზუსტ ფინანსურ შეფასებას.",
-          "why_it_matters": "გვიჩვენებს რეალური ბიზნეს-აგენტების არქიტექტურას: ინსტრუმენტები + მიზეზ-შედეგობრივი ლოგიკა + კალიბრირებული მოდელები.",
-          "key_takeaways": [
-            "98% AUC ციკლონების დაფიქსირებაში",
-            "ისტორიული ზარალი აღდგენილია 2%-იან ცდომილებაში",
-            "თითოეული ციფრი გამყარებულია წყაროთი"
-          ],
-          "technical_architecture": [
-            "Agentic causal framework with physical weather indices",
-            "Loss model calibrated on insurance claim datasets"
-          ],
-          "technical_details": [
-            "0.98 AUC detection rate",
-            "Rank correlation 0.63 on county rankings"
-          ],
-          "potential_impact": "ზუსტი შაბლონია B2B აგენტების შესაქმნელად ფინანსურ და აგრო სექტორში.",
-          "action_type": "BUILD",
-          "action": "ააგე მცირე Python აგენტი, რომელიც ღია API-დან (მაგ. Open-Meteo) იღებს ამინდის მონაცემებს და Causal rules-ით ითვლის რისკის ქულას.",
-          "evidence": [],
-          "factuality_level": "corroborated",
-          "classification": [
-            "Real Business Opportunity",
-            "Real Technical Skill"
-          ],
-          "verified_facts": [
-            "WxCrop აგენტი იყენებს ფიზიკურად ინტერპრეტირებად ამინდის ინდექსებს და მიზეზ-შედეგობრივ (causal) ანალიზს მოსავლის ზარალის დათვლისთვის",
-            "ქარიშხლის ინდექსი ადგენს ციკლონის დღეებს 0.98 AUC-ით, ხოლო ისტორიულ ზარალს აღადგენს 2%-იან ცდომილებაში"
-          ],
-          "interpretation": "რეალური ბიზნეს-აგენტები წარმატებას აღწევენ არა უბრალოდ LLM prompt-ებით, არამედ დომენური ფორმულების, causal analysis-ისა და მონაცემთა ბაზების მყარი ინტეგრაციით.",
-          "uncertainty": "სისტემა კალიბრირებულია ფლორიდის სადაზღვევო ჩანაწერებზე; სხვა რეგიონებისთვის საჭიროებს ადგილობრივ მონაცემთა ბაზებს.",
-          "counter_argument": "ტრადიციული სტატისტიკური მოდელები აგენტური გარსის გარეშეც აკეთებენ მსგავს გამოთვლებს, თუმცა აგენტი უზრუნველყოფს ბუნებრივ ინტერფეისს.",
-          "strategic_assessment": "შექმენი ბიზნეს-აგენტები, რომლებიც აერთიანებენ API ინდექსებს, მიზეზ-შედეგობრივ ლოგიკასა და ციტირებად წყაროებს.",
-          "time_horizon": "mid-term",
-          "what_could_change": "დაზღვევისა და სოფლის მეურნეობის ანალიტიკა სრულად გადავა ავტონომიურ, წყაროებზე დაფუძნებულ AI აგენტებზე.",
-          "risks": [
-            "საჯარო მონაცემთა ბაზების არასტაბილურობა ან ნაკლებობა",
-            "დომენური ფორმულების არასწორი ინტერპრეტაცია LLM-ის მიერ"
-          ],
-          "non_obvious_opportunity": "საქართველოს აგრო/ტურიზმის სექტორში შეგიძლიათ შექმნათ მსგავსი აგენტი ამინდისა და მოსავლიანობის რეგიონული მონაცემების საფუძველზე.",
-          "fit_assessment": "შესანიშნავი ქეისია იმის სასწავლად, თუ როგორ უნდა აიგოს რეალური ღირებულების მქონე B2B აგენტი დემო-სურათების გარეშე."
-        },
-        {
-          "event_id": "evt-joint-gating-memory-hint-2610-40611",
-          "title": "1B Single-Decoder არქიტექტურა: პროაქტიული Gating და მეხსიერებაზე დაფუძნებული Hint გენერაცია",
-          "category": "აგენტის არქიტექტურა და მეხსიერება",
-          "primary_url": "https://arxiv.org/abs/2610.40611",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 88,
-          "tldr": "კვლევამ აჩვენა, რომ 1B პარამეტრიან ერთ მოდელს შეუძლია პროაქტიული gating და მეხსიერების მუშაობა 1.76-ჯერ უფრო სწრაფად.",
-          "what_happened": "შექმნა გაერთიანებული 1B დეკოდერი, რომელიც შუალედური შრიდან წყვეტს ასისტენტის ჩართვას და იმავე pass-ში აგენერირებს პასუხს.",
-          "what_changed": "გაუქმდა საჭიროება ორ ცალკე მოდელზე (Gating Classifier + Generator Pipeline).",
-          "why_it_matters": "ამცირებს სერვერის/API ხარჯებს და პასუხის დაყოვნებას პროაქტიულ AI ასისტენტებში.",
-          "key_takeaways": [
-            "1.31x-1.76x სისწრაფე ორმოდელიან სისტემასთან შედარებით",
-            "მეხსიერების პროფილი არის მთავარი ფაქტორი hint-ის ხარისხში",
-            "შუალედური შრიდან exit უთანაბრდება ცალკე გეითს"
-          ],
-          "technical_architecture": [
-            "Single 1B decoder with intermediate layer gating",
-            "Joint gating and memory-grounded hint generation in one pass"
-          ],
-          "technical_details": [
-            "1B parameter budget",
-            "1.31-1.76x speedup on wall-clock time"
-          ],
-          "potential_impact": "ზოგავს რესურსებს პროაქტიული და პერსონალური AI ასისტენტების დეველოპმენტში.",
-          "action_type": "LEARN",
-          "action": "გადახედე ნაშრომის არქიტექტურას და გამოსცადე Intermediate Layer Feature Extraction შენს Python პაიპლაინში.",
-          "evidence": [],
-          "factuality_level": "single_source",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "ერთ 1B დეკოდერს შეუძლია ერთდროულად შეასრულოს ჩარევის გადაწყვეტილება (gating) და მეხსიერებაზე დაფუძნებული რჩევის გენერაცია",
-            "ორმოდელიან პაიპლაინებთან შედარებით მიიღწევა 1.31-1.76-ჯერ სწრაფი wall-clock time"
-          ],
-          "interpretation": "პროაქტიული აგენტებისთვის ცალკე Gating Model (უნდა დაეხმაროს თუ არა) და Generator Model აღარ არის საჭირო; ერთი კომპაქტური მოდელი ორივეს აკეთებს ერთ პროცესში.",
-          "uncertainty": "ადამიანურ შეფასებაში 1B მოდელი ჯერ კიდევ ჩამორჩება 8B გენერატორებს რთულ კონტექსტებში.",
-          "counter_argument": "თუ რეალურ დროში რეაგირება არ არის კრიტიკული, უფრო დიდი 8B მოდელის ცალკე გამოძახება იძლევა ოდნავ უკეთეს შინაარსს.",
-          "strategic_assessment": "გამოიყენე Single-Pass Gating+Generation არქიტექტურა დაბალი Latency-ს მქონე Telegram ბოტებსა და ასისტენტებში.",
-          "time_horizon": "mid-term",
-          "what_could_change": "მრავალეტაპიანი აგენტური პაიპლაინები შეიცვლება ერთიანი მრავალგამოსავლიანი (early exit/intermediate gating) მცირე მოდელებით.",
-          "risks": [
-            "მეხსიერების პროფილის არარსებობა იწვევს სიზუსტის 24.7 პუნქტიან ვარდნას",
-            "1B მოდელის შეზღუდული ენობრივი შესაძლებლობები"
-          ],
-          "non_obvious_opportunity": "შეგიძლია ააგო პროაქტიული Telegram ასისტენტი, რომელიც ჯგუფურ ჩატში მხოლოდ მაშინ ჩაერთვება, როდესაც რეალურად საჭიროა.",
-          "fit_assessment": "ზუსტად შეესაბამება შენს მიზანს: კომპაქტური, იაფი და რეალურ დროში მომუშავე აგენტის არქიტექტურა."
-        }
-      ],
-      "trends": [
-        "JEPA და Joint-Embedding არქიტექტურების უპირატესობა Next-Token Prediction-ზე მულტიმოდალურ ალინმენტში",
-        "Omni-modal სტრუქტურირებული პარსინგი (ერთი ენკოდერი და ერთი JSON სქემა ყველა მედია ტიპისთვის)",
-        "Inference-time reasoning ოპტიმიზაცია გაყინულ მოდელებზე (Logit PSV / Perturb-Select-Vote)",
-        "პროაქტიული აგენტების არქიტექტურის გამარტივება (Single Decoder Gating & Generation)"
-      ]
-    },
     {
       "date": "2026-11-01",
       "summary": "დღევანდელი ანალიზი ფოკუსირდება აგენტების უსაფრთხოების ბარიერებზე, მრავალაგენტურ პროტოკოლებსა და ავტონომიურ დებაგინგზე. Google Cloud-მა და OpenAI-მ წარადგინეს Auto-Review და IAM Helper არქიტექტურები, რომლებიც აგენტებს უფლებრივ საზღვრებს უწესებენ. პარალელურად, EREBOTS 4.0 და AWS Continuum აჩვენებენ A2A პროტოკოლისა და context graph-ის პრაქტიკულ გამოყენებას საწარმოო სისტემებში.",
@@ -10148,15 +9877,317 @@
         "მულტი-აგენტური კონტექსტის იზოლაცია და დედიკირებული ვერიფიკატორები (Google Antigravity)",
         "აგენტების ინსტრუმენტების უსაფრთხოება OS-დონის Docker/gVisor Sandbox-ებით"
       ]
+    },
+    {
+      "date": "2026-11-15",
+      "summary": "დღევანდელი ანალიზი ფოკუსირდება აგენტების ინფრასტრუქტურასა და ხარჯების ოპტიმიზაციაზე. Google-მა გამოუშვა ოფიციალური Colab Remote MCP სერვერი, რაც აგენტებს უფასო Python Cloud Execution-ის საშუალებას აძლევს. OpenAI-მ წარადგინა GPT-6 Sol და Luna მოდელები 50%-ით შემცირებული API ფასით, ხოლო ChatGPT Wallet-ით აგენტური გადახდების ახალი სტანდარტი შექმნა.",
+      "events": [
+        {
+          "event_id": "evt-google-colab-mcp-server-reference",
+          "title": "Google Colab Remote MCP: ოფიციალური სერვერი აგენტების კოდის დისტანციური შესრულებისთვის",
+          "category": "აგენტების ინფრასტრუქტურა და MCP",
+          "primary_url": "https://developers.google.com/colab/api/reference/mcp",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 10,
+          "source_quality": 9,
+          "confidence": 95,
+          "tldr": "Google-მა Colab API-სთვის MCP სერვერი გამოუშვა. შენს აგენტს ახლა შეუძლია დისტანციურად შექმნას Colab kernel და გააშვას Python კოდი.",
+          "what_happened": "Google-მა გამოაქვეყნა Colab Remote MCP spec დოკუმენტაცია და public endpoint.",
+          "what_changed": "მანამდე: აგენტს სჭირდებოდა ლოკალური Python runtime ან ფასიანი სერვერი. ახლა: პირდაპირი MCP ინტეგრაცია Colab-თან.",
+          "why_it_matters": "შეგიძლია აგენტური workflow-ები ააგო უფასო ქლაუდ compute-ზე MCP პროტოკოლით.",
+          "key_takeaways": [
+            "ოფიციალური MCP endpoint ქლაუდში Python-ის გასაშვებად",
+            "Kernel session-ების მართვა execute_code და delete_session ინსტრუმენტებით",
+            "იზოლირებული State მრავალჯერადი execute_code გამოძახებისთვის"
+          ],
+          "technical_architecture": [
+            "Endpoint: https://colaboratory.googleapis.com/mcp",
+            "MCP Protocol Proxy pattern Google API-ზე",
+            "Stateful Jupyter kernel sessions ქლაუდში"
+          ],
+          "technical_details": [
+            "create_runtime: ირჩევს runtimeSpec-ს",
+            "create_session: ხსნის kernel session-ს",
+            "execute_code: უშვებს Python კოდს session-ში"
+          ],
+          "potential_impact": "შემცირდება აგენტების execution sandbox ხარჯები და გამარტივდება MCP ინტეგრაცია.",
+          "action_type": "BUILD",
+          "action": "დააკავშირე შენი Python LLM აგენტი Colab MCP სერვერს და გააშვი მონაცემთა ანალიზის კოდი დისტანციურად.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Real Business Opportunity"
+          ],
+          "verified_facts": [
+            "Google-მა Colab API-სთვის ოფიციალური Remote MCP სერვერი გამოუშვა",
+            "MCP endpoint: https://colaboratory.googleapis.com/mcp",
+            "მოიცავს ინსტრუმენტებს: create_runtime, create_session, execute_code, delete_session"
+          ],
+          "interpretation": "Google Colab MCP აგენტებს აძლევს საშუალებას, გააშვან Python კოდი იზოლირებულ ქლაუდ გარემოში ადგილობრივი რესურსების დახარჯვის გარეშე.",
+          "uncertainty": "Colab runtimes-ის quota limits და cold-start ლატენტურობა მაღალი სიხშირის აგენტებისთვის.",
+          "counter_argument": "ლოკალური Docker კონტეინერი უფრო სწრაფია, თუმცა Colab MCP იძლევა უფასო ქლაუდ ინფრასტრუქტურას.",
+          "strategic_assessment": "გამოიყენე Colab MCP შენი აგენტების Code Execution Sandbox-ად. ეს ამცირებს ინფრასტრუქტურის ხარჯს 0 დოლარამდე.",
+          "time_horizon": "short-term",
+          "what_could_change": "აგენტებს აღარ დასჭირდებათ ძვირადღირებული E2B ან Modal იზოლირებული Python კოდის გასაშვებად.",
+          "risks": [
+            "Colab API Rate limits",
+            "Session expiration და state დაკარგვა",
+            "Google Cloud Auth კონფიგურაციის სირთულე"
+          ],
+          "non_obvious_opportunity": "შეგიძლია შექმნა Telegram ბოტი, რომელიც Colab MCP-ით მონაცემთა ანალიზის კოდს უფასო ქლაუდში გააშვებს.",
+          "fit_assessment": "იდეალურად ერგება შენს მიზანს: უფასო ქლაუდ ინფრასტრუქტურა Python აგენტების ინსტრუმენტების გასაშვებად."
+        },
+        {
+          "event_id": "evt-openai-gpt-6-sol-luna-release",
+          "title": "OpenAI GPT-6 Sol და Luna: 50%-ით იაფი API მოდელები საწარმოო აგენტებისთვის",
+          "category": "LLM APIs და ხელსაწყოები",
+          "primary_url": "https://openai.com/index/introducing-gpt-6-sol-and-luna",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 9,
+          "actionability": 9,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "OpenAI-მ გამოუშვა GPT-6 Sol და Luna. ფასები 50%-ით შემცირდა ($0.10 input Luna-ზე), რაც აგენტების შენებას გაცილებით იაფს ხდის.",
+          "what_happened": "OpenAI-მ დაამატა GPT-6 Sol და Luna API-ზე გაუმჯობესებული inference caching-ით.",
+          "what_changed": "მანამდე: GPT-5.6 სჭირდებოდა ორჯერ მეტი ბიუჯეტი. ახლა: 50%-ით იაფი ტოკენები იმავე აგენტურ ლოგიკაში.",
+          "why_it_matters": "დაბალი API ფასი გაძლევს საშუალებას, გააშვა მრავალეტაპიანი Agent Loops ფინანსური რისკის გარეშე.",
+          "key_takeaways": [
+            "GPT-6 Sol: $2/$10 1M ტოკენზე, სჯობნის Claude Opus 5-ს 9% ხარჯით",
+            "GPT-6 Luna: $0.10/$0.50 1M ტოკენზე, იდეალურია subagents-ისთვის",
+            "AutomationBench-ზე ბიზნეს workflows ეფექტური შესრულება"
+          ],
+          "technical_architecture": [
+            "Optimized Inference Caching",
+            "Multi-tier effort scaling (low, high, xhigh)",
+            "AutomationBench 1.0.6 evaluation"
+          ],
+          "technical_details": [
+            "Sol input: $2 per 1M tokens",
+            "Luna input: $0.10 per 1M tokens",
+            "AutomationBench Score: 33.2%"
+          ],
+          "potential_impact": "შემცირდება აგენტების შენახვის ხარჯი საწარმოო და პერსონალურ პროექტებში.",
+          "action_type": "TRY",
+          "action": "შეცვალე შენი აგენტის API Config-ში მოდელი gpt-6-luna-ზე და გაზომე პასუხის სიჩქარე და ხარჯი.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "OpenAI-მ გამოუშვა GPT-6 Sol ($2/1M input, $10/1M output tokens)",
+            "გამოვიდა GPT-6 Luna ($0.10/1M input, $0.50/1M output tokens)",
+            "GPT-6 Sol-მა AutomationBench 1.0.6-ზე 33.2% შედეგი აჩვენა $0.27 ხარჯით"
+          ],
+          "interpretation": "GPT-6 Sol და Luna აგენტების API ხარჯებს განახევრებს. Luna ხდება საუკეთესო არჩევანი დაბალი ლატენტურობის subagent loops-ისთვის.",
+          "uncertainty": "ხარჯები მაღალი effort settings-ზე (xhigh) შესაძლოა მაინც სწრაფად გაიზარდოს.",
+          "counter_argument": "Open-weight მოდელები (DeepSeek) ლოკალურად უფასოა, თუმცა API სტაბილურობა GPT-6-ს უკეთესი აქვს.",
+          "strategic_assessment": "გადაიყვანე შენი აგენტების Router და Evaluation loops GPT-6 Luna-ზე, ხოლო რთული reasoning tasks — Sol-ზე.",
+          "time_horizon": "short-term",
+          "what_could_change": "აგენტების API ხარჯების შემცირება საშუალებას მისცემს მცირე დეველოპერებს გააშვან Multi-Agent სისტემები.",
+          "risks": [
+            "API rate limits",
+            "Prompt token accumulation ხანგრძლივ loops-ში",
+            "Effort multiplier-ით გამოწვეული ფარული ხარჯი"
+          ],
+          "non_obvious_opportunity": "Luna-ს $0.10-იანი ფასი იძლევა საშუალებას ჩაატარო ათასობით Agent Evaluation test თვეში $5-ად.",
+          "fit_assessment": "ზუსტად პასუხობს შენს შეზღუდვას — მინიმალური ბიუჯეტით მიიღო frontier class აგენტური მოდელი."
+        },
+        {
+          "event_id": "evt-aws-bedrock-agentcore-firecracker-runtime",
+          "title": "Amazon Bedrock AgentCore Runtime: Firecracker MicroVM იზოლაცია აგენტებისთვის",
+          "category": "აგენტების ინფრასტრუქტურა და Open Source",
+          "primary_url": "https://aws.amazon.com/blogs/machine-learning/run-agents-securely-and-efficiently-with-the-next-generation-agentcore-runtime",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 8,
+          "actionability": 7,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "AWS-მა განაახლა AgentCore Runtime. ახლა ყოველი აგენტური სესია აპარატურულად იზოლირებულია Firecracker MicroVM-ით.",
+          "what_happened": "AWS-მა გამოაქვეყნა AgentCore Runtime-ის ახალი არქიტექტურა მრავალსესიური აგენტებისთვის.",
+          "what_changed": "მანამდე: აგენტები იზიარებდნენ სერვერის გარემოს. ახლა: თითოეულ სესიას აქვს საკუთარი Firecracker MicroVM.",
+          "why_it_matters": "აგენტების მიერ კოდის გაშვებისას უსაფრთხოება და იზოლაცია წარმოების მთავარი სტანდარტი ხდება.",
+          "key_takeaways": [
+            "Firecracker MicroVM ყოველი სესიის იზოლაციისთვის",
+            "Cold-start ლატენტურობის შემცირება ქლაუდში",
+            "Zero trust არქიტექტურა აგენტური ინსტრუმენტებისთვის"
+          ],
+          "technical_architecture": [
+            "Firecracker MicroVM Isolation",
+            "Managed Agent Compute Layer",
+            "Hardware-level Security Boundary"
+          ],
+          "technical_details": [
+            "KVM-based MicroVMs",
+            "Elastic scaling runtime",
+            "Per-session compute isolation"
+          ],
+          "potential_impact": "ამაღლდება საწარმოო AI აგენტების უსაფრთხოების სტანდარტი.",
+          "action_type": "LEARN",
+          "action": "გაეცანი Firecracker MicroVM-ისა და gVisor-ის განსხვავებებს აგენტების Sandbox იზოლაციისთვის.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "Bedrock AgentCore Runtime თითოეულ აგენტურ სესიას მართავს Firecracker MicroVM-ში",
+            "აპარატურულად იზოლირებული გარემო (Hardware-isolated MicroVM)",
+            "გათვლილია ათასობით პარალელური აგენტური სესიის უსაფრთხო გაშვებაზე"
+          ],
+          "interpretation": "საწარმოო აგენტების მთავარი მოთხოვნა ხდება იზოლირებული Sandbox execution გარემო უსაფრთხოების რისკების შესამცირებლად.",
+          "uncertainty": "Firecracker ლოკალური კონფიგურაცია მოითხოვს Linux/KVM გარემოს.",
+          "counter_argument": "Docker კონტეინერები უფრო მარტივია, თუმცა Firecracker იძლევა გაცილებით ძლიერ იზოლაციას და სწრაფ cold-start-ს.",
+          "strategic_assessment": "გაიგე Firecracker MicroVM-ის პრინციპი — აგენტების მიერ კოდის გაშვება მოითხოვს აპარატურულ იზოლაციას.",
+          "time_horizon": "mid-term",
+          "what_could_change": "ყველა Production Agent Framework გამოიყენებს MicroVM იზოლაციას კოდის შესასრულებლად.",
+          "risks": [
+            "AWS-ზე მიბმულობა (Vendor lock-in)",
+            "სისტემური ინფრასტრუქტურის სირთულე"
+          ],
+          "non_obvious_opportunity": "შეგიძლია გამოიყენო ლოკალური Firecracker / gVisor შენს პითონის აგენტებში კოდის უსაფრთხო Execution Sandbox-ისთვის.",
+          "fit_assessment": "სასარგებლოა აგენტების უსაფრთხოებისა და Sandbox არქიტექტურის დასანერგად."
+        },
+        {
+          "event_id": "evt-deepseek-v41-flash-sagemaker",
+          "title": "DeepSeek-V4.1-Flash: open-weight მოდელი CED არქიტექტურით და FP4 KV Caching-ით",
+          "category": "LLM APIs და ხელსაწყოები",
+          "primary_url": "https://aws.amazon.com/about-aws/whats-new/2026/01/deepseek-v4-pro-v4-flash-v4.1-flash-on-sagemaker-jumpstart",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 8,
+          "actionability": 7,
+          "source_quality": 10,
+          "confidence": 90,
+          "tldr": "DeepSeek-V4.1-Flash გამოვიდა. Causal Encoder-Decoder (CED) და FP4 KV Caching 4-ჯერ ამცირებს KV Cache-ს 1M context-ზე.",
+          "what_happened": "AWS SageMaker-ზე დამატებით გამოქვეყნდა DeepSeek-V4 open-weight მოდელების ოჯახი MIT ლიცენზიით.",
+          "what_changed": "მანამდე: 1M Context Window მოითხოვდა უზარმაზარ RAM/VRAM-ს. ახლა: FP4 caching-ით მეხსიერების ხარჯი 75%-ით ნაკლებია.",
+          "why_it_matters": "გაიგებ, როგორ მუშაობს თანამედროვე ეფექტური აგენტური Backbone მოდელები.",
+          "key_takeaways": [
+            "MIT open-weight ლიცენზია სრული თავისუფლებისთვის",
+            "CED არქიტექტურა: 8B prefill / 16B decode აქტივაცია",
+            "FP4 KV Caching (CSA2) 4-ჯერ ნაკლები მეხსიერების ხარჯისთვის"
+          ],
+          "technical_architecture": [
+            "Causal Encoder-Decoder (CED) 552B MoE",
+            "Compressed Sparse Attention 2 (CSA2)",
+            "FP4 KV Cache quantization"
+          ],
+          "technical_details": [
+            "Context Window: 1M tokens",
+            "Max Output Tokens: 384K",
+            "Prefill Active Params: 8B"
+          ],
+          "potential_impact": "შემცირდება აგენტების Inference ხარჯი დიდ კონტექსტებზე.",
+          "action_type": "LEARN",
+          "action": "წაიკითხე DeepSeek-V4.1 CED არქიტექტურის დოკუმენტაცია და გაიგე FP4 KV Caching-ის მუშაობის პრინციპი.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "DeepSeek-V4.1-Flash ხელმისაწვდომია MIT ლიცენზიით",
+            "იყენებს Causal Encoder-Decoder (CED) არქიტექტურას 552B პარამეტრით",
+            "Prefill დროს აქტიურდება 8B, ხოლო Decode დროს 16B პარამეტრი",
+            "FP4 KV caching (CSA2) ამცირებს KV cache მეხსიერებას 1/4-მდე"
+          ],
+          "interpretation": "CED არქიტექტურა და FP4 KV caching წყვეტს ხანგრძლივი Context Window-ის მეხსიერების პრობლემას აგენტებში.",
+          "uncertainty": "SageMaker-ზე გაშვება მოითხოვს Cloud Compute ბიუჯეტს.",
+          "counter_argument": "Open API ეპიზოდურად უფრო იაფია, თუმცა open-weight იძლევა სრულ კონტროლს ლოკალურ გარემოში.",
+          "strategic_assessment": "ისწავლე CED არქიტექტურისა და FP4 KV caching პრინციპები — ეს არის LLM ეფექტურობის მომავალი სტანდარტი.",
+          "time_horizon": "mid-term",
+          "what_could_change": "1M ტოკენის Context Window გახდება ძალზე იაფი და სწრაფი ლოკალურ და ქლაუდ სერვერებზე.",
+          "risks": [
+            "საკუთარი GPU ინფრასტრუქტურის საჭიროება ლოკალური გაშვებისთვის",
+            "SageMaker JumpStart ხარჯები"
+          ],
+          "non_obvious_opportunity": "FP4 KV Caching საშუალებას იძლევა აგენტმა შეინახოს მთელი Codebase Context 4-ჯერ ნაკლები RAM-ის გამოყენებით.",
+          "fit_assessment": "მნიშვნელოვანია მოდელის არქიტექტურის გაგებისთვის, თუმცა გაშვება სჯობს მესამე მხარის იაფი API-ით."
+        },
+        {
+          "event_id": "evt-chatgpt-wallet-agent-payments",
+          "title": "ChatGPT Wallet: აგენტური გადახდების პროტოკოლი Visa, Mastercard და Amex ინტეგრაციით",
+          "category": "Real Business Opportunity & Agent Architecture",
+          "primary_url": "https://openai.com/index/introducing-chatgpt-wallet",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 8,
+          "actionability": 7,
+          "source_quality": 10,
+          "confidence": 90,
+          "tldr": "OpenAI-მ გამოუშვა ChatGPT Wallet. აგენტებს შეუძლიათ განახორციელონ გადახდები Payment Tokens-ის მეშვეობით ბარათის ნომრის გაჟონვის გარეშე.",
+          "what_happened": "OpenAI-მ Visa/Mastercard/Amex-თან ერთად აგენტური საგადახდო სისტემა გამოაქვეყნა.",
+          "what_changed": "მანამდე: აგენტს ვერ ვენდობოდით ბარათის მონაცემებს. ახლა: Tokenized უსაფრთხო გადახდა ბიომეტრიული დასტურით.",
+          "why_it_matters": "ბიზნეს აგენტების შექმნისას გადახდების ავტომატიზაცია ხდება რეალური და უსაფრთხო.",
+          "key_takeaways": [
+            "Tokenized Payment Architecture ბარათის დაცვისთვის",
+            "Human-in-the-loop ბიომეტრიული დასტური",
+            "საბანკო სისტემებთან პირდაპირი ინტეგრაციის სტანდარტი"
+          ],
+          "technical_architecture": [
+            "Payment Tokenization Engine",
+            "Biometric Authentication Guardrail",
+            "Merchant Agent-friendly Headers"
+          ],
+          "technical_details": [
+            "1.2B ყოველკვირეული მომხმარებელი",
+            "Face ID / Fingerprint Auth",
+            "One-time payment tokens"
+          ],
+          "potential_impact": "შეიცვლება ონლაინ ყიდვის პროცესი AI აგენტების სასარგებლოდ.",
+          "action_type": "TRACK",
+          "action": "ადევნე თვალი Agent Payments პროტოკოლებს და ისწავლე Payment Tokenization-ის პრინციპები.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Business Opportunity",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "OpenAI-მ წარადგინა ChatGPT Wallet ავტონომიური აგენტური გადახდებისთვის",
+            "პარტნიორობა: American Express, Mastercard და Visa",
+            "იყენებს Payment Tokens — ბარათის რეალური მონაცემების გაზიარების გარეშე",
+            "მოითხოვს მომხმარებლის ბიომეტრიულ ავტორიზაციას (Face ID / fingerprint)"
+          ],
+          "interpretation": "AI აგენტები იღებენ ფინანსური ტრანზაქციების უსაფრთხო შესრულების უნარს, რაც ხსნის ავტონომიური E-commerce აგენტების ბაზარს.",
+          "uncertainty": "ჯერჯერობით ხელმისაწვდომია მხოლოდ აშშ-ში ChatGPT Pro მომხმარებლებისთვის.",
+          "counter_argument": "მომხმარებელთა უმეტესობა ჯერ კიდევ ვერ ენდობა აგენტებს ფინანსურ ტრანზაქციებში.",
+          "strategic_assessment": "შეისწავლე აგენტური ტრანზაქციების Tokenization არქიტექტურა. მომავალში ბიზნეს აგენტებს დასჭირდებათ საგადახდო ინტეგრაცია.",
+          "time_horizon": "long-term",
+          "what_could_change": "ონლაინ მაღაზიებს დასჭირდებათ API-ები და პროტოკოლები, რომლებიც სპეციალურად AI აგენტების გადახდებს მიიღებენ.",
+          "risks": [
+            "რეგიონული შეზღუდვები (აშშ-ის მიღმა)",
+            "უსაფრთხოების ხარვეზები აგენტის Prompt Injection-ის დროს",
+            "საბანკო რეგულაციები"
+          ],
+          "non_obvious_opportunity": "შეგიძლია შექმნა აგენტური Checkout verification სისტემები მცირე ელექტრონული კომერციის ვებ-საიტებისთვის.",
+          "fit_assessment": "გაჩვენებს საით მიდის აგენტური ინდუსტრია — უბრალო ჩატიდან რეალურ ეკონომიკურ მოქმედებებამდე."
+        }
+      ],
+      "trends": [
+        "Remote MCP Servers: ქლაუდ API-ების პირდაპირი MCP ინტეგრაცია აგენტების ინსტრუმენტად (Google Colab MCP)",
+        "API Pricing Collapse: Frontier კლასის აგენტური მოდელების ფასის 50%-იანი შემცირება (GPT-6 Sol/Luna)",
+        "Agentic Payment Networks: აგენტებისთვის უსაფრთხო საგადახდო ტოკენების დანერგვა (ChatGPT Wallet)",
+        "Hardware-Isolated Agent Sandboxes: Firecracker MicroVM-ების გამოყენება აგენტების კოდის შესასრულებლად"
+      ]
     }
   ],
   "learning_queue": [
-    "Google A2UI Protocol Specification & Python SDK integration",
-    "Context Partitioning & Multi-Agent Handoff Patterns",
-    "Docker Sandboxing for Agent Tool Calling security",
-    "Anchor-based Memory Design for Codebase Agents"
+    "Google Colab MCP Python Integration",
+    "Model Context Protocol (MCP) Remote Server Authorization",
+    "Agent Caching and Cost Optimization Patterns",
+    "Sandbox Environments (Docker vs Firecracker vs Colab API)"
   ],
-  "last_run": "2026-11-14T16:24:11.585879+00:00",
+  "last_run": "2026-11-15T16:47:47.345170+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -10298,9 +10329,9 @@
     "arxiv:2611.17316"
   ],
   "last_report_files": {
-    "markdown": "data/reports/2026-11-14/report.md",
-    "json": "data/reports/2026-11-14/report.json",
-    "newsletter": "data/reports/2026-11-14/newsletter.md",
-    "social": "data/reports/2026-11-14/social_posts.txt"
+    "markdown": "data/reports/2026-11-15/report.md",
+    "json": "data/reports/2026-11-15/report.json",
+    "newsletter": "data/reports/2026-11-15/newsletter.md",
+    "social": "data/reports/2026-11-15/social_posts.txt"
   }
 }
