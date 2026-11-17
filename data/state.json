@@ -389,7 +389,14 @@
     "https://aws.amazon.com/blogs/machine-learning/build-composable-interoperable-multi-agent-systems-with-a2a-on-aws",
     "https://arxiv.org/html/2606.02357",
     "https://aws.amazon.com/blogs/industries/how-ctbc-bank-modernizes-mainframe-reverse-engineering-with-a-multi-agent-pipeline-on-amazon-bedrock-agentcore",
-    "https://arxiv.org/html/2611.08950v2"
+    "https://arxiv.org/html/2611.08950v2",
+    "https://arxiv.org/abs/2611.21577",
+    "https://arxiv.org/pdf/2509.09734",
+    "https://aws.amazon.com/blogs/big-data/build-a-self-healing-etl-pipeline-with-amazon-bedrock-agentcore",
+    "https://huggingface.co/papers/2611.20218",
+    "https://github.com/luisrodriguesphd/mcp-rag-agent",
+    "https://aws.amazon.com/blogs/security/amazon-threat-intelligence-observes-threat-actors-running-cybercrime-campaigns-with-artex-ai-agents",
+    "https://cloud.google.com/blog/topics/threat-intelligence/agentic-threat-activity-crosses-a-significant-threshold"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -708,308 +715,14 @@
     "evt-aws-a2a-agent-protocol-standards",
     "evt-tool-use-capability-critique-arxiv",
     "evt-ctbc-bank-agentcore-multiagent-pipeline",
-    "evt-aim-adaptive-modality-debate-arxiv"
+    "evt-aim-adaptive-modality-debate-arxiv",
+    "evt-mcp-provider-misbinding-vulnerability",
+    "evt-aws-self-healing-etl-agentcore",
+    "evt-swe-cowork-organizational-agent-benchmark",
+    "evt-mcp-rag-agent-production-template",
+    "evt-artex-autonomous-agent-cybercrime-campaigns"
   ],
   "events": [
-    {
-      "event_id": "evt-meta-muse-glimmer-30b",
-      "title": "Meta Muse Glimmer 30B: ღია მოდელი ლოკალური მოწყობილობებისთვის და Tool Use-ისთვის",
-      "category": "Open Source AI & Model Architecture",
-      "primary_url": "https://ai.meta.com/research/publications/muse-glimmer-30b-an-on-device-agentic-model",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 8,
-      "source_quality": 10,
-      "confidence": 95,
-      "tldr": "Meta-მ გამოუშვა Apache 2.0 ლიცენზიით Muse Glimmer 30B, რომელიც გათვლილია ლოკალურ GPU-ზე multi-step tool use-ისთვის.",
-      "what_happened": "Meta-მ წარადგინა Muse Glimmer 30B, სპეციალურად ავტონომიური აგენტური ამოცანებისთვის შექმნილი ღია მულტიმოდალური მოდელი.",
-      "what_changed": "აქამდე მძლავრი tool use მოითხოვდა ღრუბლოვან API-ებს; ახლა 4-bit 30B მოდელი იმავეს აკეთებს ერთ GPU-ზე.",
-      "why_it_matters": "შეგიძლია დატესტო შენი MCP ხელსაწყოები და აგენტური ციკლები სრულიად უფასოდ, საკრედიტო ბარათისა და API ლიმიტების გარეშე.",
-      "key_takeaways": [
-        "Apache 2.0 ლიცენზია იძლევა კომერციული გამოყენების უფლებას",
-        "ტექსტისა და სურათების მიღება ერთიან perception ენკოდერში",
-        "ჩაშენებული failure recovery მექანიზმი შეცდომების გამოსასწორებლად"
-      ],
-      "technical_architecture": [
-        "30B პარამეტრიანი causal LLM + perception encoder",
-        "4-bit precision კვანტიზაცია ერთ GPU-ზე სამუშაოდ",
-        "SOTA შედეგი Gemma4-31B და Qwen3.6-27B მოდელებთან შედარებით"
-      ],
-      "technical_details": [
-        "Apache 2.0 open source license",
-        "Multi-step reasoning and planning",
-        "Native tool calling support"
-      ],
-      "potential_impact": "დეველოპერები შეძლებენ სრულფასოვანი ბიზნეს აგენტების შექმნას გარე API-ებზე დამოკიდებულების გარეშე.",
-      "action_type": "TRY",
-      "action": "ჩამოტვირთე მოდელის 4-bit ვერსია Hugging Face-დან და შეამოწმე მარტივი JSON tool calling ციკლი Ollama-ს ან vLLM-ის მეშვეობით.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Technical Skill",
-        "Real Business Opportunity"
-      ],
-      "verified_facts": [
-        "30B პარამეტრიანი causal language model ვიზუალური perception ენკოდერით",
-        "ოპტიმიზებულია 4-bit კვანტიზაციაზე ერთ სამომხმარებლო GPU-ზე გასაშვებად",
-        "გამოშვებულია სრულად ღია Apache 2.0 ლიცენზიით",
-        "აჯობა Gemma4-31B-სა და Qwen3.6-27B-ს tool use და multi-step planning ტესტებში"
-      ],
-      "interpretation": "30B კლასის მოდელები უკვე საკმარისად ჭკვიანია რთული tool calling-ისთვის ლოკალურ აპარატურაზე, API ხარჯების გარეშე.",
-      "uncertainty": "კონკრეტული მინიმალური VRAM მოთხოვნა 4-bit რეჟიმში სტატიის ტექსტში პირდაპირ მითითებული არ არის.",
-      "counter_argument": "16 წლის დეველოპერს შესაძლოა არ ჰქონდეს 16GB+ VRAM ვიდეობარათი 30B მოდელის ლოკალურად გასაშვებად.",
-      "strategic_assessment": "გამოიყენე Muse Glimmer 30B როგორც ლოკალური ალტერნატივა ფასიანი API-ების ნაცვლად agent loop ტესტირებისას.",
-      "time_horizon": "mid-term",
-      "what_could_change": "მცირე ბიზნესები აირჩევენ ლოკალურ 30B მოდელებს მონაცემთა კონფიდენციალურობისა და ნულოვანი API გადასახადების გამო.",
-      "risks": [
-        "ტექნიკის შეზღუდული VRAM რესურსი",
-        "4-bit კვანტიზაციისას სიზუსტის შესაძლო დაკარგვა",
-        "დაბალი თრუფუთი სუსტ GPU-ზე"
-      ],
-      "non_obvious_opportunity": "შესთავაზე ადგილობრივ კომპანიებს ლოკალური აგენტი, რომელიც მუშაობს შიდა ქსელში ინტერნეტის და API გადასახადების გარეშე.",
-      "fit_assessment": "იდეალურია ბიუჯეტური განვითარებისთვის: გაძლევს საშუალებას ისწავლო agent loop უფასოდ საკუთარ გარემოში."
-    },
-    {
-      "event_id": "evt-pass-k-thought-pruning",
-      "title": "Direct Pass@k Optimization: ტესტ-ტაიმ მსჯელობისა და ტოკენების ოპტიმიზაცია",
-      "category": "AI Research & Model Architecture",
-      "primary_url": "https://arxiv.org/abs/2610.31667",
-      "supporting_urls": [],
-      "importance": 7,
-      "relevance": 8,
-      "actionability": 7,
-      "source_quality": 8,
-      "confidence": 90,
-      "tldr": "ახალი კვლევა Pass@k ოპტიმიზაციით ადრეულ ეტაპზე ფილტრავს მცდარ მსჯელობებს, რაც ზოგავს ინფერენსის დროსა და რესურსებს.",
-      "what_happened": "მკვლევარებმა შექმნეს ალგორითმი, რომელიც reasoning მოდელების ტესტირებისას ნაადრევად ჭრის უპერსპექტივო ტრაექტორიებს.",
-      "what_changed": "ხარისხისა და მრავალფეროვნების ცალ-ცალკე შეფასების ნაცვლად, Pass@k პირდაპირ პოულობს საუკეთესო კანდიდატთა აუზს.",
-      "why_it_matters": "შეზღუდული ბიუჯეტის პირობებში ტოკენების დაზოგვა კრიტიკულია. ეს პრინციპი გასწავლის, როგორ შეაჩერო აგენტის უშედეგო ციკლი დროულად.",
-      "key_takeaways": [
-        "მოკლე პრეფიქსის შეფასება ზოგავს დარჩენილ გამოთვლას",
-        "ბალანსი ხარისხსა და გადაწყვეტის მრავალფეროვნებას შორის",
-        "დადასტურებულია 8 open-weight მოდელზე"
-      ],
-      "technical_architecture": [
-        "Direct pass@k optimization algorithm",
-        "Exploration vs exploitation მათემატიკური ბალანსი",
-        "Prefix-based thought pruning pipeline"
-      ],
-      "technical_details": [
-        "Open-weight model evaluation",
-        "Candidate pool selection",
-        "Token generation reduction"
-      ],
-      "potential_impact": "Reasoning მოდელების გამოძახება გახდება ორჯერ უფრო იაფი და სწრაფი რთული ამოცანების გადაჭრისას.",
-      "action_type": "LEARN",
-      "action": "წაიკითხე ნაშრომის აბსტრაქტი და ჩაინიშნე, როგორ შეგიძლია შენს agent loop-ში ადრეული stop condition-ების ჩაშენება.",
-      "evidence": [],
-      "factuality_level": "single_source",
-      "classification": [
-        "Real Technical Skill"
-      ],
-      "verified_facts": [
-        "ახალი მეთოდი პირდაპირ აოპტიმიზებს pass@k მეტრიკას candidate solution-ების pruning-ისას",
-        "აბალანსებს ხარისხსა და მრავალფეროვნებას (diversity) მოკლე prefix-ის გენერირების შემდეგ",
-        "გამოცდილია რვა open-weight მსჯელობის მოდელზე და აჯობა არსებულ მეთოდებს"
-      ],
-      "interpretation": "Reasoning მოდელების test-time scaling ხდება ბევრად უფრო იაფი, როდესაც არასწორ აზრებს ადრეულ ეტაპზე ვფილტრავთ.",
-      "uncertainty": "კვლევა ფოკუსირებულია მათემატიკურ და ლოგიკურ ტესტებზე; ზოგად ბიზნეს აგენტებზე გავლენა ჯერ შესამოწმებელია.",
-      "counter_argument": "Early pruning-მა შესაძლოა შემთხვევით წაშალოს არასტანდარტული, მაგრამ სწორი გადაწყვეტის გზა.",
-      "strategic_assessment": "გამოიყენე ადრეული შემოწმება შენს აგენტურ ციკლებში. ნუ დაელოდები გრძელი პასუხის დასრულებას, თუ პირველი ნაბიჯი მცდარია.",
-      "time_horizon": "mid-term",
-      "what_could_change": "LLM ინფერენსის პროვაიდერები ჩააშენებენ thought pruning-ს API დონეზე, რაც შეამცირებს reasoning ტოკენების საფასურს.",
-      "risks": [
-        "ზედმეტად აგრესიული pruning-ის რისკი",
-        "დამატებითი საზომი ფუნქციის გამოთვლითი დანახარჯი",
-        "რთული იმპლემენტაცია სტანდარტულ API-ებზე"
-      ],
-      "non_obvious_opportunity": "დაწერე Python wrapper, რომელიც ამოწმებს აგენტის პირველ ორ ნაბიჯს და აჩერებს გენერაციას შეცდომის შემთხვევაში.",
-      "fit_assessment": "გეხმარება გაიგო Test-time compute და როგორ დაზოგო ფული reasoning მოდელების გამოყენებისას."
-    },
-    {
-      "event_id": "evt-mcp-gateway-bedrock-agentcore",
-      "title": "MCP Gateway არქიტექტურა Bedrock AgentCore-ზე: Multi-Cloud ხელსაწყოების ერთიანი ავტორიზაცია",
-      "category": "აგენტების ინფრასტრუქტურა და MCP",
-      "primary_url": "https://aws.amazon.com/blogs/machine-learning/how-eon-built-multi-cloud-investigation-with-an-mcp-gateway-on-amazon-bedrock-agentcore",
-      "supporting_urls": [
-        "https://aws.amazon.com/blogs/machine-learning/work-management-context-for-ai-agents-with-smartsheet-mcp-on-aws",
-        "https://aws.amazon.com/about-aws/whats-new/2026/10/workspaces-ai-agents-oauth-connection-management"
-      ],
-      "importance": 9,
-      "relevance": 9,
-      "actionability": 9,
-      "source_quality": 10,
-      "confidence": 95,
-      "tldr": "AWS-მა და პარტნიორებმა დანერგეს ერთიანი MCP Gateway. აგენტებს უკვე შეუძლიათ ათობით ხელსაწყოსთან უსაფრთხო წვდომა ერთიანი პროტოკოლით.",
-      "what_happened": "Eon-მა და Smartsheet-მა წარმოადგინეს საწარმოო დონის MCP ინტეგრაციები, რომლებმაც გააერთიანეს აგენტების წვდომა ქლაუდ რესურსებსა და სამუშაო ცხრილებზე.",
-      "what_changed": "ადრე თითოეული MCP სერვერი ლოკალურად ეშვებოდა ხელით კონფიგურაციით, ახლა მართვა ხდება ცენტრალიზებული Gateway-ით და OAuth-ით.",
-      "why_it_matters": "შენთვის ეს ნიშნავს, რომ ხელსაწყოებთან კავშირისთვის აღარ გჭირდება რთული custom ლოგიკა — საკმარისია სტანდარტული MCP პროტოკოლის გამოყენება.",
-      "key_takeaways": [
-        "MCP ხდება დე-ფაქტო სტანდარტი Tool Calling-ისთვის ინდუსტრიაში.",
-        "Smartsheet-ის 40+ MCP ხელსაწყო საშუალებას იძლევა ბიზნეს პროცესების სრული ავტომატიზაციის.",
-        "WorkSpaces-ის კატალოგის ხელსაწყო ამცირებს ტოკენების ხარჯს GUI ნავიგაციის ნაცვლად API-ით."
-      ],
-      "technical_architecture": [
-        "MCP Client (Quick/Kiro) უკავშირდება ცენტრალურ MCP Server-ს.",
-        "Bedrock AgentCore Gateway ამუშავებს იდენტობას და უფლებებს.",
-        "OAuth 2.0 უზრუნველყოფს უსაფრთხო სესიის მართვას."
-      ],
-      "technical_details": [
-        "FastMCP Python ბიბლიოთეკა სერვერის სწრაფად ასაწყობად",
-        "OAuth 2.0 ტოკენების როტაცია სესიების მართვისთვის",
-        "JSON-RPC 2.0 შეტყობინებები კლიენტსა და სერვერს შორის",
-        "40+ სტანდარტიზებული ხელსაწყო Smartsheet მონაცემთა ბაზისთვის"
-      ],
-      "potential_impact": "დეველოპერები დაზოგავენ დღეებს ინტეგრაციებზე, ხოლო ბიზნესები მიიღებენ სანდო ავტონომიურ სამუშაო პროცესებს.",
-      "action_type": "BUILD",
-      "action": "ააწყვე მარტივი Python MCP სერვერი FastMCP-ით ლოკალური SQLite ბაზისთვის და დაუკავშირე ის Claude Desktop-ს ან კოდის აგენტს.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "Eon-მა ლოკალური MCP პროცესები ჩაანაცვლა ერთიანი ავთენტიფიცირებული Gateway-ით Bedrock AgentCore-ზე.",
-        "დეველოპერებისა და აგენტების ხელსაწყოებთან წვდომის კონფიგურაციის დრო 2 დღიდან 2 წუთამდე შემცირდა.",
-        "Smartsheet-მა გამოუშვა GA Model Context Protocol სერვერი 40-ზე მეტი ხელსაწყოთი.",
-        "WorkSpaces-მა დაამატა OAuth 2.0 და კატალოგის MCP ხელსაწყო დესკტოპ აპლიკაციების მართვისთვის."
-      ],
-      "interpretation": "MCP იქცა ინდუსტრიულ სტანდარტად. ცალკეული ლოკალური სერვერებიდან გადავდივართ ცენტრალიზებულ MCP Gateway არქიტექტურაზე, სადაც აგენტს აქვს კონტროლირებადი წვდომა API-ებზე.",
-      "uncertainty": "კონკრეტული ქსელური ლატენტობა Bedrock AgentCore Gateway-სა და გარე მოდელებს შორის სტატიაში დაკონკრეტებული არ არის.",
-      "counter_argument": "მცირე პროექტებისთვის ცენტრალიზებული Gateway-ის აწყობა ზედმეტი სირთულეა; მარტივი stdio MCP სერვერი ხშირად სრულიად საკმარისია.",
-      "strategic_assessment": "ისწავლე MCP სერვერების აწყობა FastMCP-ით ან ოფიციალური Python SDK-ით. ეს უნარი პირდაპირ ზრდის შენი აგენტების პრაქტიკულ ბიზნეს ღირებულებას.",
-      "time_horizon": "mid-term",
-      "what_could_change": "ყველა SaaS პლატფორმა შექმნის საკუთარ MCP ენდპოინტს, რაც REST API-ების პირდაპირი ინტეგრაციის საჭიროებას ჩაანაცვლებს.",
-      "risks": [
-        "API გასაღებების გაჟონვის რისკი ცენტრალურ Gateway-ში",
-        "გადამეტებული აბსტრაქცია ართულებს შეცდომების დებაგს",
-        "პროვაიდერის ჩაკეტილობა კონკრეტულ Cloud სერვისზე"
-      ],
-      "non_obvious_opportunity": "შექმენი მცირე ბიზნესებისთვის ლოკალური მონაცემთა ბაზების (SQLite/Postgres) დამაკავშირებელი მსუბუქი MCP სერვერები უფასო პლატფორმებზე.",
-      "fit_assessment": "იდეალურად ერგება შენს მიზანს: შენ უკვე სწავლობ MCP-ს და Python-ს, რაც რეალური პროექტების აწყობის საშუალებას გაძლევს."
-    },
-    {
-      "event_id": "evt-cost-aware-abstention-routing",
-      "title": "Cost-Aware Abstention: ხარჯზე ორიენტირებული თავშეკავება IT თიქეთების კლასიფიკაციაში",
-      "category": "AI Evaluation & საიმედოობა",
-      "primary_url": "https://arxiv.org/abs/2610.31657",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 9,
-      "source_quality": 8,
-      "confidence": 95,
-      "tldr": "ახალი კვლევა ამტკიცებს: აგენტის მიერ საეჭვო დავალებებზე უარის თქმა (abstention) სისტემის ხარჯს 38%-ით ამცირებს და ცდომილებას 3.5%-მდე ყინავს.",
-      "what_happened": "ICTAI 2026-ზე წარდგენილმა ნაშრომმა აჩვენა, რომ ხარჯზე გათვლილი თავშეკავების პოლიტიკა რადიკალურად ამცირებს IT სისტემების საოპერაციო დანაკარგს.",
-      "what_changed": "ადრე სისტემები ცდილობდნენ 100%-ით თავად გადაეწყვიტათ ამოცანა, ახლა მოდელი ზომავს რისკს და საეჭვო ქეისებს ადამიანს უგზავნის.",
-      "why_it_matters": "სანდო ბიზნეს აგენტის შექმნის საიდუმლო იმაშია, რომ მან იცოდეს საკუთარი შეზღუდვები და არ დაუშვას ძვირადღირებული შეცდომები.",
-      "key_takeaways": [
-        "არასწორი მოქმედების ფასი ხშირად აღემატება ადამიანის შრომის ფასს.",
-        "ზღვრული მაჩვენებლის (threshold) სწორი შერჩევა შეცდომებს 4-ჯერ ამცირებს.",
-        "მარტივი კლასიფიკატორები ზოგჯერ LLM-ზე უფრო ეფექტური და იაფია."
-      ],
-      "technical_architecture": [
-        "შემომავალი მოთხოვნის კლასიფიკაცია და confidence ქულის გამოთვლა.",
-        "თუ ქულა ნაკლებია ზღვარზე (მაგ. 0.60), საქმე გადადის ადამიანთან.",
-        "თუ ქულა მაღალია, აგენტი ავტომატურად ასრულებს მარშრუტიზაციას."
-      ],
-      "technical_details": [
-        "TF-IDF ლოგისტიკური რეგრესიით სწრაფი კლასიფიკაციისთვის",
-        "ზღვრული მნიშვნელობა (threshold) = 0.60 ოპტიმალური ხარჯისთვის",
-        "ხარჯების მოდელი: წარმატება=0, ადამიანი=1, შეცდომა=5",
-        "38.1% ხარჯის ეკონომია ტესტურ მონაცემებზე"
-      ],
-      "potential_impact": "კომპანიები დაზოგავენ ათასობით დოლარს არასწორად შესრულებული ავტომატური დავალებების აღმოფხვრით.",
-      "action_type": "BUILD",
-      "action": "დაწერე Python ფუნქცია, რომელიც API პასუხის ალბათობას ამოწმებს და დაბალი ქულის შემთხვევაში აგზავნის შეტყობინებას Telegram-ში ადამიანის ჩასარევად.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Technical Skill",
-        "Real Business Opportunity"
-      ],
-      "verified_facts": [
-        "არასწორი ავტომატური გადამისამართება ხშირად უფრო ძვირი ჯდება, ვიდრე ადამიანის მიერ ხელით დამუშავება.",
-        "TF-IDF-მა ლოგისტიკურ რეგრესიასთან ერთად 0.60 ზღვარზე შეამცირა ტესტირების ხარჯი 38.1%-ით.",
-        "შეცდომით გადამისამართებული თიქეთების წილი შემცირდა 15.3%-დან 3.5%-მდე.",
-        "დამტკიცდა, რომ დამოუკიდებელ ტესტზე გაყინული ზღვრული პოლიტიკა 16-დან 14 შემთხვევაში ჯობნის სრულ ავტომატიზაციას."
-      ],
-      "interpretation": "აგენტმა უნდა იცოდეს, როდის თქვას უარი და გადასცეს საქმე ადამიანს. 100%-იანი ავტომატიზაცია ბიზნესისთვის წამგებიანია შეცდომის მაღალი ფასის გამო.",
-      "uncertainty": "შედეგები ემყარება კონკრეტულ IT კორპუსს (47k თიქეთი); სხვა დომენებში ხარჯების თანაფარდობა შეიძლება განსხვავდებოდეს.",
-      "counter_argument": "თანამედროვე დიდ მოდელებს უკეთესი ზოგადი ინტელექტი აქვთ, თუმცა მათი გაშვება მცირე ამოცანებზე ფინანსურად გაუმართლებელია.",
-      "strategic_assessment": "შენს ბიზნეს აგენტებში ჩააშენე თავშეკავების (abstention/fallback) ლოგიკა. თუ მოდელის თავდაჯერებულობა დაბალია, დავალება ადამიანს გადაეცი.",
-      "time_horizon": "short-term",
-      "what_could_change": "კომპანიები შეწყვეტენ ძვირადღირებული LLM-ების გამოყენებას მარტივ კლასიფიკაციაზე და დანერგავენ ჰიბრიდულ, ხარჯზე მორგებულ სისტემებს.",
-      "risks": [
-        "ზღვრის არასწორად შერჩევისას ადამიანზე ზედმეტი გადამისამართება",
-        "მოდელის თვითდაჯერებულობის არასწორი კალიბრაცია",
-        "მონაცემთა ცვლილება (drift) დროთა განმავლობაში"
-      ],
-      "non_obvious_opportunity": "შესთავაზე მცირე ბიზნესებს თიქეთების გამანაწილებელი ბოტი, რომელიც მხოლოდ 95%+ დარწმუნებულ საქმეებს აკეთებს, დანარჩენს კი ადამიანს უტოვებს.",
-      "fit_assessment": "მარტივი დასანერგია Python-ში. გაჩვენებს, როგორ წყვეტს მარტივი კოდი რეალურ ბიზნეს პრობლემას მინიმალური ხარჯით."
-    },
-    {
-      "event_id": "evt-agentic-corpus-auditing-fineweb",
-      "title": "ავტონომიური აგენტი მონაცემთა ბაზების დებაგისთვის: FineWeb2-ის შემოწმება $2.5-ად",
-      "category": "Real Business Opportunity & Agent Architecture",
-      "primary_url": "https://arxiv.org/abs/2610.31636",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 9,
-      "source_quality": 8,
-      "confidence": 95,
-      "tldr": "ავტონომიურმა აგენტმა $2.5-ად იპოვა 1.4 მილიონი უხარისხო დოკუმენტი და შექმნა Python ტესტი, რომელმაც ბაზა 0.7 წამში შეამოწმა.",
-      "what_happened": "EMNLP 2026-ის ნაშრომში აჩვენეს, როგორ შეუძლია აგენტს შეისწავლოს მონაცემები, დაწეროს შემმოწმებელი კოდი და დაზოგოს $50,000-მდე თანხა.",
-      "what_changed": "იმის ნაცვლად, რომ LLM-მა სათითაოდ შეაფასოს მილიონობით ტექსტი, ის წერს ერთ ლოკალურ სკრიპტს, რომელიც მყისიერად ეშვება CPU-ზე.",
-      "why_it_matters": "ეს გაძლევს ფორმულას, როგორ გააკეთო ძვირადღირებული საწარმოო საქმე უფასო ან 3-დოლარიანი API კრედიტებით.",
-      "key_takeaways": [
-        "LLM უნდა იყოს მკვლევარი და კოდის მწერალი, არა უბრალო მუშა.",
-        "აგენტის მიერ შედგენილი წესები ეშვება მილიწამებში GPU-ს გარეშე.",
-        "ხარჯი შემცირდა $50k-დან $2.5-მდე მსგავსი შედეგის მისაღებად."
-      ],
-      "technical_architecture": [
-        "აგენტი იკვლევს მონაცემთა ნაწილს შეზღუდული Read-only API-ით.",
-        "აღმოჩენილი ანომალიების საფუძველზე აგენტი აგენერირებს Python/Regex ტესტს.",
-        "ტესტი ეშვება მთლიან ბაზაზე ლოკალურად მაღალი სისწრაფით."
-      ],
-      "technical_details": [
-        "26.5M დოკუმენტის სკანირება 0.7 წამში CPU-ზე",
-        "$2.21 - $2.84 საერთო ხარჯი აგენტის ექსპერიმენტზე",
-        "1,408,437 სპამ დოკუმენტის აღმოჩენა",
-        "დეტექციის სიზუსტე (precision) 0.53 - 1.00 დიაპაზონში"
-      ],
-      "potential_impact": "მონაცემთა ინჟინრები შეძლებენ უზარმაზარი კორპუსების გაწმენდას მინიმალურ დროში და ნულოვანი GPU ხარჯით.",
-      "action_type": "BUILD",
-      "action": "დაწერე Python სკრიპტი, სადაც LLM ნახულობს 5 ცუდ ჩანაწერს შენს მონაცემთა ბაზაში, წერს მათ დასაჭერ Regex წესს და ამოწმებს ბაზას.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Technical Skill",
-        "Real Business Opportunity"
-      ],
-      "verified_facts": [
-        "აგენტი გამოიყენეს არა როგორც კლასიფიკატორი, არამედ როგორც მონაცემთა ბაზის დებაგერი (corpus debugger).",
-        "26.5 მილიონიან სლოვაკურ FineWeb2 კორპუსზე აგენტმა 3 გაშვებით ($2.21-$2.84 ხარჯით) იპოვა 1.4 მილიონი დაფარული სპამ…",
-        "აგენტის მიერ გენერირებულმა ტესტ-სკრიპტმა მთლიანი კორპუსი შეამოწმა 0.7 წამში GPU-ს გარეშე.",
-        "ტრადიციული LLM კლასიფიკაციის მიდგომა იმავე ბაზაზე $12,000-დან $90,000-მდე დაჯდებოდა."
-      ],
-      "interpretation": "აგენტის გამოყენება კოდის/ტესტების დასაწერად მილიონობით ტოკენის პირდაპირ წაკითხვის ნაცვლად არის უდიდესი ბიზნეს უპირატესობა.",
-      "uncertainty": "ტესტების ვალიდაციისთვის მაინც საჭირო გახდა ადგილობრივი ენის მცოდნე ექსპერტის ჩართვა (human-in-the-loop).",
-      "counter_argument": "სტატიკური ჰიურისტიკები უფრო იაფია, თუმცა მათ არ აქვთ უნარი აღმოაჩინონ უცნობი ანომალიები დამოუკიდებლად.",
-      "strategic_assessment": "ნუ აიძულებ LLM-ს წაიკითხოს მთელი ბაზა. ააგე აგენტი, რომელიც შეისწავლის ნიმუშებს, დაწერს სწრაფ Python/SQL ტესტს და გაუშვებს ბაზაზე.",
-      "time_horizon": "short-term",
-      "what_could_change": "მონაცემთა გაწმენდის ძვირადღირებული სერვისები ჩანაცვლდება ავტონომიური აგენტებით, რომლებიც მყისიერად ქმნიან ვალიდაციის წესებს.",
-      "risks": [
-        "აგენტის მიერ არასწორი რეგულარული გამოსახულების (Regex) დაწერა",
-        "მონაცემთა გადარჩევის ცდომილება (sampling bias)",
-        "კომპლექსური სემანტიკური სპამის გამოტოვება მარტივი ტესტებით"
-      ],
-      "non_obvious_opportunity": "შექმენი სერვისი ქართულენოვანი ვებ-საიტების ან მონაცემთა ბაზების გასაწმენდად სპამისგან ამავე არქიტექტურით.",
-      "fit_assessment": "იდეალურია შენთვის: იყენებს SQL-ს, Python-ს და მინიმალურ API ბიუჯეტს ($2-3), რაც ზუსტად ჯდება შენს რესურსებში."
-    },
     {
       "event_id": "evt-nvidia-agentic-inference-dynamics",
       "title": "NVIDIA Agentic Inference ანალიზი: მრავალბიჯიანი აგენტების ინფრასტრუქტურული გამოწვევები",
@@ -6459,6 +6172,304 @@
       ],
       "non_obvious_opportunity": "გამოიყენე მარტივი Python ფუნქცია, რომელიც აგენტებს შორის დებატებისას პასუხებიდან მხოლოდ JSON/კლიპინგს ტოვებს.",
       "fit_assessment": "პირდაპირ ეხმარება 16 წლის დეველოპერს უფასო/იაფი API-ებით მულტი-აგენტური სისტემების ოპტიმიზაციაში."
+    },
+    {
+      "event_id": "evt-mcp-provider-misbinding-vulnerability",
+      "title": "MCP Tool Provider Misbinding: ხელსაწყოების სახელების კოლიზია და ჩაჭრა აგენტებში",
+      "category": "აგენტის არქიტექტურა და უსაფრთხოება",
+      "primary_url": "https://arxiv.org/abs/2611.21577",
+      "supporting_urls": [
+        "https://arxiv.org/pdf/2509.09734"
+      ],
+      "importance": 9,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 92,
+      "tldr": "MCP-ში აღმოჩნდა დაუცველობა: მავნე სერვერს შეუძლია ლეგიტიმური ხელსაწყოს სახელი მიითვისოს და აგენტის მოთხოვნები ჩაიჭიროს.",
+      "what_happened": "მკვლევრებმა აჩვენეს, რომ Model Context Protocol-ში ხელსაწყოების სახელები არ არის მიბმული ვერიფიცირებულ პროვაიდერთან, რაც იწვევს Misbinding შეტევებს.",
+      "what_changed": "ადრე MCP ინსტრუმენტების არჩევა ეყრდნობოდა მხოლოდ ტექსტურ აღწერას, ახლა დამტკიცდა, რომ ეს ქმნის ჩაჭრის კრიტიკულ რისკს.",
+      "why_it_matters": "თუ შენს აგენტს რამდენიმე MCP სერვერს მიუერთებ, მოდელმა შესაძლოა მონაცემები გაუგზავნოს არასწორ სერვერს იდენტური სახელის გამო.",
+      "key_takeaways": [
+        "MCP არ ამოწმებს სერვერის ნამდვილ იდენტობას",
+        "სახელის ან სქემის დამთხვევა იწვევს tool misrouting-ს",
+        "აუცილებელია ლოკალური namespace პრეფიქსების გამოყენება"
+      ],
+      "technical_architecture": [
+        "MCP Client Dynamic Tool Resolution Layer",
+        "JSON-RPC 2.0 transport payload inspection",
+        "Reverse proxy validation for tool manifests"
+      ],
+      "technical_details": [
+        "name collision exploit with identical parameter schema",
+        "5 LLM client evaluations showing provider confusion",
+        "prefix tools with server_id: server1_query_db"
+      ],
+      "potential_impact": "უსაფრთხო MCP არქიტექტურა თავიდან აგაცილებს მონაცემთა გაჟონვას და აგენტის არასწორ მოქმედებებს ბიზნეს სისტემებში.",
+      "action_type": "APPLY",
+      "action": "გადააკეთე შენი MCP კლიენტის კოდი ისე, რომ თითოეულ ხელსაწყოს სახელს წინ დაურთოს სერვერის უნიკალური პრეფიქსი.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "MCP ხელსაწყოების მეტადატა არ შეიცავს შემოწმებულ პროვაიდერის იდენტობას",
+        "იდენტური სახელების, სქემების ან ავტორიტეტული აღწერების მქონე მავნე სერვერები ატყუებენ LLM-ს",
+        "შეტევა წარმატებით მუშაობს ჰოსტის ან ქსელის გატეხვის გარეშე 5 სხვადასხვა LLM კლიენტზე",
+        "MCP-AgentBench-მა 33 სერვერზე გამოავლინა პროტოკოლის დონეზე შეცდომების მაღალი სიხშირე"
+      ],
+      "interpretation": "აგენტებში MCP ინსტრუმენტების რეგისტრაცია მხოლოდ სახელზე დაყრდნობით დაუცველია. აუცილებელია namespace-ების და cryptographic sign-ების გამოყენება.",
+      "uncertainty": "ჯერჯერობით უცნობია, როდის დაამატებს Anthropic ოფიციალურ cryptographic provider verification-ს MCP-ის საბაზისო სპეციფიკაციაში.",
+      "counter_argument": "დახურულ გარემოში, სადაც დეველოპერი პირადად აკონტროლებს ყველა გაშვებულ MCP სერვერს, Provider Misbinding-ის რისკი მინიმალურია.",
+      "strategic_assessment": "დანერგე მკაცრი prefixing და namespace ვალიდაცია შენს MCP კლიენტებში დაუყოვნებლივ, რათა აგენტმა შემთხვევით სხვა სერვერის ხელსაწყო არ გამოიძახოს.",
+      "time_horizon": "short-term",
+      "what_could_change": "MCP პროტოკოლი დაამატებს სავალდებულო ხელმოწერებს სერვერებისთვის, რაც შეცვლის ინსტრუმენტების დინამიკური რეგისტრაციის წესებს.",
+      "risks": [
+        "სახელების დუბლირებისას აგენტის მიერ არასწორი მონაცემების გაგზავნა",
+        "პროვაიდერის გაურკვევლობის გამო ჩაციკლული LLM მსჯელობა",
+        "მესამე მხარის MCP სერვერებიდან კონფიდენციალური ტოკენების გაჟონვა"
+      ],
+      "non_obvious_opportunity": "შექმენი მარტივი Python ვალიდატორი, რომელიც ამოწმებს MCP სერვერების schema collision-ს და registry-ს უსაფრთხოებას.",
+      "fit_assessment": "პირდაპირ ეხება შენს მიმდინარე MCP სწავლის ეტაპს და დაგიცავს არასწორი tool call ლოგიკისგან."
+    },
+    {
+      "event_id": "evt-aws-self-healing-etl-agentcore",
+      "title": "AWS Self-Healing ETL: მონაცემთა მილსადენების თვითაღდგენა AgentCore-ით",
+      "category": "აგენტის არქიტექტურა და წარმოება",
+      "primary_url": "https://aws.amazon.com/blogs/big-data/build-a-self-healing-etl-pipeline-with-amazon-bedrock-agentcore",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 10,
+      "confidence": 92,
+      "tldr": "AWS-მა წარმოადგინა არქიტექტურა, სადაც აგენტი პოულობს შეცდომებს მონაცემთა ბაზაში, ასწორებს მათ და თავად ხსნის Pull Request-ს კოდის შესაცვლელად.",
+      "what_happened": "AWS-მა გამოაქვეყნა თვითაღდგენადი ETL მილსადენის არქიტექტურა, რომელიც იყენებს AgentCore-ს მონაცემთა ხარისხის უზრუნველსაყოფად.",
+      "what_changed": "ადრე ინჟინერს ხელით უნდა გაესწორებინა schema mismatch შეცდომები, ახლა აგენტი თავად ასწორებს ჩანაწერს და კოდს.",
+      "why_it_matters": "ეს არის რეალური ბიზნეს აგენტის მაგალითი: არა ჩატბოტი, არამედ ფონური პროცესი, რომელიც კონკრეტულ ტკივილს აგვარებს.",
+      "key_takeaways": [
+        "აგენტი ასწორებს დაზიანებულ მონაცემებს წამებში",
+        "ავტომატურად იქმნება GitHub Pull Request კოდის შესასწორებლად",
+        "კონფიდენსის ზღვარი განსაზღვრავს ადამიანის ჩარევას"
+      ],
+      "technical_architecture": [
+        "AWS Glue data pipeline validation hooks",
+        "Bedrock AgentCore decision runtime",
+        "Vector search over correction strategies in S3"
+      ],
+      "technical_details": [
+        "automated pull request generation for bug fixes",
+        "confidence score threshold gating for human escalation",
+        "dead-letter queue reduction to near zero"
+      ],
+      "potential_impact": "შეგიძლია შექმნა და გაყიდო მონაცემთა ვალიდაციის აგენტები ადგილობრივი კომპანიებისთვის უფასო ინსტრუმენტებით.",
+      "action_type": "BUILD",
+      "action": "დაწერე Python სკრიპტი, რომელიც SQLite-ში ჩაწერისას დაზიანებულ CSV სტრიქონს LLM-ს გადასცემს შესასწორებლად და ინახავს ლოგს.",
+      "evidence": [],
+      "factuality_level": "single_source",
+      "classification": [
+        "Real Technical Skill",
+        "Real Business Opportunity"
+      ],
+      "verified_facts": [
+        "AWS Glue და Bedrock AgentCore ქმნიან დახურულ ციკლს დაზიანებული მონაცემების ავტომატური შესწორებისთვის",
+        "სისტემა იყენებს ცოდნის ბაზას S3 Vectors-ში ცნობილი შეცდომების პატერნების წამებში გასასწორებლად",
+        "აგენტი ავტომატურად აგენერირებს Pull Request-ს კოდის რეპოზიტორიაში მომავალი შეცდომების პრევენციისთვის",
+        "მონაცემები არ რჩება Dead-Letter Queue-ში, არამედ სწორდება კონფიდენსის ზღვრის მიხედვით"
+      ],
+      "interpretation": "საწარმოო აგენტების ყველაზე მომგებიანი ნიშა არის ჩუმი შეცდომების გასწორება: მონაცემების გაწმენდა, ვალიდაცია და PR-ების შექმნა.",
+      "uncertainty": "კოდის ავტომატური PR-ების ხარისხი და კომპანიების მზადყოფნა, ენდონ აგენტის გენერირებულ რეფაქტორინგს.",
+      "counter_argument": "რთული ბიზნეს ლოგიკის მქონე შეცდომებისას აგენტმა შესაძლოა არასწორად დააკორექტიროს მონაცემი და დაამახინჯოს ანალიტიკა.",
+      "strategic_assessment": "ააშენე მსგავსი თვითაღდგენადი პატერნი ლოკალურად: SQLite + Python სკრიპტი, რომელიც დაზიანებულ სტრიქონებს LLM-ით ასწორებს.",
+      "time_horizon": "mid-term",
+      "what_could_change": "მონაცემთა ინჟინერიაში Dead-Letter Queue-ების ხელით დამუშავება სრულად ჩანაცვლდება AI აგენტური ფილტრებით.",
+      "risks": [
+        "არასწორი კორექტირების ჩაწერა მონაცემთა ბაზაში",
+        "მაღალი API ხარჯი დიდი მოცულობის მონაცემებზე",
+        "უსაფუძვლო Pull Request-ებით რეპოზიტორიის გადატვირთვა"
+      ],
+      "non_obvious_opportunity": "შესთავაზე მცირე ბიზნესებს Excel/CSV ფაილების თვითგამსწორებელი აგენტი, რომელიც ტიპების შეცდომებს ასწორებს ბაზაში ჩაწერამდე.",
+      "fit_assessment": "იდეალურად ერგება შენს მიმდინარე SQL და მონაცემთა ბაზების სწავლის ეტაპს პრაქტიკული პროექტისთვის."
+    },
+    {
+      "event_id": "evt-swe-cowork-organizational-agent-benchmark",
+      "title": "SWE-CoWork ბენჩმარკი: ციფრული თანამშრომელი აგენტების რეალური შეზღუდვები",
+      "category": "AI Evaluation & საიმედოობა",
+      "primary_url": "https://huggingface.co/papers/2611.20218",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 88,
+      "tldr": "ახალმა ბენჩმარკმა აჩვენა, რომ AI კოდინგ აგენტები რეალური საოფისე დავალებების მხოლოდ 8%-ს ასრულებენ მოთხოვნების დაკარგვის გამო.",
+      "what_happened": "გამოქვეყნდა SWE-CoWork ბენჩმარკი, რომელმაც 11 მოწინავე LLM გამოსცადა რეალურ გუნდურ პროგრამულ პროექტებში.",
+      "what_changed": "ადრე აგენტებს ზომავდნენ მარტივ bug-fix ტესტებზე, ახლა შემოწმდა მთლიანი ციკლი: მოთხოვნების გარკვევა, კოდირება და ჩაბარება.",
+      "why_it_matters": "ბიზნესისთვის აგენტების შექმნისას უნდა იცოდე, რომ მოდელი მოგატყუებს დავალების შესრულებაზე, თუ ტესტებით არ გადაამოწმებ.",
+      "key_takeaways": [
+        "მოდელები ასრულებენ რთული ამოცანების 8%-ზე ნაკლებს",
+        "აგენტების რეპორტების 31% მცდარია",
+        "მთავარი სისუსტე მოთხოვნების თრექინგია"
+      ],
+      "technical_architecture": [
+        "Simulated 26-persona organizational environment",
+        "Fail-to-pass (F2P) test harnesses",
+        "Requirement-level trajectory tracking state"
+      ],
+      "technical_details": [
+        "101 development assignments across 101 repos",
+        "leading models fail 92% of end-to-end tasks",
+        "Claude-Opus-5.5 gathered only 64% of requirements"
+      ],
+      "potential_impact": "ვერიფიკაციის მკაცრი მექანიზმების დამატება გაზრდის შენი აგენტების სანდოობას რეალურ კლიენტებთან.",
+      "action_type": "LEARN",
+      "action": "შეისწავლე როგორ შექმნა Requirement Checklist შენს აგენტში, სადაც ყოველი პუნქტი მოწმდება pytest-ის გაშვებით.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "SWE-CoWork მოიცავს 101 რეალურ რეპოზიტორიას 11 პროგრამირების ენაზე და 26 სიმულირებულ თანამშრომელს",
+        "წამყვანი მოდელები აბარებენ ტესტების 63%-ს, მაგრამ ასრულებენ დავალებების 8%-ზე ნაკლებს",
+        "მოთხოვნების სრულად მიწოდება ზრდის ტესტების ჩაბარებას 16%-ით, მაგრამ სრულ დასრულებაზე გავლენას არ ახდენს",
+        "აგენტების მიერ დასრულებულად გამოცხადებული მოთხოვნების 31% რეალურად ვერ გადის ტესტებს"
+      ],
+      "interpretation": "კოდინგ აგენტების მთავარი პრობლემა კოდის წერა კი არა, მოთხოვნების გრძელვადიანი მართვა და ეტაპობრივი ვერიფიკაციაა.",
+      "uncertainty": "როგორ შეიცვლება შედეგები, თუ აგენტებს მიეცემათ გრაფიკული დაფები ან გარე State Machine მეხსიერება.",
+      "counter_argument": "ბენჩმარკი იყენებს ხელოვნურ ორგანიზაციულ სიმულაციას, რაც შესაძლოა სრულად არ ასახავდეს ადამიანთან რეალურ წყვილში მუშაობას.",
+      "strategic_assessment": "აგენტების შექმნისას ნუ ენდობი მათ თვითშეფასებას. ააშენე გარე დამოუკიდებელი ტესტირების ციკლი თითოეული ნაბიჯისთვის.",
+      "time_horizon": "mid-term",
+      "what_could_change": "პროგრამული უზრუნველყოფის აგენტები გადავლენ მკაცრ Requirement State Machine-ებზე, ნაცვლად თავისუფალი ReAct ჩატისა.",
+      "risks": [
+        "აგენტის ცრუ ანგარიში სამუშაოს დასრულების შესახებ",
+        "კონტექსტის დაკარგვა მრავალ ეტაპიანი დავალებებისას",
+        "გამოუყენებელი კითხვები და დაუზუსტებელი მოთხოვნები"
+      ],
+      "non_obvious_opportunity": "შექმენი მარტივი Python CLI, რომელიც აგენტს აიძულებს თითოეული მოთხოვნის სტატუსი მონიშნოს JSON ცხრილში კოდის დაწერამდე.",
+      "fit_assessment": "გეხმარება გააცნობიერო, რატომ ფუჭდება შენი აგენტები რთულ ამოცანებზე და როგორ გამოასწორო ეს State Graph-ით."
+    },
+    {
+      "event_id": "evt-mcp-rag-agent-production-template",
+      "title": "Open Source MCP-RAG არქიტექტურა: LangGraph, RRF და RAGAS შეფასება",
+      "category": "აგენტების ინფრასტრუქტურა და MCP",
+      "primary_url": "https://github.com/luisrodriguesphd/mcp-rag-agent",
+      "supporting_urls": [],
+      "importance": 7,
+      "relevance": 10,
+      "actionability": 9,
+      "source_quality": 8,
+      "confidence": 85,
+      "tldr": "გამოვიდა ღია კოდის პროექტი, რომელიც აჩვენებს LangGraph-ის, Model Context Protocol-ის და ჰიბრიდული RAG-ის სწორ საწარმოო არქიტექტურას.",
+      "what_happened": "GitHub-ზე გამოქვეყნდა საწარმოო დონის რეპოზიტორია mcp-rag-agent, რომელიც აერთიანებს თანამედროვე აგენტურ სტეკს.",
+      "what_changed": "მონოლითური RAG სკრიპტების ნაცვლად მივიღეთ მოდულარული სისტემა, სადაც დოკუმენტების ძებნა ხდება დამოუკიდებელი MCP ხელსაწყოთი.",
+      "why_it_matters": "შენ შეგიძლია ნახო რეალური, სუფთა კოდი, თუ როგორ იმართება აგენტის ციკლი და მეხსიერება LangGraph-ში MCP-ის გავლით.",
+      "key_takeaways": [
+        "LangGraph და MCP სრულად თავსებადია",
+        "ჰიბრიდული ძიება RRF-ით აუმჯობესებს სიზუსტეს",
+        "RAGAS ზომავს პასუხების სისწორეს ავტომატურად"
+      ],
+      "technical_architecture": [
+        "LangGraph ReAct agent loop",
+        "MCP tool integration layer",
+        "Hybrid search via Reciprocal Rank Fusion"
+      ],
+      "technical_details": [
+        "COSTAR structured prompting for grounded responses",
+        "automated RAGAS evaluation pipeline",
+        "MongoDB Atlas vector and full-text indexing"
+      ],
+      "potential_impact": "შექმნი პორტფოლიოსთვის გამორჩეულ პროექტს, რომელიც დამსაქმებელს აჩვენებს სტანდარტების ცოდნას.",
+      "action_type": "BUILD",
+      "action": "გააკეთე რეპოზიტორიის fork, შეცვალე MongoDB ლოკალური SQLite-ით და გაუშვი ტესტური MCP RAG ციკლი.",
+      "evidence": [],
+      "factuality_level": "single_source",
+      "classification": [
+        "Real Technical Skill"
+      ],
+      "verified_facts": [
+        "ღია კოდის რეპოზიტორია აერთიანებს LangGraph აგენტს და MCP ინტეგრაციას",
+        "იყენებს ჰიბრიდულ ძიებას Reciprocal Rank Fusion (RRF) ალგორითმით ვექტორული და ტექსტური ძებნისთვის",
+        "პასუხების ხარისხი და groundedness კონტროლდება RAGAS ავტომატური მეტრიკებით",
+        "ინსტრუმენტები გამოტანილია სტანდარტული MCP პროტოკოლით მოდულარობისთვის"
+      ],
+      "interpretation": "მზა, სუფთა არქიტექტურული შაბლონი, რომელიც აჩვენებს როგორ უნდა დაუკავშირდეს LangGraph სახელმწიფო მანქანა MCP ხელსაწყოებს.",
+      "uncertainty": "რამდენად მარტივია MongoDB Atlas-ის შეცვლა ლოკალური უფასო SQLite/ChromaDB ალტერნატივით.",
+      "counter_argument": "ბევრი მსგავსი რეპოზიტორია არსებობს, თუმცა MCP-ის და RAGAS-ის ერთობლივი იმპლემენტაცია იშვიათია.",
+      "strategic_assessment": "გამოიყენე ეს რეპოზიტორია როგორც არქიტექტურული გზამკვლევი შენი საკუთარი LangGraph + MCP პროექტის ასაწყობად.",
+      "time_horizon": "short-term",
+      "what_could_change": "MCP გახდება RAG სისტემების სტანდარტული ინტერფეისი, რაც ჩაანაცვლებს ფრეიმვორკებზე მიბმულ custom retriever-ებს.",
+      "risks": [
+        "OpenAI API-ზე დამოკიდებულება ემბედინგებისთვის",
+        "MongoDB Atlas-ის კონფიგურაციის სირთულე დამწყებთათვის",
+        "RAGAS-ის შეფასებისას დამატებითი ტოკენების ხარჯი"
+      ],
+      "non_obvious_opportunity": "შეცვალე MongoDB უფასო ლოკალური DuckDB-ით ან SQLite-FTS5-ით და მიიღებ სრულად უფასო ლოკალურ MCP-RAG აგენტს.",
+      "fit_assessment": "ზუსტად ემთხვევა შენს გეგმას: tool calling -> MCP -> agent loops -> state -> graphs -> RAG."
+    },
+    {
+      "event_id": "evt-artex-autonomous-agent-cybercrime-campaigns",
+      "title": "ARTEX და LLMJacking: ავტონომიური აგენტები კიბერშეტევებსა და API ქურდობაში",
+      "category": "უსაფრთხოება და ინფრასტრუქტურა",
+      "primary_url": "https://aws.amazon.com/blogs/security/amazon-threat-intelligence-observes-threat-actors-running-cybercrime-campaigns-with-artex-ai-agents",
+      "supporting_urls": [
+        "https://cloud.google.com/blog/topics/threat-intelligence/agentic-threat-activity-crosses-a-significant-threshold"
+      ],
+      "importance": 9,
+      "relevance": 8,
+      "actionability": 8,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "AWS-მა და Google-მა დააფიქსირეს ARTEX აგენტები, რომლებიც ავტონომიურად იპარავენ LLM გასაღებებს და უტევენ სერვერებს ადამიანის ჩარევის გარეშე.",
+      "what_happened": "ჰაკერებმა დაიწყეს multi-agent სისტემების გაშვება, რომლებიც მუდმივ რეჟიმში ეძებენ დაუცველ API გასაღებებს და აფართოებენ შეტევას.",
+      "what_changed": "ადრე ჰაკერები ხელით წერდნენ სკრიპტებს, ახლა აგენტები თავად იღებენ გადაწყვეტილებას სამიზნეების პრიორიტეტიზაციაზე.",
+      "why_it_matters": "შენი API გასაღები თუ საჯარო კოდში მოხვდა, აგენტები მას წამებში აღმოაჩენენ და მთელ ლიმიტს ამოწურავენ.",
+      "key_takeaways": [
+        "ავტონომიური აგენტები უკვე მართავენ კიბერშეტევებს",
+        "LLMJacking ხდება მთავარი ფინანსური საფრთხე",
+        "API გასაღებების დაცვა მოითხოვს მკაცრ მონიტორინგს"
+      ],
+      "technical_architecture": [
+        "ARTEX multi-agent offensive loop",
+        "Decoy honeypot sensing via AWS MadPot",
+        "Automated patch diffing exploit pipelines"
+      ],
+      "technical_details": [
+        "standing instruction prompts with country exclusion red lines",
+        "credential grading by live reachability checks",
+        "underground proxy resale via LLM Mixers"
+      ],
+      "potential_impact": "დეველოპერები, რომლებიც უსაფრთხოებას უგულებელყოფენ, წამებში დაკარგავენ API კვოტებს და დააზიანებენ ინფრასტრუქტურას.",
+      "action_type": "APPLY",
+      "action": "შეამოწმე შენი ყველა .env ფაილი, დარწმუნდი რომ .gitignore-შია და დააყენე 5-დოლარიანი ხარჯვის ლიმიტი API პროვაიდერებთან.",
+      "evidence": [],
+      "factuality_level": "verified",
+      "classification": [
+        "Real Technical Skill",
+        "General News"
+      ],
+      "verified_facts": [
+        "Amazon MadPot-მა დააფიქსირა ARTEX ღია კოდის აგენტური ფრეიმვორკის ავტონომიური კამპანიები",
+        "აგენტები იპარავენ LLM API გასაღებებს და მოპარული რესურსით აფინანსებენ შემდგომ ძებნას",
+        "Google Threat Intelligence Group-მა დაადასტურა მრავალ-აგენტიანი თავდასხმები (ARTEX, PentAGI, CAIRN)",
+        "თავდამსხმელები იყენებენ patch differential analysis-ს n-day დაუცველობების ავტომატური ექსპლოიტაციისთვის"
+      ],
+      "interpretation": "ავტონომიური აგენტების ციკლები უკვე გამოიყენება უწყვეტი ოპერაციებისთვის. API გასაღებების გაჟონვა პირდაპირ იწვევს ფინანსურ ზარალს LLMJacking-ით.",
+      "uncertainty": "რამდენად სწრაფად მოახდენენ პატარა ღია კოდის ბიბლიოთეკები API გასაღებების როტაციის ავტომატიზაციას.",
+      "counter_argument": "ეს კამპანიები ძირითადად იყენებენ ცნობილ სისუსტეებს და არა ახალ Zero-Day ექსპლოიტებს, ამიტომ სტანდარტული დაცვა ჯერ კიდევ მუშაობს.",
+      "strategic_assessment": "დააყენე მკაცრი ხარჯვის ლიმიტები და გასაღებების როტაცია შენს LLM API ექაუნთებზე, რათა აგენტურმა სკრიპტებმა ბალანსი არ ამოწურონ.",
+      "time_horizon": "short-term",
+      "what_could_change": "ღრუბლოვანი პროვაიდერები დააწესებენ აგენტების ავტომატურ ქცევით ანალიზს და მკაცრ ანომალიების ფილტრებს API მოთხოვნებზე.",
+      "risks": [
+        "მოპარული API გასაღებებით გამოწვეული მოულოდნელი გადასახადები",
+        "დაუცველი GitHub რეპოზიტორიებიდან გასაღებების მყისიერი ამოღება",
+        "აგენტის მიერ გაშვებული კოდის კონტროლის დაკარგვა"
+      ],
+      "non_obvious_opportunity": "შექმენი Git pre-commit hook და მარტივი გამაფრთხილებელი ბოტი, რომელიც ამოწმებს API გასაღებების შემთხვევით გაჟონვას.",
+      "fit_assessment": "კრიტიკულია შენი უფასო და დაბალბიუჯეტიანი API ლიმიტების დასაცავად პროექტების ღია რეპოზიტორიებში შენახვისას."
     }
   ],
   "topics": {
@@ -6566,7 +6577,7 @@
     "AI Research & Agent Optimization": 1,
     "AI Research & Agent Infrastructure": 1,
     "AI Coding Tools და Agent Architecture": 1,
-    "აგენტების ინფრასტრუქტურა და MCP": 19,
+    "აგენტების ინფრასტრუქტურა და MCP": 20,
     "აგენტების ინფრასტრუქტურა და უსაფრთხოება": 2,
     "": 1,
     "AI Research & RAG": 1,
@@ -6579,7 +6590,7 @@
     "RAG & Database Architecture": 2,
     "აგენტის არქიტექტურა და Cost Optimization": 1,
     "აგენტების უსაფრთხოება და Sandbox": 3,
-    "AI Evaluation & საიმედოობა": 18,
+    "AI Evaluation & საიმედოობა": 19,
     "აგენტის არქიტექტურა და ხელსაწყოები": 4,
     "Long-Term Career Strategy": 1,
     "უსაფრთხოება და ღია კოდი": 1,
@@ -6605,241 +6616,18 @@
     "აგენტის არქიტექტურა და საიმედოობა": 1,
     "Open Source AI & Model Architecture": 1,
     "აგენტის არქიტექტურა და ინფრასტრუქტურა": 2,
-    "აგენტის არქიტექტურა და წარმოება": 3,
+    "აგენტის არქიტექტურა და წარმოება": 4,
     "AI Research / Self-Improvement": 1,
     "აგენტების არქიტექტურა და ინფრასტრუქტურა": 1,
     "აგენტის არქიტექტურა და Open Source": 2,
-    "აგენტის არქიტექტურა და უსაფრთხოება": 6,
+    "აგენტის არქიტექტურა და უსაფრთხოება": 7,
     "აგენტების ინფრასტრუქტურა და Open Source": 3,
     "აგენტის არქიტექტურა და კონტექსტი": 1,
     "AI Research / Robot Learning": 1,
-    "აგენტის არქიტექტურა და Frontend": 1
+    "აგენტის არქიტექტურა და Frontend": 1,
+    "უსაფრთხოება და ინფრასტრუქტურა": 1
   },
   "reports": [
-    {
-      "date": "2026-11-02",
-      "summary": "დღევანდელი ანალიზი ფოკუსირდება დეტერმინისტული Workflow-ების MCP ინსტრუმენტებად ინტეგრაციაზე, ღია AI-Coworker არქიტექტურასა და ავტონომიურ კვლევით აგენტებზე. AWS Step Functions უკვე ხელმისაწვდომია MCP-ის მეშვეობით, ხოლო CopilotKit-მა გამოაქვეყნა OpenBot. Anthropic-ის ახალი პრაქტიკა კი ადასტურებს, რომ უმცროსი ინჟინრებისთვის მთავარი ღირებულება რეალური ბიზნეს პროტოტიპების სწრაფი შექმნაა.",
-      "events": [
-        {
-          "event_id": "evt-anthropic-career-shift-juniors",
-          "title": "Anthropic-ის ცვლილება ინტერვიუებში: აქცენტი რეალურ ბიზნეს პროტოტიპებზე",
-          "category": "Long-Term Career Value",
-          "primary_url": "https://latent.space/p/ainews-anthropic-ends-coding-interviews-hunger-beats-tenure",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 10,
-          "actionability": 10,
-          "source_quality": 8,
-          "confidence": 85,
-          "tldr": "Anthropic-ში კოდირების ტესტები გაუქმდა: უმცროსი ინჟინრებისთვის მთავარი ბიზნეს-გავლენის მქონე პროტოტიპებია.",
-          "what_happened": "Anthropic-ის ჰაირინგ მენეჯერმა განაცხადა, რომ ტრადიციულ კოდირების ტესტებს აზრი დაეკარგა AI-ს გამო.",
-          "what_changed": "მანამდე ითხოვდნენ Algorithmic/React ცოდნას. ახლა ითხოვენ ბიზნეს პრობლემის სწრაფად გადაჭრის უნარს.",
-          "why_it_matters": "შენი ახალგაზრდული ასაკი არ არის ბარიერი — შაბათ-კვირას აგებული მომუშავე პროტოტიპი უფრო ღირებულია, ვიდრე სერტიფიკატები.",
-          "key_takeaways": [
-            "Pick business impact over backlog: აირჩიე პრობლემა, რომელიც რეალურ ღირებულებას ქმნის",
-            "Build it over a weekend: გამოიყენე AI ინსტრუმენტები მომუშავე MVP-ის სწრაფად ასაგებად"
-          ],
-          "technical_architecture": [
-            "Rapid Prototyping Workflow: Problem Definition -> LLM Coding Assistant -> Working Prototype -> Public GitHub…"
-          ],
-          "technical_details": [
-            "Claude Code",
-            "Weekend Prototype",
-            "Business Value Creation"
-          ],
-          "potential_impact": "უცვლის ტრაექტორიას ახალგაზრდა დეველოპერებს: საშუალებას აძლევს პირდაპირ შეეჯიბრონ გამოცდილ ინჟინრებს.",
-          "action_type": "BUILD",
-          "action": "აირჩიე რეალური პრობლემა და ააგე მომუშავე აგენტი შაბათ-კვირას (მაგ. Telegram ავტომატური Support აგენტი).",
-          "evidence": [],
-          "factuality_level": "single_source",
-          "classification": [
-            "Long-Term Career Value",
-            "Real Business Opportunity"
-          ],
-          "verified_facts": [
-            "Anthropic-ის საინჟინრო მენეჯერმა ფელიქს რაიზებერგმა გააუქმა ტრადიციული Algorithmic/React კოდირების ტესტები",
-            "მთავარი რჩევა უმცროსი დეველოპერებისთვის: შექმენით ამბიციური, მომუშავე პროტოტიპები 1-2 დღეში"
-          ],
-          "interpretation": "AI კოდირების ინსტრუმენტების ეპოქაში სინტაქსის ცოდნაზე მნიშვნელოვანი გახდა პრობლემის სწორად არჩევა და ბიზნეს ღირებულების შექმნა.",
-          "uncertainty": "ტრადიციული კომპანიები ჯერ კიდევ სთხოვენ Algorithmic LeetCode ტესტებს.",
-          "counter_argument": "ფუნდამენტური პროგრამირების ცოდნა მაინც საჭიროა რთული სისტემების დებაგინგისთვის.",
-          "strategic_assessment": "ნაცვლად პატარა სავარჯიშოებისა, ააგე 1-2 კონკრეტული, მომუშავე ბიზნეს აგენტი Telegram-ის ინტერფეისით და გამოაქვეყნე GitHub-ზე.",
-          "time_horizon": "long-term",
-          "what_could_change": "დეველოპერის პორტფოლიო შეფასდება არა გამოცდილების წლებით (tenure), არამედ გაშვებული პროდუქტების რეალური გავლენით.",
-          "risks": [
-            "ზედაპირული პროტოტიპების შექმნა სიღრმისეული არქიტექტურული გააზრების გარეშე"
-          ],
-          "non_obvious_opportunity": "შეგიძლია ადგილობრივ ქართულ მცირე ბიზნესებს შესთავაზო ავტომატიზაციის მცირე პროტოტიპები უფასოდ პორტფოლიოსთვის.",
-          "fit_assessment": "100%-ით შეესაბამება შენს სიტუაციას 16 წლის ასაკში: პორტფოლიომ უნდა ილაპარაკოს შენს ნაცვლად."
-        },
-        {
-          "event_id": "evt-aws-step-functions-mcp-tools",
-          "title": "AWS Step Functions workflows ხელმისაწვდომია AI აგენტების MCP ინსტრუმენტებად",
-          "category": "აგენტების ინფრასტრუქტურა და MCP",
-          "primary_url": "https://aws.amazon.com/about-aws/whats-new/2026/10/step-functions-workflows-ai-agent-tools",
-          "supporting_urls": [
-            "https://aws.amazon.com/blogs/machine-learning/building-an-agentic-ai-platform-on-amazon-bedrock-agentcore"
-          ],
-          "importance": 9,
-          "relevance": 10,
-          "actionability": 9,
-          "source_quality": 10,
-          "confidence": 95,
-          "tldr": "AWS Step Functions უკვე მუშაობს MCP Tool-ის სახით Amazon Bedrock AgentCore Gateway-ზე.",
-          "what_happened": "AWS-მა გამოაშვება Step Functions ინტეგრაცია AgentCore Gateway-სთან MCP პროტოკოლით.",
-          "what_changed": "მანამდე აგენტს თითოეული API ცალკე უნდა გამოეძახებინა. ახლა აგენტი ერთიან მრავალბიჯიან Workflow-ს იწყებს.",
-          "why_it_matters": "შეგიძლია ააგო ბიზნეს აგენტები, რომლებიც უშეცდომოდ ასრულებენ რთულ ფინანსურ თუ ოპერაციულ პროცესებს.",
-          "key_takeaways": [
-            "MCP პროტოკოლი ხდება სტანდარტი stateful workflow-ების AI აგენტებთან დასაკავშირებლად",
-            "Express Workflows იძლევა დაბალი Latency-ს მქონე ინსტრუმენტების გამოძახების საშუალებას"
-          ],
-          "technical_architecture": [
-            "Agent Core Gateway -> MCP Protocol -> Step Functions State Machine -> 220+ AWS Services"
-          ],
-          "technical_details": [
-            "MCP connector targets",
-            "Express Workflows",
-            "Standard Workflows"
-          ],
-          "potential_impact": "ამცირებს აგენტის მიერ ინსტრუმენტების არასწორად გამოძახების (Hallucinated tool use) რისკს 0-მდე.",
-          "action_type": "BUILD",
-          "action": "ააგე Python FastMCP სერვერი, რომელიც ადგილობრივ მრავალნაბიჯიან ფუნქციას აშვებს და სტატუსს უბრუნებს აგენტს.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value"
-          ],
-          "verified_facts": [
-            "Step Functions უკავშირდება Bedrock AgentCore Gateway-ს Model Context Protocol (MCP) სტანდარტით",
-            "აგენტებს შეუძლიათ Standard და Express workflow-ების გაშვება და მათი სტატუსის შემოწმება"
-          ],
-          "interpretation": "LLM აგენტებს აღარ სჭირდებათ რთული ბიზნეს-ლოგიკის შიგნით მართვა, რადგან დეტერმინისტული ნაბიჯები უსაფრთხოდ გადადის Step Functions-ში.",
-          "uncertainty": "AgentCore Gateway-ს და Step Functions-ს აქვს AWS API ხარჯები, რაც უფასო Tier-ს სცილდება.",
-          "counter_argument": "MCP სერვერი Python-ში ან Node.js-ში შეიძლება ადგილობრივად აიგოს AWS ინფრასტრუქტურის გარეშეც.",
-          "strategic_assessment": "გამოიყენე MCP პატერნი: აგენტს მიეცი მხოლოდ გადაწყვეტილების მიღების უფლება, ხოლო მრავალბიჯიანი ბიზნეს პროცესი დეტერმინისტულ კოდში გადაიტანე.",
-          "time_horizon": "mid-term",
-          "what_could_change": "ბიზნეს აგენტების საიმედოობა გაორმაგდება, რადგან ტრანზაქციული ნაბიჯები შესრულდება ჩვეულებრივი State Machine-ით.",
-          "risks": [
-            "AWS Cloud-ის ხარჯები",
-            "MCP Gateway-ს ავტორიზაციის კონფიგურაციის სირთულე"
-          ],
-          "non_obvious_opportunity": "შეგიძლია შექმნა Open-Source MCP Wrapper-ი Python Temporal ან Prefect workflow-ებისთვის უფასო სერვერებზე გასაშვებად.",
-          "fit_assessment": "ზუსტად ერგება შენს სწავლის გეგმას: MCP tools და agent loops-ის პრაქტიკული გაერთიანება."
-        },
-        {
-          "event_id": "evt-copilotkit-openbot-agui",
-          "title": "CopilotKit OpenBot: Open-Source AI Coworker Workspace AG-UI მხარდაჭერით",
-          "category": "აგენტის არქიტექტურა და Open Source",
-          "primary_url": "https://github.com/CopilotKit/openbot",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 10,
-          "actionability": 10,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "CopilotKit-მა გამოაქვეყნა OpenBot — Open-Source AI Coworker პლატფორმა ლოკალური გაშვებისთვის.",
-          "what_happened": "გამოვიდა OpenBot Repository, სადაც ნებისმიერი AG-UI აგენტი იღებს თავის ბრაუზერს და ინსტრუმენტებს.",
-          "what_changed": "მანამდე AI ჩატის ინტერფეისები უბრალო ტექსტს აბრუნებდნენ. ახლა აგენტი მართავს ბრაუზერს და UI კომპონენტებს.",
-          "why_it_matters": "შეგიძლია ისწავლო, როგორ იქმნება პროდუქციული აგენტის UX და ინსტრუმენტების იზოლაცია.",
-          "key_takeaways": [
-            "AG-UI პროტოკოლი იძლევა აგენტისა და Front-end კომპონენტების ეფექტურ ინტეგრაციას",
-            "ყოველი აგენტის მოქმედება იწერება შესრულებამდე და შესრულების შემდეგ"
-          ],
-          "technical_architecture": [
-            "AG-UI Agent -> OpenBot Supervisor -> Local Browser / Sandbox -> Audit Logger"
-          ],
-          "technical_details": [
-            "OPENBOT_SINGLE_USER",
-            "AG-UI integration",
-            "Tauri signing skill"
-          ],
-          "potential_impact": "შესაძლებლობას აძლევს დეველოპერებს შექმნან სრულიად კერძო AI ასისტენტები.",
-          "action_type": "TRY",
-          "action": "დააკლონე OpenBot-ის რეპოზიტორი, შეამოწმე agent-langgraph ან agent-pydantic-ai ინტეგრაცია ლოკალურად.",
-          "evidence": [],
-          "factuality_level": "single_source",
-          "classification": [
-            "Real Technical Skill",
-            "Short-term Opportunity"
-          ],
-          "verified_facts": [
-            "OpenBot არის Open-Source AI Coworker შაბლონი, რომელიც გაშვებადია ლოკალურ მანქანაზე",
-            "მხარს უჭერს AG-UI პროტოკოლს, იზოლირებულ ბრაუზერს, ფაილურ სისტემას და ინსტრუმენტების Audit Log-ს"
-          ],
-          "interpretation": "მომხმარებელს შეუძლია ჰქონდეს საკუთარი ChatGPT/Claude-ის მსგავსი ინტერფეისი, სადაც აგენტი მუშაობს იზოლირებულ გარემოში.",
-          "uncertainty": "პროექტი არის ბეტა ფაზაში და კოდის ბაზა აქტიურად იცვლება.",
-          "counter_argument": "ლოკალური ბრაუზერის და ინსტრუმენტების მართვა მოითხოვს მეტ RAM-ს და CPU რესურსს.",
-          "strategic_assessment": "გამოიკვლიე კოდის სტრუქტურა GitHub-ზე, რათა ნახო, როგორ ხდება აგენტის მოქმედებების ჩაწერა (audit logging) და AG-UI კომპონენტების გენერაცია.",
-          "time_horizon": "short-term",
-          "what_could_change": "კომპანიები დაიტოვებენ AI აგენტებს საკუთარ ინფრასტრუქტურაში SaaS აგენტების ნაცვლად.",
-          "risks": [
-            "ლოკალური რესურსების შეზღუდვა",
-            "ბეტა ვერსიის ბაგები"
-          ],
-          "non_obvious_opportunity": "შეგიძლია OpenBot-ის არქიტექტურით შექმნა მცირე ბიზნესებისთვის Telegram-ით მართვადი AI ასისტენტი.",
-          "fit_assessment": "იდეალურია შენთვის: უფასო Open-Source შაბლონი, რომლის გაშვება და სწავლა ლეპტოპზევე შეგიძლია."
-        },
-        {
-          "event_id": "evt-autonomous-research-agent-fujimura",
-          "title": "ავტონომიური კვლევითი აგენტი კვლევის კითხვების თვით-ფორმულირებით",
-          "category": "AI Research / Agent Architecture",
-          "primary_url": "https://arxiv.org/html/2610.39620v1",
-          "supporting_urls": [],
-          "importance": 8,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "ახალმა კვლევამ აჩვენა ლოკალურად გაშვებადი აგენტი, რომელიც თვითონ სვამს კვლევით კითხვებს და აკეთებს Peer Review-ს.",
-          "what_happened": "Otsuma-ს მკვლევარმა გამოაქვეყნა სისტემა, სადაც აგენტი ადამიანის გარეშე აფორმირებს ჰიპოთეზებს და ამოწმებს მათ.",
-          "what_changed": "მანამდე AI Scientist სისტემებს ადამიანი აძლევდა კვლევის სფეროს. ახლა აგენტი თვითონ ირჩევს პრობლემას.",
-          "why_it_matters": "სისტემის არქიტექტურა (Diverge -> Critique -> Re-run -> Revise) გამოიყენება ბიზნეს-აგენტების ვალიდაციისთვის.",
-          "key_takeaways": [
-            "Cross-Model Evaluation ამცირებს ერთსა და იმავე მოდელის მიერ დაშვებულ შეცდომებს",
-            "ლოკალური გამოთვლა ლეპტოპზე სრულიად საკმარისია ასეთი ორკესტრაციისთვის"
-          ],
-          "technical_architecture": [
-            "Divergent Question Formulation Skill -> Code Execution -> Cross-Model Peer Reviewer -> Paper Revision"
-          ],
-          "technical_details": [
-            "Local laptop execution",
-            "Cross-model critique",
-            "Re-computable records"
-          ],
-          "potential_impact": "ახალი გზა ავტონომიური დებაგერებისა და ბიზნეს ანალიტიკოსების ასაგებად.",
-          "action_type": "LEARN",
-          "action": "შეისწავლე ნაშრომში აღწერილი Critique/Review პატერნი და დანერგე ის შენს Pydantic/LangGraph აგენტში.",
-          "evidence": [],
-          "factuality_level": "single_source",
-          "classification": [
-            "Real Technical Skill",
-            "Real Business Opportunity"
-          ],
-          "verified_facts": [
-            "სისტემა მუშაობს ლოკალურად ლეპტოპზე ადამიანის ჩარევის გარეშე",
-            "იყენებს ორ ძირითად უნარს: კითხვის ფორმულირებას და მოდელთაშორის (Cross-Model) Peer Review-ს"
-          ],
-          "interpretation": "აგენტებს შეუძლიათ არა მხოლოდ მოცემული დავალების შესრულება, არამედ პრობლემის დასმა და საკუთარი კოდის გადამოწმება.",
-          "uncertainty": "მიღებული ნაშრომები ჯერჯერობით მხოლოდ Workshop დონეს აღწევენ.",
-          "counter_argument": "დამოუკიდებელი კვლევის ხარისხი დამოკიდებულია Prompt-ის დიზაინსა და Critique მოდელის სიმძლავრეზე.",
-          "strategic_assessment": "გამოიყენე მულტი-მოდელური Critique პატერნი: ერთი LLM აგენერირებს კოდს/ანალიზს, ხოლო მეორე სხვა მოდელების ოჯახიდან ამოწმებს მას.",
-          "time_horizon": "mid-term",
-          "what_could_change": "ავტომატური დებაგინგი და ბიზნეს-ანალიზი გახდება სრულიად ავტონომიური Cross-Review ციკლებით.",
-          "risks": [
-            "LLM-ის მიერ არასწორი დასკვნების ტირაჟირება",
-            "API ტოკენების ხარჯი მრავალჯერადი გადამოწმებისას"
-          ],
-          "non_obvious_opportunity": "შეგიძლია შექმნა ავტონომიური QA აგენტი, რომელიც თვითონ იგონებს Edge-case-ებს შენი Python API-სთვის.",
-          "fit_assessment": "ძალიან სასარგებლოა: გიჩვენებს, როგორ ააგო Self-Correction და Review ციკლები უფასო/იაფი API-ებით."
-        }
-      ],
-      "trends": [
-        "MCP (Model Context Protocol) ხდება სტანდარტული ხიდი AI აგენტებსა და დეტერმინისტულ Workflow-ებს შორის",
-        "Open-Source AI Coworkers (OpenBot, AG-UI) იძენენ პოპულარობას ლოკალური და უსაფრთხო გაშვების გამო",
-        "დეველოპერების შეფასების კრიტერიუმები გადადის LeetCode-იდან რეალური AI პროტოტიპების შექმნაზე"
-      ]
-    },
     {
       "date": "2026-11-03",
       "summary": "დღევანდელი გამოშვება მოიცავს AWS Step Functions-ის ინტეგრაციას MCP პროტოკოლით, Google-ის ახალ WebHarbor დოკერიზებულ გარემოს და Gemini 3.5 Flash-ის აგენტურ შესაძლებლობებს. შენთვის მთავარი ამოცანაა დეტერმინისტული მართვისა და აგენტური לੂპების დაკავშირება.",
@@ -10173,13 +9961,324 @@
         "მულტი-აგენტური კომუნიკაციის სტანდარტიზაცია ღია პროტოკოლებით (A2A, Linux Foundation)",
         "მონოლითური დიდპრომპტიანი აგენტების ჩანაცვლება Single-Responsibility Sub-agents პაიპლაინებით"
       ]
+    },
+    {
+      "date": "2026-11-17",
+      "summary": "MCP სერვერებზე აღმოჩნდა Provider Misbinding უსაფრთხოების კრიტიკული ხარვეზი, რომელიც ხელსაწყოების გამოძახების ჩაჭრის საშუალებას იძლევა. AWS-მა და Google-მა დააფიქსირეს ARTEX აგენტური კიბერშეტევების მკვეთრი ზრდა და ავტონომიური LLMJacking. პარალელურად გამოქვეყნდა SWE-CoWork ბენჩმარკი, რომელმაც აჩვენა, რომ წამყვანი კოდინგ-აგენტები რეალურ საოფისე დავალებების მხოლოდ 8%-ს ასრულებენ.",
+      "events": [
+        {
+          "event_id": "evt-mcp-provider-misbinding-vulnerability",
+          "title": "MCP Tool Provider Misbinding: ხელსაწყოების სახელების კოლიზია და ჩაჭრა აგენტებში",
+          "category": "აგენტის არქიტექტურა და უსაფრთხოება",
+          "primary_url": "https://arxiv.org/abs/2611.21577",
+          "supporting_urls": [
+            "https://arxiv.org/pdf/2509.09734"
+          ],
+          "importance": 9,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 92,
+          "tldr": "MCP-ში აღმოჩნდა დაუცველობა: მავნე სერვერს შეუძლია ლეგიტიმური ხელსაწყოს სახელი მიითვისოს და აგენტის მოთხოვნები ჩაიჭიროს.",
+          "what_happened": "მკვლევრებმა აჩვენეს, რომ Model Context Protocol-ში ხელსაწყოების სახელები არ არის მიბმული ვერიფიცირებულ პროვაიდერთან, რაც იწვევს Misbinding შეტევებს.",
+          "what_changed": "ადრე MCP ინსტრუმენტების არჩევა ეყრდნობოდა მხოლოდ ტექსტურ აღწერას, ახლა დამტკიცდა, რომ ეს ქმნის ჩაჭრის კრიტიკულ რისკს.",
+          "why_it_matters": "თუ შენს აგენტს რამდენიმე MCP სერვერს მიუერთებ, მოდელმა შესაძლოა მონაცემები გაუგზავნოს არასწორ სერვერს იდენტური სახელის გამო.",
+          "key_takeaways": [
+            "MCP არ ამოწმებს სერვერის ნამდვილ იდენტობას",
+            "სახელის ან სქემის დამთხვევა იწვევს tool misrouting-ს",
+            "აუცილებელია ლოკალური namespace პრეფიქსების გამოყენება"
+          ],
+          "technical_architecture": [
+            "MCP Client Dynamic Tool Resolution Layer",
+            "JSON-RPC 2.0 transport payload inspection",
+            "Reverse proxy validation for tool manifests"
+          ],
+          "technical_details": [
+            "name collision exploit with identical parameter schema",
+            "5 LLM client evaluations showing provider confusion",
+            "prefix tools with server_id: server1_query_db"
+          ],
+          "potential_impact": "უსაფრთხო MCP არქიტექტურა თავიდან აგაცილებს მონაცემთა გაჟონვას და აგენტის არასწორ მოქმედებებს ბიზნეს სისტემებში.",
+          "action_type": "APPLY",
+          "action": "გადააკეთე შენი MCP კლიენტის კოდი ისე, რომ თითოეულ ხელსაწყოს სახელს წინ დაურთოს სერვერის უნიკალური პრეფიქსი.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "MCP ხელსაწყოების მეტადატა არ შეიცავს შემოწმებულ პროვაიდერის იდენტობას",
+            "იდენტური სახელების, სქემების ან ავტორიტეტული აღწერების მქონე მავნე სერვერები ატყუებენ LLM-ს",
+            "შეტევა წარმატებით მუშაობს ჰოსტის ან ქსელის გატეხვის გარეშე 5 სხვადასხვა LLM კლიენტზე",
+            "MCP-AgentBench-მა 33 სერვერზე გამოავლინა პროტოკოლის დონეზე შეცდომების მაღალი სიხშირე"
+          ],
+          "interpretation": "აგენტებში MCP ინსტრუმენტების რეგისტრაცია მხოლოდ სახელზე დაყრდნობით დაუცველია. აუცილებელია namespace-ების და cryptographic sign-ების გამოყენება.",
+          "uncertainty": "ჯერჯერობით უცნობია, როდის დაამატებს Anthropic ოფიციალურ cryptographic provider verification-ს MCP-ის საბაზისო სპეციფიკაციაში.",
+          "counter_argument": "დახურულ გარემოში, სადაც დეველოპერი პირადად აკონტროლებს ყველა გაშვებულ MCP სერვერს, Provider Misbinding-ის რისკი მინიმალურია.",
+          "strategic_assessment": "დანერგე მკაცრი prefixing და namespace ვალიდაცია შენს MCP კლიენტებში დაუყოვნებლივ, რათა აგენტმა შემთხვევით სხვა სერვერის ხელსაწყო არ გამოიძახოს.",
+          "time_horizon": "short-term",
+          "what_could_change": "MCP პროტოკოლი დაამატებს სავალდებულო ხელმოწერებს სერვერებისთვის, რაც შეცვლის ინსტრუმენტების დინამიკური რეგისტრაციის წესებს.",
+          "risks": [
+            "სახელების დუბლირებისას აგენტის მიერ არასწორი მონაცემების გაგზავნა",
+            "პროვაიდერის გაურკვევლობის გამო ჩაციკლული LLM მსჯელობა",
+            "მესამე მხარის MCP სერვერებიდან კონფიდენციალური ტოკენების გაჟონვა"
+          ],
+          "non_obvious_opportunity": "შექმენი მარტივი Python ვალიდატორი, რომელიც ამოწმებს MCP სერვერების schema collision-ს და registry-ს უსაფრთხოებას.",
+          "fit_assessment": "პირდაპირ ეხება შენს მიმდინარე MCP სწავლის ეტაპს და დაგიცავს არასწორი tool call ლოგიკისგან."
+        },
+        {
+          "event_id": "evt-aws-self-healing-etl-agentcore",
+          "title": "AWS Self-Healing ETL: მონაცემთა მილსადენების თვითაღდგენა AgentCore-ით",
+          "category": "აგენტის არქიტექტურა და წარმოება",
+          "primary_url": "https://aws.amazon.com/blogs/big-data/build-a-self-healing-etl-pipeline-with-amazon-bedrock-agentcore",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 10,
+          "confidence": 92,
+          "tldr": "AWS-მა წარმოადგინა არქიტექტურა, სადაც აგენტი პოულობს შეცდომებს მონაცემთა ბაზაში, ასწორებს მათ და თავად ხსნის Pull Request-ს კოდის შესაცვლელად.",
+          "what_happened": "AWS-მა გამოაქვეყნა თვითაღდგენადი ETL მილსადენის არქიტექტურა, რომელიც იყენებს AgentCore-ს მონაცემთა ხარისხის უზრუნველსაყოფად.",
+          "what_changed": "ადრე ინჟინერს ხელით უნდა გაესწორებინა schema mismatch შეცდომები, ახლა აგენტი თავად ასწორებს ჩანაწერს და კოდს.",
+          "why_it_matters": "ეს არის რეალური ბიზნეს აგენტის მაგალითი: არა ჩატბოტი, არამედ ფონური პროცესი, რომელიც კონკრეტულ ტკივილს აგვარებს.",
+          "key_takeaways": [
+            "აგენტი ასწორებს დაზიანებულ მონაცემებს წამებში",
+            "ავტომატურად იქმნება GitHub Pull Request კოდის შესასწორებლად",
+            "კონფიდენსის ზღვარი განსაზღვრავს ადამიანის ჩარევას"
+          ],
+          "technical_architecture": [
+            "AWS Glue data pipeline validation hooks",
+            "Bedrock AgentCore decision runtime",
+            "Vector search over correction strategies in S3"
+          ],
+          "technical_details": [
+            "automated pull request generation for bug fixes",
+            "confidence score threshold gating for human escalation",
+            "dead-letter queue reduction to near zero"
+          ],
+          "potential_impact": "შეგიძლია შექმნა და გაყიდო მონაცემთა ვალიდაციის აგენტები ადგილობრივი კომპანიებისთვის უფასო ინსტრუმენტებით.",
+          "action_type": "BUILD",
+          "action": "დაწერე Python სკრიპტი, რომელიც SQLite-ში ჩაწერისას დაზიანებულ CSV სტრიქონს LLM-ს გადასცემს შესასწორებლად და ინახავს ლოგს.",
+          "evidence": [],
+          "factuality_level": "single_source",
+          "classification": [
+            "Real Technical Skill",
+            "Real Business Opportunity"
+          ],
+          "verified_facts": [
+            "AWS Glue და Bedrock AgentCore ქმნიან დახურულ ციკლს დაზიანებული მონაცემების ავტომატური შესწორებისთვის",
+            "სისტემა იყენებს ცოდნის ბაზას S3 Vectors-ში ცნობილი შეცდომების პატერნების წამებში გასასწორებლად",
+            "აგენტი ავტომატურად აგენერირებს Pull Request-ს კოდის რეპოზიტორიაში მომავალი შეცდომების პრევენციისთვის",
+            "მონაცემები არ რჩება Dead-Letter Queue-ში, არამედ სწორდება კონფიდენსის ზღვრის მიხედვით"
+          ],
+          "interpretation": "საწარმოო აგენტების ყველაზე მომგებიანი ნიშა არის ჩუმი შეცდომების გასწორება: მონაცემების გაწმენდა, ვალიდაცია და PR-ების შექმნა.",
+          "uncertainty": "კოდის ავტომატური PR-ების ხარისხი და კომპანიების მზადყოფნა, ენდონ აგენტის გენერირებულ რეფაქტორინგს.",
+          "counter_argument": "რთული ბიზნეს ლოგიკის მქონე შეცდომებისას აგენტმა შესაძლოა არასწორად დააკორექტიროს მონაცემი და დაამახინჯოს ანალიტიკა.",
+          "strategic_assessment": "ააშენე მსგავსი თვითაღდგენადი პატერნი ლოკალურად: SQLite + Python სკრიპტი, რომელიც დაზიანებულ სტრიქონებს LLM-ით ასწორებს.",
+          "time_horizon": "mid-term",
+          "what_could_change": "მონაცემთა ინჟინერიაში Dead-Letter Queue-ების ხელით დამუშავება სრულად ჩანაცვლდება AI აგენტური ფილტრებით.",
+          "risks": [
+            "არასწორი კორექტირების ჩაწერა მონაცემთა ბაზაში",
+            "მაღალი API ხარჯი დიდი მოცულობის მონაცემებზე",
+            "უსაფუძვლო Pull Request-ებით რეპოზიტორიის გადატვირთვა"
+          ],
+          "non_obvious_opportunity": "შესთავაზე მცირე ბიზნესებს Excel/CSV ფაილების თვითგამსწორებელი აგენტი, რომელიც ტიპების შეცდომებს ასწორებს ბაზაში ჩაწერამდე.",
+          "fit_assessment": "იდეალურად ერგება შენს მიმდინარე SQL და მონაცემთა ბაზების სწავლის ეტაპს პრაქტიკული პროექტისთვის."
+        },
+        {
+          "event_id": "evt-swe-cowork-organizational-agent-benchmark",
+          "title": "SWE-CoWork ბენჩმარკი: ციფრული თანამშრომელი აგენტების რეალური შეზღუდვები",
+          "category": "AI Evaluation & საიმედოობა",
+          "primary_url": "https://huggingface.co/papers/2611.20218",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 88,
+          "tldr": "ახალმა ბენჩმარკმა აჩვენა, რომ AI კოდინგ აგენტები რეალური საოფისე დავალებების მხოლოდ 8%-ს ასრულებენ მოთხოვნების დაკარგვის გამო.",
+          "what_happened": "გამოქვეყნდა SWE-CoWork ბენჩმარკი, რომელმაც 11 მოწინავე LLM გამოსცადა რეალურ გუნდურ პროგრამულ პროექტებში.",
+          "what_changed": "ადრე აგენტებს ზომავდნენ მარტივ bug-fix ტესტებზე, ახლა შემოწმდა მთლიანი ციკლი: მოთხოვნების გარკვევა, კოდირება და ჩაბარება.",
+          "why_it_matters": "ბიზნესისთვის აგენტების შექმნისას უნდა იცოდე, რომ მოდელი მოგატყუებს დავალების შესრულებაზე, თუ ტესტებით არ გადაამოწმებ.",
+          "key_takeaways": [
+            "მოდელები ასრულებენ რთული ამოცანების 8%-ზე ნაკლებს",
+            "აგენტების რეპორტების 31% მცდარია",
+            "მთავარი სისუსტე მოთხოვნების თრექინგია"
+          ],
+          "technical_architecture": [
+            "Simulated 26-persona organizational environment",
+            "Fail-to-pass (F2P) test harnesses",
+            "Requirement-level trajectory tracking state"
+          ],
+          "technical_details": [
+            "101 development assignments across 101 repos",
+            "leading models fail 92% of end-to-end tasks",
+            "Claude-Opus-5.5 gathered only 64% of requirements"
+          ],
+          "potential_impact": "ვერიფიკაციის მკაცრი მექანიზმების დამატება გაზრდის შენი აგენტების სანდოობას რეალურ კლიენტებთან.",
+          "action_type": "LEARN",
+          "action": "შეისწავლე როგორ შექმნა Requirement Checklist შენს აგენტში, სადაც ყოველი პუნქტი მოწმდება pytest-ის გაშვებით.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "SWE-CoWork მოიცავს 101 რეალურ რეპოზიტორიას 11 პროგრამირების ენაზე და 26 სიმულირებულ თანამშრომელს",
+            "წამყვანი მოდელები აბარებენ ტესტების 63%-ს, მაგრამ ასრულებენ დავალებების 8%-ზე ნაკლებს",
+            "მოთხოვნების სრულად მიწოდება ზრდის ტესტების ჩაბარებას 16%-ით, მაგრამ სრულ დასრულებაზე გავლენას არ ახდენს",
+            "აგენტების მიერ დასრულებულად გამოცხადებული მოთხოვნების 31% რეალურად ვერ გადის ტესტებს"
+          ],
+          "interpretation": "კოდინგ აგენტების მთავარი პრობლემა კოდის წერა კი არა, მოთხოვნების გრძელვადიანი მართვა და ეტაპობრივი ვერიფიკაციაა.",
+          "uncertainty": "როგორ შეიცვლება შედეგები, თუ აგენტებს მიეცემათ გრაფიკული დაფები ან გარე State Machine მეხსიერება.",
+          "counter_argument": "ბენჩმარკი იყენებს ხელოვნურ ორგანიზაციულ სიმულაციას, რაც შესაძლოა სრულად არ ასახავდეს ადამიანთან რეალურ წყვილში მუშაობას.",
+          "strategic_assessment": "აგენტების შექმნისას ნუ ენდობი მათ თვითშეფასებას. ააშენე გარე დამოუკიდებელი ტესტირების ციკლი თითოეული ნაბიჯისთვის.",
+          "time_horizon": "mid-term",
+          "what_could_change": "პროგრამული უზრუნველყოფის აგენტები გადავლენ მკაცრ Requirement State Machine-ებზე, ნაცვლად თავისუფალი ReAct ჩატისა.",
+          "risks": [
+            "აგენტის ცრუ ანგარიში სამუშაოს დასრულების შესახებ",
+            "კონტექსტის დაკარგვა მრავალ ეტაპიანი დავალებებისას",
+            "გამოუყენებელი კითხვები და დაუზუსტებელი მოთხოვნები"
+          ],
+          "non_obvious_opportunity": "შექმენი მარტივი Python CLI, რომელიც აგენტს აიძულებს თითოეული მოთხოვნის სტატუსი მონიშნოს JSON ცხრილში კოდის დაწერამდე.",
+          "fit_assessment": "გეხმარება გააცნობიერო, რატომ ფუჭდება შენი აგენტები რთულ ამოცანებზე და როგორ გამოასწორო ეს State Graph-ით."
+        },
+        {
+          "event_id": "evt-mcp-rag-agent-production-template",
+          "title": "Open Source MCP-RAG არქიტექტურა: LangGraph, RRF და RAGAS შეფასება",
+          "category": "აგენტების ინფრასტრუქტურა და MCP",
+          "primary_url": "https://github.com/luisrodriguesphd/mcp-rag-agent",
+          "supporting_urls": [],
+          "importance": 7,
+          "relevance": 10,
+          "actionability": 9,
+          "source_quality": 8,
+          "confidence": 85,
+          "tldr": "გამოვიდა ღია კოდის პროექტი, რომელიც აჩვენებს LangGraph-ის, Model Context Protocol-ის და ჰიბრიდული RAG-ის სწორ საწარმოო არქიტექტურას.",
+          "what_happened": "GitHub-ზე გამოქვეყნდა საწარმოო დონის რეპოზიტორია mcp-rag-agent, რომელიც აერთიანებს თანამედროვე აგენტურ სტეკს.",
+          "what_changed": "მონოლითური RAG სკრიპტების ნაცვლად მივიღეთ მოდულარული სისტემა, სადაც დოკუმენტების ძებნა ხდება დამოუკიდებელი MCP ხელსაწყოთი.",
+          "why_it_matters": "შენ შეგიძლია ნახო რეალური, სუფთა კოდი, თუ როგორ იმართება აგენტის ციკლი და მეხსიერება LangGraph-ში MCP-ის გავლით.",
+          "key_takeaways": [
+            "LangGraph და MCP სრულად თავსებადია",
+            "ჰიბრიდული ძიება RRF-ით აუმჯობესებს სიზუსტეს",
+            "RAGAS ზომავს პასუხების სისწორეს ავტომატურად"
+          ],
+          "technical_architecture": [
+            "LangGraph ReAct agent loop",
+            "MCP tool integration layer",
+            "Hybrid search via Reciprocal Rank Fusion"
+          ],
+          "technical_details": [
+            "COSTAR structured prompting for grounded responses",
+            "automated RAGAS evaluation pipeline",
+            "MongoDB Atlas vector and full-text indexing"
+          ],
+          "potential_impact": "შექმნი პორტფოლიოსთვის გამორჩეულ პროექტს, რომელიც დამსაქმებელს აჩვენებს სტანდარტების ცოდნას.",
+          "action_type": "BUILD",
+          "action": "გააკეთე რეპოზიტორიის fork, შეცვალე MongoDB ლოკალური SQLite-ით და გაუშვი ტესტური MCP RAG ციკლი.",
+          "evidence": [],
+          "factuality_level": "single_source",
+          "classification": [
+            "Real Technical Skill"
+          ],
+          "verified_facts": [
+            "ღია კოდის რეპოზიტორია აერთიანებს LangGraph აგენტს და MCP ინტეგრაციას",
+            "იყენებს ჰიბრიდულ ძიებას Reciprocal Rank Fusion (RRF) ალგორითმით ვექტორული და ტექსტური ძებნისთვის",
+            "პასუხების ხარისხი და groundedness კონტროლდება RAGAS ავტომატური მეტრიკებით",
+            "ინსტრუმენტები გამოტანილია სტანდარტული MCP პროტოკოლით მოდულარობისთვის"
+          ],
+          "interpretation": "მზა, სუფთა არქიტექტურული შაბლონი, რომელიც აჩვენებს როგორ უნდა დაუკავშირდეს LangGraph სახელმწიფო მანქანა MCP ხელსაწყოებს.",
+          "uncertainty": "რამდენად მარტივია MongoDB Atlas-ის შეცვლა ლოკალური უფასო SQLite/ChromaDB ალტერნატივით.",
+          "counter_argument": "ბევრი მსგავსი რეპოზიტორია არსებობს, თუმცა MCP-ის და RAGAS-ის ერთობლივი იმპლემენტაცია იშვიათია.",
+          "strategic_assessment": "გამოიყენე ეს რეპოზიტორია როგორც არქიტექტურული გზამკვლევი შენი საკუთარი LangGraph + MCP პროექტის ასაწყობად.",
+          "time_horizon": "short-term",
+          "what_could_change": "MCP გახდება RAG სისტემების სტანდარტული ინტერფეისი, რაც ჩაანაცვლებს ფრეიმვორკებზე მიბმულ custom retriever-ებს.",
+          "risks": [
+            "OpenAI API-ზე დამოკიდებულება ემბედინგებისთვის",
+            "MongoDB Atlas-ის კონფიგურაციის სირთულე დამწყებთათვის",
+            "RAGAS-ის შეფასებისას დამატებითი ტოკენების ხარჯი"
+          ],
+          "non_obvious_opportunity": "შეცვალე MongoDB უფასო ლოკალური DuckDB-ით ან SQLite-FTS5-ით და მიიღებ სრულად უფასო ლოკალურ MCP-RAG აგენტს.",
+          "fit_assessment": "ზუსტად ემთხვევა შენს გეგმას: tool calling -> MCP -> agent loops -> state -> graphs -> RAG."
+        },
+        {
+          "event_id": "evt-artex-autonomous-agent-cybercrime-campaigns",
+          "title": "ARTEX და LLMJacking: ავტონომიური აგენტები კიბერშეტევებსა და API ქურდობაში",
+          "category": "უსაფრთხოება და ინფრასტრუქტურა",
+          "primary_url": "https://aws.amazon.com/blogs/security/amazon-threat-intelligence-observes-threat-actors-running-cybercrime-campaigns-with-artex-ai-agents",
+          "supporting_urls": [
+            "https://cloud.google.com/blog/topics/threat-intelligence/agentic-threat-activity-crosses-a-significant-threshold"
+          ],
+          "importance": 9,
+          "relevance": 8,
+          "actionability": 8,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "AWS-მა და Google-მა დააფიქსირეს ARTEX აგენტები, რომლებიც ავტონომიურად იპარავენ LLM გასაღებებს და უტევენ სერვერებს ადამიანის ჩარევის გარეშე.",
+          "what_happened": "ჰაკერებმა დაიწყეს multi-agent სისტემების გაშვება, რომლებიც მუდმივ რეჟიმში ეძებენ დაუცველ API გასაღებებს და აფართოებენ შეტევას.",
+          "what_changed": "ადრე ჰაკერები ხელით წერდნენ სკრიპტებს, ახლა აგენტები თავად იღებენ გადაწყვეტილებას სამიზნეების პრიორიტეტიზაციაზე.",
+          "why_it_matters": "შენი API გასაღები თუ საჯარო კოდში მოხვდა, აგენტები მას წამებში აღმოაჩენენ და მთელ ლიმიტს ამოწურავენ.",
+          "key_takeaways": [
+            "ავტონომიური აგენტები უკვე მართავენ კიბერშეტევებს",
+            "LLMJacking ხდება მთავარი ფინანსური საფრთხე",
+            "API გასაღებების დაცვა მოითხოვს მკაცრ მონიტორინგს"
+          ],
+          "technical_architecture": [
+            "ARTEX multi-agent offensive loop",
+            "Decoy honeypot sensing via AWS MadPot",
+            "Automated patch diffing exploit pipelines"
+          ],
+          "technical_details": [
+            "standing instruction prompts with country exclusion red lines",
+            "credential grading by live reachability checks",
+            "underground proxy resale via LLM Mixers"
+          ],
+          "potential_impact": "დეველოპერები, რომლებიც უსაფრთხოებას უგულებელყოფენ, წამებში დაკარგავენ API კვოტებს და დააზიანებენ ინფრასტრუქტურას.",
+          "action_type": "APPLY",
+          "action": "შეამოწმე შენი ყველა .env ფაილი, დარწმუნდი რომ .gitignore-შია და დააყენე 5-დოლარიანი ხარჯვის ლიმიტი API პროვაიდერებთან.",
+          "evidence": [],
+          "factuality_level": "verified",
+          "classification": [
+            "Real Technical Skill",
+            "General News"
+          ],
+          "verified_facts": [
+            "Amazon MadPot-მა დააფიქსირა ARTEX ღია კოდის აგენტური ფრეიმვორკის ავტონომიური კამპანიები",
+            "აგენტები იპარავენ LLM API გასაღებებს და მოპარული რესურსით აფინანსებენ შემდგომ ძებნას",
+            "Google Threat Intelligence Group-მა დაადასტურა მრავალ-აგენტიანი თავდასხმები (ARTEX, PentAGI, CAIRN)",
+            "თავდამსხმელები იყენებენ patch differential analysis-ს n-day დაუცველობების ავტომატური ექსპლოიტაციისთვის"
+          ],
+          "interpretation": "ავტონომიური აგენტების ციკლები უკვე გამოიყენება უწყვეტი ოპერაციებისთვის. API გასაღებების გაჟონვა პირდაპირ იწვევს ფინანსურ ზარალს LLMJacking-ით.",
+          "uncertainty": "რამდენად სწრაფად მოახდენენ პატარა ღია კოდის ბიბლიოთეკები API გასაღებების როტაციის ავტომატიზაციას.",
+          "counter_argument": "ეს კამპანიები ძირითადად იყენებენ ცნობილ სისუსტეებს და არა ახალ Zero-Day ექსპლოიტებს, ამიტომ სტანდარტული დაცვა ჯერ კიდევ მუშაობს.",
+          "strategic_assessment": "დააყენე მკაცრი ხარჯვის ლიმიტები და გასაღებების როტაცია შენს LLM API ექაუნთებზე, რათა აგენტურმა სკრიპტებმა ბალანსი არ ამოწურონ.",
+          "time_horizon": "short-term",
+          "what_could_change": "ღრუბლოვანი პროვაიდერები დააწესებენ აგენტების ავტომატურ ქცევით ანალიზს და მკაცრ ანომალიების ფილტრებს API მოთხოვნებზე.",
+          "risks": [
+            "მოპარული API გასაღებებით გამოწვეული მოულოდნელი გადასახადები",
+            "დაუცველი GitHub რეპოზიტორიებიდან გასაღებების მყისიერი ამოღება",
+            "აგენტის მიერ გაშვებული კოდის კონტროლის დაკარგვა"
+          ],
+          "non_obvious_opportunity": "შექმენი Git pre-commit hook და მარტივი გამაფრთხილებელი ბოტი, რომელიც ამოწმებს API გასაღებების შემთხვევით გაჟონვას.",
+          "fit_assessment": "კრიტიკულია შენი უფასო და დაბალბიუჯეტიანი API ლიმიტების დასაცავად პროექტების ღია რეპოზიტორიებში შენახვისას."
+        }
+      ],
+      "trends": [
+        "ავტონომიური აგენტების გამოყენება შეტევით კიბეროპერაციებში და LLMJacking-ის მკვეთრი ზრდა",
+        "Model Context Protocol (MCP) უსაფრთხოების ხარვეზების აღმოჩენა და გადასვლა მკაცრ პროვაიდერულ ვალიდაციაზე",
+        "კოდინგ აგენტების შეფასების გადატანა სინთეზური ტესტებიდან რეალურ ორგანიზაციულ სიმულაციებზე (SWE-CoWork)",
+        "მონაცემთა მილსადენების თვითაღდგენა (Self-healing ETL) და აგენტების მიერ ავტომატური PR-ების შექმნა"
+      ]
     }
   ],
   "learning_queue": [
-    "Agent-to-Agent (A2A) Agent Card JSON სქემა და HTTP endpoints",
-    "Subprocess და Docker-based Python Sandbox იზოლაცია კოდის უსაფრთხო გაშვებისთვის"
+    "MCP Tool Registration and Namespace Security: როგორ ავიცილოთ თავიდან სახელების კოლიზია",
+    "RAGAS მეტრიკები: აგენტის პასუხების groundedness და relevancy ავტომატური გაზომვა",
+    "LangGraph State Management: როგორ შევინარჩუნოთ დავალებების სია და სტატუსი მრავალსვლიანი აგენტის მუშაობისას"
   ],
-  "last_run": "2026-11-16T20:01:07.243041+00:00",
+  "last_run": "2026-11-17T19:32:17.893124+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -10320,12 +10419,14 @@
     "arxiv:2611.15777",
     "arxiv:2611.17316",
     "arxiv:2606.02357",
-    "arxiv:2611.08950"
+    "arxiv:2611.08950",
+    "arxiv:2611.21577",
+    "arxiv:2611.20218"
   ],
   "last_report_files": {
-    "markdown": "data/reports/2026-11-16/report.md",
-    "json": "data/reports/2026-11-16/report.json",
-    "newsletter": "data/reports/2026-11-16/newsletter.md",
-    "social": "data/reports/2026-11-16/social_posts.txt"
+    "markdown": "data/reports/2026-11-17/report.md",
+    "json": "data/reports/2026-11-17/report.json",
+    "newsletter": "data/reports/2026-11-17/newsletter.md",
+    "social": "data/reports/2026-11-17/social_posts.txt"
   }
 }
