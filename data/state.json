@@ -401,7 +401,12 @@
     "https://arxiv.org/abs/2611.23219",
     "https://huggingface.co/papers/2611.21392",
     "https://arxiv.org/abs/2611.23202",
-    "https://huggingface.co/papers/2611.21152"
+    "https://huggingface.co/papers/2611.21152",
+    "https://deepmind.google/blog/introducing-gemini-4-neon",
+    "https://arxiv.org/abs/2611.24924",
+    "https://huggingface.co/papers/2611.23751",
+    "https://huggingface.co/papers/2611.24362",
+    "https://arxiv.org/abs/2611.24891"
   ],
   "seen_event_ids": [
     "evt-gpt6-astra-launch",
@@ -730,290 +735,14 @@
     "evt-agent-autonomous-self-improvement-framework",
     "evt-videonexus-perception-subagent-isolation",
     "evt-agent-trust-infrastructure-ati-security",
-    "evt-repofactory-environment-evolution-loop"
+    "evt-repofactory-environment-evolution-loop",
+    "evt-gemini-4-neon-launch",
+    "evt-ahe-beta-agent-harness-evolution",
+    "evt-anys1-dual-system-agents",
+    "evt-pipette-prompt-injection-defense",
+    "evt-cap-and-track-inference-dispatch"
   ],
   "events": [
-    {
-      "event_id": "evt-rescale-triage-agent-strands",
-      "title": "Rescale AI Triage Agent: ავტონომიური დებაგინგი Strands Agents და AI-DLC-ით",
-      "category": "Real Business Opportunity & Agent Architecture",
-      "primary_url": "https://aws.amazon.com/blogs/machine-learning/how-rescale-built-an-ai-triage-agent-with-strands-agents-and-ai-dlc",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 9,
-      "source_quality": 10,
-      "confidence": 88,
-      "tldr": "Rescale-მა გამოაქვეყნა პრაქტიკული ქეისი, თუ როგორ ააგო 5 დღეში CI/CD ტესტების ავტომატური Triage AI აგენტი AWS-ზე.",
-      "what_happened": "Rescale-მა შექმნა აგენტი, რომელიც ტესტების ჩაშლისას აგროვებს ლოგებს, პოულობს Root Cause-ს და გზავნის რეპორტს.",
-      "what_changed": "ინჟინრების მიერ ლოგების ხელით ქექვა ჩანაცვლდა აგენტის ავტომატური დიაგნოსტიკითა და თიქეთინგით.",
-      "why_it_matters": "ეს არის რეალური ბიზნეს აგენტის მაგალითი, რომლის აწყობაც უფასო ინსტრუმენტებით (GitHub Actions, Free LLM) შეგიძლიათ.",
-      "key_takeaways": [
-        "AI-DLC იძლევა მკაფიო ჩარჩოს იდეიდან Production-მდე მიყვანისთვის",
-        "ლოგების და კონტექსტის წინასწარი შეგროვება ზრდის აგენტის სიზუსტეს",
-        "ადამიანი რჩება საბოლოო გადაწყვეტილების მიმღებად (Human-in-the-loop)"
-      ],
-      "technical_architecture": [
-        "Strands Agents Framework Integration",
-        "AI-DLC Lifecycle Management on AWS",
-        "Automated Log and Multi-Repo Evidence Collector"
-      ],
-      "technical_details": [
-        "Test failure alert classification pipeline",
-        "Root cause log parsing logic",
-        "Team routing prompt pattern"
-      ],
-      "potential_impact": "დეველოპერული გუნდების ონ-ქოლ დროის შემცირება 50%-ზე მეტით.",
-      "action_type": "BUILD",
-      "action": "დაწერეთ GitHub Action, რომელიც ჩაშლილი run-ის ლოგს გაუგზავნის Gemini Flash-ს და შეცდომის რეზიუმეს მოგწერთ Telegram-ში.",
-      "evidence": [],
-      "factuality_level": "verified",
-      "classification": [
-        "Real Business Opportunity",
-        "Real Technical Skill"
-      ],
-      "verified_facts": [
-        "Rescale-მა შექმნა AI Triage აგენტი 5 დღეში staging-ში შესაყვანად და რამდენიმე კვირაში production-ისთვის",
-        "აგენტი ავტომატურად ახდენს ღამის ტესტების ჩაშლის კლასიფიკაციას, ლოგების შეგროვებას და შესაბამის გუნდზე მარშრუტიზაციას",
-        "სისტემა იყენებს AI-DLC (AI-Driven Development Lifecycle) ფრეიმვორკს AWS-ზე"
-      ],
-      "interpretation": "ინჟინრები აღარ უნდა ხარჯავდნენ დროს ლოგების მექანიკურ სორტირებაზე; აგენტები ამუშავებენ ინციდენტებს production-ში.",
-      "uncertainty": "აგენტის მიერ შეცდომით მარშრუტიზებული თიქეთების წილი მოითხოვს ადამიანის პერიოდულ ჩარევას.",
-      "counter_argument": "თუ ტესტების ლოგები არ არის სტანდარტიზებული, აგენტის სიზუსტე მკვეთრად ეცემა.",
-      "strategic_assessment": "შექმენით ანალოგიური მცირე triage აგენტი GitHub Actions-ის ჩაშლილი run-ების ლოგების ანალიზისთვის Telegram-ში.",
-      "time_horizon": "short-term",
-      "what_could_change": "On-call ინჟინრების ყოველდღიური რუტინა სრულად ავტომატიზირდება AI triage აგენტების მიერ.",
-      "risks": [
-        "არასწორი კლასიფიკაცია",
-        "ლოგების გადამეტებული ტოკენიზაციის ხარჯი"
-      ],
-      "non_obvious_opportunity": "სერვისის შეთავაზება მცირე ქართულ დეველოპერულ კომპანიებს: GitHub CI/CD ტესტების ავტომატური Triage ბოტი Telegram-ში.",
-      "fit_assessment": "იდეალური პორტფოლიო პროექტია 16 წლის დეველოპერისთვის: GitHub Actions + LLM API + Telegram Bot."
-    },
-    {
-      "event_id": "evt-sagemaker-mtrl-agentcore",
-      "title": "AWS SageMaker AI: Multi-Turn Reinforcement Learning (MTRL) აგენტური ამოცანებისთვის",
-      "category": "AI Research / Agent Architecture",
-      "primary_url": "https://aws.amazon.com/blogs/machine-learning/multi-turn-reinforcement-learning-on-amazon-sagemaker-ai-a-hands-on-guide",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 8,
-      "source_quality": 10,
-      "confidence": 90,
-      "tldr": "AWS-მა წარადგინა მრავალბიჯიანი RL (MTRL) მეთოდოლოგია აგენტების დასასწავლად საბოლოო შედეგის Reward-ზე დაყრდნობით.",
-      "what_happened": "SageMaker AI-მ გამოაქვეყნა არქიტექტურა, სადაც აგენტი ასრულებს მრავალ ნაბიჯს AgentCore-ში და სწავლობს მთლიანი ეპიზოდის ქულით.",
-      "what_changed": "SFT-ის მიერ ცალკეული ტოკენების სწავლებიდან გადავედით აგენტის მთლიანი სესიის ეფექტურობის ოპტიმიზაციაზე.",
-      "why_it_matters": "პატარა იაფი მოდელების ადაპტირება შესაძლებელი ხდება რთულ მრავალბიჯიან ბიზნეს პროცესებზე.",
-      "key_takeaways": [
-        "MTRL აფასებს აგენტის მიერ მიღებული გადაწყვეტილებების ჯაჭვს ეპიზოდის ბოლოს",
-        "gpt-oss-20b-ის წარმატება გაიზარდა 61%-დან 84%-მდე ნაგულისხმევ reasoning effort-ზე",
-        "Reward design არის კრიტიკული ფაქტორი აგენტის არასწორი ქცევის თავიდან ასაცილებლად"
-      ],
-      "technical_architecture": [
-        "SageMaker Training Job Policy Model Engine",
-        "Amazon Bedrock AgentCore Runtime Host",
-        "AWS Lambda Forwarder and MLflow Monitoring"
-      ],
-      "technical_details": [
-        "Episode rollout sampling pattern",
-        "Final episode reward function calculation",
-        "Policy gradient update over multi-turn trajectory"
-      ],
-      "potential_impact": "სპეციალიზებული დაბალხარჯიანი აგენტების შექმნა enterprise სამუშაო ნაკადებისთვის.",
-      "action_type": "LEARN",
-      "action": "წაიკითხეთ MTRL-ის არქიტექტურა და დაწერეთ მარტივი Python ეპიზოდური Reward ფუნქცია თქვენი აგენტისთვის.",
-      "evidence": [],
-      "factuality_level": "verified",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "MTRL საშუალებას იძლევა მოდელი გაიწვრთნოს არა ცალკეულ პრომპტზე, არამედ ნაბიჯების მთლიან სერიაზე და საბოლოო Reward-ზე",
-        "gpt-oss-20b მოდელის ეფექტურობა გაიზარდა 15%-დან 69%-მდე დაბალი reasoning effort-ის დროს MTRL fine-tuning-ით",
-        "ტრენინგი იყენებს Amazon Bedrock AgentCore-ს და Lambda forwarder-ს აგენტსა და პოლიტიკის მოდელს შორის"
-      ],
-      "interpretation": "Single-turn SFT საკმარისი არ არის მრავალბიჯიანი აგენტებისთვის; მომავალი ეკუთვნის ეპიზოდურ RL-ს, სადაც აგენტი გარემოსთან ურთიერთქმედებით სწავლობს.",
-      "uncertainty": "MTRL მოითხოვს მკაფიოდ განსაზღვრულ Reward ფუნქციას, რაც რთულია ბუნდოვანი ბიზნეს ამოცანებისთვის.",
-      "counter_argument": "მცირე პროექტებისთვის MTRL ტრენინგი ხშირად ძვირია და სჯობს მზა frontier model-ების სწორი prompt engineering.",
-      "strategic_assessment": "გაიაზრეთ ეპიზოდური Reward-ის კონცეფცია; ეს დაგეხმარებათ აგენტური სესიების სწორ Evaluation-ში.",
-      "time_horizon": "mid-term",
-      "what_could_change": "პატარა open-weight მოდელები MTRL-ის შემდეგ აჯობებენ დიდ მოდელებს სპეციფიკურ ბიზნეს-პროცესებში.",
-      "risks": [
-        "არასწორი reward design-ის გამო მოდელის არასასურველი ქცევა",
-        "მაღალი compute ხარჯი"
-      ],
-      "non_obvious_opportunity": "შექმენით ლოკალური სტიმულირების (reward) ფუნქცია Telegram ბოტის აგენტისთვის, რომელიც მომხმარებლის წარმატებულ ქმედებას ზომავს.",
-      "fit_assessment": "აძლევს დეველოპერს ცოდნას, თუ როგორ უნდა შეფასდეს და გაუმჯობესდეს აგენტი მრავალბიჯიანი სესიების დროს."
-    },
-    {
-      "event_id": "evt-openai-agent-runtime-infrastructure",
-      "title": "OpenAI Agent Runtime: პერსისტენტული მდგომარეობა და ასინქრონული ორკესტრაცია",
-      "category": "აგენტის არქიტექტურა და ინფრასტრუქტურა",
-      "primary_url": "https://openai.com/careers/software-engineer-product-infrastructure-agent-runtime-san-francisco",
-      "supporting_urls": [],
-      "importance": 8,
-      "relevance": 9,
-      "actionability": 8,
-      "source_quality": 10,
-      "confidence": 85,
-      "tldr": "OpenAI-ს Agent Runtime გუნდის მონაცემები ააშკარავებს პერსისტენტული მეხსიერებისა და ასინქრონული ორკესტრაციის აუცილებლობას.",
-      "what_happened": "OpenAI ქმნის Runtime ინფრასტრუქტურას, რომელიც აგენტებს საშუალებას აძლევს შეინარჩუნონ state ხანგრძლივი ამოცანებისას.",
-      "what_changed": "Stateless HTTP LLM მოთხოვნებიდან გადავედით მუდმივ პერსისტენტულ სესიებსა და ასინქრონულ execution-ზე.",
-      "why_it_matters": "ნამდვილი ბიზნეს აგენტები მოითხოვენ პროგრესის შენახვას და შეცდომის შემდეგ მუშაობის გაგრძელებას (Failure Recovery).",
-      "key_takeaways": [
-        "Persistent State აუცილებელია ხანგრძლივი აგენტური პროცესებისთვის",
-        "Asynchronous Execution იცავს აგენტს API Timeout შეცდომებისგან",
-        "Progress Reporting აძლევს მომხმარებელს ხილვადობას აგენტის ნაბიჯებზე"
-      ],
-      "technical_architecture": [
-        "Persistent Agent State Layer",
-        "Asynchronous Execution Engine",
-        "Tool Execution Environment Sandbox"
-      ],
-      "technical_details": [
-        "State checkpoints across agent steps",
-        "Asynchronous event loop handling",
-        "Failure recovery and retry mechanisms"
-      ],
-      "potential_impact": "საიმედო ავტონომიური აგენტები, რომლებსაც შეუძლიათ დღეების განმავლობაში მუშაობა.",
-      "action_type": "LEARN",
-      "action": "შეისწავლეთ როგორ შეინახოთ აგენტის ნაბიჯები (Checkpoints) SQLite მონაცემთა ბაზაში ყოველი Tool Execution-ის შემდეგ.",
-      "evidence": [],
-      "factuality_level": "single_source",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "OpenAI აშენებს სპეციალიზებულ Agent Runtime ინფრასტრუქტურას ხანგრძლივად მომუშავე (long-running) აგენტებისთვის",
-        "სისტემის მთავარი პრიმიტივებია: Persistent State, Asynchronous Execution, Orchestration და Progress Reporting",
-        "ინფრასტრუქტურა უზრუნველყოფს უსაფრთხო გარემოს ინსტრუმენტების გამოძახებისა და შეცდომებისგან აღდგენისთვის (Failure Recovery)"
-      ],
-      "interpretation": "სტანდარტული Stateless API გამოძახებები არ არის საკმარისი; აგენტებს სჭირდებათ ოპერაციული სისტემის მსგავსი Runtime გარემო.",
-      "uncertainty": "კონკრეტული ღია კოდის ბაზა ჯერ არ არის გამოქვეყნებული OpenAI-ს მიერ.",
-      "counter_argument": "სრული Runtime-ის აწყობა ხშირად ზედმეტია მარტივი აგენტებისთვის, სადაც SQLite და LangGraph/LiteLLM საკმარისია.",
-      "strategic_assessment": "ფოკუსირდით თქვენს აგენტებში Asynchronous State Persistence-ზე SQLite/PostgreSQL ბაზების გამოყენებით.",
-      "time_horizon": "mid-term",
-      "what_could_change": "LLM API-ები გარდაიქმნებიან Stateful Agent Execution Platform-ებად, სადაც აგენტის პროგრესი ინახება ღრუბელში.",
-      "risks": [
-        "State synchronization შეცდომები",
-        "ხანგრძლივი პროცესების მეხსიერების გაჟონვა"
-      ],
-      "non_obvious_opportunity": "შექმენით მცირე open-source Python ბიბლიოთეკა Telegram აგენტების state-ის ასინქრონული შენახვისთვის SQLite-ში.",
-      "fit_assessment": "პირდაპირ ეხება მომხმარებლის მიზანს: Agent State, Memory და Asynchronous Loop-ების შესწავლას."
-    },
-    {
-      "event_id": "evt-decisionrag-retriever-free-retrieval",
-      "title": "DecisionRAG: დოკუმენტების ნავიგაცია Decision Model-ებით პირველი ეტაპის Retriever-ის გარეშე",
-      "category": "RAG და აგენტის მეხსიერება",
-      "primary_url": "https://arxiv.org/abs/2610.35868",
-      "supporting_urls": [],
-      "importance": 9,
-      "relevance": 9,
-      "actionability": 8,
-      "source_quality": 8,
-      "confidence": 90,
-      "tldr": "DecisionRAG აუქმებს ტრადიციულ vector retriever-ს და იყენებს Decision Model-ებს ტექსტში ნავიგაციისთვის, რაც აუმჯობესებს RAG სიზუსტეს.",
-      "what_happened": "მკვლევარებმა წარმოადგინეს DecisionRAG, რომელიც ტოკენების გენერაციის გარეშე აფასებს კანდიდატ ბრენჩებს ერთ forward pass-ში.",
-      "what_changed": "სტატიკური vector similarity ძიებიდან გადავდივართ მოდელზე დაფუძნებულ დინამიურ კორპუსის ნავიგაციაზე.",
-      "why_it_matters": "შენ შეგიძლია აგენტებს მისცე უფრო ჭკვიანი ძიების ინსტრუმენტი, რომელიც ზუსტად პოულობს ფრაგმენტებს რთული კითხვებისთვის.",
-      "key_takeaways": [
-        "DecisionRAG აფასებს კანდიდატებს ერთ forward pass-ში ტოკენების გენერაციის გარეშე.",
-        "აუმჯობესებს ძიების სიზუსტეს რთულ მრავალდოკუმენტიან ბენჩმარკებზე.",
-        "მუშაობს მილიონიან კორპუსებზე 1-2 წამში."
-      ],
-      "technical_architecture": [
-        "Decision models evaluate candidate branches jointly in a single forward pass without token generation.",
-        "Navigates corpus structure from broad topics down to individual passages hierarchically."
-      ],
-      "technical_details": [
-        "Evaluates 2.68 million paragraphs in 0.7-1.8 seconds per query.",
-        "Outperforms 8B dense retrievers by 13.8 R@1 points on MultiDoc2Dial."
-      ],
-      "potential_impact": "ამცირებს RAG-ის გამოტოვებული ფრაგმენტების პრობლემას და ზრდის საპასუხო აგენტების სანდოობას.",
-      "action_type": "LEARN",
-      "action": "წაიკითხე DecisionRAG-ის აბსტრაქტი და შეადარე შენი არსებული RAG pipeline-ის მიდგომებს.",
-      "evidence": [],
-      "factuality_level": "corroborated",
-      "classification": [
-        "Real Technical Skill",
-        "Long-Term Career Value"
-      ],
-      "verified_facts": [
-        "DecisionRAG uses pretrained language models as decision models evaluating branches in a single forward pass.",
-        "It achieves 13.8 R@1 points higher on MultiDoc2Dial and 17.4 Hit@1 on Natural Questions than…",
-        "Retrieval takes 0.7-1.8 seconds per query across 2.68 million Wikipedia paragraphs."
-      ],
-      "interpretation": "ტრადიციული embedding RAG-ის ნაცვლად, decision model-ების გამოყენება აგენტებს საშუალებას აძლევს პირდაპირ დააორგანიზონ დოკუმენტების ძიება.",
-      "uncertainty": "მეთოდი მოითხოვს სპეციალურ ხეების სტრუქტურას და მოდელის არქიტექტურას, რაც მარტივი API-ებით მუშაობისას შეიძლება რთული იყოს.",
-      "counter_argument": "დიდი კორპუსებისთვის ტრადიციული vector search ჯერ კიდევ უფრო სწრაფი და მარტივი ინსალაციის მქონეა.",
-      "strategic_assessment": "შეისწავლე როგორ მუშაობს დოკუმენტების იერარქიული ძიება; ეს გამოგადგება აგენტების RAG-ის საიმედოობის ასამაღლებლად.",
-      "time_horizon": "mid-term",
-      "what_could_change": "RAG პატერნები გადავა სტატიკური vector embedding-ებიდან დინამიურ, მრავალბიჯიან decision-based ძიებაზე.",
-      "risks": [
-        "მაღალი გამოთვლითი სირთულე ინფერენსის დროს",
-        "დოკუმენტების წინასწარ სტრუქტურირების აუცილებლობა"
-      ],
-      "non_obvious_opportunity": "შეგიძლია ააგო პატარა Python პროტოტიპი, რომელიც LLM-ით აწყობს იერარქიულ ხეს და ატარებს decision-based ძიებას.",
-      "fit_assessment": "იდეალურია შენი RAG და agent memory უნარების განსავითარებლად, რადგან გასწავლის ალტერნატიულ ძიების პატერნებს."
-    },
-    {
-      "event_id": "evt-google-knowledge-catalog-self-learning",
-      "title": "Google Cloud Knowledge Catalog: AI აგენტების თვითგანვითარებადი კონტექსტური ძრავა",
-      "category": "აგენტის არქიტექტურა და მეხსიერება",
-      "primary_url": "https://cloud.google.com/blog/products/data-analytics/knowledge-catalog-self-learning-context-enrichment-for-ai-agents",
-      "supporting_urls": [],
-      "importance": 9,
-      "relevance": 9,
-      "actionability": 7,
-      "source_quality": 9,
-      "confidence": 95,
-      "tldr": "Google Cloud-მა წარადგინა Knowledge Catalog თვითგანვითარებადი კონტექსტით, რომელიც აუმჯობესებს აგენტის სიზუსტეს 4-ჯერ და ამცირებს ტოკენების ხარჯს.",
-      "what_happened": "Google-მა გამოუშვა Knowledge Studio და Knowledge Catalog-ის self-learning ფუნქცია აგენტების კონტექსტის განსაახლებლად.",
-      "what_changed": "ხელით დაწერილი static context მენეჯმენტიდან გადავდივართ აგენტების ურთიერთქმედებაზე დაფუძნებულ დინამიურ კონტექსტზე.",
-      "why_it_matters": "ეხმარება აგენტებს შეინარჩუნონ ზუსტი ბიზნეს დფინიციები ტოკენების ზედმეტი ხარჯის გარეშე.",
-      "key_takeaways": [
-        "Self-learning enrichment აანალიზებს აგენტისა და მომხმარებლის ინტერაქციებს ხარვეზების მოსაძებნად.",
-        "ზდის აგენტის სიზუსტეს თითქმის 4-ჯერ.",
-        "ამცირებს ტოკენების მოხმარებას 75%-ით."
-      ],
-      "technical_architecture": [
-        "Knowledge Catalog combines Gemini-powered enrichment with visual context graphs.",
-        "Continuously pulls verified definitions from code repos, docs, and playbooks."
-      ],
-      "technical_details": [
-        "Achieves 4X higher accuracy for AI agents.",
-        "Reduces latency by up to 33% and token usage by 75%."
-      ],
-      "potential_impact": "აუმჯობესებს საწარმოო აგენტების საიმედოობას და ხსნის ხელით კონტექსტის წერის ტვირთს.",
-      "action_type": "LEARN",
-      "action": "შეისწავლე როგორ აწყობენ კონტექსტურ გრაფებს აგენტებისთვის და დააპროექტე მარტივი SQLite კონტექსტის მენეჯერი შენი აგენტისთვის.",
-      "evidence": [],
-      "factuality_level": "verified",
-      "classification": [
-        "Real Technical Skill",
-        "Real Business Opportunity"
-      ],
-      "verified_facts": [
-        "Google Cloud launched self-learning context enrichment and Knowledge Studio in Knowledge Catalog.",
-        "Gemini-powered self-learning analyzes agent-user interactions to identify missing or outdated context.",
-        "It makes AI agents nearly 4X more accurate, with up to 33% lower latency and…"
-      ],
-      "interpretation": "კონტექსტის მართვა და ძველი ინფორმაციის ავტომატური განახლება ხდება საწარმოო აგენტების მთავარი ბოთლის ყელი.",
-      "uncertainty": "ფუნქციონალი მიბმულია Google Cloud ეკოსისტემაზე და მის ინფრასტრუქტურაზე.",
-      "counter_argument": "ხელით კოდირებული system prompt-ები და vector DB-ები ბევრად მარტივია სტარტაპებისთვის დასაწყებად.",
-      "strategic_assessment": "გაიგე როგორ მუშაობს აგენტების კონტექსტის ავტომატური განახლება და გამოიყენე ეს პრინციპი შენს Python პროექტებში.",
-      "time_horizon": "mid-term",
-      "what_could_change": "სტატიკური კონტექსტური ფაილები ჩანაცვლდება დინამიური, ინტერაქციაზე დაფუძნებული თვითგანვითარებადი კონტექსტური გრაფებით.",
-      "risks": [
-        "ავტომატური განახლების დროს არასწორი დფინიტების შეპარვა",
-        "ინფრასტრუქტურული მიბმა ერთ პროვაიდერზე"
-      ],
-      "non_obvious_opportunity": "შეგიძლია შექმნა ღია კოდის პატარა ბიბლიოთეკა, რომელიც აგენტის ჩატის ლოგებიდან ავტომატურად ანახლებს აგენტის მეხსიერების ფაილებს.",
-      "fit_assessment": "შესანიშნავია, რადგან ეხება აგენტის კონტექსტისა და მეხსიერების ოპტიმიზაციას, რაც შენს მიმდინარე ამოცანებს ერწყმის."
-    },
     {
       "event_id": "evt-auto-research-arena-benchmark",
       "title": "Auto-Research Arena: ავტონომიური კვლევითი სისტემებისა და ჰარნესების ბენჩმარკი",
@@ -6467,6 +6196,301 @@
       ],
       "non_obvious_opportunity": "შექმენით GitHub Action, რომელიც თქვენი პირადი რეპოზიტორიის PR-ებს ავტომატურად გარდაქმნის Benchmark Evaluation Test-ად.",
       "fit_assessment": "გამოსადეგია აგენტების ევალუაციის პრინციპების გასაგებად და GitHub Actions-თან ინტეგრაციისთვის."
+    },
+    {
+      "event_id": "evt-gemini-4-neon-launch",
+      "title": "Google DeepMind Gemini 4 Neon: 1M Context Window და 95%-იანი Prompt Caching ფასდაკლება",
+      "category": "LLM APIs და ხელსაწყოები",
+      "primary_url": "https://deepmind.google/blog/introducing-gemini-4-neon",
+      "supporting_urls": [],
+      "importance": 9,
+      "relevance": 9,
+      "actionability": 9,
+      "source_quality": 10,
+      "confidence": 95,
+      "tldr": "Google-მა გამოუშვა Gemini 4 Neon 1M კონტექსტით და $0.15/1M კეშირებული ტოკენის ფასით, რაც საგრძნობლად აიაფებს აგენტურ პროცესებს.",
+      "what_happened": "Google DeepMind-მა წარადგინა Gemini 4 Neon, რომელიც საუკეთესო შედეგებს აჩვენებს კოდირებასა და სამუშაო პროცესების ავტომატიზაციაში.",
+      "what_changed": "წინა მოდელებთან შედარებით შემცირდა ფაბრიკაციის მაჩვენებელი და დაემატა 95%-იანი ფასდაკლება კეშირებულ ტოკენებზე.",
+      "why_it_matters": "შეგიძლია გაუშვა გრძელი სისტემური prompt-ები და დიდი დოკუმენტები მინიმალური ხარჯით შენს Telegram ბოტში.",
+      "key_takeaways": [
+        "1M კონტექსტი ინტეგრირებულია Gemini API-ში",
+        "კეშირებული ტოკენები 20-ჯერ უფრო იაფია",
+        "#1 შედეგი Zapier AutomationBench-ში"
+      ],
+      "technical_architecture": [
+        "Context window: 1,000,000 tokens",
+        "Pricing: $3 in / $15 out / $0.15 cached in",
+        "Vals Index score: 70.9% (#2 overall)"
+      ],
+      "technical_details": [
+        "Gemini API model: gemini-4-neon",
+        "Google AI Studio integration ready",
+        "Supports multimodal PDF and video inputs"
+      ],
+      "potential_impact": "აგენტების გაშვების საოპერაციო ხარჯი მცირდება 80%-ზე მეტით კეშირებული ინსტრუქციების გამოყენებისას.",
+      "action_type": "TRY",
+      "action": "შეამოწმე Gemini 4 Neon Google AI Studio-ში და გატესტე prompt caching 100-გვერდიან დოკუმენტზე Python SDK-ით.",
+      "evidence": [],
+      "factuality_level": "corroborated",
+      "classification": [
+        "Real Technical Skill",
+        "Real Business Opportunity"
+      ],
+      "verified_facts": [
+        "ფასი: $3 per 1M input tokens, $15 output tokens",
+        "კეშირებული input ტოკენები ღირს $0.15 per 1M (95% discount)",
+        "კონტექსტის ფანჯარა შეადგენს 1 მილიონ ტოკენს",
+        "AutomationBench-ზე #1 ადგილი (56.3%), Agent Arena Index-ზე #2"
+      ],
+      "interpretation": "მოდელი იდეალურია complex agent loops და multi-step RAG სისტემებისთვის, სადაც prompt caching ხარჯებს რადიკალურად ამცირებს.",
+      "uncertainty": "Google AI Studio-ს უფასო tier-ის ზუსტი rate limit-ები ჯერ დაუზუსტებელია.",
+      "counter_argument": "1M context window ხშირად იწვევს ყურადღების გაფანტვას (lost in the middle) რთულ ამოცანებში.",
+      "strategic_assessment": "გამოიყენე Gemini 4 Neon გრძელ დოკუმენტებთან და მრავალეტაპიან workflow-ებთან სამუშაოდ, რადგან prompt caching ფასს მინიმუმამდე ამცირებს.",
+      "time_horizon": "short-term",
+      "what_could_change": "დიდი კონტექსტის დამუშავების დაბალი ფასი ჩაანაცვლებს მოუქნელ chunking სტრატეგიებს მრავალ ბიზნეს აპლიკაციაში.",
+      "risks": [
+        "სატარიფო ლიმიტების გადაჭარბება",
+        "გრძელ prompt-ებში ჰალუცინაციები",
+        "ინტერნეტის ლატენტურობა თბილისიდან"
+      ],
+      "non_obvious_opportunity": "საგადასახადო ან იურიდიული დოკუმენტების ანალიზის სერვისი ადგილობრივი მცირე ბიზნესისთვის იაფი prompt caching-ით.",
+      "fit_assessment": "სრულად ერგება სტუდენტის პროფილს: Google AI Studio იძლევა უმაღლესი დონის მოდელზე წვდომას მინიმალური ბიუჯეტით."
+    },
+    {
+      "event_id": "evt-ahe-beta-agent-harness-evolution",
+      "title": "AHE-Beta: აგენტის Harness-ის ევოლუცია მომხმარებლის მოთხოვნებით და 40.8%-ით ნაკლები ტოკენი",
+      "category": "აგენტის არქიტექტურა და ოპტიმიზაცია",
+      "primary_url": "https://arxiv.org/abs/2611.24924",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 90,
+      "tldr": "AHE-Beta აუმჯობესებს აგენტის harness-ს მომხმარებლის მოთხოვნების ციკლით, ზრდის pass@1-ს 33.3%-მდე და ზოგავს ტოკენების 40%-ს.",
+      "what_happened": "ჩინელმა მკვლევრებმა წარადგინეს Agentic Harness Engineering Beta, რომელიც აგენტის ინფრასტრუქტურას ეტაპობრივად ხვეწს.",
+      "what_changed": "ერთჯერადი მოდელის გამოძახების ნაცვლად, harness ვითარდება სიმულირებული მოთხოვნებისა და შეცდომების საფუძველზე.",
+      "why_it_matters": "საშუალებას გაძლევს იაფი მოდელებით (DeepSeek, Gemini Flash) მიიღო ძვირი მოდელების დონის შედეგი კარგად აწყობილი harness-ით.",
+      "key_takeaways": [
+        "Harness-ის გამართვა ზრდის pass@1-ს 11.4%-ით",
+        "ტოკენების 40%-იანი ეკონომია",
+        "ეფექტი მუშაობს სხვადასხვა LLM ოჯახზე"
+      ],
+      "technical_architecture": [
+        "3-step loop: User evaluation, Team modification, Selection",
+        "Supports GLM-5.3 and DeepSeek-V4.1-Flash backbones",
+        "Multi-turn issue raising harness"
+      ],
+      "technical_details": [
+        "Base harness pass@1: 21.9% to 33.3%",
+        "Token reduction: 40.8%",
+        "Tested against Claude Code and Meta-Harness"
+      ],
+      "potential_impact": "შემცირებული API ხარჯები და გაზრდილი ავტონომიურობა მცირე და საშუალო ზომის აგენტურ პროექტებში.",
+      "action_type": "LEARN",
+      "action": "გააანალიზე შენი მიმდინარე აგენტის tool execution harness და შექმენი შეცდომების ლოგირება, რათა იპოვო ზედმეტი გამოძახებები.",
+      "evidence": [],
+      "factuality_level": "single_source",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "Pass@1 გაიზარდა 21.9%-დან 33.3%-მდე ტესტურ დავალებებზე",
+        "ტოკენების მოხმარება შემცირდა 40.8%-ით Base Harness-თან შედარებით",
+        "გაუმჯობესება ტრანსფერდება GLM-5.3-სა (+15.8%) და DeepSeek-V4.1-ზე (+5.3%)",
+        "მეთოდი იყენებს 3-ეტაპიან ციკლს: Evaluation, Modification, Selection"
+      ],
+      "interpretation": "აგენტის წარმატება უფრო მეტად დამოკიდებულია harness-ის (გარემოს, tool wrappers) სტრუქტურაზე, ვიდრე მოდელის ზომაზე.",
+      "uncertainty": "სიმულირებული მომხმარებლების მოთხოვნები შეიძლება ყოველთვის ზუსტად არ ასახავდეს ცოცხალი პროდაქშენის საჭიროებებს.",
+      "counter_argument": "Harness-ის ავტომატურმა მოდიფიკაციამ შეიძლება შექმნას benchmark-specific გადახრები რთულ ამოცანებში.",
+      "strategic_assessment": "ნუ ჩადებ დიდ დროს მოდელის ზომის გაზრდაში; ააგე მოდულარული Harness და გააუმჯობესე tool-calling ინტერფეისები ემპირიული ტესტებით.",
+      "time_horizon": "mid-term",
+      "what_could_change": "აგენტების ინჟინერია გადაინაცვლებს prompt crafting-იდან harness და tool wrappers ოპტიმიზაციაზე.",
+      "risks": [
+        "ტესტური გარემოს არასწორი იმიტაცია",
+        "მოდიფიკაციების ზედმეტი სირთულე",
+        "ლოკალური ოპტიმუმის რისკი"
+      ],
+      "non_obvious_opportunity": "შექმენი მცირე harness evaluation სკრიპტი, რომელიც ავტომატურად გაზომავს შენი აგენტის მიერ გამოყენებულ ტოკენებს და წარმატებას.",
+      "fit_assessment": "ზუსტად ერგება 16 წლის დეველოპერის მიზანს: უფასო ხელსაწყოებით კოდის სწორი ორგანიზებით ხარჯების შემცირება."
+    },
+    {
+      "event_id": "evt-anys1-dual-system-agents",
+      "title": "AnyS1: Dual-System არქიტექტურა აგენტებისთვის – რუტინული არჩევანის 4B მოდელზე დელეგირება და 91%-იანი დაზოგვა",
+      "category": "აგენტის არქიტექტურა და ოპტიმიზაცია",
+      "primary_url": "https://huggingface.co/papers/2611.23751",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 8,
+      "source_quality": 8,
+      "confidence": 88,
+      "tldr": "AnyS1 აჩვენებს, რომ რუტინული გადაწყვეტილებების პატარა 4B მოდელზე გადატანით აგენტის ხარჯი 91%-ით, ხოლო ლატენტურობა 92%-ით მცირდება.",
+      "what_happened": "USTC-ის მკვლევრებმა შექმნეს AnyS1 ჩარჩო, რომელიც აგენტის გადაწყვეტილების წერტილებს System-1 და System-2 მოდელებად ჰყოფს.",
+      "what_changed": "Frontier LLM-ის ყოველ ნაბიჯზე გამოძახების ნაცვლად, მარტივ ოფციებს წყვეტს სწრაფი 4B მოდელი ერთი forward pass-ით.",
+      "why_it_matters": "საშუალებას გაძლევს შექმნა სწრაფი და იაფი ბიზნეს აგენტები Telegram-ში უფასო ან დაბალფასიანი API-ებით.",
+      "key_takeaways": [
+        "75-91%-ით ნაკლები საოპერაციო ხარჯი",
+        "63-92%-ით სწრაფი პასუხი რუტინულ ნაბიჯებზე",
+        "Calibrated threshold უზრუნველყოფს უსაფრთხო fallback-ს"
+      ],
+      "technical_architecture": [
+        "Dual-system router: 4B System-1 pointer + Large System-2",
+        "Execution-grounded trajectory dataset (Any-DP)",
+        "Zero-shot threshold transfer across tasks"
+      ],
+      "technical_details": [
+        "Trained on 1000+ public procedural skills",
+        "Single forward pass candidate selection",
+        "Cost reduction: 75% to 91%"
+      ],
+      "potential_impact": "მაღალი დატვირთვის მქონე აგენტური სერვისების ხარჯების რადიკალური ოპტიმიზაცია.",
+      "action_type": "BUILD",
+      "action": "ააგე ორდონიანი Router Python-ში: გაუშვი მარტივი კლასიფიკაცია სწრაფ მოდელზე და მხოლოდ გაურკვევლობისას გამოიძახე დიდი LLM.",
+      "evidence": [],
+      "factuality_level": "single_source",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "AnyS1 ამცირებს ეპიზოდის API ხარჯს 75-91%-ით",
+        "მოდელის გამოძახების დროს (latency) ამცირებს 63-92%-ით",
+        "იყენებს 4B კალიბრირებულ pointer მოდელს (System-1) რუტინული არჩევანისთვის",
+        "დაბალი თავდაჯერებულობისას ავტომატურად გადადის System-2 (დიდ) მოდელზე"
+      ],
+      "interpretation": "აგენტის ყველა ნაბიჯს არ სჭირდება ძვირი frontier მოდელი; მარტივი ინსტრუმენტის შერჩევა უნდა მოხდეს იაფი/პატარა მოდელით.",
+      "uncertainty": "თუ არჩევანის სია არ შეიცავს სწორ ვარიანტს, System-1-ის შეცდომამ შეიძლება დააზიანოს შემდგომი ნაბიჯები.",
+      "counter_argument": "არასწორი სწრაფი გადაწყვეტილების გამოსწორება System-2-ით ზრდის დროს, თუ კალიბრაციის ზღვარი არასწორადაა შერჩეული.",
+      "strategic_assessment": "დანერგე ორდონიანი ლოგიკა: გამოიყენე პატარა მოდელი (ან if-else წესები) მარტივი როუტინგისთვის, ხოლო დიდი LLM — მსჯელობისთვის.",
+      "time_horizon": "short-term",
+      "what_could_change": "Dual-system (Fast/Slow) არქიტექტურა გახდება სტანდარტი პროდაქშენ აგენტებში ხარჯებისა და ლატენტურობის სამართავად.",
+      "risks": [
+        "System-1-ის ცრუ თავდაჯერებულობა",
+        "არასწორი არჩევანის კასკადური ეფექტი",
+        "დამატებითი ლოგიკის სირთულე კოდში"
+      ],
+      "non_obvious_opportunity": "დაწერე მარტივი Python router, რომელიც მომხმარებლის მოთხოვნას ჯერ მცირე მოდელს აჩვენებს და მხოლოდ გაურკვევლობისას იძახებს ძვირ API-ს.",
+      "fit_assessment": "პრიორიტეტულია: ზოგავს API ბიუჯეტს და ასწავლის აგენტური არქიტექტურის ოპტიმიზაციას Python-ში."
+    },
+    {
+      "event_id": "evt-pipette-prompt-injection-defense",
+      "title": "PIPETTE: Purple-Teaming ჩარჩო LLM აგენტების დასაცავად Indirect Prompt Injection შეტევებისგან",
+      "category": "აგენტის არქიტექტურა და უსაფრთხოება",
+      "primary_url": "https://huggingface.co/papers/2611.24362",
+      "supporting_urls": [],
+      "importance": 8,
+      "relevance": 9,
+      "actionability": 7,
+      "source_quality": 8,
+      "confidence": 89,
+      "tldr": "PIPETTE აგვარებს red-teaming-ის mode collapse-ს და იცავს LLM აგენტებს არაპირდაპირი prompt injection შეტევებისგან თითქმის 0% ASR-ით.",
+      "what_happened": "მკვლევრებმა შექმნეს PIPETTE, სისტემა რომელიც მრავალფეროვანი შეტევების გენერირებით წვრთნის აგენტებს თავდაცვაში.",
+      "what_changed": "მარტივი სტატიკური ფილტრების ნაცვლად, დანერგილია მრავალფეროვან შეტევებზე დაფუძნებული adversarial robustness ციკლი.",
+      "why_it_matters": "როდესაც შენი აგენტი ამუშავებს უცხო ვებსაიტებს ან დოკუმენტებს, ის დაცული უნდა იყოს ბრძანებების ჩაჭრისგან.",
+      "key_takeaways": [
+        "თითქმის ნულოვანი შეტევის წარმატება AgentDojo-ზე",
+        "Dictionary learning თავიდან იცილებს ერთფეროვან შეტევებს",
+        "ნარჩუნდება ძირითადი დავალებების შესრულების სიზუსტე"
+      ],
+      "technical_architecture": [
+        "Dictionary learning-based reward function",
+        "On-policy adversarial training pipeline",
+        "Evaluation on AgentDojo and ASB benchmarks"
+      ],
+      "technical_details": [
+        "Targeted against Indirect Prompt Injection (IPI)",
+        "Near-zero attack success rate on static benchmarks",
+        "Preserves benign task completion utility"
+      ],
+      "potential_impact": "საწარმოო აგენტების დაცულობის მკვეთრი ზრდა გარე მონაცემებთან მუშაობისას.",
+      "action_type": "LEARN",
+      "action": "გაეცანი Indirect Prompt Injection-ის ტიპურ სცენარებს და დაამატე შემოწმების ეტაპი შენს RAG pipeline-ში ტექსტის დამუშავებამდე.",
+      "evidence": [],
+      "factuality_level": "single_source",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "წინა მეთოდები (RL-Hammer, PISmith) განიცდიან mode collapse-ს და იმეორებენ ერთნაირ შეტევებს",
+        "PIPETTE იყენებს dictionary learning-ს მრავალფეროვანი შეტევების დასაგენერირებლად",
+        "აღწევს თითქმის 0%-იან Attack Success Rate-ს სტატიკურ შეტევებზე AgentDojo ბენჩმარკზე",
+        "ინარჩუნებს აგენტის ძირითად ფუნქციონალს (utility) თავდაცვის გაძლიერების პარალელურად"
+      ],
+      "interpretation": "თუ აგენტი კითხულობს გარე მონაცემებს (Web, PDF, DB), Indirect Prompt Injection-ისგან დაცვა აუცილებელი მოთხოვნაა.",
+      "uncertainty": "ადაპტური შეტევების წინააღმდეგ სრული 100%-იანი გარანტია პრაქტიკაში ჯერ მიუღწეველია.",
+      "counter_argument": "მოდელის შიდა წვრთნა (adversarial training) რთულია დამოუკიდებელი დეველოპერისთვის compute რესურსების გარეშე.",
+      "strategic_assessment": "სწავლებისას ყურადღება გაამახვილე input validation-ზე და context isolation-ზე, რადგან დაუცველი აგენტი ბიზნესში ვერ ჩაეშვება.",
+      "time_horizon": "mid-term",
+      "what_could_change": "უსაფრთხოების აუდიტი და red-teaming გახდება სავალდებულო ეტაპი ნებისმიერი კომერციული აგენტის გაშვებამდე.",
+      "risks": [
+        "ახალი zero-day შეტევის ვექტორები",
+        "მოდელის ზედმეტი თავდაცვითი უარი (refusal)",
+        "ლოკალური fine-tuning-ის მაღალი ხარჯი"
+      ],
+      "non_obvious_opportunity": "შესთავაზე მცირე კომპანიებს აგენტის უსაფრთხოების მარტივი შემოწმება prompt injection payload-ების სატესტო ნაკრებით.",
+      "fit_assessment": "კრიტიკულია: რეალური ბიზნეს აგენტების ასაგებად აუცილებელია იმის ცოდნა, თუ როგორ არ დაემორჩილოს აგენტი გარე მავნე ინსტრუქციებს."
+    },
+    {
+      "event_id": "evt-cap-and-track-inference-dispatch",
+      "title": "Cap-and-Track: Meta-ს ასინქრონული Dispatch სისტემა LLM ინფერენსისთვის 43%-ით ნაკლები GPU რესურსით",
+      "category": "ინფრასტრუქტურა და ოპტიმიზაცია",
+      "primary_url": "https://arxiv.org/abs/2611.24891",
+      "supporting_urls": [],
+      "importance": 7,
+      "relevance": 8,
+      "actionability": 7,
+      "source_quality": 8,
+      "confidence": 92,
+      "tldr": "Meta-ს Cap-and-Track დიზაინი აჩვენებს, თუ როგორ მოვემსახუროთ მილიარდობით LLM მოთხოვნას 43%-ით ნაკლები რესურსით dynamic admission-ით.",
+      "what_happened": "Meta-ს ინჟინრებმა გამოაქვეყნეს ინფერენსის ტრაფიკის მართვის ჩარჩო, რომელიც იყენებს fail-fast შემოწმებას და probing dispatcher-ს.",
+      "what_changed": "ფიქსირებული dispatch rate ჩანაცვლდა refusal-guided ტრაფიკის რეგულირებით, რაც გამორიცხავს GPU-ების გადატვირთვას.",
+      "why_it_matters": "სწორი რიგების (priority queue) და retry მექანიზმის გარეშე ნებისმიერი ბიზნეს აგენტი გაითიშება დატვირთვისას.",
+      "key_takeaways": [
+        "43%-იანი GPU რესურსის ეკონომია",
+        "Fail-fast უარყოფა თავიდან იცილებს stall-ებს",
+        "Durable priority queues ინახავს რიგებს მოდელის გარეთ"
+      ],
+      "technical_architecture": [
+        "Components: Cap (fail-fast admission) + Track (probing dispatcher)",
+        "Durable priority queues decoupled from execution",
+        "Production deployment handling 300M+ requests/day"
+      ],
+      "technical_details": [
+        "Hardware savings: 43% fewer H100 GPUs",
+        "Peak traffic: 1.1 billion requests per 24 hours",
+        "Stateful dynamic ceiling tracking"
+      ],
+      "potential_impact": "მძლავრი არქიტექტურული პატერნი მაღალი დატვირთვის მქონე AI სერვისების სტაბილურობისთვის.",
+      "action_type": "LEARN",
+      "action": "გაეცანი asyncio.Queue და retry დეკორატორების მუშაობას Python-ში, რათა შენმა აგენტმა შეძლოს API rate limit-ების გლუვი მართვა.",
+      "evidence": [],
+      "factuality_level": "single_source",
+      "classification": [
+        "Real Technical Skill",
+        "Long-Term Career Value"
+      ],
+      "verified_facts": [
+        "Meta-მ Cap-and-Track-ით მოემსახურა კლასიფიკატორს 43%-ით ნაკლებ H100 GPU-ზე",
+        "დღეში ამუშავებს 300+ მილიონ ონლაინ მოთხოვნას და 1.1 მილიარდს პიკურ დღეებში",
+        "Cap არის fail-fast შემოწმება, რომელიც დაუყოვნებლივ არიდებს თავს გრძელ რიგებს",
+        "Track დისპეტჩერი ავტომატურად ზრდის და ამცირებს გამტარობას refusal სიგნალებზე დაყრდნობით"
+      ],
+      "interpretation": "LLM რიგების მართვა უნდა ეყრდნობოდეს რეალურ გადატვირთვის სიგნალებს და არა წინასწარ დაფიქსირებულ rate limit-ებს.",
+      "uncertainty": "სისტემა შექმნილია უზარმაზარი კლასტერებისთვის; მცირე პროექტებში მისი სრული დანერგვა ზედმეტია.",
+      "counter_argument": "დაბალი პრიორიტეტის დავალებები პიკის დროს უფრო დიდხანს ელოდება პასუხს.",
+      "strategic_assessment": "ისწავლე queue management და exponential backoff პრინციპები Python Asyncio-ში, რაც აუცილებელია საიმედო აგენტებისთვის.",
+      "time_horizon": "mid-term",
+      "what_could_change": "სერვერლეს და ლოკალური ინფერენსის მართვა გადავა dynamic saturation probing-ზე ფიქსირებული concurrency-ის ნაცვლად.",
+      "risks": [
+        "Backlog-ის დაგროვება პიკის დროს",
+        "დამატებითი კომპლექსურობა რიგების ლოგიკაში",
+        "მოითხოვს ზუსტ telemetry-ს"
+      ],
+      "non_obvious_opportunity": "დაწერე მარტივი client-side queue შენი Telegram ბოტისთვის, რომელიც დაიცავს API rate limit-ების გადაცილებისგან.",
+      "fit_assessment": "ეხმარება სისტემური აზროვნების ჩამოყალიბებაში: ასწავლის თუ როგორ მართოს შეზღუდული რესურსები Python-ის დონეზე."
     }
   ],
   "topics": {
@@ -6600,12 +6624,12 @@
     "AI Coding Tools & LLM APIs": 2,
     "AI Coding Tools & MCP Infrastructure": 1,
     "აგენტის შეფასება და უსაფრთხოება": 1,
-    "LLM APIs და ხელსაწყოები": 11,
+    "LLM APIs და ხელსაწყოები": 12,
     "აგენტის ინფრასტრუქტურა და ეკოსისტემა": 1,
     "RAG და აგენტის მეხსიერება": 3,
     "აგენტის არქიტექტურა და რობოტიკა": 2,
     "Long-Term Career Value": 2,
-    "აგენტის არქიტექტურა და ოპტიმიზაცია": 9,
+    "აგენტის არქიტექტურა და ოპტიმიზაცია": 11,
     "Open Source AI & Infrastructure": 1,
     "Real Business Opportunity & Agent Architecture": 8,
     "აგენტების ინფრასტრუქტურა და LLM APIs": 1,
@@ -6617,137 +6641,15 @@
     "AI Research / Self-Improvement": 1,
     "აგენტების არქიტექტურა და ინფრასტრუქტურა": 1,
     "აგენტის არქიტექტურა და Open Source": 2,
-    "აგენტის არქიტექტურა და უსაფრთხოება": 7,
+    "აგენტის არქიტექტურა და უსაფრთხოება": 8,
     "აგენტების ინფრასტრუქტურა და Open Source": 3,
     "აგენტის არქიტექტურა და კონტექსტი": 1,
     "AI Research / Robot Learning": 1,
     "აგენტის არქიტექტურა და Frontend": 1,
-    "უსაფრთხოება და ინფრასტრუქტურა": 2
+    "უსაფრთხოება და ინფრასტრუქტურა": 2,
+    "ინფრასტრუქტურა და ოპტიმიზაცია": 1
   },
   "reports": [
-    {
-      "date": "2026-11-04",
-      "summary": "დღევანდელი კვლევები ფოკუსირებულია აგენტების მსჯელობის ოპტიმიზაციაზე, მცირე მოდელების ტუანინგზე და საარბიტრაჟო პრეფერენციებზე. Tencent-ის LoCo მეთოდი ამცირებს reasoning ტოკენებს 40%-ით, ხოლო adversarial speculative reasoning მეთოდი აუმჯობესებს long-horizon აგენტების საიმედოობას.",
-      "events": [
-        {
-          "event_id": "evt-tencent-loco-reasoning-compression",
-          "title": "LoCo: Local Preference Learning for Reasoning Compression",
-          "category": "AI Research / Agent Architecture",
-          "primary_url": "https://huggingface.co/papers/2611.04814",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 95,
-          "tldr": "LoCo მეთოდი ამცირებს reasoning ტოკენებს 40%-ით მათემატიკასა და კოდირებაში მსჯელობის დინამიკური შეჩერებით.",
-          "what_happened": "Tencent-ის მკვლევარებმა გამოაქვეყნეს LoCo, რომელიც იყენებს local preference learning-ს reasoning compression-ისთვის.",
-          "what_changed": "მთლიანი reasoning ტაექტორიის უცვლელად შენახვიდან გადავედით მდგომარეობაზე დაფუძნებულ პრეფერენციულ ტუნინგზე.",
-          "why_it_matters": "გაძლევს საშუალებას შეამცირო API ხარჯები და აგენტების პასუხის დრო (latency) ტოკენების ეკონომიით.",
-          "key_takeaways": [
-            "Reduces math completion length by up to 45.4%.",
-            "Reduces code completion length by up to 36.3%.",
-            "Uses DPO on self-generated state-conditioned preference pairs."
-          ],
-          "technical_architecture": [
-            "State-conditioned preference pairs with DPO optimization.",
-            "Local decision mechanism for overthinking state detection."
-          ],
-          "technical_details": [
-            "Trained on math traces and transfers to code tasks.",
-            "Releases code and model weights via Hugging Face."
-          ],
-          "potential_impact": "მკვეთრად ზრდის აგენტური სისტემების ხარჯ-ეფექტურობას და ამცირებს გამოთვლით დატვირთვას.",
-          "action_type": "LEARN",
-          "action": "გადახედე Hugging Face-ზე LoCo პროექტის რეპოზიტორიას და შეისწავლე როგორ მუშაობს DPO state-conditioned წყვილებზე.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value",
-            "Short-term Opportunity"
-          ],
-          "verified_facts": [
-            "LoCo uses local preference learning to teach reasoning models when to stop deliberating.",
-            "It reduces completion length by 41.7% to 45.4% on math and 23.4% to 36.3% on…",
-            "Trained entirely on self-generated mathematical traces with DPO."
-          ],
-          "interpretation": "მოდელები ხშირად აგრძელებენ ფიქრს მას შემდეგაც, რაც საკმარისი ინფორმაცია აქვთ, რაც ზრდის ლატენტობას და ხარჯებს.",
-          "uncertainty": "არ არის ბოლომდე ნათელი, რამდენად ზიანდება რთული მრავალეტაპიანი ლოგიკა ძალიან აგრესიული შეჩერებისას.",
-          "counter_argument": "ადრეული შეჩერებამ შეიძლება გამოტოვოს კრიტიკული თვითშემოწმების ფაზა რთულ ამოცანებში.",
-          "strategic_assessment": "შეისწავლე preference optimization და DPO მეთოდები — ეს გამოგადგება აგენტების ლატენტობისა და API ხარჯების შესამცირებლად.",
-          "time_horizon": "mid-term",
-          "what_could_change": "LLM API-ების გამოყენების ხარჯები მკვეთრად შემცირდება, რაც აგენტურ ამოცანებს უფრო ეკონომიურს გახდის.",
-          "risks": [
-            "Model might stop verification too early on tricky edge cases.",
-            "Requires access to reasoning model logits or open weights."
-          ],
-          "non_obvious_opportunity": "მცირე ღია მოდელების ტუნინგი LoCo მიდგომით საშუალებას გაძლევს ააგო ლოკალური, სწრაფი აგენტური რანთაიმი.",
-          "fit_assessment": "იდეალურია შენთვის, რადგან გაძლევს ინსტრუმენტს უფასო ღია მოდელების ოპტიმიზაციისთვის მცირე რესურსებით."
-        },
-        {
-          "event_id": "evt-adversarial-speculative-reasoning",
-          "title": "Adversarial Speculative Reasoning Improves Long Horizon Agents",
-          "category": "აგენტის არქიტექტურა და ოპტიმიზაცია",
-          "primary_url": "https://arxiv.org/abs/2611.05345",
-          "supporting_urls": [],
-          "importance": 9,
-          "relevance": 9,
-          "actionability": 8,
-          "source_quality": 8,
-          "confidence": 90,
-          "tldr": "Draft მოდელის მიზანმიმართული adversarial ტრეინინგი აუმჯობესებს გრძელვადიანი აგენტების სიზუსტეს შეცდომების დაგროვების თავიდან აცილებით.",
-          "what_happened": "მკვლევარებმა აჩვენეს, რომ speculative decoding-ის დროს ნუმერაციული ხმაური აგენტებს აცდენს სწორი ტრაექტორიიდან 30 ნაბიჯის შემდეგ.",
-          "what_changed": "Draft მოდელი იწვრთნება adversarial preference-ზე, რათა კრიტიკული მსჯელობის წერტილებში ზუსტად გადართოს ტარტგეტ მოდელზე.",
-          "why_it_matters": "გაძლევს მექანიზმს აგენტების სტაბილურობის გასაუმჯობესებლად მრავალეტაპიან ამოცანებში.",
-          "key_takeaways": [
-            "Numerical noise in verification windows changes long-horizon agent outputs.",
-            "Training draft models to be rejected at critical points forces target model precision.",
-            "Raises end-to-end success rate on complex coding benchmarks."
-          ],
-          "technical_architecture": [
-            "Draft-target model decoupling at critical decision points.",
-            "Adversarial preference training on 0.06% to 0.28% of parameters."
-          ],
-          "technical_details": [
-            "Verification restarts when draft and target part ways.",
-            "Tested on complex agentic coding benchmarks."
-          ],
-          "potential_impact": "მნიშვნელოვნად ამცირებს აგენტების გაჭედვისა და ჰალუცინაციის ალბათობას მრავალეტაპიან შესრულებაში.",
-          "action_type": "LEARN",
-          "action": "გაეცანი speculative decoding-ის ძირითად პრინციპებს და სცადე მისი კონცეფციის რეალიზება პითონში ორ მოდელს შორის.",
-          "evidence": [],
-          "factuality_level": "verified",
-          "classification": [
-            "Real Technical Skill",
-            "Long-Term Career Value",
-            "Short-term Opportunity"
-          ],
-          "verified_facts": [
-            "Numerical noise grows within verification windows in standard speculative decoding.",
-            "Training draft models to favor adversarial preference improves long-horizon agent accuracy.",
-            "Only 0.06% to 0.28% of hosted parameters are trained."
-          ],
-          "interpretation": "სპეკულაციური დეკოდირება არ არის მხოლოდ სისტემური ოპტიმიზაცია; ის ცვლის აგენტის მსჯელობის ტრაექტორიას გრძელვადიან ამოცანებში.",
-          "uncertainty": "მეთოდი მოითხოვს სპეციალურ წრთობის პირობებს draft და target მოდელების იდეალური სინქრონიზაციისთვის.",
-          "counter_argument": "დამატებითი ტრეინინგი draft მოდელისთვის ამძიმებს ინფრასტრუქტურულ სირთულეს.",
-          "strategic_assessment": "ისწავლე speculative decoding და draft-target არქიტექტურის პრინციპები, რადგან ეს განსაზღვრავს სწრაფ და საიმედო აგენტურ 루პებს.",
-          "time_horizon": "mid-term",
-          "what_could_change": "გრძელვადიანი აგენტური ამოცანები გახდება უფრო სტაბილური და ნაკლებად მიდრეკილი შეცდომების დაგროვებისკენ.",
-          "risks": [
-            "Complex training pipeline for draft models.",
-            "Overhead in managing adversarial preference datasets."
-          ],
-          "non_obvious_opportunity": "შეგიძლია გამოიყენო მცირე ღია მოდელი როგორც adversarial draft მოდელი შენს ლოკალურ აგენტურ სკრიპტებში.",
-          "fit_assessment": "კარგად ერგება შენს ინტერესს აგენტური ლოუპებისა და საიმედოობის მიმართულებით."
-        }
-      ],
-      "trends": [
-        "Reasoning compression through state-conditioned preference learning",
-        "Adversarial optimization of draft models for agent reliability",
-        "Cost reduction and token efficiency in long-horizon agent loops"
-      ]
-    },
     {
       "date": "2026-11-06",
       "summary": "დღევანდელი ანალიზი ფოკუსირებულია CNCF-ის მიერ მიღებულ აგენტურ ინფრასტრუქტურაზე (Agent Substrate & gVisor), OpenAI-ის ავტონომიურ უსაფრთხოების პაიპლაინებსა და Anthropic-ის FlashProve პროტოკოლზე. შენთვის მთავარი ამოცანაა აგენტების უსაფრთხო Sandboxing-ის და MCP ინსტრუმენტების საიმედოობის (Tool Call Reliability) დანერგვა შენს Telegram და API პროექტებში.",
@@ -10385,14 +10287,320 @@
         "Context Isolation & Sub-Agent Filtering: დიდი მონაცემების დამუშავების დელეგირება იზოლირებულ Sub-Agent-ებზე ხარჯების 50%+ შემცირებისთვის",
         "Cryptographic Agent Identity & Attestation: PKI, WIMSE და JWT ტოკენების დანერგვა cross-agent კომუნიკაციასა და MCP Security-ში"
       ]
+    },
+    {
+      "date": "2026-11-19",
+      "summary": "Google-მა გამოუშვა Gemini 4 Neon 1M context window-ით და 95%-იანი prompt cache ფასდაკლებით. Agentic Harness Engineering Beta და AnyS1 წარმოადგენენ ახალ მიდგომებს აგენტის ტოკენების ხარჯის 40-90%-ით შესამცირებლად. Meta-ს Cap-and-Track აჩვენებს LLM dispatch-ის ოპტიმიზაციას 43%-ით ნაკლები GPU-ს რესურსით.",
+      "events": [
+        {
+          "event_id": "evt-gemini-4-neon-launch",
+          "title": "Google DeepMind Gemini 4 Neon: 1M Context Window და 95%-იანი Prompt Caching ფასდაკლება",
+          "category": "LLM APIs და ხელსაწყოები",
+          "primary_url": "https://deepmind.google/blog/introducing-gemini-4-neon",
+          "supporting_urls": [],
+          "importance": 9,
+          "relevance": 9,
+          "actionability": 9,
+          "source_quality": 10,
+          "confidence": 95,
+          "tldr": "Google-მა გამოუშვა Gemini 4 Neon 1M კონტექსტით და $0.15/1M კეშირებული ტოკენის ფასით, რაც საგრძნობლად აიაფებს აგენტურ პროცესებს.",
+          "what_happened": "Google DeepMind-მა წარადგინა Gemini 4 Neon, რომელიც საუკეთესო შედეგებს აჩვენებს კოდირებასა და სამუშაო პროცესების ავტომატიზაციაში.",
+          "what_changed": "წინა მოდელებთან შედარებით შემცირდა ფაბრიკაციის მაჩვენებელი და დაემატა 95%-იანი ფასდაკლება კეშირებულ ტოკენებზე.",
+          "why_it_matters": "შეგიძლია გაუშვა გრძელი სისტემური prompt-ები და დიდი დოკუმენტები მინიმალური ხარჯით შენს Telegram ბოტში.",
+          "key_takeaways": [
+            "1M კონტექსტი ინტეგრირებულია Gemini API-ში",
+            "კეშირებული ტოკენები 20-ჯერ უფრო იაფია",
+            "#1 შედეგი Zapier AutomationBench-ში"
+          ],
+          "technical_architecture": [
+            "Context window: 1,000,000 tokens",
+            "Pricing: $3 in / $15 out / $0.15 cached in",
+            "Vals Index score: 70.9% (#2 overall)"
+          ],
+          "technical_details": [
+            "Gemini API model: gemini-4-neon",
+            "Google AI Studio integration ready",
+            "Supports multimodal PDF and video inputs"
+          ],
+          "potential_impact": "აგენტების გაშვების საოპერაციო ხარჯი მცირდება 80%-ზე მეტით კეშირებული ინსტრუქციების გამოყენებისას.",
+          "action_type": "TRY",
+          "action": "შეამოწმე Gemini 4 Neon Google AI Studio-ში და გატესტე prompt caching 100-გვერდიან დოკუმენტზე Python SDK-ით.",
+          "evidence": [],
+          "factuality_level": "corroborated",
+          "classification": [
+            "Real Technical Skill",
+            "Real Business Opportunity"
+          ],
+          "verified_facts": [
+            "ფასი: $3 per 1M input tokens, $15 output tokens",
+            "კეშირებული input ტოკენები ღირს $0.15 per 1M (95% discount)",
+            "კონტექსტის ფანჯარა შეადგენს 1 მილიონ ტოკენს",
+            "AutomationBench-ზე #1 ადგილი (56.3%), Agent Arena Index-ზე #2"
+          ],
+          "interpretation": "მოდელი იდეალურია complex agent loops და multi-step RAG სისტემებისთვის, სადაც prompt caching ხარჯებს რადიკალურად ამცირებს.",
+          "uncertainty": "Google AI Studio-ს უფასო tier-ის ზუსტი rate limit-ები ჯერ დაუზუსტებელია.",
+          "counter_argument": "1M context window ხშირად იწვევს ყურადღების გაფანტვას (lost in the middle) რთულ ამოცანებში.",
+          "strategic_assessment": "გამოიყენე Gemini 4 Neon გრძელ დოკუმენტებთან და მრავალეტაპიან workflow-ებთან სამუშაოდ, რადგან prompt caching ფასს მინიმუმამდე ამცირებს.",
+          "time_horizon": "short-term",
+          "what_could_change": "დიდი კონტექსტის დამუშავების დაბალი ფასი ჩაანაცვლებს მოუქნელ chunking სტრატეგიებს მრავალ ბიზნეს აპლიკაციაში.",
+          "risks": [
+            "სატარიფო ლიმიტების გადაჭარბება",
+            "გრძელ prompt-ებში ჰალუცინაციები",
+            "ინტერნეტის ლატენტურობა თბილისიდან"
+          ],
+          "non_obvious_opportunity": "საგადასახადო ან იურიდიული დოკუმენტების ანალიზის სერვისი ადგილობრივი მცირე ბიზნესისთვის იაფი prompt caching-ით.",
+          "fit_assessment": "სრულად ერგება სტუდენტის პროფილს: Google AI Studio იძლევა უმაღლესი დონის მოდელზე წვდომას მინიმალური ბიუჯეტით."
+        },
+        {
+          "event_id": "evt-ahe-beta-agent-harness-evolution",
+          "title": "AHE-Beta: აგენტის Harness-ის ევოლუცია მომხმარებლის მოთხოვნებით და 40.8%-ით ნაკლები ტოკენი",
+          "category": "აგენტის არქიტექტურა და ოპტიმიზაცია",
+          "primary_url": "https://arxiv.org/abs/2611.24924",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 90,
+          "tldr": "AHE-Beta აუმჯობესებს აგენტის harness-ს მომხმარებლის მოთხოვნების ციკლით, ზრდის pass@1-ს 33.3%-მდე და ზოგავს ტოკენების 40%-ს.",
+          "what_happened": "ჩინელმა მკვლევრებმა წარადგინეს Agentic Harness Engineering Beta, რომელიც აგენტის ინფრასტრუქტურას ეტაპობრივად ხვეწს.",
+          "what_changed": "ერთჯერადი მოდელის გამოძახების ნაცვლად, harness ვითარდება სიმულირებული მოთხოვნებისა და შეცდომების საფუძველზე.",
+          "why_it_matters": "საშუალებას გაძლევს იაფი მოდელებით (DeepSeek, Gemini Flash) მიიღო ძვირი მოდელების დონის შედეგი კარგად აწყობილი harness-ით.",
+          "key_takeaways": [
+            "Harness-ის გამართვა ზრდის pass@1-ს 11.4%-ით",
+            "ტოკენების 40%-იანი ეკონომია",
+            "ეფექტი მუშაობს სხვადასხვა LLM ოჯახზე"
+          ],
+          "technical_architecture": [
+            "3-step loop: User evaluation, Team modification, Selection",
+            "Supports GLM-5.3 and DeepSeek-V4.1-Flash backbones",
+            "Multi-turn issue raising harness"
+          ],
+          "technical_details": [
+            "Base harness pass@1: 21.9% to 33.3%",
+            "Token reduction: 40.8%",
+            "Tested against Claude Code and Meta-Harness"
+          ],
+          "potential_impact": "შემცირებული API ხარჯები და გაზრდილი ავტონომიურობა მცირე და საშუალო ზომის აგენტურ პროექტებში.",
+          "action_type": "LEARN",
+          "action": "გააანალიზე შენი მიმდინარე აგენტის tool execution harness და შექმენი შეცდომების ლოგირება, რათა იპოვო ზედმეტი გამოძახებები.",
+          "evidence": [],
+          "factuality_level": "single_source",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "Pass@1 გაიზარდა 21.9%-დან 33.3%-მდე ტესტურ დავალებებზე",
+            "ტოკენების მოხმარება შემცირდა 40.8%-ით Base Harness-თან შედარებით",
+            "გაუმჯობესება ტრანსფერდება GLM-5.3-სა (+15.8%) და DeepSeek-V4.1-ზე (+5.3%)",
+            "მეთოდი იყენებს 3-ეტაპიან ციკლს: Evaluation, Modification, Selection"
+          ],
+          "interpretation": "აგენტის წარმატება უფრო მეტად დამოკიდებულია harness-ის (გარემოს, tool wrappers) სტრუქტურაზე, ვიდრე მოდელის ზომაზე.",
+          "uncertainty": "სიმულირებული მომხმარებლების მოთხოვნები შეიძლება ყოველთვის ზუსტად არ ასახავდეს ცოცხალი პროდაქშენის საჭიროებებს.",
+          "counter_argument": "Harness-ის ავტომატურმა მოდიფიკაციამ შეიძლება შექმნას benchmark-specific გადახრები რთულ ამოცანებში.",
+          "strategic_assessment": "ნუ ჩადებ დიდ დროს მოდელის ზომის გაზრდაში; ააგე მოდულარული Harness და გააუმჯობესე tool-calling ინტერფეისები ემპირიული ტესტებით.",
+          "time_horizon": "mid-term",
+          "what_could_change": "აგენტების ინჟინერია გადაინაცვლებს prompt crafting-იდან harness და tool wrappers ოპტიმიზაციაზე.",
+          "risks": [
+            "ტესტური გარემოს არასწორი იმიტაცია",
+            "მოდიფიკაციების ზედმეტი სირთულე",
+            "ლოკალური ოპტიმუმის რისკი"
+          ],
+          "non_obvious_opportunity": "შექმენი მცირე harness evaluation სკრიპტი, რომელიც ავტომატურად გაზომავს შენი აგენტის მიერ გამოყენებულ ტოკენებს და წარმატებას.",
+          "fit_assessment": "ზუსტად ერგება 16 წლის დეველოპერის მიზანს: უფასო ხელსაწყოებით კოდის სწორი ორგანიზებით ხარჯების შემცირება."
+        },
+        {
+          "event_id": "evt-anys1-dual-system-agents",
+          "title": "AnyS1: Dual-System არქიტექტურა აგენტებისთვის – რუტინული არჩევანის 4B მოდელზე დელეგირება და 91%-იანი დაზოგვა",
+          "category": "აგენტის არქიტექტურა და ოპტიმიზაცია",
+          "primary_url": "https://huggingface.co/papers/2611.23751",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 8,
+          "source_quality": 8,
+          "confidence": 88,
+          "tldr": "AnyS1 აჩვენებს, რომ რუტინული გადაწყვეტილებების პატარა 4B მოდელზე გადატანით აგენტის ხარჯი 91%-ით, ხოლო ლატენტურობა 92%-ით მცირდება.",
+          "what_happened": "USTC-ის მკვლევრებმა შექმნეს AnyS1 ჩარჩო, რომელიც აგენტის გადაწყვეტილების წერტილებს System-1 და System-2 მოდელებად ჰყოფს.",
+          "what_changed": "Frontier LLM-ის ყოველ ნაბიჯზე გამოძახების ნაცვლად, მარტივ ოფციებს წყვეტს სწრაფი 4B მოდელი ერთი forward pass-ით.",
+          "why_it_matters": "საშუალებას გაძლევს შექმნა სწრაფი და იაფი ბიზნეს აგენტები Telegram-ში უფასო ან დაბალფასიანი API-ებით.",
+          "key_takeaways": [
+            "75-91%-ით ნაკლები საოპერაციო ხარჯი",
+            "63-92%-ით სწრაფი პასუხი რუტინულ ნაბიჯებზე",
+            "Calibrated threshold უზრუნველყოფს უსაფრთხო fallback-ს"
+          ],
+          "technical_architecture": [
+            "Dual-system router: 4B System-1 pointer + Large System-2",
+            "Execution-grounded trajectory dataset (Any-DP)",
+            "Zero-shot threshold transfer across tasks"
+          ],
+          "technical_details": [
+            "Trained on 1000+ public procedural skills",
+            "Single forward pass candidate selection",
+            "Cost reduction: 75% to 91%"
+          ],
+          "potential_impact": "მაღალი დატვირთვის მქონე აგენტური სერვისების ხარჯების რადიკალური ოპტიმიზაცია.",
+          "action_type": "BUILD",
+          "action": "ააგე ორდონიანი Router Python-ში: გაუშვი მარტივი კლასიფიკაცია სწრაფ მოდელზე და მხოლოდ გაურკვევლობისას გამოიძახე დიდი LLM.",
+          "evidence": [],
+          "factuality_level": "single_source",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "AnyS1 ამცირებს ეპიზოდის API ხარჯს 75-91%-ით",
+            "მოდელის გამოძახების დროს (latency) ამცირებს 63-92%-ით",
+            "იყენებს 4B კალიბრირებულ pointer მოდელს (System-1) რუტინული არჩევანისთვის",
+            "დაბალი თავდაჯერებულობისას ავტომატურად გადადის System-2 (დიდ) მოდელზე"
+          ],
+          "interpretation": "აგენტის ყველა ნაბიჯს არ სჭირდება ძვირი frontier მოდელი; მარტივი ინსტრუმენტის შერჩევა უნდა მოხდეს იაფი/პატარა მოდელით.",
+          "uncertainty": "თუ არჩევანის სია არ შეიცავს სწორ ვარიანტს, System-1-ის შეცდომამ შეიძლება დააზიანოს შემდგომი ნაბიჯები.",
+          "counter_argument": "არასწორი სწრაფი გადაწყვეტილების გამოსწორება System-2-ით ზრდის დროს, თუ კალიბრაციის ზღვარი არასწორადაა შერჩეული.",
+          "strategic_assessment": "დანერგე ორდონიანი ლოგიკა: გამოიყენე პატარა მოდელი (ან if-else წესები) მარტივი როუტინგისთვის, ხოლო დიდი LLM — მსჯელობისთვის.",
+          "time_horizon": "short-term",
+          "what_could_change": "Dual-system (Fast/Slow) არქიტექტურა გახდება სტანდარტი პროდაქშენ აგენტებში ხარჯებისა და ლატენტურობის სამართავად.",
+          "risks": [
+            "System-1-ის ცრუ თავდაჯერებულობა",
+            "არასწორი არჩევანის კასკადური ეფექტი",
+            "დამატებითი ლოგიკის სირთულე კოდში"
+          ],
+          "non_obvious_opportunity": "დაწერე მარტივი Python router, რომელიც მომხმარებლის მოთხოვნას ჯერ მცირე მოდელს აჩვენებს და მხოლოდ გაურკვევლობისას იძახებს ძვირ API-ს.",
+          "fit_assessment": "პრიორიტეტულია: ზოგავს API ბიუჯეტს და ასწავლის აგენტური არქიტექტურის ოპტიმიზაციას Python-ში."
+        },
+        {
+          "event_id": "evt-pipette-prompt-injection-defense",
+          "title": "PIPETTE: Purple-Teaming ჩარჩო LLM აგენტების დასაცავად Indirect Prompt Injection შეტევებისგან",
+          "category": "აგენტის არქიტექტურა და უსაფრთხოება",
+          "primary_url": "https://huggingface.co/papers/2611.24362",
+          "supporting_urls": [],
+          "importance": 8,
+          "relevance": 9,
+          "actionability": 7,
+          "source_quality": 8,
+          "confidence": 89,
+          "tldr": "PIPETTE აგვარებს red-teaming-ის mode collapse-ს და იცავს LLM აგენტებს არაპირდაპირი prompt injection შეტევებისგან თითქმის 0% ASR-ით.",
+          "what_happened": "მკვლევრებმა შექმნეს PIPETTE, სისტემა რომელიც მრავალფეროვანი შეტევების გენერირებით წვრთნის აგენტებს თავდაცვაში.",
+          "what_changed": "მარტივი სტატიკური ფილტრების ნაცვლად, დანერგილია მრავალფეროვან შეტევებზე დაფუძნებული adversarial robustness ციკლი.",
+          "why_it_matters": "როდესაც შენი აგენტი ამუშავებს უცხო ვებსაიტებს ან დოკუმენტებს, ის დაცული უნდა იყოს ბრძანებების ჩაჭრისგან.",
+          "key_takeaways": [
+            "თითქმის ნულოვანი შეტევის წარმატება AgentDojo-ზე",
+            "Dictionary learning თავიდან იცილებს ერთფეროვან შეტევებს",
+            "ნარჩუნდება ძირითადი დავალებების შესრულების სიზუსტე"
+          ],
+          "technical_architecture": [
+            "Dictionary learning-based reward function",
+            "On-policy adversarial training pipeline",
+            "Evaluation on AgentDojo and ASB benchmarks"
+          ],
+          "technical_details": [
+            "Targeted against Indirect Prompt Injection (IPI)",
+            "Near-zero attack success rate on static benchmarks",
+            "Preserves benign task completion utility"
+          ],
+          "potential_impact": "საწარმოო აგენტების დაცულობის მკვეთრი ზრდა გარე მონაცემებთან მუშაობისას.",
+          "action_type": "LEARN",
+          "action": "გაეცანი Indirect Prompt Injection-ის ტიპურ სცენარებს და დაამატე შემოწმების ეტაპი შენს RAG pipeline-ში ტექსტის დამუშავებამდე.",
+          "evidence": [],
+          "factuality_level": "single_source",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "წინა მეთოდები (RL-Hammer, PISmith) განიცდიან mode collapse-ს და იმეორებენ ერთნაირ შეტევებს",
+            "PIPETTE იყენებს dictionary learning-ს მრავალფეროვანი შეტევების დასაგენერირებლად",
+            "აღწევს თითქმის 0%-იან Attack Success Rate-ს სტატიკურ შეტევებზე AgentDojo ბენჩმარკზე",
+            "ინარჩუნებს აგენტის ძირითად ფუნქციონალს (utility) თავდაცვის გაძლიერების პარალელურად"
+          ],
+          "interpretation": "თუ აგენტი კითხულობს გარე მონაცემებს (Web, PDF, DB), Indirect Prompt Injection-ისგან დაცვა აუცილებელი მოთხოვნაა.",
+          "uncertainty": "ადაპტური შეტევების წინააღმდეგ სრული 100%-იანი გარანტია პრაქტიკაში ჯერ მიუღწეველია.",
+          "counter_argument": "მოდელის შიდა წვრთნა (adversarial training) რთულია დამოუკიდებელი დეველოპერისთვის compute რესურსების გარეშე.",
+          "strategic_assessment": "სწავლებისას ყურადღება გაამახვილე input validation-ზე და context isolation-ზე, რადგან დაუცველი აგენტი ბიზნესში ვერ ჩაეშვება.",
+          "time_horizon": "mid-term",
+          "what_could_change": "უსაფრთხოების აუდიტი და red-teaming გახდება სავალდებულო ეტაპი ნებისმიერი კომერციული აგენტის გაშვებამდე.",
+          "risks": [
+            "ახალი zero-day შეტევის ვექტორები",
+            "მოდელის ზედმეტი თავდაცვითი უარი (refusal)",
+            "ლოკალური fine-tuning-ის მაღალი ხარჯი"
+          ],
+          "non_obvious_opportunity": "შესთავაზე მცირე კომპანიებს აგენტის უსაფრთხოების მარტივი შემოწმება prompt injection payload-ების სატესტო ნაკრებით.",
+          "fit_assessment": "კრიტიკულია: რეალური ბიზნეს აგენტების ასაგებად აუცილებელია იმის ცოდნა, თუ როგორ არ დაემორჩილოს აგენტი გარე მავნე ინსტრუქციებს."
+        },
+        {
+          "event_id": "evt-cap-and-track-inference-dispatch",
+          "title": "Cap-and-Track: Meta-ს ასინქრონული Dispatch სისტემა LLM ინფერენსისთვის 43%-ით ნაკლები GPU რესურსით",
+          "category": "ინფრასტრუქტურა და ოპტიმიზაცია",
+          "primary_url": "https://arxiv.org/abs/2611.24891",
+          "supporting_urls": [],
+          "importance": 7,
+          "relevance": 8,
+          "actionability": 7,
+          "source_quality": 8,
+          "confidence": 92,
+          "tldr": "Meta-ს Cap-and-Track დიზაინი აჩვენებს, თუ როგორ მოვემსახუროთ მილიარდობით LLM მოთხოვნას 43%-ით ნაკლები რესურსით dynamic admission-ით.",
+          "what_happened": "Meta-ს ინჟინრებმა გამოაქვეყნეს ინფერენსის ტრაფიკის მართვის ჩარჩო, რომელიც იყენებს fail-fast შემოწმებას და probing dispatcher-ს.",
+          "what_changed": "ფიქსირებული dispatch rate ჩანაცვლდა refusal-guided ტრაფიკის რეგულირებით, რაც გამორიცხავს GPU-ების გადატვირთვას.",
+          "why_it_matters": "სწორი რიგების (priority queue) და retry მექანიზმის გარეშე ნებისმიერი ბიზნეს აგენტი გაითიშება დატვირთვისას.",
+          "key_takeaways": [
+            "43%-იანი GPU რესურსის ეკონომია",
+            "Fail-fast უარყოფა თავიდან იცილებს stall-ებს",
+            "Durable priority queues ინახავს რიგებს მოდელის გარეთ"
+          ],
+          "technical_architecture": [
+            "Components: Cap (fail-fast admission) + Track (probing dispatcher)",
+            "Durable priority queues decoupled from execution",
+            "Production deployment handling 300M+ requests/day"
+          ],
+          "technical_details": [
+            "Hardware savings: 43% fewer H100 GPUs",
+            "Peak traffic: 1.1 billion requests per 24 hours",
+            "Stateful dynamic ceiling tracking"
+          ],
+          "potential_impact": "მძლავრი არქიტექტურული პატერნი მაღალი დატვირთვის მქონე AI სერვისების სტაბილურობისთვის.",
+          "action_type": "LEARN",
+          "action": "გაეცანი asyncio.Queue და retry დეკორატორების მუშაობას Python-ში, რათა შენმა აგენტმა შეძლოს API rate limit-ების გლუვი მართვა.",
+          "evidence": [],
+          "factuality_level": "single_source",
+          "classification": [
+            "Real Technical Skill",
+            "Long-Term Career Value"
+          ],
+          "verified_facts": [
+            "Meta-მ Cap-and-Track-ით მოემსახურა კლასიფიკატორს 43%-ით ნაკლებ H100 GPU-ზე",
+            "დღეში ამუშავებს 300+ მილიონ ონლაინ მოთხოვნას და 1.1 მილიარდს პიკურ დღეებში",
+            "Cap არის fail-fast შემოწმება, რომელიც დაუყოვნებლივ არიდებს თავს გრძელ რიგებს",
+            "Track დისპეტჩერი ავტომატურად ზრდის და ამცირებს გამტარობას refusal სიგნალებზე დაყრდნობით"
+          ],
+          "interpretation": "LLM რიგების მართვა უნდა ეყრდნობოდეს რეალურ გადატვირთვის სიგნალებს და არა წინასწარ დაფიქსირებულ rate limit-ებს.",
+          "uncertainty": "სისტემა შექმნილია უზარმაზარი კლასტერებისთვის; მცირე პროექტებში მისი სრული დანერგვა ზედმეტია.",
+          "counter_argument": "დაბალი პრიორიტეტის დავალებები პიკის დროს უფრო დიდხანს ელოდება პასუხს.",
+          "strategic_assessment": "ისწავლე queue management და exponential backoff პრინციპები Python Asyncio-ში, რაც აუცილებელია საიმედო აგენტებისთვის.",
+          "time_horizon": "mid-term",
+          "what_could_change": "სერვერლეს და ლოკალური ინფერენსის მართვა გადავა dynamic saturation probing-ზე ფიქსირებული concurrency-ის ნაცვლად.",
+          "risks": [
+            "Backlog-ის დაგროვება პიკის დროს",
+            "დამატებითი კომპლექსურობა რიგების ლოგიკაში",
+            "მოითხოვს ზუსტ telemetry-ს"
+          ],
+          "non_obvious_opportunity": "დაწერე მარტივი client-side queue შენი Telegram ბოტისთვის, რომელიც დაიცავს API rate limit-ების გადაცილებისგან.",
+          "fit_assessment": "ეხმარება სისტემური აზროვნების ჩამოყალიბებაში: ასწავლის თუ როგორ მართოს შეზღუდული რესურსები Python-ის დონეზე."
+        }
+      ],
+      "trends": [
+        "LLM პროვაიდერები აქტიურად ამცირებენ ფასებს prompt caching-ზე (Gemini 4 Neon - 95% ფასდაკლება კეშირებულ ტოკენებზე).",
+        "აგენტის არქიტექტურა გადადის Dual-System მოდელზე: იაფი მცირე მოდელები წყვეტენ მარტივ ნაბიჯებს, დიდი LLM გამოიყენება მხოლოდ fallback-ისთვის.",
+        "Harness Engineering ხდება გადამწყვეტი: გარემოსა და ხელსაწყოების სწორი ორგანიზება ზოგავს 40%-ზე მეტ ტოკენს და ზრდის სიზუსტეს."
+      ]
     }
   ],
   "learning_queue": [
-    "JWT და Bearer Token Auth-ის ინტეგრაცია Python FastAPI-ში (MCP სერვერების დასაცავად)",
-    "Sub-Agent Task Delegation პატერნი LangGraph-ში ან Custom Python Asyncio loops-ში",
-    "Custom Evaluation Harness-ის აგება Pytest-ით კოდინგ აგენტების PR Merge Rate-ის შესამოწმებლად"
+    "Google AI Studio API-ში Prompt Caching-ის სწორი კონფიგურაცია და ტოკენების ხარჯის მონიტორინგი.",
+    "Python asyncio რიგების (asyncio.Queue) და rate-limiter-ების იმპლემენტაცია Meta-ს Cap-and-Track ლოგიკის მიხედვით.",
+    "Agent Harness დიზაინი: როგორ დაიწეროს სუფთა tool execution wrappers შეცდომების ავტომატური დამუშავებით."
   ],
-  "last_run": "2026-11-18T18:39:34.167850+00:00",
+  "last_run": "2026-11-19T18:57:52.491934+00:00",
   "seen_dedup_keys": [
     "arxiv:2609.17708",
     "arxiv:2609.19128",
@@ -10540,12 +10748,16 @@
     "arxiv:2611.23219",
     "arxiv:2611.21392",
     "arxiv:2611.23202",
-    "arxiv:2611.21152"
+    "arxiv:2611.21152",
+    "arxiv:2611.24924",
+    "arxiv:2611.23751",
+    "arxiv:2611.24362",
+    "arxiv:2611.24891"
   ],
   "last_report_files": {
-    "markdown": "data/reports/2026-11-18/report.md",
-    "json": "data/reports/2026-11-18/report.json",
-    "newsletter": "data/reports/2026-11-18/newsletter.md",
-    "social": "data/reports/2026-11-18/social_posts.txt"
+    "markdown": "data/reports/2026-11-19/report.md",
+    "json": "data/reports/2026-11-19/report.json",
+    "newsletter": "data/reports/2026-11-19/newsletter.md",
+    "social": "data/reports/2026-11-19/social_posts.txt"
   }
 }
